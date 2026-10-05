@@ -125,6 +125,25 @@ pipeline runs in ≈2 minutes on 2 cores.
 | `data/evidence/` | every measurement as JSON (validation, novelty, sweeps, gate test, format) |
 | `docs/` | the GitHub Pages site, generated from `data/evidence/` |
 
+---
+
+## Other artifacts already in this repository (parallel track on `main`)
+
+An earlier scaffold (merged on `main` before this branch) produced a further Euler SI = 0 depth-KDE
+artifact, kept here rather than deleted so both tracks stay auditable:
+
+| file | size | that track's own reported measurement |
+| --- | --- | --- |
+| [`docs/downloads/gemsdoe40-euler-si0-depthkde-20261005T230506Z-5bc279cd-zeros.tif`](docs/downloads/gemsdoe40-euler-si0-depthkde-20261005T230506Z-5bc279cd-zeros.tif) (+ `-nan`, `.zip`, `GEMSDOE40-submission.tif/.zip`) | 340 kB, 45,784 px | uniqueness vs 9 priors: worst Pearson 0.0072, worst Jaccard 0.0054 → new; but on the **catalogue** holdout it reports mean blocked DTI 0.0150, i.e. −0.0674 vs a uniform-random control and −0.0066 vs a gradient baseline (`evidence/last_run.json`) |
+
+That catalogue holdout is the instrument this repository deliberately does **not** decide with: its
+truth *is* the published catalogue, and the organisers mask catalogue pixels out of scoring, so it
+rewards exactly the mass the live scorer throws away (measured in the sibling repos as ρ = +0.14
+against live scores, versus ρ = +0.53 for the off-catalogue LM instrument used here). Both tracks
+agree on the science (Euler SI = 0 depth-KDE, catalogue-buffered, `[0, 1]`, NaN outside the
+footprint); they differ in what they measured, and both measurements are quoted above rather than
+harmonised.
+
 ## Limitations (stated, not hidden)
 
 * No DrivenData login and no access to `drivendata.org`, `dropbox.com`, `gdr.openei.org`,
