@@ -1,0 +1,22 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+*.egg-info/
+.coverage
+htmlcov/
+data/training_features.tif
+data/bridge/
+data/*.tif.part-*
+ref/
+Unselected files/
+.DS_Store
+*.npz
+*.npy
+tmp/
+.arena/
+data/existing_faults.tif
+data/example_submission.tif

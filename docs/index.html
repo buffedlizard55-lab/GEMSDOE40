@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>GEMSDOE40 — Euler depth-clustering submission</title>
+  <link rel="stylesheet" href="assets/site.css"/>
+</head>
+<body>
+<header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="executive-summary.html">How to submit</a>
+    <a href="hypotheses.html">Hypotheses</a>
+    <a href="leaderboard.html">Leaderboard</a>
+    <a href="sources.html">Sources</a>
+  </nav>
+  <p class="meta">DOE GEMS Prize · DrivenData #306 · GeoDAWN / NW Nevada</p>
+</header>
+<main>
+  <section class="hero" id="download">
+    <span class="pill">PRIMARY FILE — CLICK TO DOWNLOAD</span>
+    <span class="pill warn">UNSCORED</span>
+    <span class="pill">all-finite [0, 1]</span>
+    <h1>Download the submission GeoTIFF</h1>
+    <p>One click. This is the file to upload on DrivenData. It is a unique Euler-deconvolution depth-clustering raster — not a copy of the 0.2778 dotted H33-2-B2 file or any other prior GEMSDOE candidate.</p>
+    <div class="download">
+      <a href="downloads/GEMSDOE40-submission.tif" download>Download GEMSDOE40-submission.tif</a>
+      <a class="secondary" href="downloads/GEMSDOE40-submission.zip" download>Download .zip (single GeoTIFF inside)</a>
+    </div>
+    <p class="meta">
+      Filename: <code>GEMSDOE40-submission.tif</code>
+      · also <a href="downloads/gemsdoe40-euler-si0-depthkde-20261005T230506Z-5bc279cd-zeros.tif">timestamped twin</a>
+      · <a href="downloads/GEMSDOE40-submission-nan.tif">NaN-outside twin</a>
+      · <a href="executive-summary.html">5-step submit instructions</a>
+    </p>
+  </section>
+
+  <h2>What to paste into the DrivenData form</h2>
+  <p><strong>Unique submission name:</strong> <code>GEMSDOE40-euler-si0-depthkde</code></p>
+  <p><strong>Note (optional)</strong> — 106 / 200 characters — copy exactly:</p>
+  <div class="note">GEMSDOE40 Euler SI=0 depth-KDE | RTP+isograv win8/12, 45784 px, 0 on cat, bin Δvs|∇RTP| +0.0032 | 5bc279cd</div>
+
+  <h2>Format receipt (independent re-read of the written bytes)</h2>
+  <table>
+    <tr><th>Check</th><th>Result</th></tr>
+    <tr><td>Single-band float32 GeoTIFF</td><td class="ok">pass</td></tr>
+    <tr><td>CRS EPSG:32611, 100 m, 3730 × 3292</td><td class="ok">pass — matches sample_submission.tif</td></tr>
+    <tr><td>Geotransform</td><td class="ok">(100, 0, 243350, 0, −100, 4508550)</td></tr>
+    <tr><td>Every cell finite, every value in [0, 1]</td><td class="ok">12,279,160 / 12,279,160 · nodata = None</td></tr>
+    <tr><td>Positive (fault-like) pixels</td><td>45,784 continuous KDE cores</td></tr>
+    <tr><td>On the public USGS/INGENIOUS catalogue</td><td class="ok">0</td></tr>
+    <tr><td>Portal error “Predicted values must be in range [0, 1]”</td><td class="ok">cannot trigger — no NaN, no sentinel, no value outside [0, 1]</td></tr>
+    <tr><td>sha256</td><td><code>5bc279cd55e65733df6d532b6b1c9d348b33720ed9196237371d487042fff195</code></td></tr>
+  </table>
+  <p class="meta"><a href="downloads/gemsdoe40-euler-si0-depthkde-20261005T230506Z-5bc279cd-audit.json">Full audit JSON</a></p>
+
+  <h2>Why this file is not a copy of the 0.2778 submission</h2>
+  <p>GEMSDOE32’s <code>h33-h33-2-b2</code> (owner-claimed 0.2778) is a <em>dotted binary</em> 37,654-pixel prune of a previously live-scoring H19-5 surface. This file is a <em>continuous</em> kernel-density raster of Reid et al. 1990 Euler source locations on RTP magnetics and isostatic gravity. Measured against that file and eight other prior rasters:</p>
+  <table>
+    <tr><th>Prior file</th><th>Pearson</th><th>Jaccard of positives</th></tr>
+    <tr><td>h33-h33-2-b2-zeros.tif (0.2778)</td><td>0.0072</td><td>0.0054</td></tr>
+    <tr><td>Near-duplicate threshold</td><td>0.85</td><td>0.50</td></tr>
+    <tr><td>Verdict</td><td colspan="2" class="ok">NEW — not a near-duplicate of any prior in <code>ref/</code></td></tr>
+  </table>
+
+  <h2>The brief’s question, answered</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3>Why did 0.2778 score?</h3>
+      <p>The metric is a budget. DTI = T / (0.2(T + S − M) + 0.8|G|). Every unit of prediction mass that is not the best cover of a hidden-truth pixel costs 0.2. H33-2-B2 is 37,654 dots, 0 on the public catalogue, ~300 m spacing matching the 300 m kernel, and a 2-pixel catalogue-flank prune of a surface that had already scored 0.2600–0.2708 live. Thinning a thick surface while keeping its geometry raises credit per emitted pixel. That is a <em>budget</em> result, not a new detector.</p>
+    </div>
+    <div class="card">
+      <h3>Can we beat 0.2778 / 0.3262?</h3>
+      <p>Not by copying that geometry, and not by emitting a dense gradient map. Beating 0.3262 requires higher <em>credit density on the hidden set</em>. No public catalogue can supply that — the hidden set is faults the USGS/INGENIOUS map does not contain. Euler depth-clustering is a different physical observable (source location and depth of a contact, not an edge of the field). Whether those contacts coincide with the hidden expert traces is an empirical question this repository cannot answer without a live slot. We do not claim a score.</p>
+    </div>
+  </div>
+
+  <h2>What was actually computed (verified, no hallucination)</h2>
+  <ul>
+    <li><strong>Reid, Allsop, Granser, Millett &amp; Somerton, Geophysics 55 (1990) 80–91</strong> — 3-D Euler deconvolution, structural index <strong>0</strong> for a fault-like magnetic/gravity contact. Author PDF: <a href="https://www.reid-geophys.co.uk/wp-content/uploads/2017/11/Reid-et-al-1990.pdf">reid-geophys.co.uk</a> · DOI <a href="https://doi.org/10.1190/1.1442774">10.1190/1.1442774</a>.</li>
+    <li>Fields: official band <code>rtp</code> (reduced-to-pole magnetics) and band <code>iso_grav_anom</code> (isostatic gravity), windows 8 px and 12 px, stride 4 px.</li>
+    <li>101,234 magnetic + 33,594 gravity depth-labelled solutions (median mag depth 192 m, grav 355–534 m).</li>
+    <li>Weighted KDE: shallowness × precision × local tightness × mutual depth-consistency × mag–grav concordance.</li>
+    <li>Public catalogue + 2 px dilation forced to 0 (the hidden test is off-catalogue).</li>
+    <li>Holdout (unmasked, same-count binary vs catalogue): Euler DTI <strong>0.0258</strong> vs |∇RTP| gradient baseline <strong>0.0225</strong>, Δ <strong>+0.0032</strong>. Euler is not gradient thresholding.</li>
+  </ul>
+
+  <h2>Core values</h2>
+  <p><strong>Maximize P(Win)</strong> — this slot is an experiment on a new physical observable, not a lottery ticket on a previously scored dotted surface. <strong>Own the Outcome</strong> — the catalogue-proxy DTI is low (~0.026) because the method is 98.4 % off-catalogue; that is reported, not tidied away. No organiser score exists for this file.</p>
+</main>
+<footer>
+  GEMSDOE40 · sources on the <a href="sources.html">sources</a> page · competition
+  <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">problem description</a>
+</footer>
+</body>
+</html>

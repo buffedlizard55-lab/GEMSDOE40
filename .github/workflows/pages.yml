@@ -1,0 +1,14 @@
+name: github pages
+on:
+  push:
+    branches: [main, "arena/**"]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  site:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: ensure docs exist
+        run: test -f docs/index.html && test -f docs/downloads/GEMSDOE40-submission.tif
