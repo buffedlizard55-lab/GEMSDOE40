@@ -1,0 +1,325 @@
+{
+  "candidate_id": "H40-EULER-SI0-DEPTHKDE",
+  "slug": "gemsdoe40-euler-si0-depthkde-20261005T230506Z-5bc279cd",
+  "content_digest8": "5bc279cd",
+  "method": "Reid et al. 1990 3-D Euler deconvolution, SI=0 (fault-like contact), on RTP magnetics and isostatic gravity; weighted KDE of shallow, tight, mutually-consistent solution clusters; catalogue-buffered to 0.",
+  "citation": {
+    "reid1990": "https://doi.org/10.1190/1.1442774",
+    "reid1990_pdf": "https://www.reid-geophys.co.uk/wp-content/uploads/2017/11/Reid-et-al-1990.pdf",
+    "problem": "https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/"
+  },
+  "submission_name": "GEMSDOE40-euler-si0-depthkde",
+  "submission_note": "GEMSDOE40 Euler SI=0 depth-KDE | RTP+isograv win8/12, 45784 px, 0 on cat, bin \u0394vs|\u2207RTP| +0.0032 | 5bc279cd",
+  "zeros_tif": {
+    "path": "/home/user/GEMSDOE40/docs/downloads/gemsdoe40-euler-si0-depthkde-20261005T230506Z-5bc279cd-zeros.tif",
+    "sha256": "5bc279cd55e65733df6d532b6b1c9d348b33720ed9196237371d487042fff195",
+    "bytes": 340360,
+    "meta": {
+      "crs": "EPSG:32611",
+      "width": 3292,
+      "height": 3730,
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "dtype": "float32",
+      "nodata": null,
+      "count": 1
+    },
+    "footprint_px": 5167373,
+    "finite_inside": 5167373,
+    "in_range_inside": 5167373,
+    "nan_inside": 0,
+    "outside_nan": 0,
+    "outside_zero": 7111787,
+    "positive_px": 45784,
+    "min_in": 0.0,
+    "max_in": 1.0,
+    "ok_shape": true,
+    "ok_range": true,
+    "ok_single_band": true,
+    "ok_float32": true,
+    "pixel_m": 100.0
+  },
+  "nan_tif": {
+    "path": "/home/user/GEMSDOE40/docs/downloads/gemsdoe40-euler-si0-depthkde-20261005T230506Z-5bc279cd-nan.tif",
+    "sha256": "3d30ed6f67a87db2e95dbd3e4e1a0dfec64b67ca5c9db7c9f3667d1daf3a3171",
+    "bytes": 472382,
+    "meta": {
+      "crs": "EPSG:32611",
+      "width": 3292,
+      "height": 3730,
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "dtype": "float32",
+      "nodata": null,
+      "count": 1
+    },
+    "footprint_px": 5167373,
+    "finite_inside": 5167373,
+    "in_range_inside": 5167373,
+    "nan_inside": 0,
+    "outside_nan": 7111787,
+    "outside_zero": 0,
+    "positive_px": 45784,
+    "min_in": 0.0,
+    "max_in": 1.0,
+    "ok_shape": true,
+    "ok_range": true,
+    "ok_single_band": true,
+    "ok_float32": true,
+    "pixel_m": 100.0
+  },
+  "zip": {
+    "path": "/home/user/GEMSDOE40/docs/downloads/gemsdoe40-euler-si0-depthkde-20261005T230506Z-5bc279cd-zeros.zip",
+    "bytes": 293745,
+    "sha256": "0a3dbde5ec2557e11d6936c2b6a60272e62593d246f69372d7ecf21c5abd9290"
+  },
+  "kde": {
+    "mag_solutions": 101234,
+    "grav_solutions": 33594,
+    "mag_weight_sum": 6240.871849294681,
+    "grav_weight_sum": 1457.637466255855,
+    "raw_positive_px": 2289192,
+    "catalogue_buffer_px": 2,
+    "catalogue_masked_px": 305335,
+    "p99": 0.06635055442912262,
+    "floor": 0.34403867726623194,
+    "floor_quantile": 0.98,
+    "power": 1.4,
+    "emitted_px": 45784,
+    "mass": 30611.501953125,
+    "max": 1.0,
+    "on_catalogue_positive": 0,
+    "unmasked": {
+      "mag_solutions": 101234,
+      "grav_solutions": 33594,
+      "mag_weight_sum": 6240.871849294681,
+      "grav_weight_sum": 1457.637466255855,
+      "raw_positive_px": 2447923,
+      "catalogue_buffer_px": -1,
+      "catalogue_masked_px": 0,
+      "p99": 0.06659563898589152,
+      "floor": 0.34699080232973295,
+      "floor_quantile": 0.98,
+      "power": 1.4,
+      "emitted_px": 48959,
+      "mass": 32858.46875,
+      "max": 1.0,
+      "on_catalogue_positive": 777
+    }
+  },
+  "euler_mag": {
+    "n_clouds": 2,
+    "accepted_solutions": 101234,
+    "per_cloud": [
+      {
+        "field_name": "rtp",
+        "structural_index": 0.0,
+        "window_px": 8,
+        "stride_px": 4,
+        "window_count": 765282,
+        "fully_valid_windows": 317721,
+        "analytic_percentile": 72.0,
+        "analytic_threshold": 23.373629247579196,
+        "gated_windows": 94454,
+        "condition_pass": 94454,
+        "depth_pass": 65624,
+        "rel_se_pass": 56657,
+        "accepted_solutions": 54060,
+        "depth_median_m": 194.09729924995634,
+        "depth_p90_m": 383.8057216497809
+      },
+      {
+        "field_name": "rtp",
+        "structural_index": 0.0,
+        "window_px": 12,
+        "stride_px": 4,
+        "window_count": 763530,
+        "fully_valid_windows": 315454,
+        "analytic_percentile": 72.0,
+        "analytic_threshold": 23.373629247579196,
+        "gated_windows": 96528,
+        "condition_pass": 96528,
+        "depth_pass": 56001,
+        "rel_se_pass": 48125,
+        "accepted_solutions": 47174,
+        "depth_median_m": 192.0645322332698,
+        "depth_p90_m": 395.34842519542224
+      }
+    ]
+  },
+  "euler_grav": {
+    "n_clouds": 2,
+    "accepted_solutions": 33594,
+    "per_cloud": [
+      {
+        "field_name": "iso_grav_anom",
+        "structural_index": 0.0,
+        "window_px": 8,
+        "stride_px": 4,
+        "window_count": 765282,
+        "fully_valid_windows": 317721,
+        "analytic_percentile": 72.0,
+        "analytic_threshold": 0.4111193933413098,
+        "gated_windows": 88643,
+        "condition_pass": 88639,
+        "depth_pass": 73375,
+        "rel_se_pass": 58306,
+        "accepted_solutions": 10255,
+        "depth_median_m": 354.9251969997437,
+        "depth_p90_m": 983.2993839398048
+      },
+      {
+        "field_name": "iso_grav_anom",
+        "structural_index": 0.0,
+        "window_px": 12,
+        "stride_px": 4,
+        "window_count": 763530,
+        "fully_valid_windows": 315454,
+        "analytic_percentile": 72.0,
+        "analytic_threshold": 0.4111193933413098,
+        "gated_windows": 87697,
+        "condition_pass": 87697,
+        "depth_pass": 76869,
+        "rel_se_pass": 68418,
+        "accepted_solutions": 23339,
+        "depth_median_m": 534.2758035555178,
+        "depth_p90_m": 1283.5875495092032
+      }
+    ]
+  },
+  "holdout": {
+    "mean_blocked_dti": 0.015043046723702078,
+    "full_dti": {
+      "tp": 880.7870761876668,
+      "fp": 31069.433039954307,
+      "fn": 60107.21292381233,
+      "n_truth": 60988,
+      "dti": 0.015961942528351102
+    },
+    "random_dti": {
+      "tp": 4878.585625009198,
+      "fp": 47011.98884408124,
+      "fn": 56109.4143749908,
+      "n_truth": 60988,
+      "dti": 0.08245239269169001
+    },
+    "delta_vs_random": -0.06740934596798794,
+    "gradient_dti": {
+      "tp": 1315.5948492853015,
+      "fp": 46791.8770705311,
+      "fn": 59672.4051507147,
+      "n_truth": 60988,
+      "dti": 0.022522721838764605
+    },
+    "delta_vs_gradient": -0.006560779310413503,
+    "per_fold": {
+      "NW": {
+        "tp": 500.42516613564936,
+        "fp": 18117.919869111407,
+        "fn": 28818.57483386435,
+        "n_truth": 29319,
+        "dti": 0.01841228809064327
+      },
+      "NE": {
+        "tp": 109.86290870289724,
+        "fp": 5086.180244228255,
+        "fn": 12486.137091297103,
+        "n_truth": 12596,
+        "dti": 0.009883305451977084
+      },
+      "SW": {
+        "tp": 175.75932078951553,
+        "fp": 4774.772794909539,
+        "fn": 9297.240679210485,
+        "n_truth": 9473,
+        "dti": 0.02051224707200615
+      },
+      "SE": {
+        "tp": 94.52033242543855,
+        "fp": 3091.8279251385375,
+        "fn": 9505.479667574562,
+        "n_truth": 9600,
+        "dti": 0.011364346280181814
+      }
+    }
+  },
+  "uniqueness": {
+    "n_priors": 9,
+    "is_new": true,
+    "worst_pearson": 0.007238666902282093,
+    "worst_jaccard": 0.0054224707186581195,
+    "worst_file": "h33-h33-2-b2-zeros.tif",
+    "threshold_pearson": 0.85,
+    "threshold_jaccard": 0.5,
+    "rows": [
+      {
+        "file": "gems38-D-step-zero.tif",
+        "pearson": 0.004826,
+        "jaccard_positive": 0.004314,
+        "prior_positive_px": 36171
+      },
+      {
+        "file": "gems39-h40e-zeros.tif",
+        "pearson": 0.003802,
+        "jaccard_positive": 0.003615,
+        "prior_positive_px": 30000
+      },
+      {
+        "file": "h19-5-d28-zeros.tif",
+        "pearson": 0.006187,
+        "jaccard_positive": 0.005032,
+        "prior_positive_px": 44090
+      },
+      {
+        "file": "h27-4-solo-d28-nan.tif",
+        "pearson": 0.006798,
+        "jaccard_positive": 0.005261,
+        "prior_positive_px": 40199
+      },
+      {
+        "file": "h32-1-tip-euler-nan.tif",
+        "pearson": 0.006418,
+        "jaccard_positive": 0.005101,
+        "prior_positive_px": 42294
+      },
+      {
+        "file": "h33-h33-2-b2-nan.tif",
+        "pearson": 0.007239,
+        "jaccard_positive": 0.005422,
+        "prior_positive_px": 37654
+      },
+      {
+        "file": "h33-h33-2-b2-zeros.tif",
+        "pearson": 0.007239,
+        "jaccard_positive": 0.005422,
+        "prior_positive_px": 37654
+      },
+      {
+        "file": "h38-1-hf-euler-nan.tif",
+        "pearson": 0.006649,
+        "jaccard_positive": 0.005131,
+        "prior_positive_px": 37860
+      },
+      {
+        "file": "s1-anchor-02600.tif",
+        "pearson": 0.006187,
+        "jaccard_positive": 0.005032,
+        "prior_positive_px": 44090
+      }
+    ]
+  },
+  "elapsed_s": 63.7,
+  "generated_utc": "20261005T230506Z"
+}
