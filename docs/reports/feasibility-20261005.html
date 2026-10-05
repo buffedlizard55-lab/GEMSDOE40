@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Feasibility stop report for H1 and H2 preregistered Euler methods."><title>Feasibility stops · GEMSDOE40</title><link rel="stylesheet" href="../assets/site.css"></head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header"><div class="nav-wrap"><a class="brand" href="../index.html"><span class="brand-mark">G40</span><span>GEMSDOE40</span></a><nav class="nav-links" aria-label="Primary navigation"><a href="../index.html#decision">Decision</a><a href="../executive-summary.html">Executive summary</a><a href="https://github.com/buffedlizard55-lab/GEMSDOE40/blob/main/docs/research/hypotheses.md">Register</a></nav></div></header>
+  <main id="main" class="wrap">
+    <div class="breadcrumb"><a href="../index.html">Home</a> / Feasibility report</div>
+    <section class="page-head"><div class="eyebrow">Negative results · 2026-10-05 UTC</div><h1>Stop at the frozen gate.</h1><p>Neither feasibility failure was turned into a tuned score. H1 and strict H2 have no holdout result.</p></section>
+    <div class="alert"><strong>H1: no cross-field pairs. Strict H2: insufficient positive support. Both abort as preregistered.</strong> No criteria were relaxed and neither method was backfilled.</div>
+    <section class="section two-col">
+      <article class="card"><span class="tag stop">H1 · feasibility stop</span><h2>Joint magnetic–gravity Euler</h2><p>2,305 accepted magnetic solutions; zero accepted gravity solutions; zero pairs. The fixed 45,962-cell emission budget could not be formed.</p><p class="small">Magnetic input check: TMI vertical-gradient correlation 0.9959886; scale ratio 0.988864. Common real inputs: 5,164,312 pixels; exact known-label suppression: 60,988 pixels.</p><p><strong>No TIFF. No holdout score.</strong></p></article>
+      <article class="card"><span class="tag stop">Strict H2 · feasibility stop</span><h2>Four-height TMI Euler persistence</h2><p>Accepted Euler solutions: 2,214 at 0 m; 7,698 at 500 m; 4,512 at 1,000 m; 1,629 at 2,000 m. The 3-of-4-height match retained 162 anchors (148 at three heights, 14 at four).</p><p>Only 17,425 positive KDE cells existed against the fixed 45,962-cell budget.</p><p><strong>Strict H2 aborts. No H2 holdout score.</strong></p></article>
+    </section>
+    <section class="section prose">
+      <h2>Why no fallback filled the map</h2>
+      <p>The H1 and strict H2 locks specified a fixed support budget and explicitly rejected backfill. Adding cells unsupported by Euler consensus would change the registered hypothesis and create false certainty. H1 thresholds were not relaxed after its gravity cloud failed. H2-B was later registered as a separate natural-support output rule before its own proxy holdout score was read; it did not rescue the original H2 gate.</p>
+      <h2>Diagnostic-only H1 pass</h2>
+      <p>To understand why the gravity cloud was empty, a diagnostic-only pass separately relaxed residual, depth, and horizontal acceptance gates while retaining the condition-number gate. It found 202,453 solve windows for each field. Gravity depth median/p95 was about 15.14/95.61 m; residual median/p95 was about 0.7508/0.9604. Those values indicate poor gravity Euler fit under the frozen gates; this pass was not a candidate, did not set new thresholds, and did not produce a score.</p>
+      <h2>Decision</h2>
+      <p>H1 and strict H2 are feasibility failures. H2-B separately failed its promotion gate. No weekly submission slot was used. Machine-readable counts and hashes: <a href="../data/feasibility.json">feasibility.json</a>. Append-only result log: <a href="https://github.com/buffedlizard55-lab/GEMSDOE40/blob/main/docs/research/validation.md">research/validation.md</a>. Full methods: <a href="https://github.com/buffedlizard55-lab/GEMSDOE40/blob/main/docs/research/hypotheses.md">hypothesis register</a>.</p>
+      <p><a href="https://github.com/buffedlizard55-lab/GEMSDOE40/blob/main/docs/reports/feasibility-20261005.md">Markdown feasibility report</a> · <a href="validation-h2b-20261005.html">H2-B validation result</a>.</p>
+    </section>
+  </main>
+  <footer class="footer"><div class="footer-inner"><div><div class="footer-brand">GEMSDOE40</div><p>Maximize P(Win) · Own the Outcome.</p></div><div><p><a href="../index.html">Project home</a> · <a href="../executive-summary.html">Executive summary</a></p><p>No candidate from strict H1/H2. No score. 2026-10-05 UTC.</p></div></div></footer>
+</body>
+</html>

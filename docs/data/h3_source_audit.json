@@ -1,0 +1,54 @@
+{
+  "access_note": "The web research tool can retrieve the official query/count and event-detail pages. Direct sandbox Python HTTPS access failed with TLS/SSL connection closed, so a reproducible local bulk audit was not available in this session.",
+  "audit_date_utc": "2026-10-05",
+  "decision": "Do not implement H3 yet. Product counts and one detail example establish source accessibility and mechanism-field existence, but do not establish the registered usable-count/spatial-coverage gate.",
+  "no_proxy_or_labels_used": true,
+  "observations": {
+    "producttype_focal_mechanism_count_magnitude_gte_4": 238,
+    "producttype_focal_mechanism_count_no_magnitude_cutoff": 34716,
+    "sample_detail_event_date": "1986-07-21",
+    "sample_detail_event_id": "nc10085763",
+    "sample_detail_event_magnitude": 6.4,
+    "sample_detail_product_planes": [
+      {
+        "dip_deg": 85.0,
+        "plane": 1,
+        "rake_deg": 20.0,
+        "strike_deg": 245.0
+      },
+      {
+        "dip_deg": 70.0,
+        "plane": 2,
+        "rake_deg": 175.0,
+        "strike_deg": 153.0
+      }
+    ],
+    "sample_detail_url": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=nc10085763&format=geojson"
+  },
+  "query_urls": {
+    "all_magnitudes": "https://earthquake.usgs.gov/fdsnws/event/1/count?starttime=1970-01-01&endtime=2026-10-05&minlatitude=37.331193&maxlatitude=40.727879&minlongitude=-120.037171&maxlongitude=-116.140922&producttype=focal-mechanism",
+    "magnitude_gte_4": "https://earthquake.usgs.gov/fdsnws/event/1/count?starttime=1970-01-01&endtime=2026-10-05&minmagnitude=4.0&minlatitude=37.331193&maxlatitude=40.727879&minlongitude=-120.037171&maxlongitude=-116.140922&producttype=focal-mechanism"
+  },
+  "registered_viability_gate": "At least 50 usable focal mechanisms distributed across at least 8 of 24 registered spatial blocks.",
+  "source": "Official USGS ComCat FDSN Event Web Service",
+  "source_query_lock": {
+    "geographic_bbox_wgs84": {
+      "max_latitude": 40.727879,
+      "max_longitude": -116.140922,
+      "min_latitude": 37.331193,
+      "min_longitude": -120.037171
+    },
+    "magnitude_for_broad_count": "no cutoff",
+    "magnitude_for_robust_event_sanity_count": 4.0,
+    "max_time_utc": "2026-10-05",
+    "min_time_utc": "1970-01-01",
+    "producttype": "focal-mechanism",
+    "service": "https://earthquake.usgs.gov/fdsnws/event/1/"
+  },
+  "status": "blocked_incomplete_bulk_mechanism_coverage_audit",
+  "unverified": [
+    "Count of unique events with finite usable nodal-plane strike and dip across the full query",
+    "Spatial distribution of those usable mechanisms across the registered 24 validation blocks",
+    "Consistency/quality filtering and attribution of mechanism products to reviewed solutions"
+  ]
+}

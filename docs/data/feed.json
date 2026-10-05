@@ -1,0 +1,19 @@
+{
+  "competition": "DOE GEMS Prize Challenge",
+  "competition_id": 306,
+  "source": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
+  "retrieved_at_utc": "2026-10-05",
+  "retrieval_method": "Official public leaderboard read in the research tool; static snapshot, not a live API scrape.",
+  "status": "observed",
+  "top_four": [
+    {"rank": 1, "score": 0.3262},
+    {"rank": 2, "score": 0.3222},
+    {"rank": 3, "score": 0.3220},
+    {"rank": 4, "score": 0.3195}
+  ],
+  "account_level_rows": [
+    {"account": "extradr19", "rank": 13, "score": 0.2778, "submissions": 9, "file_attribution": null}
+  ],
+  "interpretation": "A leaderboard row establishes an account-level public score only; it does not identify a specific raster unless the organizer links the submission file. GEMSDOE32 H33-2-B2 was recorded as 37,654 dots, projected 0.2747, UNSCORED; do not attribute the 0.2778 account row to that file.",
+  "previous_user_reference_correction": "The previously supplied 0.3195 was not the current leader on 2026-10-05; it appeared at rank 4 in this snapshot."
+}

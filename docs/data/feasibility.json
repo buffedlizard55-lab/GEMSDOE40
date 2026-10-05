@@ -1,0 +1,57 @@
+{
+  "run_date_utc": "2026-10-05",
+  "evidence_class": "candidate-generation feasibility; no holdout score for H1 or strict H2",
+  "inputs": {
+    "features_sha256": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5",
+    "sample_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+    "known_labels_sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+    "owner_derived_proxy_sha256": "26d142c4c93282cd94f6950ab96f22aeff59fbbea523d43d662e76fa1b161b5c"
+  },
+  "H1": {
+    "status": "stopped_at_preregistered_feasibility_gate",
+    "candidate_written": false,
+    "holdout_scored": false,
+    "tmi_vertical_gradient_check": {"pearson_r": 0.9959886, "least_squares_scale_ratio": 0.988864, "decision": "use supplied tmi_vg"},
+    "common_real_input_pixels": 5164312,
+    "exact_known_label_pixels_suppressed": 60988,
+    "accepted_magnetic_euler_solutions": 2305,
+    "accepted_gravity_euler_solutions": 0,
+    "paired_solutions": 0,
+    "fixed_positive_emission_budget": 45962,
+    "decision": "abort; do not relax gates or backfill",
+    "qualification": "Feasibility result, not a holdout score and not a test of H1 generalization."
+  },
+  "H1_diagnostic_only": {
+    "used_for_candidate_or_score": false,
+    "purpose": "Understand why the locked gravity cloud was empty; residual, depth, and horizontal acceptance gates were separately relaxed while the condition gate remained.",
+    "solve_windows_per_field": 202453,
+    "gravity_depth_median_m": 15.14,
+    "gravity_depth_p95_m": 95.61,
+    "gravity_residual_median": 0.7508,
+    "gravity_residual_p95": 0.9604,
+    "qualification": "Diagnostic-only; not a tuned candidate and not a score."
+  },
+  "H2_fixed_budget": {
+    "status": "stopped_at_preregistered_emission_gate",
+    "candidate_written": false,
+    "holdout_scored": false,
+    "accepted_height_0_solutions": 2214,
+    "accepted_height_500_solutions": 7698,
+    "accepted_height_1000_solutions": 4512,
+    "accepted_height_2000_solutions": 1629,
+    "persistent_solutions_at_3_or_4_heights": 162,
+    "positive_kde_cells": 17425,
+    "fixed_positive_emission_budget": 45962,
+    "decision": "abort rather than backfill",
+    "qualification": "H2's original fixed-budget gate remains failed. No proxy holdout score was calculated for strict H2."
+  },
+  "H2B_support_limited": {
+    "status": "separate_append_only_support_rule_registered_before_proxy_scoring",
+    "emission_rule": "all and only in-footprint, non-known-label cells with KDE > 0; binary 1; no top-K threshold or backfill",
+    "positive_kde_cells": 17425,
+    "candidate_sha256": "02486eaa491da2d8ebc6b1cd53ed2bdc8e995f316be1110a64eec484779b5a68",
+    "holdout_scored": true,
+    "proxy_dti": 0.006313285205212722,
+    "promotion": "HOLD; DO NOT SUBMIT"
+  }
+}
