@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Euler depth-clustering submission system · GEMSDOE40</title><link rel="stylesheet" href="assets/site.css"></head>
+<body><header><h1>Euler depth-clustering submission system</h1><div class="muted small">DOE GEMS Prize (DrivenData #306) ·
+Euler deconvolution depth-clustering submission system · repository
+<a href="https://github.com/buffedlizard55-lab/GEMSDOE40">buffedlizard55-lab/GEMSDOE40</a></div>
+<div style="margin-top:10px"><nav class="small">
+<a href="index.html">Home</a><a href="executive-summary.html">How to submit</a>
+<a href="methodology.html">Method</a><a href="hypotheses.html">Hypotheses</a>
+<a href="leaderboard-analysis.html">Leaderboard analysis</a><a href="evidence.html">Evidence</a>
+<a href="sources.html">Sources</a></nav></div></header><main>
+<div class="panel">
+<h2 style="margin-top:0">Executive summary — read this first</h2>
+<p><strong>The competition.</strong> Predict the location of faults across the GeoDAWN study area
+(north-western Great Basin, NV/CA) as a single-band GeoTIFF, 100 m, EPSG:32611. Scoring is the
+official <em>distance-weighted Tversky index</em> (DTI, α=0.2, β=0.8, 300 m triangular kernel)
+against faults <em>that are not in the public USGS/INGENIOUS catalogue</em> — the catalogue itself is
+masked out of scoring.</p>
+<p><strong>What this repository does.</strong> It estimates the <em>depth</em> of fault-like contacts
+from the magnetic and gravity layers with <strong>Euler deconvolution</strong> (Reid et al., 1990,
+structural index N = 0 for a fault/contact), clusters those depth-labelled solutions, converts the
+clustered cloud into a continuous kernel-density raster, normalises to [0, 1] and writes the exact
+submission format (3730×3292 float32, EPSG:32611, 100 m, NaN outside the valid footprint).
+Everything is measured on spatially blocked holdouts before anything is recommended.</p>
+<h3>Two artifacts, two different questions</h3>
+<div class="dl">
+<div><a href="downloads/gems40-euler-augmented-incumbent-20261005-ac1c1927.tif"><span class="t">⬇ RECOMMENDED for a scored slot — Euler-augmented emission (validated)</span><br><span class="m">gems40-euler-augmented-incumbent-20261005-ac1c1927.tif<br>885 kB · sha256 54aa8c6cbee0a1f8… · 60,710 non-zero px · all 10/10 checks pass <span class="badge b-ok">+0.0405 LM-cal</span></span></a></div>
+<div><a href="downloads/gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif"><span class="t">⬇ UNIQUE novel-pattern artifact (the brief's mandate) — pure Euler depth-clustering</span><br><span class="m">gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif<br>635 kB · sha256 7ee6cac2444949a3… · 20,000 non-zero px · all 10/10 checks pass <span class="badge b-warn">pattern NEW</span></span></a></div>
+</div>
+<table>
+<tr><th>artifact</th><th>non-zero px</th><th>LM-calibrated (validated instrument)</th>
+<th>Δ vs site best</th><th>folds better</th><th>max Jaccard vs prior</th>
+<th>max |r| vs prior</th><th>novelty verdict</th></tr>
+<tr><td><code>gems40-euler-augmented-incumbent-20261005-ac1c1927-zeros.tif</code></td><td>60,710</td><td>0.30845</td><td>+0.04053</td><td>4/4</td><td>0.620227</td><td>0.978923</td><td>NEAR-DUPLICATE</td></tr><tr><td><code>gems40-euler-augmented-incumbent-20261005-ac1c1927.tif</code></td><td>60,710</td><td>0.30845</td><td>+0.04053</td><td>4/4</td><td>0.620227</td><td>0.978923</td><td>NEAR-DUPLICATE</td></tr><tr><td><code>gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380-zeros.tif</code></td><td>20,000</td><td>0.11600</td><td>-0.15192</td><td>0/4</td><td>0.004879</td><td>0.004953</td><td>NEW</td></tr><tr><td><code>gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif</code></td><td>20,000</td><td>0.11600</td><td>-0.15192</td><td>0/4</td><td>0.004879</td><td>0.004953</td><td>NEW</td></tr><tr><td><code>gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif</code></td><td>3,380,827</td><td>0.12487</td><td>-0.14305</td><td>0/4</td><td>0.050892</td><td>0.054955</td><td>NEW</td></tr>
+</table>
+<p class="small muted">LM-calibrated = official DTI at the hidden-truth prevalence, evaluated on four
+spatially blocked quadrants against a truth set that is <em>off-catalogue by construction</em> (USGS
+State Geologic Map Compilation faults &gt; 300 m from every catalogue pixel). It is the only local
+instrument that reproduces the published live orderings relevant to the current operating point
+(0.2778 &gt; 0.2708 &gt; 0.2600 &gt; 0.2477). It is a proxy: it never saw a leaderboard.</p>
+</div>
+
+<div class="panel">
+<h2 style="margin-top:0">Current status (auto-generated feed)</h2>
+<ul>
+<li><strong>Site best (owner-reported live):</strong> 0.2778 — <code>h33-h33-2-b2</code>
+(GEMSDOE32). Leaderboard #1 is <strong>0.3195</strong>.</li>
+<li><strong>The unique Euler artifact is real new information:</strong> maximum overlap with any of
+the 16 prior submissions is Jaccard
+0.004879 and |Pearson| 0.004953 —
+verdict <span class="badge b-ok">NEW</span>. But standing alone it scores
+0.11600 on the validated instrument vs the incumbent's
+0.26792: <strong>do not spend a weekly slot on it alone</strong>.</li>
+<li><strong>The Euler crests are worth 1.13–1.44× their cost</strong> when added to the incumbent
+(measured credit-per-pixel vs the metric's break-even τ = 0.0588). The augmented artifact is the
+first candidate in this programme whose added mass is measurably above break-even in 4/4 blocked
+folds.</li>
+<li><strong>Next actions:</strong> (1) upload the recommended artifact to the weekly slot and record
+the score; (2) re-run the augmentation sweep for a gravity-only crest set; (3) test whether the
+smoothed (<em>not</em> crest-thinned) Euler field can gate the incumbent's false positives.</li>
+</ul>
+</div>
+
+<h2>How to submit (30 seconds)</h2>
+<ol>
+<li>Download <a href="downloads/gems40-euler-augmented-incumbent-20261005-ac1c1927.tif">gems40-euler-augmented-incumbent-20261005-ac1c1927.tif</a> (or its
+<a href="downloads/">zeros companion</a> if the portal rejects NaN).</li>
+<li>Open the DrivenData submission page, upload the file, and paste the note below.</li>
+<li>Press submit. Full step-by-step (including the "Predicted values must be in range [0, 1]" fix) is
+on the <a href="executive-summary.html">How to submit</a> page.</li>
+</ol>
+<pre>GEMSDOE40 euler-si0-depthcluster-crossfamily augmented 60710px | Euler SI=0 depth-clustered contact solutions (magnetic+gravity), crest emission, >200 m from catalogue; LM-cal 0.3085 (+0.0405 vs site best), 4/4 blocked folds</pre>
+
+<h2>Why the current site best scores 0.2778, and what 0.3195 requires</h2>
+<p>The metric reduces to <code>DTI = TP_w / (0.2·N + 0.8·|G|)</code> with the hidden truth
+|G| ≈ 12.2 k px. It therefore rewards <em>sparse, precisely placed</em> mass: the site best emits
+37,654 px (0.73 % of the footprint), prunes every dot within 200 m of the catalogue (live-validated
+gain), and comes from a detector family that has plateaued at 5.3–5.7× blind concentration. Beating
+0.3195 by rearranging those same pixels is arithmetically impossible — it needs <em>new</em>
+information. Full derivation and the group's score history:
+<a href="leaderboard-analysis.html">Leaderboard analysis</a>.</p>
+
+<h2>Scientific hypothesis set</h2>
+<p>Five ranked hypotheses, each naming layers, physical signature, why it should catch a fault the
+catalogue lacks, how it differs from everything already built, expected gain, cost and — for the
+three that were measured — the verdict: <a href="hypotheses.html">Hypotheses</a>.</p>
+
+<h2>Reproduce</h2>
+<pre>bash scripts/fetch_data.sh          # mirrored, sha256-pinned competition rasters
+python scripts/inspect_data.py     # re-derive every data claim
+python scripts/run_euler.py --layer rtp            # (and tmi, mag_anom, iso_grav_anom)
+python scripts/validate_candidates.py              # instrument verification + candidate sweep
+python scripts/union_test.py && python scripts/nms_refine_test.py
+python scripts/euler_gate_test.py
+python scripts/build_submission.py  && python scripts/audit_artifacts.py
+python scripts/build_site.py</pre>
+</main></body></html>

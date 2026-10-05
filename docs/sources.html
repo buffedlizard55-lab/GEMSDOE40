@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sources · GEMSDOE40</title><link rel="stylesheet" href="assets/site.css"></head>
+<body><header><h1>Sources</h1><div class="muted small">DOE GEMS Prize (DrivenData #306) ·
+Euler deconvolution depth-clustering submission system · repository
+<a href="https://github.com/buffedlizard55-lab/GEMSDOE40">buffedlizard55-lab/GEMSDOE40</a></div>
+<div style="margin-top:10px"><nav class="small">
+<a href="index.html">Home</a><a href="executive-summary.html">How to submit</a>
+<a href="methodology.html">Method</a><a href="hypotheses.html">Hypotheses</a>
+<a href="leaderboard-analysis.html">Leaderboard analysis</a><a href="evidence.html">Evidence</a>
+<a href="sources.html">Sources</a></nav></div></header><main>
+<h2>Official / primary sources used in this repository</h2>
+<table>
+<tr><th>what it establishes</th><th>source</th><th>status in this environment</th></tr>
+<tr><td>Competition task, prizes, timeline</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">drivendata.org/competitions/306</a></td><td>reachable only through mirrors (site blocked from the sandbox network)</td></tr>
+<tr><td>Problem description, provided features, labels, submission format, performance metric</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">page 967</a></td><td>same</td></tr>
+<tr><td>About / additional resources</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/968/">page 968</a></td><td>same</td></tr>
+<tr><td>Rules (three submissions/week, one final entry, separate prize rounds)</td><td><a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">docs.nlr.gov/docs/fy26osti/96647.pdf</a></td><td>blocked here; quoted text is inherited from sibling repos' extraction</td></tr>
+<tr><td>Catalogue masking clarification</td><td><a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516">community.drivendata.org thread 11516</a></td><td>blocked here; behaviour is nevertheless implemented in the metric used by this repo</td></tr>
+<tr><td>Competition data (features, labels, sample submission, DEM links)</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/data/">data tab</a> (login)</td><td><span class="badge b-ok">ok</span> — byte-identical mirrors, sha256-verified (see <a href="evidence.html">Evidence</a>)</td></tr>
+<tr><td>GeoDAWN airborne magnetic + radiometric survey</td><td><a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">USGS GeoDAWN release</a>, DOI <a href="https://doi.org/10.5066/P93LGLVQ">10.5066/P93LGLVQ</a></td><td>referenced, not fetched</td></tr>
+<tr><td>INGENIOUS / GDR submission 1391 (MT conductance, geodetic strain, earthquake density, gravity)</td><td><a href="https://gdr.openei.org/submissions/1391">gdr.openei.org/submissions/1391</a>, DOI <a href="https://doi.org/10.15121/1881483">10.15121/1881483</a></td><td><span class="badge b-bad">blocked</span> from this sandbox (HTTP 000); mirrored subsets exist in sibling repos</td></tr>
+<tr><td>USGS State Geologic Map Compilation faults (the off-catalogue holdout truth)</td><td>mirrored at <code>GEMSDOE24/data/external/derived_sgmc_faults_100m_u8.tif</code> (sha256 643cbe992ef4…)</td><td><span class="badge b-ok">ok</span> via GitHub API</td></tr>
+<tr><td>USGS Quaternary Fault and Fold Database (the catalogue labels)</td><td><a href="https://www.usgs.gov/programs/earthquake-hazards/faults">usgs.gov faults</a>, DOI <a href="https://doi.org/10.5066/P9BCVRCK">10.5066/P9BCVRCK</a></td><td>labels arrive inside the pinned competition raster</td></tr>
+<tr><td>Euler deconvolution method and the structural-index table</td><td>Reid, Allsop, Granser, Millett &amp; Somerton, <em>Geophysics</em> 55(1):80–91 (1990), <a href="https://doi.org/10.1190/1.1442774">doi:10.1190/1.1442774</a></td><td>method implemented and unit-tested against analytic sources</td></tr>
+<tr><td>Fourier derivative convention for potential fields</td><td>Blakely, <em>Potential Theory in Gravity and Magnetic Applications</em>, CUP 1995, ISBN 9780521415088, §12.5</td><td>convention asserted by test (sign flip ⇒ negative depths)</td></tr>
+<tr><td>Reference solution (U-Net + Tversky loss)</td><td><a href="https://github.com/drivendataorg/gems-prize-reference-solution">github.com/drivendataorg/gems-prize-reference-solution</a></td><td>referenced for the file contract</td></tr>
+</table>
+<h2>Irregularities flagged for review</h2>
+<ul>
+<li><strong>IR-40-01 — network restrictions.</strong> <code>www.drivendata.org</code>,
+<code>www.dropbox.com</code>, <code>gdr.openei.org</code>, <code>docs.nlr.gov</code> and
+<code>*.github.io</code> all return HTTP 000 from this sandbox while <code>github.com</code> and
+<code>api.github.com</code> work. Consequence: the competition data were taken from byte-identical
+GitHub mirrors (sha256 verified against pins recorded by sibling repos). Pages content therefore had
+to be verified through the GitHub API rather than by fetching the live sites.</li>
+<li><strong>IR-40-02 — owner-reported scores.</strong> Every live score quoted here is owner-reported
+from the standing brief, not an organizer receipt; the instrument calibration therefore re-verifies
+orderings rather than absolute values.</li>
+<li><strong>IR-40-03 — the sample submission is not "total fault absence".</strong> It is
+byte-identical to the catalogue inside the footprint (60,988 px at 1.0). It is used here only as the
+geometry template, which is legitimate.</li>
+<li><strong>IR-40-04 — LM instrument validity domain.</strong> The LM instrument is documented (by the
+sibling repository that built it) to over-reward mass beyond ~120 k emitted pixels. The recommended
+artifact emits 60,710 px, inside that domain; the projection still carries the caveat.</li>
+</ul>
+</main></body></html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Leaderboard analysis · GEMSDOE40</title><link rel="stylesheet" href="assets/site.css"></head>
+<body><header><h1>Leaderboard analysis</h1><div class="muted small">DOE GEMS Prize (DrivenData #306) ·
+Euler deconvolution depth-clustering submission system · repository
+<a href="https://github.com/buffedlizard55-lab/GEMSDOE40">buffedlizard55-lab/GEMSDOE40</a></div>
+<div style="margin-top:10px"><nav class="small">
+<a href="index.html">Home</a><a href="executive-summary.html">How to submit</a>
+<a href="methodology.html">Method</a><a href="hypotheses.html">Hypotheses</a>
+<a href="leaderboard-analysis.html">Leaderboard analysis</a><a href="evidence.html">Evidence</a>
+<a href="sources.html">Sources</a></nav></div></header><main>
+<h2>1. The owner-reported score record (as supplied in the standing brief)</h2>
+<p>Numbers below are the group's own reported scores, not organizer receipts; they are used for
+<em>ordering</em> evidence and all inversions are anchored on the four numbers that the sibling
+repositories independently re-derived (0.0904 / 0.2449–0.2477 / 0.2600 / 0.2708 / 0.2778).</p>
+<table>
+<tr><th>score</th><th>artifact</th></tr>
+<tr><td><strong>0.2778</strong></td><td>GEMSDOE32 <code>h33-h33-2-b2</code> — the current site best</td></tr>
+<tr><td>0.2708</td><td>GEMSDOE28/31 <code>h27-4-r1-solo-d2-8</code></td></tr>
+<tr><td>0.2600</td><td>GEMSDOE25/30 <code>dotted-h19-5-d2-8</code></td></tr>
+<tr><td>0.2477</td><td>GEMSDOE24 <code>dotted-h19-5-d1-5</code></td></tr>
+<tr><td>0.2449</td><td>GEMSDOE27 <code>topo-gap-closure-t-v2-on-d1-5</code></td></tr>
+<tr><td>0.1922 / 0.1894 / 0.1855</td><td>H19-5 solid / h19-4 / h16-1 (the "5.3–5.7× concentration plateau" family)</td></tr>
+<tr><td>0.1280 / 0.1193 / 0.0904 / 0.0445</td><td>H25-ctx-ridge / pindrop-v4-nodes / blind lattice s5 / placeholder</td></tr>
+<tr><td><strong>0.3195</strong></td><td>leaderboard #1 (another team)</td></tr>
+</table>
+
+<h2>2. Why 0.2778 is the best of the family — the metric, not luck</h2>
+<p>With the organizer's equations, and using the identity
+<code>TP_w + FN_w = |G|</code> (α = 1 − β = 0.2):</p>
+<pre>DTI = TP_w / ( 0.2·N + 0.8·|G| + ε )        N = emitted pixel mass, |G| ≈ 12.2 k px hidden truth</pre>
+<ol>
+<li><strong>It is sparse.</strong> 37,654 px = 0.73 % of the footprint. The sibling repositories
+inverted the live scores of a blind lattice and three independent thinned/solid pairs to
+|G| ≈ 12,226 px; at that |G| the denominator is dominated by 0.8|G| ≈ 9,781, so every 1,000 px of
+emission costs ≈ 200/17,311 = 1.2 % of the score.</li>
+<li><strong>It prunes the masked population.</strong> It is the 0.2708 emission with <em>every</em> dot
+within 200 m of the catalogue deleted (3,891 dots at B = 1 gave a measured +0.0108 live; B = 2 was
+better still). Catalogue pixels are masked out of the scored truth, so dots there earn zero credit
+and are charged α.</li>
+<li><strong>Its detector had already plateaued.</strong> The H19-5/h19-4/h16-1 family sits at
+5.3–5.7× blind concentration and the family's best-ever credit fraction is 0.508 of |G|. Recombining
+the same pixels cannot raise concentration; only the emission rule can gain, and that lever was
+exhausted at ≈ 0.255 for the geometric optimum — the extra 0.02 to 0.2778 came from the catalogue-flank
+rule, not from new detection.</li>
+</ol>
+
+<h2>3. The arithmetic of 0.3195 — why rearrangement is dead</h2>
+<pre>score 0.3195 at 44,090 px requires credit = 0.486·|G|   (the family's best ever is 0.508 — at 121k px)
+score 0.3195 at 60,069 px requires credit = 0.570·|G|   (more than anything in the programme has ever earned)</pre>
+<p>So 0.3195 is reachable by exactly two routes: (i) retention ≈ 1.0 while emitting a third of the
+pixels, or (ii) <strong>concentration &gt; 5.7</strong>, i.e. a detector that finds truth the plateau family
+misses. Route (i) was shown to fail for the obvious thinning and max-coverage packers (the sibling
+repo measured greedy max-coverage <em>losing</em> 13 % to Poisson-disk). Route (ii) requires new
+information.</p>
+
+<h2>4. What this session adds to that picture — measured</h2>
+<ul>
+<li>The Euler SI = 0 depth-cluster field is <strong>new information</strong>: maximum Jaccard against
+17 prior rasters is 0.005, maximum |Pearson| 0.005. It is not another ridge/gradient/curvature
+surface.</li>
+<li>Its <strong>marginal efficiency is above break-even</strong>: 0.066–0.085 credit/px against
+τ(0.2778) = 0.0588, i.e. 1.13–1.44 × τ, positive in 4/4 blocked folds. Every other Euler variant
+tested (raw KDE support, 2-D bands, the continuous field) is <em>below</em> break-even — the crest
+reduction is what makes it pay.</li>
+<li>Projected live score of the augmented artifact, from two independent lines of arithmetic:
+<strong>+0.008 to +0.041</strong>. The conservative figure uses the live-calibrated |G| = 12,226 and
+the measured credit-per-pixel; the optimistic figure uses the LM instrument's own delta (+0.0405).
+Neither reaches 0.3195, and the LM instrument is known to over-reward denser emissions, so the
+conservative figure is the one to plan with.</li>
+<li>Therefore: <strong>the honest expectation for the recommended upload is ≈0.286–0.318, most likely
+≈0.29–0.30</strong> — a real improvement on 0.2778 but not a jump to #1. The remaining gap is a
+detector-quality gap, and the two cheapest next tests are named on the
+<a href="hypotheses.html">Hypotheses</a> page (multi-window Euler conjunction; depth-banded
+emission).</li>
+</ul>
+</main></body></html>

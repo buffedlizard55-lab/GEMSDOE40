@@ -1,0 +1,720 @@
+{
+  "rule": {
+    "jaccard_duplicate_threshold": 0.5,
+    "abs_pearson_duplicate_threshold": 0.8,
+    "note": "verdict NEW requires both: Jaccard <= 0.5 and |Pearson| <= 0.8 against every prior artifact"
+  },
+  "hashes": {
+    "artifacts": {
+      "gems40-euler-augmented-incumbent-20261005-ac1c1927-zeros.tif": "9940d101fe0ad6a06b941bc8f5156030fbe282b67263bc82cec8c4446753b6df",
+      "gems40-euler-augmented-incumbent-20261005-ac1c1927.tif": "54aa8c6cbee0a1f858f80f898c5c3ae9c069ad3d11c7457b94717c261b5d9416",
+      "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380-zeros.tif": "56508f98d3f250370cd07e77d9972000da5562c6304415db54fd82ad97395b87",
+      "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif": "7ee6cac2444949a31d43ffd66a5ae0825c366e3d2ce1d18a1e6adc03fb4b63f1",
+      "gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif": "d58eea0074e29ac171b70ba652a4e5bde76e52ce1259a958fd49f558c4eaf459"
+    },
+    "priors": {
+      "base_02708_h274r1_d28_nan.tif": "ab02300152248fdda04e988e2cd2a0c13f35eec42fcf670a15e8b76b19e24a73",
+      "prior_d15_h195_nan.tif": "68d0e2e4fcc594f9a23f56c44b885fee733d026d39be55e18ad2a07289525310",
+      "prior_d28_h195_nan.tif": "91eae1ca42ec845eaa8c2ba32da49806e24751743459b8a10017c479bbe639b8",
+      "prior_ens12_nan.tif": "7f00890a62878d612fb5eef67a9a364a2df819433dde74b6762ce4fc0fc4fe15",
+      "prior_h16_1_nan.tif": "055309694ed499ca3d87e76b3f5e81c292aef6e39c418d33ff5a817aa1309bea",
+      "prior_h195_solid_nan.tif": "ec1f9b56b83ce33cad781ceb9f104b18fb4f2ff785263a4e89616af4aabdee8d",
+      "prior_h25ctx_nan.tif": "1381e784fb8b8340beffd0e735ac9eea89ad35d1a807f8a9bab5506e3fc8275e",
+      "prior_h28dotted_nan.tif": "7637b72d4c6c3e10226bf46bd72a20272d62ccbe29743062632d10b158b49c58",
+      "prior_h32_1_tipeuler_nan.tif": "04d31922f5c1ea4016984fc470ab2b0ff8e266c615792f0e86020da3b940d3ff",
+      "prior_hedgev2.tif": "052688eafbc7a55d90caab72252a50304fe5caa8ecf973f8e791b4ae910f0792",
+      "prior_lattice_nan.tif": "b4570b406efec198eb2f4d142ad8d0d6184b14b66f2f52b5c4d697f0647dc9b2",
+      "prior_placeh_nan.tif": "2314b59920bfeeaf6a592d4868b25eca62212825620f9945723c2f6d0a2e5b22",
+      "prior_r7scarp_allfinite.tif": "ce3f70fa2e1e7bbea60c8c62a2f805c22d15b8a8905ebec757259617ceb02fbc",
+      "prior_tv2_d15_nan.tif": "33003374335d84bf885f2d8f5e9dd4c57044c8ec58fa6a0d7fa581e8bc41c11d",
+      "top_02778_h33b2_nan.tif": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+      "top_02778_h33b2_zeros.tif": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9"
+    }
+  },
+  "identical_to_prior": {
+    "gems40-euler-augmented-incumbent-20261005-ac1c1927-zeros.tif": [],
+    "gems40-euler-augmented-incumbent-20261005-ac1c1927.tif": [],
+    "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380-zeros.tif": [],
+    "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif": [],
+    "gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif": []
+  },
+  "matrix": [
+    {
+      "artifact": "gems40-euler-augmented-incumbent-20261005-ac1c1927-zeros.tif",
+      "prior": "base_02708_h274r1_d28_nan.tif",
+      "jaccard": 0.595273,
+      "pearson": 0.947132,
+      "spearman": 0.984344,
+      "near_duplicate": true
+    },
+    {
+      "artifact": "gems40-euler-augmented-incumbent-20261005-ac1c1927-zeros.tif",
+      "prior": "prior_d15_h195_nan.tif",
+      "jaccard": 0.270128,
+      "pearson": 0.52131,
+      "spearman": 0.971361,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-augmented-incumbent-20261005-ac1c1927-zeros.tif",
+      "prior": "prior_d28_h195_nan.tif",
+      "jaccard": 0.560778,
+      "pearson": 0.903941,
+      "spearman": 0.98369,
+      "near_duplicate": true
+    },
+    {
+      "artifact": "gems40-euler-augmented-incumbent-20261005-ac1c1927-zeros.tif",
+      "prior": "prior_ens12_nan.tif",
+      "jaccard": 0.025056,
+      "pearson": 0.044777,
+      "spearman": 0.865861,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-augmented-incumbent-20261005-ac1c1927-zeros.tif",
+      "prior": "prior_h16_1_nan.tif",
+      "jaccard": 0.1767,
+      "pearson": 0.384013,
+      "spearman": 0.937171,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-augmented-incumbent-20261005-ac1c1927-zeros.tif",
+      "prior": "prior_h195_solid_nan.tif",
+      "jaccard": 0.264594,
+      "pearson": 0.541536,
+      "spearman": 0.946135,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-augmented-incumbent-20261005-ac1c1927-zeros.tif",
+      "prior": "prior_h25ctx_nan.tif",
+      "jaccard": 0.025097,
+      "pearson": 0.046614,
+      "spearman": 0.871527,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-augmented-incumbent-20261005-ac1c1927-zeros.tif",
+      "prior": "prior_h28dotted_nan.tif",
+      "jaccard": 0.017104,
+      "pearson": 0.02697,
+      "spearman": 0.93935,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-augmented-incumbent-20261005-ac1c1927-zeros.tif",
+      "prior": "prior_h32_1_tipeuler_nan.tif",
+      "jaccard": 0.557693,
+      "pearson": 0.903856,
+      "spearman": 0.983439,
+      "near_duplicate": true
+    },
+    {
+      "artifact": "gems40-euler-augmented-incumbent-20261005-ac1c1927-zeros.tif",
+      "prior": "prior_hedgev2.tif",
+      "jaccard": 0.020219,
+      "pearson": 0.03438,
+      "spearman": 0.827508,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-augmented-incumbent-20261005-ac1c1927-zeros.tif",
+      "prior": "prior_lattice_nan.tif",
+      "jaccard": 0.009392,
+      "pearson": 8.3e-05,
+      "spearman": 0.869717,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-augmented-incumbent-20261005-ac1c1927-zeros.tif",
+      "prior": "prior_placeh_nan.tif",
+      "jaccard": 0.0084,
+      "pearson": 0.000447,
+      "spearman": 0.903171,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-augmented-incumbent-20261005-ac1c1927-zeros.tif",
+      "prior": "prior_r7scarp_allfinite.tif",
+      "jaccard": 0.023674,
+      "pearson": 0.041281,
+      "spearman": 0.917635,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-augmented-incumbent-20261005-ac1c1927-zeros.tif",
+      "prior": "prior_tv2_d15_nan.tif",
+      "jaccard": 0.266677,
+      "pearson": 0.515804,
+      "spearman": 0.970896,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-augmented-incumbent-20261005-ac1c1927-zeros.tif",
+      "prior": "top_02778_h33b2_nan.tif",
+      "jaccard": 0.620227,
+      "pearson": 0.978923,
+      "spearman": 0.984982,
+      "near_duplicate": true
+    },
+    {
+      "artifact": "gems40-euler-augmented-incumbent-20261005-ac1c1927-zeros.tif",
+      "prior": "top_02778_h33b2_zeros.tif",
+      "jaccard": 0.620227,
+      "pearson": 0.978923,
+      "spearman": 0.984982,
+      "near_duplicate": true
+    },
+    {
+      "artifact": "gems40-euler-augmented-incumbent-20261005-ac1c1927.tif",
+      "prior": "base_02708_h274r1_d28_nan.tif",
+      "jaccard": 0.595273,
+      "pearson": 0.947132,
+      "spearman": 0.984344,
+      "near_duplicate": true
+    },
+    {
+      "artifact": "gems40-euler-augmented-incumbent-20261005-ac1c1927.tif",
+      "prior": "prior_d15_h195_nan.tif",
+      "jaccard": 0.270128,
+      "pearson": 0.52131,
+      "spearman": 0.971361,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-augmented-incumbent-20261005-ac1c1927.tif",
+      "prior": "prior_d28_h195_nan.tif",
+      "jaccard": 0.560778,
+      "pearson": 0.903941,
+      "spearman": 0.98369,
+      "near_duplicate": true
+    },
+    {
+      "artifact": "gems40-euler-augmented-incumbent-20261005-ac1c1927.tif",
+      "prior": "prior_ens12_nan.tif",
+      "jaccard": 0.025056,
+      "pearson": 0.044777,
+      "spearman": 0.865861,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-augmented-incumbent-20261005-ac1c1927.tif",
+      "prior": "prior_h16_1_nan.tif",
+      "jaccard": 0.1767,
+      "pearson": 0.384013,
+      "spearman": 0.937171,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-augmented-incumbent-20261005-ac1c1927.tif",
+      "prior": "prior_h195_solid_nan.tif",
+      "jaccard": 0.264594,
+      "pearson": 0.541536,
+      "spearman": 0.946135,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-augmented-incumbent-20261005-ac1c1927.tif",
+      "prior": "prior_h25ctx_nan.tif",
+      "jaccard": 0.025097,
+      "pearson": 0.046614,
+      "spearman": 0.871527,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-augmented-incumbent-20261005-ac1c1927.tif",
+      "prior": "prior_h28dotted_nan.tif",
+      "jaccard": 0.017104,
+      "pearson": 0.02697,
+      "spearman": 0.93935,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-augmented-incumbent-20261005-ac1c1927.tif",
+      "prior": "prior_h32_1_tipeuler_nan.tif",
+      "jaccard": 0.557693,
+      "pearson": 0.903856,
+      "spearman": 0.983439,
+      "near_duplicate": true
+    },
+    {
+      "artifact": "gems40-euler-augmented-incumbent-20261005-ac1c1927.tif",
+      "prior": "prior_hedgev2.tif",
+      "jaccard": 0.020219,
+      "pearson": 0.03438,
+      "spearman": 0.827508,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-augmented-incumbent-20261005-ac1c1927.tif",
+      "prior": "prior_lattice_nan.tif",
+      "jaccard": 0.009392,
+      "pearson": 8.3e-05,
+      "spearman": 0.869717,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-augmented-incumbent-20261005-ac1c1927.tif",
+      "prior": "prior_placeh_nan.tif",
+      "jaccard": 0.0084,
+      "pearson": 0.000447,
+      "spearman": 0.903171,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-augmented-incumbent-20261005-ac1c1927.tif",
+      "prior": "prior_r7scarp_allfinite.tif",
+      "jaccard": 0.023674,
+      "pearson": 0.041281,
+      "spearman": 0.917635,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-augmented-incumbent-20261005-ac1c1927.tif",
+      "prior": "prior_tv2_d15_nan.tif",
+      "jaccard": 0.266677,
+      "pearson": 0.515804,
+      "spearman": 0.970896,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-augmented-incumbent-20261005-ac1c1927.tif",
+      "prior": "top_02778_h33b2_nan.tif",
+      "jaccard": 0.620227,
+      "pearson": 0.978923,
+      "spearman": 0.984982,
+      "near_duplicate": true
+    },
+    {
+      "artifact": "gems40-euler-augmented-incumbent-20261005-ac1c1927.tif",
+      "prior": "top_02778_h33b2_zeros.tif",
+      "jaccard": 0.620227,
+      "pearson": 0.978923,
+      "spearman": 0.984982,
+      "near_duplicate": true
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380-zeros.tif",
+      "prior": "base_02708_h274r1_d28_nan.tif",
+      "jaccard": 0.003099,
+      "pearson": 0.001359,
+      "spearman": 0.97151,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380-zeros.tif",
+      "prior": "prior_d15_h195_nan.tif",
+      "jaccard": 0.003685,
+      "pearson": 0.002097,
+      "spearman": 0.959986,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380-zeros.tif",
+      "prior": "prior_d28_h195_nan.tif",
+      "jaccard": 0.003162,
+      "pearson": 0.001314,
+      "spearman": 0.96928,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380-zeros.tif",
+      "prior": "prior_ens12_nan.tif",
+      "jaccard": 0.004879,
+      "pearson": 0.004953,
+      "spearman": 0.868788,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380-zeros.tif",
+      "prior": "prior_h16_1_nan.tif",
+      "jaccard": 0.004137,
+      "pearson": 0.002511,
+      "spearman": 0.924038,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380-zeros.tif",
+      "prior": "prior_h195_solid_nan.tif",
+      "jaccard": 0.004091,
+      "pearson": 0.002505,
+      "spearman": 0.924927,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380-zeros.tif",
+      "prior": "prior_h25ctx_nan.tif",
+      "jaccard": 0.00398,
+      "pearson": 0.001426,
+      "spearman": 0.874943,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380-zeros.tif",
+      "prior": "prior_h28dotted_nan.tif",
+      "jaccard": 0.003552,
+      "pearson": 0.001071,
+      "spearman": 0.945125,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380-zeros.tif",
+      "prior": "prior_h32_1_tipeuler_nan.tif",
+      "jaccard": 0.003059,
+      "pearson": 0.001205,
+      "spearman": 0.970356,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380-zeros.tif",
+      "prior": "prior_hedgev2.tif",
+      "jaccard": 0.004807,
+      "pearson": 0.004894,
+      "spearman": 0.831119,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380-zeros.tif",
+      "prior": "prior_lattice_nan.tif",
+      "jaccard": 0.003636,
+      "pearson": 0.000103,
+      "spearman": 0.875949,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380-zeros.tif",
+      "prior": "prior_placeh_nan.tif",
+      "jaccard": 0.003369,
+      "pearson": 0.000517,
+      "spearman": 0.910086,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380-zeros.tif",
+      "prior": "prior_r7scarp_allfinite.tif",
+      "jaccard": 0.003997,
+      "pearson": 0.002148,
+      "spearman": 0.922247,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380-zeros.tif",
+      "prior": "prior_tv2_d15_nan.tif",
+      "jaccard": 0.003702,
+      "pearson": 0.002076,
+      "spearman": 0.959045,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380-zeros.tif",
+      "prior": "top_02778_h33b2_nan.tif",
+      "jaccard": 0.003079,
+      "pearson": 0.001328,
+      "spearman": 0.973199,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380-zeros.tif",
+      "prior": "top_02778_h33b2_zeros.tif",
+      "jaccard": 0.003079,
+      "pearson": 0.001328,
+      "spearman": 0.973199,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif",
+      "prior": "base_02708_h274r1_d28_nan.tif",
+      "jaccard": 0.003099,
+      "pearson": 0.001359,
+      "spearman": 0.97151,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif",
+      "prior": "prior_d15_h195_nan.tif",
+      "jaccard": 0.003685,
+      "pearson": 0.002097,
+      "spearman": 0.959986,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif",
+      "prior": "prior_d28_h195_nan.tif",
+      "jaccard": 0.003162,
+      "pearson": 0.001314,
+      "spearman": 0.96928,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif",
+      "prior": "prior_ens12_nan.tif",
+      "jaccard": 0.004879,
+      "pearson": 0.004953,
+      "spearman": 0.868788,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif",
+      "prior": "prior_h16_1_nan.tif",
+      "jaccard": 0.004137,
+      "pearson": 0.002511,
+      "spearman": 0.924038,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif",
+      "prior": "prior_h195_solid_nan.tif",
+      "jaccard": 0.004091,
+      "pearson": 0.002505,
+      "spearman": 0.924927,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif",
+      "prior": "prior_h25ctx_nan.tif",
+      "jaccard": 0.00398,
+      "pearson": 0.001426,
+      "spearman": 0.874943,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif",
+      "prior": "prior_h28dotted_nan.tif",
+      "jaccard": 0.003552,
+      "pearson": 0.001071,
+      "spearman": 0.945125,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif",
+      "prior": "prior_h32_1_tipeuler_nan.tif",
+      "jaccard": 0.003059,
+      "pearson": 0.001205,
+      "spearman": 0.970356,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif",
+      "prior": "prior_hedgev2.tif",
+      "jaccard": 0.004807,
+      "pearson": 0.004894,
+      "spearman": 0.831119,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif",
+      "prior": "prior_lattice_nan.tif",
+      "jaccard": 0.003636,
+      "pearson": 0.000103,
+      "spearman": 0.875949,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif",
+      "prior": "prior_placeh_nan.tif",
+      "jaccard": 0.003369,
+      "pearson": 0.000517,
+      "spearman": 0.910086,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif",
+      "prior": "prior_r7scarp_allfinite.tif",
+      "jaccard": 0.003997,
+      "pearson": 0.002148,
+      "spearman": 0.922247,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif",
+      "prior": "prior_tv2_d15_nan.tif",
+      "jaccard": 0.003702,
+      "pearson": 0.002076,
+      "spearman": 0.959045,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif",
+      "prior": "top_02778_h33b2_nan.tif",
+      "jaccard": 0.003079,
+      "pearson": 0.001328,
+      "spearman": 0.973199,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif",
+      "prior": "top_02778_h33b2_zeros.tif",
+      "jaccard": 0.003079,
+      "pearson": 0.001328,
+      "spearman": 0.973199,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif",
+      "prior": "base_02708_h274r1_d28_nan.tif",
+      "jaccard": 0.008897,
+      "pearson": 0.017568,
+      "spearman": -0.239235,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif",
+      "prior": "prior_d15_h195_nan.tif",
+      "jaccard": 0.013156,
+      "pearson": 0.019046,
+      "spearman": -0.236078,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif",
+      "prior": "prior_d28_h195_nan.tif",
+      "jaccard": 0.009671,
+      "pearson": 0.016606,
+      "spearman": -0.239024,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif",
+      "prior": "prior_ens12_nan.tif",
+      "jaccard": 0.040343,
+      "pearson": 0.054955,
+      "spearman": -0.208681,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif",
+      "prior": "prior_h16_1_nan.tif",
+      "jaccard": 0.026955,
+      "pearson": 0.026959,
+      "spearman": -0.225554,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif",
+      "prior": "prior_h195_solid_nan.tif",
+      "jaccard": 0.026359,
+      "pearson": 0.026281,
+      "spearman": -0.225699,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif",
+      "prior": "prior_h25ctx_nan.tif",
+      "jaccard": 0.036651,
+      "pearson": 0.018358,
+      "spearman": -0.224687,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif",
+      "prior": "prior_h28dotted_nan.tif",
+      "jaccard": 0.014764,
+      "pearson": 0.013816,
+      "spearman": -0.237006,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif",
+      "prior": "prior_h32_1_tipeuler_nan.tif",
+      "jaccard": 0.009319,
+      "pearson": 0.017082,
+      "spearman": -0.239044,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif",
+      "prior": "prior_hedgev2.tif",
+      "jaccard": 0.050892,
+      "pearson": 0.049395,
+      "spearman": -0.200766,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif",
+      "prior": "prior_lattice_nan.tif",
+      "jaccard": 0.039138,
+      "pearson": -0.000128,
+      "spearman": -0.228555,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif",
+      "prior": "prior_placeh_nan.tif",
+      "jaccard": 0.027306,
+      "pearson": 0.005277,
+      "spearman": -0.236654,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif",
+      "prior": "prior_r7scarp_allfinite.tif",
+      "jaccard": 0.022513,
+      "pearson": 0.02102,
+      "spearman": -0.231313,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif",
+      "prior": "prior_tv2_d15_nan.tif",
+      "jaccard": 0.013379,
+      "pearson": 0.018789,
+      "spearman": -0.236008,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif",
+      "prior": "top_02778_h33b2_nan.tif",
+      "jaccard": 0.008381,
+      "pearson": 0.018067,
+      "spearman": -0.239713,
+      "near_duplicate": false
+    },
+    {
+      "artifact": "gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif",
+      "prior": "top_02778_h33b2_zeros.tif",
+      "jaccard": 0.008381,
+      "pearson": 0.018067,
+      "spearman": -0.239713,
+      "near_duplicate": false
+    }
+  ],
+  "summary": {
+    "gems40-euler-augmented-incumbent-20261005-ac1c1927-zeros.tif": {
+      "max_jaccard": 0.620227,
+      "max_abs_pearson": 0.978923,
+      "n_priors_compared": 16,
+      "n_near_duplicates": 5,
+      "verdict": "NEAR-DUPLICATE"
+    },
+    "gems40-euler-augmented-incumbent-20261005-ac1c1927.tif": {
+      "max_jaccard": 0.620227,
+      "max_abs_pearson": 0.978923,
+      "n_priors_compared": 16,
+      "n_near_duplicates": 5,
+      "verdict": "NEAR-DUPLICATE"
+    },
+    "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380-zeros.tif": {
+      "max_jaccard": 0.004879,
+      "max_abs_pearson": 0.004953,
+      "n_priors_compared": 16,
+      "n_near_duplicates": 0,
+      "verdict": "NEW"
+    },
+    "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif": {
+      "max_jaccard": 0.004879,
+      "max_abs_pearson": 0.004953,
+      "n_priors_compared": 16,
+      "n_near_duplicates": 0,
+      "verdict": "NEW"
+    },
+    "gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif": {
+      "max_jaccard": 0.050892,
+      "max_abs_pearson": 0.054955,
+      "n_priors_compared": 16,
+      "n_near_duplicates": 0,
+      "verdict": "NEW"
+    }
+  }
+}

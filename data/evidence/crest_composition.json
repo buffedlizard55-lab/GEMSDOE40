@@ -1,0 +1,23 @@
+{
+  "mag_mean": {
+    "crest_px": 24848,
+    "within_200m_of_catalogue": 1589,
+    "off_catalogue": 23259.0,
+    "off_catalogue_not_in_incumbent": 23045,
+    "frac_on_catalogue": 0.0639
+  },
+  "gravity": {
+    "crest_px": 6131,
+    "within_200m_of_catalogue": 443,
+    "off_catalogue": 5688.0,
+    "off_catalogue_not_in_incumbent": 5644,
+    "frac_on_catalogue": 0.0723
+  },
+  "crossfamily": {
+    "crest_px": 24861,
+    "within_200m_of_catalogue": 1591,
+    "off_catalogue": 23270.0,
+    "off_catalogue_not_in_incumbent": 23056,
+    "frac_on_catalogue": 0.064
+  }
+}

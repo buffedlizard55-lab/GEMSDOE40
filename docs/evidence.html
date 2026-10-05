@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Evidence · GEMSDOE40</title><link rel="stylesheet" href="assets/site.css"></head>
+<body><header><h1>Evidence</h1><div class="muted small">DOE GEMS Prize (DrivenData #306) ·
+Euler deconvolution depth-clustering submission system · repository
+<a href="https://github.com/buffedlizard55-lab/GEMSDOE40">buffedlizard55-lab/GEMSDOE40</a></div>
+<div style="margin-top:10px"><nav class="small">
+<a href="index.html">Home</a><a href="executive-summary.html">How to submit</a>
+<a href="methodology.html">Method</a><a href="hypotheses.html">Hypotheses</a>
+<a href="leaderboard-analysis.html">Leaderboard analysis</a><a href="evidence.html">Evidence</a>
+<a href="sources.html">Sources</a></nav></div></header><main>
+<h2>Verification of the data claims</h2>
+<pre>{
+  "files": {
+    "training_features.tif": {
+      "present": true,
+      "bytes": 418912844,
+      "sha256": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5",
+      "shape": [
+        3730,
+        3292
+      ],
+      "count": 19,
+      "dtype": "float32",
+      "crs": "EPSG:32611",
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "nodata": "-3.4028234663852886e+38"
+    },
+    "existing_faults.tif": {
+      "present": true,
+      "bytes": 425830,
+      "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+      "shape": [
+        3730,
+        3292
+      ],
+      "count": 1,
+      "dtype": "int8",
+      "crs": "EPSG:32611",
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "nodata": "-1.0"
+    },
+    "example_submission.tif": {
+      "present": true,
+      "bytes": 1599597,
+      "sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+      "shape": [
+        3730,
+        3292
+      ],
+      "count": 1,
+      "dtype": "float32",
+      "crs": "EPSG:32611",
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "nodata": "nan"
+    }
+  },
+  "pins_match": {
+    "training_features.tif": true,
+    "existing_faults.tif": true,
+    "example_submission.tif": true
+  },
+  "band_inventory": {
+    "1": {
+      "band_name": "mag_anom",
+      "category": "magnetic_data",
+      "description": "Magnetic anomaly - deviation from expected Earth's magnetic field"
+    },
+    "2": {
+      "band_name": "rtp",
+      "category": "magnetic_data",
+      "description": "Reduced to pole magnetic data - magnetic anomaly corrected for latitude effects"
+    },
+    "3": {
+      "band_name": "tmi_hg",
+      "category": "magnetic_data",
+      "description": "Total magnetic intensity horizontal gradient - rate of change in horizontal direction"
+    },
+    "4": {
+      "band_name": "geod_2ndinv",
+      "category": "geodetic_strain",
+      "description": "Geodetic second invariant - measure of strain rate tensor magnitude"
+    },
+    "5": {
+      "band_name": "iso_grav_anom_slope",
+      "category": "gravity_data",
+      "description": "Isostatic gravity anomaly slope - gradient of gravity after isostatic correction"
+    },
+    "6": {
+      "band_name": "tc",
+      "category": "magnetic_data",
+      "description": "Tilt angle or total curvature - magnetic field derivative for edge detection"
+    },
+    "7": {
+      "band_name": "geod_shearrate",
+      "category": "geodetic_strain",
+      "description": "Geodetic shear rate - rate of angular deformation from GPS/InSAR"
+    },
+    "8": {
+      "band_name": "geod_dilaterate",
+      "category": "geodetic_strain",
+      "description": "Geodetic dilatation rate - rate of volumetric strain (expansion/contraction)"
+    },
+    "9": {
+      "band_name": "tmi_vg",
+      "category": "magnetic_data",
+      "description": "Total magnetic intensity vertical gradient - rate of change in vertical direction"
+    },
+    "10": {
+      "band_name": "deq_n100a15",
+      "category": "seismic",
+      "description": "Distance to earthquake (n=100km radius, a=15\u00b0 azimuth parameters)"
+    },
+    "11": {
+      "band_name": "iso_grav_anom_vg",
+      "category": "gravity_data",
+      "description": "Isostatic gravity anomaly vertical gradient - vertical rate of change"
+    },
+    "12": {
+      "band_name": "det_elev",
+      "category": "topographic",
+      "description": "Detrended elevation - topography with regional trends removed"
+    },
+    "13": {
+      "band_name": "iso_grav_anom",
+      "category": "gravity_data",
+      "description": "Isostatic gravity anomaly - gravity after compensating for topographic mass"
+    },
+    "14": {
+      "band_name": "tmi",
+      "category": "magnetic_data",
+      "description": "Total magnetic intensity -</pre>
+<h2>Novelty audit (hash + correlation against every prior submission raster on disk)</h2>
+<p>Rule fixed in advance: an artifact is a <strong>near-duplicate</strong> if Jaccard(support) &gt; 0.50
+<em>or</em> |Pearson r| &gt; 0.80 against any prior raster.</p>
+<pre>{
+  "gems40-euler-augmented-incumbent-20261005-ac1c1927-zeros.tif": {
+    "max_jaccard": 0.620227,
+    "max_abs_pearson": 0.978923,
+    "n_priors_compared": 16,
+    "n_near_duplicates": 5,
+    "verdict": "NEAR-DUPLICATE"
+  },
+  "gems40-euler-augmented-incumbent-20261005-ac1c1927.tif": {
+    "max_jaccard": 0.620227,
+    "max_abs_pearson": 0.978923,
+    "n_priors_compared": 16,
+    "n_near_duplicates": 5,
+    "verdict": "NEAR-DUPLICATE"
+  },
+  "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380-zeros.tif": {
+    "max_jaccard": 0.004879,
+    "max_abs_pearson": 0.004953,
+    "n_priors_compared": 16,
+    "n_near_duplicates": 0,
+    "verdict": "NEW"
+  },
+  "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif": {
+    "max_jaccard": 0.004879,
+    "max_abs_pearson": 0.004953,
+    "n_priors_compared": 16,
+    "n_near_duplicates": 0,
+    "verdict": "NEW"
+  },
+  "gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif": {
+    "max_jaccard": 0.050892,
+    "max_abs_pearson": 0.054955,
+    "n_priors_compared": 16,
+    "n_near_duplicates": 0,
+    "verdict": "NEW"
+  }
+}</pre>
+<h2>Shipped-artifact validation</h2>
+<pre>{
+  "gems40-euler-augmented-incumbent-20261005-ac1c1927-zeros.tif": {
+    "lm_calibrated": 0.30845196502413813,
+    "lm_raw": 0.09766107243203892,
+    "cat_hidden": 0.0,
+    "n_px": 60710,
+    "on_catalogue_px": 0,
+    "folds": {
+      "foldNW": 0.2178009801248138,
+      "foldNE": 0.48369343827171746,
+      "foldSW": 0.23733345577588175,
+      "foldSE": 0.29497998592413954
+    },
+    "delta_vs_incumbent": 0.04053143345433774,
+    "folds_better_than_incumbent": 4,
+    "beats_incumbent": true,
+    "all_folds_better": true
+  },
+  "gems40-euler-augmented-incumbent-20261005-ac1c1927.tif": {
+    "lm_calibrated": 0.30845196502413813,
+    "lm_raw": 0.09766107243203892,
+    "cat_hidden": 0.0,
+    "n_px": 60710,
+    "on_catalogue_px": 0,
+    "folds": {
+      "foldNW": 0.2178009801248138,
+      "foldNE": 0.48369343827171746,
+      "foldSW": 0.23733345577588175,
+      "foldSE": 0.29497998592413954
+    },
+    "delta_vs_incumbent": 0.04053143345433774,
+    "folds_better_than_incumbent": 4,
+    "beats_incumbent": true,
+    "all_folds_better": true
+  },
+  "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380-zeros.tif": {
+    "lm_calibrated": 0.11600053817805889,
+    "lm_raw": 0.03316481203936073,
+    "cat_hidden": 0.0,
+    "n_px": 20000,
+    "on_catalogue_px": 272,
+    "folds": {
+      "foldNW": 0.11501822013943888,
+      "foldNE": 0.10752508650709851,
+      "foldSW": 0.12460145693414368,
+      "foldSE": 0.11685738913155454
+    },
+    "delta_vs_incumbent": -0.1519199933917415,
+    "folds_better_than_incumbent": 0,
+    "beats_incumbent": false,
+    "all_folds_better": false
+  },
+  "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif": {
+    "lm_calibrated": 0.11600053817805889,
+    "lm_raw": 0.03316481203936073,
+    "cat_hidden": 0.0,
+    "n_px": 20000,
+    "on_catalogue_px": 272,
+    "folds": {
+      "foldNW": 0.11501822013943888,
+      "foldNE": 0.10752508650709851,
+      "foldSW": 0.12460145693414368,
+      "foldSE": 0.11685738913155454
+    },
+    "delta_vs_incumbent": -0.1519199933917415,
+    "folds_better_than_incumbent": 0,
+    "beats_incumbent": false,
+    "all_folds_better": false
+  },
+  "gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif": {
+    "lm_calibrated": 0.12487441578558948,
+    "lm_raw": 0.11673083128026146,
+    "cat_hidden": 0.0,
+    "n_px": 3380827,
+    "on_catalogue_px": 41542,
+    "folds": {
+      "foldNW": 0.10019156523207608,
+      "foldNE": 0.18203910140822746,
+      "foldSW": 0.0867624080539324,
+      "foldSE": 0.13050458844812202
+    },
+    "delta_vs_incumbent": -0.1430461157842109,
+    "folds_better_than_incumbent": 0,
+    "beats_incumbent": false,
+    "all_folds_better": false
+  }
+}</pre>
+<h2>Marginal-value test on the incumbent</h2>
+<pre>[
+  {
+    "candidate": "iso_grav_anom:top10000",
+    "added_px": 6508,
+    "d_tp_w": 341.78,
+    "efficiency": 0.052517,
+    "break_even_0278": 0.058829,
+    "above_break_even": false,
+    "ratio_to_break_even": 0.893
+  },
+  {
+    "candidate": "iso_grav_anom:top20000",
+    "added_px": 15750,
+    "d_tp_w": 729.23,
+    "efficiency": 0.0463,
+    "break_even_0278": 0.058829,
+    "above_break_even": false,
+    "ratio_to_break_even": 0.787
+  },
+  {
+    "candidate": "tmi:top20000",
+    "added_px": 15849,
+    "d_tp_w": 700.35,
+    "efficiency": 0.044189,
+    "break_even_0278": 0.058829,
+    "above_break_even": false,
+    "ratio_to_break_even": 0.751
+  },
+  {
+    "candidate": "tmi:top10000",
+    "added_px": 6497,
+    "d_tp_w": 286.09,
+    "efficiency": 0.044035,
+    "break_even_0278": 0.058829,
+    "above_break_even": false,
+    "ratio_to_break_even": 0.749
+  },
+  {
+    "candidate": "iso_grav_anom:top30000",
+    "added_px": 24976,
+    "d_tp_w": 1079.64,
+    "efficiency": 0.043227,
+    "break_even_0278": 0.058829,
+    "above_break_even": false,
+    "ratio_to_break_even": 0.735
+  },
+  {
+    "candidate": "tmi:top30000",
+    "added_px": 25119,
+    "d_tp_w": 1066.78,
+    "efficiency": 0.042469,
+    "break_even_0278": 0.058829,
+    "above_break_even": false,
+    "ratio_to_break_even": 0.722
+  },
+  {
+    "candidate": "mag_x_grav_conjunction_top20000",
+    "added_px": 18516,
+    "d_tp_w": 750.72,
+    "efficiency": 0.040544,
+    "break_even_0278": 0.058829,
+    "above_break_even": false,
+    "ratio_to_break_even": 0.689
+  },
+  {
+    "candidate": "tmi:top44090",
+    "added_px": 38237,
+    "d_tp_w": 1542.36,
+    "efficiency": 0.040337,
+    "break_even_0278": 0.058829,
+    "above_break_even": false,
+    "ratio_to_break_even": 0.686
+  },
+  {
+    "candidate": "iso_grav_anom:top44090",
+    "added_px": 37989,
+    "d_tp_w": 1518.06,
+    "efficiency": 0.03996,
+    "break_even_0278": 0.058829,
+    "above_break_even": false,
+    "ratio_to_break_even": 0.679
+  },
+  {
+    "candidate": "rtp:top20000",
+    "added_px": 15768,
+    "d_tp_w": 629.91,
+    "efficiency": 0.039949,
+    "break_even_0278": 0.058829,
+    "above_break_even": false,
+    "ratio_to_break_even": 0.679
+  }
+]</pre>
+<h2>Crest composition (how much Euler crest mass sits on known faults)</h2>
+<pre>{
+  "mag_mean": {
+    "crest_px": 24848,
+    "within_200m_of_catalogue": 1589,
+    "off_catalogue": 23259.0,
+    "off_catalogue_not_in_incumbent": 23045,
+    "frac_on_catalogue": 0.0639
+  },
+  "gravity": {
+    "crest_px": 6131,
+    "within_200m_of_catalogue": 443,
+    "off_catalogue": 5688.0,
+    "off_catalogue_not_in_incumbent": 5644,
+    "frac_on_catalogue": 0.0723
+  },
+  "crossfamily": {
+    "crest_px": 24861,
+    "within_200m_of_catalogue": 1591,
+    "off_catalogue": 23270.0,
+    "off_catalogue_not_in_incumbent": 23056,
+    "frac_on_catalogue": 0.064
+  }
+}</pre>
+<h2>Prune test (Euler as a gate on the incumbent) — result</h2>
+<pre>{
+  "incumbent": "top_02778_h33b2_zeros.tif",
+  "incumbent_lm_cal": 0.2679205315698004,
+  "incumbent_n_px": 37654,
+  "rows": []
+}</pre>
+<p class="small muted">Raw JSON for all tables: <a href="data/shipped_validation.json">shipped_validation.json</a>,
+<a href="data/novelty.json">novelty.json</a>, <a href="data/augmentation_budget_sweep.json">augmentation_budget_sweep.json</a>,
+<a href="data/union_test.json">union_test.json</a>, <a href="data/nms_refine.json">nms_refine.json</a>,
+<a href="data/crest_composition.json">crest_composition.json</a>,
+<a href="data/euler_gate.json">euler_gate.json</a>,
+<a href="data/submission_format.json">submission_format.json</a>,
+<a href="data/band_inventory.json">band_inventory.json</a>.
+Build receipts: <a href="downloads/manifest.json">downloads/manifest.json</a>.</p>
+</main></body></html>

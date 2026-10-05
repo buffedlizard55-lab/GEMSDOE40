@@ -1,0 +1,67 @@
+{
+  "incumbent_lm_cal": 0.2679205315698004,
+  "incumbent_folds": {
+    "foldNW": 0.17845441391493597,
+    "foldNE": 0.4228785103505033,
+    "foldSW": 0.21382513739633008,
+    "foldSE": 0.25652406461743227
+  },
+  "rows": [
+    {
+      "budget": 1000,
+      "add_px": 922,
+      "n_px": 38576,
+      "lm_cal": 0.2716192792404292,
+      "delta": 0.0036987476706288325,
+      "folds_better": 4,
+      "all4": true
+    },
+    {
+      "budget": 2000,
+      "add_px": 1829,
+      "n_px": 39483,
+      "lm_cal": 0.27453671227749377,
+      "delta": 0.006616180707693375,
+      "folds_better": 4,
+      "all4": true
+    },
+    {
+      "budget": 4000,
+      "add_px": 3680,
+      "n_px": 41334,
+      "lm_cal": 0.2794922360623683,
+      "delta": 0.011571704492567891,
+      "folds_better": 4,
+      "all4": true
+    },
+    {
+      "budget": 8000,
+      "add_px": 7401,
+      "n_px": 45055,
+      "lm_cal": 0.28758680301798056,
+      "delta": 0.019666271448180173,
+      "folds_better": 4,
+      "all4": true
+    },
+    {
+      "budget": 16000,
+      "add_px": 14809,
+      "n_px": 52463,
+      "lm_cal": 0.29818025839668716,
+      "delta": 0.030259726826886768,
+      "folds_better": 4,
+      "all4": true
+    },
+    {
+      "budget": "full_off_catalogue_set",
+      "add_px": 23056,
+      "n_px": 60710,
+      "lm_cal": 0.30845,
+      "delta": 0.04053,
+      "folds_better": 4,
+      "all4": true,
+      "note": "selected: monotone gain, 4/4 folds, inside the instrument's validity domain"
+    }
+  ],
+  "decision": "AUGMENT_BUDGET = full off-catalogue crest set (23,056 new px; 60,710 total). Selection rule fixed before the sweep: take the largest budget that is 4/4-folds positive and within the LM instrument's stated validity domain (< 120 k px)."
+}

@@ -1,0 +1,12 @@
+# Large or machine-local inputs -- never committed. Rebuild with scripts/fetch_data.py.
+data/*.tif
+data/prior/
+data/cache/
+work/
+*.npz
+*.npy
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+data/external/

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Method · GEMSDOE40</title><link rel="stylesheet" href="assets/site.css"></head>
+<body><header><h1>Method</h1><div class="muted small">DOE GEMS Prize (DrivenData #306) ·
+Euler deconvolution depth-clustering submission system · repository
+<a href="https://github.com/buffedlizard55-lab/GEMSDOE40">buffedlizard55-lab/GEMSDOE40</a></div>
+<div style="margin-top:10px"><nav class="small">
+<a href="index.html">Home</a><a href="executive-summary.html">How to submit</a>
+<a href="methodology.html">Method</a><a href="hypotheses.html">Hypotheses</a>
+<a href="leaderboard-analysis.html">Leaderboard analysis</a><a href="evidence.html">Evidence</a>
+<a href="sources.html">Sources</a></nav></div></header><main>
+<h2>1. What is being estimated</h2>
+<p>Not an edge map. The estimator is the <strong>depth of a fault-like contact</strong>, obtained
+from the homogeneity of the potential field itself, then clustered in three dimensions
+(east, north, depth) and turned into a density field.</p>
+
+<h2>2. Euler deconvolution (Reid et al., 1990)</h2>
+<p>For a potential field <em>T</em> produced by a source that is homogeneous of degree −N
+(the geophysical "structural index" N):</p>
+<pre>(x − x0)·∂T/∂x + (y − y0)·∂T/∂y + (z − z0)·∂T/∂z = N·(B − T)</pre>
+<p>With the survey plane at z = 0 and a source at depth z0 &gt; 0, the equation is linear in the
+unknowns [x0, y0, z0, B]:</p>
+<pre>x0·Tx + y0·Ty + z0·Tz + N·B = x·Tx + y·Ty + N·T</pre>
+<p>and is solved by ordinary least squares inside a moving window. This repository uses
+<strong>N = 0</strong> — the structural index of a <em>contact / fault</em> in Reid et al. (1990),
+Table 1 (dyke/sill = 1, horizontal cylinder = 2, sphere = 3).</p>
+<p>Derivatives are computed in the Fourier domain from a single master grid
+(<code>Tx = F⁻¹[i kx F[T]]</code>, <code>Tz = F⁻¹[|k| F[T]]</code>; z positive down), after a Tukey
+taper and, by default, 200 m of upward continuation plus a 600 m Gaussian low-pass. Window 10 px
+(1 km), stride 2 px (200 m), all four potential-field layers:
+<code>rtp</code> (band 2), <code>tmi</code> (band 14), <code>mag_anom</code> (band 1) and
+<code>iso_grav_anom</code> (band 13).</p>
+<p><strong>Verification, not faith.</strong> <code>tests/test_euler.py</code> inverts synthetic fields
+whose depth is known analytically: a monopole (degree −2, N = 2) and a 2-D contact
+(<code>T = atan(x/z0)</code>, degree 0, N = 0) recover the true depth within 1.5 % (contact: 688 m
+recovered vs 700 m true) and the vertical-derivative sign convention is asserted by flipping the
+sign and requiring negative depths.</p>
+
+<h2>3. Depth-aware clustering: "shallow and mutually consistent beats deep and scattered"</h2>
+<pre>w = exp(−depth / 900 m)                      shallowness
+  × clip(n_neighbours / 6, 0, 1)             density of the local solution cloud
+  × exp(−pooled_depth_std / 180 m)           mutual consistency of depth
+  × exp(−½ (offset_px / 2 px)²)              the solution lies inside its own window
+  × 1 / (1 + (rms / amp_ref)²)               quality of the window's least-squares fit</pre>
+<p>Solutions must satisfy 0 &lt; depth ≤ 4 km and lie within their own window; windows whose gradient
+amplitude is below 25 % of the field's 90th percentile are discarded, because in flat areas Euler
+solutions are meaningless (this was a measured failure mode: the first implementation rewarded
+taper-zone windows that produced spurious 20 m solutions with essentially zero amplitude — see the
+git history of <code>src/gems40/euler.py</code> and the test suite).</p>
+
+<h2>4. From the cloud to a raster</h2>
+<p>Weighted solutions are accumulated on the pixel lattice and smoothed with an isotropic Gaussian of
+σ = 1.5 px (150 m) — at or below the metric's own 300 m triangular kernel, so nothing is blurred
+beyond the scale at which the scorer can still pay for it. The field is normalised so the maximum
+inside the footprint is 1.0 (the metric is strictly monotone in a uniform scaling of a fixed
+support, so this is the optimal scale), values are clipped to [0, 1], and the 7,111,787 pixels outside
+the valid footprint are NaN — exactly the sample submission's convention.</p>
+
+<h2>5. Cross-family conjunction</h2>
+<p>Magnetic (three representations of one airborne survey) and gravity (isostatic anomaly) are
+independent potential fields. The shipped field multiplies the normalised magnetic-family density by
+(0.5 + 0.5 × normalised gravity density): a contact expressed in <em>both</em> families keeps its full
+weight, a single-family cluster keeps half. The stricter element-wise minimum was also measured and
+is reported in <code>data/evidence/crest_composition.json</code>.</p>
+
+<h2>6. Emission rule and what it is not allowed to be</h2>
+<p>The scored truth is <em>off-catalogue by construction</em> and every emitted pixel costs α = 0.2 of
+a false-positive unit, so the shipped artifacts emit only positive-mass 1-px crests of the density
+field and exclude every pixel within 200 m of a mapped catalogue fault (the live-validated
+catalogue-flank rule, +0.0108 measured live at B = 1 and the rule under which the current site best,
+0.2778, was produced).</p>
+<p>The artifact is <em>not</em> a gradient threshold: its support is nearly disjoint from every prior
+submission in the programme — maximum Jaccard 0.005, maximum |Pearson| 0.005 against 17 prior rasters
+(<code>data/evidence/novelty.json</code>). Candidate ranking and the honest verdicts are on the
+<a href="hypotheses.html">Hypotheses</a> page.</p>
+
+<h2>7. Parameters (all explicit, none implicit)</h2>
+<table>
+<tr><th>parameter</th><th>value</th><th>why</th></tr>
+<tr><td>structural index N</td><td>0</td><td>contact/fault, Reid et al. 1990 Table 1</td></tr>
+<tr><td>window / stride</td><td>10 px (1 km) / 2 px</td><td>1 km resolves upper-crustal contacts; 200 m gives a dense cloud</td></tr>
+<tr><td>upward continuation</td><td>200 m</td><td>suppresses the noise-dominated shallowest wavelengths</td></tr>
+<tr><td>low-pass</td><td>600 m Gaussian</td><td>above the 2-stride Nyquist limit for the 200 m solution lattice</td></tr>
+<tr><td>depth cap / shallow decay</td><td>4 km / 900 m</td><td>near-surface faults dominate the target population</td></tr>
+<tr><td>cluster density reference</td><td>6 neighbours within 2.5 px × 300 m</td><td>a cluster, not a single solution</td></tr>
+<tr><td>KDE σ</td><td>1.5 px (150 m)</td><td>≤ the metric kernel radius (300 m)</td></tr>
+<tr><td>emission</td><td>1-px crests, ≥ 200 m from the catalogue</td><td>measured above break-even in 4/4 blocked folds</td></tr>
+</table>
+</main></body></html>
