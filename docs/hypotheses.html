@@ -48,14 +48,29 @@ LM instrument. "Data obtainable?" is answered for every idea that needs an exter
 </table>
 
 <h2>H40-4 — Multi-window (multi-scale) Euler conjunction
-<span class="badge b-warn">NOT YET MEASURED — no new data needed</span></h2>
+<span class="badge b-ok">MEASURED — SHIPPED as the recommended upload</span></h2>
 <table>
-<tr><td>layers</td><td>same four layers, windows 5 px, 10 px, 21 px (0.5 / 1 / 2.1 km) with N = 0 and N = 1</td></tr>
-<tr><td>physical signature</td><td>a real fault should return mutually consistent depths <em>across</em> window sizes; model error (interference from neighbouring sources) is the dominant bias of single-window Euler deconvolution</td></tr>
-<tr><td>why it can catch an uncatalogued fault</td><td>cross-window depth agreement is a physical filter that no edge detector can produce, and it directly attacks the 1–3 px lateral offset error that limited the sibling repo's raw-centroid emission</td></tr>
-<tr><td>differs from</td><td>every prior arm uses a single window scale; this is the only proposal here that changes the <em>estimator</em> rather than the emission rule</td></tr>
-<tr><td>cost / data</td><td>~40 s; all data already local</td></tr>
-<tr><td>verdict</td><td>Highest expected value of the remaining ideas; must be swept on the LM instrument before any slot</td></tr>
+<tr><td>layers</td><td>the same four layers (rtp, tmi, mag_anom, iso_grav_anom), Euler windows 10, 15, 20
+and 30 px (1 / 1.5 / 2 / 3 km) with N = 0, rank-normalised per scale and combined by rank-minimum</td></tr>
+<tr><td>physical signature</td><td>a real fault returns mutually consistent depths <em>across</em> window
+sizes; model error (interference from neighbouring sources) is the dominant bias of single-window Euler
+deconvolution, and it is the reason the sibling repositories' raw-centroid emission sat 1–3 px off the
+surface trace</td></tr>
+<tr><td>measured</td><td>129,662 crest px survive the four-scale conjunction (98,000 fewer than the
+single-scale w10 crest set before the catalogue buffer). Budget sweep on the blocked instrument
+(<code>data/evidence/multiscale.json</code>): added px → efficiency in units of τ = 0.0588 —
+10 k → 1.18×, 20 k → 1.13×, 30 k → 1.13×, 40 k → 1.18×, <strong>60 k → 1.18×</strong>, 80 k → 1.11×,
+all of it → 1.06× with only 3/4 folds. The 60 k budget is the argmax of projected live gain that stays
+inside the instrument's validity domain (&lt; 120 k emitted px) and is positive in 4/4 blocked folds:
+97,654 px emitted, +60,000 new, LM-cal 0.34835 vs the incumbent's 0.26792
+(<strong>+0.08043</strong>), 4/4 folds, projected live gain +0.029 conservative / +0.080 instrument-based</td></tr>
+<tr><td>differs from</td><td>every prior arm uses a single window scale, and the sibling repository's
+Euler work emitted raw cluster centroids; this changes the <em>estimator</em> and the emission rule
+together, and it is the first multi-scale conjunction in the programme</td></tr>
+<tr><td>cost / data</td><td>12 Euler runs × ~12 s; all data already local</td></tr>
+<tr><td>verdict</td><td><strong>Promoted to the recommended upload.</strong> The single-scale artifact
+remains as the conservative fallback; the budget must not be pushed past 60 k added px without new
+evidence, because the instrument's density calibration is only verified below ~120 k emitted px</td></tr>
 </table>
 
 <h2>H40-5 — Depth-structured emission (depth-binned detection, not a single depth field)

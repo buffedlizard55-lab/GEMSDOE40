@@ -39,13 +39,20 @@ import sys
 from pathlib import Path
 
 import numpy as np
-from scipy.ndimage import distance_transform_edt, maximum_filter
+from scipy.ndimage import distance_transform_edt
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from gems40.grid import footprint_from_sample, write_submission
+from gems40.stack import (GRAV_LAYER, MAG_LAYERS, crest, crossfamily, load_fields,
+                          multiscale_rankmin)
 
-TARGET_BUDGET = 20_000     # crest pixels kept in artifact A (validated in scripts/nms_refine_test.py)
+BANDS = {"rtp": 2, "tmi": 14, "mag_anom": 1, "iso_grav_anom": 13}
+TARGET_BUDGET = 20_000
+MULTISCALE_WINDOWS = (10, 15, 20, 30)   # H40-4 conjunction; see data/evidence/multiscale.json
+MULTISCALE_BUDGET = 60_000              # added px; largest argmax of projected live gain
+                                        # that stays inside the LM validity domain (<120 k px)
+                                        # and is positive in 4/4 blocked folds     # crest pixels kept in artifact A (validated in scripts/nms_refine_test.py)
 AUGMENT_BUDGET = None      # None = every off-catalogue Euler crest pixel not already in the
 #                            incumbent.  Chosen from data/evidence/augmentation_budget_sweep.json:
 #                            the LM-calibrated gain rises monotonically (0.2716 -> 0.3085) and stays
@@ -53,21 +60,11 @@ AUGMENT_BUDGET = None      # None = every off-catalogue Euler crest pixel not al
 #                            inside the instrument's stated validity domain of < 120 k px).
 
 
-def normalise(f: np.ndarray, foot: np.ndarray) -> np.ndarray:
-    m = np.nanmax(f[foot])
-    return np.where(foot, f / m, np.nan) if np.isfinite(m) and m > 0 else np.where(foot, 0.0, np.nan)
-
-
-def crest(f: np.ndarray, foot: np.ndarray) -> np.ndarray:
-    """Positive-mass 1-px ridge crests of a continuous density field (plateau-safe)."""
-    f2 = np.nan_to_num(f, nan=-np.inf)
-    mx = maximum_filter(f2, size=3, mode="nearest")
-    return (f2 >= mx) & (f > 0) & foot
-
-
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--work", default="work")
+    ap.add_argument("--window", type=int, default=10,
+                    help="Euler window scale (px) whose fields are shipped")
     ap.add_argument("--data", default="data")
     ap.add_argument("--prior", default="/tmp/data/prior")
     ap.add_argument("--outdir", default="docs/downloads")
@@ -76,29 +73,9 @@ def main() -> int:
     args = ap.parse_args()
 
     foot = footprint_from_sample(Path(args.data) / "example_submission.tif")
-    fields = {}
-    for npz in sorted(Path(args.work).glob("euler_*.npz")):
-        d = np.load(npz, allow_pickle=True)
-        fields[str(d["layer"])] = d["field"].astype(np.float64)
-    need = {"rtp", "tmi", "mag_anom", "iso_grav_anom"}
-    missing = need - set(fields)
-    if missing:
-        raise SystemExit(f"missing Euler fields: {sorted(missing)} -- run scripts/run_euler.py first")
-
-    with np.errstate(invalid="ignore"):
-        import warnings
-        with warnings.catch_warnings():
-            warnings.simplefilter("ignore", RuntimeWarning)
-            mag = np.nanmean(np.stack([normalise(fields[k], foot)
-                                       for k in ("rtp", "tmi", "mag_anom")]), axis=0)
-    grav = normalise(fields["iso_grav_anom"], foot)
-    # cross-family rule: the magnetic-family cluster density, corroborated (never replaced) by the
-    # gravity family -- a fault-like contact expressed in BOTH independent potential fields keeps
-    # its full weight; a magnetic-only or gravity-only cluster keeps half.  The stricter
-    # element-wise-minimum variant was measured too and is reported in
-    # data/evidence/crest_variants.json.
-    S = np.where(foot, np.nan_to_num(mag) * (0.5 + 0.5 * np.nan_to_num(grav)), np.nan)
-    S = np.where(foot, S / np.nanmax(S[foot]), np.nan)
+    fields = load_fields(args.work, window=args.window,
+                         needed=tuple(MAG_LAYERS) + (GRAV_LAYER,))
+    S = crossfamily(fields, foot)
 
     outdir = Path(args.outdir)
     outdir.mkdir(parents=True, exist_ok=True)
@@ -116,8 +93,7 @@ def main() -> int:
     recA = write_submission(outdir / nameA, A, foot, nan_outside=True)
     recA["design"] = dict(method="Euler deconvolution SI=0 (Reid et al. 1990) on magnetic and "
                                  "gravity layers; depth-aware cluster weighting; KDE; 1-px crests",
-                          layers=["rtp (band 2)", "tmi (band 14)", "mag_anom (band 1)",
-                                  "iso_grav_anom (band 13)"],
+                          layers=[f"{k} (band {b})" for k, b in BANDS.items()],
                           family_rule="element-wise min of the magnetic-family mean and the gravity KDE",
                           budget_px=int((A > 0).sum()), target_budget=TARGET_BUDGET)
     recA["ip_reminder"] = ("UNIQUE PATTERN: measured Jaccard overlap with the best prior submission "
@@ -143,7 +119,7 @@ def main() -> int:
         import rasterio
         with rasterio.open(inc_path) as ds:
             inc = (np.isfinite(ds.read(1)) & (ds.read(1) > 0))
-        d_cat = distance_transform_edt(~_read_labels(args.data))
+        d_cat = d_cat_ms = distance_transform_edt(~_read_labels(args.data))
         if AUGMENT_BUDGET is None:
             add = c & (d_cat > 2) & ~inc
         else:
@@ -166,6 +142,41 @@ def main() -> int:
             if Path("data/evidence/nms_refine.json").exists() else None
         receipts.append(recC)
         print(f"[C] {nameC}: {recC['emitted_pixels']} px (+{int(add.sum())} new), sha256 {recC['sha256'][:16]}")
+
+    # ------------------------------------------------- D: multi-scale (H40-4) augmentation
+    # Measured in scripts/multiscale_test.py (data/evidence/multiscale.json): a cross-family
+    # rank-min conjunction over four Euler window scales, crest-reduced and capped at the budget,
+    # emits 97,654 px in total (inside the instrument's <120k validity domain), earns
+    # 1.18 x the metric's break-even per added pixel, and beats the incumbent in 4/4 blocked folds
+    # with a projected live gain of +0.029 -- 2.6x the single-scale rule it supersedes.
+    if inc_path.exists():
+        import rasterio as _rio
+        ms_fields = {w: crossfamily(load_fields(args.work, window=w,
+                                                needed=tuple(MAG_LAYERS) + (GRAV_LAYER,)), foot)
+                     for w in MULTISCALE_WINDOWS}
+        R = multiscale_rankmin(ms_fields, foot)
+        with _rio.open(inc_path) as ds:
+            inc_ms = (np.isfinite(ds.read(1)) & (ds.read(1) > 0))
+        pool = crest(np.nan_to_num(R, nan=0.0), foot) & ~inc_ms & (d_cat_ms > 2)
+        flat = np.where(pool, np.nan_to_num(R, nan=0.0), -1.0)
+        k = min(MULTISCALE_BUDGET, int(pool.sum()))
+        thr = np.partition(flat[foot], int(foot.sum()) - k)[int(foot.sum()) - k]
+        add_ms = pool & (np.nan_to_num(R, nan=0.0) >= thr)
+        D = np.where(foot & (inc_ms | add_ms), np.where(inc_ms, 1.0, np.nan_to_num(R)), np.nan)
+        D = np.where(foot, np.nan_to_num(D, nan=0.0), np.nan)
+        digest_d = hashlib.sha256(np.nan_to_num(D, nan=-1.0).astype(np.float32).tobytes()).hexdigest()[:8]
+        nameD = f"gems40-euler-multiscale-augmented-incumbent-{args.stamp}-{digest_d}.tif"
+        recD = write_submission(outdir / nameD, D, foot, nan_outside=True)
+        recD["design"] = dict(method=f"prior artifact '{args.incumbent}' union the multi-scale "
+                                     f"rank-min Euler conjunction crests, top {k} new pixels, "
+                                     f">200 m from the catalogue",
+                              windows=list(MULTISCALE_WINDOWS), added_px=int(add_ms.sum()),
+                              evidence="data/evidence/multiscale.json")
+        recD["not_unique_warning"] = ("contains a previous submission's pixels; documented as an "
+                                      "augmentation, not as a novel pattern")
+        receipts.append(recD)
+        print(f"[D] {nameD}: {recD['emitted_pixels']} px (+{int(add_ms.sum())} new), "
+              f"sha256 {recD['sha256'][:16]}")
 
     # validator-safety companions: identical bytes inside the footprint, 0 (not NaN) outside.
     # The sample submission itself is NaN outside, but DrivenData's own validator rejects any

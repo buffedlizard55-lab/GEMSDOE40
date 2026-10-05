@@ -30,14 +30,15 @@
 
 | file | what it is | measured | verdict |
 | --- | --- | --- | --- |
-| **[`gems40-euler-augmented-incumbent-20261005-ac1c1927.tif`](docs/downloads/gems40-euler-augmented-incumbent-20261005-ac1c1927.tif)** (885 kB, sha256 `54aa8c6cbee0a1f8…`, 60,710 px) | current site-best emission ∪ **every off-catalogue Euler SI=0 depth-cluster crest** (23,056 new px) | LM-calibrated **0.30845** vs the site best's 0.26792 → **+0.04053, better in 4/4 blocked folds**; 18/18 format checks pass | **UPLOAD THIS** — flagged NEAR-DUPLICATE by the novelty audit *by design* (it contains the previous submission's pixels; it is an augmentation, not a new pattern) |
-| **[`gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif`](docs/downloads/gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif)** (635 kB, sha256 `7ee6cac2444949a3…`, 20,000 px) | the brief's mandate: magnetic × gravity Euler SI = 0 depth-clustering, KDE → normalised [0, 1] | novelty verdict **NEW** (max Jaccard 0.0049, max |r| 0.0050 vs 16 prior rasters); LM-calibrated 0.11600 | **RESEARCH ONLY** — a genuinely different spatial pattern, but it does not beat the incumbent standalone, so the standing rule forbids spending a slot on it |
+| **[`gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e.tif`](docs/downloads/gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e.tif)** (1.0 MB, sha256 `33d893193f6eb009…`, 97,654 px) | current site-best emission ∪ the **multi-scale Euler SI=0 depth-cluster conjunction** (rank-min over windows 10/15/20/30 px), crest-reduced, +60,000 new px all > 200 m from the catalogue | LM-calibrated **0.34835** vs the site best's 0.26792 → **+0.08043, better in 4/4 blocked folds**; added mass earns **1.18 × the metric's break-even τ** (0.0697 vs 0.0588 credit/px); projected live gain **+0.029 conservative / +0.080 instrument-based** | **UPLOAD THIS** — flagged NEAR-DUPLICATE by the novelty audit *by design* (it contains the previous submission's pixels; it is an augmentation, not a new pattern) |
+| [`gems40-euler-augmented-incumbent-20261005-ac1c1927.tif`](docs/downloads/gems40-euler-augmented-incumbent-20261005-ac1c1927.tif) (885 kB, sha256 `54aa8c6cbee0a1f8…`, 60,710 px) | the same construction at a **single** window (10 px), +23,056 new px | LM-calibrated 0.30845 → +0.04053, 4/4 folds; 1.13× τ | **Conservative fallback** — smaller emission (60,710 px) if you want the most contained upload; superseded by the multi-scale rule on every measured axis |
+| **[`gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif`](docs/downloads/gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif)** (635 kB, sha256 `7ee6cac2444949a3…`, 20,000 px) | the brief's mandate: magnetic × gravity Euler SI = 0 depth-clustering, KDE → normalised [0, 1] | novelty verdict **NEW** (max Jaccard 0.0049, max \|r\| 0.0050 vs 16 prior rasters); LM-calibrated 0.11600 | **RESEARCH ONLY** — a genuinely different spatial pattern, but it does not beat the incumbent standalone, so the standing rule forbids spending a slot on it |
 | [`…-zeros.tif`](docs/downloads/gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380-zeros.tif) companions | identical inside the footprint, `0` instead of `NaN` outside | all values finite in [0, 1] everywhere | use if the portal rejects NaN |
 | [`…-continuous-….tif`](docs/downloads/gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif) | the literal reading of the brief: continuous normalised KDE, no crest reduction | LM-calibrated 0.12487, 3.38 M px | **AUDIT ONLY** — the metric charges α per emitted pixel |
 
 Full receipts (12 portal checks each): [`docs/downloads/manifest.json`](docs/downloads/manifest.json).
 
-**How to submit in 30 seconds:** download the first file → open the
+**How to submit in 30 seconds:** download the first file (the multi-scale augmentation) → open the
 [DrivenData submission page](https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/)
 → upload it → paste the note from [`docs/executive-summary.html`](docs/executive-summary.html#3-step-by-step)
 → submit. That page also explains the **"Predicted values must be in range [0, 1]"** error you saw
@@ -81,27 +82,38 @@ outside it, exactly like the organizers' own sample submission).
 
 ## Honest verdict and expected value
 
-* The unique Euler artifact is **new information** (its support is essentially disjoint from every
-  prior submission) — this is the first genuinely independent channel this programme has added since
-  the LiDAR-scarp ridge family.
-* Its mass is worth **1.13–1.44 ×** what the metric charges for it, so adding it to the incumbent is
-  expected to **raise** the score. Conservative projection (live-calibrated |G| = 12,226 and the
-  measured credit/px): **≈ 0.288**; instrument-based projection (+0.0405): **≈ 0.318**. The LM
-  instrument is documented to over-reward denser emissions, so plan with the conservative figure.
-  **Neither figure reaches 0.3195**, and this repository says so plainly.
-* The remaining gap to #1 is a *detector-quality* gap, not an emission-rule gap. The two cheapest
-  next tests (multi-window Euler conjunction; depth-banded emission) are named on the
+* The unique Euler artifact is **new information**: its support is essentially disjoint from every
+  prior submission (max Jaccard 0.0049) — the first genuinely independent channel this programme has
+  added since the LiDAR-scarp ridge family. Standing alone it scores 0.116 on the validated
+  instrument, so the standing rule forbids spending a slot on it.
+* **The multi-scale Euler conjunction (H40-4) is the measured improvement of this session.** It
+  removes 98,000 of the 129,662 single-scale crest pixels (solutions that exist at only one window
+  are model artefacts) and keeps a 60,000-pixel budget: 4/4 blocked folds better than the incumbent,
+  1.18 × τ per added pixel, 97,654 px emitted (inside the instrument's verified domain).
+* Projections, kept separate on purpose:
+  * **conservative** (live-calibrated |G| = 12,226 and the measured credit/px): **+0.029 →
+    ≈ 0.307**;
+  * **instrument-based** (the LM-calibrated delta): **+0.080 → ≈ 0.358**;
+  * the instrument is documented to over-reward dense emissions, so plan with the conservative
+    figure, and treat anything above 0.3195 as *not yet demonstrated*.
+* The remaining gap to #1 is a **detector-quality** gap: the additions are worth 1.2 × their cost,
+  the metric's break-even is 1.0 ×. Closing 0.307 → 0.32+ requires either a higher-precision detector
+  (gravity-only conjunction, depth-banded emission) or an emission that also *removes* the
+  incumbent's false positives — the two cheapest tests are named on the
   [hypotheses page](docs/hypotheses.html) with their cost and their data needs.
 
 ## Reproduce
 
 ```bash
 bash scripts/fetch_data.sh            # sha256-verified mirrors of the competition rasters
+bash scripts/fetch_priors.sh          # the 17 prior/incumbent rasters the audit compares against
 python scripts/inspect_data.py        # re-derive every data claim from the bytes
-python scripts/run_euler.py --layer rtp          # also: tmi, mag_anom, iso_grav_anom
+python scripts/run_euler.py --layer rtp --window 10   # also: tmi, mag_anom, iso_grav_anom;
+                                                # windows 10/15/20/30 feed H40-4
 python scripts/validate_candidates.py             # instrument verification + candidate sweep
 python scripts/union_test.py                      # marginal value on the incumbent (break-even test)
 python scripts/nms_refine_test.py                 # crest refinement
+python scripts/multiscale_test.py                 # H40-4: multi-scale conjunction + budget sweep
 python scripts/euler_gate_test.py                 # Euler as a prune/gate (refuted)
 python scripts/build_submission.py                # write the artifacts + receipts
 python scripts/audit_artifacts.py                 # validation + hash/correlation novelty audit
@@ -120,6 +132,7 @@ pipeline runs in ≈2 minutes on 2 cores.
 | `src/gems40/euler.py` | Fourier derivatives, sliding-window Euler inversion, depth-aware clustering, KDE |
 | `src/gems40/metric.py` | the official distance-weighted Tversky index (soft and binary) + break-even identity |
 | `src/gems40/instrument.py` | the blocked holdout instruments (LM off-catalogue, catalogue-component) |
+| `src/gems40/stack.py` | cross-family field, crest reduction, multi-scale rank-min conjunction |
 | `src/gems40/grid.py`, `layers.py`, `pins.py` | submission I/O + the 12 portal checks, official band inventory, sha256 pins |
 | `scripts/` | fetch → inspect → invert → validate → build → audit → site |
 | `data/evidence/` | every measurement as JSON (validation, novelty, sweeps, gate test, format) |

@@ -156,6 +156,20 @@ Euler deconvolution depth-clustering submission system · repository
 <p>Rule fixed in advance: an artifact is a <strong>near-duplicate</strong> if Jaccard(support) &gt; 0.50
 <em>or</em> |Pearson r| &gt; 0.80 against any prior raster.</p>
 <pre>{
+  "GEMSDOE40-submission-nan.tif": {
+    "max_jaccard": 0.01036,
+    "max_abs_pearson": 0.00717,
+    "n_priors_compared": 16,
+    "n_near_duplicates": 0,
+    "verdict": "NEW"
+  },
+  "GEMSDOE40-submission.tif": {
+    "max_jaccard": 0.01036,
+    "max_abs_pearson": 0.00717,
+    "n_priors_compared": 16,
+    "n_near_duplicates": 0,
+    "verdict": "NEW"
+  },
   "gems40-euler-augmented-incumbent-20261005-ac1c1927-zeros.tif": {
     "max_jaccard": 0.620227,
     "max_abs_pearson": 0.978923,
@@ -168,6 +182,20 @@ Euler deconvolution depth-clustering submission system · repository
     "max_abs_pearson": 0.978923,
     "n_priors_compared": 16,
     "n_near_duplicates": 5,
+    "verdict": "NEAR-DUPLICATE"
+  },
+  "gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e-zeros.tif": {
+    "max_jaccard": 0.385586,
+    "max_abs_pearson": 0.810164,
+    "n_priors_compared": 16,
+    "n_near_duplicates": 2,
+    "verdict": "NEAR-DUPLICATE"
+  },
+  "gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e.tif": {
+    "max_jaccard": 0.385586,
+    "max_abs_pearson": 0.810164,
+    "n_priors_compared": 16,
+    "n_near_duplicates": 2,
     "verdict": "NEAR-DUPLICATE"
   },
   "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380-zeros.tif": {
@@ -190,10 +218,58 @@ Euler deconvolution depth-clustering submission system · repository
     "n_priors_compared": 16,
     "n_near_duplicates": 0,
     "verdict": "NEW"
+  },
+  "gemsdoe40-euler-si0-depthkde-20261005T230506Z-5bc279cd-nan.tif": {
+    "max_jaccard": 0.01036,
+    "max_abs_pearson": 0.00717,
+    "n_priors_compared": 16,
+    "n_near_duplicates": 0,
+    "verdict": "NEW"
+  },
+  "gemsdoe40-euler-si0-depthkde-20261005T230506Z-5bc279cd-zeros.tif": {
+    "max_jaccard": 0.01036,
+    "max_abs_pearson": 0.00717,
+    "n_priors_compared": 16,
+    "n_near_duplicates": 0,
+    "verdict": "NEW"
   }
 }</pre>
 <h2>Shipped-artifact validation</h2>
 <pre>{
+  "GEMSDOE40-submission-nan.tif": {
+    "lm_calibrated": 0.10016910033515054,
+    "lm_raw": 0.03682660938805422,
+    "cat_hidden": 0.0,
+    "n_px": 45784,
+    "on_catalogue_px": 0,
+    "folds": {
+      "foldNW": 0.09416534138895172,
+      "foldNE": 0.11714783725596731,
+      "foldSW": 0.10237025297152125,
+      "foldSE": 0.08699296972416186
+    },
+    "delta_vs_incumbent": -0.16775143123464986,
+    "folds_better_than_incumbent": 0,
+    "beats_incumbent": false,
+    "all_folds_better": false
+  },
+  "GEMSDOE40-submission.tif": {
+    "lm_calibrated": 0.10016910033515054,
+    "lm_raw": 0.03682660938805422,
+    "cat_hidden": 0.0,
+    "n_px": 45784,
+    "on_catalogue_px": 0,
+    "folds": {
+      "foldNW": 0.09416534138895172,
+      "foldNE": 0.11714783725596731,
+      "foldSW": 0.10237025297152125,
+      "foldSE": 0.08699296972416186
+    },
+    "delta_vs_incumbent": -0.16775143123464986,
+    "folds_better_than_incumbent": 0,
+    "beats_incumbent": false,
+    "all_folds_better": false
+  },
   "gems40-euler-augmented-incumbent-20261005-ac1c1927-zeros.tif": {
     "lm_calibrated": 0.30845196502413813,
     "lm_raw": 0.09766107243203892,
@@ -228,6 +304,40 @@ Euler deconvolution depth-clustering submission system · repository
     "beats_incumbent": true,
     "all_folds_better": true
   },
+  "gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e-zeros.tif": {
+    "lm_calibrated": 0.3483456137338363,
+    "lm_raw": 0.12829541219860252,
+    "cat_hidden": 0.0,
+    "n_px": 97654,
+    "on_catalogue_px": 0,
+    "folds": {
+      "foldNW": 0.20556679579821058,
+      "foldNE": 0.48065116561318755,
+      "foldSW": 0.23998995034774567,
+      "foldSE": 0.46717454317620144
+    },
+    "delta_vs_incumbent": 0.08042508216403593,
+    "folds_better_than_incumbent": 4,
+    "beats_incumbent": true,
+    "all_folds_better": true
+  },
+  "gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e.tif": {
+    "lm_calibrated": 0.3483456137338363,
+    "lm_raw": 0.12829541219860252,
+    "cat_hidden": 0.0,
+    "n_px": 97654,
+    "on_catalogue_px": 0,
+    "folds": {
+      "foldNW": 0.20556679579821058,
+      "foldNE": 0.48065116561318755,
+      "foldSW": 0.23998995034774567,
+      "foldSE": 0.46717454317620144
+    },
+    "delta_vs_incumbent": 0.08042508216403593,
+    "folds_better_than_incumbent": 4,
+    "beats_incumbent": true,
+    "all_folds_better": true
+  },
   "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380-zeros.tif": {
     "lm_calibrated": 0.11600053817805889,
     "lm_raw": 0.03316481203936073,
@@ -254,32 +364,7 @@ Euler deconvolution depth-clustering submission system · repository
     "folds": {
       "foldNW": 0.11501822013943888,
       "foldNE": 0.10752508650709851,
-      "foldSW": 0.12460145693414368,
-      "foldSE": 0.11685738913155454
-    },
-    "delta_vs_incumbent": -0.1519199933917415,
-    "folds_better_than_incumbent": 0,
-    "beats_incumbent": false,
-    "all_folds_better": false
-  },
-  "gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif": {
-    "lm_calibrated": 0.12487441578558948,
-    "lm_raw": 0.11673083128026146,
-    "cat_hidden": 0.0,
-    "n_px": 3380827,
-    "on_catalogue_px": 41542,
-    "folds": {
-      "foldNW": 0.10019156523207608,
-      "foldNE": 0.18203910140822746,
-      "foldSW": 0.0867624080539324,
-      "foldSE": 0.13050458844812202
-    },
-    "delta_vs_incumbent": -0.1430461157842109,
-    "folds_better_than_incumbent": 0,
-    "beats_incumbent": false,
-    "all_folds_better": false
-  }
-}</pre>
+      "foldSW": 0.124601</pre>
 <h2>Marginal-value test on the incumbent</h2>
 <pre>[
   {

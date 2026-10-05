@@ -41,8 +41,10 @@ if you want zero ambiguity.</p>
 <h2>3. Step by step</h2>
 <ol>
 <li><strong>Download</strong> the recommended file:
-<a href="downloads/gems40-euler-augmented-incumbent-20261005-ac1c1927.tif">gems40-euler-augmented-incumbent-20261005-ac1c1927.tif</a>
-(885 kB, sha256 <code>54aa8c6cbee0a1f858f80f89…</code>).</li>
+<a href="downloads/gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e.tif">gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e.tif</a>
+(1.28 MB, sha256 <code>33d893193f6eb009165b5c62…</code>).
+The single-scale augmentation and the unique pure-Euler artifact are listed below it if you prefer a
+smaller or a fully novel emission.</li>
 <li><strong>Check it</strong> (optional but 10 seconds):
 <pre>python -c "import rasterio,numpy as np; a=rasterio.open('gems40-euler-augmented-incumbent-20261005-ac1c1927.tif').read(1);\
 print(a.shape,a.dtype,np.nanmin(a),np.nanmax(a))"
@@ -51,7 +53,7 @@ print(a.shape,a.dtype,np.nanmin(a),np.nanmax(a))"
 DrivenData → Submit predictions</a>. Choose the single GeoTIFF. A .zip containing one GeoTIFF is
 also accepted.</li>
 <li><strong>Note field</strong> (unique name + short comment, as the form asks):
-<pre>GEMSDOE40 euler-si0-depthcluster 60710px-augmented-54aa8c6c</pre></li>
+<pre>GEMSDOE40 Euler SI=0 multi-scale depth-cluster 97654px +60,000 new-33d89319</pre></li>
 <li><strong>Record the score</strong> in <code>registry/score_ledger.csv</code> and re-run
 <code>python scripts/audit_artifacts.py</code> so the instrument calibration stays honest.</li>
 </ol>
