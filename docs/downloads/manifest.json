@@ -303,5 +303,62 @@
     "zeros_companion": "gems40-euler-augmented-incumbent-20261005-ac1c1927-zeros.tif",
     "zeros_companion_sha256": "9940d101fe0ad6a06b941bc8f5156030fbe282b67263bc82cec8c4446753b6df",
     "zeros_companion_range_ok": true
+  },
+  {
+    "filename": "gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e.tif",
+    "size_bytes": 1280006,
+    "sha256": "33d893193f6eb009165b5c62bcef1c7c945531ed19ddb2c621150a52f0c16835",
+    "shape": [
+      3730,
+      3292
+    ],
+    "count": 1,
+    "dtype": "float32",
+    "crs": "EPSG:32611",
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "nodata": null,
+    "footprint_pixels": 5167373,
+    "emitted_pixels": 97654,
+    "emitted_mass": 68459.265625,
+    "in_footprint_min": 0.0,
+    "in_footprint_max": 1.0,
+    "nan_outside_footprint": 7111787,
+    "checks": {
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "transform_exact": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_all_nan": true,
+      "outside_footprint_zero_or_nan": true,
+      "validator_range_0_1_guaranteed": true,
+      "nonzero_support": 97654,
+      "max_value": 1.0
+    },
+    "all_checks_passed": true,
+    "design": {
+      "method": "prior artifact 'top_02778_h33b2_zeros.tif' union the multi-scale rank-min Euler conjunction crests, top 60000 new pixels, >200 m from the catalogue",
+      "windows": [
+        10,
+        15,
+        20,
+        30
+      ],
+      "added_px": 60000,
+      "evidence": "data/evidence/multiscale.json"
+    },
+    "not_unique_warning": "contains a previous submission's pixels; documented as an augmentation, not as a novel pattern",
+    "zeros_companion": "gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e-zeros.tif",
+    "zeros_companion_sha256": "831459fd86d636f8dc12986316d588a4c6b9ecc8ca0c9eb5bdae9a84427e9ca6",
+    "zeros_companion_range_ok": true
   }
 ]

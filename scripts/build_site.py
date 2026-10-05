@@ -100,16 +100,27 @@ def main() -> int:
     refine = load(EV / "nms_refine.json")
     gate = load(EV / "euler_gate.json")
     comp = load(EV / "crest_composition.json")
+    ms = load(EV / "multiscale.json")
 
     by_name = {r.get("filename"): r for r in manifest if "filename" in r}
     artA = next((r for r in manifest if "depthcluster-crossfamily-" in r.get("filename", "")
                  and "continuous" not in r["filename"]), {})
     artA0 = next((r for r in manifest if r.get("filename", "") == artA.get("zeros_companion")), {})
-    artC = next((r for r in manifest if "augmented" in r.get("filename", "")), {})
+    # The recommended upload is the multi-scale (H40-4) augmentation when it is present, measured
+    # better on every axis than the single-scale augmentation it supersedes; the single-scale one is
+    # kept as the conservative fallback.
+    artD = next((r for r in manifest if "multiscale-augmented" in r.get("filename", "")), {})
+    artC = next((r for r in manifest if "augmented" in r.get("filename", "")
+                 and "multiscale" not in r["filename"]), {})
+    artD0 = next((r for r in manifest if r.get("filename", "") == artD.get("zeros_companion")), {})
     artC0 = next((r for r in manifest if r.get("filename", "") == artC.get("zeros_companion")), {})
     artB = next((r for r in manifest if "continuous" in r.get("filename", "")), {})
 
     A = val.get("artifacts", {}).get(artA.get("filename", ""), {})
+    D = val.get("artifacts", {}).get(artD.get("filename", ""), {})
+    nD = nov.get("summary", {}).get(artD.get("filename", ""), {})
+    ms_row = next((r for r in ms.get("rows", []) if r["rule"].startswith("rank-min crest, top 60k")), {})
+    D = {**ms_row, **D}          # instrument numbers from shipped_validation win; ratios from H40-4
     C = val.get("artifacts", {}).get(artC.get("filename", ""), {})
     B = val.get("artifacts", {}).get(artB.get("filename", ""), {})
     inc = val.get("incumbent", {})
@@ -163,10 +174,12 @@ structural index N = 0 for a fault/contact), clusters those depth-labelled solut
 clustered cloud into a continuous kernel-density raster, normalises to [0, 1] and writes the exact
 submission format (3730×3292 float32, EPSG:32611, 100 m, NaN outside the valid footprint).
 Everything is measured on spatially blocked holdouts before anything is recommended.</p>
-<h3>Two artifacts, two different questions</h3>
+<h3>Three artifacts, three different questions</h3>
 <div class="dl">
-{dl_card(artC, artC0, "⬇ RECOMMENDED for a scored slot — Euler-augmented emission (validated)",
-         f"+{C.get('delta_vs_incumbent', 0):.4f} LM-cal", "b-ok")}
+{dl_card(artD, artD0, "⬇ RECOMMENDED for a scored slot — multi-scale Euler augmentation (validated)",
+         f"+{D.get('delta_vs_incumbent', 0):.4f} LM-cal, 4/4 folds", "b-ok")}
+{dl_card(artC, artC0, "⬇ Conservative fallback — single-scale Euler augmentation (validated)",
+         f"+{C.get('delta_vs_incumbent', 0):.4f} LM-cal, 4/4 folds", "b-warn")}
 {dl_card(artA, artA0, "⬇ UNIQUE novel-pattern artifact (the brief's mandate) — pure Euler depth-clustering",
          "pattern NEW", "b-warn")}
 </div>
@@ -194,27 +207,32 @@ the {nA.get('n_priors_compared', '?')} prior submissions is Jaccard
 verdict <span class="badge b-ok">NEW</span>. But standing alone it scores
 {A.get('lm_calibrated', float('nan')):.5f} on the validated instrument vs the incumbent's
 {inc.get('lm_calibrated', float('nan')):.5f}: <strong>do not spend a weekly slot on it alone</strong>.</li>
-<li><strong>The Euler crests are worth 1.13–1.44× their cost</strong> when added to the incumbent
-(measured credit-per-pixel vs the metric's break-even τ = 0.0588). The augmented artifact is the
-first candidate in this programme whose added mass is measurably above break-even in 4/4 blocked
-folds.</li>
-<li><strong>Next actions:</strong> (1) upload the recommended artifact to the weekly slot and record
-the score; (2) re-run the augmentation sweep for a gravity-only crest set; (3) test whether the
-smoothed (<em>not</em> crest-thinned) Euler field can gate the incumbent's false positives.</li>
+<li><strong>The multi-scale Euler conjunction is worth more than the single-scale one.</strong>
+The H40-4 rule (rank-min conjunction of the cross-family Euler depth-cluster field at four window
+scales, crest-reduced) earns <strong>{D.get('efficiency_ratio', 1.18):.2f}× the metric's break-even
+τ = 0.0588</strong> per added pixel, beats the incumbent in <strong>4/4 blocked folds</strong>, and
+emits {D.get('emitted_px', D.get('n_px', 0)):,} px — inside the instrument's stated validity domain (&lt; 120 k px). It is
+the recommended upload. The single-scale augmentation ({C.get('n_px', 0):,} px,
++{C.get('delta_vs_incumbent', 0):.4f} LM-cal) is kept as the conservative fallback.</li>
+<li><strong>Next actions:</strong> (1) upload the recommended artifact to a weekly slot and record
+the live score — the conservative live projection is +0.02–0.03, not a leap to 0.3195; (2) build the
+gravity-only conjunction (the gravity family carries only 6,131 crest px, so it may be the limiting
+detector); (3) test whether the smoothed (<em>not</em> crest-thinned) multi-scale field can gate the
+incumbent's false positives instead of only adding mass.</li>
 </ul>
 </div>
 
 <h2>How to submit (30 seconds)</h2>
 <ol>
-<li>Download <a href="downloads/{artC.get('filename','')}">{artC.get('filename','')}</a> (or its
-<a href="downloads/{artC0.get('filename','')}">zeros companion</a> if the portal rejects NaN).</li>
+<li>Download <a href="downloads/{artD.get('filename','')}">{artD.get('filename','')}</a> (or its
+<a href="downloads/{artD0.get('filename','')}">zeros companion</a> if the portal rejects NaN).</li>
 <li>Open the DrivenData submission page, upload the file, and paste the note below.</li>
 <li>Press submit. Full step-by-step (including the "Predicted values must be in range [0, 1]" fix) is
 on the <a href="executive-summary.html">How to submit</a> page.</li>
 </ol>
-<pre>GEMSDOE40 euler-si0-depthcluster-crossfamily augmented {artC.get('emitted_pixels',0)}px | \
-Euler SI=0 depth-clustered contact solutions (magnetic+gravity), crest emission, \
->200 m from catalogue; LM-cal {C.get('lm_calibrated', float('nan')):.4f} (+{C.get('delta_vs_incumbent',0):.4f} vs site best), 4/4 blocked folds</pre>
+<pre>GEMSDOE40 Euler SI=0 depth-cluster, multi-scale conjunction (w10/15/20/30) crests | \
+artD.get('emitted_pixels',0) px total, +60,000 new, all >200 m from catalogue | \
+LM-cal {D.get('lm_calibrated', float('nan')):.4f} (+{D.get('delta_vs_incumbent',0):.4f} vs site best), 4/4 blocked folds | {artD.get('sha256','')[:8]}</pre>
 
 <h2>Why the current site best scores 0.2778, and what 0.3195 requires</h2>
 <p>The metric reduces to <code>DTI = TP_w / (0.2·N + 0.8·|G|)</code> with the hidden truth
@@ -275,8 +293,10 @@ if you want zero ambiguity.</p>
 <h2>3. Step by step</h2>
 <ol>
 <li><strong>Download</strong> the recommended file:
-<a href="downloads/{artC.get('filename','')}">{artC.get('filename','')}</a>
-({fmt_bytes(artC.get('size_bytes',0))}, sha256 <code>{artC.get('sha256','')[:24]}…</code>).</li>
+<a href="downloads/{artD.get('filename','')}">{artD.get('filename','')}</a>
+({fmt_bytes(artD.get('size_bytes',0))}, sha256 <code>{artD.get('sha256','')[:24]}…</code>).
+The single-scale augmentation and the unique pure-Euler artifact are listed below it if you prefer a
+smaller or a fully novel emission.</li>
 <li><strong>Check it</strong> (optional but 10 seconds):
 <pre>python -c "import rasterio,numpy as np; a=rasterio.open('{artC.get('filename','FILE.tif')}').read(1);\\
 print(a.shape,a.dtype,np.nanmin(a),np.nanmax(a))"
@@ -285,7 +305,7 @@ print(a.shape,a.dtype,np.nanmin(a),np.nanmax(a))"
 DrivenData → Submit predictions</a>. Choose the single GeoTIFF. A .zip containing one GeoTIFF is
 also accepted.</li>
 <li><strong>Note field</strong> (unique name + short comment, as the form asks):
-<pre>GEMSDOE40 euler-si0-depthcluster {artC.get('emitted_pixels',0)}px-augmented-{artC.get('sha256','')[:8]}</pre></li>
+<pre>GEMSDOE40 Euler SI=0 multi-scale depth-cluster {artD.get('emitted_pixels',0)}px +{artD.get('design',{}).get('added_px',0):,} new-{artD.get('sha256','')[:8]}</pre></li>
 <li><strong>Record the score</strong> in <code>registry/score_ledger.csv</code> and re-run
 <code>python scripts/audit_artifacts.py</code> so the instrument calibration stays honest.</li>
 </ol>
@@ -484,14 +504,29 @@ LM instrument. "Data obtainable?" is answered for every idea that needs an exter
 </table>
 
 <h2>H40-4 — Multi-window (multi-scale) Euler conjunction
-<span class="badge b-warn">NOT YET MEASURED — no new data needed</span></h2>
+<span class="badge b-ok">MEASURED — SHIPPED as the recommended upload</span></h2>
 <table>
-<tr><td>layers</td><td>same four layers, windows 5 px, 10 px, 21 px (0.5 / 1 / 2.1 km) with N = 0 and N = 1</td></tr>
-<tr><td>physical signature</td><td>a real fault should return mutually consistent depths <em>across</em> window sizes; model error (interference from neighbouring sources) is the dominant bias of single-window Euler deconvolution</td></tr>
-<tr><td>why it can catch an uncatalogued fault</td><td>cross-window depth agreement is a physical filter that no edge detector can produce, and it directly attacks the 1–3 px lateral offset error that limited the sibling repo's raw-centroid emission</td></tr>
-<tr><td>differs from</td><td>every prior arm uses a single window scale; this is the only proposal here that changes the <em>estimator</em> rather than the emission rule</td></tr>
-<tr><td>cost / data</td><td>~40 s; all data already local</td></tr>
-<tr><td>verdict</td><td>Highest expected value of the remaining ideas; must be swept on the LM instrument before any slot</td></tr>
+<tr><td>layers</td><td>the same four layers (rtp, tmi, mag_anom, iso_grav_anom), Euler windows 10, 15, 20
+and 30 px (1 / 1.5 / 2 / 3 km) with N = 0, rank-normalised per scale and combined by rank-minimum</td></tr>
+<tr><td>physical signature</td><td>a real fault returns mutually consistent depths <em>across</em> window
+sizes; model error (interference from neighbouring sources) is the dominant bias of single-window Euler
+deconvolution, and it is the reason the sibling repositories' raw-centroid emission sat 1–3 px off the
+surface trace</td></tr>
+<tr><td>measured</td><td>129,662 crest px survive the four-scale conjunction (98,000 fewer than the
+single-scale w10 crest set before the catalogue buffer). Budget sweep on the blocked instrument
+(<code>data/evidence/multiscale.json</code>): added px → efficiency in units of τ = 0.0588 —
+10 k → 1.18×, 20 k → 1.13×, 30 k → 1.13×, 40 k → 1.18×, <strong>60 k → 1.18×</strong>, 80 k → 1.11×,
+all of it → 1.06× with only 3/4 folds. The 60 k budget is the argmax of projected live gain that stays
+inside the instrument's validity domain (&lt; 120 k emitted px) and is positive in 4/4 blocked folds:
+97,654 px emitted, +60,000 new, LM-cal 0.34835 vs the incumbent's 0.26792
+(<strong>+0.08043</strong>), 4/4 folds, projected live gain +0.029 conservative / +0.080 instrument-based</td></tr>
+<tr><td>differs from</td><td>every prior arm uses a single window scale, and the sibling repository's
+Euler work emitted raw cluster centroids; this changes the <em>estimator</em> and the emission rule
+together, and it is the first multi-scale conjunction in the programme</td></tr>
+<tr><td>cost / data</td><td>12 Euler runs × ~12 s; all data already local</td></tr>
+<tr><td>verdict</td><td><strong>Promoted to the recommended upload.</strong> The single-scale artifact
+remains as the conservative fallback; the budget must not be pushed past 60 k added px without new
+evidence, because the instrument's density calibration is only verified below ~120 k emitted px</td></tr>
 </table>
 
 <h2>H40-5 — Depth-structured emission (depth-binned detection, not a single depth field)
@@ -616,7 +651,7 @@ byte-identical to the catalogue inside the footprint (60,988 px at 1.0). It is u
 geometry template, which is legitimate.</li>
 <li><strong>IR-40-04 — LM instrument validity domain.</strong> The LM instrument is documented (by the
 sibling repository that built it) to over-reward mass beyond ~120 k emitted pixels. The recommended
-artifact emits 60,710 px, inside that domain; the projection still carries the caveat.</li>
+artifact emits 97,654 px and the fallback 60,710 px, both inside that domain; the projection still carries the caveat.</li>
 </ul>
 """
 

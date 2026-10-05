@@ -5,9 +5,44 @@
   "artifacts": [
     "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif",
     "gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif",
-    "gems40-euler-augmented-incumbent-20261005-ac1c1927.tif"
+    "gems40-euler-augmented-incumbent-20261005-ac1c1927.tif",
+    "gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e.tif"
   ],
   "validation": {
+    "GEMSDOE40-submission-nan.tif": {
+      "lm_calibrated": 0.10016910033515054,
+      "lm_raw": 0.03682660938805422,
+      "cat_hidden": 0.0,
+      "n_px": 45784,
+      "on_catalogue_px": 0,
+      "folds": {
+        "foldNW": 0.09416534138895172,
+        "foldNE": 0.11714783725596731,
+        "foldSW": 0.10237025297152125,
+        "foldSE": 0.08699296972416186
+      },
+      "delta_vs_incumbent": -0.16775143123464986,
+      "folds_better_than_incumbent": 0,
+      "beats_incumbent": false,
+      "all_folds_better": false
+    },
+    "GEMSDOE40-submission.tif": {
+      "lm_calibrated": 0.10016910033515054,
+      "lm_raw": 0.03682660938805422,
+      "cat_hidden": 0.0,
+      "n_px": 45784,
+      "on_catalogue_px": 0,
+      "folds": {
+        "foldNW": 0.09416534138895172,
+        "foldNE": 0.11714783725596731,
+        "foldSW": 0.10237025297152125,
+        "foldSE": 0.08699296972416186
+      },
+      "delta_vs_incumbent": -0.16775143123464986,
+      "folds_better_than_incumbent": 0,
+      "beats_incumbent": false,
+      "all_folds_better": false
+    },
     "gems40-euler-augmented-incumbent-20261005-ac1c1927-zeros.tif": {
       "lm_calibrated": 0.30845196502413813,
       "lm_raw": 0.09766107243203892,
@@ -38,6 +73,40 @@
         "foldSE": 0.29497998592413954
       },
       "delta_vs_incumbent": 0.04053143345433774,
+      "folds_better_than_incumbent": 4,
+      "beats_incumbent": true,
+      "all_folds_better": true
+    },
+    "gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e-zeros.tif": {
+      "lm_calibrated": 0.3483456137338363,
+      "lm_raw": 0.12829541219860252,
+      "cat_hidden": 0.0,
+      "n_px": 97654,
+      "on_catalogue_px": 0,
+      "folds": {
+        "foldNW": 0.20556679579821058,
+        "foldNE": 0.48065116561318755,
+        "foldSW": 0.23998995034774567,
+        "foldSE": 0.46717454317620144
+      },
+      "delta_vs_incumbent": 0.08042508216403593,
+      "folds_better_than_incumbent": 4,
+      "beats_incumbent": true,
+      "all_folds_better": true
+    },
+    "gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e.tif": {
+      "lm_calibrated": 0.3483456137338363,
+      "lm_raw": 0.12829541219860252,
+      "cat_hidden": 0.0,
+      "n_px": 97654,
+      "on_catalogue_px": 0,
+      "folds": {
+        "foldNW": 0.20556679579821058,
+        "foldNE": 0.48065116561318755,
+        "foldSW": 0.23998995034774567,
+        "foldSE": 0.46717454317620144
+      },
+      "delta_vs_incumbent": 0.08042508216403593,
       "folds_better_than_incumbent": 4,
       "beats_incumbent": true,
       "all_folds_better": true
@@ -92,9 +161,57 @@
       "folds_better_than_incumbent": 0,
       "beats_incumbent": false,
       "all_folds_better": false
+    },
+    "gemsdoe40-euler-si0-depthkde-20261005T230506Z-5bc279cd-nan.tif": {
+      "lm_calibrated": 0.10016910033515054,
+      "lm_raw": 0.03682660938805422,
+      "cat_hidden": 0.0,
+      "n_px": 45784,
+      "on_catalogue_px": 0,
+      "folds": {
+        "foldNW": 0.09416534138895172,
+        "foldNE": 0.11714783725596731,
+        "foldSW": 0.10237025297152125,
+        "foldSE": 0.08699296972416186
+      },
+      "delta_vs_incumbent": -0.16775143123464986,
+      "folds_better_than_incumbent": 0,
+      "beats_incumbent": false,
+      "all_folds_better": false
+    },
+    "gemsdoe40-euler-si0-depthkde-20261005T230506Z-5bc279cd-zeros.tif": {
+      "lm_calibrated": 0.10016910033515054,
+      "lm_raw": 0.03682660938805422,
+      "cat_hidden": 0.0,
+      "n_px": 45784,
+      "on_catalogue_px": 0,
+      "folds": {
+        "foldNW": 0.09416534138895172,
+        "foldNE": 0.11714783725596731,
+        "foldSW": 0.10237025297152125,
+        "foldSE": 0.08699296972416186
+      },
+      "delta_vs_incumbent": -0.16775143123464986,
+      "folds_better_than_incumbent": 0,
+      "beats_incumbent": false,
+      "all_folds_better": false
     }
   },
   "novelty": {
+    "GEMSDOE40-submission-nan.tif": {
+      "max_jaccard": 0.01036,
+      "max_abs_pearson": 0.00717,
+      "n_priors_compared": 16,
+      "n_near_duplicates": 0,
+      "verdict": "NEW"
+    },
+    "GEMSDOE40-submission.tif": {
+      "max_jaccard": 0.01036,
+      "max_abs_pearson": 0.00717,
+      "n_priors_compared": 16,
+      "n_near_duplicates": 0,
+      "verdict": "NEW"
+    },
     "gems40-euler-augmented-incumbent-20261005-ac1c1927-zeros.tif": {
       "max_jaccard": 0.620227,
       "max_abs_pearson": 0.978923,
@@ -107,6 +224,20 @@
       "max_abs_pearson": 0.978923,
       "n_priors_compared": 16,
       "n_near_duplicates": 5,
+      "verdict": "NEAR-DUPLICATE"
+    },
+    "gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e-zeros.tif": {
+      "max_jaccard": 0.385586,
+      "max_abs_pearson": 0.810164,
+      "n_priors_compared": 16,
+      "n_near_duplicates": 2,
+      "verdict": "NEAR-DUPLICATE"
+    },
+    "gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e.tif": {
+      "max_jaccard": 0.385586,
+      "max_abs_pearson": 0.810164,
+      "n_priors_compared": 16,
+      "n_near_duplicates": 2,
       "verdict": "NEAR-DUPLICATE"
     },
     "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380-zeros.tif": {
@@ -126,6 +257,20 @@
     "gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif": {
       "max_jaccard": 0.050892,
       "max_abs_pearson": 0.054955,
+      "n_priors_compared": 16,
+      "n_near_duplicates": 0,
+      "verdict": "NEW"
+    },
+    "gemsdoe40-euler-si0-depthkde-20261005T230506Z-5bc279cd-nan.tif": {
+      "max_jaccard": 0.01036,
+      "max_abs_pearson": 0.00717,
+      "n_priors_compared": 16,
+      "n_near_duplicates": 0,
+      "verdict": "NEW"
+    },
+    "gemsdoe40-euler-si0-depthkde-20261005T230506Z-5bc279cd-zeros.tif": {
+      "max_jaccard": 0.01036,
+      "max_abs_pearson": 0.00717,
       "n_priors_compared": 16,
       "n_near_duplicates": 0,
       "verdict": "NEW"
