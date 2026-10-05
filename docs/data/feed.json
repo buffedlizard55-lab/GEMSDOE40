@@ -1,0 +1,134 @@
+{
+  "generated_from": "data/evidence/*.json",
+  "site_best_owner_reported": 0.2778,
+  "leaderboard_best": 0.3195,
+  "artifacts": [
+    "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif",
+    "gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif",
+    "gems40-euler-augmented-incumbent-20261005-ac1c1927.tif"
+  ],
+  "validation": {
+    "gems40-euler-augmented-incumbent-20261005-ac1c1927-zeros.tif": {
+      "lm_calibrated": 0.30845196502413813,
+      "lm_raw": 0.09766107243203892,
+      "cat_hidden": 0.0,
+      "n_px": 60710,
+      "on_catalogue_px": 0,
+      "folds": {
+        "foldNW": 0.2178009801248138,
+        "foldNE": 0.48369343827171746,
+        "foldSW": 0.23733345577588175,
+        "foldSE": 0.29497998592413954
+      },
+      "delta_vs_incumbent": 0.04053143345433774,
+      "folds_better_than_incumbent": 4,
+      "beats_incumbent": true,
+      "all_folds_better": true
+    },
+    "gems40-euler-augmented-incumbent-20261005-ac1c1927.tif": {
+      "lm_calibrated": 0.30845196502413813,
+      "lm_raw": 0.09766107243203892,
+      "cat_hidden": 0.0,
+      "n_px": 60710,
+      "on_catalogue_px": 0,
+      "folds": {
+        "foldNW": 0.2178009801248138,
+        "foldNE": 0.48369343827171746,
+        "foldSW": 0.23733345577588175,
+        "foldSE": 0.29497998592413954
+      },
+      "delta_vs_incumbent": 0.04053143345433774,
+      "folds_better_than_incumbent": 4,
+      "beats_incumbent": true,
+      "all_folds_better": true
+    },
+    "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380-zeros.tif": {
+      "lm_calibrated": 0.11600053817805889,
+      "lm_raw": 0.03316481203936073,
+      "cat_hidden": 0.0,
+      "n_px": 20000,
+      "on_catalogue_px": 272,
+      "folds": {
+        "foldNW": 0.11501822013943888,
+        "foldNE": 0.10752508650709851,
+        "foldSW": 0.12460145693414368,
+        "foldSE": 0.11685738913155454
+      },
+      "delta_vs_incumbent": -0.1519199933917415,
+      "folds_better_than_incumbent": 0,
+      "beats_incumbent": false,
+      "all_folds_better": false
+    },
+    "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif": {
+      "lm_calibrated": 0.11600053817805889,
+      "lm_raw": 0.03316481203936073,
+      "cat_hidden": 0.0,
+      "n_px": 20000,
+      "on_catalogue_px": 272,
+      "folds": {
+        "foldNW": 0.11501822013943888,
+        "foldNE": 0.10752508650709851,
+        "foldSW": 0.12460145693414368,
+        "foldSE": 0.11685738913155454
+      },
+      "delta_vs_incumbent": -0.1519199933917415,
+      "folds_better_than_incumbent": 0,
+      "beats_incumbent": false,
+      "all_folds_better": false
+    },
+    "gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif": {
+      "lm_calibrated": 0.12487441578558948,
+      "lm_raw": 0.11673083128026146,
+      "cat_hidden": 0.0,
+      "n_px": 3380827,
+      "on_catalogue_px": 41542,
+      "folds": {
+        "foldNW": 0.10019156523207608,
+        "foldNE": 0.18203910140822746,
+        "foldSW": 0.0867624080539324,
+        "foldSE": 0.13050458844812202
+      },
+      "delta_vs_incumbent": -0.1430461157842109,
+      "folds_better_than_incumbent": 0,
+      "beats_incumbent": false,
+      "all_folds_better": false
+    }
+  },
+  "novelty": {
+    "gems40-euler-augmented-incumbent-20261005-ac1c1927-zeros.tif": {
+      "max_jaccard": 0.620227,
+      "max_abs_pearson": 0.978923,
+      "n_priors_compared": 16,
+      "n_near_duplicates": 5,
+      "verdict": "NEAR-DUPLICATE"
+    },
+    "gems40-euler-augmented-incumbent-20261005-ac1c1927.tif": {
+      "max_jaccard": 0.620227,
+      "max_abs_pearson": 0.978923,
+      "n_priors_compared": 16,
+      "n_near_duplicates": 5,
+      "verdict": "NEAR-DUPLICATE"
+    },
+    "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380-zeros.tif": {
+      "max_jaccard": 0.004879,
+      "max_abs_pearson": 0.004953,
+      "n_priors_compared": 16,
+      "n_near_duplicates": 0,
+      "verdict": "NEW"
+    },
+    "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif": {
+      "max_jaccard": 0.004879,
+      "max_abs_pearson": 0.004953,
+      "n_priors_compared": 16,
+      "n_near_duplicates": 0,
+      "verdict": "NEW"
+    },
+    "gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif": {
+      "max_jaccard": 0.050892,
+      "max_abs_pearson": 0.054955,
+      "n_priors_compared": 16,
+      "n_near_duplicates": 0,
+      "verdict": "NEW"
+    }
+  }
+}
