@@ -78,6 +78,21 @@ def main() -> int:
     h33 = load(H33)
     instruments = load(INSTRUMENTS)
     session2 = load(SESSION2) if SESSION2.is_file() else None
+    h4line = None
+    _h4z = DOCS / "downloads/gemsdoe40-euler-line-ring-pruned-60000px-20261006T032708Z-8dafb186-zeros.tif"
+    if _h4z.is_file():
+        def _h4_receipt(name):
+            return json.loads((DOCS / "data" / name).read_text())
+        _za = _h4_receipt("h4_shipped_audit_zeros.json")
+        _na = _h4_receipt("h4_shipped_audit_nan.json")
+        h4line = {
+            "zeros_tif": {"filename": _za["file"].split("/")[-1], "sha256": _za["sha256"], "bytes": _za["bytes"]},
+            "nan_tif": {"filename": _na["file"].split("/")[-1], "sha256": _na["sha256"], "bytes": _na["bytes"]},
+            "zip": {"filename": _h4z.with_suffix(".zip").name, "sha256": None, "bytes": None},
+        }
+        import hashlib as _hashlib
+        h4line["zip"]["sha256"] = _hashlib.sha256(_h4z.with_suffix(".zip").read_bytes()).hexdigest()
+        h4line["zip"]["bytes"] = _h4z.with_suffix(".zip").stat().st_size
 
     published = audit["published"]
     name = published["name"]
@@ -189,6 +204,9 @@ refreshes it daily and the file is never fabricated.</p>
             rows.append(f'<tr><td class="mono"><a href="{path_.replace("docs/", "")}">{name_}</a></td>'
                         f'<td class="num">{sha_[:16]}…</td><td>{esc(status_)}</td></tr>')
         for label, entry in (("portal-safe zeros twin", asa["portal_safe_twin"]),
+                             ("H4-line portal-safe zeros", h4line["zeros_tif"]),
+                             ("H4-line NaN twin", h4line["nan_tif"]),
+                             ("H4-line zeros ZIP", h4line["zip"]),
                              ("zeros ZIP", asa["zip"])):
             rows.append(f'<tr><td class="mono"><a href="downloads/{entry["filename"]}">{entry["filename"]}</a></td>'
                         f'<td class="num">{entry["sha256"][:16]}…</td><td>HOLD — DO NOT SUBMIT</td></tr>')
@@ -208,7 +226,12 @@ refreshes it daily and the file is never fabricated.</p>
                           '<a href="downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-nan.tif">NaN twin</a>. '
                           '<strong>HOLD — DO NOT SUBMIT H40</strong>, and '
                           '<strong>HOLD — DO NOT SUBMIT H7 or H40</strong> for the earlier arms: '
-                          '<strong>Nothing earlier is cleared either</strong>. Every promotion instrument used '
+                          '<strong>Nothing earlier is cleared either</strong> — including the H4-line ring-pruned '
+                          'artifact shipped by the parallel PR #17, which failed its own frozen four-fold gate '
+                          '(better than the h33-2-b2 reference on 1 of 4 folds; projected 0.197, interval '
+                          '0.176–0.219; write-up <a href="research/h4-euler-depthcluster.html">'
+                          'research/h4-euler-depthcluster.html</a>, <a href="limitations.html">limitations.html</a>). '
+                          'Every promotion instrument used '
                           'on them is <em>withdrawn</em> by the sixteen-score audit '
                           '(<a href="data/instrument-audit-20261006.json">instrument-audit-20261006.json</a>).</p>')
 
@@ -352,8 +375,8 @@ name, the note, and what is and is not claimed about it. Nothing in this reposit
 <button class="copy" data-copy="submission-name">Copy name</button>
 <h3>Short note for the submission form</h3><div class="codebox" id="submission-note">{esc(note)}</div>
 <button class="copy" data-copy="submission-note">Copy note</button>
-<h3>SHA-256 of the exact download</h3><div class="codebox" id="sha">{sha256}</div>
-<button class="copy" data-copy="sha">Copy SHA-256</button>
+<h3>SHA-256 of the exact download</h3><div class="codebox" id="file-sha">{sha256}</div>
+<button class="copy" data-copy="file-sha">Copy SHA-256</button>
 <p class="micro"><a href="downloads/{Path(cloud["path"]).name}">Depth-labelled solution cloud</a> ·
 <a href="data/h8-lineament-audit.json">Audit receipt</a> ·
 <a href="data/h8-lineament-generation.json">Generation receipt</a> ·
@@ -688,6 +711,7 @@ no local instrument ranks the family's recorded scores, so no weekly slot was us
 · <a href="docs/evidence.html">Evidence</a> · <a href="docs/hypotheses.html">Hypotheses</a></p>
 <p><strong>HOLD — DO NOT SUBMIT H40</strong>, and <strong>HOLD — DO NOT SUBMIT H7 or H40</strong> for the earlier arms:
 <strong>Nothing earlier is cleared either</strong>. Retained, still downloadable, still held:
+<a href="docs/downloads/gemsdoe40-euler-line-ring-pruned-60000px-20261006T032708Z-8dafb186-zeros.tif">H4-line ring-pruned</a> ·
 <a href="docs/downloads/{esc(session2["filename"])}">H13 crest-binary</a> ·
 <a href="docs/downloads/{esc(session2["sibling_candidate"]["filename"])}">H8 trace-locked depth-KDE</a> ·
 <a href="docs/downloads/{esc(session2["h8asa_candidate"]["filename"])}">H8-ASA analytic-signal depth-KDE</a> ·

@@ -107,3 +107,26 @@ def test_site_states_that_no_local_instrument_reaches_the_promotion_bar():
         assert "instrument-audit-20261006.json" in text
     assert "withdrawn" in index.lower()
     assert "≥ 0.800" in evidence
+
+
+def test_parallel_h4_line_artifact_is_pinned_and_still_held():
+    """PR #17's shipped H4-line emission keeps its measured bytes and its failed gate."""
+    import hashlib
+    import json
+    index = (DOCS / "index.html").read_text(encoding="utf-8")
+    summary = (DOCS / "executive-summary.html").read_text(encoding="utf-8")
+    for name in ("h4_shipped_audit_zeros.json", "h4_shipped_audit_nan.json"):
+        receipt = json.loads((DOCS / "data" / name).read_text())
+        path = Path(__file__).resolve().parents[1] / receipt["file"]
+        assert path.is_file()
+        assert hashlib.sha256(path.read_bytes()).hexdigest() == receipt["sha256"]
+        assert receipt["all_checks_pass"] is True
+        assert receipt["positive_px"] == 60_000
+        assert path.name in index and path.name in summary
+    gate = json.loads((DOCS / "data" / "h4_blocked_validation_shipped.json").read_text())
+    candidate = next(iter(gate["candidates"].values()))
+    assert candidate["emitted_pixels"] == 60_000 and candidate["on_catalogue_pixels"] == 0
+    assert candidate["folds_better_than_reference"] == 1 and candidate["beats_reference"] is False
+    assert candidate["projected_leaderboard_dti"] < 0.2778
+    assert (DOCS / "research/h4-euler-depthcluster.html").is_file()
+    assert (DOCS / "limitations.html").is_file()

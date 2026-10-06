@@ -247,6 +247,20 @@ def verify_evidence() -> list[str]:
         check("Maximize P(Win)" in readme and "Own the Outcome" in readme, "core values lost")
         check(c["filename"] in readme, "README does not point at the current download")
 
+        # Parallel PR #17's shipped H4-line artifact: bytes pinned through its own audit receipts.
+        for stem, key in (("zeros", "h4_shipped_audit_zeros.json"), ("nan", "h4_shipped_audit_nan.json")):
+            receipt = load(key)
+            path = ROOT / receipt["file"]
+            check(path.is_file() and digest(path) == receipt["sha256"],
+                  f"retained H4-line {stem} bytes changed")
+            check(receipt["all_checks_pass"] is True, f"retained H4-line {stem} audit no longer passes")
+            check(path.name in index_text and path.name in summary_text,
+                  f"retained H4-line {stem} download missing from the site")
+        check((DOCS / "downloads/gemsdoe40-euler-line-ring-pruned-60000px-20261006T032708Z-8dafb186-zeros.zip").is_file(),
+              "retained H4-line ZIP missing")
+        check((DOCS / "research/h4-euler-depthcluster.html").is_file() and (DOCS / "limitations.html").is_file(),
+              "H4-line write-up or limitations page missing")
+
         h7 = load("validation-h7-20261006.json")
         h7_path = DOCS / "downloads/gemsdoe40-h7-rtp-euler-gravity-context-3d-kde-20261006-998f660f.tif"
         check(digest(h7_path) == h7["candidate_format_receipt"]["sha256"], "retained H7 bytes changed")

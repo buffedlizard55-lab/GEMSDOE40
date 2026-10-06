@@ -42,6 +42,7 @@ Every earlier artifact keeps its own bytes, receipts and no-go status; none is a
 | H13 crest-binary (session 2) | `gemsdoe40-h13-crest-binary-20261006-a5d5b80a8476.tif` | `c202a579ce33ea38…` | HOLD — DO NOT SUBMIT |
 | H8 trace-locked depth-KDE (session 2) | `gemsdoe40-h8-tracelock-depthkde-20261006-373fa53b12e9.tif` | `6c32147db39cd34e…` | HOLD — DO NOT SUBMIT |
 | H8-ASA analytic-signal depth-KDE (session 3) | `gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-nan.tif` | `b00328ce401cf5be…` | HOLD — DO NOT SUBMIT |
+| H4-line ring-pruned (parallel PR #17) | `gemsdoe40-euler-line-ring-pruned-60000px-20261006T032708Z-8dafb186-zeros.tif` (+ NaN twin, + ZIP) | `8dafb1860367e7d5…` | HOLD — DO NOT SUBMIT: failed its own four-fold gate (1 of 4 folds; projected 0.197 [0.176–0.219]) |
 | H40 run-2 dotted emission | `gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-zeros.tif` (+ NaN twin) | pinned in its audit JSON | HOLD — DO NOT SUBMIT H40 |
 | H7 RTP Euler + gravity-context KDE | `gemsdoe40-h7-rtp-euler-gravity-context-3d-kde-20261006-998f660f.tif` | pinned in `validation-h7-20261006.json` | HOLD — DO NOT SUBMIT H7 or H40 |
 | H4 contact-offset depth-KDE | `gemsdoe40-h4-contact-offset-depthkde-20261006-fab9f6619c02.tif` | `ee73ffd76fabbaa1…` | HOLD — DO NOT SUBMIT H7 or H40 |
