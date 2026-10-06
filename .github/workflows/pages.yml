@@ -14,7 +14,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: github-pages
+  group: pages
   cancel-in-progress: false
 
 jobs:
@@ -26,6 +26,13 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - name: Select one Pages publisher and prevent legacy deployment races
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api --method PUT "repos/$GITHUB_REPOSITORY/pages" -f build_type=workflow
+          mode=$(gh api "repos/$GITHUB_REPOSITORY/pages" --jq .build_type)
+          test "$mode" = workflow
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'

@@ -2,6 +2,10 @@ name: Reproduce H4 and H8 on CPU (no competition upload)
 
 on:
   workflow_dispatch:
+  # Also verify workflow changes through normal PR permissions. This avoids
+  # requiring an external integration to have Actions-dispatch privileges.
+  pull_request:
+    paths: ['.github/workflows/reproduce.yml']
 
 permissions:
   contents: read
