@@ -1,47 +1,81 @@
 {
-  "bytes": 3595075,
-  "canonical_pixels_sha256": "59812bc4797963dfd87c4737bce95839a789e41b9a3d94055eccae0cd3543a37",
+  "archived_candidate_h4": {
+    "filename": "gemsdoe40-h4-contact-offset-depthkde-20261006-fab9f6619c02.tif",
+    "sha256": "ee73ffd76fabbaa1a2e77e17f57947a7db858916d713801e0c3502e49f6acabb",
+    "status": "HOLD \u2014 DO NOT SUBMIT"
+  },
+  "bytes": 363453,
+  "canonical_pixels_sha256": "a5d5b80a8476f13bf1ea19dd8a7675a1d2bd2705281399c17baafff8b91675fc",
   "cloud": {
-    "bytes": 5478496,
-    "path": "docs/downloads/gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-cloud.csv.gz",
-    "records": 349445,
-    "sha256": "0f0cde332a1412f253192719b728eb6f9c5fe65e2fc80a5fb842b8337038442a",
-    "weighted": {
-      "gravity": 160567,
-      "magnetic": 188878
-    }
+    "bytes": 2183131,
+    "path": "docs/downloads/h4-euler-solutions.csv.gz",
+    "records": 46656,
+    "sha256": "6bed30b224981ef1064256d696c585b76f438011bbae6c0a16c00e6e6f5922ba"
   },
   "download_purpose": "Distinct submission-format research artifact; NOT approved for upload",
-  "evidence": [
-    "docs/data/h8-validation.json",
-    "docs/reports/h8-results-20261006.md",
-    "docs/research/h8-preregistration-20261006.md"
-  ],
-  "experiment": "H8",
-  "filename": "gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-nan.tif",
-  "gate": {
-    "block_wins": "1/16",
-    "passed": false,
-    "pooled_proxy_dti": 0.024128,
-    "threshold": 0.091550266181
+  "experiment": "H13",
+  "filename": "gemsdoe40-h13-crest-binary-20261006-a5d5b80a8476.tif",
+  "h8asa_candidate": {
+    "bytes": 3595075,
+    "canonical_pixels_sha256": "59812bc4797963dfd87c4737bce95839a789e41b9a3d94055eccae0cd3543a37",
+    "cloud": {
+      "bytes": 5478496,
+      "path": "docs/downloads/gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-cloud.csv.gz",
+      "records": 349445,
+      "sha256": "0f0cde332a1412f253192719b728eb6f9c5fe65e2fc80a5fb842b8337038442a",
+      "weighted": {
+        "gravity": 160567,
+        "magnetic": 188878
+      }
+    },
+    "construction": "Analytic-signal local-wavenumber depth cells (ASA/SPI family), tapered FFT, H4-Euler corroboration, sigma=2 KDE, soft catalogue-flank ramp",
+    "experiment": "H8-ASA",
+    "filename": "gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-nan.tif",
+    "gate": {
+      "block_wins": "1/16",
+      "passed": false,
+      "pooled_proxy_dti": 0.024128,
+      "threshold": 0.091550266181
+    },
+    "name": "GEMSDOE40-H8-ASA-SPI-b845d3ad449e",
+    "note": "GEMSDOE40 H8 | analytic-signal local-wavenumber depth cells x H4-Euler corroboration; soft catalogue ramp; continuous [0,1]; HOLD: gate failed; unscored",
+    "note_characters": 152,
+    "organizer_score": null,
+    "path": "docs/downloads/gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-nan.tif",
+    "portal_safe_twin": {
+      "bytes": 3521378,
+      "filename": "gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-zeros.tif",
+      "sha256": "8c262620a769e7dbc8f8ee89aa92a633c91507752b398eec463932adea87c01b"
+    },
+    "receipts": [
+      "docs/data/h8asa-generation.json",
+      "docs/data/h8asa-format.json",
+      "docs/data/h8asa-uniqueness.json",
+      "docs/data/h8asa-validation.json",
+      "docs/data/h8asa-reproduction.json"
+    ],
+    "sha256": "b00328ce401cf5be5c149e668efbbaa911815fe1f2847719c3ff8576fff2ea31",
+    "slot_eligible": false,
+    "status": "HOLD \u2014 DO NOT SUBMIT",
+    "zip": {
+      "bytes": 3421188,
+      "filename": "gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-zeros.zip",
+      "sha256": "98b04fdbdbe531f6c6d940047e3570909e4973bca105990bcafc248ec6457f1c"
+    }
   },
-  "name": "GEMSDOE40-H8-ASA-SPI-b845d3ad449e",
-  "note": "GEMSDOE40 H8 | analytic-signal local-wavenumber depth cells x H4-Euler corroboration; soft catalogue ramp; continuous [0,1]; HOLD: gate failed; unscored",
-  "note_characters": 152,
+  "name": "GEMSDOE40-H13-CREST-BINARY-a5d5b80a8476",
+  "note": "H13 binary Euler SI0 depth-consensus crest emission (trace-locked, cross-family). Unique vs 343 priors. Proxy gate failed: HOLD, no organizer score.",
+  "note_characters": 148,
   "organizer_score": null,
-  "path": "docs/downloads/gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-nan.tif",
-  "portal_safe_twin": {
-    "bytes": 3521378,
-    "filename": "gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-zeros.tif",
-    "sha256": "8c262620a769e7dbc8f8ee89aa92a633c91507752b398eec463932adea87c01b"
+  "path": "docs/downloads/gemsdoe40-h13-crest-binary-20261006-a5d5b80a8476.tif",
+  "sha256": "c202a579ce33ea385a117f233857714150f8d68a5d6e8e46ef820b428e08ff33",
+  "sibling_candidate": {
+    "experiment": "H8",
+    "filename": "gemsdoe40-h8-tracelock-depthkde-20261006-373fa53b12e9.tif",
+    "path": "docs/downloads/gemsdoe40-h8-tracelock-depthkde-20261006-373fa53b12e9.tif",
+    "sha256": "6c32147db39cd34e77baf31f6cb585165bca1d042cfa599d5d027cb140e0c195",
+    "status": "HOLD \u2014 DO NOT SUBMIT"
   },
-  "provenance_note": "GeoDAWN feature raster restored from hash-pinned public mirrors (not organizer-authenticated).",
-  "sha256": "b00328ce401cf5be5c149e668efbbaa911815fe1f2847719c3ff8576fff2ea31",
   "slot_eligible": false,
-  "status": "HOLD \u2014 DO NOT SUBMIT",
-  "zip": {
-    "bytes": 3421188,
-    "filename": "gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-zeros.zip",
-    "sha256": "98b04fdbdbe531f6c6d940047e3570909e4973bca105990bcafc248ec6457f1c"
-  }
+  "status": "HOLD \u2014 DO NOT SUBMIT"
 }

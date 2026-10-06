@@ -1,11 +1,11 @@
 {
-  "audited_utc": "2026-10-06T03:46:34.495927+00:00",
+  "audited_utc": "2026-10-06T03:52:09.346505+00:00",
   "candidate": {
-    "canonical_pixels_sha256": "373fa53b12e99c8a193ec52102e2e33711dd6830cd28882a045a78f57249c9a9",
-    "path": "work/h8/gemsdoe40-h8-tracelock-depthkde-20261006-373fa53b12e9.tif",
-    "sha256": "6c32147db39cd34e77baf31f6cb585165bca1d042cfa599d5d027cb140e0c195"
+    "canonical_pixels_sha256": "a5d5b80a8476f13bf1ea19dd8a7675a1d2bd2705281399c17baafff8b91675fc",
+    "path": "work/h13/gemsdoe40-h13-crest-binary-20261006-a5d5b80a8476.tif",
+    "sha256": "c202a579ce33ea385a117f233857714150f8d68a5d6e8e46ef820b428e08ff33"
   },
-  "experiment": "H8 trace-locked Euler depth-consensus emission on the frozen H4 cloud",
+  "experiment": "H13 value-concentrated crest emission of the H8 depth consensus",
   "field_stats": {
     "corridor_passing_cells": 21041,
     "gravity_depth_p50_m": 1426.54666,
@@ -16,15 +16,15 @@
     "magnetic_positive_cells": 613131,
     "magnetic_weighted_solutions": 12167,
     "oriented_cells": 841450,
-    "output_mass_sum": 7993.20556640625,
+    "output_mass_sum": 21041.0,
     "passing_fraction": 0.7345179082594429,
     "passing_median_depth_m": 769.8880004882812,
     "passing_median_sd_m": 120.74676513671875,
-    "positive_output_cells": 213616,
+    "positive_output_cells": 21041,
     "ridge_cells": 28646
   },
   "g1_format": {
-    "bytes": 1482117,
+    "bytes": 363453,
     "candidate": {
       "count": 1,
       "crs": "EPSG:32611",
@@ -32,7 +32,7 @@
       "height": 3730,
       "in_footprint_max": 1.0,
       "in_footprint_min": 0.0,
-      "in_footprint_nonzero": 213616,
+      "in_footprint_nonzero": 21041,
       "nodata": "NaN",
       "outside_nan": 7111787,
       "transform": [
@@ -45,10 +45,10 @@
       ],
       "width": 3292
     },
-    "canonical_pixels_sha256": "373fa53b12e99c8a193ec52102e2e33711dd6830cd28882a045a78f57249c9a9",
+    "canonical_pixels_sha256": "a5d5b80a8476f13bf1ea19dd8a7675a1d2bd2705281399c17baafff8b91675fc",
     "issues": [],
-    "path": "/home/user/GEMSDOE40/work/h8/gemsdoe40-h8-tracelock-depthkde-20261006-373fa53b12e9.tif",
-    "sha256": "6c32147db39cd34e77baf31f6cb585165bca1d042cfa599d5d027cb140e0c195",
+    "path": "/home/user/GEMSDOE40/work/h13/gemsdoe40-h13-crest-binary-20261006-a5d5b80a8476.tif",
+    "sha256": "c202a579ce33ea385a117f233857714150f8d68a5d6e8e46ef820b428e08ff33",
     "template": {
       "count": 1,
       "crs": "EPSG:32611",
@@ -70,8 +70,8 @@
     "valid": true
   },
   "g2_uniqueness": {
-    "candidate_canonical_sha256": "373fa53b12e99c8a193ec52102e2e33711dd6830cd28882a045a78f57249c9a9",
-    "candidate_sha256": "6c32147db39cd34e77baf31f6cb585165bca1d042cfa599d5d027cb140e0c195",
+    "candidate_canonical_sha256": "a5d5b80a8476f13bf1ea19dd8a7675a1d2bd2705281399c17baafff8b91675fc",
+    "candidate_sha256": "c202a579ce33ea385a117f233857714150f8d68a5d6e8e46ef820b428e08ff33",
     "closest_by_pearson": [
       {
         "artifact": {
@@ -84,7 +84,7 @@
         },
         "bands": 1,
         "bytes": 287096,
-        "candidate_top_pixels": 37654,
+        "candidate_top_pixels": 21041,
         "canonical_hash_equal": false,
         "canonical_sha256": "a1af728d9fc0e3806b4e6a7d729e925f7c3941c5c076e4cc5d5be987317701d4",
         "comparison_coverage": 1.0,
@@ -94,16 +94,16 @@
         "file_hash_equal": false,
         "git_blob_sha": "7bd014f31a7ce8f29579ba789fd6edf845f406ce",
         "historic_h2b_rule_near_duplicate": false,
-        "historic_top_budget_containment": 0.387948350071736,
+        "historic_top_budget_containment": 0.04527977044476327,
         "hot_support_jaccards": {
-          "0.95": 0.027303629518622755,
-          "0.99": 0.008350515463917525
+          "0.95": 0.020941157735488495,
+          "0.99": 0.020941157735488495
         },
         "invalid_in_template_footprint": 0,
         "legacy_nodata_zero_compared_as_raw_zero": false,
         "near_duplicate_h4": false,
-        "nonzero_support_jaccard": 0.030140760920452467,
-        "pearson_r": 0.07836894996918618,
+        "nonzero_support_jaccard": 0.020941157735488495,
+        "pearson_r": 0.037640286435129115,
         "pixels_compared": 5167373,
         "prior_top_pixels": 17425,
         "sha256": "02486eaa491da2d8ebc6b1cd53ed2bdc8e995f316be1110a64eec484779b5a68",
@@ -112,9 +112,9 @@
           3292
         ],
         "top_budget": 37654,
-        "top_containment": 0.10565279770444763,
-        "top_intersection": 1841,
-        "top_jaccard": 0.03458056275592622
+        "top_containment": 0.04527977044476327,
+        "top_intersection": 789,
+        "top_jaccard": 0.020941157735488495
       },
       {
         "artifact": {
@@ -127,7 +127,7 @@
         },
         "bands": 1,
         "bytes": 453350,
-        "candidate_top_pixels": 37654,
+        "candidate_top_pixels": 21041,
         "canonical_hash_equal": false,
         "canonical_sha256": "998f660fcbf3b1a31600bd1e5e56a4d3b4c32d57c8fd8af36b3af793226a7d7c",
         "comparison_coverage": 1.0,
@@ -137,16 +137,16 @@
         "file_hash_equal": false,
         "git_blob_sha": "6a19435e5a2d822ac033b8eda1b2eb398b53dc83",
         "historic_h2b_rule_near_duplicate": false,
-        "historic_top_budget_containment": 0.3085826210826211,
+        "historic_top_budget_containment": 0.03806853286440758,
         "hot_support_jaccards": {
-          "0.95": 0.01070502634440077,
-          "0.99": 0.005823627287853577
+          "0.95": 0.003936127387395447,
+          "0.99": 0.0014089798985534472
         },
         "invalid_in_template_footprint": 0,
         "legacy_nodata_zero_compared_as_raw_zero": false,
         "near_duplicate_h4": false,
-        "nonzero_support_jaccard": 0.03718389398835348,
-        "pearson_r": 0.05959268879613373,
+        "nonzero_support_jaccard": 0.020187335147147396,
+        "pearson_r": 0.02366272530757256,
         "pixels_compared": 5167373,
         "prior_top_pixels": 28080,
         "sha256": "e229aa9af26018bc80b0cca880d484a5b8362c26ad79ca362423953c32e66597",
@@ -155,95 +155,9 @@
           3292
         ],
         "top_budget": 37654,
-        "top_containment": 0.0868945868945869,
-        "top_intersection": 2440,
-        "top_jaccard": 0.03855025752835972
-      },
-      {
-        "artifact": {
-          "bytes": 340360,
-          "kind": "published-download-or-submission",
-          "path": "docs/downloads/GEMSDOE40-submission.tif",
-          "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE40/0e4a795d467f16555443ee0446875d7c32f51aa5/docs/downloads/GEMSDOE40-submission.tif",
-          "ref": "0e4a795d467f16555443ee0446875d7c32f51aa5",
-          "repo": "GEMSDOE40"
-        },
-        "bands": 1,
-        "bytes": 340360,
-        "candidate_top_pixels": 37654,
-        "canonical_hash_equal": false,
-        "canonical_sha256": "5920735510e6bed51e192c10dcba64af760f8adb1f9eca463a952db85faba795",
-        "comparison_coverage": 1.0,
-        "comparison_mode": "raw pixel-index correspondence; no clipping or probability transform",
-        "exact_grid": true,
-        "exact_values_equal": false,
-        "file_hash_equal": false,
-        "git_blob_sha": "033c13e3ef317f0db69def3e498bfdb637df28f8",
-        "historic_h2b_rule_near_duplicate": false,
-        "historic_top_budget_containment": 0.11032238336536782,
-        "hot_support_jaccards": {
-          "0.95": 0.011011605592616285,
-          "0.99": 0.005999111242778848
-        },
-        "invalid_in_template_footprint": 0,
-        "legacy_nodata_zero_compared_as_raw_zero": false,
-        "near_duplicate_h4": false,
-        "nonzero_support_jaccard": 0.019858540823828676,
-        "pearson_r": 0.03715397878542522,
-        "pixels_compared": 5167373,
-        "prior_top_pixels": 37654,
-        "sha256": "5bc279cd55e65733df6d532b6b1c9d348b33720ed9196237371d487042fff195",
-        "shape": [
-          3730,
-          3292
-        ],
-        "top_budget": 37654,
-        "top_containment": 0.03601211026716949,
-        "top_intersection": 1356,
-        "top_jaccard": 0.018336218087408047
-      },
-      {
-        "artifact": {
-          "bytes": 472382,
-          "kind": "published-download-or-submission",
-          "path": "docs/downloads/GEMSDOE40-submission-nan.tif",
-          "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE40/0e4a795d467f16555443ee0446875d7c32f51aa5/docs/downloads/GEMSDOE40-submission-nan.tif",
-          "ref": "0e4a795d467f16555443ee0446875d7c32f51aa5",
-          "repo": "GEMSDOE40"
-        },
-        "bands": 1,
-        "bytes": 472382,
-        "candidate_top_pixels": 37654,
-        "canonical_hash_equal": false,
-        "canonical_sha256": "5920735510e6bed51e192c10dcba64af760f8adb1f9eca463a952db85faba795",
-        "comparison_coverage": 1.0,
-        "comparison_mode": "raw pixel-index correspondence; no clipping or probability transform",
-        "exact_grid": true,
-        "exact_values_equal": false,
-        "file_hash_equal": false,
-        "git_blob_sha": "76f9bf7ac3add357150ef80953193d331efa3e4c",
-        "historic_h2b_rule_near_duplicate": false,
-        "historic_top_budget_containment": 0.11032238336536782,
-        "hot_support_jaccards": {
-          "0.95": 0.011011605592616285,
-          "0.99": 0.005999111242778848
-        },
-        "invalid_in_template_footprint": 0,
-        "legacy_nodata_zero_compared_as_raw_zero": false,
-        "near_duplicate_h4": false,
-        "nonzero_support_jaccard": 0.019858540823828676,
-        "pearson_r": 0.03715397878542522,
-        "pixels_compared": 5167373,
-        "prior_top_pixels": 37654,
-        "sha256": "3d30ed6f67a87db2e95dbd3e4e1a0dfec64b67ca5c9db7c9f3667d1daf3a3171",
-        "shape": [
-          3730,
-          3292
-        ],
-        "top_budget": 37654,
-        "top_containment": 0.03601211026716949,
-        "top_intersection": 1356,
-        "top_jaccard": 0.018336218087408047
+        "top_containment": 0.046195523026472125,
+        "top_intersection": 972,
+        "top_jaccard": 0.020187335147147396
       },
       {
         "artifact": {
@@ -256,7 +170,7 @@
         },
         "bands": 1,
         "bytes": 304583,
-        "candidate_top_pixels": 37654,
+        "candidate_top_pixels": 21041,
         "canonical_hash_equal": false,
         "canonical_sha256": "d27227637c6b4bebba8a709578f78bf59fbb216fdcd877211e7247dc98254b7c",
         "comparison_coverage": 1.0,
@@ -266,16 +180,16 @@
         "file_hash_equal": false,
         "git_blob_sha": "46fb85e59d8b36996c141336d8103853b987a723",
         "historic_h2b_rule_near_duplicate": false,
-        "historic_top_budget_containment": 0.11476509634178596,
+        "historic_top_budget_containment": 0.01867781949527114,
         "hot_support_jaccards": {
-          "0.95": 0.006572712914591179,
-          "0.99": 0.0015677577240746407
+          "0.95": 0.01051483671009585,
+          "0.99": 0.01051483671009585
         },
         "invalid_in_template_footprint": 0,
         "legacy_nodata_zero_compared_as_raw_zero": false,
         "near_duplicate_h4": false,
-        "nonzero_support_jaccard": 0.05070885801747775,
-        "pearson_r": 0.035587186853150064,
+        "nonzero_support_jaccard": 0.01051483671009585,
+        "pearson_r": 0.02139103429715668,
         "pixels_compared": 5167373,
         "prior_top_pixels": 37654,
         "sha256": "ae3ec2c5942f44d78b8b0d77539733b987549cddf78226bcb8071e03627c4ebf",
@@ -284,9 +198,95 @@
           3292
         ],
         "top_budget": 37654,
-        "top_containment": 0.02921336378605195,
-        "top_intersection": 1100,
-        "top_jaccard": 0.014823199655023716
+        "top_containment": 0.030701962834466044,
+        "top_intersection": 646,
+        "top_jaccard": 0.011128529345897432
+      },
+      {
+        "artifact": {
+          "bytes": 12274049,
+          "kind": "published-download-or-submission",
+          "path": "docs/downloads/gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif",
+          "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE40/0e4a795d467f16555443ee0446875d7c32f51aa5/docs/downloads/gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif",
+          "ref": "0e4a795d467f16555443ee0446875d7c32f51aa5",
+          "repo": "GEMSDOE40"
+        },
+        "bands": 1,
+        "bytes": 12274049,
+        "candidate_top_pixels": 21041,
+        "canonical_hash_equal": false,
+        "canonical_sha256": "6e2798af1179230677cddc45df94882282f2f013b9786c7ae0807c163b06c8c9",
+        "comparison_coverage": 1.0,
+        "comparison_mode": "raw pixel-index correspondence; no clipping or probability transform",
+        "exact_grid": true,
+        "exact_values_equal": false,
+        "file_hash_equal": false,
+        "git_blob_sha": "d4639f1bf50f1d4870b752fc0bf9df5ad30b9ce6",
+        "historic_h2b_rule_near_duplicate": false,
+        "historic_top_budget_containment": 0.0009980514234114348,
+        "hot_support_jaccards": {
+          "0.95": 0.0011060024332053531,
+          "0.99": 0.000711536005546332
+        },
+        "invalid_in_template_footprint": 0,
+        "legacy_nodata_zero_compared_as_raw_zero": false,
+        "near_duplicate_h4": false,
+        "nonzero_support_jaccard": 0.0037839579539244695,
+        "pearson_r": -0.01966419806161139,
+        "pixels_compared": 5167373,
+        "prior_top_pixels": 37654,
+        "sha256": "d58eea0074e29ac171b70ba652a4e5bde76e52ce1259a958fd49f558c4eaf459",
+        "shape": [
+          3730,
+          3292
+        ],
+        "top_budget": 37654,
+        "top_containment": 0.0019485765885651823,
+        "top_intersection": 41,
+        "top_jaccard": 0.00069901455996181
+      },
+      {
+        "artifact": {
+          "bytes": 340360,
+          "kind": "published-download-or-submission",
+          "path": "docs/downloads/GEMSDOE40-submission.tif",
+          "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE40/0e4a795d467f16555443ee0446875d7c32f51aa5/docs/downloads/GEMSDOE40-submission.tif",
+          "ref": "0e4a795d467f16555443ee0446875d7c32f51aa5",
+          "repo": "GEMSDOE40"
+        },
+        "bands": 1,
+        "bytes": 340360,
+        "candidate_top_pixels": 21041,
+        "canonical_hash_equal": false,
+        "canonical_sha256": "5920735510e6bed51e192c10dcba64af760f8adb1f9eca463a952db85faba795",
+        "comparison_coverage": 1.0,
+        "comparison_mode": "raw pixel-index correspondence; no clipping or probability transform",
+        "exact_grid": true,
+        "exact_values_equal": false,
+        "file_hash_equal": false,
+        "git_blob_sha": "033c13e3ef317f0db69def3e498bfdb637df28f8",
+        "historic_h2b_rule_near_duplicate": false,
+        "historic_top_budget_containment": 0.01644408535715983,
+        "hot_support_jaccards": {
+          "0.95": 0.00666212196331185,
+          "0.99": 0.00666212196331185
+        },
+        "invalid_in_template_footprint": 0,
+        "legacy_nodata_zero_compared_as_raw_zero": false,
+        "near_duplicate_h4": false,
+        "nonzero_support_jaccard": 0.009669864772984815,
+        "pearson_r": 0.01525387292030594,
+        "pixels_compared": 5167373,
+        "prior_top_pixels": 37654,
+        "sha256": "5bc279cd55e65733df6d532b6b1c9d348b33720ed9196237371d487042fff195",
+        "shape": [
+          3730,
+          3292
+        ],
+        "top_budget": 37654,
+        "top_containment": 0.02604438952521268,
+        "top_intersection": 548,
+        "top_jaccard": 0.00942438990833577
       }
     ],
     "comparisons_count": 343,
@@ -299,9 +299,9 @@
     "inventory_sha256": "99b81d6b4c863ca2acc6ef2c39afd36bfdb77e84b841adfcc861a9be8612cd9f",
     "issues": [],
     "low_coverage_storage_variants_with_verified_full_counterparts": 2,
-    "max_abs_pearson": 0.07836894996918618,
-    "max_top_containment": 0.10565279770444763,
-    "max_top_jaccard": 0.03855025752835972,
+    "max_abs_pearson": 0.037640286435129115,
+    "max_top_containment": 0.046195523026472125,
+    "max_top_jaccard": 0.020941157735488495,
     "near_duplicate_count": 0,
     "nonprediction_artifacts_forensically_classified": 2,
     "nonprediction_policy": "The exact 110-byte header-only malformed artifact and 138-byte one-pixel demo are hash-accounted, not falsely correlated. Every other unreadable/unclassified artifact still fails completeness.",
@@ -321,93 +321,93 @@
       "blocks": [
         {
           "col": 0,
-          "fn": 5478.546804443382,
-          "fp": 354.7362847342375,
+          "fn": 5450.358167409897,
+          "fp": 996.6499629616737,
           "n_truth": 5485,
           "row": 0,
-          "score": 0.0014468276596459131,
-          "tp": 6.453195556617857
+          "score": 0.007540244775614073,
+          "tp": 34.64183259010315
         },
         {
           "col": 1,
-          "fn": 5249.430223373911,
-          "fp": 774.8133202961898,
+          "fn": 5119.23949849233,
+          "fp": 2060.3382239937782,
           "n_truth": 5272,
           "row": 0,
-          "score": 0.005156358590145799,
-          "tp": 22.56977662608938
+          "score": 0.032779677754097444,
+          "tp": 152.7605015076697
         },
         {
           "col": 2,
-          "fn": 5710.7101503865115,
-          "fp": 1140.9450482382426,
+          "fn": 5574.134296365082,
+          "fp": 3164.4388229846954,
           "n_truth": 5744,
           "row": 0,
-          "score": 0.006892241370383049,
-          "tp": 33.289849613488435
+          "score": 0.03228121199871614,
+          "tp": 169.86570363491774
         },
         {
           "col": 3,
-          "fn": 9200.08228875695,
-          "fp": 991.1540556671688,
+          "fn": 9031.819952890277,
+          "fp": 2683.921915233135,
           "n_truth": 9224,
           "row": 0,
-          "score": 0.003154449363777377,
-          "tp": 23.917711243049684
+          "score": 0.024160157199094423,
+          "tp": 192.1800471097231
         },
         {
           "col": 4,
-          "fn": 9850.767711203554,
-          "fp": 570.0291726518303,
+          "fn": 9699.146396514028,
+          "fp": 1407.0730358362198,
           "n_truth": 9880,
           "row": 0,
-          "score": 0.0036431738436331304,
-          "tp": 29.23228879644541
+          "score": 0.021997412454387123,
+          "tp": 180.8536034859717
         },
         {
           "col": 5,
-          "fn": 7408.4029937365,
-          "fp": 776.0515795428257,
+          "fn": 7235.032331474125,
+          "fp": 1849.6140486001968,
           "n_truth": 7452,
           "row": 0,
-          "score": 0.007117263041163411,
-          "tp": 43.59700626350004
+          "score": 0.034034590704808965,
+          "tp": 216.96766852587461
         },
         {
           "col": 0,
-          "fn": 4943.2520818018165,
-          "fp": 141.1208972584151,
+          "fn": 4925.9909185655415,
+          "fp": 477.20986968278885,
           "n_truth": 4946,
           "row": 1,
-          "score": 0.0006894661500511824,
-          "tp": 2.7479181981835765
+          "score": 0.0049329089840914695,
+          "tp": 20.009081434458494
         },
         {
           "col": 1,
-          "fn": 3487.9470245435987,
-          "fp": 301.4136031040606,
+          "fn": 3467.9195333234966,
+          "fp": 795.9840277433395,
           "n_truth": 3490,
           "row": 1,
-          "score": 0.0007196621680619904,
-          "tp": 2.052975456401313
+          "score": 0.007470689644385074,
+          "tp": 22.08046667650342
         },
         {
           "col": 2,
-          "fn": 5692.378993051618,
-          "fp": 1008.8104784748687,
+          "fn": 5594.723638549447,
+          "fp": 2515.269029855728,
           "n_truth": 5715,
           "row": 1,
-          "score": 0.0047341254880822106,
-          "tp": 22.621006948382416
+          "score": 0.023587720836041794,
+          "tp": 120.27636145055294
         },
         {
           "col": 3,
-          "fn": 939.8046005334469,
-          "fp": 59.22337503002984,
+          "fn": 938.5500937998295,
+          "fp": 144.47140443325043,
           "n_truth": 940,
           "row": 1,
-          "score": 0.000255797384484103,
-          "tp": 0.1953994665531411
+          "score": 0.0018560361114077135,
+          "tp": 1.449906200170517
         },
         {
           "col": 4,
@@ -438,30 +438,30 @@
         },
         {
           "col": 1,
-          "fn": 166.2419072862176,
-          "fp": 172.44290678404712,
+          "fn": 162.35483157262206,
+          "fp": 374.02880215644836,
           "n_truth": 167,
           "row": 2,
-          "score": 0.004506014105041138,
-          "tp": 0.7580927137823892
+          "score": 0.02219014018657061,
+          "tp": 4.645168427377939
         },
         {
           "col": 2,
-          "fn": 2237.55036509568,
-          "fp": 303.87578045483565,
+          "fn": 2209.6841966584325,
+          "fp": 891.3603575825691,
           "n_truth": 2243,
           "row": 2,
-          "score": 0.0029358063964128834,
-          "tp": 5.4496349043201775
+          "score": 0.01683181443943323,
+          "tp": 33.315803341567516
         },
         {
           "col": 3,
-          "fn": 2930.9613123896006,
-          "fp": 286.1386883195366,
+          "fn": 2894.3217433281243,
+          "fp": 769.740655362606,
           "n_truth": 2937,
           "row": 2,
-          "score": 0.0025077236912106468,
-          "tp": 6.038687610399592
+          "score": 0.016989185221754223,
+          "tp": 42.678256671875715
         },
         {
           "col": 4,
@@ -501,30 +501,30 @@
         },
         {
           "col": 2,
-          "fn": 1326.922219050215,
-          "fp": 50.202845876277195,
+          "fn": 1324.6903558894992,
+          "fp": 140.33333325386047,
           "n_truth": 1327,
           "row": 3,
-          "score": 7.258013829616315e-05,
-          "tp": 0.07778094978493755
+          "score": 0.002118689593220826,
+          "tp": 2.3096441105008125
         },
         {
           "col": 3,
-          "fn": 11836.664287964566,
-          "fp": 475.9304595922604,
+          "fn": 11748.220922961831,
+          "fp": 1118.8959375619888,
           "n_truth": 11851,
           "row": 3,
-          "score": 0.0014966000297469727,
-          "tp": 14.335712035433488
+          "score": 0.010568395915049902,
+          "tp": 102.77907703816891
         },
         {
           "col": 4,
-          "fn": 574.8835738757942,
-          "fp": 13.179337257386692,
+          "fn": 574.2976407334208,
+          "fp": 30.354831635951996,
           "n_truth": 575,
           "row": 3,
-          "score": 0.0002516455657092346,
-          "tp": 0.11642612420578757
+          "score": 0.001506525170897271,
+          "tp": 0.7023592665791512
         },
         {
           "col": 5,
@@ -537,11 +537,11 @@
         }
       ],
       "pooled": {
-        "fn": 77034.54653749336,
-        "fp": 7420.067833282213,
+        "fn": 75950.48451852798,
+        "fp": 19419.68425887823,
         "n_truth": 77248,
-        "score": 0.0033707558006234,
-        "tp": 213.45346250663763
+        "score": 0.019676664807864376,
+        "tp": 1297.5154814720154
       }
     },
     "frozen_sgmc_derived_incumbent_circular": {
@@ -786,93 +786,93 @@
       "blocks": [
         {
           "col": 0,
-          "fn": 5431.752659343183,
-          "fp": 1141.7938774824142,
+          "fn": 5420.888539724052,
+          "fp": 1769.7156004309654,
           "n_truth": 5485,
           "row": 0,
-          "score": 0.011507941601389477,
-          "tp": 53.24734065681696
+          "score": 0.013483622159831107,
+          "tp": 64.11146027594805
         },
         {
           "col": 1,
-          "fn": 5272.0,
-          "fp": 99.0,
+          "fn": 5249.604776296765,
+          "fp": 1360.4412379264832,
           "n_truth": 5272,
           "row": 0,
-          "score": 0.0,
-          "tp": 0.0
+          "score": 0.004983175357418615,
+          "tp": 22.395223703235388
         },
         {
           "col": 2,
-          "fn": 5744.0,
-          "fp": 12.0,
+          "fn": 5677.109682127833,
+          "fp": 1581.0253405570984,
           "n_truth": 5744,
           "row": 0,
-          "score": 0.0,
-          "tp": 0.0
+          "score": 0.013582388520176058,
+          "tp": 66.89031787216663
         },
         {
           "col": 3,
-          "fn": 9222.078689306974,
-          "fp": 201.74754679203033,
+          "fn": 9205.550093621016,
+          "fp": 520.4594003558159,
           "n_truth": 9224,
           "row": 0,
-          "score": 0.0002589390622873382,
-          "tp": 1.921310693025589
+          "score": 0.0024642648694310023,
+          "tp": 18.44990637898445
         },
         {
           "col": 4,
-          "fn": 9877.078689277172,
-          "fp": 117.66666656732559,
+          "fn": 9851.021498024464,
+          "fp": 1406.157790839672,
           "n_truth": 9880,
           "row": 0,
-          "score": 0.00036847469625091227,
-          "tp": 2.9213107228279114
+          "score": 0.0035378348845368224,
+          "tp": 28.978501975536346
         },
         {
           "col": 5,
-          "fn": 7443.904925402254,
-          "fp": 157.55009347200394,
+          "fn": 7412.0644946321845,
+          "fp": 1123.236893594265,
           "n_truth": 7452,
           "row": 0,
-          "score": 0.0013503653880525737,
-          "tp": 8.095074597746134
+          "score": 0.006447205945802979,
+          "tp": 39.935505367815495
         },
         {
           "col": 0,
-          "fn": 4897.228859592229,
-          "fp": 662.0645894408226,
+          "fn": 4877.552380286157,
+          "fp": 1377.6103969216347,
           "n_truth": 4946,
           "row": 1,
-          "score": 0.011898397491603402,
-          "tp": 48.77114040777087
+          "score": 0.01612045046231352,
+          "tp": 68.44761971384287
         },
         {
           "col": 1,
-          "fn": 3485.2404496893287,
-          "fp": 369.9879963994026,
+          "fn": 3440.4226622767746,
+          "fp": 2104.5291033387184,
           "n_truth": 3490,
           "row": 1,
-          "score": 0.0016601444480142512,
-          "tp": 4.7595503106713295
+          "score": 0.015383210327099626,
+          "tp": 49.577337723225355
         },
         {
           "col": 2,
-          "fn": 5715.0,
-          "fp": 409.0,
+          "fn": 5666.701726667583,
+          "fp": 2388.289384365082,
           "n_truth": 5715,
           "row": 1,
-          "score": 0.0,
-          "tp": 0.0
+          "score": 0.009546400879432511,
+          "tp": 48.29827333241701
         },
         {
           "col": 3,
-          "fn": 933.6502813957632,
-          "fp": 450.7311615347862,
+          "fn": 928.9479220993817,
+          "fp": 898.2506756186485,
           "n_truth": 940,
           "row": 1,
-          "score": 0.007528571047975139,
-          "tp": 6.349718604236841
+          "score": 0.011834826829646374,
+          "tp": 11.052077900618315
         },
         {
           "col": 4,
@@ -903,30 +903,30 @@
         },
         {
           "col": 1,
-          "fn": 161.82623612508178,
-          "fp": 597.2404495477676,
+          "fn": 161.23825880512595,
+          "fp": 750.9286145567894,
           "n_truth": 167,
           "row": 2,
-          "score": 0.020362507835059985,
-          "tp": 5.173763874918222
+          "score": 0.020221029684145457,
+          "tp": 5.761741194874048
         },
         {
           "col": 2,
-          "fn": 2238.8834271132946,
-          "fp": 449.65247225761414,
+          "fn": 2236.8834270834923,
+          "fp": 873.3406371474266,
           "n_truth": 2243,
           "row": 2,
-          "score": 0.002183680115112754,
-          "tp": 4.116572886705399
+          "score": 0.003104400083197449,
+          "tp": 6.116572916507721
         },
         {
           "col": 3,
-          "fn": 2917.5617793910205,
-          "fp": 567.0451871752739,
+          "fn": 2915.835730921477,
+          "fp": 812.0451870560646,
           "n_truth": 2937,
           "row": 2,
-          "score": 0.007879624936992518,
-          "tp": 19.438220608979464
+          "score": 0.00841106300324856,
+          "tp": 21.16426907852292
         },
         {
           "col": 4,
@@ -967,28 +967,28 @@
         {
           "col": 2,
           "fn": 1307.7406563907862,
-          "fp": 1255.817567884922,
+          "fp": 1334.817567884922,
           "n_truth": 1327,
           "row": 3,
-          "score": 0.01462791933631123,
+          "score": 0.014454459071153555,
           "tp": 19.25934360921383
         },
         {
           "col": 3,
-          "fn": 11805.72655852884,
-          "fp": 663.426725924015,
+          "fn": 11801.414723504335,
+          "fp": 888.5105282068253,
           "n_truth": 11851,
           "row": 3,
-          "score": 0.004704936670945791,
-          "tp": 45.27344147115946
+          "score": 0.005128581588186116,
+          "tp": 49.58527649566531
         },
         {
           "col": 4,
           "fn": 572.9999999701977,
-          "fp": 296.15956950187683,
+          "fp": 432.15956950187683,
           "n_truth": 575,
           "row": 3,
-          "score": 0.003848878362314791,
+          "score": 0.003657431066001918,
           "tp": 2.0000000298023224
         },
         {
@@ -1002,11 +1002,11 @@
         }
       ],
       "pooled": {
-        "fn": 77026.67321152613,
-        "fp": 7450.883903980255,
+        "fn": 76725.97657243162,
+        "fp": 19621.517928302288,
         "n_truth": 77248,
-        "score": 0.003494660605786424,
-        "tp": 221.32678847387433
+        "score": 0.007930219650814762,
+        "tp": 522.0234275683761
       }
     },
     "h27_4_owner_reported_02708": {
@@ -1715,98 +1715,98 @@
       },
       "sha256": "ee73ffd76fabbaa1a2e77e17f57947a7db858916d713801e0c3502e49f6acabb"
     },
-    "mass_budget_px": 7993,
+    "mass_budget_px": 21041,
     "random_mass_matched_seed40": {
       "blocks": [
         {
           "col": 0,
-          "fn": 5384.263705458492,
-          "fp": 384.69076895713806,
+          "fn": 5281.194808926433,
+          "fp": 971.0223239064217,
           "n_truth": 5485,
           "row": 0,
-          "score": 0.02246028453689386,
-          "tp": 100.73629454150796
+          "score": 0.04408538003181874,
+          "tp": 203.80519107356668
         },
         {
           "col": 1,
-          "fn": 5200.657052792609,
-          "fp": 745.754850268364,
+          "fn": 5086.651919487864,
+          "fp": 1934.9196278452873,
           "n_truth": 5272,
           "row": 0,
-          "score": 0.016284553455774228,
-          "tp": 71.34294720739126
+          "score": 0.039931476756748914,
+          "tp": 185.34808051213622
         },
         {
           "col": 2,
-          "fn": 5678.941962376237,
-          "fp": 772.8557689189911,
+          "fn": 5547.512802835554,
+          "fp": 1957.117398262024,
           "n_truth": 5744,
           "row": 0,
-          "score": 0.0136596693328689,
-          "tp": 65.05803762376308
+          "score": 0.03909476498492266,
+          "tp": 196.48719716444612
         },
         {
           "col": 3,
-          "fn": 9105.280921727419,
-          "fp": 676.6266870498657,
+          "fn": 8861.307083025575,
+          "fp": 1658.1419133543968,
           "n_truth": 9224,
           "row": 0,
-          "score": 0.015748851077348292,
-          "tp": 118.7190782725811
+          "score": 0.046598460352146875,
+          "tp": 362.6929169744253
         },
         {
           "col": 4,
-          "fn": 9744.981089703739,
-          "fp": 570.3249822258949,
+          "fn": 9484.894328024238,
+          "fp": 1581.366613149643,
           "n_truth": 9880,
           "row": 0,
-          "score": 0.016782816159013763,
-          "tp": 135.0189102962613
+          "score": 0.047607139862511756,
+          "tp": 395.10567197576165
         },
         {
           "col": 5,
-          "fn": 7346.444455750287,
-          "fp": 612.7100760340691,
+          "fn": 7222.489626869559,
+          "fp": 1624.5782616138458,
           "n_truth": 7452,
           "row": 0,
-          "score": 0.01728929859333579,
-          "tp": 105.55554424971342
+          "score": 0.03624371970183107,
+          "tp": 229.5103731304407
         },
         {
           "col": 0,
-          "fn": 4876.871622484177,
-          "fp": 234.17198598384857,
+          "fn": 4802.966895237565,
+          "fp": 671.4219296574593,
           "n_truth": 4946,
           "row": 1,
-          "score": 0.01720698557418765,
-          "tp": 69.12837751582265
+          "score": 0.03471937689584667,
+          "tp": 143.03310476243496
         },
         {
           "col": 1,
-          "fn": 3460.763300061226,
-          "fp": 762.8499251008034,
+          "fn": 3362.104549240321,
+          "fp": 1781.8459562659264,
           "n_truth": 3490,
           "row": 1,
-          "score": 0.009909343905678042,
-          "tp": 29.23669993877411
+          "score": 0.04029537957784843,
+          "tp": 127.89545075967908
         },
         {
           "col": 2,
-          "fn": 5623.809003714472,
-          "fp": 634.0769112110138,
+          "fn": 5491.314303919673,
+          "fp": 1857.8354144096375,
           "n_truth": 5715,
           "row": 1,
-          "score": 0.0193321942839884,
-          "tp": 91.19099628552794
+          "score": 0.04484203170476413,
+          "tp": 223.68569608032703
         },
         {
           "col": 3,
-          "fn": 927.646313522011,
-          "fp": 109.37413883209229,
+          "fn": 897.4715036265552,
+          "fp": 271.41713535785675,
           "n_truth": 940,
           "row": 1,
-          "score": 0.015912612931590717,
-          "tp": 12.353686477988958
+          "score": 0.052195709292481934,
+          "tp": 42.528496373444796
         },
         {
           "col": 4,
@@ -1837,30 +1837,30 @@
         },
         {
           "col": 1,
-          "fn": 164.3333332836628,
-          "fp": 91.0,
+          "fn": 165.5144012197852,
+          "fp": 197.47140449285507,
           "n_truth": 167,
           "row": 2,
-          "score": 0.017505470784441698,
-          "tp": 2.666666716337204
+          "score": 0.008567891917396804,
+          "tp": 1.4855987802147865
         },
         {
           "col": 2,
-          "fn": 2221.677306640893,
-          "fp": 544.3643263578415,
+          "fn": 2167.5754409506917,
+          "fp": 1494.9811056256294,
           "n_truth": 2243,
           "row": 2,
-          "score": 0.011178125951830386,
-          "tp": 21.32269335910678
+          "score": 0.035771986702256106,
+          "tp": 75.4245590493083
         },
         {
           "col": 3,
-          "fn": 2902.3742384165525,
-          "fp": 415.6145883798599,
+          "fn": 2826.4596987962723,
+          "fp": 1144.5118915438652,
           "n_truth": 2937,
           "row": 2,
-          "score": 0.014192932992811377,
-          "tp": 34.625761583447456
+          "score": 0.0425055208443219,
+          "tp": 110.54030120372772
         },
         {
           "col": 4,
@@ -1900,30 +1900,30 @@
         },
         {
           "col": 2,
-          "fn": 1315.755582202226,
-          "fp": 196.6666664481163,
+          "fn": 1283.3473126851022,
+          "fp": 497.24556213617325,
           "n_truth": 1327,
           "row": 3,
-          "score": 0.010192711254800214,
-          "tp": 11.244417797774076
+          "score": 0.03731701719977315,
+          "tp": 43.652687314897776
         },
         {
           "col": 3,
-          "fn": 11688.298137411475,
-          "fp": 634.476929962635,
+          "fn": 11400.131012223661,
+          "fp": 1672.493822336197,
           "n_truth": 11851,
           "row": 3,
-          "score": 0.01687737381784407,
-          "tp": 162.70186258852482
+          "score": 0.04551716083743107,
+          "tp": 450.86898777633905
         },
         {
           "col": 4,
-          "fn": 565.4200580343604,
-          "fp": 44.0786891579628,
+          "fn": 547.1902482770383,
+          "fp": 126.37632977962494,
           "n_truth": 575,
           "row": 3,
-          "score": 0.020351171233923257,
-          "tp": 9.579941965639591
+          "score": 0.0566577895876888,
+          "tp": 27.809751722961664
         },
         {
           "col": 5,
@@ -1936,104 +1936,104 @@
         }
       ],
       "pooled": {
-        "fn": 76207.51808357984,
-        "fp": 7429.637294888496,
+        "fn": 74428.12593534589,
+        "fp": 19442.746689736843,
         "n_truth": 77248,
-        "score": 0.016387497176121313,
-        "tp": 1040.4819164201617
+        "score": 0.04256354308707003,
+        "tp": 2819.874064654112
       }
     },
     "random_mass_matched_seed41": {
       "blocks": [
         {
           "col": 0,
-          "fn": 5390.419211048633,
-          "fp": 340.5118918418884,
+          "fn": 5300.6916803866625,
+          "fp": 945.7061069607735,
           "n_truth": 5485,
           "row": 0,
-          "score": 0.021135284287013282,
-          "tp": 94.58078895136714
+          "score": 0.03994542790598228,
+          "tp": 184.30831961333752
         },
         {
           "col": 1,
-          "fn": 5207.399486515671,
-          "fp": 762.431743144989,
+          "fn": 5124.936729967594,
+          "fp": 1916.0088610053062,
           "n_truth": 5272,
           "row": 0,
-          "score": 0.01473885886359744,
-          "tp": 64.60051348432899
+          "score": 0.03176165431994055,
+          "tp": 147.06327003240585
         },
         {
           "col": 2,
-          "fn": 5647.074602127075,
-          "fp": 715.8291574716568,
+          "fn": 5541.268385384232,
+          "fp": 1987.4551135897636,
           "n_truth": 5744,
           "row": 0,
-          "score": 0.020372104316648366,
-          "tp": 96.9253978729248
+          "score": 0.04027857235688243,
+          "tp": 202.7316146157682
         },
         {
           "col": 3,
-          "fn": 9125.971181742847,
-          "fp": 627.7293831706047,
+          "fn": 8877.261574547738,
+          "fp": 1667.7565019726753,
           "n_truth": 9224,
           "row": 0,
-          "score": 0.013028208002973236,
-          "tp": 98.02881825715303
+          "score": 0.04455590016253861,
+          "tp": 346.73842545226216
         },
         {
           "col": 4,
-          "fn": 9739.760044023395,
-          "fp": 572.0292145609856,
+          "fn": 9495.837961521,
+          "fp": 1556.9633538126945,
           "n_truth": 9880,
           "row": 0,
-          "score": 0.017428790230816043,
-          "tp": 140.23995597660542
+          "score": 0.046327980107170735,
+          "tp": 384.16203847900033
         },
         {
           "col": 5,
-          "fn": 7334.063747033477,
-          "fp": 598.1599820256233,
+          "fn": 7231.61706122756,
+          "fp": 1653.406689107418,
           "n_truth": 7452,
           "row": 0,
-          "score": 0.019318549525362137,
-          "tp": 117.93625296652317
+          "score": 0.03478069600249219,
+          "tp": 220.38293877243996
         },
         {
           "col": 0,
-          "fn": 4890.202033758163,
-          "fp": 262.4860118031502,
+          "fn": 4760.703683532774,
+          "fp": 675.5108451247215,
           "n_truth": 4946,
           "row": 1,
-          "score": 0.013878514078991502,
-          "tp": 55.79796624183655
+          "score": 0.04487722142833934,
+          "tp": 185.29631646722555
         },
         {
           "col": 1,
-          "fn": 3440.184089165181,
-          "fp": 745.1839896440506,
+          "fn": 3352.189497027546,
+          "fp": 1914.4835025668144,
           "n_truth": 3490,
           "row": 1,
-          "score": 0.016881027167340846,
-          "tp": 49.81591083481908
+          "score": 0.04303271690014555,
+          "tp": 137.81050297245383
         },
         {
           "col": 2,
-          "fn": 5625.524825654924,
-          "fp": 731.5982028841972,
+          "fn": 5491.86690210551,
+          "fp": 1846.3986539244652,
           "n_truth": 5715,
           "row": 1,
-          "score": 0.01889170581919476,
-          "tp": 89.47517434507608
+          "score": 0.044752765538447994,
+          "tp": 223.13309789448977
         },
         {
           "col": 3,
-          "fn": 928.3843653425574,
-          "fp": 100.12168580293655,
+          "fn": 912.3862420208752,
+          "fp": 268.73335218429565,
           "n_truth": 940,
           "row": 1,
-          "score": 0.015000545873888684,
-          "tp": 11.61563465744257
+          "score": 0.03403771574421827,
+          "tp": 27.613757979124784
         },
         {
           "col": 4,
@@ -2064,30 +2064,30 @@
         },
         {
           "col": 1,
-          "fn": 166.9428090415895,
-          "fp": 71.94280904531479,
+          "fn": 162.39782833307981,
+          "fp": 190.74535590410233,
           "n_truth": 167,
           "row": 2,
-          "score": 0.00038642539466360255,
-          "tp": 0.05719095841050148
+          "score": 0.02665306565403678,
+          "tp": 4.602171666920185
         },
         {
           "col": 2,
-          "fn": 2208.040173549205,
-          "fp": 584.7570414543152,
+          "fn": 2142.5387022458017,
+          "fp": 1499.7173801660538,
           "n_truth": 2243,
           "row": 2,
-          "score": 0.018223967060461387,
-          "tp": 34.959826450794935
+          "score": 0.047512107397508024,
+          "tp": 100.46129775419831
         },
         {
           "col": 3,
-          "fn": 2887.365157149732,
-          "fp": 428.44082444906235,
+          "fn": 2829.2713266909122,
+          "fp": 1116.7716488838196,
           "n_truth": 2937,
           "row": 2,
-          "score": 0.02029876315219629,
-          "tp": 49.63484285026789
+          "score": 0.0415219389606756,
+          "tp": 107.72867330908775
         },
         {
           "col": 4,
@@ -2127,30 +2127,30 @@
         },
         {
           "col": 2,
-          "fn": 1309.2149831205606,
-          "fp": 173.1595693230629,
+          "fn": 1292.1261670850217,
+          "fp": 451.6382774114609,
           "n_truth": 1327,
           "row": 3,
-          "score": 0.016171300329215932,
-          "tp": 17.785016879439354
+          "score": 0.03009212186547108,
+          "tp": 34.873832914978266
         },
         {
           "col": 3,
-          "fn": 11655.595556490123,
-          "fp": 614.1909747123718,
+          "fn": 11375.862680803984,
+          "fp": 1633.9043850898743,
           "n_truth": 11851,
           "row": 3,
-          "score": 0.020264454643432784,
-          "tp": 195.40444350987673
+          "score": 0.04798102710329825,
+          "tp": 475.1373191960156
         },
         {
           "col": 4,
-          "fn": 570.2477537803352,
-          "fp": 57.100187599658966,
+          "fn": 551.6372322067618,
+          "fp": 145.98580539226532,
           "n_truth": 575,
           "row": 3,
-          "score": 0.010060421539503211,
-          "tp": 4.752246219664812
+          "score": 0.04730552836268823,
+          "tp": 23.362767793238163
         },
         {
           "col": 5,
@@ -2163,104 +2163,104 @@
         }
       ],
       "pooled": {
-        "fn": 76126.39001954347,
-        "fp": 7385.672668933868,
+        "fn": 74442.59365508705,
+        "fp": 19471.185833096504,
         "n_truth": 77248,
-        "score": 0.01766318920624315,
-        "tp": 1121.609980456531
+        "score": 0.042343379528800025,
+        "tp": 2805.406344912946
       }
     },
     "random_mass_matched_seed42": {
       "blocks": [
         {
           "col": 0,
-          "fn": 5408.597353253514,
-          "fp": 363.1978660225868,
+          "fn": 5289.279657337815,
+          "fp": 947.7589159607887,
           "n_truth": 5485,
           "row": 0,
-          "score": 0.017069707455880084,
-          "tp": 76.40264674648643
+          "score": 0.04239403004836736,
+          "tp": 195.72034266218543
         },
         {
           "col": 1,
-          "fn": 5201.420256920159,
-          "fp": 729.9002251625061,
+          "fn": 5116.280192840844,
+          "fp": 1889.7319875955582,
           "n_truth": 5272,
           "row": 0,
-          "score": 0.016122577534448297,
-          "tp": 70.57974307984114
+          "score": 0.03365684648809382,
+          "tp": 155.7198071591556
         },
         {
           "col": 2,
-          "fn": 5684.666134040803,
-          "fp": 836.0146072506905,
+          "fn": 5532.39299312979,
+          "fp": 1981.3243461251259,
           "n_truth": 5744,
           "row": 0,
-          "score": 0.012427841272935614,
-          "tp": 59.33386595919728
+          "score": 0.0420373443557084,
+          "tp": 211.60700687021017
         },
         {
           "col": 3,
-          "fn": 9094.700565554202,
-          "fp": 659.0744020938873,
+          "fn": 8888.00797272101,
+          "fp": 1666.3670271635056,
           "n_truth": 9224,
           "row": 0,
-          "score": 0.017155576872080927,
-          "tp": 129.2994344457984
+          "score": 0.04318845774557379,
+          "tp": 335.99202727898955
         },
         {
           "col": 4,
-          "fn": 9728.863153714687,
-          "fp": 587.082023859024,
+          "fn": 9509.728282801807,
+          "fp": 1639.0704318284988,
           "n_truth": 9880,
           "row": 0,
-          "score": 0.01877093057355762,
-          "tp": 151.13684628531337
+          "score": 0.0445795307651979,
+          "tp": 370.2717171981931
         },
         {
           "col": 5,
-          "fn": 7361.964923132211,
-          "fp": 583.1676037311554,
+          "fn": 7183.754182457924,
+          "fp": 1669.5655264258385,
           "n_truth": 7452,
           "row": 0,
-          "score": 0.014768950853290257,
-          "tp": 90.03507686778903
+          "score": 0.04224900958359755,
+          "tp": 268.2458175420761
         },
         {
           "col": 0,
-          "fn": 4860.813703019172,
-          "fp": 242.60477536916733,
+          "fn": 4750.4442434720695,
+          "fp": 654.11812967062,
           "n_truth": 4946,
           "row": 1,
-          "score": 0.02117819757434321,
-          "tp": 85.18629698082805
+          "score": 0.04738752720588788,
+          "tp": 195.5557565279305
         },
         {
           "col": 1,
-          "fn": 3440.4511505924165,
-          "fp": 720.8528470993042,
+          "fn": 3370.3934266790748,
+          "fp": 1902.2933540940285,
           "n_truth": 3490,
           "row": 1,
-          "score": 0.016818566943538713,
-          "tp": 49.548849407583475
+          "score": 0.03741938501183925,
+          "tp": 119.60657332092524
         },
         {
           "col": 2,
-          "fn": 5666.232199072838,
-          "fp": 677.7741577029228,
+          "fn": 5536.144826084375,
+          "fp": 1894.983711719513,
           "n_truth": 5715,
           "row": 1,
-          "score": 0.010338056552058173,
-          "tp": 48.76780092716217
+          "score": 0.035865952037306706,
+          "tp": 178.85517391562462
         },
         {
           "col": 3,
-          "fn": 920.9796466901898,
-          "fp": 99.47140431404114,
+          "fn": 916.9060704782605,
+          "fp": 243.13807088136673,
           "n_truth": 940,
           "row": 1,
-          "score": 0.02452029615948302,
-          "tp": 19.02035330981016
+          "score": 0.028679332834555097,
+          "tp": 23.093929521739483
         },
         {
           "col": 4,
@@ -2291,30 +2291,30 @@
         },
         {
           "col": 1,
-          "fn": 166.7453559935093,
-          "fp": 88.74535596370697,
+          "fn": 159.61751114204526,
+          "fp": 194.13807106018066,
           "n_truth": 167,
           "row": 2,
-          "score": 0.0016819287087234533,
-          "tp": 0.2546440064907074
+          "score": 0.042451491076011774,
+          "tp": 7.3824888579547405
         },
         {
           "col": 2,
-          "fn": 2219.339274238795,
-          "fp": 582.0288021564484,
+          "fn": 2176.704748749733,
+          "fp": 1472.4095132946968,
           "n_truth": 2243,
           "row": 2,
-          "score": 0.01235200080992246,
-          "tp": 23.660725761204958
+          "score": 0.03153701523131741,
+          "tp": 66.29525125026703
         },
         {
           "col": 3,
-          "fn": 2899.5567656233907,
-          "fp": 418.7690446972847,
+          "fn": 2848.154754411429,
+          "fp": 1122.8288397192955,
           "n_truth": 2937,
           "row": 2,
-          "score": 0.015340291335644752,
-          "tp": 37.443234376609325
+          "score": 0.03427757712259637,
+          "tp": 88.84524558857083
         },
         {
           "col": 4,
@@ -2354,30 +2354,30 @@
         },
         {
           "col": 2,
-          "fn": 1309.1792906783521,
-          "fp": 169.43790262937546,
+          "fn": 1282.5738822817802,
+          "fp": 487.79127448797226,
           "n_truth": 1327,
           "row": 3,
-          "score": 0.016214622986888732,
-          "tp": 17.820709321647882
+          "score": 0.03803464386232151,
+          "tp": 44.42611771821976
         },
         {
           "col": 3,
-          "fn": 11661.026058722287,
-          "fp": 589.1242890954018,
+          "fn": 11445.88648537919,
+          "fp": 1590.2391788959503,
           "n_truth": 11851,
           "row": 3,
-          "score": 0.019713753188868095,
-          "tp": 189.97394127771258
+          "score": 0.041003929457761726,
+          "tp": 405.11351462081075
         },
         {
           "col": 4,
-          "fn": 566.1719867363572,
-          "fp": 54.65247231721878,
+          "fn": 542.8591057546437,
+          "fp": 139.94280874729156,
           "n_truth": 575,
           "row": 3,
-          "score": 0.018675875086553016,
-          "tp": 8.828013263642788
+          "score": 0.06500769817471638,
+          "tp": 32.14089424535632
         },
         {
           "col": 5,
@@ -2390,24 +2390,24 @@
         }
       ],
       "pooled": {
-        "fn": 76190.70781798288,
-        "fp": 7401.897779464722,
+        "fn": 74549.12833572179,
+        "fp": 19495.70118767023,
         "n_truth": 77248,
-        "score": 0.016652830662650928,
-        "tp": 1057.2921820171177
+        "score": 0.04074548737041788,
+        "tp": 2698.871664278209
       }
     }
   },
   "g4_cat_hidden": {
     "candidate": {
-      "cat_hidden_mean": 0.023672542102775907,
+      "cat_hidden_mean": 0.021463861283585885,
       "cat_hidden_per_fold": {
-        "foldNE": 0.012353239493392214,
-        "foldNW": 0.009702027774898328,
-        "foldSE": 0.04709599831794227,
-        "foldSW": 0.025538902824870813
+        "foldNE": 0.015912856666452008,
+        "foldNW": 0.014052595291900552,
+        "foldSE": 0.03626466157122858,
+        "foldSW": 0.019625331604762403
       },
-      "emitted_pixels": 213616
+      "emitted_pixels": 21041
     },
     "frozen_sgmc_derived_incumbent_circular": {
       "cat_hidden_mean": 0.0,
@@ -2452,42 +2452,42 @@
   },
   "g5_lm_diagnostic": {
     "candidate": {
-      "emitted_pixels": 213616,
+      "emitted_pixels": 21041,
       "fold_detail": {
         "foldNE": {
           "n_g": 24347,
-          "n_p": 77835,
-          "tp_w": 3462.630820006041
+          "n_p": 7730,
+          "tp_w": 514.1976060659256
         },
         "foldNW": {
           "n_g": 8857,
-          "n_p": 52397,
-          "tp_w": 531.2736301330524
+          "n_p": 5230,
+          "tp_w": 70.97840323894604
         },
         "foldSE": {
           "n_g": 16294,
-          "n_p": 32631,
-          "tp_w": 840.3457154923967
+          "n_p": 3150,
+          "tp_w": 113.02985986063922
         },
         "foldSW": {
           "n_g": 10081,
-          "n_p": 45634,
-          "tp_w": 649.030949644016
+          "n_p": 4451,
+          "tp_w": 94.73884187460212
         }
       },
-      "lm_calibrated_mean": 0.08839409097950683,
+      "lm_calibrated_mean": 0.05314708190442276,
       "lm_calibrated_per_fold": {
-        "foldNE": 0.16869605164523874,
-        "foldNW": 0.04076992725400134,
-        "foldSE": 0.09102755406760615,
-        "foldSW": 0.053082830951181076
+        "foldNE": 0.12282655771713753,
+        "foldNW": 0.02214782382707371,
+        "foldSE": 0.04087629999657132,
+        "foldSW": 0.026737646076908442
       },
-      "lm_mean": 0.05020962668391697,
+      "lm_mean": 0.013014076265657227,
       "lm_per_fold": {
-        "foldNE": 0.09275991876193418,
-        "foldNW": 0.029581879450380294,
-        "foldSE": 0.041726723634794335,
-        "foldSW": 0.0367699848885591
+        "foldNE": 0.024497883456699895,
+        "foldNW": 0.008727030323037817,
+        "foldSE": 0.008266849416040785,
+        "foldSW": 0.010564541866850404
       },
       "on_catalogue_pixels": 0
     },
@@ -2538,26 +2538,26 @@
     "g1_format_pass": true,
     "g2_uniqueness_pass": true,
     "g3_detail": {
-      "best_random_control_dti": 0.01766318920624315,
-      "candidate_pooled_dti": 0.0033707558006234,
-      "gradient_control_dti": 0.003494660605786424,
+      "best_random_control_dti": 0.04256354308707003,
+      "candidate_pooled_dti": 0.019676664807864376,
+      "gradient_control_dti": 0.007930219650814762,
       "h33b2_pooled_dti": 0.09155026618057825
     },
     "g3_pass": false,
     "g4_detail": {
-      "candidate_cat_hidden_mean": 0.023672542102775907,
+      "candidate_cat_hidden_mean": 0.021463861283585885,
       "h33b2_cat_hidden_mean": 0.003589664545530836
     },
     "g4_pass": true,
-    "g5_lm_calibrated_mean_diagnostic": 0.08839409097950683,
+    "g5_lm_calibrated_mean_diagnostic": 0.05314708190442276,
     "organizer_score": null,
     "status": "HOLD \u2014 research only; a frozen gate failed",
     "weekly_slot_used": false
   },
   "preregistration": {
-    "amended_after_generation": true,
-    "note": "preregistration amended after generation (later experiment registered); generation-time hash verified; amendment disclosed in evidence",
-    "sha256_at_generation": "6efaaf64c3c8441627ab8cc69338a68737e32763db69ba238a6cb9af611ace4e",
+    "amended_after_generation": false,
+    "note": "preregistration unchanged since generation",
+    "sha256_at_generation": "5fc48198af3ffe1c6d1806985b61d75152ec5958b6849beb7105a3e2961edaa9",
     "sha256_live": "5fc48198af3ffe1c6d1806985b61d75152ec5958b6849beb7105a3e2961edaa9"
   },
   "proxy_info": {

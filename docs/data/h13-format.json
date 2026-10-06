@@ -1,5 +1,5 @@
 {
- "bytes": 1482117,
+ "bytes": 363453,
  "candidate": {
   "count": 1,
   "crs": "EPSG:32611",
@@ -7,7 +7,7 @@
   "height": 3730,
   "in_footprint_max": 1.0,
   "in_footprint_min": 0.0,
-  "in_footprint_nonzero": 213616,
+  "in_footprint_nonzero": 21041,
   "nodata": "NaN",
   "outside_nan": 7111787,
   "transform": [
@@ -20,10 +20,10 @@
   ],
   "width": 3292
  },
- "canonical_pixels_sha256": "373fa53b12e99c8a193ec52102e2e33711dd6830cd28882a045a78f57249c9a9",
+ "canonical_pixels_sha256": "a5d5b80a8476f13bf1ea19dd8a7675a1d2bd2705281399c17baafff8b91675fc",
  "issues": [],
- "path": "work/h8/gemsdoe40-h8-tracelock-depthkde-20261006-373fa53b12e9.tif",
- "sha256": "6c32147db39cd34e77baf31f6cb585165bca1d042cfa599d5d027cb140e0c195",
+ "path": "work/h13/gemsdoe40-h13-crest-binary-20261006-a5d5b80a8476.tif",
+ "sha256": "c202a579ce33ea385a117f233857714150f8d68a5d6e8e46ef820b428e08ff33",
  "template": {
   "count": 1,
   "crs": "EPSG:32611",

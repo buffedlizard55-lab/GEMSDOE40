@@ -68,4 +68,4 @@ Novelty: **PASS** against the complete 343-artifact corpus (343/343 audited; 340
 
 Diagnosis recorded: confidence mass 155,238.8 (≈4× a dotted budget) with TP_w ≈ 2,205 vs FP_w ≈ 145,742 on the proxy; the registered catalogue-flank ramp removes mass exactly where the catalogue-like SGMC proxy truth concentrates — proxy and ramp answer different questions. Next: register a source-independent validation protocol (expert-adopted off-catalogue synthetic faults, or a geologically held-out subregion) before any further model search; H9–H12 remain registered and unimplemented.
 
-[Full result](../reports/h8-results-20261006.md) · [Validation JSON](../data/h8-validation.json) · [Manifest](../data/current-candidate.json) · [Preregistration + amendments](h8-preregistration-20261006.md)
+[Full result](../reports/h8-results-20261006.md) · [Validation JSON](../data/h8asa-validation.json) · [Manifest](../data/current-candidate.json) · [Preregistration + amendments](h8asa-preregistration-20261006.md)

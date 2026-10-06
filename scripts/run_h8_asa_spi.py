@@ -64,7 +64,7 @@ CONFIG = {
     "support_floor": 0.02,
     "catalogue_ramp_m": [150.0, 450.0],
     "corroboration_csv": "docs/downloads/h4-euler-solutions.csv.gz",
-    "preregistration": "docs/research/h8-preregistration-20261006.md",
+    "preregistration": "docs/research/h8asa-preregistration-20261006.md",
 }
 
 

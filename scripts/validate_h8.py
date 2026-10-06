@@ -3,7 +3,7 @@
 registered replacement gate (proxy diagnostics + quadrant catalogue skill).
 
 The verdict is computed, never negotiated: the gate rule was registered in
-docs/research/h8-preregistration-20261006.md before any score was read.
+docs/research/h8asa-preregistration-20261006.md before any score was read.
 """
 from __future__ import annotations
 
@@ -143,7 +143,7 @@ def main() -> None:
     pooled_ok = cand_pooled > H33B2_POOLED
     wins_ok = wins >= BLOCK_WIN_REQUIREMENT
     gate = {
-        "rule": "registered replacement gate (h8-preregistration-20261006.md)",
+        "rule": "registered replacement gate (h8asa-preregistration-20261006.md)",
         "candidate_pooled_proxy_dti": cand_pooled,
         "h33_b2_pooled_proxy_dti": h33_pooled,
         "pooled_threshold": H33B2_POOLED,
@@ -191,7 +191,7 @@ def main() -> None:
         "block_win_requirement": gate["block_win_requirement"],
     }
     write_json(args.work / "validation.json", result)
-    write_json(ROOT / "docs/data/h8-validation.json", result)
+    write_json(ROOT / "docs/data/h8asa-validation.json", result)
     print(json.dumps({"verdict": result["verdict"], "gate": gate}, indent=2))
 
 
