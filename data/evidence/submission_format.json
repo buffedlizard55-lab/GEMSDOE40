@@ -1,74 +1,5 @@
 {
-  "files": {
-    "training_features.tif": {
-      "present": true,
-      "bytes": 418912844,
-      "sha256": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5",
-      "shape": [
-        3730,
-        3292
-      ],
-      "count": 19,
-      "dtype": "float32",
-      "crs": "EPSG:32611",
-      "transform": [
-        100.0,
-        0.0,
-        243350.0,
-        0.0,
-        -100.0,
-        4508550.0
-      ],
-      "nodata": "-3.4028234663852886e+38"
-    },
-    "existing_faults.tif": {
-      "present": true,
-      "bytes": 425830,
-      "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
-      "shape": [
-        3730,
-        3292
-      ],
-      "count": 1,
-      "dtype": "int8",
-      "crs": "EPSG:32611",
-      "transform": [
-        100.0,
-        0.0,
-        243350.0,
-        0.0,
-        -100.0,
-        4508550.0
-      ],
-      "nodata": "-1.0"
-    },
-    "example_submission.tif": {
-      "present": true,
-      "bytes": 1599597,
-      "sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
-      "shape": [
-        3730,
-        3292
-      ],
-      "count": 1,
-      "dtype": "float32",
-      "crs": "EPSG:32611",
-      "transform": [
-        100.0,
-        0.0,
-        243350.0,
-        0.0,
-        -100.0,
-        4508550.0
-      ],
-      "nodata": "nan"
-    }
-  },
-  "pins_match": {
-    "training_features.tif": true,
-    "existing_faults.tif": true,
-    "example_submission.tif": true
-  },
+  "acquisition_note": "Inputs are byte-verified public sibling-repository mirrors; the official DrivenData data tab requires login in this environment.",
   "band_inventory": {
     "1": {
       "band_name": "mag_anom",
@@ -167,18 +98,155 @@
     }
   },
   "band_inventory_matches_layers_py": true,
-  "footprint": {
+  "files": {
+    "labels.tif": {
+      "bytes": 425830,
+      "count": 1,
+      "crs": "EPSG:32611",
+      "dtype": "int8",
+      "nodata": -1.0,
+      "path": "data/labels.tif",
+      "present": true,
+      "role": "USGS Quaternary + INGENIOUS catalogue, int8, -1 outside the footprint",
+      "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+      "shape": [
+        3730,
+        3292
+      ],
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ]
+    },
+    "sample_submission.tif": {
+      "bytes": 1599597,
+      "count": 1,
+      "crs": "EPSG:32611",
+      "dtype": "float32",
+      "nodata": "NaN",
+      "path": "data/sample_submission.tif",
+      "present": true,
+      "role": "geometry template; 5,167,373-pixel footprint, 0/1 inside, NaN outside",
+      "sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+      "shape": [
+        3730,
+        3292
+      ],
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ]
+    },
+    "training_features.tif": {
+      "bytes": 418912844,
+      "count": 19,
+      "crs": "EPSG:32611",
+      "dtype": "float32",
+      "nodata": -3.4028234663852886e+38,
+      "path": "data/training_features.tif",
+      "present": true,
+      "role": "19 float32 bands; band tags carry the organiser's own band names",
+      "sha256": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5",
+      "shape": [
+        3730,
+        3292
+      ],
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ]
+    }
+  },
+  "inspection_date_utc": "2026-10-06",
+  "pins_match": {
+    "labels.tif": true,
+    "sample_submission.tif": true,
+    "training_features.tif": true
+  },
+  "proxies": {
+    "current_643cbe": {
+      "bytes": 198602,
+      "count": 1,
+      "crs": "EPSG:32611",
+      "dtype": "uint8",
+      "expected_sha256": "643cbe992ef4ba37588fb469163ed8291e3ceb23d6c1f78a3cfaa462430c2da0",
+      "nodata": null,
+      "path": "data/external/derived_sgmc_faults_100m_u8.tif",
+      "pin_matches": true,
+      "present": true,
+      "role": "current owner-derived SGMC proxy only; not organizer truth",
+      "sha256": "643cbe992ef4ba37588fb469163ed8291e3ceb23d6c1f78a3cfaa462430c2da0",
+      "shape": [
+        3730,
+        3292
+      ],
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ]
+    },
+    "historical_h2b_26d142": {
+      "bytes": 213034,
+      "count": 1,
+      "crs": "EPSG:32611",
+      "dtype": "uint8",
+      "expected_sha256": "26d142c4c93282cd94f6950ab96f22aeff59fbbea523d43d662e76fa1b161b5c",
+      "nodata": 255.0,
+      "path": "data/external/archive/derived_sgmc_faults_100m_u8_h2b_26d142.tif",
+      "pin_matches": true,
+      "present": true,
+      "role": "historical H2-B SGMC proxy instrument; distinct byte version; not organizer truth",
+      "sha256": "26d142c4c93282cd94f6950ab96f22aeff59fbbea523d43d662e76fa1b161b5c",
+      "shape": [
+        3730,
+        3292
+      ],
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ]
+    }
+  },
+  "sample_grid": {
+    "crs": "EPSG:32611",
     "footprint_pixels": 5167373,
-    "nan_outside": 7111787,
-    "outside_all_nan": true,
-    "inside_unique_values": [
-      0.0,
-      1.0
-    ],
-    "inside_min": 0.0,
+    "height": 3730,
     "inside_max": 1.0,
-    "all_values_in_0_1": true,
-    "footprint_matches_labels_defined": true,
-    "catalogue_positive_px": 60988
+    "inside_min": 0.0,
+    "known_label_exact_overlap_outside": 0,
+    "known_label_positive_pixels": 60988,
+    "labels_aligned": true,
+    "outside_nan": 7111787,
+    "outside_pixels": 7111787,
+    "resolution_m": 100.0,
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "width": 3292
   }
 }
