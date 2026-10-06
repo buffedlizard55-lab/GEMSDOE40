@@ -10,7 +10,7 @@ Euler deconvolution depth-clustering submission system · repository
 <a href="methodology.html">Method</a><a href="hypotheses.html">Hypotheses</a>
 <a href="leaderboard-analysis.html">Leaderboard analysis</a><a href="evidence.html">Evidence</a>
 <a href="sources.html">Sources</a></nav></div></header>
-<aside class="panel note" role="note"><strong>Historical main-branch supporting page (2026-10-05, before the H2-B audit).</strong> This page preserves prior research and should not be read as current upload advice. The prior H40-4 multi-scale TIFF was later scored at 0.124715 on the owner-derived SGMC proxy (0/24 blocks) and fails this repository's strict NaN-nodata format check; H2-B is <strong>HOLD — DO NOT SUBMIT</strong>. See the <a href="index.html">current project status</a> and <a href="executive-summary.html">current Executive Summary</a>. No organizer score is asserted here.</aside>
+<aside class="panel note" role="note"><strong>Historical evidence page (main-branch state, 2026-10-05).</strong> This page preserves earlier input and H40 research facts; it is not current upload advice. H40-4, H2-B, and current H7 are all <strong>HOLD — DO NOT SUBMIT</strong>. H7 passed format/uniqueness but failed its locked owner-derived proxy holdout. See the <a href="index.html">current project status</a>, <a href="executive-summary.html">current Executive Summary</a>, and <a href="reports/validation-h7-20261006.md">H7 validation report</a>. No organizer score is asserted here.</aside>
 <main>
 <h2>2026-10-06 session — measured evidence (current)</h2>
 <ul class="small">
@@ -23,11 +23,15 @@ artifacts) is reproduced here to <code>5e-5</code> on its input quantity <code>w
 <a href="data/instrument_w_verification.json">verification JSON</a>, <a href="data/instrument_w_verification.txt">table</a>.</li>
 <li><strong>Retired gate comparator:</strong> the previously frozen all-prior SGMC gate is measured against the blind spacing-5 lattice
 (live 0.0904) — <a href="data/gate-defect-20261006.json">defect measurements</a>.</li>
+<li><strong>Instrument audit (this session's decisive negative result):</strong> the 4-quadrant LM instrument has Spearman <strong>+0.10</strong> with the 16 organizer scores and ranks the blind spacing-5 lattice first (0.4366 vs its real 0.0904); SGMC off-catalogue credit per dot is <em>higher</em> for a mass-matched control (0.1896) than for the best artifact (0.1776) while their scores are 0.0778 and 0.2778. Both instruments are retired —
+<a href="data/instrument-audit-20261006.json">instrument-audit-20261006.json</a>.</li>
+<li><strong>H40-B (magnetic × gravity Euler depth conjunction, measured):</strong> 4.1 % of magnetic SI = 0 solutions survive the ±60 % depth / 3 px conjunction; the resulting field reaches credit density 0.1333 at 30,000 dots (all-solutions field: 0.1277) and 0.1508 at 15,000 dots.</li>
 <li><strong>Prior corpus:</strong> sha256, mass, <code>w</code> and instrument prediction for all 26 staged priors —
 <a href="https://github.com/buffedlizard55-lab/GEMSDOE40/blob/main/ref/meta/prior_corpus.md">ref/meta/prior_corpus.md</a>.</li>
 <li><strong>Data claim fixed:</strong> <code>footprint_matches_labels_defined</code> was reported false because the audit script looked for
-<code>existing_faults.tif</code> while this mirror stores the same bytes as <code>labels.tif</code>. With the fallback in place the comparison is
-true (0 cells in either symmetric difference) — <a href="data/submission_format.json">submission_format.json</a>.</li>
+<code>existing_faults.tif</code> while this mirror stores the same bytes as <code>labels.tif</code>. The refreshed audit resolves either alias and now
+reports <code>labels_aligned: true</code> with 0 known-label positives outside the footprint —
+<a href="data/submission_format.json">submission_format.json</a>.</li>
 </ul>
 <h2>Verification of the data claims</h2>
 <pre>{

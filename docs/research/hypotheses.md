@@ -141,3 +141,52 @@ how it differs from everything already in this repository.
   surrogate credit per pixel against 0.0505 per dot on the instrument definition). At the
   corrected bar, Euler dots at `w = 0.053` do **not** pay (the incumbent's own operating point
   requires marginal `w > 0.099`).
+
+### Addendum 2026-10-06 (later in the same session): instrument audit and H40-B
+
+**Instrument audit — no available instrument can rank the scored artifacts.**
+The 16 organizer-scored artifacts that exist as rasters in this corpus were each
+scored with the two instruments the site had been using, plus the raw
+off-catalogue SGMC credit density `w` (full table:
+`docs/data/instrument-audit-20261006.json`):
+
+| quantity | Spearman vs the 16 organizer scores |
+|---|---:|
+| 4-quadrant LM instrument (`lm_calibrated`) | **+0.10** |
+| emitted mass `M` | **−0.676** |
+| off-catalogue SGMC credit per dot `w` | **+0.676** |
+
+Two decisive counterexamples destroy the instruments as ranking tools:
+
+1. **Mass-matched control pair.** `p34-scatter-q50` and the incumbent
+   `gemsdoe32-h33-h33-2-b2` both emit exactly 37,654 dots. The control holds
+   `w = 0.1896` of SGMC credit per dot, the field holds `w = 0.1776` — 7 % *less* —
+   yet the organizer scores are 0.0778 and 0.2778. A 3.6× inversion at equal mass
+   means SGMC credit density carries no information about placement quality.
+2. **Blind lattice.** `p13-lattice-s5-v2` is a blind 5-px lattice with no
+   geological input. The LM instrument ranks it **first of all 16** (0.4366) while
+   its organizer score is third from the bottom (0.0904). The LM instrument's
+   +0.10 rank correlation is the whole story: it rewards breadth, because its
+   surrogate truth set (62–80 k px) is 5–6× denser than the hidden truth
+   (`N ≈ 9–14 k px`).
+
+The earlier statements in this register and in the artifact receipt that quoted
+"predicted live 0.1625" and "LM 0.2015 vs incumbent 0.2679" are therefore
+**withdrawn as promotion evidence**: the saturating model's input `w` is defined
+on a different surrogate than the one it was fitted with, and refitting the same
+functional form with the locally defined `w` gives leave-one-out Spearman 0.47
+with the two best artifacts inverted. The H40 artifact stays **HOLD**, now for a
+stated and measured reason rather than an instrument number.
+
+**H40-B — magnetic × gravity Euler depth conjunction (measured, not refuted).**
+Requiring every magnetic SI = 0 solution to have a gravity solution within 3 px at
+±60 % relative depth keeps 11,848 of 285,536 magnetic solutions (4.1 %; 2,163 /
+2,047 / 1,654 for `rtp` at windows 8/12/16 and 2,221 / 2,026 / 1,737 for `tmi`).
+The resulting field, thinned at 30,000 dots (spacing 3.0), reaches
+`w_offcat = 0.1333` against `0.1277` for the all-solution field at the same mass
+(+4 %), and 0.1508 at 15,000 dots — the highest credit density measured in this
+field family. Under the audit above this is *not* promotion evidence, but it is
+the cheapest next measurement: H40-B is retained as the top-ranked untried
+hypothesis, and the next session's mandatory step is a **truth model validated by
+leave-one-out ranking of the 16 scored artifacts (target Spearman ≥ 0.8)** before
+any emission decision.

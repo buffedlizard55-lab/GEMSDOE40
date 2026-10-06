@@ -111,6 +111,8 @@ def audit_candidate(
     template_path: str | Path,
     inventory_path: str | Path,
     prior_cache: str | Path,
+    *,
+    budget: int | None = None,
 ) -> dict[str, Any]:
     """Compare against all same-grid unique blobs in the pinned inventory.
 
@@ -136,10 +138,12 @@ def audit_candidate(
     candidate_pixel_hash = canonical_pixel_sha256(candidate, ~footprint)
     results: list[dict[str, Any]] = []
     skipped: list[dict[str, Any]] = []
+    missing_cache: list[str] = []
     for entry in inventory.get("unique_rasters", []):
         blob = entry["git_blob_sha"]
         cached = prior_cache / _artifact_file_name(blob)
         if not cached.exists():
+            missing_cache.append(blob)
             skipped.append({"git_blob_sha": blob, "reason": "not present in prior cache"})
             continue
         with rasterio.open(cached) as prior_ds:
@@ -164,7 +168,7 @@ def audit_candidate(
             footprint,
             candidate_raw_sha256=candidate_hash,
             prior_raw_sha256=prior_hash,
-            budget=int(np.count_nonzero(candidate[footprint])),
+            budget=int(budget or np.count_nonzero(candidate[footprint])),
         )
         results.append({
             "git_blob_sha": blob,
@@ -185,9 +189,12 @@ def audit_candidate(
         "thresholds": NEAR_DUPLICATE_THRESHOLDS,
         "inventory_unique_blobs": len(inventory.get("unique_rasters", [])),
         "same_grid_comparisons": len(results),
-        "different_grid_or_band_count": len(skipped),
+        "different_grid_or_band_count": sum(row.get("reason") == "not a single-band exact-template grid" for row in skipped),
+        "missing_prior_cache_count": len(missing_cache),
+        "missing_prior_cache_git_blobs": missing_cache,
+        "top_budget_for_comparison": int(budget or np.count_nonzero(candidate[footprint])),
         "near_duplicate_count": sum(bool(row["near_duplicate_by_preregistered_rule"]) for row in results),
-        "uniqueness_pass": not any(row["near_duplicate_by_preregistered_rule"] for row in results),
+        "uniqueness_pass": not missing_cache and not any(row["near_duplicate_by_preregistered_rule"] for row in results),
         "closest_prior_outputs": closest,
         "comparisons": results,
         "skipped": skipped,
