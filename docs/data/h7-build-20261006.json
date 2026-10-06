@@ -1,0 +1,156 @@
+{
+  "3d_voxel_cluster": {
+    "cluster_supported_voxels": 430,
+    "depth_mad_m_p50_p95_supported": [
+      31.62249755859375,
+      105.86142425537099
+    ],
+    "in_footprint_solutions": 3237,
+    "neighbour_count_p50_p95": [
+      1.0,
+      3.0
+    ],
+    "raw_solutions": 3237,
+    "source_context_factor_p05_p50_p95": [
+      0.532271945476532,
+      0.7784027457237244,
+      0.9858132362365722
+    ],
+    "unique_source_voxels": 2886
+  },
+  "candidate_path": "docs/downloads/gemsdoe40-h7-rtp-euler-gravity-context-3d-kde-20261006-998f660f.tif",
+  "candidate_sha256": "e229aa9af26018bc80b0cca880d484a5b8362c26ad79ca362423953c32e66597",
+  "canonical_pixels_sha256": "998f660fcbf3b1a31600bd1e5e56a4d3b4c32d57c8fd8af36b3af793226a7d7c",
+  "euler_solve": {
+    "accepted_solutions": 3237,
+    "condition_p50_p95": [
+      57.318050384521484,
+      468.4176391601559
+    ],
+    "depth_m_p05_p50_p95": [
+      203.35509338378907,
+      522.1219482421875,
+      1074.9470703125
+    ],
+    "field": "rtp",
+    "relative_residual_p50_p95": [
+      0.16445276141166687,
+      0.19671619832515716
+    ],
+    "si": 0.0,
+    "solutions_accepted": 3237,
+    "solutions_depth_gate": 156052,
+    "solutions_finite_before_physical_gates": 316339,
+    "solutions_offset_gate": 247256,
+    "solutions_pass_all_physical_gates": 3237,
+    "solutions_relative_fit_gate": 6653,
+    "source_offset_px_p50_p95": [
+      3.208972930908203,
+      4.820382881164551
+    ],
+    "windows_conditioned": 316339,
+    "windows_input_valid": 316339,
+    "windows_total": 764351
+  },
+  "evidence_class": "candidate construction only; no proxy or holdout read during construction",
+  "format_receipt": {
+    "bytes": 453350,
+    "candidate": {
+      "count": 1,
+      "crs": "EPSG:32611",
+      "dtype": "float32",
+      "height": 3730,
+      "in_footprint_max": 1.0,
+      "in_footprint_min": 0.0,
+      "in_footprint_nonzero": 28080,
+      "nodata": "NaN",
+      "outside_nan": 7111787,
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "width": 3292
+    },
+    "canonical_pixels_sha256": "998f660fcbf3b1a31600bd1e5e56a4d3b4c32d57c8fd8af36b3af793226a7d7c",
+    "issues": [],
+    "path": "docs/downloads/gemsdoe40-h7-rtp-euler-gravity-context-3d-kde-20261006-998f660f.tif",
+    "sha256": "e229aa9af26018bc80b0cca880d484a5b8362c26ad79ca362423953c32e66597",
+    "template": {
+      "count": 1,
+      "crs": "EPSG:32611",
+      "dtype": "float32",
+      "height": 3730,
+      "nodata": "NaN",
+      "outside_pixels": 7111787,
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "valid_pixels": 5167373,
+      "width": 3292
+    },
+    "valid": true
+  },
+  "gravity_context": {
+    "context_factor_rule": "0.5 + 0.5 * tie-averaged empirical CDF percentile; no hard threshold",
+    "gravity_gradient_magnitude_p05_p50_p95": [
+      0.00043775744852609934,
+      0.0018464739550836384,
+      0.005111275729723275
+    ],
+    "source_context_factor_p05_p50_p95": [
+      0.532271945476532,
+      0.7784027457237244,
+      0.9858132362365722
+    ],
+    "source_gravity_gradient_percentile_p05_p50_p95": [
+      0.0645438734143096,
+      0.556805533825222,
+      0.971626520628498
+    ],
+    "source_solutions_dropped_without_valid_gravity_context": 0,
+    "source_solutions_retained_with_valid_gravity_context": 3237
+  },
+  "hypothesis": "H7 \u2014 gravity-gradient-weighted magnetic Euler source cloud",
+  "input_sha256": {
+    "features": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5",
+    "labels": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+    "sample": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc"
+  },
+  "kde": {
+    "kde_sigma_px": 1.5,
+    "kde_truncate_sigma": 3.0,
+    "known_label_pixels_forced_zero": 60988,
+    "max_in_footprint": 1.0,
+    "normalization": "divide by maximum in-footprint KDE after exact-label suppression",
+    "outside_footprint_nan_required_on_write": 7111787,
+    "positive_in_footprint": 28080,
+    "source_depth_m_p05_p50_p95": [
+      346.1453582763672,
+      626.1108703613281,
+      1196.7537597656249
+    ],
+    "source_points": 430,
+    "source_weight_sum": 38.316268439404666
+  },
+  "layers": {
+    "iso_grav_anom": 13,
+    "rtp": 2
+  },
+  "limitations": [
+    "Gravity horizontal-gradient contrast is only a soft corroborator; lithologic contacts and basin-fill boundaries can create the same signature.",
+    "The SI=-1 raw-gravity Euler arm H4 was infeasible under its preregistered condition and depth gates and is not represented in H7.",
+    "No organizer score or hidden-test result is available for this locally built artifact."
+  ],
+  "promotion_status": "NOT EVALUATED \u2014 research-only until current-proxy holdout and refreshed uniqueness audit pass",
+  "run_date_utc": "2026-10-06",
+  "weekly_slot_used": false
+}

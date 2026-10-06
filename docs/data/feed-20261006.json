@@ -1,0 +1,22 @@
+{
+  "source": "official DrivenData public leaderboard",
+  "source_url": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
+  "retrieval_date_utc": "2026-10-06",
+  "retrieval_timestamp_utc": null,
+  "evidence_class": "public account-level leaderboard snapshot; not file-level artifact attribution",
+  "top_public_rows": [
+    {"rank": 1, "participant": "alexoktaba", "best_public_dti": 0.3345, "submissions_reported": 23, "activity_text_at_fetch": "55 min ago"},
+    {"rank": 2, "participant": "nchuzhoy", "best_public_dti": 0.3262, "submissions_reported": 4, "activity_text_at_fetch": "2 d 1 h ago"},
+    {"rank": 3, "participant": "kinghorton42", "best_public_dti": 0.3222, "submissions_reported": 7, "activity_text_at_fetch": "1 d 22 h ago"},
+    {"rank": 4, "participant": "DARD", "best_public_dti": 0.3195, "submissions_reported": 14, "activity_text_at_fetch": "4 d ago"},
+    {"rank": 5, "participant": "joeyfezster", "best_public_dti": 0.3163, "submissions_reported": 21, "activity_text_at_fetch": "3 h 12 min ago"}
+  ],
+  "owner_reference_row": {
+    "rank": 13,
+    "participant": "extradr19",
+    "best_public_dti": 0.2778,
+    "submissions_reported": 10,
+    "attribution_warning": "The public leaderboard row is account-level and does not identify an underlying TIFF. GEMSDOE32 describes H33-2-B2's 0.2747 as projected and UNSCORED; do not attribute the 0.2778 row to that file."
+  },
+  "correction": "0.3195 is rank 4 in this 2026-10-06 snapshot, not rank 1. Public-board scores are not private-test or final expanded-label scores."
+}

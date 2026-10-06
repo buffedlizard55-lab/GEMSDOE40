@@ -43,6 +43,24 @@ def read_binary(path: str | Path) -> np.ndarray:
     return np.isfinite(a) & (a > 0)
 
 
+def labels_path(ddir: str | Path) -> Path:
+    """Locate the label raster under either the official or the mirror name.
+
+    The DrivenData package ships the catalogue raster as ``existing_faults.tif``;
+    this mirror stores the same bytes as ``labels.tif`` (sha256 ``7ba308cc...``,
+    verified by ``scripts/inspect_data.py``).  Reading the wrong name silently
+    produced an all-False label mask, which made ``footprint_matches_labels_defined``
+    report a false mismatch and made the LM instrument's off-catalogue truth set
+    collapse to the whole SGMC layer.  Resolve the name explicitly instead.
+    """
+    ddir = Path(ddir)
+    for name in ("existing_faults.tif", "labels.tif"):
+        p = ddir / name
+        if p.exists():
+            return p
+    raise FileNotFoundError(f"no label raster (existing_faults.tif / labels.tif) in {ddir}")
+
+
 def quadrant_ids(footprint: np.ndarray) -> np.ndarray:
     foot = np.asarray(footprint, bool)
     yy, xx = np.nonzero(foot)
@@ -100,7 +118,7 @@ def load_live_mirror(data_dir: str | Path, sgmc_name: str = "derived_sgmc_faults
         sample = ddir / "sample_submission.tif"
     with rasterio.open(sample) as ds:
         foot = np.isfinite(ds.read(1))
-    labels = read_binary(ddir / "existing_faults.tif") & foot
+    labels = read_binary(labels_path(ddir)) & foot
     p = ddir / external_subdir / sgmc_name
     if not p.exists():
         p = ddir / sgmc_name
@@ -126,7 +144,7 @@ def load_cat_hidden(data_dir: str | Path, hide_frac: float = 0.20, seed: int = 2
         sample = ddir / "sample_submission.tif"
     with rasterio.open(sample) as ds:
         foot = np.isfinite(ds.read(1))
-    labels = read_binary(ddir / "existing_faults.tif") & foot
+    labels = read_binary(labels_path(ddir)) & foot
     quad = quadrant_ids(foot)
     comp, n_comp = label(labels, structure=np.ones((3, 3), int))
     rng = np.random.default_rng(seed)

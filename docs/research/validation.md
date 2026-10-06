@@ -51,7 +51,7 @@ H1 and strict H2 were feasibility failures; H2-B was a proxy promotion failure; 
 
 The offset-aware, rank-adaptive contact Euler + cross-window depth-KDE run completed on CPU. It produced an independently new, exact-format TIFF and 46,656 QC-passing depth solutions (20,617 clustered). Its SHA-256 and its cloud's SHA-256 were independently reproduced byte for byte.
 
-A final reachable-history inventory covers 55 public repositories, 333 branch heads, 1,835 commits and 336 byte-verified TIFF-named artifacts. 333 are full-size arrays; technical fixtures/header-only artifacts and two partial-NaN storage variants are explicitly adjudicated, not silently omitted or fabricated. Every complete counterpart is separately compared. No near-duplicate under the unchanged H4 thresholds.
+A final reachable-history inventory covers 55 public repositories, 338 branch heads, 1,859 commits and 343 byte-verified TIFF-named artifacts. 340 are full-size arrays; technical fixtures/header-only artifacts and two partial-NaN storage variants are explicitly adjudicated, not silently omitted or fabricated. Every complete counterpart is separately compared. No near-duplicate under the unchanged H4 thresholds.
 
 **HOLD — DO NOT SUBMIT.** H4 proxy DTI is 0.00690153557133729; H33-B2 is 0.09155026618057825; the frozen SGMC-derived incumbent is 0.8359066540883113. H4 wins no truth-bearing block against either. The historical 18-win gate is also mathematically infeasible with only 16 truth-bearing blocks, and its incumbent is circular. We preserve, disclose and do not retroactively relax either defect. No organizer score or competition submission exists for H4.
 

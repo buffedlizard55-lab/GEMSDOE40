@@ -47,6 +47,49 @@
     },
     {
       "artifact": {
+        "bytes": 453350,
+        "kind": "output-directory",
+        "path": "docs/downloads/gemsdoe40-h7-rtp-euler-gravity-context-3d-kde-20261006-998f660f.tif",
+        "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE40/9987e403a964dbeb9a759c0bf308f4054ab98da2/docs/downloads/gemsdoe40-h7-rtp-euler-gravity-context-3d-kde-20261006-998f660f.tif",
+        "ref": "9987e403a964dbeb9a759c0bf308f4054ab98da2",
+        "repo": "GEMSDOE40"
+      },
+      "bands": 1,
+      "bytes": 453350,
+      "candidate_top_pixels": 37654,
+      "canonical_hash_equal": false,
+      "canonical_sha256": "998f660fcbf3b1a31600bd1e5e56a4d3b4c32d57c8fd8af36b3af793226a7d7c",
+      "comparison_coverage": 1.0,
+      "comparison_mode": "raw pixel-index correspondence; no clipping or probability transform",
+      "exact_grid": true,
+      "exact_values_equal": false,
+      "file_hash_equal": false,
+      "git_blob_sha": "6a19435e5a2d822ac033b8eda1b2eb398b53dc83",
+      "historic_h2b_rule_near_duplicate": false,
+      "historic_top_budget_containment": 0.7263176638176638,
+      "hot_support_jaccards": {
+        "0.95": 0.007557470616103052,
+        "0.99": 0.00483689538807649
+      },
+      "invalid_in_template_footprint": 0,
+      "legacy_nodata_zero_compared_as_raw_zero": false,
+      "near_duplicate_h4": false,
+      "nonzero_support_jaccard": 0.023366520399161348,
+      "pearson_r": 0.07916815940167467,
+      "pixels_compared": 5167373,
+      "prior_top_pixels": 28080,
+      "sha256": "e229aa9af26018bc80b0cca880d484a5b8362c26ad79ca362423953c32e66597",
+      "shape": [
+        3730,
+        3292
+      ],
+      "top_budget": 37654,
+      "top_containment": 0.11047008547008547,
+      "top_intersection": 3102,
+      "top_jaccard": 0.04952739813513859
+    },
+    {
+      "artifact": {
         "bytes": 304583,
         "kind": "output-directory",
         "path": "docs/downloads/GEMSDOE9-basin-v1-UNAPPROVED-ae3ec2c5.tif",
@@ -165,49 +208,6 @@
       "pixels_compared": 5167373,
       "prior_top_pixels": 37654,
       "sha256": "5bc279cd55e65733df6d532b6b1c9d348b33720ed9196237371d487042fff195",
-      "shape": [
-        3730,
-        3292
-      ],
-      "top_budget": 37654,
-      "top_containment": 0.0378445849046582,
-      "top_intersection": 1425,
-      "top_jaccard": 0.019287251465154365
-    },
-    {
-      "artifact": {
-        "bytes": 472382,
-        "kind": "published-download-or-submission",
-        "path": "docs/downloads/GEMSDOE40-submission-nan.tif",
-        "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE40/0e4a795d467f16555443ee0446875d7c32f51aa5/docs/downloads/GEMSDOE40-submission-nan.tif",
-        "ref": "0e4a795d467f16555443ee0446875d7c32f51aa5",
-        "repo": "GEMSDOE40"
-      },
-      "bands": 1,
-      "bytes": 472382,
-      "candidate_top_pixels": 37654,
-      "canonical_hash_equal": false,
-      "canonical_sha256": "5920735510e6bed51e192c10dcba64af760f8adb1f9eca463a952db85faba795",
-      "comparison_coverage": 1.0,
-      "comparison_mode": "raw pixel-index correspondence; no clipping or probability transform",
-      "exact_grid": true,
-      "exact_values_equal": false,
-      "file_hash_equal": false,
-      "git_blob_sha": "76f9bf7ac3add357150ef80953193d331efa3e4c",
-      "historic_h2b_rule_near_duplicate": false,
-      "historic_top_budget_containment": 0.27326140136292154,
-      "hot_support_jaccards": {
-        "0.95": 0.01234339434091456,
-        "0.99": 0.012442698100851343
-      },
-      "invalid_in_template_footprint": 0,
-      "legacy_nodata_zero_compared_as_raw_zero": false,
-      "near_duplicate_h4": false,
-      "nonzero_support_jaccard": 0.01392558920235347,
-      "pearson_r": 0.043984054758728575,
-      "pixels_compared": 5167373,
-      "prior_top_pixels": 37654,
-      "sha256": "3d30ed6f67a87db2e95dbd3e4e1a0dfec64b67ca5c9db7c9f3667d1daf3a3171",
       "shape": [
         3730,
         3292
@@ -2934,6 +2934,49 @@
       "top_containment": 0.007781377808466564,
       "top_intersection": 293,
       "top_jaccard": 0.0039058854895687527
+    },
+    {
+      "artifact": {
+        "bytes": 263586,
+        "kind": "output-directory",
+        "path": "docs/downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-zeros.tif",
+        "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE40/9987e403a964dbeb9a759c0bf308f4054ab98da2/docs/downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-zeros.tif",
+        "ref": "9987e403a964dbeb9a759c0bf308f4054ab98da2",
+        "repo": "GEMSDOE40"
+      },
+      "bands": 1,
+      "bytes": 263586,
+      "candidate_top_pixels": 37654,
+      "canonical_hash_equal": false,
+      "canonical_sha256": "028df639aa9448ed9842b2522dd6e2a516827a81965b7db177d0b0401362a33a",
+      "comparison_coverage": 1.0,
+      "comparison_mode": "raw pixel-index correspondence; no clipping or probability transform",
+      "exact_grid": true,
+      "exact_values_equal": false,
+      "file_hash_equal": false,
+      "git_blob_sha": "2c9580de7c279e9dd6690c4b4ebdd30ed54e1f97",
+      "historic_h2b_rule_near_duplicate": false,
+      "historic_top_budget_containment": 0.17081666666666667,
+      "hot_support_jaccards": {
+        "0.95": 0.008989818053899822,
+        "0.99": 0.0031708920873821877
+      },
+      "invalid_in_template_footprint": 0,
+      "legacy_nodata_zero_compared_as_raw_zero": false,
+      "near_duplicate_h4": false,
+      "nonzero_support_jaccard": 0.011202366170581138,
+      "pearson_r": 0.010878382973832755,
+      "pixels_compared": 5167373,
+      "prior_top_pixels": 37654,
+      "sha256": "57896abee36d6722f587f543e1f65ddfd9af19163e20653e852bfb3162b10902",
+      "shape": [
+        3730,
+        3292
+      ],
+      "top_budget": 37654,
+      "top_containment": 0.016386041323630956,
+      "top_intersection": 617,
+      "top_jaccard": 0.008260700753772209
     },
     {
       "artifact": {
@@ -6893,6 +6936,49 @@
     },
     {
       "artifact": {
+        "bytes": 453350,
+        "kind": "output-directory",
+        "path": "docs/downloads/gemsdoe40-h7-rtp-euler-gravity-context-3d-kde-20261006-998f660f.tif",
+        "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE40/9987e403a964dbeb9a759c0bf308f4054ab98da2/docs/downloads/gemsdoe40-h7-rtp-euler-gravity-context-3d-kde-20261006-998f660f.tif",
+        "ref": "9987e403a964dbeb9a759c0bf308f4054ab98da2",
+        "repo": "GEMSDOE40"
+      },
+      "bands": 1,
+      "bytes": 453350,
+      "candidate_top_pixels": 37654,
+      "canonical_hash_equal": false,
+      "canonical_sha256": "998f660fcbf3b1a31600bd1e5e56a4d3b4c32d57c8fd8af36b3af793226a7d7c",
+      "comparison_coverage": 1.0,
+      "comparison_mode": "raw pixel-index correspondence; no clipping or probability transform",
+      "exact_grid": true,
+      "exact_values_equal": false,
+      "file_hash_equal": false,
+      "git_blob_sha": "6a19435e5a2d822ac033b8eda1b2eb398b53dc83",
+      "historic_h2b_rule_near_duplicate": false,
+      "historic_top_budget_containment": 0.7263176638176638,
+      "hot_support_jaccards": {
+        "0.95": 0.007557470616103052,
+        "0.99": 0.00483689538807649
+      },
+      "invalid_in_template_footprint": 0,
+      "legacy_nodata_zero_compared_as_raw_zero": false,
+      "near_duplicate_h4": false,
+      "nonzero_support_jaccard": 0.023366520399161348,
+      "pearson_r": 0.07916815940167467,
+      "pixels_compared": 5167373,
+      "prior_top_pixels": 28080,
+      "sha256": "e229aa9af26018bc80b0cca880d484a5b8362c26ad79ca362423953c32e66597",
+      "shape": [
+        3730,
+        3292
+      ],
+      "top_budget": 37654,
+      "top_containment": 0.11047008547008547,
+      "top_intersection": 3102,
+      "top_jaccard": 0.04952739813513859
+    },
+    {
+      "artifact": {
         "bytes": 857108,
         "kind": "published-download-or-submission",
         "path": "docs/downloads/gems27-topo-gap-closure-t-v2-plus-h27-4-r1-on-d1-5-20261002-d466b251f309-allfinite.tif",
@@ -7750,6 +7836,49 @@
       "top_containment": 0.006958092101768737,
       "top_intersection": 262,
       "top_jaccard": 0.00349119206886443
+    },
+    {
+      "artifact": {
+        "bytes": 397208,
+        "kind": "output-directory",
+        "path": "docs/downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-nan.tif",
+        "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE40/9987e403a964dbeb9a759c0bf308f4054ab98da2/docs/downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-nan.tif",
+        "ref": "9987e403a964dbeb9a759c0bf308f4054ab98da2",
+        "repo": "GEMSDOE40"
+      },
+      "bands": 1,
+      "bytes": 397208,
+      "candidate_top_pixels": 37654,
+      "canonical_hash_equal": false,
+      "canonical_sha256": "028df639aa9448ed9842b2522dd6e2a516827a81965b7db177d0b0401362a33a",
+      "comparison_coverage": 1.0,
+      "comparison_mode": "raw pixel-index correspondence; no clipping or probability transform",
+      "exact_grid": true,
+      "exact_values_equal": false,
+      "file_hash_equal": false,
+      "git_blob_sha": "74f24d613ad4dbd09b3f4d930565ed2a0ee89588",
+      "historic_h2b_rule_near_duplicate": false,
+      "historic_top_budget_containment": 0.17081666666666667,
+      "hot_support_jaccards": {
+        "0.95": 0.008989818053899822,
+        "0.99": 0.0031708920873821877
+      },
+      "invalid_in_template_footprint": 0,
+      "legacy_nodata_zero_compared_as_raw_zero": false,
+      "near_duplicate_h4": false,
+      "nonzero_support_jaccard": 0.011202366170581138,
+      "pearson_r": 0.010878382973832755,
+      "pixels_compared": 5167373,
+      "prior_top_pixels": 37654,
+      "sha256": "21c5b3b846776d49ca75a1647099985ff64720b2d9e4affd37dc5d511a984173",
+      "shape": [
+        3730,
+        3292
+      ],
+      "top_budget": 37654,
+      "top_containment": 0.016386041323630956,
+      "top_intersection": 617,
+      "top_jaccard": 0.008260700753772209
     },
     {
       "artifact": {
@@ -9061,6 +9190,51 @@
       "top_containment": 0.008657778722048122,
       "top_intersection": 326,
       "top_jaccard": 0.004347710117094769
+    },
+    {
+      "artifact": {
+        "bytes": 215016,
+        "container_path": "docs/downloads/gems41-h42-basinmargin-s4-n40000-20261006T015229Z-allfinite.tif.zip",
+        "kind": "TIFF-inside-output-ZIP",
+        "member": "gems41-h42-basinmargin-s4-n40000-20261006T015229Z-allfinite.tif",
+        "path": "docs/downloads/gems41-h42-basinmargin-s4-n40000-20261006T015229Z-allfinite.tif.zip",
+        "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE41/1d450978f5deb35f7e1efd5af687dcf2280786f6/docs/downloads/gems41-h42-basinmargin-s4-n40000-20261006T015229Z-allfinite.tif.zip",
+        "ref": "1d450978f5deb35f7e1efd5af687dcf2280786f6",
+        "repo": "GEMSDOE41"
+      },
+      "bands": 1,
+      "bytes": 289957,
+      "candidate_top_pixels": 37654,
+      "canonical_hash_equal": false,
+      "canonical_sha256": "f88e0fa209abb266eb6ce413e939ea3ecb2b369962e7f0bdacef16409e8316aa",
+      "comparison_coverage": 1.0,
+      "comparison_mode": "raw pixel-index correspondence; no clipping or probability transform",
+      "exact_grid": true,
+      "exact_values_equal": false,
+      "file_hash_equal": false,
+      "git_blob_sha": "8a7c4752a912c88f687a2be4c7d202ad15afff2e",
+      "historic_h2b_rule_near_duplicate": false,
+      "historic_top_budget_containment": 0.1225,
+      "hot_support_jaccards": {
+        "0.95": 0.0027701498289733582,
+        "0.99": 0.0009052007899934167
+      },
+      "invalid_in_template_footprint": 0,
+      "legacy_nodata_zero_compared_as_raw_zero": true,
+      "near_duplicate_h4": false,
+      "nonzero_support_jaccard": 0.0054429627490294305,
+      "pearson_r": -0.004687780571440882,
+      "pixels_compared": 5167373,
+      "prior_top_pixels": 37654,
+      "sha256": "2943432c6e3d13f1cfae69a473499cdb9c611a873f6841f9268f151f2a025555",
+      "shape": [
+        3730,
+        3292
+      ],
+      "top_budget": 37654,
+      "top_containment": 0.005045944653954427,
+      "top_intersection": 190,
+      "top_jaccard": 0.0025293538166617853
     },
     {
       "artifact": {
@@ -13710,6 +13884,49 @@
     },
     {
       "artifact": {
+        "bytes": 342696,
+        "kind": "output-directory",
+        "path": "docs/downloads/gems41-h42-basinmargin-s4-n40000-20261006T015229Z-nan.tif",
+        "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE41/1d450978f5deb35f7e1efd5af687dcf2280786f6/docs/downloads/gems41-h42-basinmargin-s4-n40000-20261006T015229Z-nan.tif",
+        "ref": "1d450978f5deb35f7e1efd5af687dcf2280786f6",
+        "repo": "GEMSDOE41"
+      },
+      "bands": 1,
+      "bytes": 342696,
+      "candidate_top_pixels": 37654,
+      "canonical_hash_equal": false,
+      "canonical_sha256": "f88e0fa209abb266eb6ce413e939ea3ecb2b369962e7f0bdacef16409e8316aa",
+      "comparison_coverage": 1.0,
+      "comparison_mode": "raw pixel-index correspondence; no clipping or probability transform",
+      "exact_grid": true,
+      "exact_values_equal": false,
+      "file_hash_equal": false,
+      "git_blob_sha": "ec50cd626f3ccb16403899c6f132a89bc8552a10",
+      "historic_h2b_rule_near_duplicate": false,
+      "historic_top_budget_containment": 0.1225,
+      "hot_support_jaccards": {
+        "0.95": 0.0027701498289733582,
+        "0.99": 0.0009052007899934167
+      },
+      "invalid_in_template_footprint": 0,
+      "legacy_nodata_zero_compared_as_raw_zero": false,
+      "near_duplicate_h4": false,
+      "nonzero_support_jaccard": 0.0054429627490294305,
+      "pearson_r": -0.004687780571440882,
+      "pixels_compared": 5167373,
+      "prior_top_pixels": 37654,
+      "sha256": "c532e030ff645de7d64fa1437f55d5175339de9b6ca385d68e9f8637f651560f",
+      "shape": [
+        3730,
+        3292
+      ],
+      "top_budget": 37654,
+      "top_containment": 0.005045944653954427,
+      "top_intersection": 190,
+      "top_jaccard": 0.0025293538166617853
+    },
+    {
+      "artifact": {
         "bytes": 568160,
         "kind": "published-download-or-submission",
         "path": "docs/downloads/archive/13gems-composite-20260928T040920Z_allfinite.tif",
@@ -14148,6 +14365,49 @@
     },
     {
       "artifact": {
+        "bytes": 110527,
+        "kind": "output-directory",
+        "path": "docs/downloads/gemsdoe41-h42d-statemap-lattice-37k-20261006T015420Z.tif",
+        "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE41/1d450978f5deb35f7e1efd5af687dcf2280786f6/docs/downloads/gemsdoe41-h42d-statemap-lattice-37k-20261006T015420Z.tif",
+        "ref": "1d450978f5deb35f7e1efd5af687dcf2280786f6",
+        "repo": "GEMSDOE41"
+      },
+      "bands": 1,
+      "bytes": 110527,
+      "candidate_top_pixels": 37654,
+      "canonical_hash_equal": false,
+      "canonical_sha256": "d947ebe0a512d2fd270450e90e3025a3c81286c27252b14f4600882314d6b226",
+      "comparison_coverage": 1.0,
+      "comparison_mode": "raw pixel-index correspondence; no clipping or probability transform",
+      "exact_grid": true,
+      "exact_values_equal": false,
+      "file_hash_equal": false,
+      "git_blob_sha": "f439abab170bd6e83f7fccb68404e46ca082cc4f",
+      "historic_h2b_rule_near_duplicate": false,
+      "historic_top_budget_containment": 0.14496169711255155,
+      "hot_support_jaccards": {
+        "0.95": 0.002794110874004022,
+        "0.99": 0.0013367240479916537
+      },
+      "invalid_in_template_footprint": 0,
+      "legacy_nodata_zero_compared_as_raw_zero": false,
+      "near_duplicate_h4": false,
+      "nonzero_support_jaccard": 0.003617614320232396,
+      "pearson_r": -0.0013884447035055966,
+      "pixels_compared": 5167373,
+      "prior_top_pixels": 22061,
+      "sha256": "8729eaf846ad20fb5d175e0c7a25b7dab8bea7e1ba5c37bb4b6e24199acc637a",
+      "shape": [
+        3730,
+        3292
+      ],
+      "top_budget": 37654,
+      "top_containment": 0.0067086714110874395,
+      "top_intersection": 148,
+      "top_jaccard": 0.002484597176288885
+    },
+    {
+      "artifact": {
         "bytes": 3214769,
         "kind": "output-directory",
         "path": "downloads/gems6_hgb48-thr030_01be9644f2.tif",
@@ -14449,6 +14709,49 @@
     },
     {
       "artifact": {
+        "bytes": 123247,
+        "kind": "output-directory",
+        "path": "docs/downloads/gemsdoe41-h42b-junction-lattice-37k-20261006T015420Z.tif",
+        "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE41/1d450978f5deb35f7e1efd5af687dcf2280786f6/docs/downloads/gemsdoe41-h42b-junction-lattice-37k-20261006T015420Z.tif",
+        "ref": "1d450978f5deb35f7e1efd5af687dcf2280786f6",
+        "repo": "GEMSDOE41"
+      },
+      "bands": 1,
+      "bytes": 123247,
+      "candidate_top_pixels": 37654,
+      "canonical_hash_equal": false,
+      "canonical_sha256": "7cd9576675931aada765eb24a8a8445542f8ede77065cec9209844f9bdab6634",
+      "comparison_coverage": 1.0,
+      "comparison_mode": "raw pixel-index correspondence; no clipping or probability transform",
+      "exact_grid": true,
+      "exact_values_equal": false,
+      "file_hash_equal": false,
+      "git_blob_sha": "fb6eb1c6d434761fb952584f3839c720481a5aca",
+      "historic_h2b_rule_near_duplicate": false,
+      "historic_top_budget_containment": 0.1547791455467053,
+      "hot_support_jaccards": {
+        "0.95": 0.003098495391644566,
+        "0.99": 0.0008141372539629328
+      },
+      "invalid_in_template_footprint": 0,
+      "legacy_nodata_zero_compared_as_raw_zero": false,
+      "near_duplicate_h4": false,
+      "nonzero_support_jaccard": 0.0057436581840411395,
+      "pearson_r": -0.0023669117741088033,
+      "pixels_compared": 5167373,
+      "prior_top_pixels": 33144,
+      "sha256": "7e93956c934f0937341b930022b7e222c60a8fa9f7b5999da145f817810a523f",
+      "shape": [
+        3730,
+        3292
+      ],
+      "top_budget": 37654,
+      "top_containment": 0.006185131547188028,
+      "top_intersection": 205,
+      "top_jaccard": 0.002903970648647883
+    },
+    {
+      "artifact": {
         "bytes": 426344,
         "kind": "prediction-filename",
         "path": "data/evidence/runs/36091913015/submission.tif",
@@ -14664,21 +14967,21 @@
     }
   ],
   "completeness_pass": true,
-  "exact_grid_comparisons": 332,
-  "full_size_raw_comparisons": 333,
-  "hashed_and_audited_blobs": 336,
+  "exact_grid_comparisons": 339,
+  "full_size_raw_comparisons": 340,
+  "hashed_and_audited_blobs": 343,
   "historic_h2b_rule_flags": 0,
-  "inventory_blobs": 336,
-  "inventory_sha256": "78d27baf3116e6dc8dcd246a602cadc9fb6f71ac75fb85b61b0f7cfdc8f346bb",
+  "inventory_blobs": 343,
+  "inventory_sha256": "99b81d6b4c863ca2acc6ef2c39afd36bfdb77e84b841adfcc861a9be8612cd9f",
   "issues": [],
   "low_coverage_storage_variants_with_verified_full_counterparts": 2,
   "max_abs_pearson": 0.1283194399238664,
   "max_top_containment": 0.1376757532281205,
-  "max_top_jaccard": 0.045539104024297644,
+  "max_top_jaccard": 0.04952739813513859,
   "near_duplicate_count": 0,
   "nonprediction_artifacts_forensically_classified": 2,
   "nonprediction_policy": "The exact 110-byte header-only malformed artifact and 138-byte one-pixel demo are hash-accounted, not falsely correlated. Every other unreadable/unclassified artifact still fails completeness.",
-  "raw_comparisons_covering_at_least_90pct_footprint": 331,
+  "raw_comparisons_covering_at_least_90pct_footprint": 338,
   "rule": {
     "pearson_abs_gte": 0.85,
     "top_budget": 37654,

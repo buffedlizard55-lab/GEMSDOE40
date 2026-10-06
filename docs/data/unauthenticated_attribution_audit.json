@@ -1,0 +1,269 @@
+{
+  "status": "WITHDRAWN_AS_EVIDENCE",
+  "purpose": "record of a prohibited method: correlating emitted-dot properties with unauthenticated group-reported leaderboard scores. Not evidence for any design decision; see docs/research/hypotheses.md amendment 2026-10-06.",
+  "prohibited": true,
+  "n_files": 10,
+  "caveats": [
+    "n = 10 files from one lineage; five are variants of the same dotted-ridge family, so the correlations are partly a two-cluster contrast rather than a replicated law.",
+    "Correlations between the measured properties are high (distance-to-catalogue and detrended elevation both express 'away from the mapped basin-margin faults').",
+    "Scores are group-reported in the family manifests and are not re-verified by an upload from this sandbox."
+  ],
+  "correlations": [
+    {
+      "property": "frac_on_catbuf",
+      "spearman_rho": -0.9878787878787878,
+      "p_value": 9.307459988955516e-08,
+      "n": 10
+    },
+    {
+      "property": "mean_det_elev",
+      "spearman_rho": 0.9878787878787878,
+      "p_value": 9.307459988955516e-08,
+      "n": 10
+    },
+    {
+      "property": "median_dist_cat",
+      "spearman_rho": 0.9878787878787878,
+      "p_value": 9.307459988955516e-08,
+      "n": 10
+    },
+    {
+      "property": "mean_ieq_n100a15",
+      "spearman_rho": -0.9757575757575757,
+      "p_value": 1.467546187404219e-06,
+      "n": 10
+    },
+    {
+      "property": "n_px",
+      "spearman_rho": -0.9757575757575757,
+      "p_value": 1.467546187404219e-06,
+      "n": 10
+    },
+    {
+      "property": "mean_det_elev_slope",
+      "spearman_rho": 0.8787878787878788,
+      "p_value": 0.0008138621117322101,
+      "n": 10
+    },
+    {
+      "property": "mean_geod_2ndinv",
+      "spearman_rho": -0.8787878787878788,
+      "p_value": 0.0008138621117322101,
+      "n": 10
+    },
+    {
+      "property": "mean_upface",
+      "spearman_rho": 0.8424242424242423,
+      "p_value": 0.002220031225916843,
+      "n": 10
+    },
+    {
+      "property": "mean_tmi_hg",
+      "spearman_rho": 0.7696969696969697,
+      "p_value": 0.009221952722215994,
+      "n": 10
+    },
+    {
+      "property": "frac_lidar",
+      "spearman_rho": -0.6484848484848483,
+      "p_value": 0.04254012768448949,
+      "n": 10
+    },
+    {
+      "property": "mean_iso_grav_anom_hg",
+      "spearman_rho": -0.6121212121212121,
+      "p_value": 0.05997214247725527,
+      "n": 10
+    },
+    {
+      "property": "block_entropy",
+      "spearman_rho": 0.4787878787878787,
+      "p_value": 0.16152292801745594,
+      "n": 10
+    },
+    {
+      "property": "median_nn_dots",
+      "spearman_rho": 0.40385136798968213,
+      "p_value": 0.24710604166540262,
+      "n": 10
+    },
+    {
+      "property": "frac_on_sgmc_off",
+      "spearman_rho": -0.309090909090909,
+      "p_value": 0.38484123026128353,
+      "n": 10
+    }
+  ],
+  "per_file": {
+    "gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-nan.tif": {
+      "live": 0.2778,
+      "n_px": 37654.0,
+      "median_dist_cat": 19.6468827043885,
+      "frac_on_catbuf": 0.057656557072289796,
+      "frac_on_sgmc_off": 0.02289265416688798,
+      "frac_lidar": 0.764195039039677,
+      "mean_upface": 57.7571041589207,
+      "mean_tmi_hg": 33.22340401472489,
+      "mean_geod_2ndinv": 22.704778022610032,
+      "mean_det_elev": 7.2884049093622165,
+      "mean_ieq_n100a15": 1198.1102595180043,
+      "mean_iso_grav_anom_hg": -0.12420775757579652,
+      "mean_det_elev_slope": 8.571071918404307,
+      "median_nn_dots": 6.4031242374328485,
+      "block_entropy": 2.6080484777930364
+    },
+    "gems28-h27-4-r1-solo-d2-8-20261003-8acb75e1f2cc-nan.tif": {
+      "live": 0.2708,
+      "n_px": 40199.0,
+      "median_dist_cat": 17.69180601295413,
+      "frac_on_catbuf": 0.11731635115301375,
+      "frac_on_sgmc_off": 0.02691609244011045,
+      "frac_lidar": 0.7666857384512052,
+      "mean_upface": 57.879225851389336,
+      "mean_tmi_hg": 32.91293787974353,
+      "mean_geod_2ndinv": 22.722003720216247,
+      "mean_det_elev": 5.542463004249167,
+      "mean_ieq_n100a15": 1201.097530249077,
+      "mean_iso_grav_anom_hg": -0.12000930744144006,
+      "mean_det_elev_slope": 8.565685712090117,
+      "median_nn_dots": 6.708203932499369,
+      "block_entropy": 2.612141913866703
+    },
+    "gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-zeros.tif": {
+      "live": 0.26,
+      "n_px": 44090.0,
+      "median_dist_cat": 15.0,
+      "frac_on_catbuf": 0.19521433431617147,
+      "frac_on_sgmc_off": 0.03393059650714448,
+      "frac_lidar": 0.7719664322975731,
+      "mean_upface": 58.141755500113405,
+      "mean_tmi_hg": 32.369244637873955,
+      "mean_geod_2ndinv": 22.785922975885722,
+      "mean_det_elev": 0.09046994045691374,
+      "mean_ieq_n100a15": 1207.8255354369808,
+      "mean_iso_grav_anom_hg": -0.12114262802965146,
+      "mean_det_elev_slope": 8.549666676379383,
+      "median_nn_dots": 6.708203932499369,
+      "block_entropy": 2.6163614946180633
+    },
+    "gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif": {
+      "live": 0.2477,
+      "n_px": 60069.0,
+      "median_dist_cat": 14.866068747318506,
+      "frac_on_catbuf": 0.19873811783116083,
+      "frac_on_sgmc_off": 0.033361634120761124,
+      "frac_lidar": 0.7691155171552715,
+      "mean_upface": 57.75388303451032,
+      "mean_tmi_hg": 32.29485442438293,
+      "mean_geod_2ndinv": 22.749339691350045,
+      "mean_det_elev": -2.010112201524926,
+      "mean_ieq_n100a15": 1208.5780444186732,
+      "mean_iso_grav_anom_hg": -0.1257632581123538,
+      "mean_det_elev_slope": 8.514484877491654,
+      "median_nn_dots": 6.4031242374328485,
+      "block_entropy": 2.6168177521310954
+    },
+    "gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif": {
+      "live": 0.2449,
+      "n_px": 61328.0,
+      "median_dist_cat": 14.142135623730951,
+      "frac_on_catbuf": 0.1987183668145056,
+      "frac_on_sgmc_off": 0.03308439864336029,
+      "frac_lidar": 0.7685233498565093,
+      "mean_upface": 57.179493869032086,
+      "mean_tmi_hg": 32.18466384874131,
+      "mean_geod_2ndinv": 22.77347705246941,
+      "mean_det_elev": -4.268446140579783,
+      "mean_ieq_n100a15": 1208.046966884247,
+      "mean_iso_grav_anom_hg": -0.11964860133584232,
+      "mean_det_elev_slope": 8.430430933799157,
+      "median_nn_dots": 6.4031242374328485,
+      "block_entropy": 2.6165926942393125
+    },
+    "gems24-reference-h19-5-20261002-80d47e1ab2ee-nan.tif": {
+      "live": 0.1922,
+      "n_px": 121131.0,
+      "median_dist_cat": 14.560219778561036,
+      "frac_on_catbuf": 0.19951127291940132,
+      "frac_on_sgmc_off": 0.03458239426736343,
+      "frac_lidar": 0.7640075620609093,
+      "mean_upface": 57.0025344461781,
+      "mean_tmi_hg": 32.18456612972518,
+      "mean_geod_2ndinv": 22.758303370863285,
+      "mean_det_elev": -6.56179560923797,
+      "mean_ieq_n100a15": 1211.1024329076643,
+      "mean_iso_grav_anom_hg": -0.13493751178463148,
+      "mean_det_elev_slope": 8.445459553368826,
+      "median_nn_dots": 5.830951894845301,
+      "block_entropy": 2.6195185753572114
+    },
+    "gems10-h16-continuation-20260927T065521077735Z-3431b83c7c.tif": {
+      "live": 0.0461,
+      "n_px": 310042.0,
+      "median_dist_cat": 3.0,
+      "frac_on_catbuf": 0.5045864753807549,
+      "frac_on_sgmc_off": 0.03771747053624993,
+      "frac_lidar": 0.7904993517007374,
+      "mean_upface": 49.14618664568026,
+      "mean_tmi_hg": 27.469710309091163,
+      "mean_geod_2ndinv": 27.03811215389093,
+      "mean_det_elev": -55.345188005280704,
+      "mean_ieq_n100a15": 1364.2591642626512,
+      "mean_iso_grav_anom_hg": -0.08364518770041857,
+      "mean_det_elev_slope": 8.20622925511054,
+      "median_nn_dots": 4.0,
+      "block_entropy": 2.586302661429941
+    },
+    "gems10-h20-dem10-scarp-thin-20260927T155223039488Z-ffc91a1686.tif": {
+      "live": 0.0921,
+      "n_px": 153957.0,
+      "median_dist_cat": 4.47213595499958,
+      "frac_on_catbuf": 0.38403580220451167,
+      "frac_on_sgmc_off": 0.030735854816604638,
+      "frac_lidar": 0.7712802925492183,
+      "mean_upface": 48.2758367596147,
+      "mean_tmi_hg": 29.724162677849506,
+      "mean_geod_2ndinv": 25.937708532812476,
+      "mean_det_elev": -56.38173214757324,
+      "mean_ieq_n100a15": 1351.6962799561954,
+      "mean_iso_grav_anom_hg": -0.046893016338648515,
+      "mean_det_elev_slope": 7.5259662771128415,
+      "median_nn_dots": 5.0,
+      "block_entropy": 2.6043290540755955
+    },
+    "gems10-h25-ctx-ridge-20260927T232947704150Z-6452ae1d00.tif": {
+      "live": 0.128,
+      "n_px": 174232.0,
+      "median_dist_cat": 6.082762530298219,
+      "frac_on_catbuf": 0.33102989117957665,
+      "frac_on_sgmc_off": 0.026987005831305387,
+      "frac_lidar": 0.7755808347490702,
+      "mean_upface": 48.51164539235043,
+      "mean_tmi_hg": 32.34893240297834,
+      "mean_geod_2ndinv": 26.47356757455723,
+      "mean_det_elev": -53.98176760673931,
+      "mean_ieq_n100a15": 1361.1000332876947,
+      "mean_iso_grav_anom_hg": -0.0406562275114927,
+      "mean_det_elev_slope": 7.580502124331248,
+      "median_nn_dots": 6.708203932499369,
+      "block_entropy": 2.58487424549904
+    },
+    "gems10-h28-dotted-ridge-20260928T020256236880Z-6452ae1d00.tif": {
+      "live": 0.1839,
+      "n_px": 69281.0,
+      "median_dist_cat": 8.0,
+      "frac_on_catbuf": 0.2670573461699456,
+      "frac_on_sgmc_off": 0.022343788340237584,
+      "frac_lidar": 0.7787993822260071,
+      "mean_upface": 47.32180540119224,
+      "mean_tmi_hg": 32.51640553827318,
+      "mean_geod_2ndinv": 26.38131810194639,
+      "mean_det_elev": -52.33803925700566,
+      "mean_ieq_n100a15": 1348.5437642323634,
+      "mean_iso_grav_anom_hg": -0.03549185210033964,
+      "mean_det_elev_slope": 7.278160979590037,
+      "median_nn_dots": 8.06225774829855,
+      "block_entropy": 2.5769145669906086
+    }
+  }
+}

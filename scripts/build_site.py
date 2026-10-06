@@ -93,6 +93,16 @@ def verify_evidence() -> list[str]:
         embedded = readme.split("<!-- BEGIN USER BRIEF 20261006 -->", 1)[1].split("<!-- END USER BRIEF 20261006 -->", 1)[0].strip()
         check(embedded == (DOCS / "user-prompt-20261006.md").read_text().strip(), "README does not retain the complete current brief")
         check("Maximize P(Win)" in readme and "Own the Outcome" in readme, "core values lost")
+        # Concurrent mainline artifacts retain their own exact identities and no-go.
+        h7 = load("validation-h7-20261006.json")
+        h7_path = DOCS / "downloads/gemsdoe40-h7-rtp-euler-gravity-context-3d-kde-20261006-998f660f.tif"
+        check(digest(h7_path) == h7["candidate_format_receipt"]["sha256"], "retained H7 bytes changed")
+        check(h7["slot_eligible"] is False and h7["weekly_slot_used"] is False and h7["organizer_score"] is None, "retained H7 no-go changed")
+        h40 = json.loads((DOCS / "downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-audit.json").read_text())
+        for suffix, key in (("zeros", "zeros_tif"), ("nan", "nan_tif")):
+            path = DOCS / f"downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-{suffix}.tif"
+            check(digest(path) == h40[key]["sha256"], f"retained H40 {suffix} bytes changed")
+        check((DOCS / "reports/integration-20261006.md").is_file(), "parallel experiment/proxy-profile integration notes missing")
         # Preserve the historical negative result; updating the site is not rewriting history.
         old = DOCS / "downloads/gemsdoe40-h2b-tmi-euler-natural-support-20261005.tif"
         check(digest(old) == "02486eaa491da2d8ebc6b1cd53ed2bdc8e995f316be1110a64eec484779b5a68", "historical H2-B bytes changed")

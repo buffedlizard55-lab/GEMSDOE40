@@ -3,7 +3,7 @@
     "scripts/audit_contact_candidate.py": "d9790c827d7a2af9c27135254f43a2383e4d596b243c9e299c996c3363566c6e",
     "src/gemsdoe40/contact_audit.py": "b300bb1fc5ad6957259b48ff0c93cb65c390f732317a68e7245298e8b39ad6dc",
     "src/gemsdoe40/raster.py": "14d0bcd43d9f96664532965e89838488333ae31b947bc8a8edc424c1bb6390a2",
-    "src/gemsdoe40/research_holdout.py": "1ca9c72a6abc852921ec22f29590acce2494b1889c7c23d09ce46ddd7437a80a",
+    "src/gemsdoe40/research_holdout.py": "8b987ab01a2de739ffc6bb1bb3c9d093cc4de6a12ed3200d5e94dbc32d555b60",
     "src/gemsdoe40/research_metric.py": "90afebd8683722382c25a9e01c11847306e36e600754ed99abf609ffddedc9f6"
   },
   "baselines": {
@@ -943,7 +943,7 @@
   },
   "candidate_sha256": "ee73ffd76fabbaa1a2e77e17f57947a7db858916d713801e0c3502e49f6acabb",
   "circularity_warning": "Frozen incumbent used SGMC itself; its proxy score is circular, not a generalization estimate.",
-  "evaluated_utc": "2026-10-06T02:20:16.660723+00:00",
+  "evaluated_utc": "2026-10-06T02:50:26.459614+00:00",
   "evidence_class": "Spatially blocked owner-derived SGMC proxy; not independent organizer truth",
   "experiment": "H4",
   "preregistration_sha256": "a44d3d473fdb94b5ce9e7132558b48cfdc570134bb2c6d4a0c2711451267ffb5",
@@ -1002,6 +1002,7 @@
     "off_catalogue_truth_pixels_after_exact_mask": 78433,
     "official_metric": "published 300 m triangular distance-weighted Tversky; alpha=0.2, beta=0.8",
     "proxy_dtype": "uint8",
+    "proxy_generation": "historical_h2b_26d142",
     "proxy_nodata": 255.0,
     "proxy_sha256": "26d142c4c93282cd94f6950ab96f22aeff59fbbea523d43d662e76fa1b161b5c",
     "proxy_status": "owner-derived SGMC mirror; proxy instrument only, not organizer truth",

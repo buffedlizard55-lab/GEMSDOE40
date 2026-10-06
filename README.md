@@ -20,8 +20,8 @@
 | New construction | SI=0 **with contact offset A**, rank-adaptive TMI + first-vertical-gravity-derivative Euler; depth-consistent cross-window KDE |
 | Cloud | 46,656 QC-passing solutions; **12,167 magnetic + 8,450 gravity** clustered solutions |
 | Continuous output | 865,145 positive cells; 857,785 distinct finite values; confidence mass 29,350.41 |
-| Prior-output audit | **336 byte-verified artifacts** across 55 public repositories / 333 pinned branch heads / 1,835 reachable commits; 332 exact-grid, 333 full-size array comparisons, 2 supplementary alignment checks; 184 ZIP paths/versions inspected. One spatial format fixture, a one-pixel demo and a 110-byte header-only non-raster are explicitly distinguished |
-| Novelty | No exact/near duplicates; maximum absolute Pearson **0.128319**, top-37,654 Jaccard **0.045539**, containment **0.137676** |
+| Prior-output audit | **343 byte-verified artifacts** across 55 public repositories / 338 pinned branch heads / 1,859 reachable commits; 339 exact-grid, 340 full-size array comparisons, 2 supplementary alignment checks; 190 ZIP paths/versions inspected. One spatial format fixture, a one-pixel demo and a 110-byte header-only non-raster are explicitly distinguished |
+| Novelty | No exact/near duplicates; maximum absolute Pearson **0.128319**, top-37,654 Jaccard **0.049527**, containment **0.137676** |
 | Local SGMC proxy DTI | H4 **0.006902**; H33-B2 **0.091550**; frozen SGMC-derived incumbent **0.835907** |
 | Decision | 0/16 truth-bearing block wins vs both H33 and incumbent; **HOLD — DO NOT SUBMIT** |
 
@@ -78,6 +78,17 @@ Large inputs/prior caches stay out of Git. Only the deliverable TIFF, compressed
 - **Observation-surface uncertainty.** Audit official GeoDAWN drape/altitude metadata and native gravity resolution before a ground-depth or dip-to-surface projection.
 - **Fault versus contact versus resource.** Euler clusters can be unfaulted lithologic boundaries. Finite-step modeling and independent structural/thermal evidence are needed. The competition target is faults, not vents or commercial reservoirs.
 - **Score improvement is unproved.** H4 is a valid, genuinely new *research submission-format candidate*, not a winning candidate. The next experiment must beat a credible independent comparator before spending a slot.
+
+## Concurrent mainline work was preserved, not overwritten
+
+While this branch was running, PRs #7, #8 and #9 landed on main. They are integrated with their source, tests, receipts and downloadable artifacts intact. The current **contact-offset H4** is not the **H4-A contact-network** arm, **H7 gravity-context** arm, or **H40 dotted-emission** arm. H7 in our unchanged preregistration means the still-unimplemented TMI/RTP stability idea, a numbering collision—not the merged H7 experiment.
+
+- **H7 gravity-context:** [separate negative-result report](docs/reports/validation-h7-20261006.md); its 0.000265 proxy result uses **643cbe…**, not H4’s frozen **26d142…** raster. Do not compare those native results as if the labels were identical.
+- **H40:** [original artifact/receipt](docs/downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-audit.json); its claimed promotion estimates were subsequently withdrawn. Both original twins remain research-only, not this H4 file.
+- **H4-A:** [closed negative result](docs/reports/h4a-negative-result-20261006.md); its raw raster was withdrawn into another session’s ignored workspace and is not available to this checkout. Do not invent its pixels or pretend it was raw-correlated.
+- The [16-pair instrument analysis](docs/data/instrument-audit-20261006.json) and [attribution retraction](docs/data/unauthenticated_attribution_audit.json) disagree in how they describe score evidence. We retain both, but **do not certify those file/score pairings as organizer-authenticated**, infer a hidden-label count from them, or adopt a rank-correlation calibration as a valid promotion gate.
+
+**No candidate is cleared today.** The inherited instrument is **retired for promotion**, but its frozen computation/result remains reproducible. The former missing-proxy blocker is resolved: the exact 26d142… version was recovered from GEMSDOE30. The H7/H40 643cbe… profile and its existing `docs/data/input_manifest.json` are retained separately; H4’s commands use `scripts/acquire_data.py` / `docs/data/acquisition-20261006.json` and never silently substitute profiles. [Integration notes](docs/reports/integration-20261006.md) / [incoming README archive](docs/archive/README-main-9987e40-20261006.md).
 
 ## History and operating record
 

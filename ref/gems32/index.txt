@@ -1,0 +1,137 @@
+ 
+ GEMSDOE32 - a fault-discovery system for the DOE GEMS Prize · GEMSDOE32 
+ GEMSDOE32 - a fault-discovery system for the DOE GEMS Prize Home Make a submission Research Hypotheses Leaderboard Sources Irregularities 
+ ⬇ Download the submission GeoTIFF .zip 
+ Core Values. Maximize P(Win) — every weekly submission slot is an experiment, not a lottery ticket. Own the Outcome — every claim here carries an evidence class, and the defect in our own previously-shipped primary was measured, published and replaced rather than quietly dropped. 
+ ⬇ ONE-CLICK SUBMISSION FILE 
+ Download gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif .zip (single GeoTIFF inside) 
+ Filename: gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif 
+ Unique submission name to use: GEMSDOE32-H33-2-B2 
+ Note to paste into the submit form's Note (optional) field
+(177/200 characters): 
+ GEMSDOE32 H33-2-B2 | flank B=2 prune on the 0.2708 base: 37,654 dots, 0 within 200 m of the catalogue; live-mirror +0.00487 in 4/4 folds, safety 2.08, projected 0.2747; UNSCORED 
+ single band · float32 · EPSG:32611 · 100 m · 3292×3730 ·
+37,654 predicted pixels · every cell finite · every value in [0, 1] ·
+0 NaN anywhere · no nodata tag · sha256 c55bafc470054e82… 
+· format receipt (independent re-read) 
+ Already-scored fallback: 0.2708 anchor (already-scored base) 
+ Identification pack — the other two queries slot file sha256 what it gives SECONDARY (Tier 2) gemsdoe32-h32d-submodular-multipysics-46090-20261004T183200Z-4de30601-zeros.tif f81e26d7712d1a4a… Tier 2 candidate: d2.8 emission (44,090 px) with 500 uncorroborated speckles pruned and 2,500 priority-ordered H32 dots added on the dip-projected step, transtensional swarm and MT clay-cap surfaces; 46,090 px; 0 on-catalogue NaN-outside twin of the primary gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-nan.tif baeae3219bba6a19… the competition's own format (identical values inside the footprint) 
+ Status. PRIMARY = H33-2-B2 (Tier 1: live-anchored gate). 0.2708 base with every dot at d(catalogue) <= 2 px deleted (37,654 dots). 37,654 dots, 0 on the catalogue. Live mirror (spatially blocked, off-catalogue truth, validated on the known live orderings) +0.004870 in 4 quadrants over the 0.2708 base; live-anchored safety factor 2.08; projected live DTI 0.2747 (a MODEL, not a score). NO ORGANISER SCORE EXISTS for this or any artifact in this repository. 
+ ⚠ The portal error "Predicted values must be in range [0, 1]" — fixed, and here is exactly how 
+ DrivenData rejects a submission whose values fall outside [0, 1] , and it also rejects
+a raster whose nodata tag is a large negative sentinel such as
+ -3.4028234663852886e+38 , because that sentinel is not a value in [0, 1] .
+Two different failures produce the same message, and this repository has measured both. 
+ Mechanism 1 — the float32 sentinel. training_features.tif uses
+ -3.4028234663852886e+38 as nodata: 7,113,308 cells, of which 3,061 lie
+ inside the submission footprint. Writing those through unchanged puts them outside
+ [0, 1] . 
+ Mechanism 2 — the NaN sentinel. A raster carrying nodata=NaN with NaN
+cells outside the footprint is a legitimate competition format, but it is one validator change away
+from the same rejection. Every primary download here is written all-finite , with
+ nodata=None . 
+ The fix, verified by re-reading the written bytes: every GeoTIFF offered on this site is
+single-band float32, EPSG:32611, 100 m, 3730×3292, every one of the 12,279,160 cells
+finite , min 0.0, max 1.0, zero cells outside [0, 1] , zero NaN , and
+ no nodata tag . Each download ships a
+ checks-*.json format receipt produced by re-opening the file from disk. 
+ What this is 
+ GEMSDOE32 is an auditable system for the DOE GEMS Prize (DrivenData #306, GeoDAWN / NW
+Nevada): find geothermal-indicative faults that are not in the USGS / INGENIOUS
+catalogue, and ship them as a legal GeoTIFF. It has three parts: an exact re-implementation of the
+competition metric and its decision theory; a preregistered spatially-blocked holdout that scores
+ emission rules under that metric; and a Bayesian-optimisation slot gate that decides when a
+scarce weekly submission is worth spending. 
+ Verified in this repository 
+ the published metric formula, the published worked example, and the identity
+ DTI = T/(0.2(T+S−M)+0.8|G|) (the suite runs in CI on every push: pytest tests -q ); 
+ the credit bar k > 0.2·DTI that every emitted pixel must clear; 
+ the byte identity (sha256) of every raster this site offers; 
+ the official source links on the sources page. 
+ Not claimed 
+ no score in this repository is organizer-verified; the group's own numbers are labelled
+ claim (4 of them, see leaderboard ); 
+ the holdout's truth is the visible catalogue, so it cannot reward a genuinely new fault
+(IR-32-PROXY-01); 
+ the submitted file is a candidate, not a proven improvement. 
+ The brief's question, answered 
+ Why did the dotted H19-5 file score highest? Because the metric is a budget: every unit of
+prediction mass that is not the best cover of a truth pixel costs 0.2, and one that is earns at most
+1. Thinning a thick surface while keeping its geometry removes mass that was already covered — it
+raises the credit per emitted pixel and moves the file to the point where the marginal pixel's
+credit equals the break-even bar. The group measured that break-even empirically at
+ 0.0548  credit per dot; this repository derives the same number from the published
+formula, 0.2·0.26 = 0.0520 . Two independent routes, one answer. 
+ Can we beat 0.3262? Only by raising the
+ credit density of the top of the ranking: at the same emitted mass the leader needs
+≈25 % more mean credit per pixel than the group's best field delivers. No public catalogue can
+supply that — the newest public compilation is already inside the given catalogue
+(59065
+px, of which all but one lie within 300 m of it). The path is a better detector plus the
+two-round objective, and the plan is ranked here . 
+ Two instruments, and the disagreement between them 
+ The blocked holdout scores emission rules against the catalogue ; the model Monte Carlo
+scores candidate files against a generative description of the hidden set. They do not agree
+about every change — and that disagreement is a finding, not noise to shrug off: 
+ change, at matched emitted mass blocked holdout (catalogue truth) 
+ live-anchored truth model (official metric, paired draws) 
+ greedy packing of the surface vs the incumbent dot-thin 
+ +0.0100 mean, 4/4 folds positive 
+ −0.0033, 0/12 draws positive 
+ greedy packing of the scatter-smoothed field, catalogue pixels excluded 
+ not measured on this instrument (it is off-catalogue by construction) 
+ +0.0247 ± 0.0005, 12/12 draws positive 
+ Mechanism. The holdout's truth is the catalogue, so it rewards covering the field surface
+where the catalogue runs. The hidden set is scattered around the surface (the group's own
+inference: a 1.85 px scale), so covering the surface is the wrong objective — the right one is to
+cover the surface blurred by that scale, which is what the shipped file does. Same mass, same field,
+same metric; only the objective changed. 
+ truth_model_mc.json — generative truth model + official metric, paired draws
+ Truth model: 12691 px,
+σ = 1.85 px, drawn paired for every candidate; scored
+with the official metric. Source of the model: GEMSDOE25 H28 inference (owner-report-derived). 
+ candidate mean official DTI px mean TP w ours_maxcov_44090 0.2793 44090 5215.020811448044 incumbent_dotted_44090 0.2835 44090 5322.319695151823 surface_solid_121131 0.2222 121131 7104.062247104946 
+ paired difference mean ± s.e. draws positive ours_maxcov_44090 &minus; incumbent_dotted_44090 -0.0043 ± 0.0003 0/12 surface_solid_121131 &minus; incumbent_dotted_44090 -0.0613 ± 0.0002 0/12 
+ emission_models_mc.json — which layout of the same mass is best under the live-anchored truth model?
+ Truth model: 12691 px,
+σ = 1.85 px, drawn paired for every candidate; scored
+with the official metric. Source of the model: GEMSDOE25 H28 (owner-report-derived prior). 
+ candidate mean official DTI px mean TP w incumbent_dot_thin_44090 0.2833 44090 greedy_surface_44090 0.2787 44090 greedy_smoothfield_44090 0.2972 44090 
+ paired difference mean ± s.e. draws positive greedy_surface_44090 &minus; incumbent_dot_thin_44090 -0.0045 ± 0.0003 0/16 greedy_smoothfield_44090 &minus; incumbent_dot_thin_44090 +0.0140 ± 0.0003 16/16 
+ shipped_vs_incumbent_mc.json — catalogue-aware generative truth model + official metric, paired draws
+ Truth model: 12691 px,
+σ = 1.85 px, drawn paired for every candidate; scored
+with the official metric. Source of the model: GEMSDOE25 H28 inference (owner-report-derived prior). 
+ candidate mean official DTI px mean TP w shipped 0.3038 44090 5531.275525437785 incumbent 0.2791 44090 5119.976827302436 surface_greedy 0.2758 44090 5033.161873457625 
+ paired difference mean ± s.e. draws positive shipped &minus; incumbent +0.0247 ± 0.0005 12/12 surface_greedy &minus; incumbent -0.0033 ± 0.0004 0/12 
+ Holdout: does the emission rule beat the incumbent's own rule? 
+ Four spatially blocked folds; the detector never sees the block it is scored on; every rival
+geometry is re-emitted at the same pixel count as the arm it is compared with, so no
+contrast can be won by emitting more mass. Preregistration:
+ GEMSDOE32-PREREG-1 . Mean detector AUC in-block
+0.681. 
+ arm mean proxy DTI mean pixels A1_greedy_fixed_budget 0.1793 8,000 A2_greedy_credit_bar 0.1793 8,000 A3_greedy_bar_discovery 0.1793 8,000 A0_dot_thin_matched 0.1693 8,067 A5_nms_ridge_matched 0.1557 8,000 A4_random_control 0.0174 8,000 
+ paired contrast mean Δ folds positive per fold A1_greedy_fixed_budget − A0_dot_thin_matched +0.0100 4/4 +0.0101, +0.0095, +0.0094, +0.0111 A1_greedy_fixed_budget − A5_nms_ridge_matched +0.0236 4/4 +0.0100, +0.0382, +0.0168, +0.0296 A1_greedy_fixed_budget − A4_random_control +0.1619 4/4 +0.0886, +0.1739, +0.1946, +0.1906 
+ Promotion rule (preregistered): mean paired contrast > 0 on ≥ 3 of 4 folds.
+Result: PASS .
+The proxy truth is the visible catalogue — a pass licenses packaging a candidate, never a score
+claim. 
+ Where we stand 
+ Public leaderboard verified read 
+ #1 nchuzhoy 0.3262 
+ read 2026-10-04 from the official page; 2 snapshots stored 
+ all rows → 
+ Group's own best owner claim 
+ gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif 
+ 0.26 · 44090 px 
+ The gap to the public leader is +0.0662 — a +25.5 % increase in the score, which through the metric's own arithmetic is a similar increase in mean credit per emitted pixel at constant mass. 
+ Irregularities flagged for review: 35 —
+ see the register . 
+ Sources 
+ id source status recorded here competition DOE GEMS Prize - overview verified 2026-10-04 problem Problem description, metric and submission format (verbatim source of metric.py) verified 2026-10-04 (fetched twice; worked example TP=3.00 FP=1.89 FN=2.00 -> 0.60 reproduced in tests) about About / additional resources listed (not fetched) data Data download page (login-walled) login required; not accessed from this repository leaderboard Public leaderboard verified 2026-10-04: #1 nchuzhoy 0.3262, #2 DARD 0.3195, #3 alexoktaba 0.3042 rules_pdf GEMS rules PDF (NLR document 96647) mirrored in the group's repos with sha256 50d854b1e0239fe6... (GEMSDOE28 docs/data/feed.json) reference_solution Official reference solution (U-Net, John Lipor, Portland State) cloned 2026-10-04; architecture and TverskyLoss(0.2, 0.8) read from the notebook geodawn GeoDAWN airborne magnetic and radiometric surveys, NW Great Basin listed sciencebase_area GeoDAWN study-area item listed gbcge Great Basin Center for Geothermal Energy - INGENIOUS project listed mcre_srl Koehler et al. 2021, Field response and surface rupture of the 2020 M6.5 Monte Cristo Range earthquake, SRL 92(2A) 823-829 verified 2026-10-04 via USGS Publications Warehouse record 70217872 mcre_bssa Liu et al. 2021, Seismic and geodetic analysis of the 2020 Mw 6.5 MCRE, BSSA 111(6) verified 2026-10-04 mcre_nbmg NBMG Monte Cristo Range earthquake data (surface rupture maps) listed; not reachable from this sandbox (unknown host) - CI fetch step required mcre_reloc Ruhl et al. relocated Monte Cristo seismicity catalogue listed usgs_qfaults USGS Quaternary Fault and Fold Database listed nbmg_ingenious_rest NBMG Qfaults-INGENIOUS ArcGIS REST service (1,179 features in footprint) verified by the group 2026-10-03 (docs/data/vector_faults_status.json, sha256 4d6efc7bb365...) gdr1391 GDR submission 1391 - Nevada geothermal data listed 3dep USGS 3DEP / The National Map elevation (1 m DEM links given by the competition) link table mirrored in the group's GEMSDOE repo (data/dem_links.json, sha256 8804dbff8754...) comcat USGS ANSS Comprehensive Earthquake Catalog (ComCat) listed; not reachable from this sandbox nbmg_ingenious_service NBMG QFaults (INGENIOUS 6-27-2023) ArcGIS REST layer listed, not fetched here gdr_qfaults_v2_raster GDR QFaults v2 traces rasterised to the competition grid (owner mirror, sha256-pinned) verified locally 2026-10-04 usgs_sgmc_raster USGS SGMC faults rasterised to the competition grid (owner mirror, sha256-pinned) verified locally 2026-10-04 gemsdoe25_site Owner site for the dotted H19-5 artifact (source of the 0.2600 owner claim and the H28 truth-model parameters) read 2026-10-04, sha256 of its download re-verified here sibling_repos Sibling experiment repositories GEMSDOE19/24/25/27/28/29/30/31/33 listed 
+Site generated 2026-10-05 12:25 UTC from registry/*.json and evidence/*.json by
+ scripts/build_site.py . Owner-reported scores are labelled claim ; the only
+scores this repository reads itself are the other teams' public-leaderboard rows.
+ Repository ·
+ feed.json · report an irregularity 
+ 

@@ -3,3 +3,7 @@
 README.md whitespace=-blank-at-eol
 docs/user-prompt-20261006.md whitespace=-blank-at-eol
 docs/archive/README-h2b-20261005.md whitespace=-blank-at-eol
+docs/archive/README-main-9987e40-20261006.md whitespace=-blank-at-eol
+
+# Preserve imported public reference snapshots byte-for-byte (including CRLF).
+ref/** -whitespace

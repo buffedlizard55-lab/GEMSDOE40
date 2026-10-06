@@ -1,5 +1,5 @@
 {
-  "reviewed_utc": "2026-10-06T01:53:16.588240+00:00",
+  "reviewed_utc": "2026-10-06T02:50:29.715840+00:00",
   "scope": "Every project/score entry listed in the user brief, including empty 40\u201344 placeholders; GitHub source check, not live page uptime",
   "score_policy": "User reports are preserved exactly. An account-level public leaderboard row does not verify the TIFF attribution. Null means unknown, never zero.",
   "source_prompt_sha256": "aab5c4291535c8218ba01aa253fade0ed81516db04266cb97933b57e10e80348",
@@ -1435,27 +1435,30 @@
       "submissions": [],
       "page_source": {
         "repo": "GEMSDOE40",
-        "commit": "a4f4690904e31e4dc7037818b9ec0631542fa825",
+        "commit": "9987e403a964dbeb9a759c0bf308f4054ab98da2",
         "path": "docs/index.html",
-        "url": "https://github.com/buffedlizard55-lab/GEMSDOE40/blob/a4f4690904e31e4dc7037818b9ec0631542fa825/docs/index.html",
-        "sha256": "31fa7470d492cff37aabbacf5b71cbf3cf5e98467ce4dfb89d84859fc0143d54"
+        "url": "https://github.com/buffedlizard55-lab/GEMSDOE40/blob/9987e403a964dbeb9a759c0bf308f4054ab98da2/docs/index.html",
+        "sha256": "d9085c7f4b4bc8a1c2ec3b5c2df19aee761ec929b6ad0ffb7d148e2f1da867b2"
       },
       "title": "GEMSDOE40 \u00b7 Fault prediction, with an audit trail",
-      "opening_excerpt": "GEMSDOE40 \u00b7 Fault prediction, with an audit trail Skip to content G40 GEMSDOE40 Decision Research Leaderboard feed Executive summary DOE GEMS Prize Challenge \u00b7 Research log \u00b7 05 Oct 2026 Map faults. Keep the evidence honest. A reproducible, geology-led fault-prediction project for geothermal exploration. The target is geological faults that may indicate geothermal resources\u2014not vents or reservoirs. Every candidate is frozen, validated, compared, and either promoted or stopped. \u2193 Download H2-B research TIFF Read the decision & guide \u2192 Research artifact only. This candidate failed the frozen promotion gate. Do not submit it or spend a weekly slot. no-go \u00b7 do not submit H2-B \u00b7 TMI Euler persistence Unique file. Failed benchmark. The raster passes sample-grid, value-range, and uniqueness audits. Its owner-derived proxy holdout score does not come close to the frozen incumbent. 0.00631 local proxy DTI \u00b7 not official 0 / 24 spatial blocks won PASS GeoTIFF format checks PASS prior-raster uniqueness The decision is the deliverable. Maximize P(Win) by spending submission slots only on evidence-backed candidates. Own the Outcome by publishing the failure, not hiding it. HOLD \u2014 DO NOT SUBMIT. H2-B scored 0.006313 on the local SGMC-derived proxy versus the frozen all-prior incumbent at 0.835907; it won 0 of 24 blocks. The incumbent is itself circular on this proxy, so neither number is an organizer score or an independent generalization estimate. The frozen all-prior gate is retained and failed. 0.00631 H2-B pooled proxy DTI \u22120.82959 delta vs frozen all-prior incumbent 17,425 positive KDE support cells \u00b7 0.337% 277 / 277 same-grid prior rasters checked for uniqueness The proxy is an owner-derived SGMC mirror (SHA-256 26d142c4\u2026b5c ), not hidden challenge truth and not an independently rebuilt USGS raster. H2-B did not use it in candidate construction. A hypothesis register with real stop rules. H1 and strict H2 stopped at their frozen feasibility gates. H2-B is a separately registered support-limited output rule; its holdout failed. No threshold was relaxed to rescue a result. H1 \u00b7 feasibility stop Joint magnetic\u2013gravity Euler depth consensus 2,305 accepted magnetic solution",
+      "opening_excerpt": "GEMSDOE40 \u00b7 Fault prediction, with an audit trail Skip to content G40 GEMSDOE40 Decision Research Leaderboard Executive summary DOE GEMS Prize Challenge \u00b7 Research log \u00b7 06 Oct 2026 Map faults. Keep the evidence honest. A reproducible, geology-led fault-prediction project for geothermal exploration. The target is geological faults that may indicate geothermal resources\u2014not vents or reservoirs. Every candidate is preregistered, validated, compared, and either advanced or stopped. \u2193 Download H7 research-only GeoTIFF \u2193 Download H40 Euler depth-cluster TIFF Read the decision & future guide \u2192 H7 is not submission-ready. It passed format and uniqueness checks, but decisively failed the frozen proxy promotion gate. Do not upload it or spend a weekly slot. hold \u00b7 do not submit H7 \u00b7 gravity-context magnetic Euler KDE Unique file. Failed holdout. The current owner-derived proxy score is near zero. The candidate is not a DrivenData result and is not cleared for upload. 0.000265 local proxy DTI \u00b7 not official 0 / 24 blocks won vs all-prior best PASS sample-grid / range audit PASS 304 prior pixels checked The decision is the deliverable. Maximize P(Win) by spending submission slots only on evidence-backed candidates. Own the Outcome by publishing the failure, not hiding it. HOLD \u2014 DO NOT SUBMIT. H7 scored 0.0002650893 against the current owner-derived SGMC proxy, versus the all-prior incumbent at 0.8257222257; it won 0 of 24 blocks and lost the worst block by 0.942165. The incumbent is explicitly SGMC-gap-derived and circular on this proxy. The gate is retained as preregistered; neither score is an organizer score or an independent hidden-label estimate. 0.000265 H7 pooled proxy DTI RETIRED H40\u2019s 0.163 / 0.202 predictions, withdrawn by this session\u2019s 16-artifact instrument audit 0 / 24 blocks won vs frozen all-prior incumbent PASS single-band float32 exact sample grid 304 / 304 same-grid prior outputs compared for uniqueness The scored proxy bytes are pinned to SHA-256 643cbe992ef4ba37588fb469163ed8291e3ceb23d6c1f78a3cfaa462430c2da0 . A distinct historical H2-B proxy has SHA-256 26d142c4c93282cd94f6950ab96f22aeff59fbbea523d43d662e76fa1b161b5c . These two owner mirrors are no",
       "method_terms_observed": [
         "Euler",
+        "gradient",
         "SGMC",
         "holdout",
         "HOLD"
       ],
       "tif_links_in_page": [
-        "downloads/gemsdoe40-h2b-tmi-euler-natural-support-20261005.tif",
-        "downloads/gemsdoe40-h2b-tmi-euler-natural-support-20261005.tif",
-        "downloads/gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e.tif"
+        "downloads/gemsdoe40-h7-rtp-euler-gravity-context-3d-kde-20261006-998f660f.tif",
+        "downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-zeros.tif",
+        "downloads/gemsdoe40-h7-rtp-euler-gravity-context-3d-kde-20261006-998f660f.tif",
+        "downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-zeros.tif",
+        "downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-nan.tif"
       ],
       "status": "pinned page source read; scores below remain owner reports",
       "source_attempts": [],
-      "audited_unique_tiff_blobs": 10
+      "audited_unique_tiff_blobs": 13
     },
     {
       "repo": "GEMSDOE41",
@@ -1464,24 +1467,34 @@
       "submissions": [],
       "page_source": {
         "repo": "GEMSDOE41",
-        "commit": "2623d3fa45cc501673eb4b50832dfcc54a49298f",
+        "commit": "1d450978f5deb35f7e1efd5af687dcf2280786f6",
         "path": "docs/index.html",
-        "url": "https://github.com/buffedlizard55-lab/GEMSDOE41/blob/2623d3fa45cc501673eb4b50832dfcc54a49298f/docs/index.html",
-        "sha256": "f1b8a17fc99dbb4b184b55c0f7548ab66805b72d777bad1f8c95a3e7829013c5"
+        "url": "https://github.com/buffedlizard55-lab/GEMSDOE41/blob/1d450978f5deb35f7e1efd5af687dcf2280786f6/docs/index.html",
+        "sha256": "a855a1c7e6d0c8042efff22de53707d9a1556eabbb1d13466baad9470d685520"
       },
       "title": "Structural transfer, honestly tested \u00b7 GEMSDOE41",
-      "opening_excerpt": "Structural transfer, honestly tested \u00b7 GEMSDOE41 GEMS / 41 Overview Submission guide Research & tests Evidence Kinematic ranking \u2197 Repository \u2197 FIELD EXPERIMENT 41 / WALKER LANE Follow the transfer. Test the hypothesis. A new fault-confidence map built from the space between two structural populations\u2014not from an old submission. Research candidate \u00b7 submission gate closed \u2193 Download new GeoTIFF View format receipt \u2197 One band \u00b7 float32 \u00b7 EPSG:32611 \u00b7 100 m \u00b7 3292 \u00d7 3730 \u00b7 all numeric cells in [0, 1] Freshly generated artifact. Not organizer-scored. Do not spend a weekly slot on this version. 01 / Structural position, not catalogue density. Open map \u2197 5,540 Trace parts classified by strike 268 Accepted cross-family corridors 92.5% Top-confidence pixels at junctions 0 Predicted pixels \u2264200 m from catalogue THE RESULT, WITHOUT THE SPIN Valid file. Unproven discovery. The model passes the format, novelty-versus-H33, and junction-concentration checks. It does not pass a meaningful generalization gate. Whole-trace withholding leaves almost no supported predictions inside the held-out blocks. Read the complete failed experiment \u2192 HOLDOUT / DO NOT SUBMIT YET Mean blocked DTI \u2248 0 Measured value: 0.000000e+00 . Only fold 0 has nonzero prediction mass; folds 1\u20133 have none. Junction concentration is a design check, not independent discovery evidence. The historical H33 raster is not a clean holdout comparator: its construction used the complete catalogue. No score-comparison claim is justified: 0.2778 is user-reported, and current leaderboard standings are unknown. TWO GEOMETRIC CRITERIA From fault traces to a falsifiable prediction. 01 Separate the populations Assign axial strike to NW or N/NNE geometry. Retain every classification, including ambiguous and source-slip-discordant traces. 02 Connect genuine endpoints Find the nearest N/NNE receiver within 5 km of an outward-facing NW endpoint. Reject connected fragments and boundary tips. 03 Check local orientation Compare a topographic tangent proxy with the geometrically closer population. No new magnetic, gravity, thermal, or conductivity transform. DOWNLOAD & REPRODUCE One artifact. A complete audit trail. The static site",
+      "opening_excerpt": "Structural transfer, honestly tested \u00b7 GEMSDOE41 GEMS / 41 Overview Submission guide Research & tests Evidence Kinematic ranking \u2197 Repository \u2197 FIELD EXPERIMENT 42 / WALKER LANE Basin margins, not ridge carpets. A freshly generated fault-confidence raster: terrain relief at the base of the ranges, corroborated by 1 m LiDAR scarp evidence, packed to 40,000 pixels and thinned 200 m off the published catalogue. Blocked-holdout gate \u00b7 passed \u00b7 one slot \u2193 Download the H42 GeoTIFF \u2193 NaN-outside twin View gate receipt \u2197 One band \u00b7 float32 \u00b7 EPSG:32611 \u00b7 100 m \u00b7 3292 \u00d7 3730 \u00b7 every stored value finite and in [0, 1] \u00b7 40,000 emitted pixels Also downloadable: the parallel bimodal-lattice/H42 research artifacts (their gates failed \u2014 research only): .tif \u00b7 second artifact \u00b7 checks Freshly generated for this submission. Not organizer-scored. One of three weekly slots; the archived H41 field further down is not the file to send. A second, parallel H42 lineage (bimodal-lattice/H42) ships as labeled research further down this page. 02 / H42 emission (orange) along basin margins, against the published catalogue (dark). Open map \u2197 0.251 Blocked-holdout mean DTI (candidate) 0.121 Uniform-random control, same mass 21 Arms compared across 4 folds 0 Emitted pixels \u2264200 m from catalogue THE RESULT, WITHOUT THE SPIN Gate passed. Score still unknown. Twenty-one configurations were emitted fresh inside every held-out block at equal mass and scored on eroded interiors. The shipped surface is the best valid arm: mean DTI 0.251 (worst fold 0.242) against a uniform-random control at the same mass of 0.121 and a catalogue-density control of 0.177 . The previously closed H41-A/H41-E arms measured 0.0 on this same instrument. Read the H42 evidence \u2192 HOLDOUT / SLOT-ELIGIBLE What this does and does not mean The holdout's truth is the published catalogue, so it ranks geometry and cannot reward a genuinely new fault. It is a screening instrument, not a score forecast. The SGMC independent-map instrument disagrees with it (it rewards high terrain instead) \u2014 both measurements are published in the gate receipt , and the hidden-truth association from 16 archived artifacts is used as the tie-breaker. 0.",
       "method_terms_observed": [
+        "SGMC",
         "holdout",
         "transfer"
       ],
       "tif_links_in_page": [
-        "downloads/gems41-walker-transfer-v1-20261005-1616b7de764c.tif",
-        "downloads/gemsdoe41-h41a-raster-bimodal-transfer-20261005.tif"
+        "downloads/gems41-h42-submission-primary.tif",
+        "downloads/gems41-h42-basinmargin-s4-n40000-20261006T015229Z-nan.tif",
+        "downloads/gemsdoe41-h42b-junction-lattice-37k-20261006T015420Z.tif",
+        "downloads/gemsdoe41-h42d-statemap-lattice-37k-20261006T015420Z.tif",
+        "downloads/gemsdoe41-h42b-junction-lattice-37k-20261006T015420Z.tif.checks.json",
+        "downloads/gemsdoe41-h41a-raster-bimodal-transfer-20261005.tif",
+        "downloads/gemsdoe41-h42b-junction-lattice-37k-20261006T015420Z.tif",
+        "downloads/gemsdoe41-h42b-junction-lattice-37k-20261006T015420Z.tif.checks.json",
+        "downloads/gemsdoe41-h42d-statemap-lattice-37k-20261006T015420Z.tif",
+        "downloads/gemsdoe41-h42d-statemap-lattice-37k-20261006T015420Z.tif.checks.json",
+        "downloads/gems41-h41i-local-strike-20261006-f265e3bf9494.tif"
       ],
       "status": "pinned page source read; scores below remain owner reports",
       "source_attempts": [],
-      "audited_unique_tiff_blobs": 12
+      "audited_unique_tiff_blobs": 16
     },
     {
       "repo": "GEMSDOE42",
