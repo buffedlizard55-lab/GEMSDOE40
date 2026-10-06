@@ -1,35 +1,46 @@
-# GEMSDOE40 — contact Euler depth-clustering
+# GEMSDOE40 — analytic-signal depth imaging (H8)
 
 > **Read this README and the complete retained brief below at the beginning of every session.** See [AGENTS.md](AGENTS.md). Principles: **Maximize P(Win)** and **Own the Outcome**.
 
-## Download the new GeoTIFF
+## Download the new GeoTIFF (H8 — analytic signal)
 
-**[Download H4 — the new submission-format research TIFF](docs/downloads/gemsdoe40-h4-contact-offset-depthkde-20261006-fab9f6619c02.tif)** · [Live project site](https://buffedlizard55-lab.github.io/GEMSDOE40/docs/index.html) · [Executive summary / submission guide](docs/executive-summary.html)
+**[Download H8 — submission-format portal-safe ZIP](docs/downloads/gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-zeros.zip)** · [Zeros-outside TIFF](docs/downloads/gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-zeros.tif) · [NaN-outside research TIFF](docs/downloads/gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-nan.tif) · [Live project site](https://buffedlizard55-lab.github.io/GEMSDOE40/docs/index.html) · [Executive summary / submission guide](docs/executive-summary.html)
 
-**HOLD — DO NOT SUBMIT.** The file is genuinely distinct and format-valid, but it did **not** beat the blocked holdout best. No weekly slot was used; no organizer score is known. Publishing a valid research download is not a recommendation to upload it.
+**HOLD — DO NOT SUBMIT.** H8 is the first non-Euler depth source in this project: analytic-signal amplitudes with local-wavenumber contact depths, corroborated against the H4 Euler cloud. It passed the synthetic suite (S1–S5) and the full 343-artifact novelty audit, but **failed its registered validation gate** (pooled proxy DTI 0.024128 < 0.091550; 1/16 block wins). No weekly slot was used; no organizer score is known. Publishing a valid research download is not a recommendation to upload it.
 
 | Item | Measured result |
 |---|---|
-| File | `gemsdoe40-h4-contact-offset-depthkde-20261006-fab9f6619c02.tif` |
-| Name | `GEMSDOE40-H4-CONTACT-OFFSET-fab9f6619c02` |
-| Format | Single-band float32, EPSG:32611, 100 m; 3,730 rows × 3,292 columns |
-| Affine transform | `(100, 0, 243350, 0, -100, 4508550)` — exact sample transform |
-| Range / footprint | All 5,167,373 inside pixels finite in [0,1]; all 7,111,787 outside pixels NaN |
-| File SHA-256 | `ee73ffd76fabbaa1a2e77e17f57947a7db858916d713801e0c3502e49f6acabb` |
-| Canonical pixel SHA-256 | `fab9f6619c02595ceec668c87420789035d8103d3c93b91a2e4aa7c2bc905e86` |
-| New construction | SI=0 **with contact offset A**, rank-adaptive TMI + first-vertical-gravity-derivative Euler; depth-consistent cross-window KDE |
-| Cloud | 46,656 QC-passing solutions; **12,167 magnetic + 8,450 gravity** clustered solutions |
-| Continuous output | 865,145 positive cells; 857,785 distinct finite values; confidence mass 29,350.41 |
-| Prior-output audit | **343 byte-verified artifacts** across 55 public repositories / 338 pinned branch heads / 1,859 reachable commits; 339 exact-grid, 340 full-size array comparisons, 2 supplementary alignment checks; 190 ZIP paths/versions inspected. One spatial format fixture, a one-pixel demo and a 110-byte header-only non-raster are explicitly distinguished |
-| Novelty | No exact/near duplicates; maximum absolute Pearson **0.128319**, top-37,654 Jaccard **0.049527**, containment **0.137676** |
-| Local SGMC proxy DTI | H4 **0.006902**; H33-B2 **0.091550**; frozen SGMC-derived incumbent **0.835907** |
-| Decision | 0/16 truth-bearing block wins vs both H33 and incumbent; **HOLD — DO NOT SUBMIT** |
+| File | `gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-{nan,zeros}.tif` (+ `.zip` of the zeros twin) |
+| Name | `GEMSDOE40-H8-ASA-SPI-b845d3ad449e` |
+| Format | Single-band float32, EPSG:32611, 100 m; 3,730 rows × 3,292 columns; exact sample transform `(100, 0, 243350, 0, -100, 4508550)` |
+| Range / footprint | All 5,167,373 inside pixels finite in [0,1]; outside NaN (zeros twin: all-finite zeros, **no nodata tag** — defends against the portal's `[0,1]` error) |
+| File SHA-256 (nan twin) | `b00328ce401cf5be…` — full hashes in [h8-validation.json](docs/data/h8-validation.json) |
+| Canonical pixel SHA-256 | `59812bc4797963df…` |
+| New construction | Tapered-FFT analytic signal on TMI and on d(isostatic gravity)/dz; contact depth z=√(A/\|λ_min(Hessian A)\|) (SPI family); upward-continuation persistence, local density/consistency weighting, H4-Euler corroboration, σ=2 KDE, soft catalogue-flank ramp |
+| Depth cells | 193,128 magnetic + 169,298 gravity amplitude-qualified solution cells; 188,878 + 160,567 weighted; 3,890 + 8,674 cells corroborated by the independent H4 Euler cloud |
+| Continuous output | 741,536 positive cells; 731,858 distinct values pre-quantization (724,844 in the float32 artifact); confidence mass 155,238.8 |
+| Synthetic verification | S1–S5 PASS before scoring: contact z within 20% (z0≥800 m), edges ≤1 px, SI bias z/√2, 2%-noise recovery, footprint discipline (`tests/test_asa_spi.py`, 10 tests) |
+| Prior-output audit | **343/343 byte-verified artifacts**; 340 full-size raw comparisons |
+| Novelty | max \|Pearson\| **0.2528**, top-37,654 Jaccard **0.1121**, containment **0.2016** — all inside veto thresholds |
+| Registered gate | pooled proxy DTI **0.024128** vs required > **0.091550**; block wins **1/16** vs ≥10 → **FAIL** |
+| Decision | **HOLD — DO NOT SUBMIT** |
 
-**Short note (137 characters, research record only):**
+**Short note (152 characters, research record only):**
 
-> H4 SI0+A rank-aware TMI+dGdz Euler; shallow cross-window depth-consensus KDE. New raw field; HOLD, proxy gate failed; no organizer score.
+> GEMSDOE40 H8 | analytic-signal local-wavenumber depth cells x H4-Euler corroboration; soft catalogue ramp; continuous [0,1]; HOLD: gate failed; unscored.
 
-[Download all depth-labeled solutions](docs/downloads/h4-euler-solutions.csv.gz) · [Exact format receipt](docs/data/h4-format.json) · [Every prior comparison](docs/data/h4-uniqueness.json) · [Every holdout block](docs/data/h4-validation.json) · [Human-readable result](docs/reports/h4-results-20261006.md)
+[Weighted depth-cell cloud (CSV.gz)](docs/downloads/gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-cloud.csv.gz) · [Generation receipt](work/h8/generation.json) · [Validation / novelty JSON](docs/data/h8-validation.json) · [Human-readable result](docs/reports/h8-results-20261006.md) · [Preregistration + 2 amendments](docs/research/h8-preregistration-20261006.md)
+
+### Previous arm: H4 contact-offset Euler (also HOLD)
+
+| Item | Measured result |
+|---|---|
+| File / name | `gemsdoe40-h4-contact-offset-depthkde-20261006-fab9f6619c02.tif` · `GEMSDOE40-H4-CONTACT-OFFSET-fab9f6619c02` |
+| Construction | SI=0 + contact offset A, rank-adaptive TMI + dG/dz Euler; depth-consistent cross-window KDE; 20,617 clustered solutions |
+| Novelty | max \|Pearson\| 0.1283; audited against the same 343-artifact corpus |
+| Gate | pooled proxy DTI 0.006902; 0/16 block wins → HOLD — DO NOT SUBMIT |
+
+[H4 cloud](docs/downloads/h4-euler-solutions.csv.gz) · [H4 result](docs/reports/h4-results-20261006.md) · [H4 validation JSON](docs/data/h4-validation.json)
 
 ## What the review found
 
@@ -40,12 +51,13 @@
 5. **The owner's best is pruning, not new geometry.** H33-B2 is exactly the 40,199-pixel H27-4 base with 2,545 pixels at ≤200 m from the catalogue removed; no new pixels. Reducing false-positive mass can improve DTI without discovering a fault. The **0.2778** file score remains owner-reported; public account rows do not authenticate the TIFF. [Measured analysis](docs/data/h33-measured-analysis.json) / [Explanation](docs/leaderboard-analysis.html).
 6. **The leaderboard target changed.** The official page observed on 2026-10-06 showed **0.3345** first, then 0.3262, 0.3222 and 0.3195. This is a dated observation, not a live scrape. We do not claim H4 can beat those scores. [Observation](docs/data/official-observation-20261006.json).
 7. **Artifact/site failures are visible.** H33's 216-byte ZIP contains no TIFF; its actual TIFF is sound. Three legacy predictions use `nodata=0`; their stored zeros must be compared, not masked away. Two historical NaN variants also had millions of missing **inside-footprint** values. Their actual finite values match their separately published all-finite companions exactly, with missing cells represented only by zero; the full companions are audited, not silently imputed. Unreadable/unclassified files still fail closed. [Forensic classification](docs/data/prior-nonprediction-forensics-20261006.json). Old downloading/prepare and uniqueness paths could report readiness or novelty with missing data; these are hardened.
+8. **H8 confirmed the instrument conflict a third time.** The analytic-signal field is genuinely novel (max |r| 0.2528 vs 343 priors) and passes synthetic ground truth, but its 0.0241 pooled proxy DTI and 0.0023 catalogue-DTI diagnostic sit far below both comparator baselines and even the same-mass random control on the catalogue (0.1856). The SGMC proxy and the catalogue labels are not adequate promotion instruments for off-catalogue discovery: one is circular/catastrophe-derived, the other rewards areal coverage. The soft catalogue-flank ramp that H33's pruning win motivated directly conflicts with proxy truth, which lives near the catalogue. Next work must register a source-independent protocol (expert-adopted synthetic faults injected off-catalogue, or a geologically held-out subregion) **before** further model search.
 
-## Ranked new hypotheses, before implementation
+## Ranked new hypotheses (H8–H12 slate, registered 2026-10-06)
 
-Four hypotheses were registered before H4 code/scoring: **H4** offset-aware rank-adaptive contact Euler (medium cost, implemented); **H5** two-edge finite density-step inversion (high); **H6** depth-cloud plane geometry / dip localization (high; actual ground projection blocked pending survey datum); **H7** TMI/RTP representation stability without double-counting correlated channels (medium). Expected improvements are qualitative and uncertain, not invented numerical forecasts.
+Five hypotheses were registered before H8 code/scoring, ranked by expected value per cost: **H8** analytic-signal local-wavenumber depth cells (medium cost; **implemented, gate FAIL → HOLD**); **H10** multi-scale ridge persistence / ridge-aware DTI (cheap post-filter; registered); **H9** gravity basin-margin ridges (medium–high; needs an isostatic-grid semantics audit first); **H11** Werner deconvolution multi-azimuth (high cost); **H12** DTI marginal-bar mass reallocation (rejected as primary — GEMSDOE22 measured it worse than baselines and it carries proxy-overfitting risk). Expected improvements are qualitative and uncertain, never invented numerical forecasts.
 
-Read the [unchanged detailed registration](docs/research/h4-preregistration-20261006.md), [ranked hypotheses page](docs/hypotheses.html), [research source/claim ledger](docs/research/scientific-library-20261006.md), and [all 44 user-listed projects / 48 supplied scores](docs/leaderboard.html). Euler theory itself is not new science; the artifact is independently generated and novel within the fully specified public corpus.
+[H8 detailed registration with amendments](docs/research/h8-preregistration-20261006.md) · [H4–H7 slate registration](docs/research/h4-preregistration-20261006.md) · [ranked hypotheses page](docs/hypotheses.html) · [research source/claim ledger](docs/research/scientific-library-20261006.md) · [all 44 user-listed projects / 48 supplied scores](docs/leaderboard.html). The analytic signal, local wavenumber depth and the SPI family are established geophysics; the bounded novelty claim is a specific construction plus a raster proven distinct from the dated corpus.
 
 ## Reproduce on CPU
 

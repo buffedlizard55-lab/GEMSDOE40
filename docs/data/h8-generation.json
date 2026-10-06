@@ -1,0 +1,114 @@
+{
+  "basename": "gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e",
+  "candidate_format": {
+    "bytes": 3595075,
+    "sha256": "b00328ce401cf5be5c149e668efbbaa911815fe1f2847719c3ff8576fff2ea31",
+    "valid": true
+  },
+  "cloud_digest": "b845d3ad449e",
+  "code_sha256": {
+    "scripts/run_h8_asa_spi.py": "c490d7ac2176ddb979d3434b5d321ec58fe80c33f1c4a75992e04bc2fd76fd71",
+    "src/gemsdoe40/asa_spi.py": "57e2e6378d915a8a6c352373328d2f5f534765dfe76e29ad4c8009aae544e34d"
+  },
+  "config": {
+    "catalogue_ramp_m": [
+      150.0,
+      450.0
+    ],
+    "corroboration_csv": "docs/downloads/h4-euler-solutions.csv.gz",
+    "corroboration_depth_floor_m": 300.0,
+    "corroboration_depth_rel": 0.4,
+    "corroboration_xy_m": 300.0,
+    "gravity": {
+      "band_name": "iso_grav_anom",
+      "continuation_m": 500.0,
+      "depth_bounds_m": [
+        100.0,
+        8000.0
+      ],
+      "margin_m": 3000.0
+    },
+    "id": "H8",
+    "kde": {
+      "sigma_px": 2.0,
+      "truncate": 3.0
+    },
+    "magnetic": {
+      "band_name": "tmi",
+      "continuation_m": 300.0,
+      "depth_bounds_m": [
+        100.0,
+        5000.0
+      ],
+      "margin_m": 1500.0
+    },
+    "pad_cells": 128,
+    "peak_quantile": 0.95,
+    "preregistration": "docs/research/h8-preregistration-20261006.md",
+    "support_floor": 0.02,
+    "weights": {
+      "corroborated_boost": 2.5,
+      "depth_scale_m": 1500.0,
+      "non_persistent_factor": 0.35,
+      "std_floor_m": 250.0,
+      "std_rel": 0.35
+    }
+  },
+  "construction_note": "Inputs are the pinned feature raster, sample and labels only. The H4 Euler solution cloud (previous session's CSV) is used as a corroboration layer, not as emitted pixels; no proxy truth or prior prediction raster is read by the generator.",
+  "construction_uses_proxy_or_prior_predictions": false,
+  "field_stats": {
+    "confidence_mass_sum": 155238.8241376359,
+    "distinct_positive_values": 731858,
+    "max": 1.0,
+    "positive_cells": 741536
+  },
+  "gravity": {
+    "amplitude_threshold": 8.420177437074017e-06,
+    "cells_corroborated_by_h4": 8674,
+    "cells_persistent": 7648,
+    "cells_weighted_nonzero": 160567,
+    "depth_in_bounds_cells": 7622814,
+    "family": "gravity",
+    "seconds": 8.4,
+    "solution_cells": 169298
+  },
+  "input_sha256": {
+    "labels.tif": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+    "sample_submission.tif": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+    "training_features.tif": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5"
+  },
+  "magnetic": {
+    "amplitude_threshold": 0.7053022980690002,
+    "cells_corroborated_by_h4": 3890,
+    "cells_persistent": 8461,
+    "cells_weighted_nonzero": 188878,
+    "depth_in_bounds_cells": 7064234,
+    "family": "magnetic",
+    "seconds": 9.6,
+    "solution_cells": 193128
+  },
+  "output": {
+    "cloud_csv": {
+      "bytes": 5478426,
+      "path": "docs/downloads/gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-cloud.csv.gz",
+      "sha256": "0f0cde332a1412f253192719b728eb6f9c5fe65e2fc80a5fb842b8337038442a"
+    },
+    "nan_tif": {
+      "bytes": 3595075,
+      "path": "docs/downloads/gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-nan.tif",
+      "sha256": "b00328ce401cf5be5c149e668efbbaa911815fe1f2847719c3ff8576fff2ea31"
+    },
+    "zeros_tif": {
+      "bytes": 3521378,
+      "path": "docs/downloads/gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-zeros.tif",
+      "sha256": "8c262620a769e7dbc8f8ee89aa92a633c91507752b398eec463932adea87c01b"
+    },
+    "zip": {
+      "bytes": 3421188,
+      "path": "docs/downloads/gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-zeros.zip",
+      "sha256": "98b04fdbdbe531f6c6d940047e3570909e4973bca105990bcafc248ec6457f1c"
+    }
+  },
+  "preregistration_sha256": "4027c0b9be2b9ac36c3714a7a92cfc58660e430a520ddc14d9d4489d67f0b9ff",
+  "stamp": "20261006T035031Z"
+}

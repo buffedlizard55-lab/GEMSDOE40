@@ -56,3 +56,16 @@ A final reachable-history inventory covers 55 public repositories, 338 branch he
 **HOLD — DO NOT SUBMIT.** H4 proxy DTI is 0.00690153557133729; H33-B2 is 0.09155026618057825; the frozen SGMC-derived incumbent is 0.8359066540883113. H4 wins no truth-bearing block against either. The historical 18-win gate is also mathematically infeasible with only 16 truth-bearing blocks, and its incumbent is circular. We preserve, disclose and do not retroactively relax either defect. No organizer score or competition submission exists for H4.
 
 [Full result](../reports/h4-results-20261006.md) · [Exact block scores](../data/h4-validation.json) · [Full raw-output audit](../data/h4-uniqueness.json) · [Three-pass review](../reports/review-20261006.md). Next: independently register a feasible whole-fault-system validation protocol before any new model search.
+
+
+## 2026-10-06 — appended H8 outcome (previous records unchanged)
+
+The analytic-signal local-wavenumber experiment (H8) completed on CPU: tapered-FFT analytic signal on TMI and on the first vertical derivative of isostatic gravity, contact depth `z = sqrt(A/|λ_min(Hessian A)|)`, upward-continuation persistence, local density/consistency weighting, H4-Euler corroboration, σ=2 Gaussian KDE, soft catalogue-flank ramp. Synthetic suite S1–S5 passed before any real-data score.
+
+Novelty: **PASS** against the complete 343-artifact corpus (343/343 audited; 340 full-size raw comparisons): max |Pearson| 0.2528, top-37,654 Jaccard 0.1121, containment 0.2016 — all far inside veto thresholds. Format: both variants valid (NaN-outside research twin; all-finite zeros-outside portal twin with no nodata tag).
+
+**HOLD — DO NOT SUBMIT.** The registered gate failed on its own terms: pooled proxy DTI 0.024128 (required > 0.091550); truth-bearing block wins 1/16 (required ≥ 10). Catalogue-skill diagnostic 0.0023 vs same-mass random control 0.1856 and gradient control 0.0725 — again confirming catalogue DTI validates coverage, not discovery. No parameter was tuned after seeing a score; the two registered implementation amendments (supergaussian taper; Hessian-of-A depth) were forced by measured synthetic behaviour and documented before scoring.
+
+Diagnosis recorded: confidence mass 155,238.8 (≈4× a dotted budget) with TP_w ≈ 2,205 vs FP_w ≈ 145,742 on the proxy; the registered catalogue-flank ramp removes mass exactly where the catalogue-like SGMC proxy truth concentrates — proxy and ramp answer different questions. Next: register a source-independent validation protocol (expert-adopted off-catalogue synthetic faults, or a geologically held-out subregion) before any further model search; H9–H12 remain registered and unimplemented.
+
+[Full result](../reports/h8-results-20261006.md) · [Validation JSON](../data/h8-validation.json) · [Manifest](../data/current-candidate.json) · [Preregistration + amendments](h8-preregistration-20261006.md)
