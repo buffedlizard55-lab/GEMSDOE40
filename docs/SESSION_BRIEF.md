@@ -1,6 +1,8 @@
-# Standing brief (read at the start of every session)
+# Historical operational extract (pre-H2-B branch)
 
-This is the operational extract of the user prompt. The full competition
+> **Superseded as current instructions.** This main-branch note predates the H2-B registration, expanded 279-blob prior audit, and current no-go decision. In particular, its generic advice about an unset nodata tag/zeros outside and its proposed hidden-set-matching instrument were not established as the current organizer contract or validated truth source. Use the top-level [`README`](../README.md), [`docs/prompt.md`](prompt.md), [`format_receipt.json`](data/format_receipt.json), and append-only [`hypotheses.md`](research/hypotheses.md) as the current record. H2-B remains **HOLD — DO NOT SUBMIT**.
+
+This is the prior operational extract of the user prompt. The full competition
 problem is at https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/
 
 ## Maximize P(Win). Own the Outcome.

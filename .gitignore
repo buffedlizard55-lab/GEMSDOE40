@@ -1,13 +1,16 @@
-# Large or machine-local inputs -- never committed. Rebuild with scripts/fetch_data.py.
+# Machine-local and generated inputs/caches
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.cache/
+prior_cache/
+*.aux.xml
+*.ovr
 data/*.tif
 data/prior/
 data/cache/
+data/external/
 work/
 *.npz
 *.npy
-__pycache__/
-*.pyc
-.pytest_cache/
-.venv/
-data/external/
-data/prior/

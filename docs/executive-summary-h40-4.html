@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How to submit · GEMSDOE40</title><link rel="stylesheet" href="assets/site.css"></head>
+<body><header><h1>How to submit</h1><div class="muted small">DOE GEMS Prize (DrivenData #306) ·
+Euler deconvolution depth-clustering submission system · repository
+<a href="https://github.com/buffedlizard55-lab/GEMSDOE40">buffedlizard55-lab/GEMSDOE40</a></div>
+<div style="margin-top:10px"><nav class="small">
+<a href="index.html">Home</a><a href="executive-summary.html">How to submit</a>
+<a href="methodology.html">Method</a><a href="hypotheses.html">Hypotheses</a>
+<a href="leaderboard-analysis.html">Leaderboard analysis</a><a href="evidence.html">Evidence</a>
+<a href="sources.html">Sources</a></nav></div></header><main>
+<div class="panel" style="border-left:5px solid #ffcb6b"><strong>Historical H40-4 upload guidance.</strong> This page preserves the main-branch recommendation made before H2-B was evaluated. Its reported LM-calibrated folds are not an organizer score and were not recomputed with the current H2-B proxy protocol. Review <a href="index.html">the current decision</a>; do not interpret this archived page as approval of H2-B.</div>
+
+<h2>1. The task, in one paragraph</h2>
+<p>The DOE GEMS Prize (DrivenData competition 306) asks for a single GeoTIFF of fault-likelihood at
+100 m over the GeoDAWN area. Predictions are scored with the official distance-weighted Tversky
+index against expert-labelled <em>new</em> faults — the downloadable USGS/INGENIOUS catalogue is
+masked out of the scored population. One file counts for both prize rounds; three scored
+submissions per week.</p>
+
+<h2>2. Exact file contract (measured from the organizers' own sample)</h2>
+<table>
+<tr><th>property</th><th>required</th><th>measured in <code>example_submission.tif</code></th></tr>
+<tr><td>driver / bands / dtype</td><td>GeoTIFF, single band, float32</td><td>GTiff, 1 band, float32</td></tr>
+<tr><td>shape</td><td>3730 × 3292 (rows × cols)</td><td>[3730, 3292]</td></tr>
+<tr><td>CRS</td><td>EPSG:32611 (UTM 11N)</td><td>EPSG:32611</td></tr>
+<tr><td>geotransform</td><td>100 m, north-up</td><td>[100.0, 0.0, 243350.0, 0.0, -100.0, 4508550.0]</td></tr>
+<tr><td>value range inside the footprint</td><td>[0, 1]</td><td>values [0.0, 1.0]</td></tr>
+<tr><td>outside the valid footprint</td><td>NaN (as the sample does) or 0</td>
+<td>7,111,787 NaN pixels; footprint 5,167,373 px; catalogue positives 60,988 px</td></tr>
+</table>
+<p class="note"><strong>Why you saw "Predicted values must be in range [0, 1]".</strong> The
+organizer validator builds the scored domain as <em>valid footprint &amp; ~catalogue</em> and requires
+every value there to be finite and inside [0, 1]:
+<code>if not np.isfinite(vals).all() or (vals &lt; 0).any() or (vals &gt; 1).any(): raise</code>.
+A file therefore fails if it has (a) any NaN <em>inside</em> the footprint, (b) any value above 1, or
+(c) any negative value. NaN <em>outside</em> the footprint is fine — the organizers' own sample
+submission is NaN in all 7,111,787 pixels outside it. Every file here is verified finite and within
+[0, 1] inside the footprint, and each has a <code>-zeros</code> companion (0 instead of NaN outside)
+if you want zero ambiguity.</p>
+
+<h2>3. Step by step</h2>
+<ol>
+<li><strong>Download</strong> the recommended file:
+<a href="downloads/gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e.tif">gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e.tif</a>
+(1.28 MB, sha256 <code>33d893193f6eb009165b5c62…</code>).
+The single-scale augmentation and the unique pure-Euler artifact are listed below it if you prefer a
+smaller or a fully novel emission.</li>
+<li><strong>Check it</strong> (optional but 10 seconds):
+<pre>python -c "import rasterio,numpy as np; a=rasterio.open('gems40-euler-augmented-incumbent-20261005-ac1c1927.tif').read(1);\
+print(a.shape,a.dtype,np.nanmin(a),np.nanmax(a))"
+# expect (3730, 3292) float32 0.0 1.0</pre></li>
+<li><strong>Upload:</strong> <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">
+DrivenData → Submit predictions</a>. Choose the single GeoTIFF. A .zip containing one GeoTIFF is
+also accepted.</li>
+<li><strong>Note field</strong> (unique name + short comment, as the form asks):
+<pre>GEMSDOE40 Euler SI=0 multi-scale depth-cluster 97654px +60,000 new-33d89319</pre></li>
+<li><strong>Record the score</strong> in <code>registry/score_ledger.csv</code> and re-run
+<code>python scripts/audit_artifacts.py</code> so the instrument calibration stays honest.</li>
+</ol>
+
+<h2>4. Which artifact should occupy the slot?</h2>
+<table>
+<tr><th>file</th><th>what it is</th><th>validated result</th><th>recommendation</th></tr>
+<tr><td><code>gems40-euler-augmented-incumbent-20261005-ac1c1927.tif</code></td>
+<td>site-best emission ∪ every off-catalogue Euler depth-cluster crest (23,056 new px)</td>
+<td>LM-cal 0.30845 (+0.04053 vs site best), 4/4 folds</td>
+<td><span class="badge b-ok">UPLOAD THIS</span> — the only artifact here with a measured reason to
+expect a higher score. It deliberately <em>contains</em> the previous submission's pixels, so it is
+flagged NEAR-DUPLICATE in the novelty audit: it is an augmentation, not a new pattern.</td></tr>
+<tr><td><code>gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif</code></td>
+<td>pure Euler SI=0 depth-clustering, cross-family (magnetic × gravity) crests</td>
+<td>LM-cal 0.11600; novelty verdict
+<span class="badge b-ok">NEW</span> (max Jaccard 0.004879)</td>
+<td><span class="badge b-warn">RESEARCH ONLY</span> — a genuinely new spatial pattern, but it does
+not beat the incumbent on the validated instrument, so the standing rule ("do not spend a slot on an
+idea that has not beaten the current holdout best") says do not submit it alone.</td></tr>
+<tr><td><code>gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif</code></td>
+<td>the literal brief reading: continuous normalised KDE, no crest reduction</td>
+<td>LM-cal 0.12487; 3.38 M non-zero px</td>
+<td><span class="badge b-bad">AUDIT ONLY</span> — the metric charges α per emitted pixel, so a
+2-D blur loses.</td></tr>
+</table>
+
+<h2>5. Official links used on this page</h2>
+<ul>
+<li>Competition overview: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">drivendata.org/competitions/306</a></li>
+<li>Problem description &amp; metric: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">page 967</a></li>
+<li>About page: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/968/">page 968</a></li>
+<li>Data tab (login): <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/data/">data</a></li>
+<li>Rules PDF: <a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">docs.nlr.gov/docs/fy26osti/96647.pdf</a></li>
+<li>Leaderboard: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">leaderboard</a></li>
+<li>Scoring clarification (catalogue masking): <a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516">forum thread 11516</a></li>
+</ul>
+</main></body></html>

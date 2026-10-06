@@ -1,0 +1,71 @@
+{
+  "account_level_rows": [
+    {
+      "account": "extradr19",
+      "file_attribution": null,
+      "rank": 13,
+      "score": 0.2778,
+      "submissions": 9
+    }
+  ],
+  "competition": "DOE GEMS Prize Challenge",
+  "competition_id": 306,
+  "current_candidate_status": {
+    "candidate": "H2-B TMI Euler persistence natural-support research TIFF",
+    "decision": "HOLD; DO NOT SUBMIT",
+    "organizer_score": null,
+    "reason": "Failed the frozen owner-derived SGMC-proxy promotion gate; uniqueness and local format checks do not establish quality.",
+    "weekly_submission_slot_used": false
+  },
+  "interpretation": "A leaderboard row establishes an account-level public score only; it does not identify a specific raster unless the organizer links the submission file. GEMSDOE32 H33-2-B2 was recorded as 37,654 dots, projected 0.2747, UNSCORED; do not attribute the 0.2778 account row to that file.",
+  "previous_user_reference_correction": "The previously supplied 0.3195 was not the current leader on 2026-10-05; it appeared at rank 4 in this snapshot.",
+  "project_updates": [
+    {
+      "date_utc": "2026-10-05",
+      "event": "prior_tiff_inventory_expanded_after_mainline_reconciliation",
+      "exact_sample_grid_priors_scored": 277,
+      "h2b_promotion": "HOLD; DO NOT SUBMIT; 0.006313 local SGMC-proxy DTI; 0/24 blocks won",
+      "h2b_uniqueness": "PASS; 0 near-duplicates among 277 exact-grid prior blobs",
+      "official_candidate_score": null,
+      "pinned_main_commit": "0e4a795d467f16555443ee0446875d7c32f51aa5",
+      "source": "https://github.com/buffedlizard55-lab/GEMSDOE40/commit/0e4a795d467f16555443ee0446875d7c32f51aa5",
+      "tiff_path_observations_added": 11,
+      "unique_git_blobs_added": 9,
+      "unique_inventory_blobs_after_addendum": 279
+    },
+    {
+      "date_utc": "2026-10-05",
+      "event": "historical_h40_4_candidate_reaudited_on_h2b_proxy",
+      "format_gate": "FAIL: no NaN nodata tag under this project\u2019s strict local contract",
+      "git_blob_sha": "422ac9465ed5a0ff4158c4551b31fd3954513090",
+      "interpretation": "Historical output diagnostic only; not an organizer score, not submission advice, and not comparable with the prior project\u2019s LM-calibrated score.",
+      "local_sgmc_proxy_dti_diagnostic": 0.12471458850648759,
+      "official_candidate_score": null,
+      "positive_cells": 97654,
+      "sha256": "33d893193f6eb009165b5c62bcef1c7c945531ed19ddb2c621150a52f0c16835",
+      "wins_vs_frozen_proxy_incumbent": 0
+    }
+  ],
+  "retrieval_method": "Official public leaderboard read in the research tool; static snapshot, not a live API scrape.",
+  "retrieved_at_utc": "2026-10-05",
+  "source": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
+  "status": "observed",
+  "top_four": [
+    {
+      "rank": 1,
+      "score": 0.3262
+    },
+    {
+      "rank": 2,
+      "score": 0.3222
+    },
+    {
+      "rank": 3,
+      "score": 0.322
+    },
+    {
+      "rank": 4,
+      "score": 0.3195
+    }
+  ]
+}

@@ -1,170 +1,105 @@
-# GEMSDOE40 — Euler deconvolution depth-clustering submission system
+# GEMSDOE40 — fault-prediction research for the DOE GEMS Prize
 
-**Competition:** DOE GEMS Prize (DrivenData #306) · [overview](https://www.drivendata.org/competitions/306/competition-doe-gems/) ·
-[problem page](https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/) ·
-[rules PDF](https://docs.nlr.gov/docs/fy26osti/96647.pdf) · **live site:** <https://buffedlizard55-lab.github.io/GEMSDOE40/>
+> **Current decision: HOLD — DO NOT SUBMIT.** The H2-B research GeoTIFF is unique and passes the local sample-grid/range audit, but its owner-derived SGMC proxy result fails the frozen promotion gate by a wide margin. No weekly submission slot has been used, no DrivenData upload has been made, and no organizer score is known.
 
-> ### Our Core Values — kept central to every decision in this repository
-> **Maximize P(Win).** *"Maximize the Probability of Winning"* is our decision-making framework. In
-> every decision we weigh tradeoffs, assess risk, and choose the path that maximizes the probability
-> that we win this prize. We set aside our emotions and make tough decisions in order to maximize
-> P(Win). It frees us from constraints and clarifies that we must put the outcome first.
->
-> **Own the Outcome.** We own results end to end — not just our individual slice of the work. When
-> problems arise and we have the means to act, we act without waiting for permission or assignment.
-> We treat failure and success as signals and use them to improve. We stay accountable to the final
-> outcome.
->
-> Applied here: *Maximize P(Win)* is why the session ends with a measured **upload / do-not-upload**
-> verdict instead of a file dump, and why a hypothesis that failed (raw Euler centroids, Euler as a
-> gate) is published as failed. *Own the Outcome* is why every number on the site is regenerated from
-> bytes by a script in `scripts/`, and why the one defect found in our own first attempt (window
-> windows in the Fourier taper zone scoring spurious 20 m solutions) is recorded in the test suite
-> rather than quietly patched.
+**Official target:** geological faults that may indicate geothermal resources—not geothermal vents, hot springs, or reservoir locations. The challenge's private labels and leaderboard are not accessible in this session. This repository is an auditable research and validation system, not a claim of a winning prediction.
 
-**Standing brief for every session:** [`docs/prompt.md`](docs/prompt.md) — read it first.
+## One-click research artifact
 
----
+- [Download the H2-B research GeoTIFF](docs/downloads/gemsdoe40-h2b-tmi-euler-natural-support-20261005.tif) — **research-only; do not submit**.
+- Grid/format: one-band `float32`, EPSG:32611, 100 m, 3,730 × 3,292, exact sample transform/footprint, finite `[0,1]` in-footprint values and NaN outside.
+- 17,425 positive cells (0.337% of the 5,167,373-cell footprint); SHA-256: `02486eaa491da2d8ebc6b1cd53ed2bdc8e995f316be1110a64eec484779b5a68`.
+- It differs from all 277 same-grid prior raster blobs in the expanded 279-blob inventory under every frozen raw/canonical-hash, correlation, support-Jaccard, and top-budget near-duplicate check. **Uniqueness is not evidence of quality.** The initial 268-comparison audit is preserved for history.
+- Suggested DrivenData name and note are intentionally **not provided as upload instructions** while the result is on hold. The site offers a clearly labeled research-only metadata string for record-keeping, not submission.
 
-## ⬇ ONE-CLICK SUBMISSION FILES
+The full result is on the [project site](docs/index.html), with the [executive summary and future upload guide](docs/executive-summary.html), the [hypothesis register](docs/research/hypotheses.md), and the [H2-B spatial-proxy report](docs/reports/validation-h2b-20261005.md).
 
-| file | what it is | measured | verdict |
-| --- | --- | --- | --- |
-| **[`gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e.tif`](docs/downloads/gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e.tif)** (1.0 MB, sha256 `33d893193f6eb009…`, 97,654 px) | current site-best emission ∪ the **multi-scale Euler SI=0 depth-cluster conjunction** (rank-min over windows 10/15/20/30 px), crest-reduced, +60,000 new px all > 200 m from the catalogue | LM-calibrated **0.34835** vs the site best's 0.26792 → **+0.08043, better in 4/4 blocked folds**; added mass earns **1.18 × the metric's break-even τ** (0.0697 vs 0.0588 credit/px); projected live gain **+0.029 conservative / +0.080 instrument-based** | **UPLOAD THIS** — flagged NEAR-DUPLICATE by the novelty audit *by design* (it contains the previous submission's pixels; it is an augmentation, not a new pattern) |
-| [`gems40-euler-augmented-incumbent-20261005-ac1c1927.tif`](docs/downloads/gems40-euler-augmented-incumbent-20261005-ac1c1927.tif) (885 kB, sha256 `54aa8c6cbee0a1f8…`, 60,710 px) | the same construction at a **single** window (10 px), +23,056 new px | LM-calibrated 0.30845 → +0.04053, 4/4 folds; 1.13× τ | **Conservative fallback** — smaller emission (60,710 px) if you want the most contained upload; superseded by the multi-scale rule on every measured axis |
-| **[`gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif`](docs/downloads/gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif)** (635 kB, sha256 `7ee6cac2444949a3…`, 20,000 px) | the brief's mandate: magnetic × gravity Euler SI = 0 depth-clustering, KDE → normalised [0, 1] | novelty verdict **NEW** (max Jaccard 0.0049, max \|r\| 0.0050 vs 16 prior rasters); LM-calibrated 0.11600 | **RESEARCH ONLY** — a genuinely different spatial pattern, but it does not beat the incumbent standalone, so the standing rule forbids spending a slot on it |
-| [`…-zeros.tif`](docs/downloads/gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380-zeros.tif) companions | identical inside the footprint, `0` instead of `NaN` outside | all values finite in [0, 1] everywhere | use if the portal rejects NaN |
-| [`…-continuous-….tif`](docs/downloads/gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif) | the literal reading of the brief: continuous normalised KDE, no crest reduction | LM-calibrated 0.12487, 3.38 M px | **AUDIT ONLY** — the metric charges α per emitted pixel |
+## Current evidence (2026-10-05 UTC)
 
-Full receipts (12 portal checks each): [`docs/downloads/manifest.json`](docs/downloads/manifest.json).
+| Stage | Result | Interpretation |
+|---|---:|---|
+| H1: joint magnetic–gravity Euler depth-consensus KDE | 2,305 accepted magnetic solutions; **0 gravity** solutions; 0 pairs | Preregistered feasibility stop. No candidate or holdout score. H1 was not relaxed or backfilled. |
+| H2: four-height TMI Euler persistence, fixed 45,962-cell budget | 17,425 positive KDE cells | Preregistered fixed-budget failure; it aborted rather than inventing support. |
+| H2-B: support-limited H2 research raster | 17,425 cells; format pass; uniqueness pass | Append-only support rule registered before proxy scoring. Its proxy result fails promotion. |
+| H2-B proxy DTI | **0.006313** | Owner-derived SGMC mirror only; not hidden truth or an official score. |
+| H3 ComCat source audit | 34,716 events advertise focal mechanisms; 238 at magnitude ≥4; one detail verified | Usable-plane count and spread across 8+ blocks unverified; H3 remains blocked and unimplemented. |
+| Frozen all-prior incumbent | **0.835907** | Same proxy instrument; highest format-eligible same-grid prior raster. The artifact is explicitly SGMC-gap-derived, so this is a circular proxy ceiling—not an independent estimate of challenge generalization. The frozen gate nevertheless retains the all-prior comparator. |
+| Expanded prior-output audit | **279 unique TIFF blobs; 277 exact-grid scores; 167 local format-eligible priors** | Added 11 TIFF path observations (9 unique blobs) from pinned current `main`; H2-B uniqueness and promotion outcomes are unchanged. |
+| Prior main-branch H40-4 | **0.124715 proxy DTI; 0/24 wins; local format gate fails** | Diagnostic against the same owner-derived SGMC proxy, not an organizer score; the raster lacks the local NaN-nodata contract. Prior main's LM-calibrated instrument result (0.34835, 4/4 folds) is a distinct proxy instrument and is not comparable. |
+| Promotion | **0/24 blocks won; HOLD** | No weekly slot used; do not submit. |
+| Live official leaderboard snapshot | #1 0.3262; #2 0.3222; #3 0.3220; #4 0.3195 | Read from the official board on 2026-10-05. These account-level scores do not identify a TIFF unless the organizer links one. |
 
-**How to submit in 30 seconds:** download the first file (the multi-scale augmentation) → open the
-[DrivenData submission page](https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/)
-→ upload it → paste the note from [`docs/executive-summary.html`](docs/executive-summary.html#3-step-by-step)
-→ submit. That page also explains the **"Predicted values must be in range [0, 1]"** error you saw
-and how every file here avoids it (finite, in [0, 1] inside the 5,167,373-pixel footprint; NaN only
-outside it, exactly like the organizers' own sample submission).
+The SGMC-derived raster is an owner-derived mirror whose provenance is not independently verified here. It is only a proxy instrument. The best proxy-scoring prior is called `gapfinder-v2-sgmc-gap`; the originating project documents that this candidate used SGMC-gap pixels. Its high proxy DTI is therefore circular. It remains in the frozen all-prior comparison, and the result is disclosed rather than silently removed or relabeled. See [validation report](docs/reports/validation-h2b-20261005.md).
 
----
+### Mainline prior-output reconciliation
 
-## What was done in this session
+While reconciling this branch with the advanced `origin/main`, the audit found 11 TIFF path observations (9 new Git blobs) absent from the original inventory. All nine are now pinned to main commit `0e4a795d467f16555443ee0446875d7c32f51aa5`, added to the 279-blob corpus, and re-audited. H2-B remains distinct from all 277 exact-grid priors, and the same frozen incumbent remains highest among the 167 locally format-eligible rasters. The result remains **HOLD**.
 
-1. **Read the whole brief and the programme's history.** The score record, the metric algebra and the
-   sibling repositories' instruments were read from their published knowledge files
-   (`GEMSDOE28/knowledge/43_hypotheses_heatflow_euler.md`,
-   `GEMSDOE32/knowledge/02_the_ceiling_and_the_instrument.md`, `GEMSDOE32/src/gems32/live_mirror.py`).
-2. **Implemented Euler deconvolution from scratch and verified it against analytic sources.**
-   `src/gems40/euler.py` (Fourier derivatives → box-filtered sliding-window least squares → depth
-   estimate per window), `tests/test_euler.py`: a monopole (N = 2) and a 2-D contact (N = 0,
-   `T = atan(x/z0)`) recover known depths (688 m recovered vs 700 m true for the contact), and the
-   vertical-derivative sign convention is asserted by flipping the sign and requiring negative
-   depths. No external library was used for the inversion.
-3. **Built the depth-aware weighting and the KDE raster** (`cluster_weights`, `kde_field`), ran it on
-   all four potential-field layers of the pinned competition stack — `rtp`, `tmi`, `mag_anom`
-   (magnetic) and `iso_grav_anom` (gravity) — with SI = 0 (fault/contact, Reid et al. 1990 Table 1).
-4. **Verified the decision instrument before using it.** `scripts/validate_candidates.py` re-derives
-   the LM instrument (blocked quadrants, off-catalogue SGMC truth, prevalence-calibrated DTI) and
-   reproduces the published live orderings that matter at this operating point:
-   0.2778 > 0.2708 > 0.2600 > 0.2477.
-5. **Measured the hypotheses and published the failures.** Raw Euler KDE mass adds credit at
-   0.040–0.053 credit/px — *below* the metric's break-even τ = 0.0588. Crest-thinning the same cloud
-   raises it to **0.066–0.085 = 1.13–1.44 × τ**, positive in 4/4 folds. Euler as a *gate* on the
-   incumbent is **refuted** (crest support and incumbent support are nearly disjoint, Jaccard ≈ 0.005).
-6. **Produced the unique artifact the brief demands and proved it is new**:
-   `scripts/audit_artifacts.py` hashes and correlates every shipped raster against all 16–17 prior
-   rasters on disk under a rule fixed *before* the numbers were seen (near-duplicate ⇔ Jaccard > 0.50
-   or |Pearson| > 0.80). The pure Euler artifact: max Jaccard **0.0049**, max |r| **0.0050** →
-   verdict **NEW**. The augmented artifact is honestly reported as NEAR-DUPLICATE because it embeds
-   the previous submission.
-7. **Published the site** (`docs/`, GitHub Pages) with the executive summary, method, ranked
-   hypotheses, leaderboard analysis and evidence tables — all generated by `scripts/build_site.py`
-   from the JSON evidence, so nothing on it can drift from the measurements.
+The preserved main-branch H40-4 file has 97,654 positive cells. Its original LM-calibrated score (0.34835; 4/4 folds versus that project's prior site-best) belongs to a different internal instrument. When scored diagnostically against this run's SGMC proxy it obtains 0.124715 and wins 0/24 blocks; it fails this repository's strict local format gate because its GeoTIFF has no NaN nodata tag. None of these values is an organizer score. The prior main recommendation and full details are preserved in [`docs/archive/README-main-before-h2b.md`](docs/archive/README-main-before-h2b.md), while the candidate itself remains available at [`docs/downloads/gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e.tif`](docs/downloads/gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e.tif).
 
-## Honest verdict and expected value
+## Project charter — the brief retained for future work
 
-* The unique Euler artifact is **new information**: its support is essentially disjoint from every
-  prior submission (max Jaccard 0.0049) — the first genuinely independent channel this programme has
-  added since the LiDAR-scarp ridge family. Standing alone it scores 0.116 on the validated
-  instrument, so the standing rule forbids spending a slot on it.
-* **The multi-scale Euler conjunction (H40-4) is the measured improvement of this session.** It
-  removes 98,000 of the 129,662 single-scale crest pixels (solutions that exist at only one window
-  are model artefacts) and keeps a 60,000-pixel budget: 4/4 blocked folds better than the incumbent,
-  1.18 × τ per added pixel, 97,654 px emitted (inside the instrument's verified domain).
-* Projections, kept separate on purpose:
-  * **conservative** (live-calibrated |G| = 12,226 and the measured credit/px): **+0.029 →
-    ≈ 0.307**;
-  * **instrument-based** (the LM-calibrated delta): **+0.080 → ≈ 0.358**;
-  * the instrument is documented to over-reward dense emissions, so plan with the conservative
-    figure, and treat anything above 0.3195 as *not yet demonstrated*.
-* The remaining gap to #1 is a **detector-quality** gap: the additions are worth 1.2 × their cost,
-  the metric's break-even is 1.0 ×. Closing 0.307 → 0.32+ requires either a higher-precision detector
-  (gravity-only conjunction, depth-banded emission) or an emission that also *removes* the
-  incumbent's false positives — the two cheapest tests are named on the
-  [hypotheses page](docs/hypotheses.html) with their cost and their data needs.
+The project brief is distilled here as a durable working charter; a structured, consolidated transcription of the prompt is preserved at [`docs/prompt.md`](docs/prompt.md) (not a verbatim transcript). The task is to build a unique, scientifically grounded DOE GEMS fault-prediction GeoTIFF together with an auditable research, validation, and project-site system. It calls for:
 
-## Reproduce
+1. Predict **geological faults that may indicate geothermal resources**, not vents or reservoirs; pursue leaderboard performance without treating any proxy as hidden truth.
+2. Preregister three to five ranked hypotheses, implement the scientifically plausible leader, test it on spatially blocked holdouts before using any of the three weekly submission slots, and never invent a score or submit an unvalidated hypothesis.
+3. Follow Euler depth-deconvolution/cloud-KDE methods if their physical inputs and feasibility gates support them. Do not replace Euler with a gradient threshold and describe it as Euler. Preserve negative outcomes; do not loosen a frozen gate after seeing its result.
+4. Generate a genuinely distinct TIFF, compare raw and canonical hashes, correlations, and support overlap against prior outputs, and disclose any similarity. Copy prior outputs only for education, never as a “new” submission.
+5. Match the organizer's sample grid and required GeoTIFF semantics exactly; explicitly prevent the portal's “Predicted values must be in range [0, 1]” error by auditing finite in-footprint values and outside-footprint nodata.
+6. Use verified official sources where possible, link evidence, flag source irregularities and access limits, and do not claim official scores, file attribution, or a PR/merge that has not happened.
+7. Build a user-friendly GitHub Pages project with a prominent executive summary, one-click GeoTIFF download, current dated leaderboard feed, submission guidance/name/comment when a candidate is genuinely eligible, plus this brief in the README.
+8. Keep the operating principles visible: *Maximize P(Win)* and *Own the Outcome*.
+
+**Access boundary:** official challenge data download/submission requires an authenticated account and enrollment. The available feature/sample/label rasters came through a public sibling-repository bridge; the SGMC proxy is an owner-derived mirror. No private test labels or organizer score are present. No manual input has been supplied in this session.
+
+## Research plan and validation protocol
+
+The append-only register is [`docs/research/hypotheses.md`](docs/research/hypotheses.md). It contains three ranked hypotheses, H1's fixed implementation/gates, an H2 lock appended after H1 stopped, and the separate H2-B natural-support rule. The H2-B amendment was entered before its proxy holdout score was read. It did not rewrite or rescue H1/H2.
+
+The frozen promotion gate is intentionally strict: on the same four-by-six spatial blocks and three-cell guards, strictly beat the best format-eligible, comparable same-grid prior raster; win at least 18 of 24 blocks; and lose no block by more than 0.005. Also pass exact-grid/range/nodata validation and the prior-raster near-duplicate audit. A failed gate means **HOLD; DO NOT SUBMIT**. All-prior proxy scores remain visible even when a prior output has circular SGMC provenance; that comparator limitation is explicitly reported.
+
+### Reproduce (after obtaining the required inputs)
+
+Python 3.10+; install with `python -m pip install -e '.[test]'`. The large TIFF inputs and prior-raster cache are external artifacts and are not committed. This run used NumPy 2.4.6, SciPy 1.17.1, Rasterio 1.4.4. Set the paths below to local copies of the pinned inputs and to the verified 279-blob prior cache (including the current-main addendum):
 
 ```bash
-bash scripts/fetch_data.sh            # sha256-verified mirrors of the competition rasters
-bash scripts/fetch_priors.sh          # the 17 prior/incumbent rasters the audit compares against
-python scripts/inspect_data.py        # re-derive every data claim from the bytes
-python scripts/run_euler.py --layer rtp --window 10   # also: tmi, mag_anom, iso_grav_anom;
-                                                # windows 10/15/20/30 feed H40-4
-python scripts/validate_candidates.py             # instrument verification + candidate sweep
-python scripts/union_test.py                      # marginal value on the incumbent (break-even test)
-python scripts/nms_refine_test.py                 # crest refinement
-python scripts/multiscale_test.py                 # H40-4: multi-scale conjunction + budget sweep
-python scripts/euler_gate_test.py                 # Euler as a prune/gate (refuted)
-python scripts/build_submission.py                # write the artifacts + receipts
-python scripts/audit_artifacts.py                 # validation + hash/correlation novelty audit
-python scripts/build_site.py                      # regenerate docs/
-python -m pytest tests -q                         # 10 tests, incl. analytic Euler verification
+python -m pytest -q
+python scripts/fetch_prior_cache.py --inventory docs/data/prior_raster_inventory.json --cache /path/to/prior-cache
+PYTHONPATH=src python scripts/run_research.py \
+  --hypothesis H2B \
+  --features /path/to/training_features.tif \
+  --sample /path/to/example_submission.tif \
+  --labels /path/to/existing_faults.tif \
+  --proxy /path/to/owner-derived-sgmc-proxy.tif \
+  --prior-cache /path/to/prior-cache \
+  --inventory docs/data/prior_raster_inventory.json
 ```
 
-Requirements: `pip install -r requirements.txt` (numpy, scipy, rasterio, pytest). CPU only; the whole
-pipeline runs in ≈2 minutes on 2 cores.
+The research command is CPU-heavy (the original 270-blob run took about 7.6 minutes in this sandbox); with the expanded 279-blob cache it writes the candidate under `docs/downloads/` and regenerates the H2-B-specific validation, format, and uniqueness JSON without overwriting main's preserved `validation.json`. It **does not submit** anything. Check the static Pages site without rewriting it with `python scripts/build_site.py --check`. H1 and strict H2 have feasibility stops; H2-B is the only completed proxy-scored candidate. The proxy SHA-256 is pinned in the reports and input manifest.
+
+## Official and scientific references
+
+- [DrivenData challenge, task, metric, and submission instructions](https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/)
+- [Official public leaderboard](https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/) — current dated snapshot in [`docs/data/feed-20261005.json`](docs/data/feed-20261005.json); the main-branch `feed.json` is retained separately.
+- [DOE/NLR September 2026 competition rules PDF](https://docs.nlr.gov/docs/fy26osti/96647.pdf)
+- [DrivenData staff clarification: exact-pixel known-fault mask](https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516/2)
+- [USGS State Geologic Map Compilation metadata](https://mrdata.usgs.gov/geology/state/USGS_SGMC_Metadata.xml) and [Data Series 1052](https://pubs.usgs.gov/ds/1052/): official source context for the vector compilation; this does **not** validate the owner-derived raster mirror used here.
+- Reid & Thurston (2014), [structural-index guidance for gravity and magnetic interpretation](https://www.reid-geophys.co.uk/wp-content/uploads/2017/11/Reid-Thurston-2014.pdf).
+- [USGS ComCat FDSN Event Web Service](https://earthquake.usgs.gov/fdsnws/event/1/) — official H3 source; preliminary product counts and one detail example are in [`h3_source_audit.json`](docs/data/h3_source_audit.json), but the registered usable-plane/spatial-coverage gate is still unmet.
+- [GEMSDOE28 Euler research](https://buffedlizard55-lab.github.io/GEMSDOE28/) — prior art, not an official source; H1/H2 novelty claims are narrow and explicitly bounded.
 
 ## Repository map
 
-| path | purpose |
-| --- | --- |
-| `docs/prompt.md` | the standing brief (read every session) |
-| `src/gems40/euler.py` | Fourier derivatives, sliding-window Euler inversion, depth-aware clustering, KDE |
-| `src/gems40/metric.py` | the official distance-weighted Tversky index (soft and binary) + break-even identity |
-| `src/gems40/instrument.py` | the blocked holdout instruments (LM off-catalogue, catalogue-component) |
-| `src/gems40/stack.py` | cross-family field, crest reduction, multi-scale rank-min conjunction |
-| `src/gems40/grid.py`, `layers.py`, `pins.py` | submission I/O + the 12 portal checks, official band inventory, sha256 pins |
-| `scripts/` | fetch → inspect → invert → validate → build → audit → site |
-| `data/evidence/` | every measurement as JSON (validation, novelty, sweeps, gate test, format) |
-| `docs/` | the GitHub Pages site, generated from `data/evidence/` |
+- `docs/index.html` — project status and one-click research artifact.
+- `docs/executive-summary.html` — decision, audit trail, and honest future submission instructions.
+- `docs/research/hypotheses.md` — append-only preregistration and implementation locks.
+- `docs/research/source-register.md` — verified links, provenance limits, and data irregularities.
+- `docs/reports/` — human-readable feasibility and validation reports.
+- `docs/data/` — pinned input manifest, expanded prior inventory/metadata, separate H2-B result and mainline historical validation, exact receipts, and dated feed.
+- `docs/archive/` and `docs/*-before-h2b.html` — preserved pre-merge README/site snapshots, with historical-status warnings.
+- `src/gems40/` — mainline Euler, feature-stack, grid, and LM-instrument tools.
+- `src/gemsdoe40/research_*.py` plus `euler_h2.py` — preregistered research metric, Euler, holdout, and uniqueness tools; non-conflicting module names preserve both packages.
+- `scripts/` — reproducible cache and research runners.
+- `tests/` — numerical, format, and persistence regression tests.
 
----
-
-## Other artifacts already in this repository (parallel track on `main`)
-
-An earlier scaffold (merged on `main` before this branch) produced a further Euler SI = 0 depth-KDE
-artifact, kept here rather than deleted so both tracks stay auditable:
-
-| file | size | that track's own reported measurement |
-| --- | --- | --- |
-| [`docs/downloads/gemsdoe40-euler-si0-depthkde-20261005T230506Z-5bc279cd-zeros.tif`](docs/downloads/gemsdoe40-euler-si0-depthkde-20261005T230506Z-5bc279cd-zeros.tif) (+ `-nan`, `.zip`, `GEMSDOE40-submission.tif/.zip`) | 340 kB, 45,784 px | uniqueness vs 9 priors: worst Pearson 0.0072, worst Jaccard 0.0054 → new; but on the **catalogue** holdout it reports mean blocked DTI 0.0150, i.e. −0.0674 vs a uniform-random control and −0.0066 vs a gradient baseline (`evidence/last_run.json`) |
-
-That catalogue holdout is the instrument this repository deliberately does **not** decide with: its
-truth *is* the published catalogue, and the organisers mask catalogue pixels out of scoring, so it
-rewards exactly the mass the live scorer throws away (measured in the sibling repos as ρ = +0.14
-against live scores, versus ρ = +0.53 for the off-catalogue LM instrument used here). Both tracks
-agree on the science (Euler SI = 0 depth-KDE, catalogue-buffered, `[0, 1]`, NaN outside the
-footprint); they differ in what they measured, and both measurements are quoted above rather than
-harmonised.
-
-## Limitations (stated, not hidden)
-
-* No DrivenData login and no access to `drivendata.org`, `dropbox.com`, `gdr.openei.org`,
-  `docs.nlr.gov` or any `*.github.io` page from this sandbox (all HTTP 000). Competition data and
-  prior artifacts were therefore taken from **byte-identical GitHub mirrors** and verified against
-  sha256 pins; every live score quoted is **owner-reported**, not an organizer receipt.
-* The LM instrument is a proxy: it reproduces 4/6 published live orderings (including the three that
-  matter at this operating point) and over-rewards mass beyond ≈120 k emitted pixels. The recommended
-  artifact emits 60,710 px, inside that domain.
-* The Euler inversion uses one window scale per run; multi-scale conjunction (H40-4) is specified but
-  not yet measured.
+**Status discipline:** no file here has an organizer score. No submission has been made. A public account-level leaderboard row does not prove which TIFF earned it. Any future PR, merge, page deployment, or submission must be verified from its actual service response before being described as completed.

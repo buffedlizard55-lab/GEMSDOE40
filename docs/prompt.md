@@ -28,6 +28,8 @@
 > depth-clustering should produce a visibly different spatial pattern than any gradient or curvature
 > candidate already made.
 
+> **Current-status correction (2026-10-05):** This is a structured, consolidated prompt record, not a verbatim transcript; some values and deliverable language reflect the original request. The official public leaderboard snapshot now has #1 = 0.3262 and #4 = 0.3195 (see [`feed-20261005.json`](data/feed-20261005.json)), correcting the older 0.3195-as-leader reference. The current H2-B research TIFF is **HOLD — DO NOT SUBMIT**: it scored 0.006313 on the local SGMC-derived proxy, won 0/24 blocks, and has no organizer score or upload. Use the current [`README`](../README.md), [hypothesis register](research/hypotheses.md), and [validation report](reports/validation-h2b-20261005.md) as operational truth.
+
 ## Competition and data
 
 * Competition: **The Geologic Enhanced Mapping System (GEMS) Prize Challenge** — DrivenData
@@ -37,7 +39,7 @@
 * Data tab (login-walled): <https://www.drivendata.org/competitions/306/competition-doe-gems/data/>.
 * Rules PDF: <https://docs.nlr.gov/docs/fy26osti/96647.pdf>.
 * Leaderboard: <https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/>;
-  current #1 = 0.3195; this programme's best owner-reported score = 0.2778.
+  the original brief referenced 0.3195 as #1, now corrected: the 2026-10-05 snapshot has #1 = 0.3262 and #4 = 0.3195. This programme's 0.2778 is owner-reported and not tied to a specific file by an organizer receipt.
 * Reference solution: <https://github.com/drivendataorg/gems-prize-reference-solution>.
 * Submission contract: a single-band GeoTIFF (or a .zip containing one), 100 m, EPSG:32611, same
   shape and geotransform as the sample submission, values in [0, 1] inside the valid footprint.
@@ -72,11 +74,12 @@
 
 The programme's earlier repositories (GEMSDOE … GEMSDOE39) produced the score history summarised on
 the [leaderboard analysis page](leaderboard-analysis.html). Best owner-reported score: **0.2778**
-(GEMSDOE32 `h33-h33-2-b2`). The best score currently on the competition leaderboard is **0.3195**.
+(GEMSDOE32 `h33-h33-2-b2`); file attribution is not independently confirmed. In the 2026-10-05
+official snapshot the leaderboard leader is **0.3262** and 0.3195 is rank 4; see the [dated feed](data/feed-20261005.json).
 
 ## Deliverables of this repository
 
-1. A one-click submission GeoTIFF in `docs/downloads/` (served by the GitHub Pages site).
+1. A one-click research GeoTIFF in `docs/downloads/`, paired with a validated eligibility decision; a failed candidate stays marked do-not-submit.
 2. A validated-verdict banner: what to upload and what *not* to upload, with the measurements behind
    both statements.
 3. The auditable evidence trail: band inventory, submission-format verification, instrument
