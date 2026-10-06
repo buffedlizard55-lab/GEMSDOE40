@@ -28,6 +28,27 @@
 
 [All depth-labeled solutions](docs/downloads/h4-euler-solutions.csv.gz) · [H13 format](docs/data/h13-format.json) · [H13 uniqueness](docs/data/h13-uniqueness.json) · [H13 gates](docs/data/h13-validation.json) · [H8 gates](docs/data/h8-validation.json) · [Session-2 result report](docs/reports/session2-results-20261006.md)
 
+## Concurrent session: H8-ASA analytic-signal depth experiment (also HOLD)
+
+A parallel session (same date, independent branch) registered and ran a **different** H8: analytic-signal source imaging (ASA/SPI family) instead of Euler least squares. To avoid clobbering the trace-locked H8 above, its receipts live under `h8asa-*`.
+
+**[Download H8-ASA — portal-safe ZIP](docs/downloads/gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-zeros.zip)** · [Zeros-outside TIFF](docs/downloads/gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-zeros.tif) · [NaN-outside research TIFF](docs/downloads/gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-nan.tif)
+
+**HOLD — DO NOT SUBMIT.** Novelty and format pass; the registered gate fails (pooled proxy DTI 0.024128 < 0.091550; 1/16 block wins). No slot used, no organizer score.
+
+| Item | H8-ASA (analytic signal) |
+|---|---|
+| File / name | `gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-{nan,zeros}.tif` (+ `.zip`) · `GEMSDOE40-H8-ASA-SPI-b845d3ad449e` |
+| Construction | Tapered-FFT ASA on TMI and d(isostatic gravity)/dz; depth z=√(A/\|λ_min(Hessian A)\|); persistence, density/consistency weighting, H4-Euler corroboration, σ=2 KDE, soft catalogue-flank ramp |
+| Depth cells | 193,128 mag + 169,298 grav solution cells; 3,890 + 8,674 corroborated by the H4 cloud |
+| Output | 741,536 positive cells; 731,858 distinct values pre-quantization (724,844 in float32); mass 155,238.8; portal twin all-finite, no nodata tag |
+| Synthetic suite | S1–S5 PASS before scoring (10 tests) |
+| Novelty vs 343 | max \|Pearson\| **0.2528**, Jaccard 0.1121, containment 0.2016 — PASS |
+| Gate | pooled proxy DTI 0.024128 (FAIL), block wins 1/16 (FAIL) |
+| Reproduction | all four artifacts byte-for-byte identical from an independent re-run |
+
+[H8-ASA result](docs/reports/h8-results-20261006.md) · [three-pass review](docs/reports/h8-review-20261006.md) · [preregistration + amendments](docs/research/h8asa-preregistration-20261006.md) · [validation](docs/data/h8asa-validation.json) · [reproduction](docs/data/h8asa-reproduction.json) · [uniqueness](docs/data/h8asa-uniqueness.json)
+
 ## What session 2 found
 
 1. **The Euler family has real, non-circular fault-finding skill.** On the repaired catalogue-component holdout (20 % of catalogue hidden), H8 scores **0.023673** and H13 **0.021464**, versus **0.003590** for the H33-B2 reference — a ~6× advantage. This is the first non-circular positive for the Euler family in this repository.
@@ -75,7 +96,7 @@ Generation reads **no prior prediction, proxy truth or holdout raster**; only th
 
 ## Concurrent / historical arms are preserved, not overwritten
 
-H4 (session 1 contact-offset Euler, HOLD, proxy 0.006902), H7 (gravity-context, HOLD), H40 (dotted twins, HOLD), H4-A (closed negative) and H2-B retain their own bytes, receipts and no-go status on the [project site](docs/index.html). Their solver output (the 46,656-solution cloud) is the frozen input that H8/H13 re-use.
+H4 (session 1 contact-offset Euler, HOLD, proxy 0.006902), H7 (gravity-context, HOLD), H40 (dotted twins, HOLD), H4-A (closed negative), H2-B and the concurrent-session H8-ASA analytic-signal experiment (HOLD) retain their own bytes, receipts and no-go status on the [project site](docs/index.html). The H4 solver output (the 46,656-solution cloud) is the frozen input that H8 (trace-locked), H13 and H8-ASA re-use.
 
 ---
 
