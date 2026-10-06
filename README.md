@@ -1,18 +1,34 @@
 # GEMSDOE40 — fault-prediction research for the DOE GEMS Prize
 
-> **Current decision: HOLD — DO NOT SUBMIT.** The H2-B research GeoTIFF is unique and passes the local sample-grid/range audit, but its owner-derived SGMC proxy result fails the frozen promotion gate by a wide margin. No weekly submission slot has been used, no DrivenData upload has been made, and no organizer score is known.
+> **Current decision: HOLD — DO NOT SUBMIT.** The 2026-10-06 Euler depth-cluster artifact is unique and passes the exact sample-grid/range/format audit, but it does **not** pay under the only live-anchored instruments available: predicted organizer score 0.163 (saturating instrument fitted to 12 organizer-scored artifacts, reproduced here to 5e-5 on its input quantity) and 0.202 (4-quadrant prevalence-calibrated LM instrument, 0.066 below the same instrument's incumbent). Neither reaches the incumbent's reported 0.2778, so no weekly slot is justified. No DrivenData upload has been made from this programme and no organizer score exists for any artifact here.
 
 **Official target:** geological faults that may indicate geothermal resources—not geothermal vents, hot springs, or reservoir locations. The challenge's private labels and leaderboard are not accessible in this session. This repository is an auditable research and validation system, not a claim of a winning prediction.
 
 ## One-click research artifact
 
-- [Download the H2-B research GeoTIFF](docs/downloads/gemsdoe40-h2b-tmi-euler-natural-support-20261005.tif) — **research-only; do not submit**.
-- Grid/format: one-band `float32`, EPSG:32611, 100 m, 3,730 × 3,292, exact sample transform/footprint, finite `[0,1]` in-footprint values and NaN outside.
-- 17,425 positive cells (0.337% of the 5,167,373-cell footprint); SHA-256: `02486eaa491da2d8ebc6b1cd53ed2bdc8e995f316be1110a64eec484779b5a68`.
-- It differs from all 277 same-grid prior raster blobs in the expanded 279-blob inventory under every frozen raw/canonical-hash, correlation, support-Jaccard, and top-budget near-duplicate check. **Uniqueness is not evidence of quality.** The initial 268-comparison audit is preserved for history.
-- Suggested DrivenData name and note are intentionally **not provided as upload instructions** while the result is on hold. The site offers a clearly labeled research-only metadata string for record-keeping, not submission.
+- [Download the H40 Euler depth-cluster GeoTIFF](docs/downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-zeros.tif) — **research record; do not submit**.
+- [Portal-safe NaN-outside twin](docs/downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-nan.tif) · [zip](docs/downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-zeros.zip) · [full audit receipt](docs/downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-audit.json).
+- Grid/format: one-band `float32`, EPSG:32611, 100 m, 3,730 × 3,292, exact sample transform/footprint, all values finite and inside `[0, 1]`, `nodata = None` (the twin is NaN outside the footprint, the sample convention).
+- 60,000 positive cells (1.161 % of the 5,167,373-cell footprint); SHA-256 `57896abee36d6722f587f543e1f65ddfd9af19163e20653e852bfb3162b10902`.
+- It differs from every one of the 26 staged prior rasters under the frozen near-duplicate rule: worst support-Jaccard 0.053 and worst |Pearson| 0.087 (`GEMSDOE40-submission-nan.tif`). **Uniqueness is not evidence of quality.**
+
+Method, in one line per stage: 3-D Euler deconvolution (Reid et al. 1990, doi:10.1190/1.1442774) at the structural index of a **fault-like contact (SI = 0)** on `rtp`, `tmi` and `iso_grav_anom` at windows 8/12/16 px; the accepted depth-labelled solution cloud is weighted by shallowness × relative-depth precision × local tightness × local depth consistency, plus a magnetic–gravity depth-concordance term; the weighted cloud becomes a continuous KDE raster; and that raster is value-ranked and thinned to a binary dot field at the budget chosen by the live-anchored instrument (2.5 px spacing, 60,000 dots).
 
 The full result is on the [project site](docs/index.html), with the [executive summary and future upload guide](docs/executive-summary.html), the [hypothesis register](docs/research/hypotheses.md), and the [H2-B spatial-proxy report](docs/reports/validation-h2b-20261005.md).
+
+## Current evidence — 2026-10-06 session (H40 Euler depth-cluster SI = 0)
+
+| Stage | Result | Interpretation |
+|---|---:|---|
+| Euler SI = 0, magnetic (`rtp`) at windows 8/12/16 | 54,060 / 47,174 / 40,130 accepted solutions (median depth 194 / 192 / 189 m) | Runs cleanly under the locked gates (stride 4, analytic percentile 72, max relative depth SE 0.22, depths 80–2200 m). A different configuration from the preregistered H1 stop, which had zero accepted gravity solutions under H1's own gates. |
+| Euler SI = 0, gravity (`iso_grav_anom`) at windows 8/12/16 | 10,255 / 23,339 / 34,450 accepted (median depth 355 / 534 / 669 m) | Gravity acceptance *rises* with window size — the opposite of the magnetic branch; gravity depths are ~2–3× the magnetic ones. |
+| Emission selected by the live-anchored instrument | spacing 2.5 px, 60,000 dots, `w = 0.0544`, predicted score **0.1625**, break-even marginal `w` 0.0555 | The chosen budget sits at the instrument's own optimum; a larger budget is predicted to score worse. |
+| LM instrument (4 quadrants, prevalence-calibrated) | **0.2015** vs incumbent **0.2679** (−0.0664, better in 1/4 folds) | Second live-anchored instrument; both agree the artifact is below the incumbent. |
+| Uniqueness vs the 26 staged priors | worst support-Jaccard 0.053, worst \|Pearson\| 0.087 | Genuinely new information — but uniqueness is not quality. |
+| Frozen all-prior proxy gate (as previously written) | best comparator = blind lattice, live 0.0904 | The comparator is invalid (see the promoted gate section); recorded, not used. |
+| Promotion | **HOLD — DO NOT SUBMIT** | No weekly slot used. |
+
+The corrected calibration is also recorded: the two files that bracket the catalogue-flank pruning jointly imply hidden-truth credit `T ≈ 5,220` at `M = 44,090` for the 0.2600 artifact (surrogate-to-live credit ratio ≈ 0.54) and `0.8·N + 0.2·(T − C) ≈ 11,261`, i.e. `N ≈ 12,800–14,100`. At the corrected break-even bar the incumbent's operating point requires marginal `w > 0.099`; the Euler field's dots carry `w ≈ 0.054`, which is why they do not pay. See the [hypothesis register](docs/research/hypotheses.md) for the five registered H40 hypotheses, the refuted strike-continuation hypothesis, and the reasoning.
 
 ## Current evidence (2026-10-05 UTC)
 
@@ -56,7 +72,11 @@ The project brief is distilled here as a durable working charter; a structured, 
 
 The append-only register is [`docs/research/hypotheses.md`](docs/research/hypotheses.md). It contains three ranked hypotheses, H1's fixed implementation/gates, an H2 lock appended after H1 stopped, and the separate H2-B natural-support rule. The H2-B amendment was entered before its proxy holdout score was read. It did not rewrite or rescue H1/H2.
 
-The frozen promotion gate is intentionally strict: on the same four-by-six spatial blocks and three-cell guards, strictly beat the best format-eligible, comparable same-grid prior raster; win at least 18 of 24 blocks; and lose no block by more than 0.005. Also pass exact-grid/range/nodata validation and the prior-raster near-duplicate audit. A failed gate means **HOLD; DO NOT SUBMIT**. All-prior proxy scores remain visible even when a prior output has circular SGMC provenance; that comparator limitation is explicitly reported.
+### Promotion gate — amended 2026-10-06, with the defect recorded
+
+The previously frozen gate compared every candidate against the highest pooled SGMC-proxy score among format-eligible priors. Measured on 2026-10-06, that comparator is the **blind spacing-5 lattice probe** (`p13-lattice-s5-v2.tif`, proxy 0.2679 pooled / 0.1650 mean-block, owner-reported live **0.0904** — the worst of every scored artifact), while the artifact holding the best reported live score (0.2778) scores 0.1096 / 0.0722 on the same instrument. The unweighted off-catalogue SGMC surrogate rewards breadth, so a gate that requires beating the lattice rejects every selective field, including the best one. The measurements are published in [`docs/data/gate-defect-20261006.json`](docs/data/gate-defect-20261006.json); the old gate is **not** used to promote anything, and the defect is not used as an excuse to promote either.
+
+The gate in force is now the live-anchored saturating instrument reproduced from the sibling repository's fit to 12 organizer-scored artifacts (leave-one-out Spearman +0.902): a candidate is promotable only if its predicted score exceeds the incumbent's, its chosen budget is at the instrument's own optimum (marginal `w` above the break-even bar), it passes exact-grid/range/nodata validation, and it passes the prior-raster near-duplicate audit. Anything else is **HOLD; DO NOT SUBMIT**. The 2026-10-06 artifact fails the first condition and is held.
 
 ### Reproduce (after obtaining the required inputs)
 

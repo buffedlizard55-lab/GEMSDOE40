@@ -12,6 +12,23 @@ Euler deconvolution depth-clustering submission system · repository
 <a href="sources.html">Sources</a></nav></div></header>
 <aside class="panel note" role="note"><strong>Historical main-branch supporting page (2026-10-05, before the H2-B audit).</strong> This page preserves prior research and should not be read as current upload advice. The prior H40-4 multi-scale TIFF was later scored at 0.124715 on the owner-derived SGMC proxy (0/24 blocks) and fails this repository's strict NaN-nodata format check; H2-B is <strong>HOLD — DO NOT SUBMIT</strong>. See the <a href="index.html">current project status</a> and <a href="executive-summary.html">current Executive Summary</a>. No organizer score is asserted here.</aside>
 <main>
+<h2>2026-10-06 session — measured evidence (current)</h2>
+<ul class="small">
+<li><strong>Current artifact:</strong> <a href="downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-zeros.tif">Euler depth-cluster SI = 0, 60,000 dots</a>
+(sha256 <code>57896abe…</code>) with <a href="downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-nan.tif">NaN-outside twin</a>
+and the <a href="downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-audit.json">full audit receipt</a>.
+Status: <strong>HOLD — no promotion</strong>.</li>
+<li><strong>Instrument reproduction:</strong> the saturating live-score model (fitted outside this repository to 12 organizer-scored
+artifacts) is reproduced here to <code>5e-5</code> on its input quantity <code>w</code> across nine anchors —
+<a href="data/instrument_w_verification.json">verification JSON</a>, <a href="data/instrument_w_verification.txt">table</a>.</li>
+<li><strong>Retired gate comparator:</strong> the previously frozen all-prior SGMC gate is measured against the blind spacing-5 lattice
+(live 0.0904) — <a href="data/gate-defect-20261006.json">defect measurements</a>.</li>
+<li><strong>Prior corpus:</strong> sha256, mass, <code>w</code> and instrument prediction for all 26 staged priors —
+<a href="https://github.com/buffedlizard55-lab/GEMSDOE40/blob/main/ref/meta/prior_corpus.md">ref/meta/prior_corpus.md</a>.</li>
+<li><strong>Data claim fixed:</strong> <code>footprint_matches_labels_defined</code> was reported false because the audit script looked for
+<code>existing_faults.tif</code> while this mirror stores the same bytes as <code>labels.tif</code>. With the fallback in place the comparison is
+true (0 cells in either symmetric difference) — <a href="data/submission_format.json">submission_format.json</a>.</li>
+</ul>
 <h2>Verification of the data claims</h2>
 <pre>{
   "files": {

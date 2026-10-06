@@ -19,6 +19,10 @@ from urllib.parse import urlsplit
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
 CANDIDATE = DOCS / "downloads" / "gemsdoe40-h2b-tmi-euler-natural-support-20261005.tif"
+#: current (2026-10-06) research artifact and its receipt
+CANDIDATE_H40 = DOCS / "downloads" / "gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-zeros.tif"
+RECEIPT_H40 = DOCS / "downloads" / "gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-audit.json"
+SHA_H40 = "57896abee36d6722f587f543e1f65ddfd9af19163e20653e852bfb3162b10902"
 VALIDATION = DOCS / "data" / "validation-h2b-20261005.json"
 INVENTORY = DOCS / "data" / "prior_raster_inventory.json"
 UNIQUENESS = DOCS / "data" / "uniqueness_audit.json"
@@ -84,6 +88,31 @@ def verify_evidence() -> list[str]:
         problems.append("expanded H2-B uniqueness audit is missing, incomplete, or failing")
     if len(report.get("prior_raster_scores", [])) != inv_count:
         problems.append("validation report prior-score row count does not match inventory")
+
+    # ---- current artifact (2026-10-06) ------------------------------------------------------
+    if not CANDIDATE_H40.exists():
+        problems.append(f"current artifact missing: {CANDIDATE_H40.name}")
+    else:
+        got = hashlib.sha256(CANDIDATE_H40.read_bytes()).hexdigest()
+        if got != SHA_H40:
+            problems.append(f"current artifact SHA-256 mismatch: {got}")
+    try:
+        receipt = json.loads(RECEIPT_H40.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        problems.append(f"current artifact receipt unreadable: {exc}")
+    else:
+        if receipt.get("zeros_tif", {}).get("sha256") != SHA_H40:
+            problems.append("receipt does not pin the current artifact hash")
+        inst = receipt.get("stage", {}).get("emission", {}).get("instrument", {})
+        pred = inst.get("predicted_live")
+        if pred is None or pred >= 0.2778:
+            problems.append(f"current artifact is not held: instrument prediction {pred}")
+        lm = inst.get("lm_calibrated")
+        if lm is None or lm >= (inst.get("lm_incumbent") or 0.0):
+            problems.append("current artifact LM instrument result does not show a shortfall")
+    page = (DOCS / "index.html").read_text(encoding="utf-8")
+    if CANDIDATE_H40.name not in page or "HOLD — DO NOT SUBMIT" not in page:
+        problems.append("landing page must offer the current artifact next to an explicit HOLD status")
     return problems
 
 

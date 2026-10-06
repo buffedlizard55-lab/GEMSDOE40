@@ -21,23 +21,23 @@
     <div class="wrap">
       <section class="hero" aria-labelledby="hero-title">
         <div>
-          <div class="eyebrow">DOE GEMS Prize Challenge · Research log · 05 Oct 2026</div>
+          <div class="eyebrow">DOE GEMS Prize Challenge · Research log · 06 Oct 2026</div>
           <h1 id="hero-title">Map <em>faults.</em><br>Keep the evidence honest.</h1>
           <p class="lede">A reproducible, geology-led fault-prediction project for geothermal exploration. The target is geological faults that may indicate geothermal resources—not vents or reservoirs. Every candidate is frozen, validated, compared, and either promoted or stopped.</p>
           <div class="actions">
-            <a class="button primary" href="downloads/gemsdoe40-h2b-tmi-euler-natural-support-20261005.tif" download>↓ Download H2-B research TIFF</a>
+            <a class="button primary" href="downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-zeros.tif" download>↓ Download H40 Euler depth-cluster TIFF</a>
             <a class="button secondary" href="executive-summary.html">Read the decision & guide →</a>
           </div>
-          <p class="small" style="margin-top:12px"><strong>Research artifact only.</strong> This candidate failed the frozen promotion gate. Do not submit it or spend a weekly slot.</p>
+          <p class="small" style="margin-top:12px"><strong>Research artifact only.</strong> Both live-anchored instruments put this candidate below the incumbent, so it is held. Do not submit it or spend a weekly slot.</p>
         </div>
         <aside class="hero-card" aria-label="Current candidate decision">
           <span class="status-pill"><span class="status-dot"></span> no-go · do not submit</span>
-          <div class="card-kicker" style="margin-top:24px">H2-B · TMI Euler persistence</div>
-          <h2>Unique file. Failed benchmark.</h2>
-          <p>The raster passes sample-grid, value-range, and uniqueness audits. Its owner-derived proxy holdout score does not come close to the frozen incumbent.</p>
+          <div class="card-kicker" style="margin-top:24px">H40 · Euler depth-cluster, SI = 0</div>
+          <h2>New information. Not enough of it.</h2>
+          <p>Unique, format-perfect, and physically motivated — but its dots carry only 0.054 of credit per dot on the live-calibrated bar of 0.099.</p>
           <div class="mini-metrics">
-            <div class="mini-metric"><b>0.00631</b><span>local proxy DTI · not official</span></div>
-            <div class="mini-metric"><b>0 / 24</b><span>spatial blocks won</span></div>
+            <div class="mini-metric"><b>0.163</b><span>instrument prediction · not official</span></div>
+            <div class="mini-metric"><b>0.202</b><span>LM instrument · incumbent 0.268</span></div>
             <div class="mini-metric"><b>PASS</b><span>GeoTIFF format checks</span></div>
             <div class="mini-metric"><b>PASS</b><span>prior-raster uniqueness</span></div>
           </div>
@@ -49,14 +49,14 @@
           <h2 id="decision-title">The decision is the deliverable.</h2>
           <p>Maximize P(Win) by spending submission slots only on evidence-backed candidates. Own the Outcome by publishing the failure, not hiding it.</p>
         </div>
-        <div class="alert" role="note"><strong>HOLD — DO NOT SUBMIT.</strong> H2-B scored 0.006313 on the local SGMC-derived proxy versus the frozen all-prior incumbent at 0.835907; it won 0 of 24 blocks. The incumbent is itself circular on this proxy, so neither number is an organizer score or an independent generalization estimate. The frozen all-prior gate is retained and failed.</div>
+        <div class="alert" role="note"><strong>HOLD — DO NOT SUBMIT.</strong> The 2026-10-06 Euler depth-cluster artifact is unique and passes every format check, but the live-anchored saturating instrument fitted to 12 organizer-scored artifacts predicts 0.163 for it, and the 4-quadrant LM instrument 0.202 against the incumbent's 0.268. The previously frozen SGMC-proxy gate was found to compare against the <em>blind lattice</em> (live 0.0904) and is retired with its defect published.</div>
         <div class="grid-4">
-          <div class="stat"><b class="bad">0.00631</b><span>H2-B pooled proxy DTI</span></div>
-          <div class="stat"><b class="bad">−0.82959</b><span>delta vs frozen all-prior incumbent</span></div>
-          <div class="stat"><b>17,425</b><span>positive KDE support cells · 0.337%</span></div>
-          <div class="stat"><b class="good">277 / 277</b><span>same-grid prior rasters checked for uniqueness</span></div>
+          <div class="stat"><b class="bad">0.163</b><span>instrument prediction · not an organizer score</span></div>
+          <div class="stat"><b class="bad">0.054</b><span>credit per emitted dot, w (bar 0.099)</span></div>
+          <div class="stat"><b>60,000</b><span>emitted dots · 1.161% of the footprint</span></div>
+          <div class="stat"><b class="good">26 / 26</b><span>prior rasters checked · worst Jaccard 0.053</span></div>
         </div>
-        <p class="small" style="margin-top:14px">The proxy is an owner-derived SGMC mirror (SHA-256 <code>26d142c4…b5c</code>), not hidden challenge truth and not an independently rebuilt USGS raster. H2-B did not use it in candidate construction.</p>
+        <p class="small" style="margin-top:14px">Euler deconvolution at structural index 0 (Reid et al. 1990) on <code>rtp</code>, <code>tmi</code> and <code>iso_grav_anom</code>: 193,504 accepted solutions across both families produce a depth-cluster field whose crest, binarised at the instrument's optimum budget, still under-performs the incumbent's dot field. New information is necessary but not sufficient — it has to carry credit per dot above the metric's break-even bar.</p>
       </section>
 
       <section id="research" class="section" aria-labelledby="research-title">

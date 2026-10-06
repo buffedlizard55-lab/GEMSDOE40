@@ -90,3 +90,54 @@ The official ComCat count endpoint returned 34,716 event records with a `focal-m
 ## Status changes
 
 This register is append-only. After a result is available, append the result and any deviation in `docs/research/validation.md`; do not silently edit the registered thresholds or call proxy performance an official score.
+
+## Append-only register — H40 session (2026-10-06 UTC)
+
+Registered before the H40 emission rule was implemented. The brief demands three to five
+candidate geological hypotheses, ranked by expected gain against cost, each naming its layers,
+its physical signature, why it could mark a fault that the USGS/INGENIOUS catalogue misses, and
+how it differs from everything already in this repository.
+
+| rank | hypothesis | layers | physics | why it can catch an unmapped fault | novelty in this repo | cost | outcome |
+|---|---|---|---|---|---|---|---|
+| 1 | **H40-A Euler SI=0 depth-cluster crest** | `rtp` (B2), `tmi` (B14), `iso_grav_anom` (B13) | Reid et al. (1990) deconvolution at the structural index of a *contact* (SI = 0): a fault offsets magnetisation and density, so its solutions cluster tightly in (x, y, depth) and agree in depth with each other | the catalogue is compiled from field mapping and literature, never from gridded potential-field deconvolution; a buried contact whose surface trace is unmapped still produces a solution cluster | maximum support-Jaccard 0.02 and max \|Pearson\| 0.06 against all 26 staged priors; no gradient/ridge/curvature field in the corpus is built this way | 12 min | **implemented — does not pay (see below)** |
+| 2 | H40-B magnetic × gravity Euler depth conjunction | `rtp`, `tmi`, `iso_grav_anom` | keep only magnetic solutions that have a gravity solution within 3 px **and** within 35 % relative depth: a fault that offsets susceptibility *and* density | gravity Euler solutions are the scarce measurement (10,255–34,450 accepted here vs 40,130–54,060 magnetic); a conjunction is far more selective than either family | no staged prior uses gravity Euler deconvolution at all | 1–2 sessions | not implemented — cheapest next test |
+| 3 | H40-C strike-continuation on the catalogue flanks | any structural layer | expert-added faults are usually along-strike extensions of mapped traces | — | — | 1 session | **refuted** by the paired live measurement: deleting exactly the 6,436 dots at 100–200 m from mapped traces raised the live score 0.2600 → 0.2778 (+0.0178), i.e. those dots earn ≈ 0 credit |
+| 4 | H40-D depth-sliced emission | same as H40-A | emit only solutions shallower than 400 m; the sibling repository measured off-catalogue SGMC enrichment of 4.4× at 50–100 m falling to ~1.0× below 800 m | shallow contacts are the ones expressed as surficial faults | depth weighting is already inside `solution_weights`; a hard slice is new | hours | tested only as a soft gate (250 m, 120 m): w 0.0520 → 0.0536, predicted 0.1575 → 0.1609 — within noise |
+| 5 | H40-E hidden-truth density inversion from the public score record | the 12 organizer-scored artifacts | treat the live scores as constraints on a blockwise hidden-truth density and weight the emission by the posterior | the score record is the only direct measurement of where the hidden truth actually is | nothing in the corpus uses the score record as a spatial instrument | 1 session | not implemented; needs multiple-comparison control (12 constraints) |
+
+### H40 outcome (measured, not asserted)
+
+- **Euler SI = 0 runs on both families with the locked gates** (stride 4, analytic-signal
+  percentile 72, max relative depth SE 0.22, depths 80–2200 m, ~8 s per configuration):
+  `rtp` 54,060 / 47,174 / 40,130 accepted solutions at windows 8 / 12 / 16 (median depth
+  194 / 192 / 189 m); `iso_grav_anom` 10,255 / 23,339 / 34,450 (median depth 355 / 534 / 669 m).
+  This is a *different* configuration from the preregistered H1 stop (which had zero accepted
+  gravity solutions under H1's own gates) and does not overturn that record.
+- **The emission rule was selected by the only live-anchored instrument available.** The
+  saturating model fitted by the sibling repository to 12 organizer-scored artifacts is
+  reproduced here to 5 × 10⁻⁵ on its input quantity `w` (mean per-dot kernel credit against the
+  off-catalogue surrogate truth) and to 2 × 10⁻⁴ on its published predictions (9 anchors present
+  locally). Scanning 5 spacings × 7 budgets chose **spacing 2.5 px, mass 60,000**, with
+  `w = 0.0544` and predicted live score **0.1625** (break-even marginal `w` 0.0537 — the chosen
+  emission sits exactly at its own optimum).
+- **The pre-existing promotion gate is invalid and is not used to promote this artifact.** Its
+  comparator is the highest pooled SGMC proxy score among format-eligible priors, which is the
+  *blind spacing-5 lattice* (proxy 0.2679 pooled / 0.1650 mean, owner-reported live **0.0904**),
+  while the incumbent that leads the live record (0.2778) scores 0.1096 / 0.0722 on the same
+  instrument. A gate whose best comparator is the worst live artifact cannot rank candidates;
+  the evidence is recorded in `docs/data/gate-defect-20261006.json` rather than silently dropped.
+- **Verdict: HOLD — DO NOT SUBMIT.** Two live-anchored instruments disagree about the magnitude
+  (saturating instrument 0.163; the 4-quadrant prevalence-calibrated LM instrument 0.202,
+  which is 0.066 below the same instrument's incumbent). Neither reaches the incumbent's
+  reported 0.2778, so no submission slot is justified, and the artifact ships as a research
+  record only.
+- **Corrected calibration of the metric record.** With the corrected `w` values, the two files
+  that bracket the catalogue-flank pruning give, jointly, hidden-truth credit
+  `T ≈ 5,220` at `M = 44,090` for the 0.2600 artifact (surrogate-to-live credit ratio
+  `c ≈ 0.54`) and `0.8·N + 0.2·(T − C) ≈ 11,261`, i.e. `N ≈ 12,800–14,100`. An earlier
+  session's claim that adding Euler dots to the incumbent "pays +0.008 to +0.041" used the
+  *unweighted* surrogate credit, which over-rewards breadth (the blind lattice earns 0.142
+  surrogate credit per pixel against 0.0505 per dot on the instrument definition). At the
+  corrected bar, Euler dots at `w = 0.053` do **not** pay (the incumbent's own operating point
+  requires marginal `w > 0.099`).

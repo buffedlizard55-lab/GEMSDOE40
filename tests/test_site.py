@@ -37,8 +37,24 @@ def test_static_site_has_no_duplicate_ids_or_broken_local_links():
 def test_site_prominently_marks_candidate_on_hold_and_offers_download():
     index = (DOCS / "index.html").read_text(encoding="utf-8")
     summary = (DOCS / "executive-summary.html").read_text(encoding="utf-8")
-    candidate = DOCS / "downloads/gemsdoe40-h2b-tmi-euler-natural-support-20261005.tif"
+    candidate = DOCS / "downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-zeros.tif"
     assert candidate.is_file()
     assert "HOLD — DO NOT SUBMIT" in index
-    assert "HOLD — DO NOT SUBMIT H2-B" in summary
-    assert "downloads/gemsdoe40-h2b-tmi-euler-natural-support-20261005.tif" in index
+    assert "HOLD — DO NOT SUBMIT the 2026-10-06 Euler artifact" in summary
+    assert f"downloads/{candidate.name}" in index
+    assert f"downloads/{candidate.name}" in summary
+    twin = DOCS / "downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-nan.tif"
+    assert twin.is_file()
+
+
+def test_current_artifact_receipt_shows_no_promotion():
+    import hashlib
+    import json
+    receipt = json.loads((DOCS / "downloads" /
+                          "gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-audit.json").read_text())
+    zeros = DOCS / "downloads" / "gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-zeros.tif"
+    assert hashlib.sha256(zeros.read_bytes()).hexdigest() == receipt["zeros_tif"]["sha256"]
+    inst = receipt["stage"]["emission"]["instrument"]
+    assert inst["predicted_live"] < 0.2778
+    assert inst["lm_calibrated"] < inst["lm_incumbent"]
+    assert receipt["stage"]["uniqueness"]["is_new"] is True

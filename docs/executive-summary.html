@@ -10,25 +10,25 @@
   <header class="site-header"><div class="nav-wrap"><a class="brand" href="index.html"><span class="brand-mark">G40</span><span>GEMSDOE40</span></a><nav class="nav-links" aria-label="Primary navigation"><a href="index.html#decision">Decision</a><a href="index.html#research">Research</a><a href="index.html#feed">Leaderboard</a><a href="https://github.com/buffedlizard55-lab/GEMSDOE40/blob/main/README.md">README ↗</a></nav></div></header>
   <main id="main" class="wrap">
     <div class="breadcrumb"><a href="index.html">Home</a> / Executive summary</div>
-    <section class="page-head"><div class="eyebrow">Decision record · 2026-10-05 UTC</div><h1>Executive summary</h1><p>What was tested, what passed, what failed, and what is safe to do next.</p></section>
+    <section class="page-head"><div class="eyebrow">Decision record · 2026-10-06 UTC</div><h1>Executive summary</h1><p>What was tested, what passed, what failed, and what is safe to do next.</p></section>
     <section class="caution" aria-labelledby="decision-heading">
       <span class="badge">No-go</span>
-      <h2 id="decision-heading" style="margin:12px 0 8px;color:#7c391c">HOLD — DO NOT SUBMIT H2-B.</h2>
-      <p>The candidate is a unique, format-valid GeoTIFF, but its local owner-derived SGMC proxy DTI is <strong>0.006313</strong>, with zero block wins against the frozen incumbent. No weekly submission slot has been used. It has no DrivenData score.</p>
-      <p><a href="reports/validation-h2b-20261005.html">Read the full spatial holdout and artifact report →</a></p>
+      <h2 id="decision-heading" style="margin:12px 0 8px;color:#7c391c">HOLD — DO NOT SUBMIT the 2026-10-06 Euler artifact.</h2>
+      <p>The artifact is unique and format-perfect, but both live-anchored instruments put it below the incumbent: the saturating instrument fitted to 12 organizer-scored artifacts predicts <strong>0.163</strong> (its dots carry <code>w = 0.054</code> against a break-even bar of <code>0.099</code>), and the 4-quadrant LM instrument gives <strong>0.202</strong> against the incumbent's <strong>0.268</strong>. No weekly submission slot has been used, and no DrivenData score exists for any artifact here.</p>
+      <p><a href="downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-audit.json">Read the full audit receipt →</a> · <a href="https://github.com/buffedlizard55-lab/GEMSDOE40/blob/main/docs/research/hypotheses.md">Hypothesis register →</a></p>
     </section>
 
     <section class="section" aria-labelledby="what-title">
       <div class="section-header"><h2 id="what-title">Outcome at a glance</h2><p>This is a research result, not a private-leaderboard prediction. The local proxy is a fallible owner-derived SGMC mirror.</p></div>
       <div class="grid-4">
-        <div class="stat"><b class="bad">0.006313</b><span>H2-B local proxy DTI</span></div>
-        <div class="stat"><b class="bad">0 / 24</b><span>spatial blocks won</span></div>
-        <div class="stat"><b class="good">PASS</b><span>sample grid, range, nodata</span></div>
-        <div class="stat"><b class="good">PASS</b><span>uniqueness against 277 same-grid rasters</span></div>
+        <div class="stat"><b class="bad">0.163</b><span>live-calibrated instrument prediction · not an organizer score</span></div>
+        <div class="stat"><b class="bad">0.202</b><span>LM instrument · incumbent 0.268</span></div>
+        <div class="stat"><b class="good">PASS</b><span>exact sample grid, [0,1] range, nodata semantics</span></div>
+        <div class="stat"><b class="good">PASS</b><span>uniqueness against all 26 staged priors</span></div>
       </div>
       <div class="metric-bar" style="margin-top:16px">
-        <div class="metric"><span class="big">0.835907</span><span class="label">frozen all-prior proxy incumbent. It is SGMC-gap-derived and circular on this proxy; not an independent baseline.</span></div>
-        <div class="metric"><span class="big">−0.829593</span><span class="label">H2-B pooled delta. The registered gate fails even without treating the incumbent as independent evidence.</span></div>
+        <div class="metric"><span class="big">0.099</span><span class="label">break-even credit per dot at the incumbent's operating point. The Euler field's dots carry 0.054.</span></div>
+        <div class="metric"><span class="big">0.053</span><span class="label">worst support-Jaccard against the 26 staged prior rasters; the artifact is genuinely new information — just not enough of it.</span></div>
       </div>
     </section>
 
@@ -36,7 +36,7 @@
       <div class="eyebrow">Scientific target</div>
       <h2 id="task-title">Faults—not vents, springs, or reservoirs.</h2>
       <p>The DOE GEMS Prize Challenge asks for geological faults that may indicate geothermal resources. A potential-field contact is not automatically a fault; a mapped fault is not automatically permeable; and neither establishes a viable reservoir. GEMSDOE40 uses Euler depth-deconvolution and multi-height persistence as source-location hypotheses, not as direct geothermal-site predictions.</p>
-      <p>The registered scientific ideas were: (1) magnetic–gravity depth consensus; (2) upward-continuation persistence in TMI Euler solutions; and (3) focal-mechanism-constrained orientation. H1 and strict H2 stopped at feasibility. H2-B, a separately registered rule emitting only natural positive KDE support, was evaluated and failed. H3 remains blocked pending measurement of official ComCat mechanism coverage.</p>
+      <p>The registered scientific ideas were: (1) magnetic–gravity depth consensus; (2) upward-continuation persistence in TMI Euler solutions; and (3) focal-mechanism-constrained orientation. H1 and strict H2 stopped at feasibility; H2-B failed the proxy gate. On 2026-10-06 the register was extended with five H40 hypotheses: the SI = 0 Euler depth-cluster crest (implemented — does not pay), a magnetic × gravity depth conjunction (the cheapest next test), strike-continuation on the catalogue flanks (<strong>refuted</strong> by the paired live measurement: deleting 6,436 flank dots raised the live score 0.2600 → 0.2778), depth-sliced emission (noise-level change), and a hidden-truth density inversion from the public score record (not yet implemented).</p>
       <p><a href="https://github.com/buffedlizard55-lab/GEMSDOE40/blob/main/docs/research/hypotheses.md">Open the append-only hypothesis register →</a> · <a href="reports/feasibility-20261005.html">Open feasibility results →</a></p>
     </section>
 
@@ -44,23 +44,23 @@
       <div class="section-header"><h2 id="file-title">Research TIFF: available, not approved</h2><p>Format validation and scientific promotion are separate gates. This one passes only the former.</p></div>
       <div class="panel two-col">
         <div>
-          <h3 style="margin-top:0">H2-B · natural positive KDE support</h3>
-          <p class="small">17,425 positive cells (0.337% of the footprint). One band, float32, EPSG:32611, 100 m, shape 3,730 × 3,292. Finite values are in `[0,1]` inside the sample mask; outside values are NaN. SHA-256: <code>02486eaa491da2d8ebc6b1cd53ed2bdc8e995f316be1110a64eec484779b5a68</code>.</p>
-          <div class="actions"><a class="button primary" href="downloads/gemsdoe40-h2b-tmi-euler-natural-support-20261005.tif" download>↓ Download research TIFF</a></div>
+          <h3 style="margin-top:0">H40 · Euler depth-cluster, structural index 0</h3>
+          <p class="small">60,000 positive cells (1.161% of the footprint). One band, float32, EPSG:32611, 100 m, shape 3,730 × 3,292. All 5,167,373 in-footprint values are finite and inside <code>[0,1]</code>, <code>nodata = None</code>; the twin carries NaN outside the footprint (the sample convention). SHA-256: <code>57896abee36d6722f587f543e1f65ddfd9af19163e20653e852bfb3162b10902</code>.</p>
+          <div class="actions"><a class="button primary" href="downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-zeros.tif" download>↓ Download research TIFF</a> <a class="button secondary" href="downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-nan.tif" download>NaN-outside twin</a></div>
         </div>
         <div class="caution" style="margin:0">
           <strong>Do not paste these into DrivenData.</strong>
           <p class="small">For internal records only:</p>
-          <p><b>Provisional name</b><br><code>GEMSDOE40-H2B-20261005-ON-HOLD</code></p>
-          <p><b>Provisional note</b><br><code>Research-only H2-B TMI Euler persistence; failed local proxy promotion gate; no organizer score. DO NOT SUBMIT.</code></p>
+          <p><b>Provisional name</b><br><code>GEMSDOE40-H40-EULERDEPTH-SI0-20261006-ON-HOLD</code></p>
+          <p><b>Provisional note</b><br><code>Research-only Euler depth-cluster SI=0; below the live-calibrated incumbent; no organizer score. DO NOT SUBMIT.</code></p>
           <p class="small">The metadata is deliberately marked on-hold and is not an upload recommendation.</p>
         </div>
       </div>
-      <p class="small" style="margin-top:12px">Receipts: <a href="data/format_receipt.json">format</a> · <a href="data/uniqueness_audit.json">uniqueness</a> · <a href="data/validation-h2b-20261005.json">all block and prior scores</a> · <a href="data/feasibility.json">candidate-generation feasibility</a></p>
+      <p class="small" style="margin-top:12px">Receipts: <a href="downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-audit.json">format, instrument and uniqueness receipt</a> · <a href="data/instrument_w_verification.json">instrument reproduction (9 anchors)</a> · <a href="data/gate-defect-20261006.json">retired gate comparator measurements</a> · <a href="data/format_receipt.json">H2-B format receipt (history)</a></p>
     </section>
 
     <section class="section prose" aria-labelledby="h40-title">
-      <div class="eyebrow">Previous main-branch record · kept for audit</div>
+      <div class="eyebrow">Previous record · kept for audit</div>
       <h2 id="h40-title">H40-4 multi-scale Euler candidate</h2>
       <p>The prior main branch reported a 97,654-cell multi-scale Euler augmentation with an LM-calibrated proxy DTI of 0.34835 versus 0.26792 for that branch's previous site-best, better in 4/4 folds. This is the originating repository's own instrument, not an official score. A later addendum evaluated H40-4 against the same owner-derived SGMC proxy used for H2-B: pooled diagnostic DTI 0.124715 and 0/24 wins versus the frozen all-prior incumbent. H40-4 also fails the strict local format gate because its TIFF does not declare NaN nodata. These results are separate measures and neither is an organizer score; the file remains a historical research artifact, not current upload advice.</p>
       <p><a class="button secondary" href="downloads/gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e.tif" download>↓ Download the prior H40-4 TIFF</a></p>
@@ -70,24 +70,29 @@
     <section class="section prose" id="steps" aria-labelledby="steps-title">
       <div class="eyebrow">Future upload guide</div>
       <h2 id="steps-title">Only upload after the gate says eligible.</h2>
-      <div class="alert"><strong>Current status: not eligible.</strong> The following steps are for a future candidate that has passed the frozen holdout, exact format, and uniqueness gates. They are not instructions to upload the H2-B file.</div>
+      <div class="alert"><strong>Current status: not eligible.</strong> The steps below apply only to a future candidate whose live-calibrated prediction beats the incumbent and which passes the exact-format and uniqueness gates. They are not instructions to upload the held Euler artifact.</div>
       <ol>
         <li>Confirm the candidate page and validation report say <strong>ELIGIBLE FOR USER REVIEW</strong>, not HOLD.</li>
         <li>Read the dated report and confirm the candidate hash is the one linked beside the download.</li>
         <li>Download the single-band TIFF. Do not alter its pixels, nodata, or metadata after validation.</li>
         <li>Open the official <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/" target="_blank" rel="noopener">DrivenData submissions page ↗</a>, select the file, and enter only the name/note displayed for that promoted artifact.</li>
-        <li>Before confirming, check that the portal accepts `[0,1]` values, then save the actual submission receipt. Do not infer that an upload succeeded from a local test.</li>
+        <li>Before confirming, re-run the range read-back below and keep the actual submission receipt. Do not infer that an upload succeeded from a local test.</li>
         <li>Record the resulting account-level score, date, and file identity separately. A leaderboard row does not attribute a score to a TIFF unless the organizer exposes a file-level link.</li>
       </ol>
-      <h3>Why the range check matters</h3>
-      <p>The portal error “Predicted values must be in range [0, 1]” is addressed by read-back validation: all in-footprint values must be finite and between 0 and 1, with the sample's outside-footprint nodata semantics preserved. This candidate passed that technical check; that alone does not make it scientifically suitable.</p>
+      <h3>How to fix “Predicted values must be in range [0, 1]”</h3>
+      <p>The portal reads the raster it is given, so the fix is a property of the file, not of the upload flow. Two mechanisms produce the error in this programme and both are prevented the same way:</p>
+      <ol>
+        <li><strong>A float32 sentinel inside the footprint.</strong> The organizer feature rasters fill cells outside the study area with <code>−3.4028234663852886e+38</code>; three thousand and sixty-one of those cells fall <em>inside</em> the sample mask. Any pipeline that treats the raw band as data and re-emits it writes values far below 0.</li>
+        <li><strong>NaN inside the footprint.</strong> NaN is legal only outside the sample mask. Writing NaN where the sample has data (or writing 0 outside where the sample has NaN) also fails.</li>
+      </ol>
+      <p>The fix, in three lines of policy: (i) build the emission on the sample's finite mask only; (ii) write exactly <code>1.0</code> where a dot is emitted and <code>0.0</code> elsewhere inside that mask, with <code>nodata = None</code>, so every in-footprint value is finite and inside <code>[0, 1]</code>; (iii) emit the two twins — the portal-safe one with zeros outside the footprint, and the sample-convention one with NaN outside — and verify by reading the written file back. <code>scripts/run_euler_depth_cluster.py</code> asserts all three conditions before it exits, and the 2026-10-06 artifact passes them (5,167,373/5,167,373 in-footprint values finite and in range; 7,111,787 NaN cells outside in the twin). Passing this check is necessary and not sufficient: it says nothing about scientific quality.</p>
     </section>
 
     <section class="section" aria-labelledby="principles-title">
       <div class="section-header"><h2 id="principles-title">Principles</h2><p>Good research includes an explicit stop decision.</p></div>
       <div class="two-col">
         <article class="card"><span class="tag">Maximize P(Win)</span><h3>Spend no slot on a failing candidate.</h3><p>Scientific plausibility, spatial validation, rule compliance, and a measured advantage matter more than a compelling name or a valid file.</p></article>
-        <article class="card"><span class="tag">Own the Outcome</span><h3>Keep failures visible.</h3><p>H1 and strict H2 stopped at feasibility. H2-B failed the proxy gate. These facts are preserved so the next experiment starts from evidence rather than optimism.</p></article>
+        <article class="card"><span class="tag">Own the Outcome</span><h3>Keep failures visible.</h3><p>H1 and strict H2 stopped at feasibility, H2-B failed the proxy gate, and the 2026-10-06 Euler artifact is held with its instrument numbers published. These facts are preserved so the next experiment starts from evidence rather than optimism.</p></article>
       </div>
     </section>
   </main>

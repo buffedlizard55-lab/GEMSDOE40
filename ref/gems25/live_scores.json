@@ -1,0 +1,362 @@
+{
+ "schema_version": 2,
+ "generated_utc": "2026-10-02",
+ "warning": "All competition DTI values in this registry are user- or owner-reported claims, not organizer receipts. The 0.2477 submission result and 0.3195 leaderboard leader were not independently verified here; the local raster analysis verifies a deterministic pixel transformation, not its competition score. No DrivenData page was accessed or monitored. Unknown stays unknown.",
+ "artifacts": [
+  {
+   "project": "GEMSDOE",
+   "label": "gems-submission-20260925T001403Z-7f00890a",
+   "score": 0.1563,
+   "status": "owner-reported",
+   "note": ""
+  },
+  {
+   "project": "6GEMSDOE",
+   "label": "gems6_hgb88-topk03_33cec71ff0",
+   "score": 0.0286,
+   "status": "owner-reported",
+   "note": ""
+  },
+  {
+   "project": "GEMSDOE3",
+   "label": "pindrop-v4-nodes-20260925T152420Z-f347b70daa",
+   "score": 0.1193,
+   "status": "owner-reported",
+   "note": ""
+  },
+  {
+   "project": "GEMSDOE3",
+   "label": "pindrop-v4-discovery-20260925T152423Z-37f9d5b855",
+   "score": 0.083,
+   "status": "owner-reported",
+   "note": ""
+  },
+  {
+   "project": "GEMSDOE3",
+   "label": "pindrop-v4-ridge-20260925T152422Z-4e03fc9705",
+   "score": 0.1152,
+   "status": "owner-reported",
+   "note": ""
+  },
+  {
+   "project": "GEMSDOE2",
+   "label": "gemsdoe2-dual-family-union-20260925T160406Z-f68e590f",
+   "score": 0.156,
+   "status": "owner-reported",
+   "note": ""
+  },
+  {
+   "project": "GEMSDOE4",
+   "label": "gems-submission-20260926T163915Z-237f0063",
+   "score": 0.0343,
+   "status": "owner-reported",
+   "note": ""
+  },
+  {
+   "project": "5GEMSDOE",
+   "label": "gems-submission-20260926T175114Z-7f00890a",
+   "score": 0.1563,
+   "status": "owner-reported",
+   "note": "same content id 7f00890a as the GEMSDOE entry"
+  },
+  {
+   "project": "7GEMSDOE",
+   "label": "lidarscarp-ridge-top2pct-36c3a3f341c8",
+   "score": 0.1461,
+   "status": "owner-reported",
+   "note": ""
+  },
+  {
+   "project": "8GEMSDOE",
+   "label": "Hedge-v2_submission",
+   "score": 0.1563,
+   "status": "owner-reported",
+   "note": "= ens12 off-catalogue pixels + all catalogue pixels; equal score shows masked known pixels do not matter"
+  },
+  {
+   "project": "GEMSDOE9",
+   "label": "2314b599",
+   "score": 0.0107,
+   "status": "owner-reported",
+   "note": "file name 'PLACEHOLDER' in the sibling repo; fails the range/footprint check in this repo's verifier"
+  },
+  {
+   "project": "11GEMSDOE",
+   "label": "gems-structural-area06-v1",
+   "score": 0.0202,
+   "status": "owner-reported",
+   "note": ""
+  },
+  {
+   "project": "12GEMSDOE",
+   "label": "r7-nms3-dem10-scarp_0c9199f14e62",
+   "score": 0.1294,
+   "status": "owner-reported",
+   "note": ""
+  },
+  {
+   "project": "12GEMSDOE",
+   "label": "r7-nms3-dem10-scarp_0c9199f14e62_allfinite",
+   "score": 0.1294,
+   "status": "owner-reported",
+   "note": "NaN-outside and zeros-outside variants scored identically"
+  },
+  {
+   "project": "15GEMSDOE",
+   "label": "gems-tso1-20260929T005627Z-conj_alteration_mag",
+   "score": 0.0782,
+   "status": "owner-reported",
+   "note": "single-named 'conjunction' hypothesis (OFAT history)"
+  },
+  {
+   "project": "14GEMSDOE",
+   "label": "GEMS_r5-geom-horse-ensemble_20260929T154852Z_ccbe1de0_site_e96e942f",
+   "score": 0.002,
+   "status": "owner-reported",
+   "note": ""
+  },
+  {
+   "project": "17GEMSDOE",
+   "label": "17GEMSDOE_F-ensemble-2pct_20260930T050626Z",
+   "score": 0.0187,
+   "status": "owner-reported",
+   "note": ""
+  },
+  {
+   "project": "18GEMSDOE",
+   "label": "H19-C_20260930T212401Z_c11e495e",
+   "score": 0.0297,
+   "status": "owner-reported",
+   "note": ""
+  },
+  {
+   "project": "19GEMSDOE",
+   "label": "h19-4-multiline-corroborated-openness-thermal-pop-20260930-691e4dfa-nan",
+   "score": 0.1894,
+   "status": "owner-reported",
+   "note": ""
+  },
+  {
+   "project": "19GEMSDOE",
+   "label": "h19-5-powerlaw-budget-multiline-corroborated-20260930-e27054cf-nan",
+   "score": 0.1922,
+   "status": "owner-reported",
+   "note": "parent of the 0.2477 file"
+  },
+  {
+   "project": "GEMSDOE10",
+   "label": "h16-continuation-20260927T065521077735Z-3431b83c7c",
+   "score": 0.0461,
+   "status": "owner-reported",
+   "note": ""
+  },
+  {
+   "project": "GEMSDOE10",
+   "label": "h20-dem10-scarp-thin-20260927T155223039488Z-ffc91a1686",
+   "score": 0.0921,
+   "status": "owner-reported",
+   "note": ""
+  },
+  {
+   "project": "GEMSDOE10",
+   "label": "H25-ctx-ridge-20260927T232947704150Z-6452ae1d00",
+   "score": 0.128,
+   "status": "owner-reported",
+   "note": "solid; same surface as h28"
+  },
+  {
+   "project": "GEMSDOE10",
+   "label": "h28-dotted-ridge-20260928T020256236880Z-6452ae1d00",
+   "score": 0.1839,
+   "status": "owner-reported",
+   "note": "dotted version of the surface above: +44 %"
+  },
+  {
+   "project": "13GEMSDOE",
+   "label": "20261001_r13-lattice-s5_v2_nan-outside",
+   "score": 0.0904,
+   "status": "owner-reported",
+   "note": "blind spacing-5 lattice probe; calibrates hidden-truth density"
+  },
+  {
+   "project": "16GEMSDOE",
+   "label": "h16-1-topo-geophys-baseline-ridges-20260930-df20f65e-nan",
+   "score": 0.1855,
+   "status": "owner-reported",
+   "note": ""
+  },
+  {
+   "project": "16GEMSDOE",
+   "label": "h18-3a-topo-geophys-x-complexity-prior-20260930-c502dfab-nan",
+   "score": 0.0976,
+   "status": "owner-reported",
+   "note": "single-named 'x-complexity' interaction attempt (OFAT history)"
+  },
+  {
+   "project": "16GEMSDOE",
+   "label": "h18-4-usgs-geologic-map-faults-gap-20260930-aef8f42c-nan",
+   "score": 0.036,
+   "status": "owner-reported",
+   "note": ""
+  },
+  {
+   "project": "GEMSDOE21",
+   "label": "h19-4-reference-20260930-691e4dfa",
+   "score": 0.1894,
+   "status": "owner-reported",
+   "note": "re-host of h19-4 (same content id 691e4dfa)"
+  },
+  {
+   "project": "20GEMSDOE",
+   "label": "h20-1-sarnnpu-powerlaw-pi0363-tilt-wingcrack-20260930-be0e8f6b-nan",
+   "score": 0.189,
+   "status": "owner-reported",
+   "note": ""
+  },
+  {
+   "project": "20GEMSDOE",
+   "label": "h20-5-continuous-pu-proxy-unverified-20260930-824ce73a-nan",
+   "score": null,
+   "status": "blank / not reported",
+   "note": "blank in the brief"
+  },
+  {
+   "project": "GEMSDOE22",
+   "label": "h23-a-dti-optimal-emission-6pct-20261002-e2ec4b49-nan",
+   "score": 0.1002,
+   "status": "owner-reported",
+   "note": ""
+  },
+  {
+   "project": "GEMSDOE22",
+   "label": "h23-b-dti-optimal-emission-10pct-20261002-86176698-nan",
+   "score": null,
+   "status": "blank / not reported",
+   "note": "blank in the brief"
+  },
+  {
+   "project": "GEMSDOE23",
+   "label": "(no entry)",
+   "score": null,
+   "status": "blank / not reported",
+   "note": "blank in the brief"
+  },
+  {
+   "project": "GEMSDOE24",
+   "label": "h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan",
+   "score": 0.2477,
+   "status": "user-provided-unverified",
+   "note": "reported score 0.2477; local mask identity is verified, leaderboard/receipt association is not"
+  }
+ ],
+ "leaderboard_snapshot": {
+  "source": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
+  "how": "values were supplied in the task context; official page/receipt not fetched or independently verified",
+  "top10": [
+   {
+    "rank": 1,
+    "participant": "DARD",
+    "best_public_dti": 0.3195,
+    "submissions": 12
+   },
+   {
+    "rank": 2,
+    "participant": "nchuzhoy",
+    "best_public_dti": 0.3128,
+    "submissions": 2
+   },
+   {
+    "rank": 3,
+    "participant": "alexoktaba",
+    "best_public_dti": 0.3042,
+    "submissions": 19
+   },
+   {
+    "rank": 4,
+    "participant": "Batik Shirt Brothers",
+    "best_public_dti": 0.2998,
+    "submissions": 17
+   },
+   {
+    "rank": 5,
+    "participant": "xiaofanhu",
+    "best_public_dti": 0.2941,
+    "submissions": 7
+   },
+   {
+    "rank": 6,
+    "participant": "joeyfezster",
+    "best_public_dti": 0.2919,
+    "submissions": 18
+   },
+   {
+    "rank": 7,
+    "participant": "ndavis7",
+    "best_public_dti": 0.2888,
+    "submissions": 7
+   },
+   {
+    "rank": 8,
+    "participant": "GrigorSargsyan",
+    "best_public_dti": 0.2868,
+    "submissions": 8
+   },
+   {
+    "rank": 9,
+    "participant": "mzoorob",
+    "best_public_dti": 0.2862,
+    "submissions": 21
+   },
+   {
+    "rank": 10,
+    "participant": "HardcoreTechGod",
+    "best_public_dti": 0.2854,
+    "submissions": 6
+   }
+  ],
+  "group_rows_by_equal_value": [
+   {
+    "rank": 16,
+    "participant": "wbg1",
+    "score": 0.2477,
+    "submissions": 8,
+    "matches_owner_reported": "h25-1 dotted H19-5 d1.5 (value match only)"
+   },
+   {
+    "rank": 28,
+    "participant": "smrtdoog5",
+    "score": 0.1922,
+    "submissions": 6,
+    "matches_owner_reported": "h19-5 (value match only)"
+   },
+   {
+    "rank": 30,
+    "participant": "SDCF9",
+    "score": 0.1894,
+    "submissions": 6,
+    "matches_owner_reported": "h19-4 (value match only)"
+   },
+   {
+    "rank": 33,
+    "participant": "extradr19",
+    "score": 0.1855,
+    "submissions": 6,
+    "matches_owner_reported": "h16-1 (value match only)"
+   },
+   {
+    "rank": 41,
+    "participant": "smashi34",
+    "score": 0.1563,
+    "submissions": 6,
+    "matches_owner_reported": "ens12 / Hedge-v2 (value match only)"
+   }
+  ],
+  "gap_to_rank5": 0.0464,
+  "gap_to_rank1": 0.0718,
+  "relative_gain_needed_for_rank1": 0.29,
+  "reported_utc": "2026-10-02",
+  "status": "user-provided-unverified",
+  "verification_note": "Human review of the official leaderboard would be needed to verify, but this session did not access or monitor it."
+ },
+ "record_new_scores_with": "python scripts/record_live_score.py --file <name-or-sha-prefix> --score 0.xxxx"
+}

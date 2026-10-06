@@ -22,6 +22,9 @@
       "nodata": "-3.4028234663852886e+38"
     },
     "existing_faults.tif": {
+      "present": false
+    },
+    "labels.tif": {
       "present": true,
       "bytes": 425830,
       "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
@@ -66,7 +69,8 @@
   },
   "pins_match": {
     "training_features.tif": true,
-    "existing_faults.tif": true,
+    "existing_faults.tif": null,
+    "labels.tif": true,
     "example_submission.tif": true
   },
   "band_inventory": {
@@ -179,6 +183,9 @@
     "inside_max": 1.0,
     "all_values_in_0_1": true,
     "footprint_matches_labels_defined": true,
+    "footprint_only_px": 0,
+    "labels_defined_only_px": 0,
+    "labels_source": "labels.tif",
     "catalogue_positive_px": 60988
   }
 }

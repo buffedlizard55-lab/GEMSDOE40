@@ -14,3 +14,7 @@ data/external/
 work/
 *.npz
 *.npy
+
+# Large local inputs and prior-raster cache (external artifacts, not committed)
+data/bridge/
+ref/prior/
