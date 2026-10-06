@@ -37,7 +37,7 @@ class LocalLinks(HTMLParser):
 
 def verify_pages() -> list[str]:
     problems: list[str] = []
-    pages = sorted(DOCS.rglob("*.html"))
+    pages = [ROOT / "index.html", *sorted(DOCS.rglob("*.html"))]
     for page in pages:
         parser = LocalLinks()
         parser.feed(page.read_text(encoding="utf-8"))
@@ -55,6 +55,11 @@ def verify_pages() -> list[str]:
 
 def verify_evidence() -> list[str]:
     problems: list[str] = []
+    root_page = (ROOT / "index.html").read_text(encoding="utf-8")
+    if "HOLD — DO NOT SUBMIT" not in root_page or "docs/index.html" not in root_page:
+        problems.append("root landing page must redirect to the current HOLD status page")
+    if "UPLOAD THIS" in root_page or "Recommended submission" in root_page:
+        problems.append("root landing page contains superseded upload advice")
     try:
         report = json.loads(VALIDATION.read_text(encoding="utf-8"))
         inventory = json.loads(INVENTORY.read_text(encoding="utf-8"))
@@ -92,8 +97,8 @@ def main() -> int:
         for error in errors:
             print(f"  - {error}")
         return 1
-    print(f"[site] OK: {len(list(DOCS.rglob('*.html')))} static pages, 277 uniqueness comparisons, "
-          "279 pinned prior blobs, and explicit HOLD status; no files rewritten")
+    print(f"[site] OK: {len(list(DOCS.rglob('*.html')))} documentation pages plus root redirect, "
+          "277 uniqueness comparisons, 279 pinned prior blobs, and explicit HOLD status; no files rewritten")
     return 0
 
 
