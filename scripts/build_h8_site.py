@@ -239,11 +239,11 @@ refreshes it daily and the file is never fabricated.</p>
     index_body = f'''<section class="hero"><div>
 <p class="kicker">H8 / EULER DEPTH-CLUSTERING / 06 OCT 2026</p>
 <h1>Faults from<br><em>source depth.</em></h1>
+{download_block}
 <p class="lead">A unique candidate built exactly as the brief requires: SI = 0 contact Euler deconvolution
 (Reid et al., 1990) solved on magnetic and gravity layers, weighted for shallow depth, cross-window depth
 consensus, lineament coherence and cross-family corroboration, converted to a kernel-density field and emitted
 as a sparse dot pattern inside the metric's own 300 m kernel.</p>
-{download_block}
 <div class="notice" id="decision"><strong>Status: built, audited, not promoted.</strong>
 <p>Format gate passed; raw-output novelty gate passed against {novelty["corpus_size"]} cached prior rasters
 (largest |correlation| {novelty["max_abs_pearson"]:.4f}, largest top-mass Jaccard {novelty["max_jaccard_topmass"]:.4f},
