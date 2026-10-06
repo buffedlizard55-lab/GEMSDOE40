@@ -22,52 +22,16 @@
       "nodata": "-3.4028234663852886e+38"
     },
     "existing_faults.tif": {
-      "present": true,
-      "bytes": 425830,
-      "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
-      "shape": [
-        3730,
-        3292
-      ],
-      "count": 1,
-      "dtype": "int8",
-      "crs": "EPSG:32611",
-      "transform": [
-        100.0,
-        0.0,
-        243350.0,
-        0.0,
-        -100.0,
-        4508550.0
-      ],
-      "nodata": "-1.0"
+      "present": false
     },
     "example_submission.tif": {
-      "present": true,
-      "bytes": 1599597,
-      "sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
-      "shape": [
-        3730,
-        3292
-      ],
-      "count": 1,
-      "dtype": "float32",
-      "crs": "EPSG:32611",
-      "transform": [
-        100.0,
-        0.0,
-        243350.0,
-        0.0,
-        -100.0,
-        4508550.0
-      ],
-      "nodata": "nan"
+      "present": false
     }
   },
   "pins_match": {
     "training_features.tif": true,
-    "existing_faults.tif": true,
-    "example_submission.tif": true
+    "existing_faults.tif": null,
+    "example_submission.tif": null
   },
   "band_inventory": {
     "1": {
@@ -166,19 +130,5 @@
       "description": "Detrended elevation slope - gradient of elevation after detrending"
     }
   },
-  "band_inventory_matches_layers_py": true,
-  "footprint": {
-    "footprint_pixels": 5167373,
-    "nan_outside": 7111787,
-    "outside_all_nan": true,
-    "inside_unique_values": [
-      0.0,
-      1.0
-    ],
-    "inside_min": 0.0,
-    "inside_max": 1.0,
-    "all_values_in_0_1": true,
-    "footprint_matches_labels_defined": true,
-    "catalogue_positive_px": 60988
-  }
+  "band_inventory_matches_layers_py": true
 }

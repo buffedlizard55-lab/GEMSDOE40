@@ -1,0 +1,164 @@
+{
+  "catalogue_px": 60988,
+  "layers": {
+    "challenge_band_det_elev:det_elev": {
+      "auc_catalogue_vs_far": 0.4855263416666667,
+      "mean_at_faults": -Infinity,
+      "mean_far": -Infinity
+    },
+    "challenge_band_det_elev_slope:det_elev_slope": {
+      "auc_catalogue_vs_far": 0.5670067579166667,
+      "mean_at_faults": -Infinity,
+      "mean_far": -Infinity
+    },
+    "challenge_band_geod_2ndinv:geod_2ndinv": {
+      "auc_catalogue_vs_far": 0.57821702875,
+      "mean_at_faults": -Infinity,
+      "mean_far": -Infinity
+    },
+    "challenge_band_ieq_n100a15:ieq_n100a15": {
+      "auc_catalogue_vs_far": 0.5796663575,
+      "mean_at_faults": -Infinity,
+      "mean_far": -Infinity
+    },
+    "challenge_band_iso_grav_anom_hg:iso_grav_anom_hg": {
+      "auc_catalogue_vs_far": 0.5011149470833334,
+      "mean_at_faults": -Infinity,
+      "mean_far": -Infinity
+    },
+    "challenge_band_rtp:rtp": {
+      "auc_catalogue_vs_far": 0.49831436583333333,
+      "mean_at_faults": -Infinity,
+      "mean_far": -Infinity
+    },
+    "challenge_band_tmi_hg:tmi_hg": {
+      "auc_catalogue_vs_far": 0.5327753679166667,
+      "mean_at_faults": -Infinity,
+      "mean_far": -Infinity
+    },
+    "geodawn_ext:TMI_up150": {
+      "auc_catalogue_vs_far": 0.48820555833333334,
+      "coverage_fraction": 0.4205753488023611,
+      "mean_at_faults": 103.24539947509766,
+      "mean_far": 105.85601806640625
+    },
+    "geodawn_ext:ThK": {
+      "auc_catalogue_vs_far": 0.48238368291666667,
+      "coverage_fraction": 0.42071973978676064,
+      "mean_at_faults": 122.11080169677734,
+      "mean_far": 123.94384765625
+    },
+    "geodawn_ext:UK": {
+      "auc_catalogue_vs_far": 0.5428066575,
+      "coverage_fraction": 0.42071973978676064,
+      "mean_at_faults": 108.97284698486328,
+      "mean_far": 100.29750061035156
+    },
+    "geodawn_ext:UTh": {
+      "auc_catalogue_vs_far": 0.54810264375,
+      "coverage_fraction": 0.42071973978676064,
+      "mean_at_faults": 77.4738998413086,
+      "mean_far": 72.38793182373047
+    },
+    "geodawn_rad:K": {
+      "auc_catalogue_vs_far": 0.4268326491666667,
+      "coverage_fraction": 0.42071973978676064,
+      "mean_at_faults": 113.74015045166016,
+      "mean_far": 126.74569702148438
+    },
+    "geodawn_rad:TC": {
+      "auc_catalogue_vs_far": 0.4363057991666667,
+      "coverage_fraction": 0.42071973978676064,
+      "mean_at_faults": 120.06919860839844,
+      "mean_far": 130.20509338378906
+    },
+    "geodawn_rad:Th": {
+      "auc_catalogue_vs_far": 0.4409647145833333,
+      "coverage_fraction": 0.42071973978676064,
+      "mean_at_faults": 120.84329986572266,
+      "mean_far": 129.0338897705078
+    },
+    "geodawn_rad:U": {
+      "auc_catalogue_vs_far": 0.47091193875,
+      "coverage_fraction": 0.42071973978676064,
+      "mean_at_faults": 113.37554931640625,
+      "mean_far": 117.39118194580078
+    },
+    "lidar_scarp:coh100": {
+      "auc_catalogue_vs_far": 0.51653361875,
+      "coverage_fraction": 0.3162188618765453,
+      "mean_at_faults": 124.0240478515625,
+      "mean_far": 118.16570281982422
+    },
+    "lidar_scarp:cross_max": {
+      "auc_catalogue_vs_far": 0.582808875,
+      "coverage_fraction": 0.26119050488795653,
+      "mean_at_faults": 67.4135513305664,
+      "mean_far": 52.18623352050781
+    },
+    "lidar_scarp:downface_max": {
+      "auc_catalogue_vs_far": 0.5858757575,
+      "coverage_fraction": 0.26119050488795653,
+      "mean_at_faults": 53.0567512512207,
+      "mean_far": 40.27611541748047
+    },
+    "lidar_scarp:ex_max": {
+      "auc_catalogue_vs_far": 0.5726971925,
+      "coverage_fraction": 0.31705621557174923,
+      "mean_at_faults": 74.96160125732422,
+      "mean_far": 62.298500061035156
+    },
+    "lidar_scarp:ex_mean": {
+      "auc_catalogue_vs_far": 0.56514095625,
+      "coverage_fraction": 0.31705621557174923,
+      "mean_at_faults": 70.68765258789062,
+      "mean_far": 58.947784423828125
+    },
+    "lidar_scarp:lapneg_max": {
+      "auc_catalogue_vs_far": 0.57670254625,
+      "coverage_fraction": 0.31705621557174923,
+      "mean_at_faults": 79.36454772949219,
+      "mean_far": 64.0379638671875
+    },
+    "lidar_scarp:lappos_max": {
+      "auc_catalogue_vs_far": 0.58027196125,
+      "coverage_fraction": 0.31705621557174923,
+      "mean_at_faults": 80.06815338134766,
+      "mean_far": 63.790985107421875
+    },
+    "lidar_scarp:relief": {
+      "auc_catalogue_vs_far": 0.5737249133333333,
+      "coverage_fraction": 0.31705621557174923,
+      "mean_at_faults": 46.481849670410156,
+      "mean_far": 38.61426544189453
+    },
+    "lidar_scarp:step_max": {
+      "auc_catalogue_vs_far": 0.5734120041666667,
+      "coverage_fraction": 0.31705621557174923,
+      "mean_at_faults": 63.713050842285156,
+      "mean_far": 51.24191665649414
+    },
+    "lidar_scarp:strike": {
+      "auc_catalogue_vs_far": 0.5320491970833333,
+      "coverage_fraction": 0.31705621557174923,
+      "mean_at_faults": 102.84700012207031,
+      "mean_far": 94.20428466796875
+    },
+    "lidar_scarp:upface_max": {
+      "auc_catalogue_vs_far": 0.5914004429166667,
+      "coverage_fraction": 0.26119050488795653,
+      "mean_at_faults": 48.7510986328125,
+      "mean_far": 36.43033218383789
+    },
+    "lidar_scarp:valid": {
+      "auc_catalogue_vs_far": 0.5234391675,
+      "coverage_fraction": 0.31716013147479144,
+      "mean_at_faults": 203.16329956054688,
+      "mean_far": 191.21913146972656
+    }
+  },
+  "n_negative_sample": 60000,
+  "n_positive_sample": 20000,
+  "negatives": "footprint pixels not within 5 px of any catalogue trace",
+  "truth": "data/labels.tif catalogue (organizer existing faults), 100 m grid EPSG:32611"
+}

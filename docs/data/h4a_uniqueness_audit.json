@@ -1,0 +1,1727 @@
+{
+  "arm": "H4-A",
+  "status": "withdrawn \u2014 negative result on the registered comparator",
+  "artifact": "work/withdrawn/gems40-h4a-euler-sicontact-depthcluster-20261006T012528Z-570e6300-nan.tif",
+  "artifact_sha256": "570e6300e5ddcd4c1c43944962bb23681b75923cf8896ad78e2ac50b864224dd",
+  "candidate_positive_px": 90000,
+  "format_check": {
+    "path": "/home/user/GEMSDOE40/work/withdrawn/gems40-h4a-euler-sicontact-depthcluster-20261006T012528Z-570e6300-nan.tif",
+    "sha256": "570e6300e5ddcd4c1c43944962bb23681b75923cf8896ad78e2ac50b864224dd",
+    "bytes": 446816,
+    "meta": {
+      "crs": "EPSG:32611",
+      "width": 3292,
+      "height": 3730,
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "dtype": "float32",
+      "nodata": NaN,
+      "count": 1
+    },
+    "footprint_px": 5167373,
+    "finite_inside": 5167373,
+    "in_range_inside": 5167373,
+    "nan_inside": 0,
+    "outside_nan": 7111787,
+    "outside_zero": 0,
+    "positive_px": 90000,
+    "min_in": 0.0,
+    "max_in": 1.0,
+    "ok_shape": true,
+    "ok_range": true,
+    "ok_single_band": true,
+    "ok_float32": true,
+    "pixel_m": 100.0
+  },
+  "uniqueness": {
+    "n_priors": 279,
+    "n_compared": 278,
+    "is_new": true,
+    "worst_pearson": 0.0,
+    "worst_jaccard": 0.0345841746352242,
+    "worst_file": null,
+    "threshold_pearson": 0.85,
+    "threshold_jaccard": 0.5,
+    "rows": [
+      {
+        "file": "033c13e3ef317f0db69def3e498bfdb637df28f8.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.034584,
+        "prior_positive_px": 45784
+      },
+      {
+        "file": "042bbaa898f4ec888ec9540643ce3c45e49bdbf7.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.00208,
+        "prior_positive_px": 81016
+      },
+      {
+        "file": "04413a2cdaeba547d0dfc7a9e7554f4d455dab34.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.014471,
+        "prior_positive_px": 229468
+      },
+      {
+        "file": "06c2e93680efb5106acd46aad60fca571ea33975.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.018129,
+        "prior_positive_px": 1828699
+      },
+      {
+        "file": "078005f13defe72457b083ba39b8ad1e22006650.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.008733,
+        "prior_positive_px": 41338
+      },
+      {
+        "file": "080af66515984faa15e762af9aa2357b22474c90.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.008477,
+        "prior_positive_px": 46090
+      },
+      {
+        "file": "08a606d69c89bedc2a1dc9aedd3d38e6429e506f.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.011568,
+        "prior_positive_px": 97654
+      },
+      {
+        "file": "08d76f6d82da45384fdb1be9801c659995ff5ce0.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.00814,
+        "prior_positive_px": 38554
+      },
+      {
+        "file": "0a195a38802892f46e0146415faa678aa1603b5b.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.014747,
+        "prior_positive_px": 338755
+      },
+      {
+        "file": "0ad09d3fddcd6d022fc16093cee909a0b4d615e0.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.012748,
+        "prior_positive_px": 123779
+      },
+      {
+        "file": "0b580567b03dbc4a8d29c0d37147ca4907b5e95d.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.008733,
+        "prior_positive_px": 41338
+      },
+      {
+        "file": "0bb2fae409553cc7281a848541d65232921a8bdc.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.013893,
+        "prior_positive_px": 272853
+      },
+      {
+        "file": "0c1b5547e970fee995a953382e94d4f1342444b9.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.016307,
+        "prior_positive_px": 352506
+      },
+      {
+        "file": "0cb8ce33ee791129252711157310dbe65e296287.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.009139,
+        "prior_positive_px": 60068
+      },
+      {
+        "file": "0d3a7e80c288ed103f8431f28270927c39fdabb2.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.013386,
+        "prior_positive_px": 380365
+      },
+      {
+        "file": "0d409af9b3bc43d2063bef5d097c4e321cd2bae6.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.009111,
+        "prior_positive_px": 59075
+      },
+      {
+        "file": "10b2354d4ac8af863419284f1e694a02db180711.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.007458,
+        "prior_positive_px": 37660
+      },
+      {
+        "file": "113d62c4929d7adb56a60e07a5881390b6d829af.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.006485,
+        "prior_positive_px": 44090
+      },
+      {
+        "file": "1181d083bee9c44de35ed5da2dc20c6f3b5ade62.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.013305,
+        "prior_positive_px": 178548
+      },
+      {
+        "file": "129cfbdeb81fa8c8b8ffafd8113bf8fafaa5e95f.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.019348,
+        "prior_positive_px": 146136
+      },
+      {
+        "file": "12b0a4ddf1cf76f2552621b8a8b1a1b88d783786.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.00788,
+        "prior_positive_px": 40199
+      },
+      {
+        "file": "1374c17668adc23d0ab1c67ee07187bbe48f007b.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.014345,
+        "prior_positive_px": 100000
+      },
+      {
+        "file": "157813953405ef61d7f8e98cadd48bf3df2c5900.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.011441,
+        "prior_positive_px": 37654
+      },
+      {
+        "file": "165d51c61ba0232a0b18f2dbab37e54d5d434d96.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.014388,
+        "prior_positive_px": 543625
+      },
+      {
+        "file": "16a3b73388a505abaf5c0f46ff7d6da4322f52db.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.009091,
+        "prior_positive_px": 60069
+      },
+      {
+        "file": "17a76895f68174cc93f3cb1597d25686f6d6bc67.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.008039,
+        "prior_positive_px": 37654
+      },
+      {
+        "file": "186239efa0b2eb9f4c9b15dd50a7ff3063ffbfa3.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.0124,
+        "prior_positive_px": 153957
+      },
+      {
+        "file": "18822c8aa3a3e3b367d4e5535ac9f968fae475d7.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.004046,
+        "prior_positive_px": 98603
+      },
+      {
+        "file": "193902289c3b15d04d66fde54b22b5be5fba49ce.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.017417,
+        "prior_positive_px": 5167373
+      },
+      {
+        "file": "19681b2241f3f8392b93f5b827e6902e0b5d849b.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.011332,
+        "prior_positive_px": 90358
+      },
+      {
+        "file": "1a23117bf2d1e988fcddfe2841c9c02ce654e04a.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.012486,
+        "prior_positive_px": 123829
+      },
+      {
+        "file": "1c7d18640cff4cc3b27536d3d84fb70859a6043a.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.00871,
+        "prior_positive_px": 41335
+      },
+      {
+        "file": "1c83f1f95c8fef3c0596563a634e8334c2c9329a.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.00798,
+        "prior_positive_px": 37447
+      },
+      {
+        "file": "1c94aa7354aeb941cd8383e8b08650da30216520.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.003532,
+        "prior_positive_px": 88988
+      },
+      {
+        "file": "1cd1123a6a2d963c7145f8bf006fae75fdac4833.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.015637,
+        "prior_positive_px": 91533
+      },
+      {
+        "file": "1dd4abbb3881a39ebac6d0d71403df5bef665bdf.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.00189,
+        "prior_positive_px": 72768
+      },
+      {
+        "file": "1e0a9f55c2cafcce0d50d3f63404fa87d0294dfa.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.008372,
+        "prior_positive_px": 40199
+      },
+      {
+        "file": "1e8dc5e350b90744b681282d0d4c77a8a0136210.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.011023,
+        "prior_positive_px": 103347
+      },
+      {
+        "file": "1f5cea384ad7d031e524a81db2d1a48352f58c12.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.012857,
+        "prior_positive_px": 310042
+      },
+      {
+        "file": "1fdecbd4fd209b9e57f3619dd609a8ded6076a10.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.019699,
+        "prior_positive_px": 550000
+      },
+      {
+        "file": "204b1314d6d68f34a4e6ed454cf4b36e24621675.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.017108,
+        "prior_positive_px": 325165
+      },
+      {
+        "file": "20ea3ca713841f4e4796a7d355bf90af8893fb8b.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.01637,
+        "prior_positive_px": 766701
+      },
+      {
+        "file": "243cf9eb7e6b379ec0252180f80fd44090b699bd.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.009995,
+        "prior_positive_px": 93413
+      },
+      {
+        "file": "24ddd30ec86d8929a0b1461437e45da2d243625d.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.013446,
+        "prior_positive_px": 125567
+      },
+      {
+        "file": "2542597dff5b3b130958ce147670a65be173010f.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.004456,
+        "prior_positive_px": 20000
+      },
+      {
+        "file": "25acd552f1f3ce14dea35a4fff57fb79318d6559.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.005593,
+        "prior_positive_px": 24881
+      },
+      {
+        "file": "28d35ae65d1911ca6cc37f097074080a9ecbf12f.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.017417,
+        "prior_positive_px": 5167373
+      },
+      {
+        "file": "298f61a156c54c49a285621707e0ed13ffb80eab.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.00765,
+        "prior_positive_px": 44090
+      },
+      {
+        "file": "2a34fc6e9c05955916586384ae51a6e1b6ecf1d7.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.016354,
+        "prior_positive_px": 818626
+      },
+      {
+        "file": "2bf483bfb99df4c4523b15847b94629e3625fca4.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.00765,
+        "prior_positive_px": 44090
+      },
+      {
+        "file": "2c1839c79fe44b4001b0b7af992105b554203157.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.006363,
+        "prior_positive_px": 38907
+      },
+      {
+        "file": "2d4e3ae4ddc590b659f501b94ac7d6516cede538.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.012887,
+        "prior_positive_px": 123939
+      },
+      {
+        "file": "2d5f4e841a11588ede80a34a555c1bce668e2511.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.008168,
+        "prior_positive_px": 45890
+      },
+      {
+        "file": "2e8651d8a8c28696e635b479cb1bbf7cf8283d23.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.0139,
+        "prior_positive_px": 73679
+      },
+      {
+        "file": "2f15909f6c2e60ce41d849af5085ee8fe79dd221.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.011004,
+        "prior_positive_px": 192231
+      },
+      {
+        "file": "2f3212be92303667eba424c1aa270a67a0172d78.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.008403,
+        "prior_positive_px": 30000
+      },
+      {
+        "file": "2fd5323ab63fca11e9705310a02ae964900b47fc.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.007401,
+        "prior_positive_px": 33587
+      },
+      {
+        "file": "300b28b7ae239060a63e98241c24421fb312423e.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.011312,
+        "prior_positive_px": 45000
+      },
+      {
+        "file": "306ee1b1deebc9a0a9f437e501cd0965ee37f25e.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.01813,
+        "prior_positive_px": 624025
+      },
+      {
+        "file": "30cbb06f362a3c49c82a3487d002f8f3b6feb10a.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.00765,
+        "prior_positive_px": 44090
+      },
+      {
+        "file": "320fb97bc1b76d029ca634c64e894d441f2b0a19.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.013446,
+        "prior_positive_px": 125567
+      },
+      {
+        "file": "32a4a6d2d4df8ef8e880120f36d2a4d94f134f8a.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.01166,
+        "prior_positive_px": 155021
+      },
+      {
+        "file": "35e566fd81055b58648ee75389a8a746213a75ba.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.024189,
+        "prior_positive_px": 51205
+      },
+      {
+        "file": "3604c84562f0b4c24a411f44b9fc24855c761d2f.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.010907,
+        "prior_positive_px": 264247
+      },
+      {
+        "file": "363f229be9f79f21b5bc34780fd3c8631b9e6485.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.010588,
+        "prior_positive_px": 60710
+      },
+      {
+        "file": "3646532612e77c0c4a7e0f4173fff4fd0458b80a.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.004456,
+        "prior_positive_px": 20000
+      },
+      {
+        "file": "366095dcdb3c71c1a84cdcb840c0f90c4047cc48.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.00846,
+        "prior_positive_px": 38854
+      },
+      {
+        "file": "36c2aa32e0bba3d976d1ba76f3fb14903199262d.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.00788,
+        "prior_positive_px": 40199
+      },
+      {
+        "file": "36c999a17e59233d682bdf8649b395c95e097ffa.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.01301,
+        "prior_positive_px": 240138
+      },
+      {
+        "file": "374c88b1da2b803e2ed160de467fd71ae114010d.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.017417,
+        "prior_positive_px": 5167373
+      },
+      {
+        "file": "37dd960345125bc943542e16994b2736ff0e9e22.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.007486,
+        "prior_positive_px": 37860
+      },
+      {
+        "file": "37f2c6589937206835661ea5664d79cfc8281173.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.009487,
+        "prior_positive_px": 55992
+      },
+      {
+        "file": "3957f33ad98537c14db71425667dcbf199629af2.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.006838,
+        "prior_positive_px": 155021
+      },
+      {
+        "file": "3a03961415a67a35018af3200e5626e71d3c419c.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.011848,
+        "prior_positive_px": 103347
+      },
+      {
+        "file": "3b442e92bcee521bbe5fbc16136297ced49d3c76.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.012448,
+        "prior_positive_px": 85526
+      },
+      {
+        "file": "3de0f688b398e5e310dc86be277212607858ad4c.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.006786,
+        "prior_positive_px": 33739
+      },
+      {
+        "file": "3f48a3fb1407088a086462da32e1d9d84a9b03c7.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.016144,
+        "prior_positive_px": 789722
+      },
+      {
+        "file": "3fa20e5def84596794539ba9c3304c9c9277f04f.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.00777,
+        "prior_positive_px": 42294
+      },
+      {
+        "file": "40b35fd2f974402dcf2f80f3c4b1ed78b9c851b9.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.013043,
+        "prior_positive_px": 378103
+      },
+      {
+        "file": "40df0d6d854542aefc00f1fed87d4e9c7719fa63.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.00788,
+        "prior_positive_px": 40199
+      },
+      {
+        "file": "422ac9465ed5a0ff4158c4551b31fd3954513090.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.011568,
+        "prior_positive_px": 97654
+      },
+      {
+        "file": "437245c53c1f622da78a70b0047482b6f7ecd4a7.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.015526,
+        "prior_positive_px": 507776
+      },
+      {
+        "file": "443e8e1c799734facd50a92bc85c650f3857a2b6.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.017688,
+        "prior_positive_px": 452679
+      },
+      {
+        "file": "44e9eff97b00210902f747338b79b5a2becd7bcb.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.016741,
+        "prior_positive_px": 172974
+      },
+      {
+        "file": "45289d81d5a3650837ce61187de7bde604f50da3.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.012251,
+        "prior_positive_px": 343526
+      },
+      {
+        "file": "45b9f47ac9c1518875b5e4b9ea92ca2fc6727fe4.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.008477,
+        "prior_positive_px": 46090
+      },
+      {
+        "file": "468e16da4040d85c58b0239a12b6658ec06c6fef.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.016741,
+        "prior_positive_px": 172974
+      },
+      {
+        "file": "46f0cd41d45fb06a93f2d94323537bb9f092b46a.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.015806,
+        "prior_positive_px": 60068
+      },
+      {
+        "file": "472d3b80882315989861ff2289276e52cc3fa333.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.014066,
+        "prior_positive_px": 519613
+      },
+      {
+        "file": "4934bb73380487247f9abc273bbc3bba7f5d83c1.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.019122,
+        "prior_positive_px": 335879
+      },
+      {
+        "file": "4938536875119d44879dab99d8cea7a8e92cf215.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.006786,
+        "prior_positive_px": 33739
+      },
+      {
+        "file": "49ad427035b2267dcd3e8acee10bdc85d5dbe322.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.009143,
+        "prior_positive_px": 61328
+      },
+      {
+        "file": "4a0f0af3c8e03754a26a9205851f1d6bc4521403.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.007705,
+        "prior_positive_px": 57783
+      },
+      {
+        "file": "4a903512421453c0dff880bb335b37a24aa7e692.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.006716,
+        "prior_positive_px": 45962
+      },
+      {
+        "file": "4e404ee491b67cec9d321742ff1e0ae1125e83ee.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.00765,
+        "prior_positive_px": 44090
+      },
+      {
+        "file": "4e50a598eae16b3c098ca2653542dc142f1da8a8.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.013189,
+        "prior_positive_px": 362327
+      },
+      {
+        "file": "4ed39dc9d45f32b58665a07000166605812e8c3c.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.007964,
+        "prior_positive_px": 41507
+      },
+      {
+        "file": "509be169fe6253f94bf8b7323398e1b80e972c96.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.020235,
+        "prior_positive_px": 516738
+      },
+      {
+        "file": "5193683671986d56b802229bd21a2eaa256bc3f3.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.007964,
+        "prior_positive_px": 41507
+      },
+      {
+        "file": "51dfff6d3e57497ab4eb5bbe9362303115833730.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.017417,
+        "prior_positive_px": 5167373
+      },
+      {
+        "file": "5312cea6b382e5f78e0dd21a08c397eff0ae0119.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.010989,
+        "prior_positive_px": 124356
+      },
+      {
+        "file": "55eacf445d52f43b180745db26ee38339db9f2b1.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.017417,
+        "prior_positive_px": 5167373
+      },
+      {
+        "file": "56b9beeec092d92d28a07ce69b2aa17a95c06667.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.009988,
+        "prior_positive_px": 99999
+      },
+      {
+        "file": "57732c697e2aa7c50c8ce35fa3d8866aee103abf.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.013893,
+        "prior_positive_px": 272853
+      },
+      {
+        "file": "57b4efd4622123ff027d2ee6cbfb2563aece1609.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.004607,
+        "prior_positive_px": 26000
+      },
+      {
+        "file": "595b5b5c4c079169ac747b17ea88aa32941efd63.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.011255,
+        "prior_positive_px": 80000
+      },
+      {
+        "file": "598d3b4ecce2557a53bc9d785816aecf632ce53f.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.007869,
+        "prior_positive_px": 45890
+      },
+      {
+        "file": "5a764746641b52681efb1b220a327f0d3e94cfa3.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.009335,
+        "prior_positive_px": 60069
+      },
+      {
+        "file": "5ae4b6b4324c19727f8304eb63fc5610ad23b9d9.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.020235,
+        "prior_positive_px": 516738
+      },
+      {
+        "file": "5b7d2fe254a81674793ad5b3a9947a493da02e68.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.017625,
+        "prior_positive_px": 5106385
+      },
+      {
+        "file": "5bb9a1e3b6a14492b7bad68d34a791892fd04181.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.007045,
+        "prior_positive_px": 44090
+      },
+      {
+        "file": "5c1a159439735522659ee78969df3f34efddcdde.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.01225,
+        "prior_positive_px": 206895
+      },
+      {
+        "file": "5ca3ddfab91190aaad5300a68fe95be9224afb0e.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.012748,
+        "prior_positive_px": 123779
+      },
+      {
+        "file": "5cdc640149fb5d9ff5a4cadee7216ff73173f232.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.013386,
+        "prior_positive_px": 380365
+      },
+      {
+        "file": "5d1168681c1befec79bdffaf8bbcbecd6b9c177b.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.005903,
+        "prior_positive_px": 24000
+      },
+      {
+        "file": "5d1a920f40fa3a589e91248c1309761e44d45da8.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.013114,
+        "prior_positive_px": 121131
+      },
+      {
+        "file": "5e02dda181f30749fefa57b021fe377415cbf9ab.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.008929,
+        "prior_positive_px": 55304
+      },
+      {
+        "file": "5f4e2f0eb2c119e519cf5dd575755a57138146c4.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.004925,
+        "prior_positive_px": 51819
+      },
+      {
+        "file": "5fec72ffc3329b5ad3445c18893f05d9967ca388.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.009335,
+        "prior_positive_px": 60069
+      },
+      {
+        "file": "6048382fb8f3a439466d9825f2936c5aa9f5124b.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.007401,
+        "prior_positive_px": 33587
+      },
+      {
+        "file": "6081ac7362638b9005d04ca68e52243d2ee7178f.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.007793,
+        "prior_positive_px": 41656
+      },
+      {
+        "file": "6249e86a58570c15e72c3ab6157f82e1d6d54876.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.012309,
+        "prior_positive_px": 106138
+      },
+      {
+        "file": "63a57a2b6b1656eb01febf8ed8889185243a25d6.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.007641,
+        "prior_positive_px": 46090
+      },
+      {
+        "file": "65094e61f309244239333b90cf406b588babda7c.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.011312,
+        "prior_positive_px": 45000
+      },
+      {
+        "file": "65595974fdcabf58ea64f1a524f906af7fcbda56.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.011816,
+        "prior_positive_px": 103347
+      },
+      {
+        "file": "68a333a12c59ee5badaf4f6d08897534db91b471.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.013639,
+        "prior_positive_px": 235887
+      },
+      {
+        "file": "6926b76f24e8846238b7cdfd2276d1c723d44cfd.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.011285,
+        "prior_positive_px": 155889
+      },
+      {
+        "file": "6a37ea19fe818fe35723545fe58b58c28d8ec8bd.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.009487,
+        "prior_positive_px": 55992
+      },
+      {
+        "file": "6b14c61522b6c9c04abae93e8b067eacfc59977d.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.01075,
+        "prior_positive_px": 45869
+      },
+      {
+        "file": "6b6d31807e501af4749bbaeb43702450893fd720.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.009091,
+        "prior_positive_px": 60069
+      },
+      {
+        "file": "6be71dc635800b7895ca60175ca9f8d2b98229b2.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.012887,
+        "prior_positive_px": 123939
+      },
+      {
+        "file": "6cad4d7940897276e76ce1868dc37c7f0261ab13.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.014345,
+        "prior_positive_px": 100000
+      },
+      {
+        "file": "6d33a65d3e28e6b2e5892a904fc6769ace32e7a1.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.010445,
+        "prior_positive_px": 214920
+      },
+      {
+        "file": "6d69c94d9c59cf518fe9d6d34463444348aa88ad.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.012723,
+        "prior_positive_px": 246469
+      },
+      {
+        "file": "6d9717d75f144ccbd3c8ec7886000fae95af312e.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.00777,
+        "prior_positive_px": 42294
+      },
+      {
+        "file": "6ef080a1067db86fa70924252fdb777ec4b94b7a.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.012723,
+        "prior_positive_px": 246469
+      },
+      {
+        "file": "704ceb7e6090e9b9f848c59eca3e6676be007f63.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.00765,
+        "prior_positive_px": 44090
+      },
+      {
+        "file": "716fa7b4c61a45bccd09dde54aa72bbc34dd6cfc.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.018524,
+        "prior_positive_px": 198000
+      },
+      {
+        "file": "723c553aa9a701b9de1c96e8c50a515b9685b6e0.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.01234,
+        "prior_positive_px": 37654
+      },
+      {
+        "file": "730d3348cc15e084a7f4cba0946405b2a3833c9b.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.01276,
+        "prior_positive_px": 575055
+      },
+      {
+        "file": "733661a0e887ff059ee7ad99e8537d8abe9b2f60.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.012309,
+        "prior_positive_px": 106138
+      },
+      {
+        "file": "73f3074f37d17aacf59ad3fa4991a500e945a5ae.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.010588,
+        "prior_positive_px": 60710
+      },
+      {
+        "file": "7498bef5d58d01fc1350e7b28921804d4d289538.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.007734,
+        "prior_positive_px": 45374
+      },
+      {
+        "file": "74b40da11e4cb21ba961c03a55949af341fa7e07.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.012383,
+        "prior_positive_px": 121258
+      },
+      {
+        "file": "76b54e97ee46a94164e61ffbf08c6ef62519709a.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.007869,
+        "prior_positive_px": 45890
+      },
+      {
+        "file": "76f9bf7ac3add357150ef80953193d331efa3e4c.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.034584,
+        "prior_positive_px": 45784
+      },
+      {
+        "file": "7765426a0e903152d7bc02edcaf5e3c00351f0f3.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.01282,
+        "prior_positive_px": 123779
+      },
+      {
+        "file": "78ba1f83579999e59a4f53e59c7b4244b1be903c.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.00765,
+        "prior_positive_px": 44090
+      },
+      {
+        "file": "792582555f3aa3f5cba9d363ef1a007e54f0b75a.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.00871,
+        "prior_positive_px": 41335
+      },
+      {
+        "file": "799a83ad7b965ad10c7da6dbd02c1f9333a9ed9f.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.013826,
+        "prior_positive_px": 227507
+      },
+      {
+        "file": "79e2526186e4c5636dc17ab6754f45a51db2c791.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.01359,
+        "prior_positive_px": 237507
+      },
+      {
+        "file": "7b158eb8dc03955d27b2c4c14927ca98cfa4b090.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.010269,
+        "prior_positive_px": 69281
+      },
+      {
+        "file": "7c05035bfaba6f4804474c9c69b4da642bd7d398.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.009213,
+        "prior_positive_px": 41339
+      },
+      {
+        "file": "7c12ed8a4164ce549fc8c3114eb30eb7f898af09.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.01367,
+        "prior_positive_px": 116225
+      },
+      {
+        "file": "7c3879710e632332510cf302cbd8efbb3b94a8b1.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.008051,
+        "prior_positive_px": 44090
+      },
+      {
+        "file": "7d19b90ed6e358b14b561bc405690a104c5da64b.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.014345,
+        "prior_positive_px": 100000
+      },
+      {
+        "file": "7e1b6e3053235eb290b15f8e37ad80f0bec3ed1b.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.008403,
+        "prior_positive_px": 30000
+      },
+      {
+        "file": "7e422e07d5d3aac9ceb187a154bacc0f72a79f5c.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.00788,
+        "prior_positive_px": 40199
+      },
+      {
+        "file": "7e587a063278db1c67bb622365e49e3b76e85d02.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.012412,
+        "prior_positive_px": 335054
+      },
+      {
+        "file": "7fc03521d7aea7f983a31a211e8ecdae03f7ec3f.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.006363,
+        "prior_positive_px": 38907
+      },
+      {
+        "file": "80ee726da7af66e6cd86b627a9982cec8e709ac3.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.013893,
+        "prior_positive_px": 272853
+      },
+      {
+        "file": "812e61b74050d1350cc2bde1fab0c76ead32e0c4.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.016741,
+        "prior_positive_px": 172974
+      },
+      {
+        "file": "81c802618e6d46c6d62289d856ae74439439bbc6.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.01225,
+        "prior_positive_px": 206895
+      },
+      {
+        "file": "8524700fb48d23f040820fe1854c6f48d0c0b421.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.014345,
+        "prior_positive_px": 100000
+      },
+      {
+        "file": "8580ff86bf9be00f95774cb4c66b0e83b35c414c.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.011984,
+        "prior_positive_px": 292190
+      },
+      {
+        "file": "887274b991d5fcff586207a4d0a29366a642e0aa.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.010244,
+        "prior_positive_px": 76859
+      },
+      {
+        "file": "88dd3f4887a0bfb4c97fd41be8324cf60265bdad.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.006831,
+        "prior_positive_px": 36171
+      },
+      {
+        "file": "89f0e1af6c68b52e69c6fc6beb3c59d934b72b5a.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.016788,
+        "prior_positive_px": 171952
+      },
+      {
+        "file": "8a3be012ffde86b93eed2fabdfe174941c0a13a2.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.014681,
+        "prior_positive_px": 192481
+      },
+      {
+        "file": "8ab4a27b259d43c50ccf4e356d2a1eb7d714b90e.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.013832,
+        "prior_positive_px": 469044
+      },
+      {
+        "file": "8c265a943656ef0db16051eaaa12adbaea1434db.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.006831,
+        "prior_positive_px": 36171
+      },
+      {
+        "file": "8de2e9ba01c7a12e22b936075c83ec1c8aa36eea.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.005752,
+        "prior_positive_px": 343816
+      },
+      {
+        "file": "901d9db3f008f0f5c3be9c314524ccc8e95fb43e.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.007749,
+        "prior_positive_px": 41865
+      },
+      {
+        "file": "9183487e4248bb78b2bbfba2f546ec26ae3f25ed.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.01382,
+        "prior_positive_px": 511996
+      },
+      {
+        "file": "918e6e23d71e27475e784fa4593c866d2d915743.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.013114,
+        "prior_positive_px": 121131
+      },
+      {
+        "file": "9380203f3cb5edb9d096614f8dcf453e8f141b8f.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.008089,
+        "prior_positive_px": 61664
+      },
+      {
+        "file": "943c6ce57b98bc203aa93350339bf3c1124208d5.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.014029,
+        "prior_positive_px": 246258
+      },
+      {
+        "file": "97544b81e5e42a7810a7ace34b9c0cb94d71dc43.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.010563,
+        "prior_positive_px": 80000
+      },
+      {
+        "file": "98cbfc84a0e808733e9c5c3aad9ef07c7678a3fe.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.011816,
+        "prior_positive_px": 103347
+      },
+      {
+        "file": "9d517c59e3a404a0aae35f6f90b1a7e7dc6fef71.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.014562,
+        "prior_positive_px": 184990
+      },
+      {
+        "file": "9db48d5b9750b6fb9a5819ef72b469f0dec754c5.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.007705,
+        "prior_positive_px": 57783
+      },
+      {
+        "file": "9def353346826fecb0d93da203c8159e7570d24c.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.015637,
+        "prior_positive_px": 91533
+      },
+      {
+        "file": "9e3a320ba0727937ee5ab58279acb506793c38df.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.00814,
+        "prior_positive_px": 38554
+      },
+      {
+        "file": "9e96cd85f16b2e8c77746f5ba9f8fdb91b628654.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.008911,
+        "prior_positive_px": 46090
+      },
+      {
+        "file": "9eb054340648b5c3f7addc033333d8ba1ba62c67.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.012383,
+        "prior_positive_px": 121258
+      },
+      {
+        "file": "9f69010008e5bedbb0c25087eecd57ee4010204e.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.009431,
+        "prior_positive_px": 54714
+      },
+      {
+        "file": "9f9dccae710f3011ec8ab925d06a1357e65cec9b.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.014406,
+        "prior_positive_px": 344041
+      },
+      {
+        "file": "a1030631db4d7cd6566c2104d710f77e459ab8bd.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.007777,
+        "prior_positive_px": 60068
+      },
+      {
+        "file": "a59665a7fad659dcc6a45e5e7e71059586c3247a.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.00765,
+        "prior_positive_px": 44090
+      },
+      {
+        "file": "a720f827d5db0b77334fae36e00935ca182207ae.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.013709,
+        "prior_positive_px": 237507
+      },
+      {
+        "file": "a7a49e41ad6c36ecb2851a10b791643f9b828d6b.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.01282,
+        "prior_positive_px": 123779
+      },
+      {
+        "file": "a8d18edcff1e464cc5b46b61592c01ecd529bff7.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.006485,
+        "prior_positive_px": 44090
+      },
+      {
+        "file": "a941209b008d507526b11d483a057d9ba66e5343.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.013826,
+        "prior_positive_px": 227507
+      },
+      {
+        "file": "a97c7b2a513225c9f9f2b35736afe5abf4d2a491.tif",
+        "error": "shape (32, 48)"
+      },
+      {
+        "file": "a98a150f658fcfb7fc336029c7288726f7f11e2e.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.00838,
+        "prior_positive_px": 224173
+      },
+      {
+        "file": "ab2cedff6f0a8b5c6ed8da1737ab000a9056725a.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.006449,
+        "prior_positive_px": 103347
+      },
+      {
+        "file": "ab7e0752036d020fbc394a528bbe63171c3cb08f.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.017688,
+        "prior_positive_px": 452679
+      },
+      {
+        "file": "ac0ac189fca02ac192da3bf0879a4f70e348e79f.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.008911,
+        "prior_positive_px": 46090
+      },
+      {
+        "file": "af8fd488c3b58181682eed0bcfe9634470a772e4.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.012773,
+        "prior_positive_px": 195126
+      },
+      {
+        "file": "af9ba1b6cd288f0fdc79cc3c035c59f751b4c0e4.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.008524,
+        "prior_positive_px": 170401
+      },
+      {
+        "file": "b1727c4ec04b23840350a272c4387f3b94a5904c.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.015869,
+        "prior_positive_px": 773869
+      },
+      {
+        "file": "b1fade8be27b393d1fac2813bb06d6c541980537.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.013154,
+        "prior_positive_px": 122120
+      },
+      {
+        "file": "b22d27a627dd6769eaf561e3e9f34a4caef5ed17.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.016985,
+        "prior_positive_px": 37654
+      },
+      {
+        "file": "b252a5532de5b9b6538ffeeb93aa69347cf2d2ea.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.008168,
+        "prior_positive_px": 45890
+      },
+      {
+        "file": "b272149ab22878f0e0e85964aec99e80584dcfa7.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.007793,
+        "prior_positive_px": 41656
+      },
+      {
+        "file": "b298154c2e405095db5e58f9c5232618ef4827f1.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.00983,
+        "prior_positive_px": 155021
+      },
+      {
+        "file": "b3773335c38fde0be460a88c4d82eb0eb3fd7619.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.010563,
+        "prior_positive_px": 80000
+      },
+      {
+        "file": "b4952f0f7fe75127665e24e9cdce01e7a6db6ca0.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.014276,
+        "prior_positive_px": 174232
+      },
+      {
+        "file": "b4e368f3d5bd9b7b94174abd37559471e5d3e5bb.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.004041,
+        "prior_positive_px": 98607
+      },
+      {
+        "file": "b6a73ed9bd674dbfa7b03ed98ec7db1e357add02.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.005041,
+        "prior_positive_px": 100988
+      },
+      {
+        "file": "b715491d384aefa60d1924a46f2b6f31f08326a6.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.018524,
+        "prior_positive_px": 198000
+      },
+      {
+        "file": "b73517951cc3728a405e0f08a155624c02c0acb5.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.012448,
+        "prior_positive_px": 85526
+      },
+      {
+        "file": "bae1d98134860d10ef25c2ea49c8f620091ab8ac.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.011004,
+        "prior_positive_px": 192231
+      },
+      {
+        "file": "be5ed484f0f8388d24a6232ccc77d8f4d53218c8.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.007567,
+        "prior_positive_px": 44090
+      },
+      {
+        "file": "bf713d1b85a7060cb24f1f10757a0dc069b180c2.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.008732,
+        "prior_positive_px": 41349
+      },
+      {
+        "file": "bfb7e86d046dd178c3d6ab60522861b5464dd420.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.00765,
+        "prior_positive_px": 44090
+      },
+      {
+        "file": "c00c2ca916c046544baeb6e40d1e782bf46f50c0.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.008039,
+        "prior_positive_px": 37654
+      },
+      {
+        "file": "c1a0b186dff3b3ed2523b2f222631c0f409a80e6.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.012718,
+        "prior_positive_px": 99999
+      },
+      {
+        "file": "c20459cd43667af1404447362c8cb8e81696871e.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.007486,
+        "prior_positive_px": 37860
+      },
+      {
+        "file": "c367d15227138f6f590a8e1f04c0096fecf02e6b.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.008372,
+        "prior_positive_px": 40199
+      },
+      {
+        "file": "c377731508178b209d90015ea2bd5c6e0260214a.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.003266,
+        "prior_positive_px": 21492
+      },
+      {
+        "file": "c61719ffe62dd7533c43f2f1f76054efaabeceee.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.019122,
+        "prior_positive_px": 335879
+      },
+      {
+        "file": "c64e48b8bece14391fb59c1969c42c7efd718d39.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.009143,
+        "prior_positive_px": 61328
+      },
+      {
+        "file": "c6e73d35a5ee8a36abdd06b7314bf79646c5d7f9.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.007749,
+        "prior_positive_px": 41865
+      },
+      {
+        "file": "c6f84f48a03580d99c21271ce118c8032f380f8f.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.003266,
+        "prior_positive_px": 21492
+      },
+      {
+        "file": "c7527c60ea5bf863c7f9c79ab733da9366095431.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.003266,
+        "prior_positive_px": 21492
+      },
+      {
+        "file": "c7ff25e34715a58e9ba098ac03411e7e25dac9fd.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.015526,
+        "prior_positive_px": 507776
+      },
+      {
+        "file": "c80af27f2f8cde618c1562cea5af3790f0ec1a86.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.015697,
+        "prior_positive_px": 663688
+      },
+      {
+        "file": "c8d3a46481152bbdfd61b113484be979fde9d4c6.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.00765,
+        "prior_positive_px": 44090
+      },
+      {
+        "file": "cc1752f2ea48b23bd41232c1fdcdceb5f439e401.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.009091,
+        "prior_positive_px": 60069
+      },
+      {
+        "file": "cc24e3df03a214012fb85f3fd02790ddd178dd30.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.01282,
+        "prior_positive_px": 123779
+      },
+      {
+        "file": "cd3c787a0b4bd2425b7edd5c1b40985355c1fc5e.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.00798,
+        "prior_positive_px": 37447
+      },
+      {
+        "file": "cda27eeca19fbae9b30a3882530d8d71b258be5f.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.007572,
+        "prior_positive_px": 38545
+      },
+      {
+        "file": "cec679701bf88306d3255b5d8c57bcd333e744e6.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.006457,
+        "prior_positive_px": 39530
+      },
+      {
+        "file": "cf12b308d762ad013dce425384f26664cd79d940.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.019699,
+        "prior_positive_px": 550000
+      },
+      {
+        "file": "cf92487e31875d8520f3a1f6aeebab2e20bccda5.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.01074,
+        "prior_positive_px": 217830
+      },
+      {
+        "file": "d0fc9ebbda0b15c31208022dbd124d4b9b112108.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.007458,
+        "prior_positive_px": 37660
+      },
+      {
+        "file": "d15edc9719046e9d7746f3975841ddc6a8e4b4ac.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.003634,
+        "prior_positive_px": 88988
+      },
+      {
+        "file": "d3aac36c0d38464793640b30920d2a3bea4c4143.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.005581,
+        "prior_positive_px": 427862
+      },
+      {
+        "file": "d4639f1bf50f1d4870b752fc0bf9df5ad30b9ce6.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.023043,
+        "prior_positive_px": 3380827
+      },
+      {
+        "file": "d640d30557d695fed214d18a377db3fe54422090.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.014593,
+        "prior_positive_px": 108500
+      },
+      {
+        "file": "d65e1309cd8f7095a7660169ce19210e8f7e554a.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.013094,
+        "prior_positive_px": 277507
+      },
+      {
+        "file": "d7776ac6302442ed8a1e95157733be8e4f902566.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.006716,
+        "prior_positive_px": 45962
+      },
+      {
+        "file": "d9a4ea5ba779617e656417b04f9a69908f16afd0.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.011848,
+        "prior_positive_px": 103347
+      },
+      {
+        "file": "d9fdbde16953ae6c75d87b7e76cf6126857c59a5.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.004121,
+        "prior_positive_px": 37913
+      },
+      {
+        "file": "dafbc0a7a6e13eed55dd5f280a23bd3a60da27f3.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.01139,
+        "prior_positive_px": 207906
+      },
+      {
+        "file": "dc9ee6b2e2fd01682f1e1e998ae4e5d6dac2f15f.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.011332,
+        "prior_positive_px": 90358
+      },
+      {
+        "file": "dd5dffe559c70eca07cd8498cd6c237691af83b3.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.011023,
+        "prior_positive_px": 103347
+      },
+      {
+        "file": "de952dfaae19d6f13c3ca200cbe1ac8249c84620.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.00765,
+        "prior_positive_px": 44090
+      },
+      {
+        "file": "dfcb9e6a0396dee4dc627719f16006100744d1b8.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.009994,
+        "prior_positive_px": 99999
+      },
+      {
+        "file": "e04a6bbedb7be9dbc27694d581ac110f58d19592.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.008051,
+        "prior_positive_px": 44090
+      },
+      {
+        "file": "e18ba79f22e3421c2e32a408a10aef5d4d414eea.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.015005,
+        "prior_positive_px": 489372
+      },
+      {
+        "file": "e2594695e37059e4c708857a8e7e58f007900bca.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.013893,
+        "prior_positive_px": 272853
+      },
+      {
+        "file": "e2c01413650468bc444507ba44018d6f22f07a92.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.00765,
+        "prior_positive_px": 44090
+      },
+      {
+        "file": "e326a8935c16568424be4cc4b6fae80cbd70eec0.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.012535,
+        "prior_positive_px": 332544
+      },
+      {
+        "file": "e5099b9250aba06c2535eae4d044e88995b8e43a.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.006213,
+        "prior_positive_px": 44090
+      },
+      {
+        "file": "e5f5eddff3df34dab25f0a0a467309c06a1712d1.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.012486,
+        "prior_positive_px": 123829
+      },
+      {
+        "file": "e603a9e1a920b2f8b20cf8921e970963cba3b15c.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.008732,
+        "prior_positive_px": 41349
+      },
+      {
+        "file": "e6431a1221e320ba4beb62dea71dd3890420e89f.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.013352,
+        "prior_positive_px": 252507
+      },
+      {
+        "file": "e6433f57238b38a142192af9a531a8c7934ed111.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.017417,
+        "prior_positive_px": 5167373
+      },
+      {
+        "file": "e74ff9758011b76c25f9c2de6e97d69fc1a0f357.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.007572,
+        "prior_positive_px": 38545
+      },
+      {
+        "file": "e79b7bdb633369c724628e30efba6de60c1d25d9.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.00846,
+        "prior_positive_px": 38854
+      },
+      {
+        "file": "ed019800934ba779cbc6707fd0ed05ab40ed7ad1.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.014747,
+        "prior_positive_px": 338755
+      },
+      {
+        "file": "ed5ad5ca7b3d50e10af7cc5f4797599f59472b76.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.009431,
+        "prior_positive_px": 54714
+      },
+      {
+        "file": "edf393beee3321c45811bfc132456db5749cb018.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.006965,
+        "prior_positive_px": 60068
+      },
+      {
+        "file": "ee785f2708aa46740bd7d086cd5bd3341d463f2d.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.013154,
+        "prior_positive_px": 122120
+      },
+      {
+        "file": "eeb705f1f81123dfaa000c2eff31c2f8f78501ac.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.009213,
+        "prior_positive_px": 41339
+      },
+      {
+        "file": "ef40acdb0232d453abf83519637303ee87cc42c4.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.009111,
+        "prior_positive_px": 59075
+      },
+      {
+        "file": "f11a0f27760003208c8a1df16b49a969a8f427ec.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.014406,
+        "prior_positive_px": 344041
+      },
+      {
+        "file": "f2e3063e31af19d840cb25e45ba85f959544a59f.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.028964,
+        "prior_positive_px": 513786
+      },
+      {
+        "file": "f392bb001ef92566fec369fa4fb06df111aa2e6f.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.005903,
+        "prior_positive_px": 24000
+      },
+      {
+        "file": "f7399eae88b8eb458e9a88f16e1c7ab8e69bd69a.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.006612,
+        "prior_positive_px": 33766
+      },
+      {
+        "file": "f789efd618a9b197cdf12e0972241457af982bb8.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.006554,
+        "prior_positive_px": 37000
+      },
+      {
+        "file": "f7e81b7f1e19c7304f9decd31bee1db1f0979a12.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.006612,
+        "prior_positive_px": 33766
+      },
+      {
+        "file": "f939bed1c16739e22131b4958814ee0ac6bff849.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.007734,
+        "prior_positive_px": 45374
+      },
+      {
+        "file": "fd56d5c4806521438ee89cc9bd7dd1cf89e9fd44.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.016818,
+        "prior_positive_px": 183642
+      },
+      {
+        "file": "fdd931161c431a583cf7039362e51832e59d07ad.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.010796,
+        "prior_positive_px": 155021
+      },
+      {
+        "file": "fe3071fafc209240d188af4b4201f10e39c030eb.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.008929,
+        "prior_positive_px": 55304
+      },
+      {
+        "file": "fec7d59fa6a5a10e9f45154abef19a6013158714.tif",
+        "pearson": NaN,
+        "jaccard_positive": 0.01392,
+        "prior_positive_px": 234429
+      }
+    ]
+  },
+  "elapsed_s": 41.5
+}
