@@ -6,7 +6,7 @@
 <script src="assets/contact.js" defer></script></head>
 <body><a href="#main" class="skip">Skip to content</a><header class="header"><div class="wrap"><div class="masthead">
 <a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true">G</span><b>GEMS / 40</b><em>H8 EULER</em></a>
-<nav class="nav" aria-label="Main navigation"><a class="active" href="index.html">Overview</a><a class="" href="executive-summary.html">Submission guide</a><a class="" href="evidence.html">Evidence</a><a class="" href="hypotheses.html">Hypotheses</a><a class="" href="sources.html">Sources</a></nav></div></div></header>
+<nav class="nav" aria-label="Main navigation"><a class="active" href="index.html">Overview</a><a class="" href="executive-summary-h45.html">H45 guide</a><a class="" href="executive-summary.html">Submission guide</a><a class="" href="evidence.html">Evidence</a><a class="" href="hypotheses.html">Hypotheses</a><a class="" href="sources.html">Sources</a></nav></div></div></header>
 <main id="main" class="wrap"><section class="hero"><div>
 <p class="kicker">H8 / EULER DEPTH-CLUSTERING / 06 OCT 2026</p>
 <h1>Faults from<br><em>source depth.</em></h1>
@@ -20,6 +20,7 @@ sha256 <span class="mono">49d26d8195e343b531cf5e8f9ebd44e2e0a652daca6ad4f71016fa
 <p class="micro">Depth-labelled solution cloud: <a href="downloads/h8-lineament-solutions.csv.gz">h8-lineament-solutions.csv.gz</a>
 (4.6 MB, 124,382 retained solutions with row, col, depth, depth standard error,
 residual, condition number, window, cluster weight, lineament coherence and corroboration flag).</p>
+<div class="notice" id="h45"><strong>H45 — the newest arm: Euler depth-clustering with the calibration findings.</strong><p><a class="button" href="downloads/gemsdoe40-h45-eulerdepthreadcluster-20261006-f28e5cff6826-zeros.tif" download>Download the H45 submission GeoTIFF <span aria-hidden="true">↓</span></a> 392 KB · 43,038 dots on a ~400 m lattice · all values finite and in [0, 1] · 0 mass inside the 200 m known-fault ring · largest Jaccard 0.0161 against 343 cached priors. Name <span class="mono">gemsdoe40-h45-eulerdepthreadcluster-20261006-f28e5cff6826</span>. <a href="executive-summary-h45.html#how">File, name &amp; submission guide ↗</a></p></div>
 <p class="lead">A unique candidate built exactly as the brief requires: SI = 0 contact Euler deconvolution
 (Reid et al., 1990) solved on magnetic and gravity layers, weighted for shallow depth, cross-window depth
 consensus, lineament coherence and cross-family corroboration, converted to a kernel-density field and emitted
@@ -89,6 +90,15 @@ catalogue mask. It never reads <code>labels.tif</code> as truth, any prior predi
 <code>construction_reads_labels_or_priors = false</code>
 in the generation receipt.</p></section>
 
+<section class="section" id="calibration"><div class="sectionhead"><div><p class="eyebrow">06 / THE H45 CALIBRATION FINDING</p><h2>The proxy points backwards.</h2></div><a href="data/h45-calibration-model-20261006.json">Calibration measurements ↗</a></div>
+<div class="tablewrap"><table><thead><tr><th>Owner submission</th><th>Reported public score</th><th>Catalogue lift</th><th>Mass inside 200 m ring</th><th>Blocked holdout DTI</th></tr></thead><tbody>
+<tr><td>h25-dotted</td><td class="num">0.2600</td><td class="num">2.179</td><td class="num">0.1155</td><td class="num">0.03176</td></tr>
+<tr><td>h32-euler</td><td class="num">0.2649</td><td class="num">1.810</td><td class="num">0.0742</td><td class="num">0.02075</td></tr>
+<tr><td>h27-4</td><td class="num">0.2708</td><td class="num">1.339</td><td class="num">0.0299</td><td class="num">0.01028</td></tr>
+<tr><td>h33-b2</td><td class="num">0.2778</td><td class="num">0.697</td><td class="num">0.0000</td><td class="num">0.00154</td></tr>
+</tbody></table></div>
+<p>Both proxy columns are monotone in the <em>wrong</em> direction, and this replicates the earlier 32-submission Spearman ρ = −0.79. Predicting the public catalogue is not merely uninformative — it is harmful. Two effects survive, and H45 exploits both: the 200 m ring around known faults earns no true-positive credit while still paying the false-positive penalty, and dots belong on a ~300–600 m lattice because the metric takes a <em>maximum</em> over each 300 m kernel, so neighbours do not add. A forward model fitted to those four scores, <code>DTI = T / (0.2 M + 0.8 G)</code> with <code>G ≈ 5,667</code> and credit-per-unit-mass <code>0.0890</code>, reproduces all four to within 2%.</p>
+<div class="actions"><a class="textlink" href="executive-summary-h45.html#how">File, name &amp; submission guide ↗</a><a class="textlink" href="data/h45-analysis-20261006.json">Euler family measurements ↗</a></div></section>
 <section class="section" id="retained"><div class="sectionhead"><div><p class="eyebrow">02b / RETAINED ARTIFACTS</p>
 <h2>Everything published earlier, still downloadable, still held.</h2></div>
 <a href="executive-summary.html">Submission guide ↗</a></div>

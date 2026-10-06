@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>H45 · file, name &amp; submission guide · GEMSDOE40</title>
+<meta name="description" content="Exactly how to submit the H45 Euler depth-clustering GeoTIFF: the unique submission name, the short note, and the measured evidence behind the decision.">
+<link rel="stylesheet" href="assets/contact.css"><script src="assets/contact.js" defer></script></head>
+<body><a href="#main" class="skip">Skip to content</a>
+<header class="header"><div class="wrap"><div class="masthead">
+<a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true">G</span><b>GEMS / 40</b><em>FIELD NOTES</em></a>
+<nav class="nav" aria-label="Main navigation"><a href="index.html">Overview</a><a class="active" href="executive-summary-h45.html">H45 submission guide</a><a href="evidence.html">Evidence</a><a href="hypotheses.html">Hypotheses</a><a href="sources.html">Research library</a></nav>
+</div></div></header>
+
+<main id="main" class="wrap">
+<section class="hero"><div>
+<p class="kicker">EXPERIMENT H45 / GEODAWN, NEVADA / 06 OCT 2026</p>
+<h1>The file,<br>the name,<br>the <em>decision.</em></h1>
+<p class="lead">Everything needed to submit the H45 Euler depth-clustering raster in one place — and the measured reason it is released as research rather than as a weekly slot spend.</p>
+<span class="tag hold">RESEARCH RELEASE — NOT A PROVEN IMPROVEMENT</span>
+<div class="download"><a class="button" href="downloads/gemsdoe40-h45-eulerdepthreadcluster-20261006-f28e5cff6826-zeros.tif" download>Download the submission GeoTIFF <span aria-hidden="true">↓</span></a></div>
+<p class="file-details">392 KB · single-band float32 · EPSG:32611<br>100 m · 3,730 rows × 3,292 columns · every value finite and in [0, 1]<br>43,038 positive pixels · 0 inside the 200 m catalogue ring</p>
+<div class="notice"><strong>Read the decision before you spend a slot.</strong><p>Every format and uniqueness check passes. The one thing that would justify a weekly submission — a holdout that predicts the organiser's score — does not exist for this competition, and this session measured why. The estimate is honest, not optimistic.</p></div>
+</div>
+<div class="map-panel"><div class="map-foot"><span>H45 EMISSION / MODEL OUTPUT, NOT OBSERVED FAULTS</span></div>
+<div class="tablewrap"><table><thead><tr><th>H45 at a glance</th><th>Value</th></tr></thead><tbody>
+<tr><td>Unique file name</td><td class="num"><code>gemsdoe40-h45-eulerdepthreadcluster-20261006-f28e5cff6826</code></td></tr>
+<tr><td>SHA-256 (zeros variant)</td><td class="num"><code>f28e5cff…6fc8f</code></td></tr>
+<tr><td>Method family</td><td class="num">Euler deconvolution depth-clustering</td></tr>
+<tr><td>Layers used</td><td class="num">magnetic <em>tmi</em> + gravity <em>iso_grav_anom</em></td></tr>
+<tr><td>Structural indices</td><td class="num">magnetic 0 and 1 · gravity 0</td></tr>
+<tr><td>Accepted solutions</td><td class="num">27,533</td></tr>
+<tr><td>Emitted dots</td><td class="num">43,038</td></tr>
+<tr><td>Mass in 200 m catalogue ring</td><td class="num">0.000</td></tr>
+<tr><td>Largest Jaccard vs 343 priors</td><td class="num">0.0161</td></tr>
+</tbody></table></div></div></section>
+
+<section class="section"><div class="sectionhead"><div><p class="eyebrow">01 / THE SUBMISSION FORM</p><h2>Name and note, verbatim.</h2></div></div>
+<div class="grid3">
+<article class="card"><span class="stepnum">A — UNIQUE NAME</span><h3>Submission title</h3>
+<p><code>gemsdoe40-h45-eulerdepthreadcluster-20261006-f28e5cff6826</code></p>
+<p class="micro">Distinct from every name in the 44-site register and from all 343 cached prior artifacts. The trailing 12 hex characters are the SHA-256 of the exact bytes, so the name and the file cannot drift apart.</p></article>
+<article class="card"><span class="stepnum">B — SHORT NOTE</span><h3>Distinguishing note</h3>
+<p><em>“Euler deconvolution depth-clustering over the magnetic and gravity layers — a depth-labelled solution cloud weighted by shallowness, Euler-equation misfit, depth precision and local depth consistency, turned into a continuous field by weighted KDE. Emitted as ~300 m dots with the 200 m known-fault ring excluded. Different method and different pixels from every GEMSDOE1–44 submission (largest Jaccard 0.016).”</em></p></article>
+<article class="card"><span class="stepnum">C — WHICH FILE</span><h3>Upload the <em>zeros</em> variant</h3>
+<p>Use <code>…-zeros.tif</code>. Every cell is finite and inside [0, 1], which is what the form validator requires. The <code>…-nan.tif</code> twin is provided for research only; it carries NaN outside the footprint and can be rejected by the form.</p>
+<p class="micro">A ZIP of the zeros variant is also published for convenience.</p></article></div></section>
+
+<section class="section" id="how"><div class="sectionhead"><div><p class="eyebrow">02 / STEP BY STEP</p><h2>Exactly how to submit.</h2></div></div>
+<div class="tablewrap"><table><thead><tr><th>#</th><th>Action</th><th>Detail</th></tr></thead><tbody>
+<tr><td>1</td><td>Download the file</td><td>Use the button at the top of this page. 392 KB, single-band float32 GeoTIFF.</td></tr>
+<tr><td>2</td><td>Open the competition</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">DrivenData #306 submissions page</a> (requires login; this project holds no credentials).</td></tr>
+<tr><td>3</td><td>Upload</td><td>Select the <code>-zeros.tif</code> file. Do not re-project, re-scale or clip it: the grid, transform and CRS already match <code>sample_submission.tif</code> exactly.</td></tr>
+<tr><td>4</td><td>Name it</td><td>Paste the unique name from box A.</td></tr>
+<tr><td>5</td><td>Add the note</td><td>Paste the short note from box B.</td></tr>
+<tr><td>6</td><td>Check the weekly slot</td><td>One submission per week is allowed. This file is <strong>not</strong> certified as better than the current best, so spending a slot on it is a judgement call — see section 04.</td></tr>
+<tr><td>7</td><td>Record the result</td><td>Paste the returned public score into <code>ref/gems32/score-ledger.csv</code> with <code>provenance=user brief</code> so the next session can refit the calibration model.</td></tr>
+</tbody></table></div></section>
+
+<section class="section"><div class="sectionhead"><div><p class="eyebrow">03 / WHY THIS IS A NEW FILE</p><h2>Measured uniqueness, not a claim.</h2></div><a href="data/h45-promotion-20261006.json">Promotion receipt ↗</a></div>
+<div class="tablewrap"><table><thead><tr><th>Check</th><th>Result</th><th>Gate</th></tr></thead><tbody>
+<tr><td>SHA-256 identical to any of 343 cached priors</td><td class="num">none</td><td>pass</td></tr>
+<tr><td>Largest Jaccard <code>|A∩B|/|A∪B|</code> against any prior</td><td class="num">0.0161</td><td>pass (&lt; 0.90)</td></tr>
+<tr><td>Largest coverage against a comparable-sparsity prior</td><td class="num">0.0758</td><td>pass (&lt; 0.95)</td></tr>
+<tr><td>Grid, transform, CRS, dtype, band count, nodata tag</td><td class="num">exact match</td><td>pass</td></tr>
+<tr><td>Values inside the footprint</td><td class="num">all finite, all in [0, 1]</td><td>pass</td></tr>
+<tr><td>Non-finite or non-zero outside the footprint</td><td class="num">0</td><td>pass</td></tr>
+</tbody></table></div>
+<p class="micro">Coverage is only tested against priors of comparable sparsity. Several cached priors are dense continuous fields that are positive nearly everywhere and would trivially “cover” any candidate while sharing almost none of its structure.</p>
+</section>
+
+<section class="section"><div class="sectionhead"><div><p class="eyebrow">04 / THE HONEST ESTIMATE</p><h2>Why this is a research release.</h2></div><a href="data/h45-calibration-model-20261006.json">Calibration measurements ↗</a></div>
+<div class="callout"><h3>The holdout is broken, and this session measured how.</h3>
+<p>Across the owner's own submissions, agreement with the public catalogue is <strong>monotonically anti-correlated</strong> with the reported public score: the 0.2600 submission has a catalogue lift of 2.18, the 0.2778 submission has 0.70. A spatially-blocked holdout scored against <code>labels.tif</code> ranks all four of them backwards (blocked DTI 0.032 / 0.021 / 0.010 / 0.002). Any instrument built on the public catalogue is therefore not merely weak — it points the wrong way.</p>
+<p>Two effects <em>are</em> measurable and both are exploited here. First, mass within 200 m of a mapped fault scores zero: the ring-mass share is 0.116 / 0.074 / 0.030 / 0.000 across the 0.2600 → 0.2778 ladder, monotone in the wrong direction. Second, dots should be spaced ~300–600 m, not solid: the credit for a truth pixel is a <em>maximum</em> over the 300 m kernel, so neighbours do not add, and the repository's own ledger is an A/B test of exactly this (d2.8 → 0.2600 vs d1.5 → 0.2477).</p>
+<p>A forward model fitted to those four scores — <code>DTI = T / (0.2 M + 0.8 G)</code> with <code>G ≈ 5,667</code> truth pixels and credit-per-unit-mass <code>0.0890</code> — reproduces all four scores to within 2%. Its uncomfortable conclusion is that <strong>all four have the same placement efficiency</strong>; their score gaps come almost entirely from total mass and ring mass. H45 emits 43,038 dots at 400 m median spacing with zero ring mass, which puts it at or above the incumbent operating point <em>provided</em> its within-shell placement is no worse.</p>
+<p><strong>That last clause cannot be verified without spending a slot.</strong> Every proxy available is either anti-correlated or non-discriminating. So the estimate is: plausibly ≈ 0.28, with real upside if the Euler ordering helps, and no way to prove it in advance.</p>
+</div></section>
+
+<section class="section"><div class="sectionhead"><div><p class="eyebrow">05 / WHAT WAS MEASURED ABOUT THE EULER CLOUD ITSELF</p><h2>Negative result, kept on the record.</h2></div><a href="data/h45-analysis-20261006.json">Family measurements ↗</a></div>
+<div class="tablewrap"><table><thead><tr><th>Family</th><th>Accepted solutions</th><th>Median depth</th><th>Blocked lift vs catalogue</th></tr></thead><tbody>
+<tr><td>gravity <code>iso_grav_anom</code> · SI 0 · window 15</td><td class="num">6,250</td><td class="num">1,868 m</td><td class="num">0.891</td></tr>
+<tr><td>gravity <code>iso_grav_anom</code> · SI 0 · window 25</td><td class="num">5,922</td><td class="num">2,066 m</td><td class="num">1.053</td></tr>
+<tr><td>gravity · SI 0 · window 15 · one vertical derivative</td><td class="num">0</td><td class="num">—</td><td class="num">no window passed QC</td></tr>
+<tr><td>gravity · SI −1 (corrected finite contact)</td><td class="num">68</td><td class="num">12 m</td><td class="num">degenerate, excluded</td></tr>
+<tr><td>magnetic <code>tmi</code> · SI 0 · window 9</td><td class="num">6,574</td><td class="num">491 m</td><td class="num">1.002</td></tr>
+<tr><td>magnetic <code>tmi</code> · SI 0 · window 15</td><td class="num">2,939</td><td class="num">690 m</td><td class="num">0.832</td></tr>
+<tr><td>magnetic <code>tmi</code> · SI 1 (thin sheet edge) · window 15</td><td class="num">5,848</td><td class="num">1,024 m</td><td class="num">0.992</td></tr>
+</tbody></table></div>
+<p class="micro">The Euler solver itself is verified against synthetic truth — <code>tests/test_euler_h45.py</code>, 10 tests passing, covering sign conventions, point-mass and line-mass depth recovery, the horizontal-line-of-dipoles index correction, along-strike pinning, finite-step edge position, SI=0 offset invariance and scale-free residuals. What is <em>not</em> verified is that the recovered contacts are faults rather than unfaulted lithologic boundaries, which is the standing caveat for Euler deconvolution and the reason the catalogue lift sits at 1.0.</p>
+</section>
+
+<section class="section"><div class="reportline"><span>Official leaderboard observed 6 October: <strong>0.3345</strong> at #1. A dated manual read, not a live scrape.</span><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">Open official board ↗</a></div>
+<div class="reportline"><span>Format and uniqueness receipts: <code>docs/data/h45-promotion-20261006.json</code> · calibration: <code>docs/data/h45-calibration-model-20261006.json</code></span><a href="data/h45-analysis-20261006.json">Family analysis ↗</a></div></section>
+</main>
+
+<footer class="footer"><div class="wrap"><p><strong>Maximize P(Win). Own the Outcome.</strong><br>Evidence before a weekly submission slot.</p>
+<p>Independent competition research · not affiliated with DOE or DrivenData.<br><a href="https://github.com/buffedlizard55-lab/GEMSDOE40">Repository</a> · <a href="user-prompt-20261006.md">Full project brief</a> · <a href="index.html">Back to overview</a></p></div></footer>
+</body></html>

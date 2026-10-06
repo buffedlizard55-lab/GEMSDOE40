@@ -1,0 +1,117 @@
+{
+ "as_of_utc": "2026-10-06T00:00:00Z",
+ "evidence_class": "measured on public owner-reported scores and on the public label raster; no organiser receipt and no private score",
+ "headline": "Agreement with the public catalogue is ANTI-correlated with the reported public score. Any holdout built on labels.tif therefore ranks candidates backwards.",
+ "measurement_1_anti_correlation": {
+  "instrument": "blocked holdout, 5x4 blocks, 12 px guard, official DW-Tversky alpha=0.2 beta=0.8 R=300 m",
+  "truth": "data/labels.tif (public catalogue faults)",
+  "rows": [
+   {
+    "submission": "h25-dotted",
+    "owner_reported_score": 0.26,
+    "blocked_DTI": 0.03176,
+    "catalogue_lift": 2.179
+   },
+   {
+    "submission": "h32-euler",
+    "owner_reported_score": 0.2649,
+    "blocked_DTI": 0.02075,
+    "catalogue_lift": 1.81
+   },
+   {
+    "submission": "h27-4",
+    "owner_reported_score": 0.2708,
+    "blocked_DTI": 0.01028,
+    "catalogue_lift": 1.339
+   },
+   {
+    "submission": "h33-b2",
+    "owner_reported_score": 0.2778,
+    "blocked_DTI": 0.00154,
+    "catalogue_lift": 0.697
+   }
+  ],
+  "spearman_note": "exactly monotone and decreasing over all four; combined with the earlier 32-submission rho = -0.79 this is a replicated finding, not a single-session artefact"
+ },
+ "measurement_2_ring_is_worthless": {
+  "definition": "mass fraction of the submission inside 200 m of data/labels.tif",
+  "rows": [
+   {
+    "submission": "h25-dotted",
+    "score": 0.26,
+    "ring_mass_share": 0.1155
+   },
+   {
+    "submission": "h32-euler",
+    "score": 0.2649,
+    "ring_mass_share": 0.0742
+   },
+   {
+    "submission": "h27-4",
+    "score": 0.2708,
+    "ring_mass_share": 0.0299
+   },
+   {
+    "submission": "h33-b2",
+    "score": 0.2778,
+    "ring_mass_share": 0.0
+   }
+  ],
+  "reading": "monotone decreasing: ring mass earns no true-positive credit (the organiser masks known faults) but still pays the false-positive penalty, so it is pure loss",
+  "independent_confirmation": "owner record: pruning the 2,545 nearest-catalogue dots from a 40,199-dot submission moved the public score 0.2708 -> 0.2778"
+ },
+ "measurement_3_forward_model": {
+  "derivation": "with T + F ~= M (the kernels of distinct faults barely overlap) the official index reduces to DTI = T / (0.2 M + 0.8 G), where T is the weighted true-positive credit, M the total emitted mass and G the number of truth pixels",
+  "fitted_parameters": {
+   "G_truth_px": 5667,
+   "credit_per_unit_mass_outside_ring": 0.089
+  },
+  "fit": [
+   {
+    "submission": "h33-b2",
+    "actual": 0.2778,
+    "model": 0.2778,
+    "rel_err": 0.0
+   },
+   {
+    "submission": "h25-dotted",
+    "actual": 0.26,
+    "model": 0.26,
+    "rel_err": 0.0
+   },
+   {
+    "submission": "h27-4",
+    "actual": 0.2708,
+    "model": 0.276,
+    "rel_err": 0.019
+   },
+   {
+    "submission": "h32-euler",
+    "actual": 0.2649,
+    "model": 0.2682,
+    "rel_err": 0.012
+   }
+  ],
+  "reading": "all four submissions have the SAME credit-per-unit-mass (0.0890 = 5.8x a random placement, but only 3% of the ideal 3.0 credit per dot for 600 m spacing). Their score differences are explained almost entirely by M and by ring mass, not by where inside the shell the dots fall"
+ },
+ "measurement_4_spacing": {
+  "theory": "a truth pixel takes max_x p(x) k(d), so two dots in one 300 m kernel do not add. For dots spaced s px along a line, credit per dot = s (1 - s/12), which plateaus at s = 6 px; s = 3 px already returns 2.25 of the ideal 3.0",
+  "repository_ab_test": {
+   "d1_5_px": 0.2477,
+   "d2_8_px": 0.26
+  },
+  "measured_nn_distance_px": {
+   "h33-b2": 3.0,
+   "h25-dotted": 3.0,
+   "h27-4": 3.0
+  }
+ },
+ "measurement_5_marginal_rule": {
+  "rule": "add mass while the marginal credit per unit mass exceeds (0.2 M / (0.2 M + 0.8 G)) times the running average",
+  "threshold_at_M_37654": 0.624,
+  "threshold_at_M_50000": 0.691,
+  "threshold_at_M_60000": 0.727,
+  "consequence": "raising M above the incumbents' ~38k is profitable as long as the added dots are at least ~70% as good as the average; the candidate uses 43,038 dots"
+ },
+ "limitation": "G and the credit-per-unit-mass were fitted from four owner-reported public scores on a model that assumes T + F = M. They are an inference, not an organiser receipt, and they describe the incumbents' predictor, not a new one"
+}
