@@ -1,55 +1,52 @@
-# GEMSDOE40 — contact Euler depth-clustering
+# GEMSDOE40 — Euler depth-clustering → trace-locked fault confidence
 
 > **Read this README and the complete retained brief below at the beginning of every session.** See [AGENTS.md](AGENTS.md). Principles: **Maximize P(Win)** and **Own the Outcome**.
 
-## Download the new GeoTIFF
+## Download the session-2 GeoTIFFs (submission-format research artifacts)
 
-**[Download H4 — the new submission-format research TIFF](docs/downloads/gemsdoe40-h4-contact-offset-depthkde-20261006-fab9f6619c02.tif)** · [Live project site](https://buffedlizard55-lab.github.io/GEMSDOE40/docs/index.html) · [Executive summary / submission guide](docs/executive-summary.html)
+**[Download H13 — crest-binary Euler depth consensus](docs/downloads/gemsdoe40-h13-crest-binary-20261006-a5d5b80a8476.tif)** · **[Download H8 — trace-locked depth-KDE](docs/downloads/gemsdoe40-h8-tracelock-depthkde-20261006-373fa53b12e9.tif)** · [Live project site](https://buffedlizard55-lab.github.io/GEMSDOE40/docs/index.html) · [Executive summary / submission guide](docs/executive-summary.html)
 
-**HOLD — DO NOT SUBMIT.** The file is genuinely distinct and format-valid, but it did **not** beat the blocked holdout best. No weekly slot was used; no organizer score is known. Publishing a valid research download is not a recommendation to upload it.
+**HOLD — DO NOT SUBMIT.** Both files are genuinely distinct from all 343 inventoried prior artifacts and are submission-format valid, but **neither beat the frozen off-catalogue proxy holdout**, so no weekly slot is earned. No organizer score is known; none is claimed. A valid research download is not a recommendation to upload it.
 
-| Item | Measured result |
-|---|---|
-| File | `gemsdoe40-h4-contact-offset-depthkde-20261006-fab9f6619c02.tif` |
-| Name | `GEMSDOE40-H4-CONTACT-OFFSET-fab9f6619c02` |
-| Format | Single-band float32, EPSG:32611, 100 m; 3,730 rows × 3,292 columns |
-| Affine transform | `(100, 0, 243350, 0, -100, 4508550)` — exact sample transform |
-| Range / footprint | All 5,167,373 inside pixels finite in [0,1]; all 7,111,787 outside pixels NaN |
-| File SHA-256 | `ee73ffd76fabbaa1a2e77e17f57947a7db858916d713801e0c3502e49f6acabb` |
-| Canonical pixel SHA-256 | `fab9f6619c02595ceec668c87420789035d8103d3c93b91a2e4aa7c2bc905e86` |
-| New construction | SI=0 **with contact offset A**, rank-adaptive TMI + first-vertical-gravity-derivative Euler; depth-consistent cross-window KDE |
-| Cloud | 46,656 QC-passing solutions; **12,167 magnetic + 8,450 gravity** clustered solutions |
-| Continuous output | 865,145 positive cells; 857,785 distinct finite values; confidence mass 29,350.41 |
-| Prior-output audit | **343 byte-verified artifacts** across 55 public repositories / 338 pinned branch heads / 1,859 reachable commits; 339 exact-grid, 340 full-size array comparisons, 2 supplementary alignment checks; 190 ZIP paths/versions inspected. One spatial format fixture, a one-pixel demo and a 110-byte header-only non-raster are explicitly distinguished |
-| Novelty | No exact/near duplicates; maximum absolute Pearson **0.128319**, top-37,654 Jaccard **0.049527**, containment **0.137676** |
-| Local SGMC proxy DTI | H4 **0.006902**; H33-B2 **0.091550**; frozen SGMC-derived incumbent **0.835907** |
-| Decision | 0/16 truth-bearing block wins vs both H33 and incumbent; **HOLD — DO NOT SUBMIT** |
+| Item | H13 (current) | H8 (sibling) |
+|---|---|---|
+| File | `gemsdoe40-h13-crest-binary-20261006-a5d5b80a8476.tif` | `gemsdoe40-h8-tracelock-depthkde-20261006-373fa53b12e9.tif` |
+| Name | `GEMSDOE40-H13-CREST-BINARY-a5d5b80a8476` | `GEMSDOE40-H8-TRACELOCK-373fa53b12e9` |
+| Format | single-band float32, EPSG:32611, 100 m; 3,730 × 3,292 | same |
+| Affine transform | `(100, 0, 243350, 0, -100, 4508550)` exact sample transform | same |
+| Range / footprint | all 5,167,373 inside pixels finite in [0,1] (binary 0/1); 7,111,787 outside NaN | all inside finite in [0,1] continuous; outside NaN |
+| File SHA-256 | `c202a579ce33ea385a117f233857714150f8d68a5d6e8e46ef820b428e08ff33` | `6c32147db39cd34e77baf31f6cb585165bca1d042cfa599d5d027cb140e0c195` |
+| Positive cells / mass Σp | 21,041 / 21,041 | 213,616 / 7,993.2 |
+| Novelty (vs 343 corpus) | max \|Pearson\| 0.0784, Jaccard 0.0386, containment 0.1057 — 0 near-dups | max \|Pearson\| 0.0784, Jaccard 0.0386, containment 0.1057 — 0 near-dups |
+| Proxy-holdout DTI (G3, bar 0.091550) | **0.019677 — FAIL** | **0.003371 — FAIL** |
+| CAT-HID mean (G4, vs H33-B2 0.003590) | **0.021464 — PASS** | **0.023673 — PASS** |
+| Decision | **HOLD — DO NOT SUBMIT** | **HOLD — DO NOT SUBMIT** |
 
-**Short note (137 characters, research record only):**
+**Short note for the portal (148 characters, research record only):**
 
-> H4 SI0+A rank-aware TMI+dGdz Euler; shallow cross-window depth-consensus KDE. New raw field; HOLD, proxy gate failed; no organizer score.
+> H13 binary Euler SI0 depth-consensus crest emission (trace-locked, cross-family). Unique vs 343 priors. Proxy gate failed: HOLD, no organizer score.
 
-[Download all depth-labeled solutions](docs/downloads/h4-euler-solutions.csv.gz) · [Exact format receipt](docs/data/h4-format.json) · [Every prior comparison](docs/data/h4-uniqueness.json) · [Every holdout block](docs/data/h4-validation.json) · [Human-readable result](docs/reports/h4-results-20261006.md)
+[All depth-labeled solutions](docs/downloads/h4-euler-solutions.csv.gz) · [H13 format](docs/data/h13-format.json) · [H13 uniqueness](docs/data/h13-uniqueness.json) · [H13 gates](docs/data/h13-validation.json) · [H8 gates](docs/data/h8-validation.json) · [Session-2 result report](docs/reports/session2-results-20261006.md)
 
-## What the review found
+## What session 2 found
 
-1. **The requested method was not already correct.** The older H1 contact solve forced A=0, while [Reid et al. (1990), equation 2 / step 3b](https://www.reid-geophys.co.uk/wp-content/uploads/2017/11/Reid-et-al-1990.pdf) explicitly fit an arbitrary contact offset. A full-rank position requirement also discards ideal straight contacts. H4 tests these cases analytically and handles their unresolved along-strike coordinate explicitly.
-2. **Gravity needs a caveat.** SI=0 on raw gravity is not the magnetic-contact model. H4 uses SI=0 on dG/dz as a **local top-edge approximation**, not an exact finite-step inversion; see [Reid & Thurston (2014)](https://www.reid-geophys.co.uk/wp-content/uploads/2017/11/Reid-Thurston-2014.pdf). Depths are effective depths below the reference observation plane, not verified ground-depths in a draped survey.
-3. **The inherited gate is impossible and circular.** It requires 18/24 strict block wins but only 16 blocks contain proxy truth; eight empty blocks always score zero. The incumbent is itself SGMC-derived. We reproduced the exact frozen proxy/score, disclosed both defects, and did not quietly lower the bar. H4 also loses to H33 on that same instrument, so the gate defect does not rescue it.
-4. **Data placement is completed.** The 418,912,844-byte feature raster, template, labels and correct proxy were restored autonomously and hash checked. Same-named sibling SGMC rasters differ; only the pinned GEMSDOE30 copy matches this frozen research instrument. These are documented public mirrors, not an authenticated DrivenData download.
-5. **The owner's best is pruning, not new geometry.** H33-B2 is exactly the 40,199-pixel H27-4 base with 2,545 pixels at ≤200 m from the catalogue removed; no new pixels. Reducing false-positive mass can improve DTI without discovering a fault. The **0.2778** file score remains owner-reported; public account rows do not authenticate the TIFF. [Measured analysis](docs/data/h33-measured-analysis.json) / [Explanation](docs/leaderboard-analysis.html).
-6. **The leaderboard target changed.** The official page observed on 2026-10-06 showed **0.3345** first, then 0.3262, 0.3222 and 0.3195. This is a dated observation, not a live scrape. We do not claim H4 can beat those scores. [Observation](docs/data/official-observation-20261006.json).
-7. **Artifact/site failures are visible.** H33's 216-byte ZIP contains no TIFF; its actual TIFF is sound. Three legacy predictions use `nodata=0`; their stored zeros must be compared, not masked away. Two historical NaN variants also had millions of missing **inside-footprint** values. Their actual finite values match their separately published all-finite companions exactly, with missing cells represented only by zero; the full companions are audited, not silently imputed. Unreadable/unclassified files still fail closed. [Forensic classification](docs/data/prior-nonprediction-forensics-20261006.json). Old downloading/prepare and uniqueness paths could report readiness or novelty with missing data; these are hardened.
+1. **The Euler family has real, non-circular fault-finding skill.** On the repaired catalogue-component holdout (20 % of catalogue hidden), H8 scores **0.023673** and H13 **0.021464**, versus **0.003590** for the H33-B2 reference — a ~6× advantage. This is the first non-circular positive for the Euler family in this repository.
+2. **…but that skill does not transfer to the off-catalogue SGMC proxy.** H13 0.019677 / H8 0.003371 both fall below the frozen gate bar 0.091550 and below their own mass-matched random controls. Euler crests are not preferentially located on off-catalogue SGMC traces (consistent with session 1's AUC 0.534). The proxy's ceiling (incumbent 0.8359) belongs to SGMC-matching fields and is circular.
+3. **Value concentration matters.** H13 emits 1.0 on consensus crests only; it scores 5.8× the diluted continuous H8 field on the proxy. The metric charges `0.2·p(x)` and pays `≤p(x)·k(d)` — both linear — so mass spent on faint flanks is wasted. A future candidate must never max-normalize a smoothed blob.
+4. **Two latent CAT-HID defects were repaired.** The hidden set was included in its own exclusion flank (truth collapsed to zero), and the 20 % hide fraction counted background pixels (selecting all components). Every historical CAT-HID reading was a zero; none drove a decision. All candidates and baselines were re-measured under the repaired instrument.
+5. **Why 0.2778 scored highest (measured).** H33-B2 is *exactly* H27-4 (40,199 px) minus the 2,545 pixels ≤200 m from the catalogue; it adds zero pixels. Under `DTI = T/(0.2T+0.2FP+0.8G)` the marginal economics at D=0.2778 allow trading up to 0.0588 TP credit per FP saved (~17:1). The gain is false-positive pruning, not new discovery. The 0.2778 attribution remains owner-reported; the leaderboard does not identify TIFFs.
+6. **Data placement stays complete.** The 418,912,844-byte feature raster, template, labels, frozen proxy and the 343-artifact prior corpus are hash-verified public mirrors — consistency-checked, not organizer-authenticated. No GPU or trained network is required.
+7. **The leaderboard target is outside local reach.** The official board observed 0.3345 leading on 2026-10-06. No local evidence supports a claim of beating 0.2778 or 0.3345; the hidden test set is off-catalogue by construction and cannot be reproduced here.
 
-## Ranked new hypotheses, before implementation
+## Ranked hypotheses — registered before implementation
 
-Four hypotheses were registered before H4 code/scoring: **H4** offset-aware rank-adaptive contact Euler (medium cost, implemented); **H5** two-edge finite density-step inversion (high); **H6** depth-cloud plane geometry / dip localization (high; actual ground projection blocked pending survey datum); **H7** TMI/RTP representation stability without double-counting correlated channels (medium). Expected improvements are qualitative and uncertain, not invented numerical forecasts.
+The session-2 slate ([frozen registration](docs/research/h8-preregistration-20261006.md)) ranks five new ideas: **H8** trace-locked Euler depth consensus (implemented; HOLD), **H13** value-concentrated crest emission (implemented; HOLD), **H9** blind basement-flexure faults using never-used bands 15/17/18 (**next experiment**), **H10** geodetic strain-rate lineaments, **H11** seismic-corridor × Euler intersection, **H12** ComCat focal mechanisms (blocked by sandbox egress; free official source named). See the [hypotheses page](docs/hypotheses.html). The session-1 slate (H4–H7) is preserved unchanged in its own registration.
 
-Read the [unchanged detailed registration](docs/research/h4-preregistration-20261006.md), [ranked hypotheses page](docs/hypotheses.html), [research source/claim ledger](docs/research/scientific-library-20261006.md), and [all 44 user-listed projects / 48 supplied scores](docs/leaderboard.html). Euler theory itself is not new science; the artifact is independently generated and novel within the fully specified public corpus.
+**Validation protocol.** A candidate is slot-eligible only if it passes frozen format + full-corpus uniqueness + the proxy-holdout bar **and** a non-circular skill check, all registered before scoring. The inherited 18-of-24 gate remains infeasible/circular and is retained only to reproduce its negative diagnostic. No weekly slot has been used by this repository.
 
 ## Reproduce on CPU
 
-Python 3.11 was used. No GPU, trained neural network, password or manual data placement is required for this Euler pipeline. It is **not** the previously claimed ready-to-train U-Net pipeline.
+Python 3.11. No GPU, trained network, password or manual data placement is needed for this Euler pipeline.
 
 ```bash
 python3 -m venv .venv
@@ -57,42 +54,28 @@ python3 -m venv .venv
 python -m pip install -r requirements-research.txt
 python -m pip install -e .
 bash scripts/download_competition_data.sh
-python scripts/prepare_data.py
 python scripts/fetch_prior_cache.py --inventory docs/data/prior-inventory-20261006.json --cache data/prior
-OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=2 python scripts/run_contact_euler.py
-OPENBLAS_NUM_THREADS=1 python scripts/audit_contact_candidate.py
-python scripts/make_contact_previews.py
+python scripts/run_trace_locked_euler.py            # H8 continuous field -> work/h8/
+python scripts/run_crest_emission.py                # H13 crest-binary    -> work/h13/
+python scripts/audit_trace_candidate.py --work work/h13
 python scripts/build_contact_site.py
 python -m pytest -q
 python scripts/build_site.py --check
 ```
 
-Generation first writes to ignored `work/`, reads **no prior prediction or holdout raster**, and does not use a gradient threshold. Only the separate audit runner can publish a research file after exact-format and full raw-output novelty checks. It evaluates a fixed method without a holdout parameter search and never uploads to the competition. For a **new** experiment, refresh the corpus with `scripts/refresh_prior_inventory.py`, then `scripts/audit_prior_history.py --refresh-heads`, review the exclusions, and audit every byte before claiming novelty; the reproducibility command deliberately uses the frozen dated corpus.
-
-Large inputs/prior caches stay out of Git. Only the deliverable TIFF, compressed cloud, compact evidence and actual-data previews are committed. See [three-pass review](docs/reports/review-20261006.md) and [reproduction receipt](docs/data/h4-reproduction.json). The scheduled Pages workflow refreshes **USGS/GDR context only**, exposes stale/error states, and never changes model values or submission eligibility. Automated DrivenData monitoring is not enabled under its [Terms of Use](https://www.drivendata.org/termsofuse/).
+Generation reads **no prior prediction, proxy truth or holdout raster**; only the separate audit runner scores against frozen instruments. Large inputs/prior caches stay out of Git. The scheduled Pages workflow refreshes USGS/GDR context only and never changes model values or submission eligibility.
 
 ## What remains blocked / next session
 
-- **No independent new-fault holdout or hidden organizer labels.** Register a feasible, source-independent whole-fault-system validation protocol before another model search. Do not convert the circular 0.8359 proxy score into a leaderboard forecast.
-- **No DrivenData account session / enrollment here.** No authenticated official download or competition submission was made. No credentials are requested. Hash-pinned public mirrors solved data placement, not source authentication.
-- **Observation-surface uncertainty.** Audit official GeoDAWN drape/altitude metadata and native gravity resolution before a ground-depth or dip-to-surface projection.
-- **Fault versus contact versus resource.** Euler clusters can be unfaulted lithologic boundaries. Finite-step modeling and independent structural/thermal evidence are needed. The competition target is faults, not vents or commercial reservoirs.
-- **Score improvement is unproved.** H4 is a valid, genuinely new *research submission-format candidate*, not a winning candidate. The next experiment must beat a credible independent comparator before spending a slot.
+- **Placement, not emission, is the bottleneck.** Random dots at equal mass beat both Euler fields on the proxy; the gap is alignment with hidden-trace geometry that is unknowable locally. The next experiment (H9) targets blind basement-flexure faults with independent subsurface bands rather than re-tuning Euler emission.
+- **No source-independent promotion instrument exists yet.** Register one before spending a slot; do not convert the circular SGMC proxy or unauthenticated owner file↔score pairs into a gate.
+- **No DrivenData account session here.** No authenticated official download or competition submission was made. No credentials are requested.
+- **Observation-surface uncertainty.** Audit GeoDAWN drape/altitude metadata before ground-depth or dip-to-surface projection.
+- **Fault ≠ contact ≠ resource.** Euler clusters can be unfaulted lithologic boundaries; the competition target is faults, not vents or reservoirs.
 
-## Concurrent mainline work was preserved, not overwritten
+## Concurrent / historical arms are preserved, not overwritten
 
-While this branch was running, PRs #7, #8 and #9 landed on main. They are integrated with their source, tests, receipts and downloadable artifacts intact. The current **contact-offset H4** is not the **H4-A contact-network** arm, **H7 gravity-context** arm, or **H40 dotted-emission** arm. H7 in our unchanged preregistration means the still-unimplemented TMI/RTP stability idea, a numbering collision—not the merged H7 experiment.
-
-- **H7 gravity-context:** [separate negative-result report](docs/reports/validation-h7-20261006.md); its 0.000265 proxy result uses **643cbe…**, not H4’s frozen **26d142…** raster. Do not compare those native results as if the labels were identical.
-- **H40:** [original artifact/receipt](docs/downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-audit.json); its claimed promotion estimates were subsequently withdrawn. Both original twins remain research-only, not this H4 file.
-- **H4-A:** [closed negative result](docs/reports/h4a-negative-result-20261006.md); its raw raster was withdrawn into another session’s ignored workspace and is not available to this checkout. Do not invent its pixels or pretend it was raw-correlated.
-- The [16-pair instrument analysis](docs/data/instrument-audit-20261006.json) and [attribution retraction](docs/data/unauthenticated_attribution_audit.json) disagree in how they describe score evidence. We retain both, but **do not certify those file/score pairings as organizer-authenticated**, infer a hidden-label count from them, or adopt a rank-correlation calibration as a valid promotion gate.
-
-**No candidate is cleared today.** The inherited instrument is **retired for promotion**, but its frozen computation/result remains reproducible. The former missing-proxy blocker is resolved: the exact 26d142… version was recovered from GEMSDOE30. The H7/H40 643cbe… profile and its existing `docs/data/input_manifest.json` are retained separately; H4’s commands use `scripts/acquire_data.py` / `docs/data/acquisition-20261006.json` and never silently substitute profiles. [Integration notes](docs/reports/integration-20261006.md) / [incoming README archive](docs/archive/README-main-9987e40-20261006.md).
-
-## History and operating record
-
-The previous H1/H2 feasibility stops and H2-B negative result remain intact: [append-only validation](docs/research/validation.md), [previous README](docs/archive/README-h2b-20261005.md), [historical H2-B page](docs/index-h2b-20261005.html). Archived mainline outputs are educational references, never this session's candidate. The current site is rebuilt from current JSON receipts; past scores are not silently overwritten.
+H4 (session 1 contact-offset Euler, HOLD, proxy 0.006902), H7 (gravity-context, HOLD), H40 (dotted twins, HOLD), H4-A (closed negative) and H2-B retain their own bytes, receipts and no-go status on the [project site](docs/index.html). Their solver output (the 46,656-solution cloud) is the frozen input that H8/H13 re-use.
 
 ---
 

@@ -57,11 +57,11 @@ def test_site_prominently_marks_h7_on_hold_and_offers_research_download():
     candidate = DOCS / "downloads" / candidate_name
     assert candidate.is_file()
     assert "HOLD — DO NOT SUBMIT" in index
-    assert "HOLD — DO NOT SUBMIT H7" in summary
+    assert "HOLD — DO NOT SUBMIT" in summary
     assert candidate_name in index
     assert candidate_name in summary
-    assert "No candidate is cleared today" in summary
-    assert "Do not upload H7" in summary
+    assert "Nothing earlier is cleared either" in index
+    assert "Do not upload either version" in summary
 
 
 def test_h40_artifact_is_offered_beside_an_explicit_hold():
@@ -75,7 +75,7 @@ def test_h40_artifact_is_offered_beside_an_explicit_hold():
     assert zeros.is_file() and twin.is_file() and receipt_path.is_file()
     assert f"downloads/{zeros.name}" in index and f"downloads/{zeros.name}" in summary
     assert "HOLD — DO NOT SUBMIT" in index
-    assert "HOLD — DO NOT SUBMIT H7 or H40" in summary
+    assert "HOLD — DO NOT SUBMIT H40" in index and "HOLD — DO NOT SUBMIT H40" in summary
     receipt = json.loads(receipt_path.read_text())
     assert hashlib.sha256(zeros.read_bytes()).hexdigest() == receipt["zeros_tif"]["sha256"]
     inst = receipt["stage"]["emission"]["instrument"]

@@ -1,0 +1,111 @@
+{
+  "candidate_format": {
+    "bytes": 1482117,
+    "candidate": {
+      "count": 1,
+      "crs": "EPSG:32611",
+      "dtype": "float32",
+      "height": 3730,
+      "in_footprint_max": 1.0,
+      "in_footprint_min": 0.0,
+      "in_footprint_nonzero": 213616,
+      "nodata": "NaN",
+      "outside_nan": 7111787,
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "width": 3292
+    },
+    "canonical_pixels_sha256": "373fa53b12e99c8a193ec52102e2e33711dd6830cd28882a045a78f57249c9a9",
+    "issues": [],
+    "path": "work/h8/gemsdoe40-h8-tracelock-depthkde-20261006-373fa53b12e9.tif",
+    "sha256": "6c32147db39cd34e77baf31f6cb585165bca1d042cfa599d5d027cb140e0c195",
+    "template": {
+      "count": 1,
+      "crs": "EPSG:32611",
+      "dtype": "float32",
+      "height": 3730,
+      "nodata": "NaN",
+      "outside_pixels": 7111787,
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "valid_pixels": 5167373,
+      "width": 3292
+    },
+    "valid": true
+  },
+  "code_sha256": {
+    "scripts/run_trace_locked_euler.py": "037273ce1a7028b0b430b0437adb0af5708489fd599f2d9c40fab66b41849358",
+    "src/gemsdoe40/contact_euler.py": "aa92851d604e2d8d5f1c0c7831da7142491a2587fba18f6f25773374b43d5ee7",
+    "src/gemsdoe40/raster.py": "14d0bcd43d9f96664532965e89838488333ae31b947bc8a8edc424c1bb6390a2",
+    "src/gemsdoe40/trace_lock.py": "fc14bf44e09ec199f426388043271ee9ac333c9c57398a645e42cf9ca1b1f097"
+  },
+  "compute": "CPU; no learned weights, no GPU",
+  "construction_reads_proxy_or_prior_predictions": false,
+  "elapsed_s": 18.346,
+  "exact_known_mask_pixels": 60988,
+  "experiment": "H8 trace-locked Euler depth-consensus emission on the frozen H4 cloud",
+  "field_stats": {
+    "corridor_passing_cells": 21041,
+    "gravity_depth_p50_m": 1426.54666,
+    "gravity_positive_cells": 316890,
+    "gravity_weighted_solutions": 8450,
+    "known_pixels_zeroed": 60988,
+    "magnetic_depth_p50_m": 677.414383,
+    "magnetic_positive_cells": 613131,
+    "magnetic_weighted_solutions": 12167,
+    "oriented_cells": 841450,
+    "output_mass_sum": 7993.20556640625,
+    "passing_fraction": 0.7345179082594429,
+    "passing_median_depth_m": 769.8880004882812,
+    "passing_median_sd_m": 120.74676513671875,
+    "positive_output_cells": 213616,
+    "ridge_cells": 28646
+  },
+  "finished_utc": "2026-10-06T03:35:13.048587+00:00",
+  "footprint_pixels": 5167373,
+  "inputs": {
+    "h4-euler-solutions.csv.gz": {
+      "bytes": 2183131,
+      "origin": "frozen H4 solver output; SI=0 + offset A; docs/research/h4-preregistration-20261006.md",
+      "sha256": "6bed30b224981ef1064256d696c585b76f438011bbae6c0a16c00e6e6f5922ba"
+    },
+    "labels.tif": {
+      "bytes": 425830,
+      "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093"
+    },
+    "sample_submission.tif": {
+      "bytes": 1599597,
+      "sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc"
+    }
+  },
+  "positive_pixels": 213616,
+  "preregistration": {
+    "path": "docs/research/h8-preregistration-20261006.md",
+    "sha256": "6efaaf64c3c8441627ab8cc69338a68737e32763db69ba238a6cb9af611ace4e"
+  },
+  "shape": [
+    3730,
+    3292
+  ],
+  "software": {
+    "affine": "3.0.1",
+    "numpy": "2.4.6",
+    "python": "3.11.2",
+    "rasterio": "1.4.4",
+    "scipy": "1.17.1"
+  },
+  "started_utc": "2026-10-06T03:34:54.705890+00:00",
+  "weighted_cloud_records": 20617
+}

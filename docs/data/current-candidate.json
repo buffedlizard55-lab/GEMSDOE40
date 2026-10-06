@@ -1,21 +1,33 @@
 {
-  "bytes": 3918532,
-  "canonical_pixels_sha256": "fab9f6619c02595ceec668c87420789035d8103d3c93b91a2e4aa7c2bc905e86",
-  "cloud": {
-    "bytes": 2183131,
-    "path": "docs/downloads/h4-euler-solutions.csv.gz",
-    "records": 46656,
-    "sha256": "6bed30b224981ef1064256d696c585b76f438011bbae6c0a16c00e6e6f5922ba"
-  },
-  "download_purpose": "Distinct submission-format research artifact; NOT approved for upload",
-  "experiment": "H4",
-  "filename": "gemsdoe40-h4-contact-offset-depthkde-20261006-fab9f6619c02.tif",
-  "name": "GEMSDOE40-H4-CONTACT-OFFSET-fab9f6619c02",
-  "note": "H4 SI0+A rank-aware TMI+dGdz Euler; shallow cross-window depth-consensus KDE. New raw field; HOLD, proxy gate failed; no organizer score.",
-  "note_characters": 137,
-  "organizer_score": null,
-  "path": "docs/downloads/gemsdoe40-h4-contact-offset-depthkde-20261006-fab9f6619c02.tif",
-  "sha256": "ee73ffd76fabbaa1a2e77e17f57947a7db858916d713801e0c3502e49f6acabb",
-  "slot_eligible": false,
+ "experiment": "H13",
+ "status": "HOLD \u2014 DO NOT SUBMIT",
+ "slot_eligible": false,
+ "organizer_score": null,
+ "download_purpose": "Distinct submission-format research artifact; NOT approved for upload",
+ "filename": "gemsdoe40-h13-crest-binary-20261006-a5d5b80a8476.tif",
+ "path": "docs/downloads/gemsdoe40-h13-crest-binary-20261006-a5d5b80a8476.tif",
+ "bytes": 363453,
+ "sha256": "c202a579ce33ea385a117f233857714150f8d68a5d6e8e46ef820b428e08ff33",
+ "canonical_pixels_sha256": "a5d5b80a8476f13bf1ea19dd8a7675a1d2bd2705281399c17baafff8b91675fc",
+ "name": "GEMSDOE40-H13-CREST-BINARY-a5d5b80a8476",
+ "note": "H13 binary Euler SI0 depth-consensus crest emission (trace-locked, cross-family). Unique vs 343 priors. Proxy gate failed: HOLD, no organizer score.",
+ "note_characters": 148,
+ "sibling_candidate": {
+  "experiment": "H8",
+  "filename": "gemsdoe40-h8-tracelock-depthkde-20261006-373fa53b12e9.tif",
+  "path": "docs/downloads/gemsdoe40-h8-tracelock-depthkde-20261006-373fa53b12e9.tif",
+  "sha256": "6c32147db39cd34e77baf31f6cb585165bca1d042cfa599d5d027cb140e0c195",
   "status": "HOLD \u2014 DO NOT SUBMIT"
+ },
+ "archived_candidate_h4": {
+  "filename": "gemsdoe40-h4-contact-offset-depthkde-20261006-fab9f6619c02.tif",
+  "sha256": "ee73ffd76fabbaa1a2e77e17f57947a7db858916d713801e0c3502e49f6acabb",
+  "status": "HOLD \u2014 DO NOT SUBMIT"
+ },
+ "cloud": {
+  "path": "docs/downloads/h4-euler-solutions.csv.gz",
+  "sha256": "6bed30b224981ef1064256d696c585b76f438011bbae6c0a16c00e6e6f5922ba",
+  "bytes": 2183131,
+  "records": 46656
+ }
 }

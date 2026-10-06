@@ -24,8 +24,12 @@ def test_real_download_is_float32_and_bounded_with_exact_declared_footprint():
     assert int(finite.sum()) == 5_167_373
     assert int(np.isnan(a).sum()) == 7_111_787
     assert a[finite].min() == 0 and a[finite].max() == 1
-    assert np.count_nonzero(a[finite]) == 865_145
-    assert np.unique(a[finite]).size == 857_785
+    if c["experiment"] == "H13":
+        # H13 is the frozen crest-binary emission: exactly {0, 1} values.
+        assert np.count_nonzero(a[finite]) == 21_041
+        assert np.unique(a[finite]).size == 2
+    else:
+        raise AssertionError(f"unexpected current experiment {c['experiment']}; pin its measured facts here")
 
 
 def test_real_cloud_record_count_and_depth_labels_match_measured_generation():
