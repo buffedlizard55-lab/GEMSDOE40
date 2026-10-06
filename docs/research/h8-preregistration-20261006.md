@@ -222,3 +222,68 @@ G1 format; G2 full-corpus uniqueness (same thresholds); G3 pooled proxy DTI stri
 above the gradient-top-K control; G4 repaired CAT-HID mean strictly above H33-B2's repaired
 CAT-HID mean; G5 LM diagnostic only. All pass → SLOT-ELIGIBLE CANDIDATE. Any fail → HOLD. No
 post-score tuning; another variant would be a new preregistered hypothesis.
+
+## 2026-10-06 addendum 2 — H9 pre-screen (frozen before any H9 scoring)
+
+Status: registered pre-screen only. No submission slot is at stake and none will be used.
+
+### Purpose
+
+Decide, with one frozen protocol and one run, whether H9 (blind basement-flexure faults
+from unused subsurface bands) deserves a full emission implementation. Session 2 showed
+the decisive bottleneck is placement on unknowable hidden traces; a cheap corridor-response
+pre-screen must clear a bar before further compute is spent.
+
+### Frozen input contract
+
+1. Feature bands from the pinned `data/training_features.tif`
+   (sha256 `4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5`,
+   19 bands, 3,730 × 3,292, EPSG:32611, 100 m): `det_elev` (12), `depth_to_base_surf` (15),
+   `cond_surf` (17), `iso_grav_anom_hg` (18). No other bands may enter the indicator set.
+2. Smoothing: single Gaussian, σ = 2 px (200 m), applied to each raw band before any
+   derivative. No other preprocessing; no masking beyond non-finite → NaN.
+3. Proxy truth: the pinned frozen SGMC proxy `data/external/derived_sgmc_faults_100m_u8.tif`
+   (sha256 `26d142c4…` pin enforced inside `read_proxy_truth`), same template and labels as
+   the H8/H13 audits. Scoring via `score_array_on_proxy` only; no re-derivation.
+
+### Frozen indicator set (exactly six, no additions after seeing results)
+
+1. `HG_depth_base` — horizontal-gradient magnitude of band 15.
+2. `HG_cond` — horizontal-gradient magnitude of band 17.
+3. `HG_grav_hg` — horizontal-gradient magnitude of band 18 (edge-of-edge).
+4. `HG_det_elev` — horizontal-gradient magnitude of band 12.
+5. `flexure_product` — per-cell product of the percentile ranks of HG_depth_base and HG_cond.
+6. `step_depth_base` — |Laplacian| of band 15 (step/line detector, complementary to HG).
+
+Derivatives computed with central differences on the smoothed arrays; all indicators are
+finite-valued inside the footprint and NaN outside it.
+
+### Frozen emission for pre-screen
+
+Each indicator is percentile-normalized over finite in-footprint cells to [0, 1]
+(rank / (N − 1)) and scored directly as a candidate array. This pre-screen candidate is a
+measurement instrument, not a submission candidate; it is never uploaded and only proceeds
+toward candidacy if the decision rule below passes and a full H9 preregistration is written.
+
+### Frozen controls
+
+`mass_matched_controls` (same function as the H8/H13 audits): random dots at the candidate's
+positive-cell budget and the gradient-top-K control, each scored on the same frozen proxy.
+
+### Frozen decision rule
+
+H9 advances to full implementation if and only if the single best indicator satisfies BOTH:
+
+- proxy score > 0.039354 (2 × the H13 session-2 frozen G3 score 0.019677), and
+- proxy score > 2 × its own mass-matched random-dot control score.
+
+Otherwise H9 is recorded as **NEGATIVE-AT-PRESCREEN**, appended to the no-go register, and no
+further H9 compute is spent this session. In either case the result JSON records the sha256 of
+this preregistration document as it stood at run time (fail-closed append-only discipline).
+
+### No-go reminders carried forward
+
+- The SGMC proxy's incumbent (0.8359) is circular and never a promotion gate.
+- A pre-screen pass would still require the full G1–G5 frozen audit before any slot decision.
+- Bands 15/17/18 are public-mirror rasters, not organizer-authenticated; negative or positive,
+  the result is about these mirrors.

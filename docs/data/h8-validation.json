@@ -1,5 +1,5 @@
 {
-  "audited_utc": "2026-10-06T03:46:34.495927+00:00",
+  "audited_utc": "2026-10-06T04:14:12.615595+00:00",
   "candidate": {
     "canonical_pixels_sha256": "373fa53b12e99c8a193ec52102e2e33711dd6830cd28882a045a78f57249c9a9",
     "path": "work/h8/gemsdoe40-h8-tracelock-depthkde-20261006-373fa53b12e9.tif",
@@ -2558,7 +2558,7 @@
     "amended_after_generation": true,
     "note": "preregistration amended after generation (later experiment registered); generation-time hash verified; amendment disclosed in evidence",
     "sha256_at_generation": "6efaaf64c3c8441627ab8cc69338a68737e32763db69ba238a6cb9af611ace4e",
-    "sha256_live": "5fc48198af3ffe1c6d1806985b61d75152ec5958b6849beb7105a3e2961edaa9"
+    "sha256_live": "95ef16f16cafc0926ae02339676a76f21a826d19a2b0e8f23f279e6bdb47c2ee"
   },
   "proxy_info": {
     "holdout_blocks": "4 rows x 6 columns, contiguous; 3-cell guard at internal boundaries",

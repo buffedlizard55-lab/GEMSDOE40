@@ -275,3 +275,33 @@ The formerly unavailable `26d142c4…` SGMC proxy has now been autonomously reco
 ## 2026-10-06 session 2 — H8–H13 slate
 
 The session-2 slate (H8 trace-locked Euler depth consensus, H9 blind basement-flexure, H10 geodetic strain lineaments, H11 seismic corridor × Euler, H12 ComCat mechanisms) plus the H13 value-concentrated crest emission and the CAT-HID instrument repair are registered in [`h8-preregistration-20261006.md`](h8-preregistration-20261006.md). Results: both implemented candidates HOLD at the frozen proxy gate; both pass the repaired CAT-HID skill check. See [`../reports/session2-results-20261006.md`](../reports/session2-results-20261006.md).
+
+### H9 pre-screen result (2026-10-06, session 3) — NEGATIVE-AT-PRESCREEN
+
+Frozen protocol: preregistration addendum 2 (pinned at sha256
+`95ef16f16cafc0926ae02339676a76f21a826d19a2b0e8f23f279e6bdb47c2ee` before scoring).
+Six indicators on bands 12/15/17/18 (σ=2 px Gaussian, then HG / Laplacian / rank-product),
+percentile-emitted, scored on the frozen SGMC proxy (26d142…) with the audit's exact
+`mass_matched_controls`. Decision rule: best indicator must beat 0.039354 AND 2× its own
+random control.
+
+| indicator | proxy | random ctrl | grad-topK |
+|---|---|---|---|
+| HG_det_elev | **0.1048** | 0.1158 | 0.0800 |
+| HG_cond | 0.0710 | 0.1158 | 0.0800 |
+| HG_grav_hg | 0.0680 | 0.1158 | 0.0800 |
+| step_depth_base | 0.0650 | 0.1156 | 0.0800 |
+| flexure_product | 0.0619 | 0.1158 | 0.0800 |
+| HG_depth_base | 0.0579 | 0.1158 | 0.0800 |
+
+No indicator beat its own mass-matched random control; the random bar required 2×. The
+H9-specific subsurface bands (15/17/18) are the weakest. Implementation bug found and fixed
+during the run: the first attempt derived the footprint from feature-band finiteness
+(feature bands are finite across the full 12,279,160-px rectangle), not from the sample
+template's 5,167,373-cell competition footprint; the corrected run above is the valid one
+(full receipt: `docs/data/h9-prescore.json`).
+
+Status: **H9 closed at pre-screen.** No H9 emission will be implemented this session.
+Carry-forward: at dense emission mass (~2.58 M value budget) random dots reach 0.1158 on
+the proxy; sparse, placement-driven mass remains the only untested lever, and no local
+instrument can verify placement against the hidden test set.
