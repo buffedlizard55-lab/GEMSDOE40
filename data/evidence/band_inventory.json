@@ -1,0 +1,97 @@
+{
+  "1": {
+    "band_name": "mag_anom",
+    "category": "magnetic_data",
+    "description": "Magnetic anomaly - deviation from expected Earth's magnetic field"
+  },
+  "2": {
+    "band_name": "rtp",
+    "category": "magnetic_data",
+    "description": "Reduced to pole magnetic data - magnetic anomaly corrected for latitude effects"
+  },
+  "3": {
+    "band_name": "tmi_hg",
+    "category": "magnetic_data",
+    "description": "Total magnetic intensity horizontal gradient - rate of change in horizontal direction"
+  },
+  "4": {
+    "band_name": "geod_2ndinv",
+    "category": "geodetic_strain",
+    "description": "Geodetic second invariant - measure of strain rate tensor magnitude"
+  },
+  "5": {
+    "band_name": "iso_grav_anom_slope",
+    "category": "gravity_data",
+    "description": "Isostatic gravity anomaly slope - gradient of gravity after isostatic correction"
+  },
+  "6": {
+    "band_name": "tc",
+    "category": "magnetic_data",
+    "description": "Tilt angle or total curvature - magnetic field derivative for edge detection"
+  },
+  "7": {
+    "band_name": "geod_shearrate",
+    "category": "geodetic_strain",
+    "description": "Geodetic shear rate - rate of angular deformation from GPS/InSAR"
+  },
+  "8": {
+    "band_name": "geod_dilaterate",
+    "category": "geodetic_strain",
+    "description": "Geodetic dilatation rate - rate of volumetric strain (expansion/contraction)"
+  },
+  "9": {
+    "band_name": "tmi_vg",
+    "category": "magnetic_data",
+    "description": "Total magnetic intensity vertical gradient - rate of change in vertical direction"
+  },
+  "10": {
+    "band_name": "deq_n100a15",
+    "category": "seismic",
+    "description": "Distance to earthquake (n=100km radius, a=15\u00b0 azimuth parameters)"
+  },
+  "11": {
+    "band_name": "iso_grav_anom_vg",
+    "category": "gravity_data",
+    "description": "Isostatic gravity anomaly vertical gradient - vertical rate of change"
+  },
+  "12": {
+    "band_name": "det_elev",
+    "category": "topographic",
+    "description": "Detrended elevation - topography with regional trends removed"
+  },
+  "13": {
+    "band_name": "iso_grav_anom",
+    "category": "gravity_data",
+    "description": "Isostatic gravity anomaly - gravity after compensating for topographic mass"
+  },
+  "14": {
+    "band_name": "tmi",
+    "category": "magnetic_data",
+    "description": "Total magnetic intensity - total strength of magnetic field"
+  },
+  "15": {
+    "band_name": "depth_to_base_surf",
+    "category": "subsurface",
+    "description": "Depth to basement surface - thickness of sedimentary cover"
+  },
+  "16": {
+    "band_name": "ieq_n100a15",
+    "category": "seismic",
+    "description": "Earthquake intensity or density (n=100km radius, a=15\u00b0 parameters)"
+  },
+  "17": {
+    "band_name": "cond_surf",
+    "category": "subsurface",
+    "description": "Conductivity surface - electrical conductivity of subsurface"
+  },
+  "18": {
+    "band_name": "iso_grav_anom_hg",
+    "category": "gravity_data",
+    "description": "Isostatic gravity anomaly horizontal gradient - horizontal rate of change"
+  },
+  "19": {
+    "band_name": "det_elev_slope",
+    "category": "topographic",
+    "description": "Detrended elevation slope - gradient of elevation after detrending"
+  }
+}

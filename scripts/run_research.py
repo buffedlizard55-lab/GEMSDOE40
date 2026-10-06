@@ -15,11 +15,11 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 import numpy as np
 import rasterio
 
-from gemsdoe40.euler import run_h1
+from gemsdoe40.research_euler import run_h1
 from gemsdoe40.euler_h2 import run_h2
-from gemsdoe40.holdout import promotion_gate, read_proxy_truth, score_array_on_proxy
+from gemsdoe40.research_holdout import promotion_gate, read_proxy_truth, score_array_on_proxy
 from gemsdoe40.raster import validate_candidate, write_candidate, write_json
-from gemsdoe40.uniqueness import audit_candidate, file_sha256
+from gemsdoe40.research_uniqueness import audit_candidate, file_sha256
 
 
 PINNED_INPUT_SHA256 = {
@@ -168,6 +168,61 @@ def score_prior_inventory(
     return rows, summary
 
 
+def summarize_mainline_prior_addendum(
+    inventory_path: Path,
+    prior_rows: list[dict[str, Any]],
+    prior_summary: dict[str, Any],
+    candidate_proxy: dict[str, Any],
+    incumbent_row: dict[str, Any],
+) -> dict[str, Any] | None:
+    """Keep the post-mainline TIFF audit reproducible in regenerated H2-B reports."""
+    inventory = json.loads(inventory_path.read_text(encoding="utf-8"))
+    addendum = inventory.get("supplemental_addendum")
+    if not addendum:
+        return None
+    pinned = addendum["pinned_commit"]
+    rows = [
+        row for row in prior_rows
+        if any(path.get("ref") == pinned for path in row.get("paths", []) if isinstance(path, dict))
+    ]
+    details = []
+    for row in rows:
+        score = row.get("proxy_holdout")
+        gate = promotion_gate(score, incumbent_row["proxy_holdout"]) if score else None
+        details.append({
+            "git_blob_sha": row["git_blob_sha"],
+            "sha256": row.get("sha256"),
+            "paths": row.get("paths", []),
+            "in_footprint_nonzero": row.get("in_footprint_nonzero"),
+            "format_eligible": row.get("format_eligible", False),
+            "format_issues": row.get("format_issues", []),
+            "pooled_proxy_dti_diagnostic": score["pooled"]["score"] if score else None,
+            "blocks_won_vs_frozen_all_prior_incumbent": gate["blocks_won"] if gate else None,
+            "pooled_delta_vs_frozen_all_prior_incumbent": gate["pooled_delta"] if gate else None,
+            "status_note": "Diagnostic local SGMC-proxy score, not an organizer score.",
+        })
+    previous_incumbent_sha = "7251c22bb489198ae4709611c29cef3ac799d8942c2f1779086d5b59ae0e3097"
+    incumbent = prior_summary["incumbent"]
+    return {
+        "pinned_main_commit": pinned,
+        "candidate_tiff_path_observations": addendum.get("main_candidate_tiff_paths"),
+        "unique_blobs_added": addendum.get("new_unique_git_blobs"),
+        "same_grid_blobs_added": sum(bool(row.get("same_grid")) for row in rows),
+        "format_eligible_blobs_added": sum(bool(row.get("format_eligible")) for row in rows),
+        "format_ineligible_blobs_added": sum(not bool(row.get("format_eligible")) for row in rows),
+        "inventory_unique_blobs": prior_summary["inventory_unique_rasters"],
+        "same_grid_priors_scored": prior_summary["same_grid_scored"],
+        "format_eligible_priors": prior_summary["format_eligible_and_scored"],
+        "incumbent_changed_from_pre_addendum": incumbent["sha256"] != previous_incumbent_sha,
+        "incumbent_sha256": incumbent["sha256"],
+        "incumbent_pooled_proxy_dti": incumbent["score"],
+        "candidate_proxy_dti_unchanged_in_addendum": candidate_proxy["pooled"]["score"],
+        "new_mainline_output_diagnostics": details,
+        "h40_4_diagnostic": next((row for row in details if row["git_blob_sha"] == "422ac9465ed5a0ff4158c4551b31fd3954513090"), None),
+        "official_candidate_score": None,
+    }
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--features", required=True, type=Path)
@@ -178,7 +233,7 @@ def main() -> None:
     parser.add_argument("--hypothesis", choices=("H1", "H2", "H2B"), default="H1")
     parser.add_argument("--inventory", type=Path, default=Path("docs/data/prior_raster_inventory.json"))
     parser.add_argument("--candidate", type=Path, default=None)
-    parser.add_argument("--validation-report", type=Path, default=Path("docs/data/validation.json"))
+    parser.add_argument("--validation-report", type=Path, default=Path("docs/data/validation-h2b-20261005.json"))
     parser.add_argument("--uniqueness-report", type=Path, default=Path("docs/data/uniqueness_audit.json"))
     parser.add_argument("--format-receipt", type=Path, default=Path("docs/data/format_receipt.json"))
     args = parser.parse_args()
@@ -217,6 +272,11 @@ def main() -> None:
     )
     incumbent_row = next(row for row in prior_rows if row.get("sha256") == prior_summary["incumbent"]["sha256"])
     gate = promotion_gate(candidate_proxy, incumbent_row["proxy_holdout"])
+    mainline_reaudit = summarize_mainline_prior_addendum(
+        args.inventory, prior_rows, prior_summary, candidate_proxy, incumbent_row
+    )
+    if mainline_reaudit is not None:
+        prior_summary["mainline_addendum"] = mainline_reaudit
 
     uniqueness = audit_candidate(args.candidate, args.sample, args.inventory, args.prior_cache)
     write_json(args.uniqueness_report, uniqueness)
@@ -245,6 +305,7 @@ def main() -> None:
         "proxy_independence_caveat": "Owner-derived SGMC mirror; not independently rebuilt or organizer truth. Some prior rasters are SGMC-derived. The frozen all-prior incumbent is retained as registered, but its score is not an independent generalization estimate.",
         "method_summary": method_summary,
         "prior_baselines": prior_summary,
+        "mainline_prior_tiff_reaudit": mainline_reaudit,
         "candidate_proxy_holdout": candidate_proxy,
         "promotion_gate": promotion,
         "prior_raster_scores": prior_rows,

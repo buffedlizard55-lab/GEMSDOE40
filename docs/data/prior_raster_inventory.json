@@ -1,7 +1,7 @@
 {
-  "artifact_observations_before_exact_path_dedup": 603,
+  "artifact_observations_before_exact_path_dedup": 614,
   "deduplication": "GitHub Git blob SHA-1; all observed repo/ref/path locations retained under artifacts.",
-  "fresh_byte_verification": "Every cached TIFF was downloaded from a pinned GitHub path and its byte length and Git blob SHA-1 were rechecked; raw SHA-256 is stored per unique blob.",
+  "fresh_byte_verification": "Every cached TIFF was downloaded from a pinned GitHub path and its byte length and Git blob SHA-1 were rechecked; raw SHA-256 is stored per unique blob. Supplemental GEMSDOE40 blobs were read from the pinned origin/main Git tree, matched their Git blob SHA-1 and byte size, and have SHA-256 values stored in this addendum.",
   "owner": "buffedlizard55-lab",
   "repositories_scanned": 54,
   "repository_names": [
@@ -101,11 +101,21 @@
     "GEMSDOE38",
     "GEMSDOE39",
     "GEMSDOE4",
+    "GEMSDOE40",
     "GEMSDOE9"
   ],
-  "total_unique_blob_bytes": 326361937,
-  "unique_git_blobs": 270,
-  "unique_pinned_repo_ref_path_locations": 448,
+  "supplemental_addendum": {
+    "added_at_utc": "2026-10-05",
+    "main_candidate_tiff_paths": 11,
+    "new_path_observations": 11,
+    "new_unique_git_blobs": 9,
+    "pinned_commit": "0e4a795d467f16555443ee0446875d7c32f51aa5",
+    "reason": "The branch started at cddc3ba before main advanced; origin/main now contains public GEMSDOE40 GeoTIFF outputs that were absent from the original corpus. Add these pre-existing repo outputs to the comparison/uniqueness inventory.",
+    "scope_note": "All 11 docs/downloads TIFF paths from the pinned main tree are retained; 9 unique Git blobs after deduplication. Labels/sample inputs excluded."
+  },
+  "total_unique_blob_bytes": 343774106,
+  "unique_git_blobs": 279,
+  "unique_pinned_repo_ref_path_locations": 459,
   "unique_rasters": [
     {
       "artifacts": [
@@ -5580,6 +5590,157 @@
       "bytes": 579554,
       "git_blob_sha": "8ab4a27b259d43c50ccf4e356d2a1eb7d714b90e",
       "sha256": "948742576c8ee48805edc567fd9aee7f6e4d995b34e33d9502ff80c15cb0870b"
+    },
+    {
+      "artifacts": [
+        {
+          "bytes": 472382,
+          "kind": "published-download-or-submission",
+          "path": "docs/downloads/GEMSDOE40-submission-nan.tif",
+          "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE40/0e4a795d467f16555443ee0446875d7c32f51aa5/docs/downloads/GEMSDOE40-submission-nan.tif",
+          "ref": "0e4a795d467f16555443ee0446875d7c32f51aa5",
+          "repo": "GEMSDOE40"
+        },
+        {
+          "bytes": 472382,
+          "kind": "published-download-or-submission",
+          "path": "docs/downloads/gemsdoe40-euler-si0-depthkde-20261005T230506Z-5bc279cd-nan.tif",
+          "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE40/0e4a795d467f16555443ee0446875d7c32f51aa5/docs/downloads/gemsdoe40-euler-si0-depthkde-20261005T230506Z-5bc279cd-nan.tif",
+          "ref": "0e4a795d467f16555443ee0446875d7c32f51aa5",
+          "repo": "GEMSDOE40"
+        }
+      ],
+      "bytes": 472382,
+      "git_blob_sha": "76f9bf7ac3add357150ef80953193d331efa3e4c",
+      "sha256": "3d30ed6f67a87db2e95dbd3e4e1a0dfec64b67ca5c9db7c9f3667d1daf3a3171"
+    },
+    {
+      "artifacts": [
+        {
+          "bytes": 340360,
+          "kind": "published-download-or-submission",
+          "path": "docs/downloads/GEMSDOE40-submission.tif",
+          "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE40/0e4a795d467f16555443ee0446875d7c32f51aa5/docs/downloads/GEMSDOE40-submission.tif",
+          "ref": "0e4a795d467f16555443ee0446875d7c32f51aa5",
+          "repo": "GEMSDOE40"
+        },
+        {
+          "bytes": 340360,
+          "kind": "published-download-or-submission",
+          "path": "docs/downloads/gemsdoe40-euler-si0-depthkde-20261005T230506Z-5bc279cd-zeros.tif",
+          "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE40/0e4a795d467f16555443ee0446875d7c32f51aa5/docs/downloads/gemsdoe40-euler-si0-depthkde-20261005T230506Z-5bc279cd-zeros.tif",
+          "ref": "0e4a795d467f16555443ee0446875d7c32f51aa5",
+          "repo": "GEMSDOE40"
+        }
+      ],
+      "bytes": 340360,
+      "git_blob_sha": "033c13e3ef317f0db69def3e498bfdb637df28f8",
+      "sha256": "5bc279cd55e65733df6d532b6b1c9d348b33720ed9196237371d487042fff195"
+    },
+    {
+      "artifacts": [
+        {
+          "bytes": 492727,
+          "kind": "published-download-or-submission",
+          "path": "docs/downloads/gems40-euler-augmented-incumbent-20261005-ac1c1927-zeros.tif",
+          "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE40/0e4a795d467f16555443ee0446875d7c32f51aa5/docs/downloads/gems40-euler-augmented-incumbent-20261005-ac1c1927-zeros.tif",
+          "ref": "0e4a795d467f16555443ee0446875d7c32f51aa5",
+          "repo": "GEMSDOE40"
+        }
+      ],
+      "bytes": 492727,
+      "git_blob_sha": "363f229be9f79f21b5bc34780fd3c8631b9e6485",
+      "sha256": "9940d101fe0ad6a06b941bc8f5156030fbe282b67263bc82cec8c4446753b6df"
+    },
+    {
+      "artifacts": [
+        {
+          "bytes": 885170,
+          "kind": "published-download-or-submission",
+          "path": "docs/downloads/gems40-euler-augmented-incumbent-20261005-ac1c1927.tif",
+          "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE40/0e4a795d467f16555443ee0446875d7c32f51aa5/docs/downloads/gems40-euler-augmented-incumbent-20261005-ac1c1927.tif",
+          "ref": "0e4a795d467f16555443ee0446875d7c32f51aa5",
+          "repo": "GEMSDOE40"
+        }
+      ],
+      "bytes": 885170,
+      "git_blob_sha": "73f3074f37d17aacf59ad3fa4991a500e945a5ae",
+      "sha256": "54aa8c6cbee0a1f858f80f898c5c3ae9c069ad3d11c7457b94717c261b5d9416"
+    },
+    {
+      "artifacts": [
+        {
+          "bytes": 690324,
+          "kind": "published-download-or-submission",
+          "path": "docs/downloads/gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e-zeros.tif",
+          "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE40/0e4a795d467f16555443ee0446875d7c32f51aa5/docs/downloads/gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e-zeros.tif",
+          "ref": "0e4a795d467f16555443ee0446875d7c32f51aa5",
+          "repo": "GEMSDOE40"
+        }
+      ],
+      "bytes": 690324,
+      "git_blob_sha": "08a606d69c89bedc2a1dc9aedd3d38e6429e506f",
+      "sha256": "831459fd86d636f8dc12986316d588a4c6b9ecc8ca0c9eb5bdae9a84427e9ca6"
+    },
+    {
+      "artifacts": [
+        {
+          "bytes": 1280006,
+          "kind": "published-download-or-submission",
+          "path": "docs/downloads/gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e.tif",
+          "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE40/0e4a795d467f16555443ee0446875d7c32f51aa5/docs/downloads/gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e.tif",
+          "ref": "0e4a795d467f16555443ee0446875d7c32f51aa5",
+          "repo": "GEMSDOE40"
+        }
+      ],
+      "bytes": 1280006,
+      "git_blob_sha": "422ac9465ed5a0ff4158c4551b31fd3954513090",
+      "sha256": "33d893193f6eb009165b5c62bcef1c7c945531ed19ddb2c621150a52f0c16835"
+    },
+    {
+      "artifacts": [
+        {
+          "bytes": 342620,
+          "kind": "published-download-or-submission",
+          "path": "docs/downloads/gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380-zeros.tif",
+          "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE40/0e4a795d467f16555443ee0446875d7c32f51aa5/docs/downloads/gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380-zeros.tif",
+          "ref": "0e4a795d467f16555443ee0446875d7c32f51aa5",
+          "repo": "GEMSDOE40"
+        }
+      ],
+      "bytes": 342620,
+      "git_blob_sha": "3646532612e77c0c4a7e0f4173fff4fd0458b80a",
+      "sha256": "56508f98d3f250370cd07e77d9972000da5562c6304415db54fd82ad97395b87"
+    },
+    {
+      "artifacts": [
+        {
+          "bytes": 634531,
+          "kind": "published-download-or-submission",
+          "path": "docs/downloads/gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif",
+          "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE40/0e4a795d467f16555443ee0446875d7c32f51aa5/docs/downloads/gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif",
+          "ref": "0e4a795d467f16555443ee0446875d7c32f51aa5",
+          "repo": "GEMSDOE40"
+        }
+      ],
+      "bytes": 634531,
+      "git_blob_sha": "2542597dff5b3b130958ce147670a65be173010f",
+      "sha256": "7ee6cac2444949a31d43ffd66a5ae0825c366e3d2ce1d18a1e6adc03fb4b63f1"
+    },
+    {
+      "artifacts": [
+        {
+          "bytes": 12274049,
+          "kind": "published-download-or-submission",
+          "path": "docs/downloads/gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif",
+          "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE40/0e4a795d467f16555443ee0446875d7c32f51aa5/docs/downloads/gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif",
+          "ref": "0e4a795d467f16555443ee0446875d7c32f51aa5",
+          "repo": "GEMSDOE40"
+        }
+      ],
+      "bytes": 12274049,
+      "git_blob_sha": "d4639f1bf50f1d4870b752fc0bf9df5ad30b9ce6",
+      "sha256": "d58eea0074e29ac171b70ba652a4e5bde76e52ce1259a958fd49f558c4eaf459"
     }
   ]
 }

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hypotheses · GEMSDOE40</title><link rel="stylesheet" href="assets/site.css"></head>
+<body><header><h1>Hypotheses</h1><div class="muted small">DOE GEMS Prize (DrivenData #306) ·
+Euler deconvolution depth-clustering submission system · repository
+<a href="https://github.com/buffedlizard55-lab/GEMSDOE40">buffedlizard55-lab/GEMSDOE40</a></div>
+<div style="margin-top:10px"><nav class="small">
+<a href="index.html">Home</a><a href="executive-summary.html">How to submit</a>
+<a href="methodology.html">Method</a><a href="hypotheses.html">Hypotheses</a>
+<a href="leaderboard-analysis.html">Leaderboard analysis</a><a href="evidence.html">Evidence</a>
+<a href="sources.html">Sources</a></nav></div></header>
+<aside class="panel note" role="note"><strong>Historical main-branch supporting page (2026-10-05, before the H2-B audit).</strong> This page preserves prior research and should not be read as current upload advice. The prior H40-4 multi-scale TIFF was later scored at 0.124715 on the owner-derived SGMC proxy (0/24 blocks) and fails this repository's strict NaN-nodata format check; H2-B is <strong>HOLD — DO NOT SUBMIT</strong>. See the <a href="index.html">current project status</a> and <a href="executive-summary.html">current Executive Summary</a>. No organizer score is asserted here.</aside>
+<main>
+<p class="small muted">Ranking rule: expected DTI improvement first, implementation cost second, and
+nothing is promoted unless it beats the incumbent <em>in all four spatially blocked folds</em> of the
+LM instrument. "Data obtainable?" is answered for every idea that needs an external layer.</p>
+
+<h2>H40-1 — Euler SI = 0 depth-cluster crests from the magnetic and gravity layers
+<span class="badge b-warn">MEASURED: best addition arm, below break-even as a standalone emission</span></h2>
+<table>
+<tr><th>item</th><th>value</th></tr>
+<tr><td>layers</td><td><code>rtp</code> (band 2), <code>tmi</code> (14), <code>mag_anom</code> (1), <code>iso_grav_anom</code> (13) of <code>training_features.tif</code> — no external data</td></tr>
+<tr><td>physical signature</td><td>depth of a fault-like <em>contact</em> from the Euler homogeneity equation (N = 0), i.e. a source-geometry estimate, not an edge magnitude</td></tr>
+<tr><td>why it can catch an uncatalogued fault</td><td>a contact that truncates magnetised basement <em>at depth</em> produces Euler solutions even when the surface scarp is eroded or buried, so it can mark faults the scarp-based catalogue misses</td></tr>
+<tr><td>how it differs from prior work</td><td>the sibling repo (GEMSDOE28, H37-3/H38-1) emitted dots at raw Euler <em>centroids</em> and as a corroboration for a ridge detector; this repository (a) emits the <em>depth-clustered density crest</em>, (b) uses the gravity layer as an equal partner, (c) validates the marginal efficiency against the metric's break-even rather than only against a holdout mean</td></tr>
+<tr><td>measured</td><td>raw KDE support: marginal efficiency 0.040–0.053 credit/px (below τ = 0.0588). Crest-thinned: <strong>0.066–0.085 credit/px = 1.13–1.44 × τ</strong>, all four blocked folds positive. Standalone LM-cal 0.116 (incumbent 0.268).</td></tr>
+<tr><td>cost</td><td>~10 s per layer in this sandbox, CPU only</td></tr>
+<tr><td>verdict</td><td><strong>Promote as an augmentation, reject as a replacement.</strong> Shipped as the augmented artifact.</td></tr>
+</table>
+
+<h2>H40-2 — Euler depth field as a <em>gate</em> on the incumbent's false positives
+<span class="badge b-bad">MEASURED: refuted (support too sparse to gate)</span></h2>
+<table>
+<tr><tr><td>layers</td><td>the incumbent's ridge support + the Euler depth-cluster crest field</td></tr>
+<tr><td>physical signature</td><td>a lineament with no shallow contact beneath it is likelier to be a road, strandline or unit boundary than a fault</td></tr>
+<tr><td>why it could help</td><td>removal is charged at α per pixel; the group's false positives are dominated by non-tectonic lineaments</td></tr>
+<tr><td>measured</td><td>the Euler crest support and the incumbent's support have Jaccard ≈ 0.005 — the crests cannot gate a field they do not touch. No prune variant kept ≥ 5,000 dots.</td></tr>
+<tr><td>verdict</td><td>Refuted in this form. A <em>dilated</em> or <em>smoothed</em> Euler density (not crests) is the open variant to test next.</td></tr>
+</table>
+
+<h2>H40-3 — Gravity-only Euler contacts as a separate detector family
+<span class="badge b-warn">MEASURED: highest per-pixel efficiency, smallest budget</span></h2>
+<table>
+<tr><td>layers</td><td><code>iso_grav_anom</code> (band 13); optionally <code>iso_grav_anom_hg</code> (18) and <code>iso_grav_anom_vg</code> (11) for an independent derivative set</td></tr>
+<tr><td>physical signature</td><td>density contrast across a fault (basin fill vs basement), insensitive to remanent magnetisation and to the magnetic-blind units that dominate parts of the study area</td></tr>
+<tr><td>why it can catch an uncatalogued fault</td><td>the programme has been magnetic- and topography-dominated; a gravity-only contact is a genuinely independent constraint, and the gravity layer's inertia makes it sensitive to deep, buried contacts</td></tr>
+<tr><td>measured</td><td>crest support 6,131 px (only 7 % within 200 m of the catalogue); added to the incumbent: 0.1226 credit/px = 2.08 × τ on the top 183 px, 0.0822 at a 2,000 px budget — the highest efficiency measured in this session</td></tr>
+<tr><td>verdict</td><td>Keep: it is the natural next sweep (gravity-only crest budget vs gain) and the cheapest remaining win</td></tr>
+</table>
+
+<h2>H40-4 — Multi-window (multi-scale) Euler conjunction
+<span class="badge b-ok">MEASURED — SHIPPED as the recommended upload</span></h2>
+<table>
+<tr><td>layers</td><td>the same four layers (rtp, tmi, mag_anom, iso_grav_anom), Euler windows 10, 15, 20
+and 30 px (1 / 1.5 / 2 / 3 km) with N = 0, rank-normalised per scale and combined by rank-minimum</td></tr>
+<tr><td>physical signature</td><td>a real fault returns mutually consistent depths <em>across</em> window
+sizes; model error (interference from neighbouring sources) is the dominant bias of single-window Euler
+deconvolution, and it is the reason the sibling repositories' raw-centroid emission sat 1–3 px off the
+surface trace</td></tr>
+<tr><td>measured</td><td>129,662 crest px survive the four-scale conjunction (98,000 fewer than the
+single-scale w10 crest set before the catalogue buffer). Budget sweep on the blocked instrument
+(<code>data/evidence/multiscale.json</code>): added px → efficiency in units of τ = 0.0588 —
+10 k → 1.18×, 20 k → 1.13×, 30 k → 1.13×, 40 k → 1.18×, <strong>60 k → 1.18×</strong>, 80 k → 1.11×,
+all of it → 1.06× with only 3/4 folds. The 60 k budget is the argmax of projected live gain that stays
+inside the instrument's validity domain (&lt; 120 k emitted px) and is positive in 4/4 blocked folds:
+97,654 px emitted, +60,000 new, LM-cal 0.34835 vs the incumbent's 0.26792
+(<strong>+0.08043</strong>), 4/4 folds, projected live gain +0.029 conservative / +0.080 instrument-based</td></tr>
+<tr><td>differs from</td><td>every prior arm uses a single window scale, and the sibling repository's
+Euler work emitted raw cluster centroids; this changes the <em>estimator</em> and the emission rule
+together, and it is the first multi-scale conjunction in the programme</td></tr>
+<tr><td>cost / data</td><td>12 Euler runs × ~12 s; all data already local</td></tr>
+<tr><td>verdict</td><td><strong>Promoted to the recommended upload.</strong> The single-scale artifact
+remains as the conservative fallback; the budget must not be pushed past 60 k added px without new
+evidence, because the instrument's density calibration is only verified below ~120 k emitted px</td></tr>
+</table>
+
+<h2>H40-5 — Depth-structured emission (depth-binned detection, not a single depth field)
+<span class="badge b-warn">NOT YET MEASURED — no new data needed</span></h2>
+<table>
+<tr><td>layers</td><td>the same Euler clouds, split into depth deciles (0–200 m, 200–400 m, …)</td></tr>
+<tr><td>physical signature</td><td>geothermal feeder faults in the Great Basin are steeply dipping and near-surface; a depth-<em>banded</em> emission lets the metric pay for the shallow band while the deep band is retained only where it is corroborated by a shallow cluster</td></tr>
+<tr><td>why it can catch an uncatalogued fault</td><td>shallow magnetic contacts with no deep continuation are often cultural/geological noise, while a shallow contact rooted in a deeper structure is a strong fault indicator</td></tr>
+<tr><td>differs from</td><td>the current weighting collapses depth into a single exponential; a banded test makes the depth axis an explicit hypothesis instead of a nuisance</td></tr>
+<tr><td>cost / data</td><td>~1 min; all data local</td></tr>
+<tr><td>verdict</td><td>Cheap, physically motivated, and directly testable on the existing cloud arrays</td></tr>
+</table>
+
+<h2>Ideas that need new external data (named source, obtainability checked)</h2>
+<table>
+<tr><th>idea</th><th>layer needed</th><th>official free source</th><th>obtainable from this sandbox?</th></tr>
+<tr><td>2 m temperature-probe thermal lineaments</td><td>GDR 1391 <code>2m_temperature_probe_INGENIOUS_regional_data.zip</code></td><td><a href="https://gdr.openei.org/submissions/1391">gdr.openei.org/submissions/1391</a> (CC BY 4.0, DOI 10.15121/1881483)</td><td><span class="badge b-bad">no</span> — <code>gdr.openei.org</code> unreachable from this sandbox (HTTP 000). Available via a GitHub-Actions runner, as the sibling repos do.</td></tr>
+<tr><td>paleo geothermal sinter/tufa conduits</td><td>GDR 1391 <code>paleo_geothermal_regional.zip</code></td><td>same</td><td><span class="badge b-warn">partly</span> — a copy is already mirrored at <code>GEMSDOE24/data/external/paleo_geothermal_regional.zip</code> (84,008 B)</td></tr>
+<tr><td>1 m LiDAR piercing-line offsets</td><td>USGS 3DEP 1 m DEM tiles (716 tiles)</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/data/">competition <code>1m_DEM_links.csv</code></a> / <a href="https://registry.opendata.aws/usgs-lidar/">AWS open data</a></td><td><span class="badge b-bad">no</span> directly; the runner bridge is required and the volume is large</td></tr>
+</table>
+</main></body></html>

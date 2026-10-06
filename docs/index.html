@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="GEMSDOE40: auditable scientific research into geologic fault prediction for the DOE GEMS Prize Challenge. Current result: HOLD, do not submit.">
   <title>GEMSDOE40 · Fault prediction, with an audit trail</title>
-  <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="assets/research.css">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -54,7 +54,7 @@
           <div class="stat"><b class="bad">0.00631</b><span>H2-B pooled proxy DTI</span></div>
           <div class="stat"><b class="bad">−0.82959</b><span>delta vs frozen all-prior incumbent</span></div>
           <div class="stat"><b>17,425</b><span>positive KDE support cells · 0.337%</span></div>
-          <div class="stat"><b class="good">268 / 268</b><span>same-grid prior rasters checked for uniqueness</span></div>
+          <div class="stat"><b class="good">277 / 277</b><span>same-grid prior rasters checked for uniqueness</span></div>
         </div>
         <p class="small" style="margin-top:14px">The proxy is an owner-derived SGMC mirror (SHA-256 <code>26d142c4…b5c</code>), not hidden challenge truth and not an independently rebuilt USGS raster. H2-B did not use it in candidate construction.</p>
       </section>
@@ -116,7 +116,26 @@
               </tbody></table></div>
             </div>
           </div>
-          <p class="small" style="margin:18px 0 0">Receipts: <a href="data/format_receipt.json">format</a> · <a href="data/uniqueness_audit.json">uniqueness</a> · <a href="data/validation.json">full block/prior scores</a> · <a href="data/feasibility.json">feasibility data</a> · <a href="data/prior_raster_inventory.json">prior inventory</a> · <a href="data/prior_raster_metadata_audit.json">prior metadata audit</a> · <a href="https://github.com/buffedlizard55-lab/GEMSDOE40/blob/main/docs/research/source-register.md">source register</a></p>
+          <p class="small" style="margin:18px 0 0">Receipts: <a href="data/format_receipt.json">format</a> · <a href="data/uniqueness_audit.json">uniqueness</a> · <a href="data/validation-h2b-20261005.json">full block/prior scores</a> · <a href="data/feasibility.json">feasibility data</a> · <a href="data/prior_raster_inventory.json">prior inventory</a> · <a href="data/prior_raster_metadata_audit.json">prior metadata audit</a> · <a href="https://github.com/buffedlizard55-lab/GEMSDOE40/blob/main/docs/research/source-register.md">source register</a></p>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="previous-candidate-title">
+        <div class="section-header">
+          <h2 id="previous-candidate-title">Earlier main-branch candidate, preserved</h2>
+          <p>This was the prior repository recommendation before the H2-B experiment. A later addendum scored its raster on the same owner-derived SGMC proxy used for H2-B; its earlier LM-calibrated instrument results remain a distinct, non-comparable measure.</p>
+        </div>
+        <div class="panel two-col">
+          <div>
+            <span class="badge">historical local recommendation · no organizer score</span>
+            <h3 style="margin:14px 0 8px">H40-4 · multi-scale Euler augmentation</h3>
+            <p class="small">The pre-existing main branch reported 97,654 positive cells and LM-calibrated DTI 0.34835 versus 0.26792 for its prior site-best, better in 4/4 folds. That is a separate local instrument, not a DrivenData score. In the later addendum, H40-4 scored 0.124715 on the owner-derived SGMC proxy and won 0/24 blocks versus the frozen incumbent; it is below the incumbent and fails this repository's strict format gate because its TIFF lacks a NaN nodata tag.</p>
+            <div class="actions"><a class="button secondary" href="downloads/gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e.tif" download>↓ Download prior H40-4 TIFF</a></div>
+          </div>
+          <div>
+            <div class="alert"><strong>Provenance boundary.</strong> Its 0.124715 result is a local SGMC-proxy diagnostic, not hidden truth or an organizer score. The earlier LM-calibrated 0.34835 is a separate instrument. The TIFF is retained as historical research, not promoted or submission-ready.</div>
+            <p class="small">Historical pages: <a href="index-main-before-h2b.html">pre-H2-B landing snapshot</a> · <a href="executive-summary-h40-4.html">pre-H2-B submission guide</a> · <a href="data/validation.json">main-branch validation record</a> · <a href="data/shipped_validation.json">shipped artifact checks</a>.</p>
+          </div>
         </div>
       </section>
 
@@ -142,8 +161,13 @@
             <div class="eyebrow">Attribution warning</div>
             <h3 style="margin:14px 0">0.2778 is account-level only</h3>
             <p class="small">The official page showed an `extradr19` row at 0.2778 (rank 13, nine submissions). No accessible file-level receipt links that row to a raster. GEMSDOE32's H33-2-B2 record says 37,654 dots, projected 0.2747, <strong>UNSCORED</strong>; we do not attribute 0.2778 to H33.</p>
-            <a class="more" href="data/feed.json">Open timestamped feed data →</a>
+            <a class="more" href="data/feed-20261005.json">Open timestamped feed data →</a>
           </div>
+        </div>
+        <div class="panel" style="margin-top:18px">
+          <div class="eyebrow">Project update · 2026-10-05</div>
+          <p style="margin:10px 0 0"><strong>Prior-output audit expanded during main-branch reconciliation:</strong> 11 TIFF paths (9 unique blobs) were added; H2-B was rechecked against all 277 exact-grid prior blobs and still passes uniqueness, but remains <strong>HOLD — DO NOT SUBMIT</strong> at 0.006313 local proxy DTI and 0/24 block wins. Historical H40-4 scored 0.124715 on that same proxy, won 0/24, and fails the strict local nodata check. No organizer score exists for either raster.</p>
+          <a class="more" href="data/feed-20261005.json">Read the full dated project/leaderboard feed →</a>
         </div>
       </section>
 

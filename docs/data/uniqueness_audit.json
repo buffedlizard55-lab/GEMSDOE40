@@ -7,6 +7,32 @@
   },
   "closest_prior_outputs": [
     {
+      "bytes": 12274049,
+      "canonical_pixels_equal_on_footprint": false,
+      "git_blob_sha": "d4639f1bf50f1d4870b752fc0bf9df5ad30b9ce6",
+      "near_duplicate_by_preregistered_rule": false,
+      "nonzero_intersection": 8796,
+      "nonzero_support_containment": 0.5047919655667145,
+      "nonzero_support_jaccard": 0.002595106707389032,
+      "nonzero_union": 3389456,
+      "paths": [
+        {
+          "bytes": 12274049,
+          "kind": "published-download-or-submission",
+          "path": "docs/downloads/gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif",
+          "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE40/0e4a795d467f16555443ee0446875d7c32f51aa5/docs/downloads/gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif",
+          "ref": "0e4a795d467f16555443ee0446875d7c32f51aa5",
+          "repo": "GEMSDOE40"
+        }
+      ],
+      "pearson_r_on_footprint": -0.027410049775066777,
+      "raw_sha256_match": false,
+      "sha256": "d58eea0074e29ac171b70ba652a4e5bde76e52ce1259a958fd49f558c4eaf459",
+      "top_budget": 17425,
+      "top_budget_containment": 0.0,
+      "top_budget_intersection": 0
+    },
+    {
       "bytes": 886556,
       "canonical_pixels_equal_on_footprint": false,
       "git_blob_sha": "af9ba1b6cd288f0fdc79cc3c035c59f751b4c0e4",
@@ -239,35 +265,35 @@
       "top_budget": 17425,
       "top_budget_containment": 0.0036154949784791965,
       "top_budget_intersection": 63
-    },
-    {
-      "bytes": 554204,
-      "canonical_pixels_equal_on_footprint": false,
-      "git_blob_sha": "f11a0f27760003208c8a1df16b49a969a8f427ec",
-      "near_duplicate_by_preregistered_rule": false,
-      "nonzero_intersection": 608,
-      "nonzero_support_containment": 0.034892395982783354,
-      "nonzero_support_jaccard": 0.0016848732742519219,
-      "nonzero_union": 360858,
-      "paths": [
-        {
-          "bytes": 554204,
-          "kind": "published-download-or-submission",
-          "path": "docs/downloads/archive/13gems-r6-ensemble-20260929T182914Z_allfinite.tif",
-          "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/13GEMSDOE/92ee6f074323f161eed837b80ec3ee5b662e26f5/docs/downloads/archive/13gems-r6-ensemble-20260929T182914Z_allfinite.tif",
-          "ref": "92ee6f074323f161eed837b80ec3ee5b662e26f5",
-          "repo": "13GEMSDOE"
-        }
-      ],
-      "pearson_r_on_footprint": -0.007393641012893443,
-      "raw_sha256_match": false,
-      "sha256": "70c4ccd5dd51c6cbf1c0b8019738885a357dde7be64c17b4fb278a12f073e1e4",
-      "top_budget": 17425,
-      "top_budget_containment": 0.0036154949784791965,
-      "top_budget_intersection": 63
     }
   ],
   "comparisons": [
+    {
+      "bytes": 12274049,
+      "canonical_pixels_equal_on_footprint": false,
+      "git_blob_sha": "d4639f1bf50f1d4870b752fc0bf9df5ad30b9ce6",
+      "near_duplicate_by_preregistered_rule": false,
+      "nonzero_intersection": 8796,
+      "nonzero_support_containment": 0.5047919655667145,
+      "nonzero_support_jaccard": 0.002595106707389032,
+      "nonzero_union": 3389456,
+      "paths": [
+        {
+          "bytes": 12274049,
+          "kind": "published-download-or-submission",
+          "path": "docs/downloads/gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif",
+          "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE40/0e4a795d467f16555443ee0446875d7c32f51aa5/docs/downloads/gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif",
+          "ref": "0e4a795d467f16555443ee0446875d7c32f51aa5",
+          "repo": "GEMSDOE40"
+        }
+      ],
+      "pearson_r_on_footprint": -0.027410049775066777,
+      "raw_sha256_match": false,
+      "sha256": "d58eea0074e29ac171b70ba652a4e5bde76e52ce1259a958fd49f558c4eaf459",
+      "top_budget": 17425,
+      "top_budget_containment": 0.0,
+      "top_budget_intersection": 0
+    },
     {
       "bytes": 886556,
       "canonical_pixels_equal_on_footprint": false,
@@ -2403,6 +2429,58 @@
       "top_budget_intersection": 15
     },
     {
+      "bytes": 690324,
+      "canonical_pixels_equal_on_footprint": false,
+      "git_blob_sha": "08a606d69c89bedc2a1dc9aedd3d38e6429e506f",
+      "near_duplicate_by_preregistered_rule": false,
+      "nonzero_intersection": 210,
+      "nonzero_support_containment": 0.01205164992826399,
+      "nonzero_support_jaccard": 0.0018281694800163664,
+      "nonzero_union": 114869,
+      "paths": [
+        {
+          "bytes": 690324,
+          "kind": "published-download-or-submission",
+          "path": "docs/downloads/gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e-zeros.tif",
+          "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE40/0e4a795d467f16555443ee0446875d7c32f51aa5/docs/downloads/gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e-zeros.tif",
+          "ref": "0e4a795d467f16555443ee0446875d7c32f51aa5",
+          "repo": "GEMSDOE40"
+        }
+      ],
+      "pearson_r_on_footprint": -0.003431404313342454,
+      "raw_sha256_match": false,
+      "sha256": "831459fd86d636f8dc12986316d588a4c6b9ecc8ca0c9eb5bdae9a84427e9ca6",
+      "top_budget": 17425,
+      "top_budget_containment": 0.0018938307030129124,
+      "top_budget_intersection": 33
+    },
+    {
+      "bytes": 1280006,
+      "canonical_pixels_equal_on_footprint": false,
+      "git_blob_sha": "422ac9465ed5a0ff4158c4551b31fd3954513090",
+      "near_duplicate_by_preregistered_rule": false,
+      "nonzero_intersection": 210,
+      "nonzero_support_containment": 0.01205164992826399,
+      "nonzero_support_jaccard": 0.0018281694800163664,
+      "nonzero_union": 114869,
+      "paths": [
+        {
+          "bytes": 1280006,
+          "kind": "published-download-or-submission",
+          "path": "docs/downloads/gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e.tif",
+          "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE40/0e4a795d467f16555443ee0446875d7c32f51aa5/docs/downloads/gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e.tif",
+          "ref": "0e4a795d467f16555443ee0446875d7c32f51aa5",
+          "repo": "GEMSDOE40"
+        }
+      ],
+      "pearson_r_on_footprint": -0.003431404313342454,
+      "raw_sha256_match": false,
+      "sha256": "33d893193f6eb009165b5c62bcef1c7c945531ed19ddb2c621150a52f0c16835",
+      "top_budget": 17425,
+      "top_budget_containment": 0.0018938307030129124,
+      "top_budget_intersection": 33
+    },
+    {
       "bytes": 922168,
       "canonical_pixels_equal_on_footprint": false,
       "git_blob_sha": "1cd1123a6a2d963c7145f8bf006fae75fdac4833",
@@ -2757,6 +2835,58 @@
       "top_budget_intersection": 203
     },
     {
+      "bytes": 342620,
+      "canonical_pixels_equal_on_footprint": false,
+      "git_blob_sha": "3646532612e77c0c4a7e0f4173fff4fd0458b80a",
+      "near_duplicate_by_preregistered_rule": false,
+      "nonzero_intersection": 21,
+      "nonzero_support_containment": 0.0012051649928263989,
+      "nonzero_support_jaccard": 0.0005614372794353545,
+      "nonzero_union": 37404,
+      "paths": [
+        {
+          "bytes": 342620,
+          "kind": "published-download-or-submission",
+          "path": "docs/downloads/gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380-zeros.tif",
+          "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE40/0e4a795d467f16555443ee0446875d7c32f51aa5/docs/downloads/gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380-zeros.tif",
+          "ref": "0e4a795d467f16555443ee0446875d7c32f51aa5",
+          "repo": "GEMSDOE40"
+        }
+      ],
+      "pearson_r_on_footprint": -0.0026955339687829193,
+      "raw_sha256_match": false,
+      "sha256": "56508f98d3f250370cd07e77d9972000da5562c6304415db54fd82ad97395b87",
+      "top_budget": 17425,
+      "top_budget_containment": 0.0005738880918220947,
+      "top_budget_intersection": 10
+    },
+    {
+      "bytes": 634531,
+      "canonical_pixels_equal_on_footprint": false,
+      "git_blob_sha": "2542597dff5b3b130958ce147670a65be173010f",
+      "near_duplicate_by_preregistered_rule": false,
+      "nonzero_intersection": 21,
+      "nonzero_support_containment": 0.0012051649928263989,
+      "nonzero_support_jaccard": 0.0005614372794353545,
+      "nonzero_union": 37404,
+      "paths": [
+        {
+          "bytes": 634531,
+          "kind": "published-download-or-submission",
+          "path": "docs/downloads/gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif",
+          "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE40/0e4a795d467f16555443ee0446875d7c32f51aa5/docs/downloads/gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif",
+          "ref": "0e4a795d467f16555443ee0446875d7c32f51aa5",
+          "repo": "GEMSDOE40"
+        }
+      ],
+      "pearson_r_on_footprint": -0.0026955339687829193,
+      "raw_sha256_match": false,
+      "sha256": "7ee6cac2444949a31d43ffd66a5ae0825c366e3d2ce1d18a1e6adc03fb4b63f1",
+      "top_budget": 17425,
+      "top_budget_containment": 0.0005738880918220947,
+      "top_budget_intersection": 10
+    },
+    {
       "bytes": 445024,
       "canonical_pixels_equal_on_footprint": false,
       "git_blob_sha": "cf92487e31875d8520f3a1f6aeebab2e20bccda5",
@@ -2781,6 +2911,58 @@
       "top_budget": 17425,
       "top_budget_containment": 0.012682926829268294,
       "top_budget_intersection": 221
+    },
+    {
+      "bytes": 492727,
+      "canonical_pixels_equal_on_footprint": false,
+      "git_blob_sha": "363f229be9f79f21b5bc34780fd3c8631b9e6485",
+      "near_duplicate_by_preregistered_rule": false,
+      "nonzero_intersection": 124,
+      "nonzero_support_containment": 0.007116212338593974,
+      "nonzero_support_jaccard": 0.00158951942674751,
+      "nonzero_union": 78011,
+      "paths": [
+        {
+          "bytes": 492727,
+          "kind": "published-download-or-submission",
+          "path": "docs/downloads/gems40-euler-augmented-incumbent-20261005-ac1c1927-zeros.tif",
+          "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE40/0e4a795d467f16555443ee0446875d7c32f51aa5/docs/downloads/gems40-euler-augmented-incumbent-20261005-ac1c1927-zeros.tif",
+          "ref": "0e4a795d467f16555443ee0446875d7c32f51aa5",
+          "repo": "GEMSDOE40"
+        }
+      ],
+      "pearson_r_on_footprint": -0.0026746665345909744,
+      "raw_sha256_match": false,
+      "sha256": "9940d101fe0ad6a06b941bc8f5156030fbe282b67263bc82cec8c4446753b6df",
+      "top_budget": 17425,
+      "top_budget_containment": 0.0018938307030129124,
+      "top_budget_intersection": 33
+    },
+    {
+      "bytes": 885170,
+      "canonical_pixels_equal_on_footprint": false,
+      "git_blob_sha": "73f3074f37d17aacf59ad3fa4991a500e945a5ae",
+      "near_duplicate_by_preregistered_rule": false,
+      "nonzero_intersection": 124,
+      "nonzero_support_containment": 0.007116212338593974,
+      "nonzero_support_jaccard": 0.00158951942674751,
+      "nonzero_union": 78011,
+      "paths": [
+        {
+          "bytes": 885170,
+          "kind": "published-download-or-submission",
+          "path": "docs/downloads/gems40-euler-augmented-incumbent-20261005-ac1c1927.tif",
+          "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE40/0e4a795d467f16555443ee0446875d7c32f51aa5/docs/downloads/gems40-euler-augmented-incumbent-20261005-ac1c1927.tif",
+          "ref": "0e4a795d467f16555443ee0446875d7c32f51aa5",
+          "repo": "GEMSDOE40"
+        }
+      ],
+      "pearson_r_on_footprint": -0.0026746665345909744,
+      "raw_sha256_match": false,
+      "sha256": "54aa8c6cbee0a1f858f80f898c5c3ae9c069ad3d11c7457b94717c261b5d9416",
+      "top_budget": 17425,
+      "top_budget_containment": 0.0018938307030129124,
+      "top_budget_intersection": 33
     },
     {
       "bytes": 941772,
@@ -3087,6 +3269,74 @@
       "top_budget": 17425,
       "top_budget_containment": 0.003672883787661406,
       "top_budget_intersection": 64
+    },
+    {
+      "bytes": 472382,
+      "canonical_pixels_equal_on_footprint": false,
+      "git_blob_sha": "76f9bf7ac3add357150ef80953193d331efa3e4c",
+      "near_duplicate_by_preregistered_rule": false,
+      "nonzero_intersection": 237,
+      "nonzero_support_containment": 0.013601147776183644,
+      "nonzero_support_jaccard": 0.0037635774629994284,
+      "nonzero_union": 62972,
+      "paths": [
+        {
+          "bytes": 472382,
+          "kind": "published-download-or-submission",
+          "path": "docs/downloads/GEMSDOE40-submission-nan.tif",
+          "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE40/0e4a795d467f16555443ee0446875d7c32f51aa5/docs/downloads/GEMSDOE40-submission-nan.tif",
+          "ref": "0e4a795d467f16555443ee0446875d7c32f51aa5",
+          "repo": "GEMSDOE40"
+        },
+        {
+          "bytes": 472382,
+          "kind": "published-download-or-submission",
+          "path": "docs/downloads/gemsdoe40-euler-si0-depthkde-20261005T230506Z-5bc279cd-nan.tif",
+          "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE40/0e4a795d467f16555443ee0446875d7c32f51aa5/docs/downloads/gemsdoe40-euler-si0-depthkde-20261005T230506Z-5bc279cd-nan.tif",
+          "ref": "0e4a795d467f16555443ee0446875d7c32f51aa5",
+          "repo": "GEMSDOE40"
+        }
+      ],
+      "pearson_r_on_footprint": 0.0024199498562021853,
+      "raw_sha256_match": false,
+      "sha256": "3d30ed6f67a87db2e95dbd3e4e1a0dfec64b67ca5c9db7c9f3667d1daf3a3171",
+      "top_budget": 17425,
+      "top_budget_containment": 0.004246771879483501,
+      "top_budget_intersection": 74
+    },
+    {
+      "bytes": 340360,
+      "canonical_pixels_equal_on_footprint": false,
+      "git_blob_sha": "033c13e3ef317f0db69def3e498bfdb637df28f8",
+      "near_duplicate_by_preregistered_rule": false,
+      "nonzero_intersection": 237,
+      "nonzero_support_containment": 0.013601147776183644,
+      "nonzero_support_jaccard": 0.0037635774629994284,
+      "nonzero_union": 62972,
+      "paths": [
+        {
+          "bytes": 340360,
+          "kind": "published-download-or-submission",
+          "path": "docs/downloads/GEMSDOE40-submission.tif",
+          "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE40/0e4a795d467f16555443ee0446875d7c32f51aa5/docs/downloads/GEMSDOE40-submission.tif",
+          "ref": "0e4a795d467f16555443ee0446875d7c32f51aa5",
+          "repo": "GEMSDOE40"
+        },
+        {
+          "bytes": 340360,
+          "kind": "published-download-or-submission",
+          "path": "docs/downloads/gemsdoe40-euler-si0-depthkde-20261005T230506Z-5bc279cd-zeros.tif",
+          "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE40/0e4a795d467f16555443ee0446875d7c32f51aa5/docs/downloads/gemsdoe40-euler-si0-depthkde-20261005T230506Z-5bc279cd-zeros.tif",
+          "ref": "0e4a795d467f16555443ee0446875d7c32f51aa5",
+          "repo": "GEMSDOE40"
+        }
+      ],
+      "pearson_r_on_footprint": 0.0024199498562021853,
+      "raw_sha256_match": false,
+      "sha256": "5bc279cd55e65733df6d532b6b1c9d348b33720ed9196237371d487042fff195",
+      "top_budget": 17425,
+      "top_budget_containment": 0.004246771879483501,
+      "top_budget_intersection": 74
     },
     {
       "bytes": 1765159,
@@ -8662,9 +8912,9 @@
     }
   ],
   "different_grid_or_band_count": 2,
-  "inventory_unique_blobs": 270,
+  "inventory_unique_blobs": 279,
   "near_duplicate_count": 0,
-  "same_grid_comparisons": 268,
+  "same_grid_comparisons": 277,
   "skipped": [
     {
       "git_blob_sha": "7c12ed8a4164ce549fc8c3114eb30eb7f898af09",

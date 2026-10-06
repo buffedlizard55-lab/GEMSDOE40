@@ -1,0 +1,172 @@
+{
+  "incumbent": "top_02778_h33b2_zeros.tif",
+  "incumbent_n_px": 35345,
+  "incumbent_tp_w": 3820.5240890486484,
+  "lm_truth_px": 60032,
+  "tau_live_0278": 0.05882851213417475,
+  "tau_live_03195": 0.06826193782715521,
+  "rows": [
+    {
+      "candidate": "iso_grav_anom:top10000",
+      "added_px": 6508,
+      "d_tp_w": 341.78,
+      "efficiency": 0.052517,
+      "break_even_0278": 0.058829,
+      "above_break_even": false,
+      "ratio_to_break_even": 0.893
+    },
+    {
+      "candidate": "iso_grav_anom:top20000",
+      "added_px": 15750,
+      "d_tp_w": 729.23,
+      "efficiency": 0.0463,
+      "break_even_0278": 0.058829,
+      "above_break_even": false,
+      "ratio_to_break_even": 0.787
+    },
+    {
+      "candidate": "tmi:top20000",
+      "added_px": 15849,
+      "d_tp_w": 700.35,
+      "efficiency": 0.044189,
+      "break_even_0278": 0.058829,
+      "above_break_even": false,
+      "ratio_to_break_even": 0.751
+    },
+    {
+      "candidate": "tmi:top10000",
+      "added_px": 6497,
+      "d_tp_w": 286.09,
+      "efficiency": 0.044035,
+      "break_even_0278": 0.058829,
+      "above_break_even": false,
+      "ratio_to_break_even": 0.749
+    },
+    {
+      "candidate": "iso_grav_anom:top30000",
+      "added_px": 24976,
+      "d_tp_w": 1079.64,
+      "efficiency": 0.043227,
+      "break_even_0278": 0.058829,
+      "above_break_even": false,
+      "ratio_to_break_even": 0.735
+    },
+    {
+      "candidate": "tmi:top30000",
+      "added_px": 25119,
+      "d_tp_w": 1066.78,
+      "efficiency": 0.042469,
+      "break_even_0278": 0.058829,
+      "above_break_even": false,
+      "ratio_to_break_even": 0.722
+    },
+    {
+      "candidate": "mag_x_grav_conjunction_top20000",
+      "added_px": 18516,
+      "d_tp_w": 750.72,
+      "efficiency": 0.040544,
+      "break_even_0278": 0.058829,
+      "above_break_even": false,
+      "ratio_to_break_even": 0.689
+    },
+    {
+      "candidate": "tmi:top44090",
+      "added_px": 38237,
+      "d_tp_w": 1542.36,
+      "efficiency": 0.040337,
+      "break_even_0278": 0.058829,
+      "above_break_even": false,
+      "ratio_to_break_even": 0.686
+    },
+    {
+      "candidate": "iso_grav_anom:top44090",
+      "added_px": 37989,
+      "d_tp_w": 1518.06,
+      "efficiency": 0.03996,
+      "break_even_0278": 0.058829,
+      "above_break_even": false,
+      "ratio_to_break_even": 0.679
+    },
+    {
+      "candidate": "rtp:top20000",
+      "added_px": 15768,
+      "d_tp_w": 629.91,
+      "efficiency": 0.039949,
+      "break_even_0278": 0.058829,
+      "above_break_even": false,
+      "ratio_to_break_even": 0.679
+    },
+    {
+      "candidate": "rtp:top30000",
+      "added_px": 25002,
+      "d_tp_w": 978.55,
+      "efficiency": 0.039139,
+      "break_even_0278": 0.058829,
+      "above_break_even": false,
+      "ratio_to_break_even": 0.665
+    },
+    {
+      "candidate": "rtp:top44090",
+      "added_px": 38024,
+      "d_tp_w": 1481.81,
+      "efficiency": 0.03897,
+      "break_even_0278": 0.058829,
+      "above_break_even": false,
+      "ratio_to_break_even": 0.662
+    },
+    {
+      "candidate": "mag_x_grav_conjunction_top40000",
+      "added_px": 37001,
+      "d_tp_w": 1378.93,
+      "efficiency": 0.037267,
+      "break_even_0278": 0.058829,
+      "above_break_even": false,
+      "ratio_to_break_even": 0.633
+    },
+    {
+      "candidate": "rtp:top10000",
+      "added_px": 6557,
+      "d_tp_w": 243.23,
+      "efficiency": 0.037094,
+      "break_even_0278": 0.058829,
+      "above_break_even": false,
+      "ratio_to_break_even": 0.631
+    },
+    {
+      "candidate": "mag_anom:top10000",
+      "added_px": 6431,
+      "d_tp_w": 193.23,
+      "efficiency": 0.030047,
+      "break_even_0278": 0.058829,
+      "above_break_even": false,
+      "ratio_to_break_even": 0.511
+    },
+    {
+      "candidate": "mag_anom:top44090",
+      "added_px": 38186,
+      "d_tp_w": 1128.5,
+      "efficiency": 0.029553,
+      "break_even_0278": 0.058829,
+      "above_break_even": false,
+      "ratio_to_break_even": 0.502
+    },
+    {
+      "candidate": "mag_anom:top20000",
+      "added_px": 15749,
+      "d_tp_w": 462.36,
+      "efficiency": 0.029358,
+      "break_even_0278": 0.058829,
+      "above_break_even": false,
+      "ratio_to_break_even": 0.499
+    },
+    {
+      "candidate": "mag_anom:top30000",
+      "added_px": 25078,
+      "d_tp_w": 729.31,
+      "efficiency": 0.029081,
+      "break_even_0278": 0.058829,
+      "above_break_even": false,
+      "ratio_to_break_even": 0.494
+    }
+  ]
+}

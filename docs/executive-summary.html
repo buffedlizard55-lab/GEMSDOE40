@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="Executive summary, validation decision, and future submission guidance for GEMSDOE40.">
-  <title>Executive summary · GEMSDOE40</title><link rel="stylesheet" href="assets/site.css">
+  <title>Executive summary · GEMSDOE40</title><link rel="stylesheet" href="assets/research.css">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -24,7 +24,7 @@
         <div class="stat"><b class="bad">0.006313</b><span>H2-B local proxy DTI</span></div>
         <div class="stat"><b class="bad">0 / 24</b><span>spatial blocks won</span></div>
         <div class="stat"><b class="good">PASS</b><span>sample grid, range, nodata</span></div>
-        <div class="stat"><b class="good">PASS</b><span>uniqueness against 268 same-grid rasters</span></div>
+        <div class="stat"><b class="good">PASS</b><span>uniqueness against 277 same-grid rasters</span></div>
       </div>
       <div class="metric-bar" style="margin-top:16px">
         <div class="metric"><span class="big">0.835907</span><span class="label">frozen all-prior proxy incumbent. It is SGMC-gap-derived and circular on this proxy; not an independent baseline.</span></div>
@@ -56,7 +56,15 @@
           <p class="small">The metadata is deliberately marked on-hold and is not an upload recommendation.</p>
         </div>
       </div>
-      <p class="small" style="margin-top:12px">Receipts: <a href="data/format_receipt.json">format</a> · <a href="data/uniqueness_audit.json">uniqueness</a> · <a href="data/validation.json">all block and prior scores</a> · <a href="data/feasibility.json">candidate-generation feasibility</a></p>
+      <p class="small" style="margin-top:12px">Receipts: <a href="data/format_receipt.json">format</a> · <a href="data/uniqueness_audit.json">uniqueness</a> · <a href="data/validation-h2b-20261005.json">all block and prior scores</a> · <a href="data/feasibility.json">candidate-generation feasibility</a></p>
+    </section>
+
+    <section class="section prose" aria-labelledby="h40-title">
+      <div class="eyebrow">Previous main-branch record · kept for audit</div>
+      <h2 id="h40-title">H40-4 multi-scale Euler candidate</h2>
+      <p>The prior main branch reported a 97,654-cell multi-scale Euler augmentation with an LM-calibrated proxy DTI of 0.34835 versus 0.26792 for that branch's previous site-best, better in 4/4 folds. This is the originating repository's own instrument, not an official score. A later addendum evaluated H40-4 against the same owner-derived SGMC proxy used for H2-B: pooled diagnostic DTI 0.124715 and 0/24 wins versus the frozen all-prior incumbent. H40-4 also fails the strict local format gate because its TIFF does not declare NaN nodata. These results are separate measures and neither is an organizer score; the file remains a historical research artifact, not current upload advice.</p>
+      <p><a class="button secondary" href="downloads/gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e.tif" download>↓ Download the prior H40-4 TIFF</a></p>
+      <p>Read the <a href="index-main-before-h2b.html">historical landing snapshot</a>, <a href="executive-summary-h40-4.html">prior submission guide</a>, and <a href="data/validation.json">main-branch validation record</a>. No organizer score or upload receipt is asserted for that file here.</p>
     </section>
 
     <section class="section prose" id="steps" aria-labelledby="steps-title">
@@ -83,6 +91,6 @@
       </div>
     </section>
   </main>
-  <footer class="footer"><div class="footer-inner"><div><div class="footer-brand">GEMSDOE40</div><p>Fault prediction for geothermal exploration.</p><p>No hidden truth. No organizer score. No upload.</p></div><div><p><a href="index.html">Project home</a> · <a href="https://github.com/buffedlizard55-lab/GEMSDOE40/blob/main/README.md">README ↗</a> · <a href="data/feed.json">Leaderboard feed snapshot</a></p><p>Sources and caveats are linked in the project home and report.</p></div></div></footer>
+  <footer class="footer"><div class="footer-inner"><div><div class="footer-brand">GEMSDOE40</div><p>Fault prediction for geothermal exploration.</p><p>No hidden truth. No organizer score. No upload.</p></div><div><p><a href="index.html">Project home</a> · <a href="https://github.com/buffedlizard55-lab/GEMSDOE40/blob/main/README.md">README ↗</a> · <a href="data/feed-20261005.json">Leaderboard feed snapshot</a></p><p>Sources and caveats are linked in the project home and report.</p></div></div></footer>
 </body>
 </html>

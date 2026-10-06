@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 
-from gemsdoe40.euler import EulerCloud, persistence_cloud, upward_continue_with_vertical
+from gemsdoe40.research_euler import EulerCloud, persistence_cloud, upward_continue_with_vertical
 
 
 def _cloud(row, col, depth, residual=0.1):

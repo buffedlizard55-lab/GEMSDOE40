@@ -1,3 +1,4 @@
+# Machine-local and generated inputs/caches
 .venv/
 __pycache__/
 *.py[cod]
@@ -6,3 +7,10 @@ __pycache__/
 prior_cache/
 *.aux.xml
 *.ovr
+data/*.tif
+data/prior/
+data/cache/
+data/external/
+work/
+*.npz
+*.npy

@@ -7,7 +7,7 @@ from typing import Any
 import numpy as np
 import rasterio
 
-from .euler import (
+from .research_euler import (
     EMISSION_BUDGET,
     kde_from_pairs,
     persistence_cloud,
@@ -54,7 +54,7 @@ def run_h2(
         pred, emission = emit_all_supported(kde, footprint, labels)
         hypothesis_id = "H2-B"
     else:
-        from .euler import emit_top_budget  # keep H1/H2 on the same preregistered emitter
+        from .research_euler import emit_top_budget  # keep H1/H2 on the same preregistered emitter
         pred, emission = emit_top_budget(kde, footprint, labels, budget=EMISSION_BUDGET)
         hypothesis_id = "H2"
     pred[labels == 1] = 0.0

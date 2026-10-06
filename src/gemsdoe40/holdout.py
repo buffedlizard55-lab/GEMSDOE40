@@ -1,117 +1,95 @@
-"""Frozen SGMC-proxy holdout loader, scorer, and incumbent comparison."""
+"""Spatially blocked holdout for an unsupervised Euler field.
+
+Euler deconvolution does not train on labels, so there is no leakage from
+fitting.  The holdout answers a different question: *does the Euler cloud
+preferentially fall on held-out catalogue traces more than a same-mass
+gradient-threshold field and a same-mass random field?*  A pass licenses
+packaging a candidate; it is not a live score.  The hidden test set is
+off-catalogue by construction, so a high on-catalogue holdout DTI is only
+evidence of *fault-finding skill*, which we then deploy off-catalogue.
+"""
 from __future__ import annotations
 
-from pathlib import Path
-from typing import Any
-import hashlib
-
 import numpy as np
-import rasterio
 
-from .metric import spatial_block_components
-
-EXPECTED_PROXY_SHA256 = "26d142c4c93282cd94f6950ab96f22aeff59fbbea523d43d662e76fa1b161b5c"
+from .metric import dti_exact, dti_binary
 
 
-def read_proxy_truth(
-    proxy_path: str | Path,
-    template_path: str | Path,
-    labels_path: str | Path,
-) -> tuple[np.ndarray, np.ndarray, np.ndarray, dict[str, Any]]:
-    """Build an exact-pixel off-catalogue mask; do not buffer known faults."""
-    proxy_sha256 = hashlib.sha256(Path(proxy_path).read_bytes()).hexdigest()
-    if proxy_sha256 != EXPECTED_PROXY_SHA256:
-        raise ValueError(f"SGMC proxy hash mismatch: {proxy_sha256} != pinned {EXPECTED_PROXY_SHA256}")
-    with rasterio.open(template_path) as template, rasterio.open(labels_path) as labels_ds, rasterio.open(proxy_path) as proxy_ds:
-        sample = template.read(1)
-        valid = np.isfinite(sample)
-        labels = labels_ds.read(1)
-        proxy = proxy_ds.read(1)
-        for ds, name in ((labels_ds, "labels"), (proxy_ds, "proxy")):
-            if ds.shape != template.shape or ds.crs != template.crs or ds.transform != template.transform:
-                raise ValueError(f"{name} raster is not exactly aligned to the sample template")
-        if proxy_ds.count != 1 or labels_ds.count != 1:
-            raise ValueError("proxy and known labels must be single-band rasters")
-        if not np.isin(np.unique(proxy[valid]), [0, 1]).all():
-            raise ValueError("proxy has values other than 0/1 inside the template footprint")
-        known = (labels == 1) & valid
-        truth = (proxy == 1) & valid & (labels != 1)
-        info = {
-            "proxy_status": "owner-derived SGMC mirror; proxy instrument only, not organizer truth",
-            "proxy_sha256": proxy_sha256,
-            "proxy_dtype": proxy_ds.dtypes[0],
-            "proxy_nodata": proxy_ds.nodata,
-            "template_valid_pixels": int(valid.sum()),
-            "template_outside_pixels": int((~valid).sum()),
-            "known_label_pixels_exact": int(known.sum()),
-            "sgmc_positive_pixels_in_footprint": int(np.count_nonzero((proxy == 1) & valid)),
-            "sgmc_positive_overlap_exact_known_pixels": int(np.count_nonzero((proxy == 1) & known)),
-            "off_catalogue_truth_pixels_after_exact_mask": int(truth.sum()),
-            "mask_rule": "exclude only labels == 1 at those exact pixels; no distance buffer",
-            "holdout_blocks": "4 rows x 6 columns, contiguous; 3-cell guard at internal boundaries",
-            "official_metric": "published 300 m triangular distance-weighted Tversky; alpha=0.2, beta=0.8",
-        }
-        return truth, valid, labels, info
-
-
-def score_array_on_proxy(
-    prediction: np.ndarray,
-    truth: np.ndarray,
-    valid: np.ndarray,
-    labels: np.ndarray,
-) -> dict[str, Any]:
-    """Score one prediction on already-loaded frozen proxy arrays."""
-    pred = np.asarray(prediction, dtype=np.float32).copy()
-    if pred.shape != truth.shape:
-        raise ValueError("prediction shape does not match proxy grid")
-    # DrivenData's known mask is pixel-exact. Apply no buffer around it.
-    pred[(labels == 1) & valid] = 0.0
-    pooled, blocks = spatial_block_components(
-        pred,
-        truth,
-        valid,
-        n_rows=4,
-        n_cols=6,
-        guard=3,
-        alpha=0.2,
-        beta=0.8,
-        radius_px=3.0,
-    )
-    return {"pooled": pooled.to_dict(), "blocks": blocks}
-
-
-def score_candidate_on_proxy(
-    prediction: np.ndarray,
-    proxy_path: str | Path,
-    template_path: str | Path,
-    labels_path: str | Path,
-) -> tuple[dict[str, Any], np.ndarray, np.ndarray, np.ndarray, dict[str, Any]]:
-    """Load and score a prediction on the locked 24-block proxy holdout."""
-    truth, valid, labels, info = read_proxy_truth(proxy_path, template_path, labels_path)
-    score = score_array_on_proxy(prediction, truth, valid, labels)
-    return score, truth, valid, labels, info
-
-
-def promotion_gate(candidate: dict[str, Any], incumbent: dict[str, Any]) -> dict[str, Any]:
-    """Apply the registered no-slot-unless-better rule to 24 guarded blocks."""
-    cblocks = candidate["blocks"]
-    iblocks = incumbent["blocks"]
-    if len(cblocks) != 24 or len(iblocks) != 24:
-        raise ValueError("promotion gate requires exactly 24 spatial blocks")
-    deltas = [float(c["score"] - i["score"]) for c, i in zip(cblocks, iblocks)]
-    wins = sum(delta > 0.0 for delta in deltas)
-    pooled_delta = float(candidate["pooled"]["score"] - incumbent["pooled"]["score"])
-    passed = pooled_delta > 0.0 and wins >= 18 and min(deltas) >= -0.005
+def quadrants(shape: tuple[int, int]) -> dict[str, np.ndarray]:
+    h, w = shape
+    r = np.arange(h)[:, None]
+    c = np.arange(w)[None, :]
+    mid_r, mid_c = h // 2, w // 2
     return {
-        "passed": bool(passed),
-        "decision": "ELIGIBLE_FOR_REVIEW; still requires human portal confirmation" if passed else "HOLD; DO NOT SUBMIT",
-        "candidate_pooled_dti": candidate["pooled"]["score"],
-        "incumbent_pooled_dti": incumbent["pooled"]["score"],
-        "pooled_delta": pooled_delta,
-        "blocks_won": int(wins),
-        "blocks_required": 18,
-        "minimum_block_delta": float(min(deltas)),
-        "maximum_block_delta": float(max(deltas)),
-        "registered_minimum_block_delta": -0.005,
-        "per_block_deltas": deltas,
+        "NW": (r < mid_r) & (c < mid_c),
+        "NE": (r < mid_r) & (c >= mid_c),
+        "SW": (r >= mid_r) & (c < mid_c),
+        "SE": (r >= mid_r) & (c >= mid_c),
     }
+
+
+def blocked_dti(pred: np.ndarray, truth: np.ndarray, valid: np.ndarray) -> dict:
+    """Four-fold spatial block: score pred against truth inside each quadrant."""
+    folds = {}
+    dtis = []
+    for name, q in quadrants(pred.shape).items():
+        mask = valid & q
+        res = dti_exact(pred, truth, valid=mask)
+        folds[name] = res
+        dtis.append(res["dti"])
+    return {
+        "per_fold": folds,
+        "mean_dti": float(np.mean(dtis)),
+        "folds_positive_vs_zero": int(sum(d > 0 for d in dtis)),
+    }
+
+
+def same_mass_random(pred: np.ndarray, valid: np.ndarray, rng: np.random.Generator) -> np.ndarray:
+    """Binary random field with the same number of positive pixels as ``pred``."""
+    n = int((pred > 0).sum())
+    idx = np.flatnonzero(valid.ravel())
+    n = min(n, idx.size)
+    pick = rng.choice(idx, size=n, replace=False)
+    out = np.zeros(pred.shape, dtype=np.float32)
+    out.ravel()[pick] = 1.0
+    return out
+
+
+def gradient_baseline(field: np.ndarray, valid: np.ndarray, n_emit: int) -> np.ndarray:
+    """Same-count baseline: top-n pixels of |∇field| (the thing Euler is *not*)."""
+    f = np.where(valid, field, np.nan)
+    gy, gx = np.gradient(np.nan_to_num(f, nan=0.0))
+    mag = np.hypot(gx, gy)
+    mag = np.where(valid, mag, -np.inf)
+    if n_emit <= 0:
+        return np.zeros(field.shape, dtype=np.float32)
+    flat = mag.ravel()
+    # argpartition for the top-n
+    n_emit = min(n_emit, int(valid.sum()))
+    thresh_idx = np.argpartition(flat, -n_emit)[-n_emit:]
+    out = np.zeros(field.shape, dtype=np.float32)
+    out.ravel()[thresh_idx] = 1.0
+    out = np.where(valid, out, 0.0)
+    return out
+
+
+def evaluate(pred: np.ndarray, truth: np.ndarray, valid: np.ndarray,
+             grad_field: np.ndarray | None, seed: int = 40) -> dict:
+    rng = np.random.default_rng(seed)
+    n_emit = int((pred > 0).sum())
+    blocked = blocked_dti(pred, truth, valid)
+    rnd = same_mass_random(pred, valid, rng)
+    rnd_res = dti_binary(rnd > 0, truth, valid=valid)
+    out = {
+        "emitted_px": n_emit,
+        "blocked": blocked,
+        "full_dti": dti_exact(pred, truth, valid=valid),
+        "random_same_mass_dti": rnd_res,
+        "delta_vs_random": float(blocked["mean_dti"] - rnd_res["dti"]),
+    }
+    if grad_field is not None and n_emit > 0:
+        g = gradient_baseline(grad_field, valid, n_emit)
+        g_res = dti_binary(g > 0, truth, valid=valid)
+        out["gradient_same_mass_dti"] = g_res
+        out["delta_vs_gradient"] = float(out["full_dti"]["dti"] - g_res["dti"])
+    return out

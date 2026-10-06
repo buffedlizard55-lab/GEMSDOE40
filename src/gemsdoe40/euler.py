@@ -1,580 +1,336 @@
-"""Preregistered H1: paired magnetic/gravity 3-D Euler clouds and depth-consensus KDE."""
+"""3-D Euler deconvolution of potential-field grids (Reid et al. 1990).
+
+Reference (must-cite, freely mirrored by the author):
+    Reid, A.B., Allsop, J.M., Granser, H., Millett, A.J. and Somerton, I.W., 1990.
+    Magnetic interpretation in three dimensions using Euler deconvolution.
+    Geophysics, 55(1), 80–91.  https://doi.org/10.1190/1.1442774
+    Author PDF: https://www.reid-geophys.co.uk/wp-content/uploads/2017/11/Reid-et-al-1990.pdf
+
+Euler's homogeneity relation on a potential field T observed at (x, y, z):
+
+    (x - x0) ∂T/∂x + (y - y0) ∂T/∂y + (z - z0) ∂T/∂z = N (B - T)
+
+N is the structural index.  For a magnetic contact of great depth extent Reid
+et al. 1990 (Appendix) show N = 0; for a gravity fault/contact Reid (2003)
+likewise uses N = 0.  Those are the indices this module uses for a fault-like
+contact.  The fourth unknown B (background) is solved jointly.
+
+This is a *source locator*, not an edge detector: the output of each window is
+a depth-labelled point (x0, y0, z0), not a gradient-magnitude pixel.  Tight
+clusters of shallow, mutually-consistent points are the signature of a real
+near-surface contact; scattered or deep points are the signature of noise.
+
+Implementation notes (original to GEMSDOE40, not a port of any prior GEMSDOE
+Euler arm):
+
+  * Two independent fields are deconvolved: reduced-to-pole magnetics (band
+    ``rtp``) and isostatic gravity (band ``iso_grav_anom``).  GEMSDOE28's
+    H38-1 arm deconvolved TMI only and then *added 200 dots onto an H19-5
+    dotted base*; this module never touches that base.
+  * Horizontal derivatives are central differences in field-units per metre.
+    The vertical derivative is a single-grid FFT |k|T (Blakely 1995, eq. 12-8),
+    not a tiled Tukey scheme.
+  * Windows are accepted only where the analytic-signal amplitude is locally
+    elevated (located Euler; Salem & Ravat 2003 style gating) AND the 4×4
+    normal matrix is well-conditioned AND the solved source sits inside the
+    window AND relative depth uncertainty is small.
+  * Two window sizes (8 px = 800 m, 12 px = 1.2 km) are run so a single depth
+    family cannot dominate.
+
+No sklearn.  No DBSCAN.  Clustering is a later KDE stage (``kde.py``).
+"""
 from __future__ import annotations
 
-from dataclasses import asdict, dataclass
-import math
-from pathlib import Path
-from typing import Any
+from dataclasses import dataclass, field
 
 import numpy as np
-from scipy import ndimage
-from scipy import fft as sp_fft
-from scipy.spatial import cKDTree
-import rasterio
+from scipy.fft import irfft2, rfft2
 
-from .raster import band_index_by_name
-
-
-WINDOW = 10
-STRIDE = 5
-RESOLUTION_M = 100.0
-MAX_RESIDUAL = 0.20
-MAX_CONDITION = 1e5
-MAX_HORIZONTAL_OFFSET_M = WINDOW * RESOLUTION_M / 2.0
-MIN_DEPTH_M = 100.0
-MAX_DEPTH_M = 10_000.0
-PAIR_MAX_XY_M = 300.0
-PAIR_MAX_DEPTH_M = 1_000.0
-KDE_SIGMA_PX = 2.0
-KDE_TRUNCATE = 3.0
-EMISSION_BUDGET = 45_962
-FOURIER_PAD_CELLS = 128
+PIXEL_M = 100.0
 
 
 @dataclass
 class EulerCloud:
+    """Depth-labelled Euler solutions from one field / window / SI setting."""
+
+    field_name: str
+    structural_index: float
+    window_px: int
+    stride_px: int
     row: np.ndarray
     col: np.ndarray
     depth_m: np.ndarray
-    residual: np.ndarray
-    condition: np.ndarray
+    rel_se: np.ndarray
+    cond: np.ndarray
+    analytic: np.ndarray
+    stats: dict = field(default_factory=dict)
 
     def __len__(self) -> int:
         return int(self.row.size)
 
-    def to_summary(self) -> dict[str, Any]:
-        if not len(self):
-            return {"n_solutions": 0}
-        return {
-            "n_solutions": len(self),
-            "depth_m_p05_p50_p95": np.percentile(self.depth_m, [5, 50, 95]).tolist(),
-            "residual_p50_p95": np.percentile(self.residual, [50, 95]).tolist(),
-            "condition_p50_p95": np.percentile(self.condition, [50, 95]).tolist(),
-        }
 
+def _fill_nearest(arr: np.ndarray, valid: np.ndarray) -> np.ndarray:
+    """Nearest-valid fill so FFT / differences have context. Filled cells stay invalid."""
+    from scipy.ndimage import distance_transform_edt
 
-@dataclass
-class PairCloud:
-    row: np.ndarray
-    col: np.ndarray
-    weight: np.ndarray
-    xy_distance_m: np.ndarray
-    depth_delta_m: np.ndarray
-
-    def to_summary(self) -> dict[str, Any]:
-        if not self.row.size:
-            return {"n_pairs": 0}
-        return {
-            "n_pairs": int(self.row.size),
-            "pair_weight_sum": float(self.weight.sum(dtype=np.float64)),
-            "xy_distance_m_p50_p95": np.percentile(self.xy_distance_m, [50, 95]).tolist(),
-            "depth_delta_m_p50_p95": np.percentile(self.depth_delta_m, [50, 95]).tolist(),
-        }
-
-
-def _finite_mask(array: np.ndarray) -> np.ndarray:
-    arr = np.asarray(array)
-    return np.isfinite(arr) & (np.abs(arr) < 1e30)
-
-
-def fill_nearest(array: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
-    """Fill nodata only for derivative calculations; return the original valid mask."""
-    arr = np.asarray(array, dtype=np.float32)
-    valid = _finite_mask(arr)
-    if not valid.any():
-        raise ValueError("cannot interpolate a band with no finite values")
     if valid.all():
-        return arr.copy(), valid
-    nearest = ndimage.distance_transform_edt(~valid, return_distances=False, return_indices=True)
-    filled = arr.copy()
-    filled[~valid] = arr[tuple(nearest)][~valid]
-    return filled, valid
+        return np.asarray(arr, dtype=np.float64)
+    idx = distance_transform_edt(~valid, return_distances=False, return_indices=True)
+    return np.asarray(arr, dtype=np.float64)[tuple(idx)]
 
 
-def fourier_vertical_down(array: np.ndarray, *, pad_cells: int = FOURIER_PAD_CELLS, resolution_m: float = RESOLUTION_M) -> np.ndarray:
-    """Compute a downward-positive vertical derivative (+|k|) of a harmonic field.
+def derivatives(field: np.ndarray, valid: np.ndarray, pixel_m: float = PIXEL_M):
+    """Return (gx_east, gy_north, gz_down, analytic_signal, deriv_valid) in field-units / pixel.
 
-    A reflect-padded grid reduces rectangular-edge ringing. Invalid cells are
-    nearest-filled strictly for this derivative calculation and are excluded
-    from Euler windows by the caller.
+    Horizontal: central differences, valid only when both neighbours are valid.
+    Vertical: FFT |k| T on a nearest-filled, mean-removed grid (Blakely 1995),
+    scaled by pixel_m so it is per-pixel like gx/gy.
+    Analytic signal A = sqrt(gx² + gy² + gz²) (Roest, Verhoef & Pilkington 1992).
     """
-    filled, _ = fill_nearest(array)
-    padded = np.pad(filled, ((pad_cells, pad_cells), (pad_cells, pad_cells)), mode="reflect")
-    ny, nx = padded.shape
-    fy = sp_fft.fftfreq(ny, d=resolution_m).astype(np.float32)[:, None]
-    fx = sp_fft.rfftfreq(nx, d=resolution_m).astype(np.float32)[None, :]
-    wave_number = (2.0 * np.pi * np.sqrt(fy * fy + fx * fx)).astype(np.float32)
-    spectrum = sp_fft.rfft2(padded, workers=-1)
-    deriv = sp_fft.irfft2(spectrum * wave_number, s=padded.shape, workers=-1)
-    deriv = deriv[pad_cells:-pad_cells, pad_cells:-pad_cells]
-    return np.asarray(deriv, dtype=np.float32)
+    f = np.asarray(field, dtype=np.float64)
+    v = np.asarray(valid, dtype=bool)
+    h, w = f.shape
+    filled = _fill_nearest(np.where(v, f, 0.0), v)
+
+    # Derivatives in field-units *per pixel* so the Euler unknowns (x0, y0, z0)
+    # stay in pixel units.  Depth in metres is z0_px * pixel_m after the solve.
+    gx = np.zeros((h, w), dtype=np.float64)
+    gy = np.zeros((h, w), dtype=np.float64)
+    hvalid = np.zeros((h, w), dtype=bool)
+    if w >= 3 and h >= 3:
+        gx[:, 1:-1] = (filled[:, 2:] - filled[:, :-2]) * 0.5
+        gy[1:-1, :] = -(filled[2:, :] - filled[:-2, :]) * 0.5
+        xok = v[:, 1:-1] & v[:, :-2] & v[:, 2:]
+        yok = v[1:-1, :] & v[:-2, :] & v[2:, :]
+        hvalid[1:-1, 1:-1] = xok[1:-1, :] & yok[:, 1:-1]
+
+    # Whole-grid vertical derivative.  |k|T is in field-units / metre; multiply
+    # by pixel_m to convert to field-units / pixel (Blakely 1995, eq. 12-8).
+    mean = float(filled[v].mean()) if v.any() else 0.0
+    work = filled - mean
+    ky = 2.0 * np.pi * np.fft.fftfreq(h, d=pixel_m)
+    kx = 2.0 * np.pi * np.fft.rfftfreq(w, d=pixel_m)
+    k = np.hypot(ky[:, None], kx[None, :])
+    spec = rfft2(work)
+    gz = irfft2(spec * k, s=(h, w)).real * pixel_m
+    dvalid = hvalid & v
+    gx = np.where(dvalid, gx, 0.0)
+    gy = np.where(dvalid, gy, 0.0)
+    gz = np.where(dvalid, gz, 0.0)
+    analytic = np.sqrt(gx * gx + gy * gy + gz * gz)
+    analytic = np.where(dvalid, analytic, 0.0)
+    return gx, gy, gz, analytic, dvalid
 
 
-def upward_continue_with_vertical(
-    array: np.ndarray,
-    height_m: float,
+def _box_sum(values: np.ndarray, window: int, stride: int) -> np.ndarray:
+    """Summed-area-table box sums, sampled every ``stride`` pixels at the top-left."""
+    a = np.asarray(values, dtype=np.float64)
+    h, w = a.shape
+    if window > h or window > w:
+        return np.empty((0, 0), dtype=np.float64)
+    sat = np.zeros((h + 1, w + 1), dtype=np.float64)
+    sat[1:, 1:] = np.cumsum(np.cumsum(a, axis=0), axis=1)
+    s = (
+        sat[window:, window:]
+        - sat[:-window, window:]
+        - sat[window:, :-window]
+        + sat[:-window, :-window]
+    )
+    return s[::stride, ::stride].copy()
+
+
+def deconvolve(
+    field: np.ndarray,
+    valid: np.ndarray,
     *,
-    pad_cells: int = FOURIER_PAD_CELLS,
-    resolution_m: float = RESOLUTION_M,
-) -> tuple[np.ndarray, np.ndarray]:
-    """Upward-continue a harmonic field and derive its downward-positive Tz."""
-    if height_m < 0:
-        raise ValueError("upward-continuation height must be non-negative")
-    filled, _ = fill_nearest(array)
-    padded = np.pad(filled, ((pad_cells, pad_cells), (pad_cells, pad_cells)), mode="reflect")
-    ny, nx = padded.shape
-    fy = sp_fft.fftfreq(ny, d=resolution_m).astype(np.float32)[:, None]
-    fx = sp_fft.rfftfreq(nx, d=resolution_m).astype(np.float32)[None, :]
-    wave_number = (2.0 * np.pi * np.sqrt(fy * fy + fx * fx)).astype(np.float32)
-    spectrum = sp_fft.rfft2(padded, workers=-1)
-    continue_filter = np.exp(-wave_number * np.float32(height_m)).astype(np.float32)
-    continued_spectrum = spectrum * continue_filter
-    continued = sp_fft.irfft2(continued_spectrum, s=padded.shape, workers=-1)
-    vertical = sp_fft.irfft2(continued_spectrum * wave_number, s=padded.shape, workers=-1)
-    crop = (slice(pad_cells, -pad_cells), slice(pad_cells, -pad_cells))
-    return np.asarray(continued[crop], dtype=np.float32), np.asarray(vertical[crop], dtype=np.float32)
-
-
-def _gradient_components(array: np.ndarray, resolution_m: float = RESOLUTION_M) -> tuple[np.ndarray, np.ndarray]:
-    """Return derivatives in positive-east and positive-north coordinates."""
-    dy_row, dx_col = np.gradient(np.asarray(array, dtype=np.float32), resolution_m, edge_order=1)
-    return dx_col.astype(np.float32, copy=False), (-dy_row).astype(np.float32, copy=False)
-
-
-def validate_magnetic_vertical_derivative(tmi: np.ndarray, supplied_tmi_vg: np.ndarray) -> dict[str, float | bool]:
-    """Compare the named TMI vertical-gradient feature with +|k| derived TMI."""
-    spectral = fourier_vertical_down(tmi)
-    supplied = np.asarray(supplied_tmi_vg, dtype=np.float32)
-    good = _finite_mask(tmi) & _finite_mask(supplied)
-    # Avoid the outermost stencil rows/columns; the sample mask is applied later.
-    good[:5, :] = False
-    good[-5:, :] = False
-    good[:, :5] = False
-    good[:, -5:] = False
-    x = spectral[good].astype(np.float64)
-    y = supplied[good].astype(np.float64)
-    if x.size < 100:
-        raise ValueError("not enough finite cells to validate tmi_vg")
-    corr = float(np.corrcoef(x, y)[0, 1])
-    denom = float(np.dot(x, x))
-    scale = float(np.dot(x, y) / denom) if denom > 0 else float("nan")
-    return {"pearson_r": corr, "supplied_over_spectral_scale": scale, "pass": bool(corr >= 0.95 and 0.8 <= scale <= 1.2)}
-
-
-def solve_euler_patch(
-    dtx: np.ndarray,
-    dty: np.ndarray,
-    dtz: np.ndarray,
-    *,
-    resolution_m: float = RESOLUTION_M,
-) -> tuple[float, float, float, float, float]:
-    """Solve one SI=0 patch, returning x0/y0 offsets, depth, residual, condition.
-
-    Coordinates are centered on the window in metres; y is positive north and
-    depth is positive down. For SI=0, Euler homogeneity gives
-    A @ [x0, y0, z0] = x*Tx + y*Ty, since the observation plane has z=0.
-    """
-    dtx = np.asarray(dtx, dtype=np.float64)
-    dty = np.asarray(dty, dtype=np.float64)
-    dtz = np.asarray(dtz, dtype=np.float64)
-    if dtx.shape != (WINDOW, WINDOW) or dty.shape != dtx.shape or dtz.shape != dtx.shape:
-        raise ValueError(f"Euler patch must be {WINDOW}x{WINDOW}")
-    if not (np.isfinite(dtx).all() and np.isfinite(dty).all() and np.isfinite(dtz).all()):
-        raise ValueError("Euler patch derivatives must be finite")
-    offsets = (np.arange(WINDOW, dtype=np.float64) + 0.5 - WINDOW / 2.0) * resolution_m
-    x_obs = np.broadcast_to(offsets[None, :], dtx.shape)
-    y_obs = np.broadcast_to((-offsets)[:, None], dtx.shape)
-    design = np.stack((dtx.ravel(), dty.ravel(), dtz.ravel()), axis=1)
-    rhs = (x_obs * dtx + y_obs * dty).ravel()
-    normal = design.T @ design
-    cond = float(np.linalg.cond(normal))
-    if not np.isfinite(cond) or cond > MAX_CONDITION:
-        return (float("nan"),) * 5
-    cross = design.T @ rhs
-    solution = np.linalg.solve(normal, cross)
-    residual_sq = float(np.dot(rhs, rhs) - np.dot(cross, solution))
-    relative_residual = math.sqrt(max(0.0, residual_sq) / (float(np.dot(rhs, rhs)) + 1e-30))
-    return float(solution[0]), float(solution[1]), float(solution[2]), relative_residual, cond
-
-
-def solve_euler_cloud(
-    tx: np.ndarray,
-    ty: np.ndarray,
-    tz: np.ndarray,
-    window_valid: np.ndarray,
-    *,
-    stride: int = STRIDE,
-    chunk_window_rows: int = 8,
-    window: int = WINDOW,
-    resolution_m: float = RESOLUTION_M,
-    height_m: float = 0.0,
+    field_name: str,
+    structural_index: float = 0.0,
+    window_px: int = 10,
+    stride_px: int = 4,
+    pixel_m: float = PIXEL_M,
+    analytic_percentile: float = 70.0,
+    max_condition: float = 5e4,
+    max_rel_se: float = 0.20,
+    min_depth_m: float = 50.0,
+    max_depth_m: float = 2500.0,
+    source_pad_px: float = 1.5,
 ) -> EulerCloud:
-    """Solve sliding, overlapping SI=0 Euler windows and apply locked QC gates."""
-    tx, ty, tz = (np.asarray(x, dtype=np.float32) for x in (tx, ty, tz))
-    valid = np.asarray(window_valid, dtype=bool)
-    if tx.ndim != 2 or tx.shape != ty.shape or tx.shape != tz.shape or tx.shape != valid.shape:
-        raise ValueError("derivative arrays and window_valid must have one identical 2-D shape")
-    if window != WINDOW or stride <= 0 or chunk_window_rows <= 0:
-        raise ValueError("H1 uses a 10-cell window; stride and chunk size must be positive")
-    h, w = tx.shape
-    if h < window or w < window:
-        return EulerCloud(*(np.empty(0, dtype=np.float32) for _ in range(5)))
+    """Moving-window least-squares Euler deconvolution (Reid et al. 1990).
 
-    # Require all 10x10 cells and the one-cell central-difference halo to have
-    # real input support. The 3x3 minimum filter applies the halo requirement.
-    deriv_valid = ndimage.minimum_filter(valid.astype(np.uint8), size=3, mode="constant", cval=0) > 0
-    valid_windows = np.lib.stride_tricks.sliding_window_view(deriv_valid, (window, window))[::stride, ::stride]
-    valid_windows = valid_windows.all(axis=(-1, -2))
-    txw = np.lib.stride_tricks.sliding_window_view(tx, (window, window))[::stride, ::stride]
-    tyw = np.lib.stride_tricks.sliding_window_view(ty, (window, window))[::stride, ::stride]
-    tzw = np.lib.stride_tricks.sliding_window_view(tz, (window, window))[::stride, ::stride]
-    nyw, nxw = valid_windows.shape
-    xoff = (np.arange(window, dtype=np.float32) + 0.5 - window / 2.0) * resolution_m
-    xgrid = np.broadcast_to(xoff[None, :], (window, window))
-    ygrid = np.broadcast_to((-xoff)[:, None], (window, window))
+    For SI = 0 the fourth unknown is the background offset A (Reid's B).
+    For SI > 0 the SI·T term is moved onto the right-hand side.
 
-    rows_out: list[np.ndarray] = []
-    cols_out: list[np.ndarray] = []
-    depths_out: list[np.ndarray] = []
-    residuals_out: list[np.ndarray] = []
-    conditions_out: list[np.ndarray] = []
-    for r0 in range(0, nyw, chunk_window_rows):
-        r1 = min(nyw, r0 + chunk_window_rows)
-        # Each chunk stays bounded in memory; these are strided read-only views.
-        ax, ay, az = txw[r0:r1], tyw[r0:r1], tzw[r0:r1]
-        design = np.stack((ax, ay, az), axis=-1).reshape(r1 - r0, nxw, window * window, 3).astype(np.float64)
-        rhs_image = xgrid * ax + ygrid * ay
-        rhs = rhs_image.reshape(r1 - r0, nxw, window * window).astype(np.float64)
-        normal = np.einsum("...ki,...kj->...ij", design, design, optimize=True)
-        cross = np.einsum("...ki,...k->...i", design, rhs, optimize=True)
-        rhs_norm = np.einsum("...k,...k->...", rhs, rhs, optimize=True)
-        eigenvalues = np.linalg.eigvalsh(normal)
-        cond = np.full(eigenvalues.shape[:-1], np.inf, dtype=np.float64)
-        eig_ok = eigenvalues[..., 0] > 0
-        cond[eig_ok] = eigenvalues[..., -1][eig_ok] / eigenvalues[..., 0][eig_ok]
-        good = valid_windows[r0:r1] & np.isfinite(cond) & (cond <= MAX_CONDITION) & (rhs_norm > 1e-24)
-        if not good.any():
-            continue
-        # Solve only well-conditioned patches. A batched solve is much faster
-        # than a Python loop but still uses normal equations only after QC.
-        normal_good = normal[good]
-        cross_good = cross[good]
-        try:
-            solutions = np.linalg.solve(normal_good, cross_good[..., None])[..., 0]
-        except np.linalg.LinAlgError:
-            # Defensive per-window fallback for rare numerical singularities.
-            solved: list[np.ndarray] = []
-            good_locations = np.argwhere(good)
-            for (rr, cc), mat, vec in zip(good_locations, normal_good, cross_good):
-                try:
-                    solved.append(np.linalg.solve(mat, vec))
-                except np.linalg.LinAlgError:
-                    solved.append(np.full(3, np.nan))
-            solutions = np.asarray(solved, dtype=np.float64)
-        fit = np.einsum("...i,...i->...", cross_good, solutions, optimize=True)
-        sse = np.maximum(rhs_norm[good] - fit, 0.0)
-        residual = np.sqrt(sse / (rhs_norm[good] + 1e-30))
-        loc = np.argwhere(good)
-        start_rows = (loc[:, 0] + r0) * stride
-        start_cols = loc[:, 1] * stride
-        dx0, dy0, depth_from_observation = solutions.T
-        depth_ground = depth_from_observation - height_m
-        source_col = start_cols + (window / 2.0 - 0.5) + dx0 / resolution_m
-        source_row = start_rows + (window / 2.0 - 0.5) - dy0 / resolution_m
-        cond_good = cond[good]
-        accept = (
-            np.isfinite(source_col)
-            & np.isfinite(source_row)
-            & np.isfinite(depth_ground)
-            & (residual <= MAX_RESIDUAL)
-            & (np.abs(dx0) <= MAX_HORIZONTAL_OFFSET_M)
-            & (np.abs(dy0) <= MAX_HORIZONTAL_OFFSET_M)
-            & (depth_ground >= MIN_DEPTH_M)
-            & (depth_ground <= MAX_DEPTH_M)
-        )
-        if accept.any():
-            rows_out.append(source_row[accept].astype(np.float32))
-            cols_out.append(source_col[accept].astype(np.float32))
-            depths_out.append(depth_ground[accept].astype(np.float32))
-            residuals_out.append(residual[accept].astype(np.float32))
-            conditions_out.append(cond_good[accept].astype(np.float32))
+    Coordinates: column increases east, row increases south.  Depth is positive
+    downward in metres.  Only fully-valid windows whose mean analytic-signal
+    amplitude exceeds ``analytic_percentile`` of valid cells are solved.
+    """
+    if structural_index < 0:
+        raise ValueError("structural index must be >= 0")
+    if window_px < 4 or stride_px < 1:
+        raise ValueError("window_px >= 4 and stride_px >= 1 required")
 
-    def combine(parts: list[np.ndarray]) -> np.ndarray:
-        return np.concatenate(parts) if parts else np.empty(0, dtype=np.float32)
+    gx, gy, gz, analytic, dvalid = derivatives(field, valid, pixel_m)
+    t = np.where(dvalid, np.asarray(field, dtype=np.float64), 0.0)
+    h, w = t.shape
+    empty = EulerCloud(
+        field_name, structural_index, window_px, stride_px,
+        np.empty(0), np.empty(0), np.empty(0), np.empty(0), np.empty(0), np.empty(0),
+        stats={"accepted_solutions": 0, "reason": "grid smaller than window"},
+    )
+    if window_px > h or window_px > w:
+        return empty
 
-    return EulerCloud(*(combine(parts) for parts in (rows_out, cols_out, depths_out, residuals_out, conditions_out)))
+    n_obs = window_px * window_px
+    # Gating: a window must be fully valid AND sit on an elevated analytic signal.
+    win_valid_n = _box_sum(dvalid.astype(np.float64), window_px, stride_px)
+    fully = win_valid_n == float(n_obs)
+    win_as = _box_sum(analytic, window_px, stride_px) / float(n_obs)
+    if dvalid.any():
+        thr = float(np.percentile(analytic[dvalid], analytic_percentile))
+    else:
+        thr = np.inf
+    gated = fully & (win_as >= thr)
+    nr, nc = fully.shape
+    stats_base = {
+        "field_name": field_name,
+        "structural_index": float(structural_index),
+        "window_px": int(window_px),
+        "stride_px": int(stride_px),
+        "window_count": int(nr * nc),
+        "fully_valid_windows": int(fully.sum()),
+        "analytic_percentile": float(analytic_percentile),
+        "analytic_threshold": float(thr) if np.isfinite(thr) else None,
+        "gated_windows": int(gated.sum()),
+    }
+    if not gated.any():
+        empty.stats = {**stats_base, "accepted_solutions": 0}
+        return empty
 
+    # Normal matrix columns: [gx, gy, gz, 1]
+    moments = np.zeros((nr, nc, 4, 4), dtype=np.float64)
+    cols_g = (gx, gy, gz)
+    for i in range(3):
+        for j in range(i, 3):
+            block = _box_sum(cols_g[i] * cols_g[j], window_px, stride_px)
+            moments[:, :, i, j] = block
+            moments[:, :, j, i] = block
+    for i, g in enumerate(cols_g):
+        s = _box_sum(g, window_px, stride_px)
+        moments[:, :, i, 3] = s
+        moments[:, :, 3, i] = s
+    moments[:, :, 3, 3] = float(n_obs)
 
-def pair_clouds(magnetic: EulerCloud, gravity: EulerCloud) -> PairCloud:
-    """Pair each magnetic solution to its best nearby depth-consistent gravity solution."""
-    if not len(magnetic) or not len(gravity):
-        empty = np.empty(0, dtype=np.float32)
-        return PairCloud(empty, empty, empty, empty, empty)
-    grav_xy = np.column_stack((gravity.col * RESOLUTION_M, gravity.row * RESOLUTION_M)).astype(np.float64)
-    mag_xy = np.column_stack((magnetic.col * RESOLUTION_M, magnetic.row * RESOLUTION_M)).astype(np.float64)
-    tree = cKDTree(grav_xy)
-    pair_rows: list[float] = []
-    pair_cols: list[float] = []
-    pair_weights: list[float] = []
-    pair_distances: list[float] = []
-    pair_depth_deltas: list[float] = []
-    chunk = 4096
-    for start in range(0, len(magnetic), chunk):
-        stop = min(len(magnetic), start + chunk)
-        neighbors = tree.query_ball_point(mag_xy[start:stop], r=PAIR_MAX_XY_M, workers=-1, return_sorted=True)
-        for local, candidates in enumerate(neighbors):
-            if not candidates:
-                continue
-            mi = start + local
-            gi = np.asarray(candidates, dtype=np.int64)
-            dxy = np.linalg.norm(grav_xy[gi] - mag_xy[mi], axis=1)
-            dz = np.abs(gravity.depth_m[gi] - magnetic.depth_m[mi])
-            valid = dz <= PAIR_MAX_DEPTH_M
-            if not valid.any():
-                continue
-            gi, dxy, dz = gi[valid], dxy[valid], dz[valid]
-            joint = (dxy / PAIR_MAX_XY_M) ** 2 + (dz / PAIR_MAX_DEPTH_M) ** 2
-            best = int(np.argmin(joint))
-            gj = int(gi[best])
-            distance, depth_delta = float(dxy[best]), float(dz[best])
-            residual_term = (float(magnetic.residual[mi]) / MAX_RESIDUAL) ** 2 + (float(gravity.residual[gj]) / MAX_RESIDUAL) ** 2
-            spatial_term = (distance / PAIR_MAX_XY_M) ** 2 + (depth_delta / PAIR_MAX_DEPTH_M) ** 2
-            weight = math.exp(-0.5 * (residual_term + spatial_term))
-            pair_rows.append(0.5 * (float(magnetic.row[mi]) + float(gravity.row[gj])))
-            pair_cols.append(0.5 * (float(magnetic.col[mi]) + float(gravity.col[gj])))
-            pair_weights.append(weight)
-            pair_distances.append(distance)
-            pair_depth_deltas.append(depth_delta)
-    return PairCloud(
-        row=np.asarray(pair_rows, dtype=np.float32),
-        col=np.asarray(pair_cols, dtype=np.float32),
-        weight=np.asarray(pair_weights, dtype=np.float32),
-        xy_distance_m=np.asarray(pair_distances, dtype=np.float32),
-        depth_delta_m=np.asarray(pair_depth_deltas, dtype=np.float32),
+    # Observation coordinates in pixel units, origin at grid centre so the
+    # fourth column and the (x, y) unknowns stay similarly scaled.
+    x_east = np.arange(w, dtype=np.float64) - 0.5 * (w - 1)
+    y_north = 0.5 * (h - 1) - np.arange(h, dtype=np.float64)
+    rhs_field = gx * x_east[None, :] + gy * y_north[:, None]
+    if structural_index > 0:
+        rhs_field = rhs_field + structural_index * t
+
+    rhs = np.empty((nr, nc, 4), dtype=np.float64)
+    rhs[:, :, 0] = _box_sum(gx * rhs_field, window_px, stride_px)
+    rhs[:, :, 1] = _box_sum(gy * rhs_field, window_px, stride_px)
+    rhs[:, :, 2] = _box_sum(gz * rhs_field, window_px, stride_px)
+    rhs[:, :, 3] = _box_sum(rhs_field, window_px, stride_px)
+    y2 = _box_sum(rhs_field * rhs_field, window_px, stride_px)
+
+    # Column-normalise, then solve only gated windows.
+    colnorm = np.sqrt(np.maximum(np.diagonal(moments, axis1=2, axis2=3), 1e-30))
+    scaled = moments / (colnorm[:, :, :, None] * colnorm[:, :, None, :])
+    # Eigenvalues of the 4×4 for a cheap condition-number gate.
+    evals = np.linalg.eigvalsh(scaled)
+    cond = np.full((nr, nc), np.inf)
+    ok_e = (evals[:, :, 0] > 1e-12) & np.isfinite(evals[:, :, -1])
+    cond[ok_e] = np.sqrt(evals[:, :, -1][ok_e] / evals[:, :, 0][ok_e])
+    well = gated & ok_e & (cond <= max_condition)
+    flat = np.flatnonzero(well.ravel())
+    stats_base["condition_pass"] = int(flat.size)
+    if flat.size == 0:
+        empty.stats = {**stats_base, "accepted_solutions": 0}
+        return empty
+
+    nrm = colnorm.reshape(-1, 4)[flat]
+    A = scaled.reshape(-1, 4, 4)[flat]
+    b = rhs.reshape(-1, 4)[flat] / nrm
+    try:
+        beta_s = np.linalg.solve(A, b[..., None])[..., 0]
+    except np.linalg.LinAlgError:
+        empty.stats = {**stats_base, "accepted_solutions": 0, "reason": "linalg"}
+        return empty
+    beta = beta_s / nrm  # unscale → (x0_east, y0_north, z0_px, offset)
+    rss = np.maximum(y2.ravel()[flat] - np.einsum("ij,ij->i", beta, rhs.reshape(-1, 4)[flat]), 0.0)
+    var = rss / max(n_obs - 4, 1)
+    inv = np.linalg.inv(A)
+    z_var = var * inv[:, 2, 2] / np.square(nrm[:, 2])
+    depth_se_px = np.sqrt(np.maximum(z_var, 0.0))
+    rel_se = depth_se_px / np.maximum(np.abs(beta[:, 2]), 1e-12)
+    depth_m = beta[:, 2] * pixel_m
+
+    rows = np.arange(0, h - window_px + 1, stride_px, dtype=np.int32)
+    cols = np.arange(0, w - window_px + 1, stride_px, dtype=np.int32)
+    wr, wc = np.unravel_index(flat, (nr, nc))
+    top_r = rows[wr]
+    top_c = cols[wc]
+    src_c = beta[:, 0] + 0.5 * (w - 1)
+    src_r = 0.5 * (h - 1) - beta[:, 1]
+
+    depth_ok = np.isfinite(depth_m) & (depth_m >= min_depth_m) & (depth_m <= max_depth_m)
+    se_ok = np.isfinite(rel_se) & (rel_se <= max_rel_se)
+    in_win = (
+        (src_c >= top_c - source_pad_px)
+        & (src_c <= top_c + window_px - 1 + source_pad_px)
+        & (src_r >= top_r - source_pad_px)
+        & (src_r <= top_r + window_px - 1 + source_pad_px)
+    )
+    keep = depth_ok & se_ok & in_win
+    sel = np.flatnonzero(keep)
+
+    # Analytic-signal amplitude at the solved (rounded) location, for weighting.
+    rr = np.clip(np.rint(src_r[sel]).astype(int), 0, h - 1)
+    cc = np.clip(np.rint(src_c[sel]).astype(int), 0, w - 1)
+    as_at = analytic[rr, cc]
+
+    stats = {
+        **stats_base,
+        "depth_pass": int(depth_ok.sum()),
+        "rel_se_pass": int((depth_ok & se_ok).sum()),
+        "accepted_solutions": int(sel.size),
+        "depth_median_m": float(np.median(depth_m[sel])) if sel.size else None,
+        "depth_p90_m": float(np.percentile(depth_m[sel], 90)) if sel.size else None,
+    }
+    return EulerCloud(
+        field_name=field_name,
+        structural_index=float(structural_index),
+        window_px=int(window_px),
+        stride_px=int(stride_px),
+        row=src_r[sel].astype(np.float64),
+        col=src_c[sel].astype(np.float64),
+        depth_m=depth_m[sel].astype(np.float64),
+        rel_se=rel_se[sel].astype(np.float64),
+        cond=cond.ravel()[flat][sel].astype(np.float64),
+        analytic=as_at.astype(np.float64),
+        stats=stats,
     )
 
 
-def persistence_cloud(clouds_by_height: dict[int, EulerCloud]) -> tuple[PairCloud, np.ndarray]:
-    """Retain height-0 solutions that persist across at least 3/4 heights."""
-    heights = [0, 500, 1000, 2000]
-    if any(height not in clouds_by_height for height in heights):
-        raise ValueError(f"persistence clouds must include heights {heights}")
-    base = clouds_by_height[0]
-    if not len(base):
-        empty = np.empty(0, dtype=np.float32)
-        return PairCloud(empty, empty, empty, empty, empty), empty.astype(np.int8)
-    trees: dict[int, cKDTree] = {}
-    xy_by_height: dict[int, np.ndarray] = {}
-    for height in heights[1:]:
-        cloud = clouds_by_height[height]
-        xy = np.column_stack((cloud.col * RESOLUTION_M, cloud.row * RESOLUTION_M)).astype(np.float64)
-        xy_by_height[height] = xy
-        if len(cloud):
-            trees[height] = cKDTree(xy)
-
-    rows_out: list[float] = []
-    cols_out: list[float] = []
-    weights_out: list[float] = []
-    mean_xy_out: list[float] = []
-    mean_depth_out: list[float] = []
-    hits_out: list[int] = []
-    base_xy = np.column_stack((base.col * RESOLUTION_M, base.row * RESOLUTION_M)).astype(np.float64)
-    for mi in range(len(base)):
-        hits = 1
-        terms = [(float(base.residual[mi]) / MAX_RESIDUAL) ** 2]
-        xy_values: list[float] = []
-        depth_values: list[float] = []
-        for height in heights[1:]:
-            cloud = clouds_by_height[height]
-            tree = trees.get(height)
-            if tree is None:
-                continue
-            candidates = tree.query_ball_point(base_xy[mi], r=PAIR_MAX_XY_M, workers=-1, return_sorted=True)
-            if not candidates:
-                continue
-            gi = np.asarray(candidates, dtype=np.int64)
-            dxy = np.linalg.norm(xy_by_height[height][gi] - base_xy[mi], axis=1)
-            dz = np.abs(cloud.depth_m[gi] - base.depth_m[mi])
-            allowed = dz <= PAIR_MAX_DEPTH_M
-            if not allowed.any():
-                continue
-            gi, dxy, dz = gi[allowed], dxy[allowed], dz[allowed]
-            joint = (dxy / PAIR_MAX_XY_M) ** 2 + (dz / PAIR_MAX_DEPTH_M) ** 2
-            best = int(np.argmin(joint))
-            gj = int(gi[best])
-            hits += 1
-            terms.append(
-                (float(clouds_by_height[height].residual[gj]) / MAX_RESIDUAL) ** 2
-                + float(joint[best])
-            )
-            xy_values.append(float(dxy[best]))
-            depth_values.append(float(dz[best]))
-        if hits < 3:
-            continue
-        mean_term = float(np.mean(terms))
-        weight = (hits / 4.0) * math.exp(-0.5 * mean_term)
-        rows_out.append(float(base.row[mi]))
-        cols_out.append(float(base.col[mi]))
-        weights_out.append(weight)
-        mean_xy_out.append(float(np.mean(xy_values)) if xy_values else 0.0)
-        mean_depth_out.append(float(np.mean(depth_values)) if depth_values else 0.0)
-        hits_out.append(hits)
-    cloud = PairCloud(
-        row=np.asarray(rows_out, dtype=np.float32),
-        col=np.asarray(cols_out, dtype=np.float32),
-        weight=np.asarray(weights_out, dtype=np.float32),
-        xy_distance_m=np.asarray(mean_xy_out, dtype=np.float32),
-        depth_delta_m=np.asarray(mean_depth_out, dtype=np.float32),
+def merge_clouds(clouds: list[EulerCloud]) -> EulerCloud:
+    """Concatenate several Euler clouds (different fields / windows) into one."""
+    if not clouds:
+        raise ValueError("no clouds")
+    if len(clouds) == 1:
+        return clouds[0]
+    return EulerCloud(
+        field_name="+".join(sorted({c.field_name for c in clouds})),
+        structural_index=float(np.mean([c.structural_index for c in clouds])),
+        window_px=-1,
+        stride_px=-1,
+        row=np.concatenate([c.row for c in clouds]),
+        col=np.concatenate([c.col for c in clouds]),
+        depth_m=np.concatenate([c.depth_m for c in clouds]),
+        rel_se=np.concatenate([c.rel_se for c in clouds]),
+        cond=np.concatenate([c.cond for c in clouds]),
+        analytic=np.concatenate([c.analytic for c in clouds]),
+        stats={"n_clouds": len(clouds), "accepted_solutions": int(sum(len(c) for c in clouds)),
+               "per_cloud": [c.stats for c in clouds]},
     )
-    return cloud, np.asarray(hits_out, dtype=np.int8)
-
-
-def kde_from_pairs(pairs: PairCloud, shape: tuple[int, int]) -> np.ndarray:
-    """Deposit pair weights, then apply the preregistered zero-padded Gaussian KDE."""
-    density = np.zeros(shape, dtype=np.float32)
-    if pairs.row.size:
-        rr = np.rint(pairs.row).astype(np.int64)
-        cc = np.rint(pairs.col).astype(np.int64)
-        inside = (rr >= 0) & (rr < shape[0]) & (cc >= 0) & (cc < shape[1])
-        np.add.at(density, (rr[inside], cc[inside]), pairs.weight[inside])
-    return ndimage.gaussian_filter(density, sigma=KDE_SIGMA_PX, truncate=KDE_TRUNCATE, mode="constant", cval=0.0)
-
-
-def emit_top_budget(
-    kde: np.ndarray,
-    valid: np.ndarray,
-    known_labels: np.ndarray,
-    *,
-    budget: int = EMISSION_BUDGET,
-) -> tuple[np.ndarray, dict[str, int | float]]:
-    """Emit binary top-budget cells with deterministic row-major tie breaking."""
-    kde = np.asarray(kde, dtype=np.float32)
-    valid = np.asarray(valid, dtype=bool)
-    known = np.asarray(known_labels)
-    if kde.shape != valid.shape or known.shape != kde.shape:
-        raise ValueError("KDE, valid mask, and known labels must have the same shape")
-    eligible = valid & (known != 1) & np.isfinite(kde) & (kde > 0.0)
-    indices = np.flatnonzero(eligible)
-    if indices.size < budget:
-        raise RuntimeError(f"only {indices.size} positive KDE cells; preregistered budget is {budget}; refuse to backfill")
-    values = kde.ravel()[indices]
-    kth = float(np.partition(values, values.size - budget)[values.size - budget])
-    higher = indices[values > kth]
-    equal = np.sort(indices[values == kth])
-    need = budget - higher.size
-    selected = np.concatenate((higher, equal[:need]))
-    if selected.size != budget:
-        raise AssertionError(f"selected {selected.size} cells, expected {budget}")
-    unselected_ties = equal[need:]
-    if unselected_ties.size:
-        maximum_unemitted = kth
-    else:
-        below = values[values < kth]
-        maximum_unemitted = float(below.max()) if below.size else 0.0
-    pred = np.zeros(kde.shape, dtype=np.float32)
-    pred.ravel()[selected] = 1.0
-    summary = {
-        "budget": int(budget),
-        "positive_kde_cells": int(indices.size),
-        "emitted_pixels": int(selected.size),
-        "cutoff_kde": kth,
-        "minimum_emitted_kde": float(kde.ravel()[selected].min()),
-        "maximum_unemitted_kde": maximum_unemitted,
-    }
-    return pred, summary
-
-
-def emit_all_supported(
-    kde: np.ndarray,
-    valid: np.ndarray,
-    known_labels: np.ndarray,
-) -> tuple[np.ndarray, dict[str, int | float | str]]:
-    """H2-B: emit exactly the finite positive KDE support; no budget fill/tuning."""
-    kde = np.asarray(kde, dtype=np.float32)
-    valid = np.asarray(valid, dtype=bool)
-    known = np.asarray(known_labels)
-    if kde.shape != valid.shape or known.shape != kde.shape:
-        raise ValueError("KDE, valid mask, and known labels must have the same shape")
-    eligible = valid & (known != 1) & np.isfinite(kde) & (kde > 0.0)
-    count = int(eligible.sum())
-    if count == 0:
-        raise RuntimeError("H2-B has no positive KDE support; no candidate can be emitted")
-    pred = np.zeros(kde.shape, dtype=np.float32)
-    pred[eligible] = 1.0
-    return pred, {
-        "emission_rule": "all positive KDE support; no top-K threshold or backfill",
-        "positive_kde_cells": count,
-        "emitted_pixels": count,
-        "minimum_emitted_kde": float(kde[eligible].min()),
-        "maximum_unemitted_kde": 0.0,
-    }
-
-
-def run_h1(
-    features_path: str | Path,
-    template_path: str | Path,
-    labels_path: str | Path,
-) -> tuple[np.ndarray, dict[str, Any]]:
-    """Generate one frozen H1 candidate from challenge feature bands only."""
-    features_path, template_path, labels_path = Path(features_path), Path(template_path), Path(labels_path)
-    with rasterio.open(template_path) as sample, rasterio.open(labels_path) as labels_ds, rasterio.open(features_path) as features:
-        template = sample.read(1)
-        footprint = np.isfinite(template)
-        labels = labels_ds.read(1)
-        if labels.shape != template.shape or features.shape != template.shape:
-            raise ValueError("sample, labels, and features must have identical shape")
-        bands: dict[str, np.ndarray] = {}
-        band_indices: dict[str, int] = {}
-        for name in ("tmi", "tmi_vg", "iso_grav_anom"):
-            idx = band_index_by_name(features, name)
-            band_indices[name] = idx
-            bands[name] = features.read(idx).astype(np.float32, copy=False)
-        transform = features.transform
-        if sample.crs != features.crs or sample.transform != features.transform:
-            raise ValueError("sample and feature georeferencing differ")
-
-    tmi, tmi_mask = fill_nearest(bands["tmi"])
-    tmi_vg, tmi_vg_mask = fill_nearest(bands["tmi_vg"])
-    grav, grav_mask = fill_nearest(bands["iso_grav_anom"])
-    common_valid = footprint & tmi_mask & tmi_vg_mask & grav_mask
-    derivative_check = validate_magnetic_vertical_derivative(bands["tmi"], bands["tmi_vg"])
-    if derivative_check["pass"]:
-        magnetic_tz = tmi_vg
-        magnetic_vertical_source = "provided tmi_vg, independently verified against +|k| TMI"
-    else:
-        magnetic_tz = fourier_vertical_down(tmi)
-        magnetic_vertical_source = "Fourier +|k| derivative fallback (tmi_vg failed preregistered check)"
-
-    magnetic_tx, magnetic_ty = _gradient_components(tmi)
-    gravity_tz = fourier_vertical_down(grav)
-    gravity_tx, gravity_ty = _gradient_components(gravity_tz)
-    gravity_tzz = fourier_vertical_down(gravity_tz)
-
-    # Compute a source-valid stencil for every derivative cell, including the
-    # finite-difference halo. Fourier fields are nearest-filled outside support,
-    # but windows at real-data holes / the footprint edge are never accepted.
-    raw_common = footprint & tmi_mask & tmi_vg_mask & grav_mask
-    window_valid = raw_common
-    mag_cloud = solve_euler_cloud(magnetic_tx, magnetic_ty, magnetic_tz, window_valid)
-    grav_cloud = solve_euler_cloud(gravity_tx, gravity_ty, gravity_tzz, window_valid)
-    pairs = pair_clouds(mag_cloud, grav_cloud)
-    kde = kde_from_pairs(pairs, footprint.shape)
-    pred, emission = emit_top_budget(kde, footprint, labels)
-    pred[labels == 1] = 0.0
-    pred[~footprint] = 0.0
-    summary: dict[str, Any] = {
-        "hypothesis_id": "H1",
-        "transform": list(transform)[:6],
-        "shape": list(footprint.shape),
-        "feature_bands": {name: {"band": band_indices[name], "band_name": name} for name in ("tmi", "tmi_vg", "iso_grav_anom")},
-        "magnetic_vertical_derivative_check": derivative_check,
-        "magnetic_vertical_derivative_source": magnetic_vertical_source,
-        "gravity_vertical_derivative_source": "padded reflect +|k| Fourier derivative of iso_grav_anom; supplied iso_grav_anom_vg not used",
-        "common_real_input_pixels": int(common_valid.sum()),
-        "exact_known_label_pixels_suppressed": int(np.count_nonzero((labels == 1) & footprint)),
-        "magnetic_cloud": mag_cloud.to_summary(),
-        "gravity_cloud": grav_cloud.to_summary(),
-        "paired_cloud": pairs.to_summary(),
-        "emission": emission,
-    }
-    return pred, summary

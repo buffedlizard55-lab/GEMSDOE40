@@ -9,7 +9,7 @@
 - [Download the H2-B research GeoTIFF](docs/downloads/gemsdoe40-h2b-tmi-euler-natural-support-20261005.tif) — **research-only; do not submit**.
 - Grid/format: one-band `float32`, EPSG:32611, 100 m, 3,730 × 3,292, exact sample transform/footprint, finite `[0,1]` in-footprint values and NaN outside.
 - 17,425 positive cells (0.337% of the 5,167,373-cell footprint); SHA-256: `02486eaa491da2d8ebc6b1cd53ed2bdc8e995f316be1110a64eec484779b5a68`.
-- It differs from the 268 same-grid prior rasters under every frozen raw/canonical-hash, correlation, support-Jaccard, and top-budget near-duplicate check. **Uniqueness is not evidence of quality.**
+- It differs from all 277 same-grid prior raster blobs in the expanded 279-blob inventory under every frozen raw/canonical-hash, correlation, support-Jaccard, and top-budget near-duplicate check. **Uniqueness is not evidence of quality.** The initial 268-comparison audit is preserved for history.
 - Suggested DrivenData name and note are intentionally **not provided as upload instructions** while the result is on hold. The site offers a clearly labeled research-only metadata string for record-keeping, not submission.
 
 The full result is on the [project site](docs/index.html), with the [executive summary and future upload guide](docs/executive-summary.html), the [hypothesis register](docs/research/hypotheses.md), and the [H2-B spatial-proxy report](docs/reports/validation-h2b-20261005.md).
@@ -24,14 +24,22 @@ The full result is on the [project site](docs/index.html), with the [executive s
 | H2-B proxy DTI | **0.006313** | Owner-derived SGMC mirror only; not hidden truth or an official score. |
 | H3 ComCat source audit | 34,716 events advertise focal mechanisms; 238 at magnitude ≥4; one detail verified | Usable-plane count and spread across 8+ blocks unverified; H3 remains blocked and unimplemented. |
 | Frozen all-prior incumbent | **0.835907** | Same proxy instrument; highest format-eligible same-grid prior raster. The artifact is explicitly SGMC-gap-derived, so this is a circular proxy ceiling—not an independent estimate of challenge generalization. The frozen gate nevertheless retains the all-prior comparator. |
+| Expanded prior-output audit | **279 unique TIFF blobs; 277 exact-grid scores; 167 local format-eligible priors** | Added 11 TIFF path observations (9 unique blobs) from pinned current `main`; H2-B uniqueness and promotion outcomes are unchanged. |
+| Prior main-branch H40-4 | **0.124715 proxy DTI; 0/24 wins; local format gate fails** | Diagnostic against the same owner-derived SGMC proxy, not an organizer score; the raster lacks the local NaN-nodata contract. Prior main's LM-calibrated instrument result (0.34835, 4/4 folds) is a distinct proxy instrument and is not comparable. |
 | Promotion | **0/24 blocks won; HOLD** | No weekly slot used; do not submit. |
 | Live official leaderboard snapshot | #1 0.3262; #2 0.3222; #3 0.3220; #4 0.3195 | Read from the official board on 2026-10-05. These account-level scores do not identify a TIFF unless the organizer links one. |
 
 The SGMC-derived raster is an owner-derived mirror whose provenance is not independently verified here. It is only a proxy instrument. The best proxy-scoring prior is called `gapfinder-v2-sgmc-gap`; the originating project documents that this candidate used SGMC-gap pixels. Its high proxy DTI is therefore circular. It remains in the frozen all-prior comparison, and the result is disclosed rather than silently removed or relabeled. See [validation report](docs/reports/validation-h2b-20261005.md).
 
+### Mainline prior-output reconciliation
+
+While reconciling this branch with the advanced `origin/main`, the audit found 11 TIFF path observations (9 new Git blobs) absent from the original inventory. All nine are now pinned to main commit `0e4a795d467f16555443ee0446875d7c32f51aa5`, added to the 279-blob corpus, and re-audited. H2-B remains distinct from all 277 exact-grid priors, and the same frozen incumbent remains highest among the 167 locally format-eligible rasters. The result remains **HOLD**.
+
+The preserved main-branch H40-4 file has 97,654 positive cells. Its original LM-calibrated score (0.34835; 4/4 folds versus that project's prior site-best) belongs to a different internal instrument. When scored diagnostically against this run's SGMC proxy it obtains 0.124715 and wins 0/24 blocks; it fails this repository's strict local format gate because its GeoTIFF has no NaN nodata tag. None of these values is an organizer score. The prior main recommendation and full details are preserved in [`docs/archive/README-main-before-h2b.md`](docs/archive/README-main-before-h2b.md), while the candidate itself remains available at [`docs/downloads/gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e.tif`](docs/downloads/gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e.tif).
+
 ## Project charter — the brief retained for future work
 
-The original project request, captured here as the durable working brief, is to build a unique, scientifically grounded DOE GEMS fault-prediction GeoTIFF together with an auditable research, validation, and project-site system. It calls for:
+The project brief is distilled here as a durable working charter; a structured, consolidated transcription of the prompt is preserved at [`docs/prompt.md`](docs/prompt.md) (not a verbatim transcript). The task is to build a unique, scientifically grounded DOE GEMS fault-prediction GeoTIFF together with an auditable research, validation, and project-site system. It calls for:
 
 1. Predict **geological faults that may indicate geothermal resources**, not vents or reservoirs; pursue leaderboard performance without treating any proxy as hidden truth.
 2. Preregister three to five ranked hypotheses, implement the scientifically plausible leader, test it on spatially blocked holdouts before using any of the three weekly submission slots, and never invent a score or submit an unvalidated hypothesis.
@@ -52,7 +60,7 @@ The frozen promotion gate is intentionally strict: on the same four-by-six spati
 
 ### Reproduce (after obtaining the required inputs)
 
-Python 3.10+; install with `python -m pip install -e '.[test]'`. The large TIFF inputs and prior-raster cache are external artifacts and are not committed. This run used NumPy 2.4.6, SciPy 1.17.1, Rasterio 1.4.4. Set the paths below to local copies of the pinned inputs and to the verified 270-blob prior cache:
+Python 3.10+; install with `python -m pip install -e '.[test]'`. The large TIFF inputs and prior-raster cache are external artifacts and are not committed. This run used NumPy 2.4.6, SciPy 1.17.1, Rasterio 1.4.4. Set the paths below to local copies of the pinned inputs and to the verified 279-blob prior cache (including the current-main addendum):
 
 ```bash
 python -m pytest -q
@@ -67,12 +75,12 @@ PYTHONPATH=src python scripts/run_research.py \
   --inventory docs/data/prior_raster_inventory.json
 ```
 
-The final command is CPU-heavy (about 7.6 minutes in this sandbox), writes the candidate under `docs/downloads/`, and regenerates validation/format/uniqueness JSON. It **does not submit** anything. H1 and strict H2 have feasibility stops; H2-B is the only completed proxy-scored candidate. The proxy SHA-256 is pinned in the reports and input manifest.
+The research command is CPU-heavy (the original 270-blob run took about 7.6 minutes in this sandbox); with the expanded 279-blob cache it writes the candidate under `docs/downloads/` and regenerates the H2-B-specific validation, format, and uniqueness JSON without overwriting main's preserved `validation.json`. It **does not submit** anything. Check the static Pages site without rewriting it with `python scripts/build_site.py --check`. H1 and strict H2 have feasibility stops; H2-B is the only completed proxy-scored candidate. The proxy SHA-256 is pinned in the reports and input manifest.
 
 ## Official and scientific references
 
 - [DrivenData challenge, task, metric, and submission instructions](https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/)
-- [Official public leaderboard](https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/) — dated snapshot in [`docs/data/feed.json`](docs/data/feed.json).
+- [Official public leaderboard](https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/) — current dated snapshot in [`docs/data/feed-20261005.json`](docs/data/feed-20261005.json); the main-branch `feed.json` is retained separately.
 - [DOE/NLR September 2026 competition rules PDF](https://docs.nlr.gov/docs/fy26osti/96647.pdf)
 - [DrivenData staff clarification: exact-pixel known-fault mask](https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516/2)
 - [USGS State Geologic Map Compilation metadata](https://mrdata.usgs.gov/geology/state/USGS_SGMC_Metadata.xml) and [Data Series 1052](https://pubs.usgs.gov/ds/1052/): official source context for the vector compilation; this does **not** validate the owner-derived raster mirror used here.
@@ -87,8 +95,10 @@ The final command is CPU-heavy (about 7.6 minutes in this sandbox), writes the c
 - `docs/research/hypotheses.md` — append-only preregistration and implementation locks.
 - `docs/research/source-register.md` — verified links, provenance limits, and data irregularities.
 - `docs/reports/` — human-readable feasibility and validation reports.
-- `docs/data/` — pinned input manifest, prior inventory and full metadata audit, exact receipts, and machine-readable feed/results.
-- `src/gemsdoe40/` — metric, Euler generators, holdout scoring, raster validation, uniqueness audit.
+- `docs/data/` — pinned input manifest, expanded prior inventory/metadata, separate H2-B result and mainline historical validation, exact receipts, and dated feed.
+- `docs/archive/` and `docs/*-before-h2b.html` — preserved pre-merge README/site snapshots, with historical-status warnings.
+- `src/gems40/` — mainline Euler, feature-stack, grid, and LM-instrument tools.
+- `src/gemsdoe40/research_*.py` plus `euler_h2.py` — preregistered research metric, Euler, holdout, and uniqueness tools; non-conflicting module names preserve both packages.
 - `scripts/` — reproducible cache and research runners.
 - `tests/` — numerical, format, and persistence regression tests.
 
