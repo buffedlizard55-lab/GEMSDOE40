@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""GEMSDOE40 submission generator: Euler deconvolution depth-clustering.
+"""ALTERNATE H40 ARM — not the current contact-offset H4 release.
+Opt-in historical/parallel reproduction only; no approval to submit.
+
+GEMSDOE40 submission generator: Euler deconvolution depth-clustering.
 
 Pipeline (every step is measured, none is asserted):
 
@@ -336,6 +339,8 @@ def ref_incumbent(footprint: np.ndarray):
 
 
 def run(args) -> dict:
+    from gemsdoe40.legacy_guard import require_legacy_opt_in
+    require_legacy_opt_in()
     t_start = time.time()
     sample, labels, features, footprint, catalogue = load_inputs()
     log(f"grid {footprint.shape} footprint {int(footprint.sum()):,} "

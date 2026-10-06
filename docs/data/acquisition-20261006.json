@@ -1,0 +1,29 @@
+{
+  "provenance": "Public sibling-repository mirrors; pins establish consistency, NOT organizer-authenticated provenance.",
+  "official_data_url": "https://www.drivendata.org/competitions/306/competition-doe-gems/data/",
+  "feature_ref": "dcbbb192e56b2b32c0a131eba791dc363305d4a3",
+  "template_and_labels_ref": "07345ea0604953d7efb858d9cfbc21e20c7aca0b",
+  "proxy_repo": "GEMSDOE30",
+  "proxy_ref": "1f9ac110d5f1a4fac7957fe814267a0be964dd20",
+  "proxy_path": "data/external/derived_sgmc_faults_100m_u8.tif",
+  "proxy_irregularity": "GEMSDOE24 and 13GEMSDOE contain different rasters under this same filename; only GEMSDOE30 matches the frozen research proxy SHA-256.",
+  "files": {
+    "training_features.tif": {
+      "sha256": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5",
+      "bytes": 418912844
+    },
+    "labels.tif": {
+      "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+      "bytes": 425830
+    },
+    "sample_submission.tif": {
+      "sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+      "bytes": 1599597
+    },
+    "external/derived_sgmc_faults_100m_u8.tif": {
+      "sha256": "26d142c4c93282cd94f6950ab96f22aeff59fbbea523d43d662e76fa1b161b5c",
+      "bytes": 213034
+    }
+  },
+  "proxy_caveat": "Owner-derived SGMC raster, not independently rebuilt USGS data or organizer truth."
+}

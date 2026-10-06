@@ -34,6 +34,22 @@ def test_static_site_has_no_duplicate_ids_or_broken_local_links():
             assert target.exists(), f"{page}: broken local link {href}"
 
 
+def test_site_prominently_marks_candidate_on_hold_and_offers_download():
+    index = (DOCS / "index.html").read_text(encoding="utf-8")
+    summary = (DOCS / "executive-summary.html").read_text(encoding="utf-8")
+    import json
+    manifest = json.loads((DOCS / "data/current-candidate.json").read_text())
+    candidate = DOCS / "downloads" / manifest["filename"]
+    assert candidate.is_file()
+    assert "HOLD — DO NOT SUBMIT" in index
+    assert "HOLD — DO NOT SUBMIT" in summary
+    assert f'downloads/{manifest["filename"]}' in index
+    assert f'downloads/{manifest["filename"]}' in summary
+    assert manifest["slot_eligible"] is False
+    assert manifest["organizer_score"] is None
+
+
+
 def test_site_prominently_marks_h7_on_hold_and_offers_research_download():
     index = (DOCS / "index.html").read_text(encoding="utf-8")
     summary = (DOCS / "executive-summary.html").read_text(encoding="utf-8")
@@ -69,7 +85,7 @@ def test_h40_artifact_is_offered_beside_an_explicit_hold():
 
 
 def test_instrument_audit_retires_the_two_promotion_instruments():
-    """The 2026-10-06 audit measured both instruments against 16 real scores."""
+    """The 2026-10-06 audit measured both instruments against 16 owner-attributed scores; file-level organizer attribution is unverified."""
     import json
     audit = json.loads((DOCS / "data" / "instrument-audit-20261006.json").read_text())
     stats = audit["statistics"]

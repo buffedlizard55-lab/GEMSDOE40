@@ -1,249 +1,169 @@
 #!/usr/bin/env python3
-"""Refresh the prior-prediction TIFF corpus from all public owner repository heads.
+"""Conservative, pinned public-output census. Preserve history; inspect ZIPs too.
 
-Every owner/repository/default-branch head and recursive Git tree is recorded. TIFFs are explicitly
-classified as prior output, proxy-circular output, input/template/truth, fixture/source, or review
-needed. Only prediction/output rasters enter the uniqueness and holdout corpus; source maps,
-proxy truth, labels, templates, and test fixtures do not. New output blobs are fetched through `gh`
-and byte-verified against Git blob SHA-1 before their SHA-256 is admitted.
+This is an owner-repository snapshot, not a claim about private/deleted artifacts.
+Requires gh. All caches stay outside Git under data/prior and work/.
 """
 from __future__ import annotations
 
 import argparse
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from datetime import datetime, timezone
 import hashlib
+import io
 import json
 from pathlib import Path
-import shutil
+import re
 import subprocess
 from urllib.parse import quote
+import zipfile
 
+ROOT = Path(__file__).resolve().parents[1]
 OWNER = "buffedlizard55-lab"
 
 
-def gh_json(endpoint: str) -> dict | list:
-    return json.loads(subprocess.check_output(["gh", "api", endpoint], text=True))
+def api(endpoint: str, raw: bool = False) -> bytes | dict | list:
+    command = ["gh", "api"]
+    if raw:
+        command += ["-H", "Accept: application/vnd.github.raw"]
+    payload = subprocess.check_output(command + [endpoint], timeout=300)
+    return payload if raw else json.loads(payload)
 
 
-def gh_raw(endpoint: str) -> bytes:
-    return subprocess.check_output(["gh", "api", "-H", "Accept: application/vnd.github.raw", endpoint])
+def output_reason(path: str) -> str | None:
+    low = path.lower()
+    if not low.endswith((".tif", ".tiff", ".zip")):
+        return None
+    if any(token in low for token in ("/downloads/", "downloads/", "/submissions/", "submissions/", "docs/archive/",
+                                     "/scored/", "/lb_anchors/", "/legacy_candidates/", "/quarantine/",
+                                     "/leaderboard_anchor/", "/suture/", "/union_po_loo/", "inputs/calibration/")):
+        return "output-directory"
+    base = Path(low).name
+    if (low.startswith("docs/gems") or "context_detector_prob" in base or base == "prob_raw.tif"
+            or (low.startswith("inputs/") and base.startswith(("gems16-", "gems19-")))):
+        return "raw-model-output-or-root-docs-download"
+    if any(token in base for token in ("submission", "prediction", "candidate")) and not any(
+            token in base for token in ("sample_submission", "example_submission", "submission_format")):
+        return "prediction-filename"
+    return None
 
 
-def git_blob_sha1(data: bytes) -> str:
-    return hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
+def blob_hash(data: bytes) -> str:
+    return hashlib.sha1(f"blob {len(data)}\0".encode() + data).hexdigest()
 
 
-def sha256(data: bytes) -> str:
-    return hashlib.sha256(data).hexdigest()
-
-
-def classify_tiff(path: str) -> tuple[str, bool]:
-    """Return (evidence class, include in prior-output corpus)."""
-    p = path.lower()
-    base = p.rsplit("/", 1)[-1]
-
-    # Explicitly proxy-trained/SGMC-derived output maps are retained for novelty checks and
-    # separately flagged as circular if used against the matching proxy.
-    if "proxy_only" in p or "sgmc-gap" in p or "sgmc_gap" in p:
-        return "proxy-circular research/prediction output; include, flag as circular", True
-
-    # Known raster inputs and source/context rasters. These can be scientifically relevant inputs,
-    # but are not prior predictions and must not enter the prediction-to-prediction novelty corpus.
-    if base in {
-        "training_features.tif", "example_submission.tif", "sample_submission.tif",
-        "existing_faults.tif", "labels.tif", "template-mask.tif", "fixture_labels.tif",
-        "fixture_features_int16.tif", "derived_sgmc_faults_100m_u8.tif",
-        "derived_gdr_2m_probes_100m_u8.tif", "derived_gdr_paleo_100m_u8.tif",
-        "derived_gdr_qfaults_v2_100m_u8.tif", "derived_gdr_volcanics_100m_u8.tif",
-        "proxy_catalogue.tif", "proxy_catalogue_sgmc.tif", "proxy_window.tif",
-        "qfaults_catalogue.tif", "qfaults_prior_u8.tif", "lidar_scarp_features_u8.tif",
-        "geodawn_extensions_u8.tif", "geodawn_rad_u8.tif", "eval_labels.tif", "train_labels.tif",
-    }:
-        return "input/template/label/proxy/source; exclude", False
-    if any(token in p for token in (
-        "/data/bridge/", "/legacy/data/bridge/", "/tests/fixture/", "/data/fixture/",
-        "/external/audit_sources/", "/external/dem/", "/external/qfaults/",
-        "/data/evidence/proxy/", "/data/evidence/xcat/", "/data/evidence/seghold/",
-        "/external/geodawn_extensions/", "/external/geodawn_rad/",
-    )):
-        return "input/template/label/proxy/source/fixture; exclude", False
-
-    # Explicit prior submissions, scored outputs, model predictions, research candidates and
-    # archived/quarantined predictions are all needed for a conservative novelty audit.
-    output_prefixes = (
-        "docs/downloads/", "downloads/", "submissions/", "assets/lb_anchors/",
-        "data/evidence/leaderboard_anchor/", "external/scored/", "inputs/",
-        "archive/legacy_candidates/", "docs/archive/", "docs/research/quarantine/",
-        "data/evidence/union_po_loo/", "data/evidence/newfault/", "data/evidence/suture/",
-        "evidence/experiments/", "evidence/history/pre_correction_downloads/",
-    )
-    if p.startswith(output_prefixes) or "/downloads/" in p or "/submissions/" in p:
-        return "prior prediction/submission/research output; include", True
-    if p.startswith("docs/gemsdoe") and p.endswith((".tif", ".tiff")):
-        return "prior prediction output at docs root; include", True
-    if p.startswith("data/derived/context_detector_prob_"):
-        return "model probability output (multiple variants); include", True
-    if base in {"submission.tif", "submission_conformant.tif"}:
-        return "prior submission/prediction output; include", True
-    if any(token in base for token in ("prediction", "candidate", "prob_raw", "anchor")):
-        return "likely prediction output; include after path/name context review", True
-
-    return "unclassified TIFF; manual review required; exclude until classified", False
-
-
-def _artifact_location(repo: str, ref: str, path: str, blob_sha: str, size: int) -> dict:
-    return {
-        "repo": repo,
-        "ref": ref,
-        "path": path,
-        "bytes": int(size),
-        "raw_url": f"https://raw.githubusercontent.com/{OWNER}/{repo}/{ref}/{quote(path, safe='/')}",
-    }
-
-
-def main() -> int:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--base", type=Path, default=Path("docs/data/prior_raster_inventory.json"))
-    parser.add_argument("--out", type=Path, default=Path("docs/data/prior_raster_inventory-20261006.json"))
-    parser.add_argument("--cache", type=Path, default=Path("/tmp/gemsdoe40-prior-cache"))
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--base", type=Path, default=ROOT / "docs/data/prior_raster_inventory.json")
+    parser.add_argument("--output", type=Path, default=ROOT / "docs/data/prior-inventory-20261006.json")
+    parser.add_argument("--cache", type=Path, default=ROOT / "data/prior")
     args = parser.parse_args()
-    base = json.loads(args.base.read_text(encoding="utf-8"))
-    inventory = json.loads(json.dumps(base))
-    entries = inventory["unique_rasters"]
-    by_blob = {entry["git_blob_sha"]: entry for entry in entries}
+    old = json.loads(args.base.read_text())
+    entries = {e["git_blob_sha"]: e for e in old["unique_rasters"]}
     args.cache.mkdir(parents=True, exist_ok=True)
+    repositories = []
+    page = 1
+    while True:
+        batch = api(f"users/{OWNER}/repos?per_page=100&page={page}")
+        repositories.extend(r for r in batch if re.search(r"GEMS.*DOE", r["name"], re.I))
+        if len(batch) < 100:
+            break
+        page += 1
+    observed, excluded, snapshots, errors, archives = [], [], [], [], []
 
-    repos = gh_json(f"users/{OWNER}/repos?per_page=100&type=public")
-    repos = sorted((repo for repo in repos if "gemsdoe" in repo["name"].lower()), key=lambda r: r["name"])
-    if len(repos) < 50:
-        raise RuntimeError(f"owner repository listing unexpectedly short: {len(repos)} matches")
-
-    heads: list[dict] = []
-    scan_paths: list[dict] = []
-    new_output_locations = 0
-    new_unique_blobs = 0
-    prediction_repositories: set[str] = set(inventory.get("source_repositories_with_tiff_outputs", []))
-    excluded_review: list[dict] = []
-    truncated: list[str] = []
-    tree_count = 0
-
-    for repository in repos:
-        name = repository["name"]
-        branch = repository["default_branch"]
-        commit = gh_json(f"repos/{OWNER}/{name}/commits/{branch}")
-        head = commit["sha"]
-        tree = gh_json(f"repos/{OWNER}/{name}/git/trees/{head}?recursive=1")
+    def scan(repo: dict) -> tuple:
+        name = repo["name"]
+        commit = api(f"repos/{OWNER}/{name}/commits/{repo['default_branch']}")["sha"]
+        tree = api(f"repos/{OWNER}/{name}/git/trees/{commit}?recursive=1")
         if tree.get("truncated"):
-            truncated.append(name)
-            continue
-        tree_count += 1
-        heads.append({"repo": name, "default_branch": branch, "head_commit": head})
-        for item in tree.get("tree", []):
-            path = item.get("path", "")
-            if not path.lower().endswith((".tif", ".tiff")):
+            raise RuntimeError(f"truncated tree: {name}")
+        selected, skipped = [], []
+        for item in tree["tree"]:
+            if item["type"] != "blob" or not item["path"].lower().endswith((".tif", ".tiff", ".zip")):
                 continue
-            blob = item["sha"]
-            size = int(item.get("size", 0))
-            category, include = classify_tiff(path)
-            record = {
-                "repo": name,
-                "default_branch": branch,
-                "head_commit": head,
-                "path": path,
-                "git_blob_sha": blob,
-                "bytes": size,
-                "classification": category,
-                "included_in_prior_output_corpus": bool(include),
-            }
-            scan_paths.append(record)
-            if not include:
-                if "manual review required" in category:
-                    excluded_review.append({"repo": name, "path": path, "git_blob_sha": blob, "bytes": size})
-                continue
+            artifact = {"repo": name, "ref": commit, "path": item["path"], "bytes": item["size"],
+                        "git_blob_sha": item["sha"], "kind": output_reason(item["path"]),
+                        "raw_url": f"https://raw.githubusercontent.com/{OWNER}/{name}/{commit}/{quote(item['path'], safe='/')}"}
+            (selected if artifact["kind"] else skipped).append(artifact)
+        return {"repo": name, "commit": commit, "tree": tree["sha"], "output_paths": len(selected)}, selected, skipped
 
-            prediction_repositories.add(name)
-            location = _artifact_location(name, head, path, blob, size)
-            entry = by_blob.get(blob)
-            if entry is None:
-                cache_file = args.cache / f"{blob}.tif"
-                raw = cache_file.read_bytes() if cache_file.exists() else gh_raw(
-                    f"repos/{OWNER}/{name}/contents/{quote(path, safe='/')}?ref={head}"
-                )
-                actual_blob = git_blob_sha1(raw)
-                if actual_blob != blob or len(raw) != size:
-                    raise RuntimeError(
-                        f"raw TIFF integrity failure for {name}/{path}: size={len(raw)}/{size}, blob={actual_blob}/{blob}"
-                    )
-                digest = sha256(raw)
-                entry = {
-                    "git_blob_sha": blob,
-                    "bytes": size,
-                    "sha256": digest,
-                    "artifacts": [],
-                    "classification": category,
-                }
-                entries.append(entry)
-                by_blob[blob] = entry
-                new_unique_blobs += 1
-                if not cache_file.exists():
-                    cache_file.write_bytes(raw)
-            locations = entry.setdefault("artifacts", [])
-            if not any(
-                a.get("repo") == name and a.get("ref") == head and a.get("path") == path
-                for a in locations
-            ):
-                locations.append(location)
-                new_output_locations += 1
+    with ThreadPoolExecutor(max_workers=5) as pool:
+        pending = {pool.submit(scan, r): r["name"] for r in repositories}
+        for future in as_completed(pending):
+            try:
+                snap, paths, skip = future.result()
+                snapshots.append(snap); observed.extend(paths); excluded.extend(skip)
+                print(f"census {snap['repo']}: {len(paths)} output TIFF/ZIP paths", flush=True)
+            except Exception as exc:
+                errors.append({"repo": pending[future], "error": str(exc)})
+    if errors:
+        raise RuntimeError(f"incomplete repository census: {errors}")
+    census_path = ROOT / "work/source-audit/current-census.json"
+    census_path.parent.mkdir(parents=True, exist_ok=True)
+    census_path.write_text(json.dumps({"observed": observed, "excluded": excluded, "snapshots": snapshots}, indent=2))
 
-    if truncated:
-        raise RuntimeError(f"recursive GitHub trees were truncated: {truncated}")
-    if tree_count != len(repos):
-        raise RuntimeError(f"only {tree_count}/{len(repos)} repository trees were read")
+    def download(artifact: dict) -> tuple[dict, bytes]:
+        blob = artifact["git_blob_sha"]
+        cached = args.cache / f"{blob}.tif"
+        if cached.exists() and not artifact["path"].lower().endswith(".zip"):
+            data = cached.read_bytes()
+        else:
+            data = api(f"repos/{OWNER}/{artifact['repo']}/contents/{quote(artifact['path'], safe='/')}?ref={artifact['ref']}", raw=True)
+        if len(data) != artifact["bytes"] or blob_hash(data) != blob:
+            raise RuntimeError(f"size/Git blob integrity failure: {artifact}")
+        return artifact, data
 
-    # Preserve stable uniqueness and make the date-scoped scan fully reviewable.
-    inventory["snapshot_date_utc"] = "2026-10-06"
-    inventory["repositories_scanned"] = len(repos)
-    inventory["repository_names"] = [r["name"] for r in repos]
-    inventory["source_repositories_with_tiff_outputs"] = sorted(prediction_repositories)
-    inventory["unique_rasters"] = sorted(entries, key=lambda e: e["git_blob_sha"])
-    inventory["unique_git_blobs"] = len(entries)
-    inventory["unique_pinned_repo_ref_path_locations"] = sum(len(e.get("artifacts", [])) for e in entries)
-    inventory["artifact_observations_before_exact_path_dedup"] = sum(len(e.get("artifacts", [])) for e in entries)
-    inventory["total_unique_blob_bytes"] = sum(int(e["bytes"]) for e in entries)
-    inventory["current_head_refresh"] = {
-        "snapshot_date_utc": "2026-10-06",
-        "owner_public_repositories_matching_gemsdoe": len(repos),
-        "recursive_trees_read": tree_count,
-        "recursive_trees_truncated": 0,
-        "all_heads": heads,
-        "current_head_tiff_paths_scanned": len(scan_paths),
-        "current_head_prediction_output_locations_added_or_confirmed": new_output_locations,
-        "new_unique_prediction_blobs_added": new_unique_blobs,
-        "unclassified_tiff_paths_excluded_pending_manual_review": excluded_review,
-        "classification_rules": "See scripts/refresh_prior_inventory.py: explicit source/template/fixture exclusions, explicit candidate/submission/model-output includes, separate proxy-circular flag.",
-        "scan_paths": scan_paths,
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        pending = {pool.submit(download, a): a for a in observed}
+        for future in as_completed(pending):
+            artifact, data = future.result()
+            if artifact["path"].lower().endswith(".zip"):
+                with zipfile.ZipFile(io.BytesIO(data)) as z:
+                    members = [p for p in z.infolist() if p.filename.lower().endswith((".tif", ".tiff"))]
+                    if not members:
+                        archives.append({"artifact": artifact, "sha256": hashlib.sha256(data).hexdigest(),
+                                         "tiff_members": [], "status": "INVALID advertised submission archive: no TIFF",
+                                         "other_members": z.namelist()})
+                        print(f"IRREGULARITY: no TIFF in {artifact['repo']}/{artifact['path']}", flush=True)
+                        continue
+                    # Never extract paths; reject zip bombs / non-submission data bundles.
+                    if any(m.file_size > 160_000_000 for m in members):
+                        raise RuntimeError(f"unexpected oversized TIFF in {artifact['path']}")
+                    payloads = [(z.read(m), {**artifact, "container_path": artifact["path"],
+                                          "member": m.filename, "kind": "TIFF-inside-output-ZIP"}) for m in members]
+                archives.append({"artifact": artifact, "sha256": hashlib.sha256(data).hexdigest(),
+                                 "tiff_members": [m.filename for m in members]})
+            else:
+                payloads = [(data, artifact)]
+            for pixels, location in payloads:
+                blob = blob_hash(pixels)
+                sha256 = hashlib.sha256(pixels).hexdigest()
+                loc = {k: v for k, v in location.items() if k != "git_blob_sha"}
+                if blob not in entries:
+                    entries[blob] = {"git_blob_sha": blob, "sha256": sha256, "bytes": len(pixels), "artifacts": []}
+                e = entries[blob]
+                if e["sha256"] != sha256 or e["bytes"] != len(pixels):
+                    raise RuntimeError(f"inconsistent prior entry: {blob}")
+                if loc not in e["artifacts"]:
+                    e["artifacts"].append(loc)
+                dest = args.cache / f"{blob}.tif"
+                if not dest.exists():
+                    temp = dest.with_suffix(".partial")
+                    temp.write_bytes(pixels); temp.replace(dest)
+    report = {
+        "snapshot_utc": datetime.now(timezone.utc).isoformat(), "owner": OWNER,
+        "scope": "All current public owner GEMS*DOE repository output TIFFs and TIFFs inside output ZIPs, plus all historical pins in the 20261005 inventory. No private/deleted artifacts or later changes are claimed.",
+        "parent_inventory_sha256": hashlib.sha256(args.base.read_bytes()).hexdigest(),
+        "repository_snapshots": sorted(snapshots, key=lambda s: s["repo"]),
+        "output_paths_observed": len(observed), "zip_archives_checked": archives,
+        "excluded_source_or_unclassified_rasters": excluded,
+        "unique_git_blobs": len(entries), "total_unique_blob_bytes": sum(e["bytes"] for e in entries.values()),
+        "unique_rasters": sorted(entries.values(), key=lambda e: e["git_blob_sha"]),
+        "errors": errors,
     }
-    inventory["scope"] = (
-        "Union of the 2026-10-05 pinned historical prediction-output corpus and all prediction, submission, "
-        "candidate, leaderboard-anchor, model-probability, calibration, archived and quarantined output TIFFs "
-        "identified in all 2026-10-06 public GEMSDOE repository default-branch heads. Source rasters, labels, "
-        "sample templates, proxy truth, and fixtures are classified and excluded. Paths and commits are retained; "
-        "byte blobs are deduplicated by Git SHA-1. This cannot include private/unlisted repositories or future heads."
-    )
-    args.out.parent.mkdir(parents=True, exist_ok=True)
-    args.out.write_text(json.dumps(inventory, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-    print(json.dumps({
-        "out": str(args.out),
-        "repositories_scanned": len(repos),
-        "tiff_paths_scanned": len(scan_paths),
-        "current_prediction_locations_added_or_confirmed": new_output_locations,
-        "new_unique_prediction_blobs_added": new_unique_blobs,
-        "unique_blobs_total": len(entries),
-        "included_prediction_locations_total": inventory["unique_pinned_repo_ref_path_locations"],
-        "unclassified_excluded": len(excluded_review),
-        "cache": str(args.cache),
-    }, indent=2))
-    return 0
+    args.output.write_text(json.dumps(report, indent=2) + "\n")
+    print(f"PASS: {len(entries)} unique raw TIFF blobs; {len(archives)} ZIPs inspected; exclusions {len(excluded)} require review", flush=True)
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    main()

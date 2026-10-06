@@ -31,7 +31,7 @@ def pearson(a: np.ndarray, b: np.ndarray) -> float:
     y = y - y.mean()
     d = float(np.linalg.norm(x) * np.linalg.norm(y))
     if d == 0:
-        return 0.0
+        return 1.0 if np.array_equal(a, b) else 0.0
     return float(np.dot(x, y) / d)
 
 
@@ -76,8 +76,11 @@ def compare_against(candidate: np.ndarray, prior_dir: str | Path) -> dict:
             worst_corr, worst_name = c, f.name
         if j >= worst_jac:
             worst_jac = j
-    is_new = (abs(worst_corr) < NEAR_DUPLICATE_CORR) and (worst_jac < NEAR_DUPLICATE_JACCARD)
+    complete = bool(files) and all("error" not in row for row in rows)
+    is_new = complete and (abs(worst_corr) < NEAR_DUPLICATE_CORR) and (worst_jac < NEAR_DUPLICATE_JACCARD)
     return {
+        "scope": "Legacy directory-only diagnostic, not the current inventory-complete novelty audit",
+        "comparison_complete": complete,
         "n_priors": len(files),
         "is_new": bool(is_new),
         "worst_pearson": float(worst_corr),

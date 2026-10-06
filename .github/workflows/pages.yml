@@ -1,12 +1,11 @@
-name: Deploy project site
+name: Publish verified research site
 
 on:
   push:
     branches: [main]
-    paths:
-      - 'docs/**'
-      - '.github/workflows/pages.yml'
-      - 'index.html'
+    paths: ['docs/**', 'index.html', 'scripts/build_site.py', 'scripts/build_contact_site.py', 'scripts/update_source_feed.py', 'scripts/stage_pages.py', '.github/workflows/pages.yml']
+  schedule:
+    - cron: '23 11 * * *'
   workflow_dispatch:
 
 permissions:
@@ -15,29 +14,40 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
-  cancel-in-progress: true
+  group: github-pages
+  cancel-in-progress: false
 
 jobs:
-  deploy:
+  publish:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-      - name: Stage static site
-        run: |
-          mkdir -p _site
-          cp -a docs/. _site/
-          touch _site/.nojekyll
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check immutable release bytes and no-go evidence
+        run: python scripts/build_site.py --check
+      - name: Refresh only permitted official-source context
+        # No DrivenData scraping. No model change, scoring, promotion or upload.
+        # A failed API refresh is published as stale, not concealed.
+        run: python scripts/update_source_feed.py --restore-live
+      - name: Stage both the supplied /docs/ URLs and historical root aliases
+        run: python scripts/stage_pages.py
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
-      - name: Deploy Pages site
-        id: deployment
+      - id: deployment
         uses: actions/deploy-pages@v4
+      - name: Verify the real public URLs and both TIFF download hashes
+        run: python scripts/verify_deployed_site.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: public-delivery-verification
+          retention-days: 30
+          path: work/deployment-verification.json

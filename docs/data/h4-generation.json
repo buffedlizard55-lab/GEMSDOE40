@@ -1,0 +1,243 @@
+{
+  "candidate_format": {
+    "bytes": 3918532,
+    "candidate": {
+      "count": 1,
+      "crs": "EPSG:32611",
+      "dtype": "float32",
+      "height": 3730,
+      "in_footprint_max": 1.0,
+      "in_footprint_min": 0.0,
+      "in_footprint_nonzero": 865145,
+      "nodata": "NaN",
+      "outside_nan": 7111787,
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "width": 3292
+    },
+    "canonical_pixels_sha256": "fab9f6619c02595ceec668c87420789035d8103d3c93b91a2e4aa7c2bc905e86",
+    "issues": [],
+    "path": "docs/downloads/gemsdoe40-h4-contact-offset-depthkde-20261006-fab9f6619c02.tif",
+    "sha256": "ee73ffd76fabbaa1a2e77e17f57947a7db858916d713801e0c3502e49f6acabb",
+    "template": {
+      "count": 1,
+      "crs": "EPSG:32611",
+      "dtype": "float32",
+      "height": 3730,
+      "nodata": "NaN",
+      "outside_pixels": 7111787,
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "valid_pixels": 5167373,
+      "width": 3292
+    },
+    "valid": true
+  },
+  "cloud": {
+    "bytes": 2183131,
+    "path": "work/h4-reproduction/h4-euler-solutions.csv.gz",
+    "records": 46656,
+    "sha256": "6bed30b224981ef1064256d696c585b76f438011bbae6c0a16c00e6e6f5922ba"
+  },
+  "code_sha256": {
+    "scripts/run_contact_euler.py": "a56d2fee8e801e46f4bdfb62cf46ed32566935b1b503a6dccb28f4af665ea016",
+    "src/gemsdoe40/contact_euler.py": "aa92851d604e2d8d5f1c0c7831da7142491a2587fba18f6f25773374b43d5ee7"
+  },
+  "completed_utc": "2026-10-06T01:36:52.042362+00:00",
+  "compute": "CPU; OPENBLAS_NUM_THREADS=1; FFT workers=2; no learned weights or GPU",
+  "configuration": {
+    "fields": [
+      {
+        "continuation_m": 200.0,
+        "derivative_order": 0,
+        "edge_guard_m": 1500.0,
+        "max_depth_m": 5000.0,
+        "name": "tmi",
+        "windows": [
+          15,
+          25
+        ]
+      },
+      {
+        "continuation_m": 500.0,
+        "derivative_order": 1,
+        "edge_guard_m": 3000.0,
+        "max_depth_m": 8000.0,
+        "name": "iso_grav_anom",
+        "windows": [
+          31,
+          51
+        ]
+      }
+    ],
+    "settings": {
+      "cluster_depth_floor_m": 250.0,
+      "cluster_depth_fraction": 0.35,
+      "cluster_xy_m": 600.0,
+      "depth_decay_m": 1800.0,
+      "depth_se_floor_m": 100.0,
+      "family_percentile": 99.5,
+      "fft_pad": 128,
+      "fit_contact_offset": true,
+      "kde_sigma_px": 2.0,
+      "kde_truncate": 4.0,
+      "max_depth_se_fraction": 0.25,
+      "max_design_condition": 1000.0,
+      "max_relative_residual": 0.3,
+      "min_effective_depth_m": 100.0,
+      "min_other_neighbours": 2,
+      "rank2_horizontal_ratio": 0.1,
+      "resolution_m": 100.0,
+      "si": 0,
+      "stride": 5
+    }
+  },
+  "construction_uses_proxy_or_prior_predictions": false,
+  "elapsed_s": 110.382,
+  "exact_known_mask_pixels": 60988,
+  "experiment": "H4 offset-aware rank-adaptive contact Euler depth-clustering",
+  "families": {
+    "iso_grav_anom": {
+      "band_index": 13,
+      "elapsed_s": 80.24,
+      "guarded_cells": 4696618,
+      "kde": {
+        "accepted_solutions": 23093,
+        "clustered_solutions": 8450,
+        "depth_m_p05_p50_p95": [
+          301.8218436313424,
+          1426.546659661575,
+          2970.9673542088
+        ],
+        "positive_kde_cells": 316890,
+        "rank2_clustered": 4349,
+        "raw_kde_normalizer": 0.09499195218086243,
+        "weight_sum": 1989.5650985603277
+      },
+      "real_input_cells": 5164312,
+      "windows": [
+        {
+          "accepted": 19031,
+          "family": "iso_grav_anom",
+          "rank2_accepted": 10031,
+          "rank2_tested": 51128,
+          "rejected_condition_or_rank": 0,
+          "rejected_depth": 51698,
+          "rejected_depth_se": 665,
+          "rejected_horizontal": 22156,
+          "rejected_residual": 152508,
+          "rejection_counts_overlap": true,
+          "window": 31,
+          "windows_tested": 176554
+        },
+        {
+          "accepted": 4062,
+          "family": "iso_grav_anom",
+          "rank2_accepted": 1422,
+          "rank2_tested": 16924,
+          "rejected_condition_or_rank": 0,
+          "rejected_depth": 68268,
+          "rejected_depth_se": 53,
+          "rejected_horizontal": 5723,
+          "rejected_residual": 164168,
+          "rejection_counts_overlap": true,
+          "window": 51,
+          "windows_tested": 168960
+        }
+      ]
+    },
+    "tmi": {
+      "band_index": 14,
+      "elapsed_s": 27.947,
+      "guarded_cells": 4938073,
+      "kde": {
+        "accepted_solutions": 23563,
+        "clustered_solutions": 12167,
+        "depth_m_p05_p50_p95": [
+          200.8792991718047,
+          677.414382942774,
+          1700.6253855851621
+        ],
+        "positive_kde_cells": 613131,
+        "rank2_clustered": 7891,
+        "raw_kde_normalizer": 0.07898807525634766,
+        "weight_sum": 3827.5848693914513
+      },
+      "real_input_cells": 5164312,
+      "windows": [
+        {
+          "accepted": 17736,
+          "family": "tmi",
+          "rank2_accepted": 10689,
+          "rank2_tested": 61767,
+          "rejected_condition_or_rank": 0,
+          "rejected_depth": 89987,
+          "rejected_depth_se": 2487,
+          "rejected_horizontal": 32821,
+          "rejected_residual": 166775,
+          "rejection_counts_overlap": true,
+          "window": 15,
+          "windows_tested": 192333
+        },
+        {
+          "accepted": 5827,
+          "family": "tmi",
+          "rank2_accepted": 3282,
+          "rank2_tested": 28250,
+          "rejected_condition_or_rank": 0,
+          "rejected_depth": 103930,
+          "rejected_depth_se": 382,
+          "rejected_horizontal": 13322,
+          "rejected_residual": 180571,
+          "rejection_counts_overlap": true,
+          "window": 25,
+          "windows_tested": 188577
+        }
+      ]
+    }
+  },
+  "footprint_pixels": 5167373,
+  "in_footprint_mass": 29350.406391986093,
+  "input_files": {
+    "labels.tif": {
+      "bytes": 425830,
+      "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093"
+    },
+    "sample_submission.tif": {
+      "bytes": 1599597,
+      "sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc"
+    },
+    "training_features.tif": {
+      "bytes": 418912844,
+      "sha256": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5"
+    }
+  },
+  "positive_pixels": 865145,
+  "preregistration_sha256": "a44d3d473fdb94b5ce9e7132558b48cfdc570134bb2c6d4a0c2711451267ffb5",
+  "shape": [
+    3730,
+    3292
+  ],
+  "software": {
+    "affine": "3.0.1",
+    "numpy": "2.4.6",
+    "python": "3.11.2",
+    "rasterio": "1.4.4",
+    "scipy": "1.17.1"
+  },
+  "started_utc": "2026-10-06T01:35:01.660178+00:00",
+  "state": "FORMAT + RAW NOVELTY VERIFIED; HOLD \u2014 DO NOT SUBMIT",
+  "unique_finite_prediction_values": 857785
+}

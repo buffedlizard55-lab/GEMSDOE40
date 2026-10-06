@@ -1,0 +1,1019 @@
+{
+  "reviewed_utc": "2026-10-06T02:00:01.308317+00:00",
+  "status": "all excluded paths classified; prediction-looking historical paths restored to inventory",
+  "method": "Pinned path/context review and identity deduplication against the prior corpus. Not independent authentication of every external source payload.",
+  "classified_paths": 101,
+  "unclassified": 0,
+  "rows": [
+    {
+      "repo": "13GEMSDOE",
+      "ref": "92ee6f074323f161eed837b80ec3ee5b662e26f5",
+      "path": "data/external_gdr1391/raw/2m_temperature_probe_INGENIOUS_regional_data.zip",
+      "bytes": 1080530,
+      "git_blob_sha": "d7bf3d37b2b0ee288c1914c025443e9f4237eac0",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/13GEMSDOE/92ee6f074323f161eed837b80ec3ee5b662e26f5/data/external_gdr1391/raw/2m_temperature_probe_INGENIOUS_regional_data.zip",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    },
+    {
+      "repo": "13GEMSDOE",
+      "ref": "92ee6f074323f161eed837b80ec3ee5b662e26f5",
+      "path": "data/external_gdr1391/raw/paleo_geothermal_regional.zip",
+      "bytes": 84008,
+      "git_blob_sha": "7881d086124767309900658cca3df7c7ab697b55",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/13GEMSDOE/92ee6f074323f161eed837b80ec3ee5b662e26f5/data/external_gdr1391/raw/paleo_geothermal_regional.zip",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    },
+    {
+      "repo": "13GEMSDOE",
+      "ref": "92ee6f074323f161eed837b80ec3ee5b662e26f5",
+      "path": "data/external_sgmc/derived_sgmc_faults_100m_u8.tif",
+      "bytes": 226663,
+      "git_blob_sha": "f0b139f99250f8d8b73a21bd1fba410436beae5c",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/13GEMSDOE/92ee6f074323f161eed837b80ec3ee5b662e26f5/data/external_sgmc/derived_sgmc_faults_100m_u8.tif",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    },
+    {
+      "repo": "16GEMSDOE",
+      "ref": "2565805c0731a870335e54a64dce6fba01377e63",
+      "path": "evidence/ci/derived_sgmc_faults_100m_u8.tif",
+      "bytes": 226663,
+      "git_blob_sha": "f0b139f99250f8d8b73a21bd1fba410436beae5c",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/16GEMSDOE/2565805c0731a870335e54a64dce6fba01377e63/evidence/ci/derived_sgmc_faults_100m_u8.tif",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    },
+    {
+      "repo": "19GEMSDOE",
+      "ref": "a3aca62fdb2be428f4245e22570cbc54082b2c15",
+      "path": "evidence/ci/derived_sgmc_faults_100m_u8.tif",
+      "bytes": 198602,
+      "git_blob_sha": "c794f6ee8dd278f9d836576dcb5d02239da1c4f7",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/19GEMSDOE/a3aca62fdb2be428f4245e22570cbc54082b2c15/evidence/ci/derived_sgmc_faults_100m_u8.tif",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    },
+    {
+      "repo": "20GEMSDOE",
+      "ref": "50edbbad9bb05541f8a8ca8e62b75210fb5b2954",
+      "path": "evidence/ci/derived_sgmc_faults_100m_u8.tif",
+      "bytes": 198602,
+      "git_blob_sha": "c794f6ee8dd278f9d836576dcb5d02239da1c4f7",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/20GEMSDOE/50edbbad9bb05541f8a8ca8e62b75210fb5b2954/evidence/ci/derived_sgmc_faults_100m_u8.tif",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    },
+    {
+      "repo": "5GEMSDOE",
+      "ref": "f0dd3472d5307c296ee875d826412c49a153f74d",
+      "path": "data/bridge/example_submission.tif",
+      "bytes": 1599597,
+      "git_blob_sha": "7d865a9921a40ed2ea4c742a6a25b1fa2f357c5a",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/5GEMSDOE/f0dd3472d5307c296ee875d826412c49a153f74d/data/bridge/example_submission.tif",
+      "review_classification": "sample geometry, footprint or survey extent, not a model output"
+    },
+    {
+      "repo": "5GEMSDOE",
+      "ref": "f0dd3472d5307c296ee875d826412c49a153f74d",
+      "path": "data/bridge/existing_faults.tif",
+      "bytes": 425830,
+      "git_blob_sha": "4ad3c1f3f19823e40924589bee7e51e44ae3a2e7",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/5GEMSDOE/f0dd3472d5307c296ee875d826412c49a153f74d/data/bridge/existing_faults.tif",
+      "review_classification": "supplied or evaluation labels, not a model output"
+    },
+    {
+      "repo": "5GEMSDOE",
+      "ref": "f0dd3472d5307c296ee875d826412c49a153f74d",
+      "path": "data/evidence/proxy/proxy_catalogue.tif",
+      "bytes": 181017,
+      "git_blob_sha": "06f6d50f5f06e10e2ad6dfc43bb48a3baf63d849",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/5GEMSDOE/f0dd3472d5307c296ee875d826412c49a153f74d/data/evidence/proxy/proxy_catalogue.tif",
+      "review_classification": "validation proxy/catalogue or evaluation mask, not a submission"
+    },
+    {
+      "repo": "5GEMSDOE",
+      "ref": "f0dd3472d5307c296ee875d826412c49a153f74d",
+      "path": "data/evidence/proxy/proxy_window.tif",
+      "bytes": 5308,
+      "git_blob_sha": "1fc3d38da885918711ceef9aebab0fa7b53cf765",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/5GEMSDOE/f0dd3472d5307c296ee875d826412c49a153f74d/data/evidence/proxy/proxy_window.tif",
+      "review_classification": "validation proxy/catalogue or evaluation mask, not a submission"
+    },
+    {
+      "repo": "5GEMSDOE",
+      "ref": "f0dd3472d5307c296ee875d826412c49a153f74d",
+      "path": "data/evidence/xcat/proxy_window.tif",
+      "bytes": 7491,
+      "git_blob_sha": "51d18ae2082396fba9187cc299da051fd9d6f77e",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/5GEMSDOE/f0dd3472d5307c296ee875d826412c49a153f74d/data/evidence/xcat/proxy_window.tif",
+      "review_classification": "validation proxy/catalogue or evaluation mask, not a submission"
+    },
+    {
+      "repo": "5GEMSDOE",
+      "ref": "f0dd3472d5307c296ee875d826412c49a153f74d",
+      "path": "data/evidence/xcat/qfaults_catalogue.tif",
+      "bytes": 158573,
+      "git_blob_sha": "91c60ef2457b56f2811407540ecdda9627642d55",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/5GEMSDOE/f0dd3472d5307c296ee875d826412c49a153f74d/data/evidence/xcat/qfaults_catalogue.tif",
+      "review_classification": "validation proxy/catalogue or evaluation mask, not a submission"
+    },
+    {
+      "repo": "5GEMSDOE",
+      "ref": "f0dd3472d5307c296ee875d826412c49a153f74d",
+      "path": "data/fixture/fixture_features_int16.tif",
+      "bytes": 5237005,
+      "git_blob_sha": "a6234b555fefe3a03d56d8d3f90e6a2be7c6f6b5",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/5GEMSDOE/f0dd3472d5307c296ee875d826412c49a153f74d/data/fixture/fixture_features_int16.tif",
+      "review_classification": "synthetic feature/label test fixture, not a submitted prediction"
+    },
+    {
+      "repo": "5GEMSDOE",
+      "ref": "f0dd3472d5307c296ee875d826412c49a153f74d",
+      "path": "data/fixture/fixture_labels.tif",
+      "bytes": 6090,
+      "git_blob_sha": "a5d33edd0f8b35f3f0932e0135096d3172d9e79d",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/5GEMSDOE/f0dd3472d5307c296ee875d826412c49a153f74d/data/fixture/fixture_labels.tif",
+      "review_classification": "synthetic feature/label test fixture, not a submitted prediction"
+    },
+    {
+      "repo": "6GEMSDOE",
+      "ref": "e2fe3f41c6f5dd2dcb2fc91958ee67698f114ada",
+      "path": "data/bridge/example_submission.tif",
+      "bytes": 1599597,
+      "git_blob_sha": "7d865a9921a40ed2ea4c742a6a25b1fa2f357c5a",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/6GEMSDOE/e2fe3f41c6f5dd2dcb2fc91958ee67698f114ada/data/bridge/example_submission.tif",
+      "review_classification": "sample geometry, footprint or survey extent, not a model output"
+    },
+    {
+      "repo": "6GEMSDOE",
+      "ref": "e2fe3f41c6f5dd2dcb2fc91958ee67698f114ada",
+      "path": "data/bridge/existing_faults.tif",
+      "bytes": 425830,
+      "git_blob_sha": "4ad3c1f3f19823e40924589bee7e51e44ae3a2e7",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/6GEMSDOE/e2fe3f41c6f5dd2dcb2fc91958ee67698f114ada/data/bridge/existing_faults.tif",
+      "review_classification": "supplied or evaluation labels, not a model output"
+    },
+    {
+      "repo": "6GEMSDOE",
+      "ref": "e2fe3f41c6f5dd2dcb2fc91958ee67698f114ada",
+      "path": "data/labels.tif",
+      "bytes": 425830,
+      "git_blob_sha": "4ad3c1f3f19823e40924589bee7e51e44ae3a2e7",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/6GEMSDOE/e2fe3f41c6f5dd2dcb2fc91958ee67698f114ada/data/labels.tif",
+      "review_classification": "supplied or evaluation labels, not a model output"
+    },
+    {
+      "repo": "6GEMSDOE",
+      "ref": "e2fe3f41c6f5dd2dcb2fc91958ee67698f114ada",
+      "path": "data/sample_submission.tif",
+      "bytes": 1599597,
+      "git_blob_sha": "7d865a9921a40ed2ea4c742a6a25b1fa2f357c5a",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/6GEMSDOE/e2fe3f41c6f5dd2dcb2fc91958ee67698f114ada/data/sample_submission.tif",
+      "review_classification": "sample geometry, footprint or survey extent, not a model output"
+    },
+    {
+      "repo": "7GEMSDOE",
+      "ref": "9d8b5d55b674629f7b0e0e486269917c0fa2dade",
+      "path": "external/dem/lidar_scarp_features_u8.tif",
+      "bytes": 36943606,
+      "git_blob_sha": "da733b53147efad5c141ffdb96e469ec5b4da8b8",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/7GEMSDOE/9d8b5d55b674629f7b0e0e486269917c0fa2dade/external/dem/lidar_scarp_features_u8.tif",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    },
+    {
+      "repo": "7GEMSDOE",
+      "ref": "9d8b5d55b674629f7b0e0e486269917c0fa2dade",
+      "path": "external/geodawn_extensions/geodawn_extensions_u8.tif",
+      "bytes": 27132925,
+      "git_blob_sha": "2fb1d57fdd33b0bdea51f2abef58fb5cddf53aa5",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/7GEMSDOE/9d8b5d55b674629f7b0e0e486269917c0fa2dade/external/geodawn_extensions/geodawn_extensions_u8.tif",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    },
+    {
+      "repo": "7GEMSDOE",
+      "ref": "9d8b5d55b674629f7b0e0e486269917c0fa2dade",
+      "path": "external/geodawn_rad/geodawn_rad_u8.tif",
+      "bytes": 26612970,
+      "git_blob_sha": "80704748f974ea9dbc002924ddf971a957186ae6",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/7GEMSDOE/9d8b5d55b674629f7b0e0e486269917c0fa2dade/external/geodawn_rad/geodawn_rad_u8.tif",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    },
+    {
+      "repo": "7GEMSDOE",
+      "ref": "9d8b5d55b674629f7b0e0e486269917c0fa2dade",
+      "path": "external/qfaults/qfaults_prior_u8.tif",
+      "bytes": 873834,
+      "git_blob_sha": "b6b4c2193fad0b9266849d0838e27dee640a03d4",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/7GEMSDOE/9d8b5d55b674629f7b0e0e486269917c0fa2dade/external/qfaults/qfaults_prior_u8.tif",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    },
+    {
+      "repo": "7GEMSDOE",
+      "ref": "9d8b5d55b674629f7b0e0e486269917c0fa2dade",
+      "path": "tests/fixture/fixture_features_int16.tif",
+      "bytes": 5237005,
+      "git_blob_sha": "a6234b555fefe3a03d56d8d3f90e6a2be7c6f6b5",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/7GEMSDOE/9d8b5d55b674629f7b0e0e486269917c0fa2dade/tests/fixture/fixture_features_int16.tif",
+      "review_classification": "synthetic feature/label test fixture, not a submitted prediction"
+    },
+    {
+      "repo": "7GEMSDOE",
+      "ref": "9d8b5d55b674629f7b0e0e486269917c0fa2dade",
+      "path": "tests/fixture/fixture_labels.tif",
+      "bytes": 6090,
+      "git_blob_sha": "a5d33edd0f8b35f3f0932e0135096d3172d9e79d",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/7GEMSDOE/9d8b5d55b674629f7b0e0e486269917c0fa2dade/tests/fixture/fixture_labels.tif",
+      "review_classification": "synthetic feature/label test fixture, not a submitted prediction"
+    },
+    {
+      "repo": "8GEMSDOE",
+      "ref": "e24abefab237115d67e0afb2acfde01c6304783f",
+      "path": "data/proxy/proxy_catalogue_sgmc.tif",
+      "bytes": 181017,
+      "git_blob_sha": "06f6d50f5f06e10e2ad6dfc43bb48a3baf63d849",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/8GEMSDOE/e24abefab237115d67e0afb2acfde01c6304783f/data/proxy/proxy_catalogue_sgmc.tif",
+      "review_classification": "validation proxy/catalogue or evaluation mask, not a submission"
+    },
+    {
+      "repo": "GEMSDOE",
+      "ref": "dcbbb192e56b2b32c0a131eba791dc363305d4a3",
+      "path": "data/bridge/example_submission.tif",
+      "bytes": 1599597,
+      "git_blob_sha": "7d865a9921a40ed2ea4c742a6a25b1fa2f357c5a",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE/dcbbb192e56b2b32c0a131eba791dc363305d4a3/data/bridge/example_submission.tif",
+      "review_classification": "sample geometry, footprint or survey extent, not a model output"
+    },
+    {
+      "repo": "GEMSDOE",
+      "ref": "dcbbb192e56b2b32c0a131eba791dc363305d4a3",
+      "path": "data/bridge/existing_faults.tif",
+      "bytes": 425830,
+      "git_blob_sha": "4ad3c1f3f19823e40924589bee7e51e44ae3a2e7",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE/dcbbb192e56b2b32c0a131eba791dc363305d4a3/data/bridge/existing_faults.tif",
+      "review_classification": "supplied or evaluation labels, not a model output"
+    },
+    {
+      "repo": "GEMSDOE",
+      "ref": "dcbbb192e56b2b32c0a131eba791dc363305d4a3",
+      "path": "data/evidence/proxy/proxy_catalogue.tif",
+      "bytes": 181017,
+      "git_blob_sha": "06f6d50f5f06e10e2ad6dfc43bb48a3baf63d849",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE/dcbbb192e56b2b32c0a131eba791dc363305d4a3/data/evidence/proxy/proxy_catalogue.tif",
+      "review_classification": "validation proxy/catalogue or evaluation mask, not a submission"
+    },
+    {
+      "repo": "GEMSDOE",
+      "ref": "dcbbb192e56b2b32c0a131eba791dc363305d4a3",
+      "path": "data/evidence/proxy/proxy_window.tif",
+      "bytes": 5308,
+      "git_blob_sha": "1fc3d38da885918711ceef9aebab0fa7b53cf765",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE/dcbbb192e56b2b32c0a131eba791dc363305d4a3/data/evidence/proxy/proxy_window.tif",
+      "review_classification": "validation proxy/catalogue or evaluation mask, not a submission"
+    },
+    {
+      "repo": "GEMSDOE",
+      "ref": "dcbbb192e56b2b32c0a131eba791dc363305d4a3",
+      "path": "data/evidence/xcat/proxy_window.tif",
+      "bytes": 7491,
+      "git_blob_sha": "51d18ae2082396fba9187cc299da051fd9d6f77e",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE/dcbbb192e56b2b32c0a131eba791dc363305d4a3/data/evidence/xcat/proxy_window.tif",
+      "review_classification": "validation proxy/catalogue or evaluation mask, not a submission"
+    },
+    {
+      "repo": "GEMSDOE",
+      "ref": "dcbbb192e56b2b32c0a131eba791dc363305d4a3",
+      "path": "data/evidence/xcat/qfaults_catalogue.tif",
+      "bytes": 158573,
+      "git_blob_sha": "91c60ef2457b56f2811407540ecdda9627642d55",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE/dcbbb192e56b2b32c0a131eba791dc363305d4a3/data/evidence/xcat/qfaults_catalogue.tif",
+      "review_classification": "validation proxy/catalogue or evaluation mask, not a submission"
+    },
+    {
+      "repo": "GEMSDOE",
+      "ref": "dcbbb192e56b2b32c0a131eba791dc363305d4a3",
+      "path": "data/fixture/fixture_features_int16.tif",
+      "bytes": 5237005,
+      "git_blob_sha": "a6234b555fefe3a03d56d8d3f90e6a2be7c6f6b5",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE/dcbbb192e56b2b32c0a131eba791dc363305d4a3/data/fixture/fixture_features_int16.tif",
+      "review_classification": "synthetic feature/label test fixture, not a submitted prediction"
+    },
+    {
+      "repo": "GEMSDOE",
+      "ref": "dcbbb192e56b2b32c0a131eba791dc363305d4a3",
+      "path": "data/fixture/fixture_labels.tif",
+      "bytes": 6090,
+      "git_blob_sha": "a5d33edd0f8b35f3f0932e0135096d3172d9e79d",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE/dcbbb192e56b2b32c0a131eba791dc363305d4a3/data/fixture/fixture_labels.tif",
+      "review_classification": "synthetic feature/label test fixture, not a submitted prediction"
+    },
+    {
+      "repo": "GEMSDOE10",
+      "ref": "4d08f51aa59bf57b4041474ff1463c9e737c8090",
+      "path": "data/labels.tif",
+      "bytes": 425830,
+      "git_blob_sha": "4ad3c1f3f19823e40924589bee7e51e44ae3a2e7",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE10/4d08f51aa59bf57b4041474ff1463c9e737c8090/data/labels.tif",
+      "review_classification": "supplied or evaluation labels, not a model output"
+    },
+    {
+      "repo": "GEMSDOE10",
+      "ref": "4d08f51aa59bf57b4041474ff1463c9e737c8090",
+      "path": "data/sample_submission.tif",
+      "bytes": 1599597,
+      "git_blob_sha": "7d865a9921a40ed2ea4c742a6a25b1fa2f357c5a",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE10/4d08f51aa59bf57b4041474ff1463c9e737c8090/data/sample_submission.tif",
+      "review_classification": "sample geometry, footprint or survey extent, not a model output"
+    },
+    {
+      "repo": "GEMSDOE21",
+      "ref": "43e8510cfb37b85460a986d4d1b7796625de0d31",
+      "path": "docs/data/template-mask.tif",
+      "bytes": 268367,
+      "git_blob_sha": "ca7d35299556482790906a4a060d70f3a3223faa",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE21/43e8510cfb37b85460a986d4d1b7796625de0d31/docs/data/template-mask.tif",
+      "review_classification": "sample geometry, footprint or survey extent, not a model output"
+    },
+    {
+      "repo": "GEMSDOE2",
+      "ref": "d11f1117d8cb1192e7e69687947efdcb2f9ed9e6",
+      "path": "data/bridge/example_submission.tif",
+      "bytes": 1599597,
+      "git_blob_sha": "7d865a9921a40ed2ea4c742a6a25b1fa2f357c5a",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE2/d11f1117d8cb1192e7e69687947efdcb2f9ed9e6/data/bridge/example_submission.tif",
+      "review_classification": "sample geometry, footprint or survey extent, not a model output"
+    },
+    {
+      "repo": "GEMSDOE2",
+      "ref": "d11f1117d8cb1192e7e69687947efdcb2f9ed9e6",
+      "path": "data/bridge/existing_faults.tif",
+      "bytes": 425830,
+      "git_blob_sha": "4ad3c1f3f19823e40924589bee7e51e44ae3a2e7",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE2/d11f1117d8cb1192e7e69687947efdcb2f9ed9e6/data/bridge/existing_faults.tif",
+      "review_classification": "supplied or evaluation labels, not a model output"
+    },
+    {
+      "repo": "GEMSDOE2",
+      "ref": "d11f1117d8cb1192e7e69687947efdcb2f9ed9e6",
+      "path": "data/evidence/proxy/proxy_catalogue.tif",
+      "bytes": 181017,
+      "git_blob_sha": "06f6d50f5f06e10e2ad6dfc43bb48a3baf63d849",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE2/d11f1117d8cb1192e7e69687947efdcb2f9ed9e6/data/evidence/proxy/proxy_catalogue.tif",
+      "review_classification": "validation proxy/catalogue or evaluation mask, not a submission"
+    },
+    {
+      "repo": "GEMSDOE2",
+      "ref": "d11f1117d8cb1192e7e69687947efdcb2f9ed9e6",
+      "path": "data/evidence/proxy/proxy_window.tif",
+      "bytes": 5308,
+      "git_blob_sha": "1fc3d38da885918711ceef9aebab0fa7b53cf765",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE2/d11f1117d8cb1192e7e69687947efdcb2f9ed9e6/data/evidence/proxy/proxy_window.tif",
+      "review_classification": "validation proxy/catalogue or evaluation mask, not a submission"
+    },
+    {
+      "repo": "GEMSDOE2",
+      "ref": "d11f1117d8cb1192e7e69687947efdcb2f9ed9e6",
+      "path": "data/evidence/seghold/eval_labels.tif",
+      "bytes": 229076,
+      "git_blob_sha": "449b9282779f7a614c6118e2c83b3511e3e3c3d1",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE2/d11f1117d8cb1192e7e69687947efdcb2f9ed9e6/data/evidence/seghold/eval_labels.tif",
+      "review_classification": "supplied or evaluation labels, not a model output"
+    },
+    {
+      "repo": "GEMSDOE2",
+      "ref": "d11f1117d8cb1192e7e69687947efdcb2f9ed9e6",
+      "path": "data/evidence/seghold/train_labels.tif",
+      "bytes": 172682,
+      "git_blob_sha": "ea6051e282d76b06be02a5658a56d78756763527",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE2/d11f1117d8cb1192e7e69687947efdcb2f9ed9e6/data/evidence/seghold/train_labels.tif",
+      "review_classification": "supplied or evaluation labels, not a model output"
+    },
+    {
+      "repo": "GEMSDOE2",
+      "ref": "d11f1117d8cb1192e7e69687947efdcb2f9ed9e6",
+      "path": "data/evidence/xcat/proxy_window.tif",
+      "bytes": 7491,
+      "git_blob_sha": "51d18ae2082396fba9187cc299da051fd9d6f77e",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE2/d11f1117d8cb1192e7e69687947efdcb2f9ed9e6/data/evidence/xcat/proxy_window.tif",
+      "review_classification": "validation proxy/catalogue or evaluation mask, not a submission"
+    },
+    {
+      "repo": "GEMSDOE2",
+      "ref": "d11f1117d8cb1192e7e69687947efdcb2f9ed9e6",
+      "path": "data/evidence/xcat/qfaults_catalogue.tif",
+      "bytes": 158573,
+      "git_blob_sha": "91c60ef2457b56f2811407540ecdda9627642d55",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE2/d11f1117d8cb1192e7e69687947efdcb2f9ed9e6/data/evidence/xcat/qfaults_catalogue.tif",
+      "review_classification": "validation proxy/catalogue or evaluation mask, not a submission"
+    },
+    {
+      "repo": "GEMSDOE2",
+      "ref": "d11f1117d8cb1192e7e69687947efdcb2f9ed9e6",
+      "path": "data/fixture/fixture_features_int16.tif",
+      "bytes": 5237005,
+      "git_blob_sha": "a6234b555fefe3a03d56d8d3f90e6a2be7c6f6b5",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE2/d11f1117d8cb1192e7e69687947efdcb2f9ed9e6/data/fixture/fixture_features_int16.tif",
+      "review_classification": "synthetic feature/label test fixture, not a submitted prediction"
+    },
+    {
+      "repo": "GEMSDOE2",
+      "ref": "d11f1117d8cb1192e7e69687947efdcb2f9ed9e6",
+      "path": "data/fixture/fixture_labels.tif",
+      "bytes": 6090,
+      "git_blob_sha": "a5d33edd0f8b35f3f0932e0135096d3172d9e79d",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE2/d11f1117d8cb1192e7e69687947efdcb2f9ed9e6/data/fixture/fixture_labels.tif",
+      "review_classification": "synthetic feature/label test fixture, not a submitted prediction"
+    },
+    {
+      "repo": "GEMSDOE22",
+      "ref": "96481093a7f73e5c13669e45574213d70c204ba0",
+      "path": "assets/external/derived_sgmc_faults_100m_u8.tif",
+      "bytes": 198602,
+      "git_blob_sha": "c794f6ee8dd278f9d836576dcb5d02239da1c4f7",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE22/96481093a7f73e5c13669e45574213d70c204ba0/assets/external/derived_sgmc_faults_100m_u8.tif",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    },
+    {
+      "repo": "GEMSDOE22",
+      "ref": "96481093a7f73e5c13669e45574213d70c204ba0",
+      "path": "assets/external/qfaults_prior_u8.tif",
+      "bytes": 873834,
+      "git_blob_sha": "b6b4c2193fad0b9266849d0838e27dee640a03d4",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE22/96481093a7f73e5c13669e45574213d70c204ba0/assets/external/qfaults_prior_u8.tif",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    },
+    {
+      "repo": "GEMSDOE22",
+      "ref": "96481093a7f73e5c13669e45574213d70c204ba0",
+      "path": "assets/external/template-mask.tif",
+      "bytes": 268367,
+      "git_blob_sha": "ca7d35299556482790906a4a060d70f3a3223faa",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE22/96481093a7f73e5c13669e45574213d70c204ba0/assets/external/template-mask.tif",
+      "review_classification": "sample geometry, footprint or survey extent, not a model output"
+    },
+    {
+      "repo": "GEMSDOE22",
+      "ref": "96481093a7f73e5c13669e45574213d70c204ba0",
+      "path": "evidence/ci/derived_sgmc_faults_100m_u8.tif",
+      "bytes": 198602,
+      "git_blob_sha": "c794f6ee8dd278f9d836576dcb5d02239da1c4f7",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE22/96481093a7f73e5c13669e45574213d70c204ba0/evidence/ci/derived_sgmc_faults_100m_u8.tif",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    },
+    {
+      "repo": "GEMSDOE24",
+      "ref": "07345ea0604953d7efb858d9cfbc21e20c7aca0b",
+      "path": "data/bridge/existing_faults.tif",
+      "bytes": 425830,
+      "git_blob_sha": "4ad3c1f3f19823e40924589bee7e51e44ae3a2e7",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE24/07345ea0604953d7efb858d9cfbc21e20c7aca0b/data/bridge/existing_faults.tif",
+      "review_classification": "supplied or evaluation labels, not a model output"
+    },
+    {
+      "repo": "GEMSDOE24",
+      "ref": "07345ea0604953d7efb858d9cfbc21e20c7aca0b",
+      "path": "data/bridge/labels.tif",
+      "bytes": 425830,
+      "git_blob_sha": "4ad3c1f3f19823e40924589bee7e51e44ae3a2e7",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE24/07345ea0604953d7efb858d9cfbc21e20c7aca0b/data/bridge/labels.tif",
+      "review_classification": "supplied or evaluation labels, not a model output"
+    },
+    {
+      "repo": "GEMSDOE24",
+      "ref": "07345ea0604953d7efb858d9cfbc21e20c7aca0b",
+      "path": "data/bridge/sample_submission.tif",
+      "bytes": 1599597,
+      "git_blob_sha": "7d865a9921a40ed2ea4c742a6a25b1fa2f357c5a",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE24/07345ea0604953d7efb858d9cfbc21e20c7aca0b/data/bridge/sample_submission.tif",
+      "review_classification": "sample geometry, footprint or survey extent, not a model output"
+    },
+    {
+      "repo": "GEMSDOE24",
+      "ref": "07345ea0604953d7efb858d9cfbc21e20c7aca0b",
+      "path": "data/external/2m_temperature_probe_INGENIOUS_regional_data.zip",
+      "bytes": 1080530,
+      "git_blob_sha": "d7bf3d37b2b0ee288c1914c025443e9f4237eac0",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE24/07345ea0604953d7efb858d9cfbc21e20c7aca0b/data/external/2m_temperature_probe_INGENIOUS_regional_data.zip",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    },
+    {
+      "repo": "GEMSDOE24",
+      "ref": "07345ea0604953d7efb858d9cfbc21e20c7aca0b",
+      "path": "data/external/GeoDAWN_area1_outline.zip",
+      "bytes": 1190,
+      "git_blob_sha": "cbb3449c761d72e34300bf4b77ad68dcac001008",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE24/07345ea0604953d7efb858d9cfbc21e20c7aca0b/data/external/GeoDAWN_area1_outline.zip",
+      "review_classification": "sample geometry, footprint or survey extent, not a model output"
+    },
+    {
+      "repo": "GEMSDOE24",
+      "ref": "07345ea0604953d7efb858d9cfbc21e20c7aca0b",
+      "path": "data/external/GeoDAWN_area2_outline.zip",
+      "bytes": 1497,
+      "git_blob_sha": "2311e756eb7d5cb614934126e7b3933968b2cf66",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE24/07345ea0604953d7efb858d9cfbc21e20c7aca0b/data/external/GeoDAWN_area2_outline.zip",
+      "review_classification": "sample geometry, footprint or survey extent, not a model output"
+    },
+    {
+      "repo": "GEMSDOE24",
+      "ref": "07345ea0604953d7efb858d9cfbc21e20c7aca0b",
+      "path": "data/external/audit_sources/GeoDAWN_data_extent.zip",
+      "bytes": 2774,
+      "git_blob_sha": "43ec5c55d37749f0401ee08754488c247eccd9aa",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE24/07345ea0604953d7efb858d9cfbc21e20c7aca0b/data/external/audit_sources/GeoDAWN_data_extent.zip",
+      "review_classification": "sample geometry, footprint or survey extent, not a model output"
+    },
+    {
+      "repo": "GEMSDOE24",
+      "ref": "07345ea0604953d7efb858d9cfbc21e20c7aca0b",
+      "path": "data/external/audit_sources/acquisition_block_id_100m.tif",
+      "bytes": 85031,
+      "git_blob_sha": "43271a22d715989f177bd7a7c5e032363285fb2c",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE24/07345ea0604953d7efb858d9cfbc21e20c7aca0b/data/external/audit_sources/acquisition_block_id_100m.tif",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    },
+    {
+      "repo": "GEMSDOE24",
+      "ref": "07345ea0604953d7efb858d9cfbc21e20c7aca0b",
+      "path": "data/external/audit_sources/blm_closed_claim_distance_m.tif",
+      "bytes": 5752587,
+      "git_blob_sha": "4a2fb432b57fa240fd7c1f34b13952bc6c81feef",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE24/07345ea0604953d7efb858d9cfbc21e20c7aca0b/data/external/audit_sources/blm_closed_claim_distance_m.tif",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    },
+    {
+      "repo": "GEMSDOE24",
+      "ref": "07345ea0604953d7efb858d9cfbc21e20c7aca0b",
+      "path": "data/external/audit_sources/tiger_road_distance_m.tif",
+      "bytes": 10492276,
+      "git_blob_sha": "10cbdcb9a2499147facf4dc571f5ef69b88436ed",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE24/07345ea0604953d7efb858d9cfbc21e20c7aca0b/data/external/audit_sources/tiger_road_distance_m.tif",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    },
+    {
+      "repo": "GEMSDOE24",
+      "ref": "07345ea0604953d7efb858d9cfbc21e20c7aca0b",
+      "path": "data/external/derived_sgmc_faults_100m_u8.tif",
+      "bytes": 198602,
+      "git_blob_sha": "c794f6ee8dd278f9d836576dcb5d02239da1c4f7",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE24/07345ea0604953d7efb858d9cfbc21e20c7aca0b/data/external/derived_sgmc_faults_100m_u8.tif",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    },
+    {
+      "repo": "GEMSDOE24",
+      "ref": "07345ea0604953d7efb858d9cfbc21e20c7aca0b",
+      "path": "data/external/geodawn_extensions_u8.tif",
+      "bytes": 27132925,
+      "git_blob_sha": "2fb1d57fdd33b0bdea51f2abef58fb5cddf53aa5",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE24/07345ea0604953d7efb858d9cfbc21e20c7aca0b/data/external/geodawn_extensions_u8.tif",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    },
+    {
+      "repo": "GEMSDOE24",
+      "ref": "07345ea0604953d7efb858d9cfbc21e20c7aca0b",
+      "path": "data/external/geodawn_rad_u8.tif",
+      "bytes": 26612970,
+      "git_blob_sha": "80704748f974ea9dbc002924ddf971a957186ae6",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE24/07345ea0604953d7efb858d9cfbc21e20c7aca0b/data/external/geodawn_rad_u8.tif",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    },
+    {
+      "repo": "GEMSDOE24",
+      "ref": "07345ea0604953d7efb858d9cfbc21e20c7aca0b",
+      "path": "data/external/lidar_scarp_features_u8.tif",
+      "bytes": 36943606,
+      "git_blob_sha": "da733b53147efad5c141ffdb96e469ec5b4da8b8",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE24/07345ea0604953d7efb858d9cfbc21e20c7aca0b/data/external/lidar_scarp_features_u8.tif",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    },
+    {
+      "repo": "GEMSDOE24",
+      "ref": "07345ea0604953d7efb858d9cfbc21e20c7aca0b",
+      "path": "data/external/paleo_geothermal_regional.zip",
+      "bytes": 84008,
+      "git_blob_sha": "7881d086124767309900658cca3df7c7ab697b55",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE24/07345ea0604953d7efb858d9cfbc21e20c7aca0b/data/external/paleo_geothermal_regional.zip",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    },
+    {
+      "repo": "GEMSDOE3",
+      "ref": "512371de5d30162813803cdccbd4931ceeb065c7",
+      "path": "legacy/data/bridge/example_submission.tif",
+      "bytes": 1599597,
+      "git_blob_sha": "7d865a9921a40ed2ea4c742a6a25b1fa2f357c5a",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE3/512371de5d30162813803cdccbd4931ceeb065c7/legacy/data/bridge/example_submission.tif",
+      "review_classification": "sample geometry, footprint or survey extent, not a model output"
+    },
+    {
+      "repo": "GEMSDOE3",
+      "ref": "512371de5d30162813803cdccbd4931ceeb065c7",
+      "path": "legacy/data/bridge/existing_faults.tif",
+      "bytes": 425830,
+      "git_blob_sha": "4ad3c1f3f19823e40924589bee7e51e44ae3a2e7",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE3/512371de5d30162813803cdccbd4931ceeb065c7/legacy/data/bridge/existing_faults.tif",
+      "review_classification": "supplied or evaluation labels, not a model output"
+    },
+    {
+      "repo": "GEMSDOE3",
+      "ref": "512371de5d30162813803cdccbd4931ceeb065c7",
+      "path": "legacy/data/evidence/proxy/proxy_catalogue.tif",
+      "bytes": 181017,
+      "git_blob_sha": "06f6d50f5f06e10e2ad6dfc43bb48a3baf63d849",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE3/512371de5d30162813803cdccbd4931ceeb065c7/legacy/data/evidence/proxy/proxy_catalogue.tif",
+      "review_classification": "validation proxy/catalogue or evaluation mask, not a submission"
+    },
+    {
+      "repo": "GEMSDOE3",
+      "ref": "512371de5d30162813803cdccbd4931ceeb065c7",
+      "path": "legacy/data/evidence/proxy/proxy_window.tif",
+      "bytes": 5308,
+      "git_blob_sha": "1fc3d38da885918711ceef9aebab0fa7b53cf765",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE3/512371de5d30162813803cdccbd4931ceeb065c7/legacy/data/evidence/proxy/proxy_window.tif",
+      "review_classification": "validation proxy/catalogue or evaluation mask, not a submission"
+    },
+    {
+      "repo": "GEMSDOE3",
+      "ref": "512371de5d30162813803cdccbd4931ceeb065c7",
+      "path": "legacy/data/evidence/xcat/proxy_window.tif",
+      "bytes": 7491,
+      "git_blob_sha": "51d18ae2082396fba9187cc299da051fd9d6f77e",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE3/512371de5d30162813803cdccbd4931ceeb065c7/legacy/data/evidence/xcat/proxy_window.tif",
+      "review_classification": "validation proxy/catalogue or evaluation mask, not a submission"
+    },
+    {
+      "repo": "GEMSDOE3",
+      "ref": "512371de5d30162813803cdccbd4931ceeb065c7",
+      "path": "legacy/data/evidence/xcat/qfaults_catalogue.tif",
+      "bytes": 158573,
+      "git_blob_sha": "91c60ef2457b56f2811407540ecdda9627642d55",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE3/512371de5d30162813803cdccbd4931ceeb065c7/legacy/data/evidence/xcat/qfaults_catalogue.tif",
+      "review_classification": "validation proxy/catalogue or evaluation mask, not a submission"
+    },
+    {
+      "repo": "GEMSDOE3",
+      "ref": "512371de5d30162813803cdccbd4931ceeb065c7",
+      "path": "legacy/data/fixture/fixture_features_int16.tif",
+      "bytes": 5237005,
+      "git_blob_sha": "a6234b555fefe3a03d56d8d3f90e6a2be7c6f6b5",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE3/512371de5d30162813803cdccbd4931ceeb065c7/legacy/data/fixture/fixture_features_int16.tif",
+      "review_classification": "synthetic feature/label test fixture, not a submitted prediction"
+    },
+    {
+      "repo": "GEMSDOE3",
+      "ref": "512371de5d30162813803cdccbd4931ceeb065c7",
+      "path": "legacy/data/fixture/fixture_labels.tif",
+      "bytes": 6090,
+      "git_blob_sha": "a5d33edd0f8b35f3f0932e0135096d3172d9e79d",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE3/512371de5d30162813803cdccbd4931ceeb065c7/legacy/data/fixture/fixture_labels.tif",
+      "review_classification": "synthetic feature/label test fixture, not a submitted prediction"
+    },
+    {
+      "repo": "GEMSDOE30",
+      "ref": "1f9ac110d5f1a4fac7957fe814267a0be964dd20",
+      "path": "data/external/derived_gdr_2m_probes_100m_u8.tif",
+      "bytes": 78021,
+      "git_blob_sha": "7bbdb70997f7347b8698d2cc3c788e899fdb70ea",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE30/1f9ac110d5f1a4fac7957fe814267a0be964dd20/data/external/derived_gdr_2m_probes_100m_u8.tif",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    },
+    {
+      "repo": "GEMSDOE30",
+      "ref": "1f9ac110d5f1a4fac7957fe814267a0be964dd20",
+      "path": "data/external/derived_gdr_paleo_100m_u8.tif",
+      "bytes": 70221,
+      "git_blob_sha": "90c42b1aa0074516a25ebabfd6c95e5cd81ff6a3",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE30/1f9ac110d5f1a4fac7957fe814267a0be964dd20/data/external/derived_gdr_paleo_100m_u8.tif",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    },
+    {
+      "repo": "GEMSDOE30",
+      "ref": "1f9ac110d5f1a4fac7957fe814267a0be964dd20",
+      "path": "data/external/derived_gdr_qfaults_v2_100m_u8.tif",
+      "bytes": 191289,
+      "git_blob_sha": "8e23f23ecc76b29a4658e20c7a587c9d8e113d46",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE30/1f9ac110d5f1a4fac7957fe814267a0be964dd20/data/external/derived_gdr_qfaults_v2_100m_u8.tif",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    },
+    {
+      "repo": "GEMSDOE30",
+      "ref": "1f9ac110d5f1a4fac7957fe814267a0be964dd20",
+      "path": "data/external/derived_gdr_volcanics_100m_u8.tif",
+      "bytes": 72349,
+      "git_blob_sha": "4df825b3c52c03a39a1275b7fdcc21ba8f55579c",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE30/1f9ac110d5f1a4fac7957fe814267a0be964dd20/data/external/derived_gdr_volcanics_100m_u8.tif",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    },
+    {
+      "repo": "GEMSDOE30",
+      "ref": "1f9ac110d5f1a4fac7957fe814267a0be964dd20",
+      "path": "data/external/derived_sgmc_faults_100m_u8.tif",
+      "bytes": 213034,
+      "git_blob_sha": "2e0aeaaee91791e7a2212d5f8133e2b26650f75f",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE30/1f9ac110d5f1a4fac7957fe814267a0be964dd20/data/external/derived_sgmc_faults_100m_u8.tif",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    },
+    {
+      "repo": "GEMSDOE4",
+      "ref": "5dc28f67a096c511b0aafbf06c235146c5dcf50e",
+      "path": "data/bridge/example_submission.tif",
+      "bytes": 1599597,
+      "git_blob_sha": "7d865a9921a40ed2ea4c742a6a25b1fa2f357c5a",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE4/5dc28f67a096c511b0aafbf06c235146c5dcf50e/data/bridge/example_submission.tif",
+      "review_classification": "sample geometry, footprint or survey extent, not a model output"
+    },
+    {
+      "repo": "GEMSDOE4",
+      "ref": "5dc28f67a096c511b0aafbf06c235146c5dcf50e",
+      "path": "data/bridge/existing_faults.tif",
+      "bytes": 425830,
+      "git_blob_sha": "4ad3c1f3f19823e40924589bee7e51e44ae3a2e7",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE4/5dc28f67a096c511b0aafbf06c235146c5dcf50e/data/bridge/existing_faults.tif",
+      "review_classification": "supplied or evaluation labels, not a model output"
+    },
+    {
+      "repo": "GEMSDOE4",
+      "ref": "5dc28f67a096c511b0aafbf06c235146c5dcf50e",
+      "path": "data/evidence/proxy/proxy_catalogue.tif",
+      "bytes": 181017,
+      "git_blob_sha": "06f6d50f5f06e10e2ad6dfc43bb48a3baf63d849",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE4/5dc28f67a096c511b0aafbf06c235146c5dcf50e/data/evidence/proxy/proxy_catalogue.tif",
+      "review_classification": "validation proxy/catalogue or evaluation mask, not a submission"
+    },
+    {
+      "repo": "GEMSDOE4",
+      "ref": "5dc28f67a096c511b0aafbf06c235146c5dcf50e",
+      "path": "data/evidence/xcat/qfaults_catalogue.tif",
+      "bytes": 158573,
+      "git_blob_sha": "91c60ef2457b56f2811407540ecdda9627642d55",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE4/5dc28f67a096c511b0aafbf06c235146c5dcf50e/data/evidence/xcat/qfaults_catalogue.tif",
+      "review_classification": "validation proxy/catalogue or evaluation mask, not a submission"
+    },
+    {
+      "repo": "GEMSDOE4",
+      "ref": "5dc28f67a096c511b0aafbf06c235146c5dcf50e",
+      "path": "data/fixture/fixture_features_int16.tif",
+      "bytes": 5237005,
+      "git_blob_sha": "a6234b555fefe3a03d56d8d3f90e6a2be7c6f6b5",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE4/5dc28f67a096c511b0aafbf06c235146c5dcf50e/data/fixture/fixture_features_int16.tif",
+      "review_classification": "synthetic feature/label test fixture, not a submitted prediction"
+    },
+    {
+      "repo": "GEMSDOE4",
+      "ref": "5dc28f67a096c511b0aafbf06c235146c5dcf50e",
+      "path": "data/fixture/fixture_labels.tif",
+      "bytes": 6090,
+      "git_blob_sha": "a5d33edd0f8b35f3f0932e0135096d3172d9e79d",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE4/5dc28f67a096c511b0aafbf06c235146c5dcf50e/data/fixture/fixture_labels.tif",
+      "review_classification": "synthetic feature/label test fixture, not a submitted prediction"
+    },
+    {
+      "repo": "GEMSDOE40",
+      "ref": "a4f4690904e31e4dc7037818b9ec0631542fa825",
+      "path": "data/labels.tif",
+      "bytes": 425830,
+      "git_blob_sha": "4ad3c1f3f19823e40924589bee7e51e44ae3a2e7",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE40/a4f4690904e31e4dc7037818b9ec0631542fa825/data/labels.tif",
+      "review_classification": "supplied or evaluation labels, not a model output"
+    },
+    {
+      "repo": "GEMSDOE40",
+      "ref": "a4f4690904e31e4dc7037818b9ec0631542fa825",
+      "path": "data/sample_submission.tif",
+      "bytes": 1599597,
+      "git_blob_sha": "7d865a9921a40ed2ea4c742a6a25b1fa2f357c5a",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE40/a4f4690904e31e4dc7037818b9ec0631542fa825/data/sample_submission.tif",
+      "review_classification": "sample geometry, footprint or survey extent, not a model output"
+    },
+    {
+      "repo": "GEMSDOE41",
+      "ref": "2623d3fa45cc501673eb4b50832dfcc54a49298f",
+      "path": "data/official/qfaults.zip",
+      "bytes": 6131182,
+      "git_blob_sha": "86f7274d41521a78cf656d3030da3b7675f04af6",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE41/2623d3fa45cc501673eb4b50832dfcc54a49298f/data/official/qfaults.zip",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    },
+    {
+      "repo": "7GEMSDOE",
+      "ref": "26c31b4f657539e89e05563aa258dff4c7aa212c",
+      "path": "external/qfaults/qfaults_prior_u8.tif",
+      "bytes": 873828,
+      "git_blob_sha": "517b2c8c2c79f12f1e1360e13b21d99a93a3fdab",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/7GEMSDOE/26c31b4f657539e89e05563aa258dff4c7aa212c/external/qfaults/qfaults_prior_u8.tif",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    },
+    {
+      "repo": "7GEMSDOE",
+      "ref": "a1de3b43ee33d9e472032fa5106f2a3f20d5fdd9",
+      "path": "external/qfaults/Qfaults_GIS.zip",
+      "bytes": 32371696,
+      "git_blob_sha": "2e41c7fc43d749f9e2229fc047d8e8ad3d336404",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/7GEMSDOE/a1de3b43ee33d9e472032fa5106f2a3f20d5fdd9/external/qfaults/Qfaults_GIS.zip",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    },
+    {
+      "repo": "7GEMSDOE",
+      "ref": "2e7bf080270493f77286fd62f2db958805053ba5",
+      "path": "external/dem/lidar_scarp_features_u8.tif",
+      "bytes": 49559897,
+      "git_blob_sha": "334be88a3335ec65ba0ed9e886a7142017d7a4b0",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/7GEMSDOE/2e7bf080270493f77286fd62f2db958805053ba5/external/dem/lidar_scarp_features_u8.tif",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    },
+    {
+      "repo": "7GEMSDOE",
+      "ref": "4c1b0a575cdebc6bdb97719df6f9227490a1e608",
+      "path": "external/dem/lidar_scarp_features_u8.tif",
+      "bytes": 56446831,
+      "git_blob_sha": "42c88b0d9a6610b0274e325d81d9e84763b4f761",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/7GEMSDOE/4c1b0a575cdebc6bdb97719df6f9227490a1e608/external/dem/lidar_scarp_features_u8.tif",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    },
+    {
+      "repo": "7GEMSDOE",
+      "ref": "4c1b0a575cdebc6bdb97719df6f9227490a1e608",
+      "path": "external/ingenious/ingenious_faults_u8.tif",
+      "bytes": 622902,
+      "git_blob_sha": "8d000a840f49249cd0727f4422e51fbf87d04547",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/7GEMSDOE/4c1b0a575cdebc6bdb97719df6f9227490a1e608/external/ingenious/ingenious_faults_u8.tif",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    },
+    {
+      "repo": "GEMSDOE24",
+      "ref": "fcb66fc604b2370ca5dc6f96cf05b3b85481994d",
+      "path": "data/external/audit_sources/blm_closed_claim_distance_m.tif",
+      "bytes": 5750702,
+      "git_blob_sha": "3d45ef5220feb3fbf477a36689a926a6cba51309",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE24/fcb66fc604b2370ca5dc6f96cf05b3b85481994d/data/external/audit_sources/blm_closed_claim_distance_m.tif",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    },
+    {
+      "repo": "GEMSDOE24",
+      "ref": "aaaba1f8c9b37247131dec6bc7aa528daa86534e",
+      "path": "data/external/audit_sources/tiger_road_distance_m.tif",
+      "bytes": 10492298,
+      "git_blob_sha": "c36d5cd722393ea5f3a6f4d9fcc7505c834e2a2c",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE24/aaaba1f8c9b37247131dec6bc7aa528daa86534e/data/external/audit_sources/tiger_road_distance_m.tif",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    },
+    {
+      "repo": "GEMSDOE24",
+      "ref": "ee5d7c65ede2d0b891f747619ac8da81e8e76a15",
+      "path": "data_external/GeoDAWN_area1_outline.zip",
+      "bytes": 1190,
+      "git_blob_sha": "cbb3449c761d72e34300bf4b77ad68dcac001008",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE24/ee5d7c65ede2d0b891f747619ac8da81e8e76a15/data_external/GeoDAWN_area1_outline.zip",
+      "review_classification": "sample geometry, footprint or survey extent, not a model output"
+    },
+    {
+      "repo": "GEMSDOE24",
+      "ref": "ee5d7c65ede2d0b891f747619ac8da81e8e76a15",
+      "path": "data_external/GeoDAWN_area2_outline.zip",
+      "bytes": 1497,
+      "git_blob_sha": "2311e756eb7d5cb614934126e7b3933968b2cf66",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE24/ee5d7c65ede2d0b891f747619ac8da81e8e76a15/data_external/GeoDAWN_area2_outline.zip",
+      "review_classification": "sample geometry, footprint or survey extent, not a model output"
+    },
+    {
+      "repo": "GEMSDOE24",
+      "ref": "ee5d7c65ede2d0b891f747619ac8da81e8e76a15",
+      "path": "data_external/mrds_mrds_csv.zip",
+      "bytes": 25791223,
+      "git_blob_sha": "dc7358d7ad9b41df253cc9de587c605a7f8bafd8",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE24/ee5d7c65ede2d0b891f747619ac8da81e8e76a15/data_external/mrds_mrds_csv.zip",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    },
+    {
+      "repo": "GEMSDOE30",
+      "ref": "5478efa118804090ac85561fbbdbb6505144ea6b",
+      "path": "data/external/derived_sgmc_faults_100m_u8.tif",
+      "bytes": 213045,
+      "git_blob_sha": "0c72893d7e190b66e6e558abe57eb070a17a84b5",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE30/5478efa118804090ac85561fbbdbb6505144ea6b/data/external/derived_sgmc_faults_100m_u8.tif",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    },
+    {
+      "repo": "GEMSDOE30",
+      "ref": "0e86f0b35a0fdee2c47a71837d0500aea9cc6a9a",
+      "path": "data/external/derived_sgmc_concealed_100m_u8.tif",
+      "bytes": 85930,
+      "git_blob_sha": "673c391dd8894764cf01266f326f5002163ddf96",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE30/0e86f0b35a0fdee2c47a71837d0500aea9cc6a9a/data/external/derived_sgmc_concealed_100m_u8.tif",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    },
+    {
+      "repo": "GEMSDOE30",
+      "ref": "0e86f0b35a0fdee2c47a71837d0500aea9cc6a9a",
+      "path": "data/external/derived_sgmc_cover_100m_u8.tif",
+      "bytes": 397222,
+      "git_blob_sha": "7f6d3a72c89c221b54c4eba5d24fb2dfd5cc681f",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE30/0e86f0b35a0fdee2c47a71837d0500aea9cc6a9a/data/external/derived_sgmc_cover_100m_u8.tif",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    },
+    {
+      "repo": "GEMSDOE30",
+      "ref": "a15240c982165bbc3f367ab6c60f4c6d1e33827b",
+      "path": "data/external/derived_sgmc_cover_100m_u8.tif",
+      "bytes": 397299,
+      "git_blob_sha": "d4a8deb9a40cb3c9ba5a1d606323bc726223c828",
+      "kind": null,
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE30/a15240c982165bbc3f367ab6c60f4c6d1e33827b/data/external/derived_sgmc_cover_100m_u8.tif",
+      "review_classification": "external source/derived contextual feature or source archive, not an advertised raw prediction"
+    }
+  ]
+}

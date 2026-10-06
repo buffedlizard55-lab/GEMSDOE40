@@ -45,3 +45,14 @@ H1 and strict H2 were feasibility failures; H2-B was a proxy promotion failure; 
 - The mainline H40-4 multi-scale artifact has 97,654 positive cells. It scored 0.1247145885 on the owner-derived SGMC proxy and won 0/24 blocks versus the frozen incumbent; it fails the strict local format gate because it lacks a NaN nodata tag. The prior main project’s LM-calibrated 0.34835 and 4/4 folds are from a different instrument and are not comparable. Neither result is an organizer score.
 - The unchanged incumbent is explicitly SGMC-gap-derived, so its result remains circular on this proxy and is not an independent generalization estimate. No hypothesis, threshold, or submission decision was retuned.
 - Evidence: [current H2-B validation report](../reports/validation-h2b-20261005.md), [expanded validation JSON](../data/validation-h2b-20261005.json), [inventory](../data/prior_raster_inventory.json), [metadata audit](../data/prior_raster_metadata_audit.json), [expanded uniqueness audit](../data/uniqueness_audit.json), and [dated project/leaderboard feed](../data/feed-20261005.json). The original first-pass report and 268-comparison audit remain available alongside the current report.
+
+
+## 2026-10-06 — appended H4 outcome (previous records unchanged)
+
+The offset-aware, rank-adaptive contact Euler + cross-window depth-KDE run completed on CPU. It produced an independently new, exact-format TIFF and 46,656 QC-passing depth solutions (20,617 clustered). Its SHA-256 and its cloud's SHA-256 were independently reproduced byte for byte.
+
+A final reachable-history inventory covers 55 public repositories, 338 branch heads, 1,859 commits and 343 byte-verified TIFF-named artifacts. 340 are full-size arrays; technical fixtures/header-only artifacts and two partial-NaN storage variants are explicitly adjudicated, not silently omitted or fabricated. Every complete counterpart is separately compared. No near-duplicate under the unchanged H4 thresholds.
+
+**HOLD — DO NOT SUBMIT.** H4 proxy DTI is 0.00690153557133729; H33-B2 is 0.09155026618057825; the frozen SGMC-derived incumbent is 0.8359066540883113. H4 wins no truth-bearing block against either. The historical 18-win gate is also mathematically infeasible with only 16 truth-bearing blocks, and its incumbent is circular. We preserve, disclose and do not retroactively relax either defect. No organizer score or competition submission exists for H4.
+
+[Full result](../reports/h4-results-20261006.md) · [Exact block scores](../data/h4-validation.json) · [Full raw-output audit](../data/h4-uniqueness.json) · [Three-pass review](../reports/review-20261006.md). Next: independently register a feasible whole-fault-system validation protocol before any new model search.

@@ -132,7 +132,8 @@ def audit_candidate(
         }
     with rasterio.open(candidate_path) as ds:
         candidate = ds.read(1)
-        if candidate.shape != reference["shape"]:
+        if (candidate.shape != reference["shape"] or ds.count != 1
+                or ds.crs != reference["crs"] or ds.transform != reference["transform"]):
             raise ValueError("candidate does not match template shape")
     candidate_hash = file_sha256(candidate_path)
     candidate_pixel_hash = canonical_pixel_sha256(candidate, ~footprint)
@@ -194,7 +195,9 @@ def audit_candidate(
         "missing_prior_cache_git_blobs": missing_cache,
         "top_budget_for_comparison": int(budget or np.count_nonzero(candidate[footprint])),
         "near_duplicate_count": sum(bool(row["near_duplicate_by_preregistered_rule"]) for row in results),
-        "uniqueness_pass": not missing_cache and not any(row["near_duplicate_by_preregistered_rule"] for row in results),
+        "scope": "Historical exact-grid-only diagnostic, not the current full raw/misregistration audit",
+        "completeness_pass": bool(results) and not missing_cache,
+        "uniqueness_pass": bool(results) and not missing_cache and not any(row["near_duplicate_by_preregistered_rule"] for row in results),
         "closest_prior_outputs": closest,
         "comparisons": results,
         "skipped": skipped,

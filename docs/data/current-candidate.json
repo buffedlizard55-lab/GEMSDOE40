@@ -1,0 +1,21 @@
+{
+  "bytes": 3918532,
+  "canonical_pixels_sha256": "fab9f6619c02595ceec668c87420789035d8103d3c93b91a2e4aa7c2bc905e86",
+  "cloud": {
+    "bytes": 2183131,
+    "path": "docs/downloads/h4-euler-solutions.csv.gz",
+    "records": 46656,
+    "sha256": "6bed30b224981ef1064256d696c585b76f438011bbae6c0a16c00e6e6f5922ba"
+  },
+  "download_purpose": "Distinct submission-format research artifact; NOT approved for upload",
+  "experiment": "H4",
+  "filename": "gemsdoe40-h4-contact-offset-depthkde-20261006-fab9f6619c02.tif",
+  "name": "GEMSDOE40-H4-CONTACT-OFFSET-fab9f6619c02",
+  "note": "H4 SI0+A rank-aware TMI+dGdz Euler; shallow cross-window depth-consensus KDE. New raw field; HOLD, proxy gate failed; no organizer score.",
+  "note_characters": 137,
+  "organizer_score": null,
+  "path": "docs/downloads/gemsdoe40-h4-contact-offset-depthkde-20261006-fab9f6619c02.tif",
+  "sha256": "ee73ffd76fabbaa1a2e77e17f57947a7db858916d713801e0c3502e49f6acabb",
+  "slot_eligible": false,
+  "status": "HOLD \u2014 DO NOT SUBMIT"
+}

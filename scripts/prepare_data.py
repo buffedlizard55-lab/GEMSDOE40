@@ -28,21 +28,31 @@ def sha256(path: Path) -> str:
 def main() -> None:
     data = ROOT / "data"
     report = {}
+    missing = [name for name in PINS if not (data / name).is_file()]
+    if missing:
+        raise SystemExit(f"Missing required inputs: {missing}. Run bash scripts/download_competition_data.sh; no ready claim or pins overwritten.")
     for name, exp in PINS.items():
         p = data / name
-        if not p.exists():
-            print(f"MISSING {p}")
-            report[name] = "MISSING"
-            continue
         got = sha256(p)
         ok = got == exp
         print(f"{name}: {'OK' if ok else 'HASH MISMATCH'} {got}")
         if not ok:
             raise SystemExit(f"refuse to proceed: {name}")
         report[name] = got
+    import numpy as np
+    import rasterio
+    with rasterio.open(data / "sample_submission.tif") as template:
+        if template.count != 1 or template.crs.to_epsg() != 32611 or template.res != (100.0, 100.0):
+            raise SystemExit("unexpected sample grid")
+        footprint = np.isfinite(template.read(1))
+        for name in ("labels.tif", "training_features.tif"):
+            with rasterio.open(data / name) as ds:
+                if ds.shape != template.shape or ds.transform != template.transform or ds.crs != template.crs:
+                    raise SystemExit(f"unaligned input: {name}")
+        print(f"aligned sample: {template.height} rows x {template.width} columns; {int(footprint.sum()):,} valid cells; {template.crs}")
     (ROOT / "evidence").mkdir(exist_ok=True)
-    (ROOT / "evidence" / "data_pins.json").write_text(json.dumps(report, indent=2))
-    print("pins written to evidence/data_pins.json")
+    (ROOT / "evidence" / "data_pins.json").write_text(json.dumps(report, indent=2) + "\n")
+    print("READY for CPU Euler generation; no neural-network training or GPU requirement implied")
 
 
 if __name__ == "__main__":

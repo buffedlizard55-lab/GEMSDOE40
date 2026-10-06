@@ -257,3 +257,17 @@ any emission decision.
 Consequence for arm design: a Phase 1 submission is also a *proposal set* for expert review. Mass that is spatially diffuse, or that cannot be defended from surface or geophysical evidence, adds Phase 2 review burden without adding admissible targets, while coherent, evidence-backed candidate traces (even at modest Phase 1 score) can be adopted into the Phase 2 label set. This is a strategic judgement, not a measured effect, and it does not relax any registered gate.
 
 **7. Correction to item 4 (corpus ranking not completed).** The equal-mass ranking of all 279 cached priors on the surviving SGMC raster was started (`scripts/rank_priors_proxy_instrument.py`, 45,000-dot equal-mass emission, 4x6 blocks with guard 3) but did not complete inside the sandbox CPU budget: 60 of 279 rasters were scored before the run was stopped. The partial record is `work/rank_probe.json` plus the process log (no committed artifact), and **`docs/data/proxy_ranking.json` therefore does not exist** — item 4's reference to it is superseded by this correction. The partial result already shows what item 4 predicted: the top of the list is the incumbent's own lineage (`GEMSDOE3 gapfinder-v2-fusion`, DTI 0.4174 against a three-draw same-mass random control of 0.0825, i.e. 5.1x), which is circular by construction. Re-run the script on an unrestricted runner before quoting any corpus-wide ranking.
+
+
+## 2026-10-06 — contact-offset H4–H7 slate (separate from H4-A and H7 gravity-context)
+
+
+A separate frozen [H4–H7 registration](h4-preregistration-20261006.md) preceded the new implementation. It ranks offset-aware rank-adaptive contact Euler, finite gravity-step inversion, depth-cloud plane geometry, and TMI/RTP representation stability. Only H4 was implemented. H6's ground-surface projection remains blocked pending verified survey datum.
+
+H4 now exists as a genuinely distinct, format-valid research TIFF, with byte-identical independent regeneration. It **fails** blocked proxy promotion; it is not a candidate for a weekly upload. See the [negative result](../reports/h4-results-20261006.md). No post-score hyperparameter search or H4 re-emission was performed.
+
+### Integration correction — 2026-10-06
+
+The **contact-offset H4** in `h4-preregistration-20261006.md` is TMI plus dG/dz with free A and rank adaptation. It is distinct from the concurrent **H4-A** terrain/QFFD contact-network arm and the merged **H7 gravity-context** arm. H7 in the contact-offset slate means unimplemented TMI/RTP representation stability, not the already implemented gravity-context experiment. Preserve all records; do not mix their scores or labels.
+
+The formerly unavailable `26d142c4…` SGMC proxy has now been autonomously recovered from the pinned public GEMSDOE30 commit; see `../data/acquisition-20261006.json`. Its frozen 0.8359066541 incumbent score is reproduced. This resolves missing data, not circularity: the incumbent uses SGMC, and only 16 blocks contain truth while the rule requires 18 wins. The instrument is retained for historical diagnostics only and is **retired for promotion**. No replacement gate based on unauthenticated owner file/score pairs is adopted.

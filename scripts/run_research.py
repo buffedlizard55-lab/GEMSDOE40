@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-"""Run a locked H1/H2/H2-B build, format check, uniqueness audit, and proxy holdout."""
+"""ARCHIVED ONLY — opt-in historical reproduction, not current submission advice.
+
+Run a locked H1/H2/H2-B build, format check, uniqueness audit, and proxy holdout."""
 from __future__ import annotations
 
 import argparse
@@ -224,6 +226,8 @@ def summarize_mainline_prior_addendum(
 
 
 def main() -> None:
+    from gemsdoe40.legacy_guard import require_legacy_opt_in
+    require_legacy_opt_in()
     parser = argparse.ArgumentParser()
     parser.add_argument("--features", required=True, type=Path)
     parser.add_argument("--sample", required=True, type=Path)

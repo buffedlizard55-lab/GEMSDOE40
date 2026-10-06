@@ -1,152 +1,126 @@
 #!/usr/bin/env python3
-"""Non-destructive integrity check for the checked-in GitHub Pages site.
+"""Non-destructive local-link, release-byte and scientific-evidence checks.
 
-The original main-branch generator hard-coded an obsolete upload recommendation. This script
-validates the current H7 decision and local links without rewriting versioned HTML/JSON.
+Use build_contact_site.py to intentionally rebuild current HTML from receipts.
+This checker never rewrites the site or turns a proxy failure into upload advice.
 """
 from __future__ import annotations
-
 import argparse
 import hashlib
-import json
 from html.parser import HTMLParser
+import json
 from pathlib import Path
-from urllib.parse import urlsplit
+from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
-CANDIDATE = DOCS / "downloads" / "gemsdoe40-h7-rtp-euler-gravity-context-3d-kde-20261006-998f660f.tif"
-VALIDATION = DOCS / "data" / "validation-h7-20261006.json"
-INVENTORY = DOCS / "data" / "prior_raster_inventory-20261006.json"
-UNIQUENESS = DOCS / "data" / "uniqueness-audit-h7-20261006.json"
-PRIOR_SCORES = DOCS / "data" / "prior-holdout-scores-h7-20261006.json"
-#: second current artifact (2026-10-06, H40 Euler depth-cluster) and its receipt
-CANDIDATE_H40 = DOCS / "downloads" / "gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-zeros.tif"
-RECEIPT_H40 = DOCS / "downloads" / "gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-audit.json"
-SHA_H40 = "57896abee36d6722f587f543e1f65ddfd9af19163e20653e852bfb3162b10902"
 
 
 class LocalLinks(HTMLParser):
-    def __init__(self) -> None:
-        super().__init__()
-        self.targets: list[str] = []
-
-    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+    def __init__(self):
+        super().__init__(); self.targets = []; self.ids = set()
+    def handle_starttag(self, tag, attrs):
         for key, value in attrs:
-            if key in {"href", "src"} and value:
-                self.targets.append(value)
+            if key in {"href", "src"} and value: self.targets.append(value)
+            if key in {"id", "name"} and value: self.ids.add(value)
 
 
 def verify_pages() -> list[str]:
-    problems: list[str] = []
+    problems = []
+    parsed = {}
     pages = [ROOT / "index.html", *sorted(DOCS.rglob("*.html"))]
     for page in pages:
-        parser = LocalLinks()
-        parser.feed(page.read_text(encoding="utf-8"))
+        parser = LocalLinks(); parser.feed(page.read_text(encoding="utf-8")); parsed[page.resolve()] = parser
+    for page, parser in parsed.items():
         for target in parser.targets:
             parts = urlsplit(target)
-            if parts.scheme or parts.netloc or not parts.path:
-                continue
-            local = (page.parent / parts.path).resolve()
-            if ROOT not in local.parents and local != ROOT:
+            if parts.scheme or parts.netloc: continue
+            local = (page.parent / unquote(parts.path)).resolve() if parts.path else page
+            if not local.is_relative_to(ROOT):
                 problems.append(f"link escapes repository: {page.relative_to(ROOT)} -> {target}")
             elif not local.exists():
                 problems.append(f"missing local link: {page.relative_to(ROOT)} -> {target}")
+            elif parts.fragment and local in parsed and unquote(parts.fragment) not in parsed[local].ids:
+                problems.append(f"missing HTML fragment: {page.relative_to(ROOT)} -> {target}")
     return problems
 
 
+def digest(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
 def verify_evidence() -> list[str]:
-    problems: list[str] = []
-    root_page = (ROOT / "index.html").read_text(encoding="utf-8")
-    site_home = (DOCS / "index.html").read_text(encoding="utf-8")
-    executive = (DOCS / "executive-summary.html").read_text(encoding="utf-8")
-    if "HOLD — DO NOT SUBMIT" not in root_page or "docs/index.html" not in root_page:
-        problems.append("root landing page must redirect to the current HOLD status page")
-    if "UPLOAD THIS" in root_page or "Recommended submission" in root_page:
-        problems.append("root landing page contains superseded upload advice")
-    if "H7 research-only GeoTIFF" not in site_home or "HOLD — DO NOT SUBMIT" not in site_home:
-        problems.append("current site home must make the H7 research download and no-go status obvious")
-    if "No candidate is cleared today" not in executive or "Do not upload H7" not in executive:
-        problems.append("executive summary must retain the no-upload guide for the current research-only candidate")
-
+    problems = []
+    def check(condition, message):
+        if not condition: problems.append(message)
+    def load(name): return json.loads((DOCS / "data" / name).read_text())
     try:
-        report = json.loads(VALIDATION.read_text(encoding="utf-8"))
-        inventory = json.loads(INVENTORY.read_text(encoding="utf-8"))
-        uniqueness = json.loads(UNIQUENESS.read_text(encoding="utf-8"))
-        prior_scores = json.loads(PRIOR_SCORES.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError) as exc:
-        return problems + [f"cannot load current audit evidence: {exc}"]
-
-    expected_sha = "e229aa9af26018bc80b0cca880d484a5b8362c26ad79ca362423953c32e66597"
-    actual_sha = hashlib.sha256(CANDIDATE.read_bytes()).hexdigest() if CANDIDATE.exists() else None
-    receipt = report.get("candidate_format_receipt", {})
-    if actual_sha != expected_sha or receipt.get("sha256") != expected_sha:
-        problems.append(f"H7 candidate SHA-256 mismatch: file={actual_sha}, report={receipt.get('sha256')}")
-    if receipt.get("valid") is not True:
-        problems.append("H7 candidate format receipt is not a pass")
-    gate = report.get("promotion_gate_vs_highest_all_prior", {})
-    if gate.get("passed") is not False or report.get("slot_eligible") is not False:
-        problems.append("H7 report does not preserve the expected explicit no-go")
-    if report.get("weekly_slot_used") is not False or report.get("organizer_score") is not None:
-        problems.append("H7 report must state that no slot was used and no organizer score exists")
-
-    inventory_rows = inventory.get("unique_rasters", [])
-    refresh = inventory.get("current_head_refresh", {})
-    if len(inventory_rows) != 306 or inventory.get("unique_pinned_repo_ref_path_locations") != 541:
-        problems.append("refreshed prior inventory count/location mismatch")
-    if refresh.get("owner_public_repositories_matching_gemsdoe") != 55 or refresh.get("current_head_tiff_paths_scanned") != 501:
-        problems.append("refreshed current-head repository/path count mismatch")
-    if refresh.get("recursive_trees_truncated") != 0 or refresh.get("unclassified_tiff_paths_excluded_pending_manual_review"):
-        problems.append("prior inventory is truncated or has pending row-level classification")
-
-    prior_summary = report.get("prior_corpus_holdout", {})
-    if prior_summary.get("same_grid_prior_outputs_scored") != 304 or prior_summary.get("prior_format_eligible_count") != 183:
-        problems.append("current-proxy prior comparison does not account for the 304 same-grid outputs and 183 locally format-eligible subset")
-    if len(prior_scores.get("scores", [])) != 304 or prior_scores.get("proxy_sha256") != report.get("input_sha256", {}).get("current_proxy"):
-        problems.append("complete same-grid prior score receipt is missing or uses a different proxy pin")
-    if uniqueness.get("inventory_unique_blobs") != 306 or uniqueness.get("same_grid_comparisons") != 304:
-        problems.append("H7 uniqueness audit does not cover all 304 exact-grid prior blobs")
-    if uniqueness.get("missing_prior_cache_count") != 0 or uniqueness.get("near_duplicate_count") != 0 or not uniqueness.get("uniqueness_pass"):
-        problems.append("H7 uniqueness audit is incomplete or failing")
-    if uniqueness.get("top_budget_for_comparison") != 45_962:
-        problems.append("H7 uniqueness audit did not use the frozen 45,962-cell top budget")
-    # ---- second current artifact: H40 Euler depth-cluster ------------------------------------
-    if not CANDIDATE_H40.exists():
-        problems.append(f"H40 artifact missing: {CANDIDATE_H40.name}")
-    else:
-        got40 = hashlib.sha256(CANDIDATE_H40.read_bytes()).hexdigest()
-        if got40 != SHA_H40:
-            problems.append(f"H40 artifact SHA-256 mismatch: {got40}")
-    try:
-        receipt40 = json.loads(RECEIPT_H40.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError) as exc:
-        problems.append(f"H40 receipt unreadable: {exc}")
-    else:
-        if receipt40.get("zeros_tif", {}).get("sha256") != SHA_H40:
-            problems.append("H40 receipt does not pin the artifact hash")
-        inst = receipt40.get("stage", {}).get("emission", {}).get("instrument", {})
-        pred = inst.get("predicted_live")
-        if pred is None or pred >= 0.2778:
-            problems.append(f"H40 artifact is not held: instrument prediction {pred}")
-        if inst.get("lm_calibrated") is None or inst["lm_calibrated"] >= (inst.get("lm_incumbent") or 0.0):
-            problems.append("H40 LM instrument does not show a shortfall against its incumbent")
-        if receipt40.get("stage", {}).get("uniqueness", {}).get("is_new") is not True:
-            problems.append("H40 uniqueness audit did not pass")
+        c, g, f, u, v, inv, repro, projects = (load(n) for n in (
+            "current-candidate.json", "h4-generation.json", "h4-format.json", "h4-uniqueness.json",
+            "h4-validation.json", "prior-inventory-20261006.json", "h4-reproduction.json", "project-site-review-20261006.json"))
+        candidate = ROOT / c["path"]
+        check(candidate.is_file() and digest(candidate) == c["sha256"], "current download SHA-256 mismatch")
+        check(c["filename"] == candidate.name and candidate.stat().st_size == c["bytes"], "current file name/byte-size mismatch")
+        check(c["sha256"] == f["sha256"] == g["candidate_format"]["sha256"] == u["candidate_sha256"] == v["candidate_sha256"], "current evidence disagrees on candidate identity")
+        check(f["valid"] is True and g["candidate_format"]["valid"] is True, "current file is not format-verified")
+        check(c["cloud"]["sha256"] == digest(ROOT / c["cloud"]["path"]), "downloadable solution cloud has changed")
+        check(c["note_characters"] == len(c["note"]) <= 200, "submission note exceeds portal limit or has wrong recorded length")
+        check(c["canonical_pixels_sha256"] == f["canonical_pixels_sha256"] == u["candidate_canonical_sha256"], "canonical pixel identities disagree")
+        n = len(inv["unique_rasters"])
+        check(n == inv["unique_git_blobs"] == u["inventory_blobs"] == u["hashed_and_audited_blobs"] == len(u["comparisons"]), "incomplete raw-output audit counts")
+        check(u["inventory_sha256"] == digest(DOCS / "data/prior-inventory-20261006.json"), "prior inventory changed since the novelty audit")
+        check(u["completeness_pass"] and u["uniqueness_pass"] and u["near_duplicate_count"] == 0 and not u["issues"], "novelty/integrity does not pass")
+        gate = v["promotion_gate"]
+        check(c["slot_eligible"] is False and gate["slot_eligible"] is False and gate["passed"] is False, "current no-go unexpectedly changed; manually review publication advice")
+        check(c["status"] == gate["final_action"] == "HOLD — DO NOT SUBMIT", "current no-go is not explicit")
+        check(c["organizer_score"] is None and gate["organizer_score"] is None and gate["weekly_submission_used"] is False, "unverified organizer-score or submission claim")
+        check(gate["blocks_with_truth"] == 16 and gate["empty_blocks"] == 8 and gate["blocks_required"] == 18 and not gate["strict_win_requirement_feasible"], "infeasible inherited gate was hidden or silently relaxed")
+        check(g["construction_uses_proxy_or_prior_predictions"] is False, "current generation depends on old predictions/proxy")
+        check(repro["pass"] and repro["actual_tiff_sha256"] == c["sha256"] and repro["actual_cloud_sha256"] == c["cloud"]["sha256"], "independent byte reproduction is absent or disagrees")
+        prereg = digest(DOCS / "research/h4-preregistration-20261006.md")
+        check(g["preregistration_sha256"] == prereg, "frozen registration changed after generation")
+        for source, expected in {**g["code_sha256"], **v.get("audit_code_sha256", {})}.items():
+            check(digest(ROOT / source) == expected, f"scientific source changed after run/audit: {source}")
+        check(projects["project_count"] == len(projects["projects"]) == 44, "complete 44-project source register missing")
+        check(projects["reported_score_count"] == sum(s["score"] is not None for p in projects["projects"] for s in p["submissions"]) == 48, "48 owner-reported scores were not preserved")
+        for name in ("index.html", "executive-summary.html"):
+            text = (DOCS / name).read_text()
+            check(c["filename"] in text and "download" in text and "HOLD — DO NOT SUBMIT" in text, f"current download/no-go missing from {name}")
+        root_page = (ROOT / "index.html").read_text()
+        check("docs/index.html" in root_page and c["filename"] in root_page and "HOLD — DO NOT SUBMIT" in root_page, "root route is stale or missing the download")
+        check("UPLOAD THIS" not in root_page and "Recommended submission" not in root_page, "root still promotes archived output")
+        readme = (ROOT / "README.md").read_text()
+        embedded = readme.split("<!-- BEGIN USER BRIEF 20261006 -->", 1)[1].split("<!-- END USER BRIEF 20261006 -->", 1)[0].strip()
+        check(embedded == (DOCS / "user-prompt-20261006.md").read_text().strip(), "README does not retain the complete current brief")
+        check("Maximize P(Win)" in readme and "Own the Outcome" in readme, "core values lost")
+        # Concurrent mainline artifacts retain their own exact identities and no-go.
+        h7 = load("validation-h7-20261006.json")
+        h7_path = DOCS / "downloads/gemsdoe40-h7-rtp-euler-gravity-context-3d-kde-20261006-998f660f.tif"
+        check(digest(h7_path) == h7["candidate_format_receipt"]["sha256"], "retained H7 bytes changed")
+        check(h7["slot_eligible"] is False and h7["weekly_slot_used"] is False and h7["organizer_score"] is None, "retained H7 no-go changed")
+        h40 = json.loads((DOCS / "downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-audit.json").read_text())
+        for suffix, key in (("zeros", "zeros_tif"), ("nan", "nan_tif")):
+            path = DOCS / f"downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-{suffix}.tif"
+            check(digest(path) == h40[key]["sha256"], f"retained H40 {suffix} bytes changed")
+        check((DOCS / "reports/integration-20261006.md").is_file(), "parallel experiment/proxy-profile integration notes missing")
+        # Preserve the historical negative result; updating the site is not rewriting history.
+        old = DOCS / "downloads/gemsdoe40-h2b-tmi-euler-natural-support-20261005.tif"
+        check(digest(old) == "02486eaa491da2d8ebc6b1cd53ed2bdc8e995f316be1110a64eec484779b5a68", "historical H2-B bytes changed")
+    except (OSError, KeyError, ValueError, IndexError, TypeError) as exc:
+        problems.append(f"cannot verify current evidence: {exc}")
     return problems
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--check", action="store_true", help="check static pages and evidence (default)")
+    parser.add_argument("--check", action="store_true", help="verify without modifying any files (default)")
     parser.parse_args()
     errors = verify_pages() + verify_evidence()
     if errors:
         print("[site] integrity check failed:")
-        for error in errors:
-            print(f"  - {error}")
+        for error in errors: print(f"  - {error}")
         return 1
-    print(f"[site] OK: {len(list(DOCS.rglob('*.html')))} documentation pages plus root redirect; "
-          "H7 HOLD decision, complete 306-blob inventory, 304 holdout/uniqueness comparisons, and no upload advice")
+    print(f"[site] OK: {len(list(DOCS.rglob('*.html')))} documentation pages plus root redirect; current file/cloud bytes, complete prior inventory, frozen no-go, full prompt and reproduction verified; no files rewritten")
     return 0
 
 

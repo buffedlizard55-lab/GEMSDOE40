@@ -1,0 +1,44 @@
+{
+  "added_pixels": 0,
+  "base": {
+    "artifact": {
+      "bytes": 1595850,
+      "kind": "published-download-or-submission",
+      "path": "docs/downloads/gems28-h27-4-r1-solo-d2-8-20261003-8acb75e1f2cc-nan.tif",
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE28/4a46fc2ed2cbddd9e48dca5c93da3baf1f7d2209/docs/downloads/gems28-h27-4-r1-solo-d2-8-20261003-8acb75e1f2cc-nan.tif",
+      "ref": "4a46fc2ed2cbddd9e48dca5c93da3baf1f7d2209",
+      "repo": "GEMSDOE28"
+    },
+    "git_blob_sha": "12b0a4ddf1cf76f2552621b8a8b1a1b88d783786",
+    "sha256": "ab02300152248fdda04e988e2cd2a0c13f35eec42fcf670a15e8b76b19e24a73"
+  },
+  "base_positive_pixels": 40199,
+  "conclusion": "Measured geometry is pruning, not discovery of additional fault positions. The score mechanism cannot be established causally without the test labels.",
+  "date_utc": "2026-10-06",
+  "exactly_base_pruned_at_distance_le_200m": true,
+  "h33": {
+    "artifact": {
+      "bytes": 219065,
+      "kind": "published-download-or-submission",
+      "path": "docs/downloads/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif",
+      "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE32/b63ebab7dbcf9238422ebbc2dbc4addf84bed11b/docs/downloads/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif",
+      "ref": "b63ebab7dbcf9238422ebbc2dbc4addf84bed11b",
+      "repo": "GEMSDOE32"
+    },
+    "git_blob_sha": "17a76895f68174cc93f3cb1597d25686f6d6bc67",
+    "sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9"
+  },
+  "h33_min_distance_to_known_m": 223.60679774997897,
+  "h33_positive_pixels": 37654,
+  "hypothetical_tp_increase_to_03345_holding_fp_and_g_fixed": 0.2187371896969923,
+  "mass_removed_fraction": 0.06331003258787532,
+  "metric_identity": "DTI=T/(0.2*T+0.2*FP+0.8*G); after removing predictions with TP loss L and FP saving S, score improves iff (1-0.2*DTI)*L < 0.2*DTI*S.",
+  "not_a_score_forecast": true,
+  "removed_distance_to_known_m_min_max": [
+    141.4213562373095,
+    200.0
+  ],
+  "removed_pixels": 2545,
+  "score_attribution": "0.2778 for this file and 0.2708 for the base are owner-reported, not a TIFF-level organizer receipt.",
+  "tp_loss_per_fp_saved_limit_at_owner_best": 0.05882851213417475
+}

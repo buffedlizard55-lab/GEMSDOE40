@@ -1,0 +1,17 @@
+{
+  "observed_date_utc": "2026-10-06",
+  "source": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
+  "evidence_class": "One-time official public-page observation in the research tool; not an ongoing scrape, not a TIFF-level score receipt",
+  "top_rows": [
+    {"rank": 1, "account": "alexoktaba", "score": 0.3345},
+    {"rank": 2, "account": "nchuzhoy", "score": 0.3262},
+    {"rank": 3, "account": "kinghorton42", "score": 0.3222},
+    {"rank": 4, "account": "DARD", "score": 0.3195}
+  ],
+  "owner_reference_row": {"rank": 13, "account": "extradr19", "score": 0.2778, "submissions": 10, "tiff_attribution": null},
+  "correction": "The user's 0.3195 and the previous session's 0.3262 are historical leaders, not the leading value at this observation.",
+  "automation": "No scheduled DrivenData monitoring; Terms of Use prohibit automated monitoring without permission. The automated feed is limited to official USGS/GDR sources.",
+  "terms_url": "https://www.drivendata.org/termsofuse/",
+  "candidate_organizer_score": null,
+  "competition_submission_made": false
+}

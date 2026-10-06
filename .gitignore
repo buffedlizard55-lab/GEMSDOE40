@@ -9,14 +9,15 @@ prior_cache/
 *.ovr
 data/*.tif
 data/prior/
-data/bridge/
-prior_cache/
 data/cache/
 data/external/
 work/
 *.npz
 *.npy
 
-# Large local inputs and prior-raster cache (external artifacts, not committed)
+# Packaging/build metadata
+*.egg-info/
+_site/
 data/bridge/
+# Large local inputs and prior-raster cache (external artifacts, not committed)
 ref/prior/
