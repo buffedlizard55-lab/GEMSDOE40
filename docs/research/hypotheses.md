@@ -305,3 +305,26 @@ Status: **H9 closed at pre-screen.** No H9 emission will be implemented this ses
 Carry-forward: at dense emission mass (~2.58 M value budget) random dots reach 0.1158 on
 the proxy; sparse, placement-driven mass remains the only untested lever, and no local
 instrument can verify placement against the hidden test set.
+
+### H10 pre-screen result (2026-10-06, session 3) — NEGATIVE-AT-PRESCREEN
+
+Frozen protocol: preregistration addendum 3 (pinned at sha256
+`d495fc0f91509ea41120514ab0fd2b10aac4215f2d0c55ac5abb36533569bea3` before scoring).
+Six indicators on bands 4/7/8 (σ=2 px smoothing; HG of each band, band 4 direct,
+structure-tensor oriented linearity of band 7, HG(7)×HG(8) rank product), percentile-emitted,
+scored on the frozen SGMC proxy with the audit's exact `mass_matched_controls`.
+Decision rule identical to H9's.
+
+| indicator | proxy | random ctrl | grad-topK |
+|---|---|---|---|
+| HG_dilate | **0.0701** | 0.1158 | 0.0800 |
+| HG_2ndinv | 0.0690 | 0.1158 | 0.0800 |
+| inv_direct | 0.0675 | 0.1156 | 0.0800 |
+| shear_x_dilate | 0.0668 | 0.1158 | 0.0800 |
+| lineament_shear | 0.0653 | 0.1156 | 0.0800 |
+| HG_shear | 0.0647 | 0.1158 | 0.0800 |
+
+No indicator beat its own mass-matched random control. Status: **H10 closed at pre-screen.**
+Carry-forward: both registered "new band family" levers (H9 subsurface, H10 geodetic) fail
+the proxy placement test; the dense-mass random level ≈0.1157 reproduces exactly across
+both pre-screens.

@@ -287,3 +287,44 @@ this preregistration document as it stood at run time (fail-closed append-only d
 - A pre-screen pass would still require the full G1–G5 frozen audit before any slot decision.
 - Bands 15/17/18 are public-mirror rasters, not organizer-authenticated; negative or positive,
   the result is about these mirrors.
+
+## 2026-10-06 addendum 3 — H10 pre-screen (frozen before any H10 scoring)
+
+Status: registered pre-screen only. No submission slot is at stake and none will be used.
+
+### Purpose
+
+Same fail-fast discipline as H9 (addendum 2): one frozen protocol, one run, one decision on
+whether H10 (geodetic strain-rate lineaments) deserves full implementation compute.
+
+### Frozen input contract
+
+1. Feature bands from the pinned `data/training_features.tif`
+   (sha256 `4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5`):
+   `geod_2ndinv` (4), `geod_shearrate` (7), `geod_dilaterate` (8). No other bands.
+2. Competition footprint from the pinned `data/sample_submission.tif`
+   (sha256 `2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc`); the H9
+   lesson applies: feature bands are finite across the full rectangle and must be masked to
+   the template footprint.
+3. Smoothing: single Gaussian σ = 2 px before derivatives (same as H9).
+4. Proxy truth and scoring: identical frozen instruments to addendum 2
+   (`read_proxy_truth` + `score_array_on_proxy` + `mass_matched_controls`).
+
+### Frozen indicator set (exactly six)
+
+1. `HG_shear` — horizontal-gradient magnitude of band 7.
+2. `HG_dilate` — horizontal-gradient magnitude of band 8.
+3. `HG_2ndinv` — horizontal-gradient magnitude of band 4.
+4. `inv_direct` — band 4 used directly (already a strain-magnitude invariant).
+5. `lineament_shear` — oriented structure-tensor linearity of band 7:
+   coherence (λ1−λ2)/(λ1+λ2) of the σ=2-smoothed gradient outer-product tensor, multiplied
+   by √λ1 (oriented strength). This is the registered signature, not a plain edge map.
+6. `shear_x_dilate` — per-cell product of the percentile ranks of HG_shear and HG_dilate.
+
+### Frozen emission, controls and decision rule
+
+Identical to addendum 2: percentile-normalized [0,1] emission scored on the frozen proxy;
+`mass_matched_controls` from the audits; advance if and only if the best indicator beats
+BOTH 0.039354 and 2 × its own best random control. Otherwise H10 is recorded
+NEGATIVE-AT-PRESCREEN and no further H10 compute is spent this session. The result JSON
+records the sha256 of this document at run time.
