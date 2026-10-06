@@ -97,6 +97,31 @@ def main():
 <p>H8-ASA measured: synthetic S1–S5 PASS; novelty PASS (max |Pearson| 0.2528 vs 343 priors); gate FAIL (pooled proxy 0.024128 &lt; 0.091550; block wins 1/16); byte-identical independent reproduction. <a href="reports/h8-results-20261006.md">Result</a> · <a href="reports/h8-review-20261006.md">three-pass review</a>.</p></section>'''
 
 
+    # Supplementary artifact from the H4-line (Euler depth-cluster line) arm, shipped on the
+    # arena/7ff45ffc branch.  Numbers are read from the receipts so the page cannot drift
+    # from the audited bytes, and the FAILED gate is stated in the same paragraph as the link.
+    h4l = load("h4_submission_20261006T032708Z.json")
+    h4lg = load("h4_blocked_validation_shipped.json")
+    h4l_row = next(iter(h4lg["candidates"].values()))
+    h4l_ref = h4lg["stage1"]["reference_scores"][h4l_row["reference"]]
+    h4l_zip = h4l["receipt"]["zip"]["file"].split("docs/", 1)[1]
+    h4line = f'''<section class="section" id="h4line"><div class="sectionhead"><div><p class="eyebrow">SUPPLEMENTARY ARM / EULER DEPTH-CLUSTER LINE</p><h2>A fourth artifact, also honestly held.</h2></div><a href="research/h4-euler-depthcluster.html">Full H4-line record ↗</a></div>
+<p>An independently built Euler SI=0 depth-cluster <em>line</em> emission (KDE of depth-weighted solution density, matched-filtered along strike, ring-pruned) from the magnetic and gravity layers. It is byte-audited and the most distinct field on this site, and it <strong>fails its frozen four-fold gate</strong>: {h4l_row["folds_better_than_reference"]} of 4 folds, {h4l_row["lm_calibrated_mean"]:.4f} against {h4l_ref["lm_calibrated"]:.4f} for the best prior, and the outcome is unchanged under a second SGMC-mirror version. <strong>Not a recommendation to upload.</strong></p>
+<div class="download"><a class="button" href="downloads/{h4l["receipt"]["zeros"]["file"].split("docs/downloads/", 1)[1]}" download>Download H4-line portal-safe GeoTIFF (268 KB) <span aria-hidden="true">↓</span></a><a class="button" href="{h4l_zip}" download>Portal-safe .zip <span aria-hidden="true">↓</span></a></div>
+<div class="tablewrap"><table><thead><tr><th>H4-line measurement</th><th>Result</th></tr></thead><tbody>
+<tr><td>Format / portal range</td><td class="num">PASS — single-band float32, EPSG:32611, 3,730 × 3,292, values exactly 0/1, <code>nodata=None</code></td></tr>
+<tr><td>Independent byte audit (both twins)</td><td class="num">PASS — grid, range, catalogue, SHA-256, uniqueness</td></tr>
+<tr><td>Novelty vs prior corpus</td><td class="num">NEW — {h4l["uniqueness"]["n_compared"]} priors compared, max |Pearson| {abs(h4l["uniqueness"]["worst"]["pearson"]):.4f} ({h4l["uniqueness"]["worst"]["key"]}), max Jaccard {h4l["uniqueness"]["worst"]["jaccard"]:.4f}, 0 near-duplicates</td></tr>
+<tr><td>Frozen four-fold gate</td><td class="num">FAIL — {h4l_row["folds_better_than_reference"]}/4 folds; {h4l_row["lm_calibrated_mean"]:.4f} vs reference {h4l_ref["lm_calibrated"]:.4f}</td></tr>
+<tr><td>Weekly slot used</td><td class="num">0 — no organizer score claimed</td></tr></tbody></table></div>
+<p class="micro">Receipt <a href="data/{("h4_submission_20261006T032708Z.json")}">h4_submission_20261006T032708Z.json</a> · audits <a href="data/h4_shipped_audit_zeros.json">zeros</a> / <a href="data/h4_shipped_audit_nan.json">nan</a> · gate <a href="data/h4_blocked_validation_shipped.json">shipped</a> / <a href="data/h4_blocked_validation_recheck_20261006.json">mirror re-check</a> · rejected flank-band family and limitations in the <a href="research/h4-euler-depthcluster.html">record</a> and <a href="limitations.html">limitations</a>.</p></section>'''
+
+    h4line_exec = f'''<section class="section" id="h4line-download"><p class="eyebrow">SUPPLEMENTARY ARM / EULER DEPTH-CLUSTER LINE</p><h2>A unique Euler depth-cluster file — downloadable, gate-failed, disclosed.</h2>
+<div class="twocol"><div><span class="tag hold">FAILED GATE — NOT A RECOMMENDATION</span><div class="download"><a class="button" href="downloads/{h4l["receipt"]["zeros"]["file"].split("docs/downloads/", 1)[1]}" download>H4-line portal-safe GeoTIFF ↓</a><a class="button" href="{h4l_zip}" download>zip ↓</a></div>
+<h3>Unique submission name</h3><div class="codebox" id="h4line-name">GEMSDOE40-H4-LINE-RING-PRUNED-8dafb186</div>
+<h3>Short note for the portal</h3><div class="codebox" id="h4line-note">{h4l["submission_note"][:190]}</div></div>
+<div class="callout"><p class="eyebrow">WHAT IS AND IS NOT CLAIMED</p><h3>Unique, audited, and below the reference.</h3><p>Values are exactly 0/1 with <code>nodata=None</code> — the form that avoids the portal error “Predicted values must be in range [0, 1]”; both twins pass <code>scripts/audit_submission.py</code> on the bytes. The frozen four-fold gate says no: {h4l_row["folds_better_than_reference"]}/4 folds, {h4l_row["lm_calibrated_mean"]:.4f} vs the best prior {h4l_ref["lm_calibrated"]:.4f}. No organizer score is claimed and no weekly slot was used.</p><a href="research/h4-euler-depthcluster.html">Full H4-line record ↗</a></div></div></section>'''
+
     body = f'''<section class="hero"><div><p class="kicker">SESSION 2 / EXPERIMENTS H8 + H13 / GEODAWN, NEVADA / 06 OCT 2026</p>
 <h1>Depth consensus,<br>locked to <em>traces.</em></h1><p class="lead">Two new fault-confidence rasters from Euler source depths: a trace-locked continuous field (H8) and its value-concentrated crest emission (H13). Audited against all 343 prior artifacts and honestly gated.</p>
 {hold}<div class="download">{download}</div><p class="file-details">363 KB · single-band float32 · EPSG:32611<br>100 m · 3,730 rows × 3,292 columns · values in [0, 1]<br>NaN only outside the sample footprint</p>
@@ -114,7 +139,7 @@ def main():
 <section class="section twocol"><div class="callout"><p class="eyebrow">03 / WHY THE PREVIOUS BEST HELPED</p><h3>Fewer predictions.<br>Not more discovered faults.</h3><p>Byte-exact comparison proves H33-B2 is the 40,199-pixel reference with 2,545 catalogue-adjacent pixels removed. At DTI 0.2778 the metric lets you trade up to 0.0588 TP credit per FP unit saved (~17:1).</p><a class="textlink" href="leaderboard-analysis.html">What 0.2778 does—and doesn’t—tell us ↗</a></div>
 <div class="callout" id="feed"><p class="eyebrow">04 / KEEP THE RECORD CURRENT</p><h3>An official-source feed,<br>not a submission bot.</h3><p id="feed-status" aria-live="polite">Loading the dated USGS context snapshot…</p><ul id="feed-events" class="eventlist"></ul><a class="textlink" href="sources.html#context">Sources, freshness &amp; access limits ↗</a></div></section>
 <section class="section"><div class="reportline"><span>Official leaderboard observed 6 October: <strong>{official['top_rows'][0]['score']:.4f}</strong> at #1. Not a live scrape.</span><a href="{BOARD}">Open official board ↗</a></div><div class="reportline"><span>All {projects['project_count']} brief-listed projects; {projects['reported_score_count']} owner-reported scores; {len(inv['repository_snapshots'])} repositories inventoried.</span><a href="leaderboard.html">Complete project register ↗</a></div></section>'''
-    page("index.html", "Depth consensus, locked to traces", body + h8asa_index + parallel, "index.html")
+    page("index.html", "Depth consensus, locked to traces", body + h8asa_index + h4line + parallel, "index.html")
 
     guide = subhero("EXECUTIVE SUMMARY / DOWNLOAD & DECISION", "Two files. One clear decision.", "Both session-2 TIFFs are submission-format valid and genuinely distinct from all 343 inventoried prior outputs. Neither has earned a competition slot.")
     guide += f'''<section class="section"><div class="twocol"><div>{hold}<div class="download">{download}</div><p class="micro">Download the .tif itself — not this web page, a report, or a preview image.</p><h3>Exact filename</h3><div class="codebox" id="filename">{esc(c['filename'])}</div><button class="copy" data-copy="filename">Copy filename</button><h3>Tracking name</h3><div class="codebox" id="submission-name">{esc(c['name'])}</div><button class="copy" data-copy="submission-name">Copy name</button></div>
@@ -135,7 +160,7 @@ python scripts/run_crest_emission.py            # H13 crest-binary
 python scripts/audit_trace_candidate.py --work work/h13
 python scripts/build_site.py --check</div><p>CPU-only. The 419 MB feature stack, template, labels, frozen proxy and 343-artifact prior corpus are restored automatically from pinned public mirrors; no GPU or trained network is required. Source links and mirror-provenance limits are in the <a href="sources.html">research library</a>.</p>
 <p><a href="https://github.com/buffedlizard55-lab/GEMSDOE40/actions/workflows/reproduce.yml">Reproduction workflow ↗</a> · <a href="downloads/h4-euler-solutions.csv.gz">Download all 46,656 QC-passing depth solutions (CSV.gz)</a></p><p class="micro">Historical status: HOLD — DO NOT SUBMIT H2-B, H4, H7, H40. Archived files remain for learning and are not the current downloads.</p></section>'''
-    page("executive-summary.html", "Executive summary and submission guide", guide + h8asa_exec + parallel, "executive-summary.html")
+    page("executive-summary.html", "Executive summary and submission guide", guide + h8asa_exec + h4line_exec + parallel, "executive-summary.html")
 
     closest = "".join(f'<tr><td>{esc(r["artifact"]["repo"])}<br><span class="mono">{esc(Path(r["artifact"]["path"]).name)}</span></td><td class="num">{r["pearson_r"]:.6f}</td><td class="num">{r["top_jaccard"]:.6f}</td></tr>' for r in h13u["closest_by_pearson"])
     evidence = subhero("AUDIT / NO SELECTIVE REPORTING", "Evidence you can inspect.", "Hashes prove artifact identity. Frozen gates decide promotion. A proxy test measures a limited outcome. None of these alone establishes a new fault or a leaderboard win.")
