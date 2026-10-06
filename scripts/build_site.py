@@ -55,37 +55,61 @@ def verify_evidence() -> list[str]:
         if not condition: problems.append(message)
     def load(name): return json.loads((DOCS / "data" / name).read_text())
     try:
-        c, g, f, u, v, inv, repro, projects = (load(n) for n in (
-            "current-candidate.json", "h4-generation.json", "h4-format.json", "h4-uniqueness.json",
-            "h4-validation.json", "prior-inventory-20261006.json", "h4-reproduction.json", "project-site-review-20261006.json"))
+        c, inv, projects = (load(n) for n in (
+            "current-candidate.json", "prior-inventory-20261006.json", "project-site-review-20261006.json"))
+        h13g, h13f, h13u, h13v = (load(n) for n in (
+            "h13-generation.json", "h13-format.json", "h13-uniqueness.json", "h13-validation.json"))
+        h8g, h8f, h8u, h8v = (load(n) for n in (
+            "h8-generation.json", "h8-format.json", "h8-uniqueness.json", "h8-validation.json"))
+        h4g, h4u, h4v, h4repro = (load(n) for n in (
+            "h4-generation.json", "h4-uniqueness.json", "h4-validation.json", "h4-reproduction.json"))
+
+        def verify_chain(tag, gen, fmt, uniq, val, path_key="path"):
+            candidate = ROOT / gen["candidate_format"][path_key]
+            check(candidate.is_file() and digest(candidate) == gen["candidate_format"]["sha256"], f"{tag}: download SHA-256 mismatch")
+            check(gen["candidate_format"]["sha256"] == fmt["sha256"] == uniq["candidate_sha256"] == val["candidate"]["sha256"], f"{tag}: evidence disagrees on candidate identity")
+            check(fmt["valid"] is True and gen["candidate_format"]["valid"] is True, f"{tag}: file is not format-verified")
+            check(fmt["canonical_pixels_sha256"] == uniq["candidate_canonical_sha256"] == val["candidate"]["canonical_pixels_sha256"], f"{tag}: canonical pixel identities disagree")
+            n = len(inv["unique_rasters"])
+            check(n == inv["unique_git_blobs"] == uniq["inventory_blobs"] == uniq["hashed_and_audited_blobs"] == len(uniq["comparisons"]), f"{tag}: incomplete raw-output audit counts")
+            check(uniq["inventory_sha256"] == digest(DOCS / "data/prior-inventory-20261006.json"), f"{tag}: prior inventory changed since the novelty audit")
+            check(uniq["completeness_pass"] and uniq["uniqueness_pass"] and uniq["near_duplicate_count"] == 0 and not uniq["issues"], f"{tag}: novelty/integrity does not pass")
+            check(val["gate"]["all_pass"] is False and val["gate"]["g3_pass"] is False, f"{tag}: frozen proxy gate unexpectedly changed to pass")
+            check(val["gate"]["weekly_slot_used"] is False and val["gate"]["organizer_score"] is None, f"{tag}: unverified submission/score claim")
+            check(gen["construction_reads_proxy_or_prior_predictions"] is False, f"{tag}: generation depends on old predictions/proxy")
+            prereg_doc = ROOT / gen["preregistration"]["path"]
+            check(prereg_doc.is_file(), f"{tag}: preregistration missing")
+            check(val["preregistration"]["sha256_at_generation"] == gen["preregistration"]["sha256"], f"{tag}: generation-time preregistration hash not reproduced")
+            if val["preregistration"]["amended_after_generation"]:
+                check("amended after generation" in val["preregistration"]["note"], f"{tag}: post-generation amendment not disclosed")
+            else:
+                check(digest(prereg_doc) == gen["preregistration"]["sha256"], f"{tag}: frozen registration changed after generation")
+            for source, expected in gen["code_sha256"].items():
+                check(digest(ROOT / source) == expected, f"{tag}: scientific source changed after run: {source}")
+
+        # Current candidate: H13 (session 2), sibling H8, archived H4.
+        check(c["experiment"] == "H13" and c["slot_eligible"] is False and c["status"] == "HOLD — DO NOT SUBMIT", "current candidate no-go changed")
+        check(c["organizer_score"] is None, "unverified organizer-score claim")
         candidate = ROOT / c["path"]
         check(candidate.is_file() and digest(candidate) == c["sha256"], "current download SHA-256 mismatch")
         check(c["filename"] == candidate.name and candidate.stat().st_size == c["bytes"], "current file name/byte-size mismatch")
-        check(c["sha256"] == f["sha256"] == g["candidate_format"]["sha256"] == u["candidate_sha256"] == v["candidate_sha256"], "current evidence disagrees on candidate identity")
-        check(f["valid"] is True and g["candidate_format"]["valid"] is True, "current file is not format-verified")
-        check(c["cloud"]["sha256"] == digest(ROOT / c["cloud"]["path"]), "downloadable solution cloud has changed")
+        check(c["canonical_pixels_sha256"] == h13f["canonical_pixels_sha256"], "current canonical pixel identity mismatch")
         check(c["note_characters"] == len(c["note"]) <= 200, "submission note exceeds portal limit or has wrong recorded length")
-        check(c["canonical_pixels_sha256"] == f["canonical_pixels_sha256"] == u["candidate_canonical_sha256"], "canonical pixel identities disagree")
-        n = len(inv["unique_rasters"])
-        check(n == inv["unique_git_blobs"] == u["inventory_blobs"] == u["hashed_and_audited_blobs"] == len(u["comparisons"]), "incomplete raw-output audit counts")
-        check(u["inventory_sha256"] == digest(DOCS / "data/prior-inventory-20261006.json"), "prior inventory changed since the novelty audit")
-        check(u["completeness_pass"] and u["uniqueness_pass"] and u["near_duplicate_count"] == 0 and not u["issues"], "novelty/integrity does not pass")
-        gate = v["promotion_gate"]
-        check(c["slot_eligible"] is False and gate["slot_eligible"] is False and gate["passed"] is False, "current no-go unexpectedly changed; manually review publication advice")
-        check(c["status"] == gate["final_action"] == "HOLD — DO NOT SUBMIT", "current no-go is not explicit")
-        check(c["organizer_score"] is None and gate["organizer_score"] is None and gate["weekly_submission_used"] is False, "unverified organizer-score or submission claim")
-        check(gate["blocks_with_truth"] == 16 and gate["empty_blocks"] == 8 and gate["blocks_required"] == 18 and not gate["strict_win_requirement_feasible"], "infeasible inherited gate was hidden or silently relaxed")
-        check(g["construction_uses_proxy_or_prior_predictions"] is False, "current generation depends on old predictions/proxy")
-        check(repro["pass"] and repro["actual_tiff_sha256"] == c["sha256"] and repro["actual_cloud_sha256"] == c["cloud"]["sha256"], "independent byte reproduction is absent or disagrees")
-        prereg = digest(DOCS / "research/h4-preregistration-20261006.md")
-        check(g["preregistration_sha256"] == prereg, "frozen registration changed after generation")
-        for source, expected in {**g["code_sha256"], **v.get("audit_code_sha256", {})}.items():
-            check(digest(ROOT / source) == expected, f"scientific source changed after run/audit: {source}")
+        check(c["cloud"]["sha256"] == digest(ROOT / c["cloud"]["path"]), "downloadable solution cloud has changed")
+        verify_chain("H13", h13g, h13f, h13u, h13v)
+        verify_chain("H8", h8g, h8f, h8u, h8v)
+        sib = c["sibling_candidate"]
+        check(digest(ROOT / sib["path"]) == sib["sha256"] and sib["status"].startswith("HOLD"), "H8 sibling record mismatch")
+        arch = c["archived_candidate_h4"]
+        check(digest(ROOT / "docs/downloads" / arch["filename"]) == arch["sha256"] and arch["status"].startswith("HOLD"), "archived H4 record mismatch")
+        check(h4v["promotion_gate"]["final_action"] == "HOLD — DO NOT SUBMIT" and h4v["promotion_gate"]["passed"] is False, "archived H4 no-go changed")
+        check(h4repro["pass"] and h4repro["actual_tiff_sha256"] == arch["sha256"] and h4repro["actual_cloud_sha256"] == c["cloud"]["sha256"], "archived H4 byte reproduction disagrees")
         check(projects["project_count"] == len(projects["projects"]) == 44, "complete 44-project source register missing")
         check(projects["reported_score_count"] == sum(s["score"] is not None for p in projects["projects"] for s in p["submissions"]) == 48, "48 owner-reported scores were not preserved")
         for name in ("index.html", "executive-summary.html"):
             text = (DOCS / name).read_text()
-            check(c["filename"] in text and "download" in text and "HOLD — DO NOT SUBMIT" in text, f"current download/no-go missing from {name}")
+            check(c["filename"] in text and "download" in text.lower() and "HOLD — DO NOT SUBMIT" in text, f"current download/no-go missing from {name}")
+            check(c["sibling_candidate"]["filename"] in text, f"H8 sibling download missing from {name}")
         root_page = (ROOT / "index.html").read_text()
         check("docs/index.html" in root_page and c["filename"] in root_page and "HOLD — DO NOT SUBMIT" in root_page, "root route is stale or missing the download")
         check("UPLOAD THIS" not in root_page and "Recommended submission" not in root_page, "root still promotes archived output")
