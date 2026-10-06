@@ -19,7 +19,13 @@
 
 ## Current decision — 2026-10-06 UTC
 
-> **HOLD — DO NOT SUBMIT H7.** H7 passes the exact sample-grid/format audit and is distinct from all 304 comparable public prior TIFF blobs, but scores only **0.0002650893** on the current owner-derived SGMC proxy and wins **0/24** guarded spatial blocks against the frozen all-prior incumbent. No weekly slot was used. No DrivenData upload or organizer score is known.
+> **Current decision: HOLD — DO NOT SUBMIT.** Two research artifacts are held on 2026-10-06 and neither is cleared for a weekly slot.
+>
+> **H7** passes the exact sample-grid/format audit and is distinct from all 304 comparable public prior TIFF blobs, but scores **0.0002650893** on the current owner-derived SGMC proxy and wins **0/24** guarded spatial blocks against the frozen all-prior incumbent.
+>
+> **H40** (this session) passes the same format audit and is distinct from every staged prior (worst support-Jaccard 0.053), but **no promotion instrument survives this session's audit**: across all 16 organizer-scored artifacts the LM instrument has Spearman +0.10 with the leaderboard (it ranks a blind lattice first, 0.4366, against that lattice's real 0.0904) and the SGMC credit density is 7 % *higher* for a mass-matched control that scores 3.6× lower. Both instruments are retired and the earlier 0.163 / 0.202 predictions are withdrawn.
+>
+> No weekly slot has been used. No DrivenData upload has been made from this programme and no organizer score exists for any artifact here.
 
 ### Current research TIFF
 
@@ -41,6 +47,16 @@
 - Raw/canonical pixel audit: [`docs/data/uniqueness-audit-h7-20261006.json`](docs/data/uniqueness-audit-h7-20261006.json).
 - Complete pinned prior inventory: [`docs/data/prior_raster_inventory-20261006.json`](docs/data/prior_raster_inventory-20261006.json).
 
+### Second current research TIFF — H40 Euler depth-cluster, structural index 0
+
+- [Download the H40 research-only GeoTIFF](docs/downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-zeros.tif) — **not cleared; do not submit** ([NaN-outside twin](docs/downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-nan.tif), [zip](docs/downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-zeros.zip), [audit receipt](docs/downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-audit.json)).
+- Method: 3-D Euler deconvolution at the structural index of a **fault-like contact (SI = 0)**, Reid et al. (1990), on `rtp`, `tmi` and `iso_grav_anom` at windows 8/12/16 px, stride 4 — **353,580 accepted solutions**: magnetic 285,536 (`rtp` 54,060/47,174/40,130 and `tmi` 54,638/48,394/41,140, median depth 189–199 m) and isostatic gravity 68,044 (10,255/23,339/34,450, median depth 355/534/669 m). The weighted depth-cluster KDE is value-ranked and thinned at the budget chosen by the live-anchored instrument: 2.5 px spacing, 60,000 dots.
+- Output: one float32 band, EPSG:32611, 100 m, 3,730 × 3,292, exact sample transform; all 5,167,373 in-footprint values finite and inside `[0,1]`, `nodata = None`; the twin carries NaN outside the footprint. SHA-256 `57896abee36d6722f587f543e1f65ddfd9af19163e20653e852bfb3162b10902` (zeros-outside primary).
+- Uniqueness: worst support-Jaccard **0.053**, worst |Pearson| **0.087**, worst top-budget Jaccard **0.047** against the 38 non-sibling comparable rasters (including the run-1 sibling: 0.124 / 0.215). Uniqueness is not quality.
+- Surrogate honesty: on the off-catalogue SGMC surrogate the emission scores pooled DTI **0.0854**, *below* a random same-mass selection (**0.1055**), because that surrogate is dense and rewards breadth. It is not organizer truth and is not used to promote or excuse this file.
+- Instruments (withdrawn as promotion evidence — see the audit below): saturating model 0.1625 and LM instrument 0.2015 against the incumbent's 0.2679. The audit of all 16 organizer-scored artifacts shows the LM instrument has Spearman +0.10 with the leaderboard and ranks a blind lattice first, and that a mass-matched control with *more* SGMC credit per dot scores 3.6× lower: neither number can promote anything.
+- Five ranked H40 hypotheses are registered in the append-only [hypothesis register](docs/research/hypotheses.md); strike-continuation on the catalogue flanks is **refuted** by the paired live measurement (deleting 6,436 flank dots raised the live score 0.2600 → 0.2778).
+
 ## Candidate and evidence ledger
 
 | Work | Outcome | Decision and caveat |
@@ -53,6 +69,7 @@
 | H5 / conductivity front × basement-depth break | Registered, untried | Existing `cond_surf`, `depth_to_base_surf`, RTP and raw gravity layers; no new external data. Geological and alteration confounds remain. |
 | H6 / geodetic strain-release relay | Registered, untried | Existing strain and seismic-context layers; no new external data. Spatial validation required before any promotion. |
 | H7 / gravity-context magnetic Euler 3-D KDE | Format + uniqueness pass; holdout failure | DTI `0.0002650893`, 0/24 block wins. **HOLD — RESEARCH ONLY — DO NOT SUBMIT.** |
+| H40 / Euler SI = 0 depth-cluster KDE | Format + uniqueness pass; no promotion instrument survives its own audit | The predicted 0.1625 / LM 0.2015 numbers are withdrawn: the LM instrument ranks the blind lattice (score 0.0904) first of 16, and a mass-matched control with *more* SGMC credit scores 3.6× lower. H40-B (magnetic × gravity conjunction) measured as the strongest next step. **HOLD — RESEARCH ONLY — DO NOT SUBMIT.** |
 
 The 2026-10-06 registration contains four ranked, distinct H4/H5/H6/H7 hypotheses; H7 was registered as a fallback before H7 code and output, after H4's locked feasibility stop. Full physical signatures, layer names, novelty boundaries, expected improvement/cost, and locked tests are in [`docs/research/preregistered-hypotheses-20261006.md`](docs/research/preregistered-hypotheses-20261006.md). The earlier H1/H2/H3 records remain append-only at [`docs/research/hypotheses.md`](docs/research/hypotheses.md).
 
@@ -61,6 +78,27 @@ The 2026-10-06 registration contains four ranked, distinct H4/H5/H6/H7 hypothese
 The proxy discrepancy was resolved as two distinct, pinned owner-mirror versions. The current file is SHA-256 `643cbe992ef4ba37588fb469163ed8291e3ceb23d6c1f78a3cfaa462430c2da0`; the historical H2-B file is `26d142c4c93282cd94f6950ab96f22aeff59fbbea523d43d662e76fa1b161b5c`. They differ in 1,450 cells (Pearson `0.991230`; positive-support Jaccard `0.982655`) and must not be merged or presented as organizer ground truth. See the [dated pin reconciliation](docs/reports/proxy-pin-reconciliation-20261006.md), [current input manifest](docs/data/input_manifest.json), and [preserved legacy manifest](docs/data/input_manifest-20261005-h2b-legacy.json).
 
 The official public leaderboard snapshot retrieved 2026-10-06 lists #1 at `0.3345`; `0.3195` is rank 4. The account-level `extradr19` row is rank 13 at `0.2778` (ten submissions in the fetched snapshot). GEMSDOE32 labels H33-2-B2's `0.2747` as **projected / UNSCORED**. No file-level receipt establishes that the account row belongs to H33-2-B2; keep the claims separate. Snapshot: [`docs/data/feed-20261006.json`](docs/data/feed-20261006.json); explanation: [`docs/leaderboard-analysis.html`](docs/leaderboard-analysis.html).
+
+### Promotion gate — both instruments retired 2026-10-06, with the measurements published
+
+The previously frozen gate compared every candidate against the highest pooled SGMC-proxy score among format-eligible priors. Measured on 2026-10-06, that comparator is the **blind spacing-5 lattice probe** (`p13-lattice-s5-v2.tif`: proxy 0.2679 pooled / 0.1650 mean-block, organizer score **0.0904** — the worst of every scored artifact), while the artifact holding the program's best organizer score (0.2778) scores 0.1096 / 0.0722 on the same instrument. The old gate is void.
+
+The two instruments that replaced it were then audited against all **16 organizer-scored artifacts** that exist as rasters in the corpus ([full table](docs/data/instrument-audit-20261006.json)):
+
+| instrument | Spearman vs the 16 organizer scores |
+|---|---:|
+| 4-quadrant LM instrument (`lm_calibrated`) | **+0.10** |
+| emitted mass `M` | **−0.676** |
+| off-catalogue SGMC credit per dot `w` | **+0.676** |
+
+Both are retired as ranking tools, for two measured reasons.
+
+1. **Mass-matched inversion.** `p34-scatter-q50` and the incumbent `gemsdoe32-h33-h33-2-b2` both emit 37,654 dots; the control has *more* SGMC credit per dot (0.1896 vs 0.1776) and 3.6× *less* organizer score (0.0778 vs 0.2778). SGMC credit density says nothing about placement quality.
+2. **The LM instrument ranks the blind lattice first.** A lattice with no geological input scores 0.4366 on it and 0.0904 on the leaderboard. Its surrogate truth set (62–80 k px) is 5–6× denser than the hidden truth (`N ≈ 9–14 k px`), so it rewards breadth.
+
+Consequently the numbers that were reported earlier in this session — "predicted live 0.1625" and "LM 0.2015 vs incumbent 0.2679" — are **withdrawn as promotion evidence**; the saturating model's input `w` was defined on a different surrogate than the one it was fitted with, and refitting the same form with the local `w` gives leave-one-out Spearman 0.47 with the two best artifacts inverted. The H40 artifact stays **HOLD — DO NOT SUBMIT**, now with a measured reason instead of an instrument number.
+
+**Mandatory next step:** build a truth model whose leave-one-out ranking of the 16 organizer-scored artifacts reaches Spearman ≥ 0.8 with no mass-only explanation, and only then take an emission decision. H40-B (magnetic × gravity Euler depth conjunction) is the top-ranked untried hypothesis: it keeps 4.1 % of magnetic SI = 0 solutions and raised credit density to 0.1333 at 30,000 dots (all-solution field: 0.1277) and 0.1508 at 15,000 dots.
 
 ## Prior-raster inventory refresh
 

@@ -1,0 +1,122 @@
+{
+  "instrument": "frozen promotion gate comparator, as written in README (4x6 spatial blocks, guard 3, owner-derived SGMC proxy, catalogue-masked)",
+  "measured_utc": "2026-10-06",
+  "defect": "the gate's own comparator is the blind spacing-5 lattice probe (owner-reported live score 0.0904, the worst of every scored artifact) because the unweighted off-catalogue SGMC surrogate rewards breadth; a gate that requires beating it rejects every selective field, including the artifact that holds the best reported live score",
+  "rows": [
+    {
+      "artifact": "p13-lattice-s5-v2.tif(0.0904)",
+      "pooled_sgmc_proxy": 0.2679210183804955,
+      "mean_block_sgmc_proxy": 0.1650086121577992,
+      "blocks_won_positive": 16
+    },
+    {
+      "artifact": "p22-h23b-10pct.tif(0.0748)",
+      "pooled_sgmc_proxy": 0.22153892315143162,
+      "mean_block_sgmc_proxy": 0.14035958256941547,
+      "blocks_won_positive": 16
+    },
+    {
+      "artifact": "p22-h23a-6pct.tif(0.1002)",
+      "pooled_sgmc_proxy": 0.21839256387964748,
+      "mean_block_sgmc_proxy": 0.13914333563330197,
+      "blocks_won_positive": 16
+    },
+    {
+      "artifact": "p10-h25-ctx-ridge.tif(0.128)",
+      "pooled_sgmc_proxy": 0.15751533164676387,
+      "mean_block_sgmc_proxy": 0.10340592949873346,
+      "blocks_won_positive": 16
+    },
+    {
+      "artifact": "p16-h16-1-1855.tif(0.1855)",
+      "pooled_sgmc_proxy": 0.15555872310918947,
+      "mean_block_sgmc_proxy": 0.10036542833804213,
+      "blocks_won_positive": 16
+    },
+    {
+      "artifact": "p19-h19-4-1894.tif(0.1894)",
+      "pooled_sgmc_proxy": 0.15080922899083254,
+      "mean_block_sgmc_proxy": 0.09714091210425459,
+      "blocks_won_positive": 16
+    },
+    {
+      "artifact": "p10-h28-dotted-ridge.tif(0.1839)",
+      "pooled_sgmc_proxy": 0.13892404669207875,
+      "mean_block_sgmc_proxy": 0.09525170902266485,
+      "blocks_won_positive": 16
+    },
+    {
+      "artifact": "p27-topogap-d15.tif(0.2449)",
+      "pooled_sgmc_proxy": 0.14241482408372072,
+      "mean_block_sgmc_proxy": 0.0951004182482127,
+      "blocks_won_positive": 16
+    },
+    {
+      "artifact": "p24-d15-2477.tif(0.2477)",
+      "pooled_sgmc_proxy": 0.14097387096719793,
+      "mean_block_sgmc_proxy": 0.09447214079493647,
+      "blocks_won_positive": 16
+    },
+    {
+      "artifact": "p19-h19-5-1922.tif(0.1922)",
+      "pooled_sgmc_proxy": 0.1449114604284593,
+      "mean_block_sgmc_proxy": 0.0934824059531436,
+      "blocks_won_positive": 16
+    },
+    {
+      "artifact": "p19-h19-5-solid.tif(0.1922)",
+      "pooled_sgmc_proxy": 0.1449114604284593,
+      "mean_block_sgmc_proxy": 0.0934824059531436,
+      "blocks_won_positive": 16
+    },
+    {
+      "artifact": "p08-hedge-v2.tif(0.1563)",
+      "pooled_sgmc_proxy": 0.14639039563063075,
+      "mean_block_sgmc_proxy": 0.09335027800185335,
+      "blocks_won_positive": 16
+    },
+    {
+      "artifact": "p01-ens12-7f00890a.tif(0.1563)",
+      "pooled_sgmc_proxy": 0.14639039563063075,
+      "mean_block_sgmc_proxy": 0.09335027800185335,
+      "blocks_won_positive": 16
+    },
+    {
+      "artifact": "p24-d28-2600.tif(0.26)",
+      "pooled_sgmc_proxy": 0.13133878700761117,
+      "mean_block_sgmc_proxy": 0.08987850786436154,
+      "blocks_won_positive": 16
+    },
+    {
+      "artifact": "p30-d28-poisson300-offcat.tif(0.26)",
+      "pooled_sgmc_proxy": 0.13133878700761117,
+      "mean_block_sgmc_proxy": 0.08987850786436154,
+      "blocks_won_positive": 16
+    },
+    {
+      "artifact": "CANDIDATE-run1",
+      "pooled_sgmc_proxy": 0.1231490133542043,
+      "mean_block_sgmc_proxy": 0.08660138555296049,
+      "blocks_won_positive": 16
+    },
+    {
+      "artifact": "p28-h27-4-d28.tif(0.2708)",
+      "pooled_sgmc_proxy": 0.10962342010641059,
+      "mean_block_sgmc_proxy": 0.07223995755030797,
+      "blocks_won_positive": 16
+    },
+    {
+      "artifact": "p34-scatter-q50.tif(0.0778)",
+      "pooled_sgmc_proxy": 0.09919107592109441,
+      "mean_block_sgmc_proxy": 0.06968888478109654,
+      "blocks_won_positive": 16
+    },
+    {
+      "artifact": "p09-2314b599.tif(0.0107)",
+      "pooled_sgmc_proxy": 0.03912602000250751,
+      "mean_block_sgmc_proxy": 0.020175801050856347,
+      "blocks_won_positive": 15
+    }
+  ],
+  "consequence": "the frozen gate result is recorded but is NOT used as the promotion decision; the live-calibrated saturating instrument (reproduced to 5e-5 on its input quantity, fitted externally to 12 organizer-scored artifacts) is used instead"
+}

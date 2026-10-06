@@ -26,6 +26,7 @@
           <p class="lede">A reproducible, geology-led fault-prediction project for geothermal exploration. The target is geological faults that may indicate geothermal resources—not vents or reservoirs. Every candidate is preregistered, validated, compared, and either advanced or stopped.</p>
           <div class="actions">
             <a class="button primary" href="downloads/gemsdoe40-h7-rtp-euler-gravity-context-3d-kde-20261006-998f660f.tif" download>↓ Download H7 research-only GeoTIFF</a>
+            <a class="button secondary" href="downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-zeros.tif" download>↓ Download H40 Euler depth-cluster TIFF</a>
             <a class="button secondary" href="executive-summary.html">Read the decision & future guide →</a>
           </div>
           <p class="small" style="margin-top:12px"><strong>H7 is not submission-ready.</strong> It passed format and uniqueness checks, but decisively failed the frozen proxy promotion gate. Do not upload it or spend a weekly slot.</p>
@@ -52,6 +53,7 @@
         <div class="alert" role="note"><strong>HOLD — DO NOT SUBMIT.</strong> H7 scored 0.0002650893 against the current owner-derived SGMC proxy, versus the all-prior incumbent at 0.8257222257; it won 0 of 24 blocks and lost the worst block by 0.942165. The incumbent is explicitly SGMC-gap-derived and circular on this proxy. The gate is retained as preregistered; neither score is an organizer score or an independent hidden-label estimate.</div>
         <div class="grid-4">
           <div class="stat"><b class="bad">0.000265</b><span>H7 pooled proxy DTI</span></div>
+          <div class="stat"><b class="bad">RETIRED</b><span>H40’s 0.163 / 0.202 predictions, withdrawn by this session’s 16-artifact instrument audit</span></div>
           <div class="stat"><b class="bad">0 / 24</b><span>blocks won vs frozen all-prior incumbent</span></div>
           <div class="stat"><b class="good">PASS</b><span>single-band float32 exact sample grid</span></div>
           <div class="stat"><b class="good">304 / 304</b><span>same-grid prior outputs compared for uniqueness</span></div>
@@ -71,6 +73,13 @@
               <h3 style="margin:14px 0 8px">Gravity-gradient-weighted magnetic Euler source cloud</h3>
               <p class="small">3,237 accepted RTP SI=0 Euler solutions; 430 positive-weight clustered 3-D voxels; gravity horizontal-gradient context is a bounded soft weight only. A Gaussian KDE projects the weighted source cloud to one continuous fault-likelihood band. 28,080 positive in-footprint cells.</p>
               <div class="actions"><a class="button primary" href="downloads/gemsdoe40-h7-rtp-euler-gravity-context-3d-kde-20261006-998f660f.tif" download>↓ Download H7 GeoTIFF · 453 KB</a></div>
+            </div>
+            <div>
+              <span class="badge">research only · do not submit</span>
+              <h3 style="margin:14px 0 8px">H40 · Euler SI = 0 depth-cluster KDE</h3>
+              <p class="small">60,000 dots at 2.5 px spacing from 353,580 accepted Euler solutions on <code>rtp</code>, <code>tmi</code> and <code>iso_grav_anom</code> (median depth 189–199 m magnetic; 355 / 534 / 669 m gravity). All in-footprint values finite in <code>[0,1]</code>, <code>nodata=None</code>; twin carries NaN outside. SHA-256 <code>57896abe…</code>.</p>
+              <p class="small">Held: <strong>no promotion instrument survives this session's audit of all 16 organizer-scored artifacts</strong> — the LM instrument's rank correlation with the leaderboard is +0.10 and it ranks a blind lattice first (0.4366) against that lattice's real 0.0904, while a mass-matched control with 7 % <em>more</em> SGMC credit scores 3.6× lower. Both instruments are retired and H40's earlier 0.163 / 0.202 predictions are <strong>withdrawn</strong>. Worst support-Jaccard against the staged priors is 0.053 — new information, not yet validated information. <a href="data/instrument-audit-20261006.json">Instrument audit →</a></p>
+              <div class="actions"><a class="button primary" href="downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-zeros.tif" download>↓ Download H40 GeoTIFF · 258 KB</a> <a class="button secondary" href="downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-nan.tif" download>NaN-outside twin</a></div>
             </div>
             <div>
               <div class="table-wrap"><table aria-label="H7 artifact properties"><tbody>

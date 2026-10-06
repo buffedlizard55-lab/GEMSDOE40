@@ -202,29 +202,10 @@
       ]
     },
     "historical_h2b_26d142": {
-      "bytes": 213034,
-      "count": 1,
-      "crs": "EPSG:32611",
-      "dtype": "uint8",
       "expected_sha256": "26d142c4c93282cd94f6950ab96f22aeff59fbbea523d43d662e76fa1b161b5c",
-      "nodata": 255.0,
       "path": "data/external/archive/derived_sgmc_faults_100m_u8_h2b_26d142.tif",
-      "pin_matches": true,
-      "present": true,
-      "role": "historical H2-B SGMC proxy instrument; distinct byte version; not organizer truth",
-      "sha256": "26d142c4c93282cd94f6950ab96f22aeff59fbbea523d43d662e76fa1b161b5c",
-      "shape": [
-        3730,
-        3292
-      ],
-      "transform": [
-        100.0,
-        0.0,
-        243350.0,
-        0.0,
-        -100.0,
-        4508550.0
-      ]
+      "present": false,
+      "role": "historical H2-B SGMC proxy instrument; distinct byte version; not organizer truth"
     }
   },
   "sample_grid": {

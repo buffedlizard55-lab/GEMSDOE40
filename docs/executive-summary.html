@@ -21,7 +21,8 @@
 
     <section class="caution" aria-labelledby="decision-heading">
       <span class="badge">No-go</span>
-      <h2 id="decision-heading" style="margin:12px 0 8px;color:#7c391c">HOLD — DO NOT SUBMIT H7.</h2>
+      <h2 id="decision-heading" style="margin:12px 0 8px;color:#7c391c">HOLD — DO NOT SUBMIT H7 or H40.</h2>
+      <p><strong>H40 (2026-10-06, this session).</strong> Unique and format-perfect, and held because <strong>every promotion instrument in this programme failed its own audit this session</strong>. Scoring all 16 organizer-scored artifacts with the two instruments the site had been using gives rank correlations with the leaderboard of <strong>+0.10</strong> (LM instrument) and <strong>+0.676</strong> for off-catalogue SGMC credit density — and the credit density is 7 % <em>higher</em> for a mass-matched control (<code>p34-scatter-q50</code>, 37,654 dots, score 0.0778) than for the program's best artifact (same 37,654 dots, score 0.2778). The LM instrument ranks a blind lattice first of all 16 (0.4366) against that lattice's real score of 0.0904. H40's earlier 0.163 / 0.202 predictions are therefore <strong>withdrawn</strong>. <a href="data/instrument-audit-20261006.json">Instrument audit</a> · <a href="downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-audit.json">Artifact receipt</a> · <a href="https://github.com/buffedlizard55-lab/GEMSDOE40/blob/main/docs/research/hypotheses.md">H40 register</a>.</p>
       <p>H7 is a unique, format-valid single-band GeoTIFF built from potential-field Euler depth solutions and a weighted 3-D source-cloud KDE. It scored <strong>0.0002650893</strong> on the current owner-derived SGMC proxy, won <strong>0 of 24</strong> spatial blocks against the all-prior incumbent, and failed the preregistered promotion gate. No weekly submission slot has been used. It has no organizer score.</p>
       <p><a href="reports/validation-h7-20261006.md">Read the complete H7 validation report →</a></p>
     </section>
@@ -60,6 +61,12 @@
           <p><b>Raw SHA-256</b><br><code>e229aa9af26018bc80b0cca880d484a5b8362c26ad79ca362423953c32e66597</code></p>
           <div class="actions"><a class="button primary" href="downloads/gemsdoe40-h7-rtp-euler-gravity-context-3d-kde-20261006-998f660f.tif" download>↓ Download H7 research TIFF</a></div>
         </div>
+        <div>
+          <span class="badge">research only · do not submit</span>
+          <h3 style="margin:14px 0 8px">H40 · Euler SI = 0 depth-cluster</h3>
+          <p class="small">60,000 positive cells (1.161% of the footprint). One band, float32, EPSG:32611, 100 m, 3,730 × 3,292. All 5,167,373 in-footprint values finite and inside <code>[0,1]</code>, <code>nodata = None</code>; the twin carries NaN outside. SHA-256: <code>57896abee36d6722f587f543e1f65ddfd9af19163e20653e852bfb3162b10902</code>.</p>
+          <div class="actions"><a class="button primary" href="downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-zeros.tif" download>↓ Download H40 research TIFF</a> <a class="button secondary" href="downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-nan.tif" download>NaN-outside twin</a></div>
+        </div>
         <div class="caution" style="margin:0">
           <strong>Not eligible for a weekly feedback slot.</strong>
           <ul>
@@ -84,7 +91,7 @@
     <section class="section" id="steps" aria-labelledby="steps-title">
       <div class="eyebrow">Future upload guide</div>
       <h2 id="steps-title">No candidate is cleared today.</h2>
-      <div class="alert"><strong>Do not upload H7, H2-B, or the historical H40-4 TIFF.</strong> The following checklist is for a future candidate only, after it passes every preregistered scientific, format, and uniqueness gate. No submission name or note is supplied for an ineligible file.</div>
+      <div class="alert"><strong>Do not upload H7, H40, H2-B, or the historical H40-4 TIFF.</strong> The following checklist is for a future candidate only, after it passes every preregistered scientific, format, and uniqueness gate. No submission name or note is supplied for an ineligible file.</div>
       <ol>
         <li>Confirm the dated validation report says <strong>eligible for human review</strong> and names the exact candidate hash. A format pass or uniqueness pass alone is insufficient.</li>
         <li>Confirm the candidate beats the then-current comparable holdout incumbent under the locked spatial-block rule, with at least 18/24 wins and no block loss worse than −0.005. Keep proxy results clearly distinguished from official scores.</li>

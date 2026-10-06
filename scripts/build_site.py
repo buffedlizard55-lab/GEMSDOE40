@@ -20,6 +20,10 @@ VALIDATION = DOCS / "data" / "validation-h7-20261006.json"
 INVENTORY = DOCS / "data" / "prior_raster_inventory-20261006.json"
 UNIQUENESS = DOCS / "data" / "uniqueness-audit-h7-20261006.json"
 PRIOR_SCORES = DOCS / "data" / "prior-holdout-scores-h7-20261006.json"
+#: second current artifact (2026-10-06, H40 Euler depth-cluster) and its receipt
+CANDIDATE_H40 = DOCS / "downloads" / "gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-zeros.tif"
+RECEIPT_H40 = DOCS / "downloads" / "gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-audit.json"
+SHA_H40 = "57896abee36d6722f587f543e1f65ddfd9af19163e20653e852bfb3162b10902"
 
 
 class LocalLinks(HTMLParser):
@@ -106,6 +110,28 @@ def verify_evidence() -> list[str]:
         problems.append("H7 uniqueness audit is incomplete or failing")
     if uniqueness.get("top_budget_for_comparison") != 45_962:
         problems.append("H7 uniqueness audit did not use the frozen 45,962-cell top budget")
+    # ---- second current artifact: H40 Euler depth-cluster ------------------------------------
+    if not CANDIDATE_H40.exists():
+        problems.append(f"H40 artifact missing: {CANDIDATE_H40.name}")
+    else:
+        got40 = hashlib.sha256(CANDIDATE_H40.read_bytes()).hexdigest()
+        if got40 != SHA_H40:
+            problems.append(f"H40 artifact SHA-256 mismatch: {got40}")
+    try:
+        receipt40 = json.loads(RECEIPT_H40.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        problems.append(f"H40 receipt unreadable: {exc}")
+    else:
+        if receipt40.get("zeros_tif", {}).get("sha256") != SHA_H40:
+            problems.append("H40 receipt does not pin the artifact hash")
+        inst = receipt40.get("stage", {}).get("emission", {}).get("instrument", {})
+        pred = inst.get("predicted_live")
+        if pred is None or pred >= 0.2778:
+            problems.append(f"H40 artifact is not held: instrument prediction {pred}")
+        if inst.get("lm_calibrated") is None or inst["lm_calibrated"] >= (inst.get("lm_incumbent") or 0.0):
+            problems.append("H40 LM instrument does not show a shortfall against its incumbent")
+        if receipt40.get("stage", {}).get("uniqueness", {}).get("is_new") is not True:
+            problems.append("H40 uniqueness audit did not pass")
     return problems
 
 

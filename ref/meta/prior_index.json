@@ -1,0 +1,112 @@
+{
+ "p13-lattice-s5-v2.tif": {
+  "repo": "GEMSDOE24",
+  "path": "inputs/calibration/13gems_20261001_r13-lattice-s5_v2_nan-outside.tif",
+  "live_score": 0.0904
+ },
+ "p08-hedge-v2.tif": {
+  "repo": "GEMSDOE24",
+  "path": "inputs/calibration/8GEMSDOE_Hedge-v2_submission.tif",
+  "live_score": 0.1563
+ },
+ "p01-ens12-7f00890a.tif": {
+  "repo": "GEMSDOE24",
+  "path": "inputs/calibration/gemsdoe-ens12-adopted-7f00890a.tif",
+  "live_score": 0.1563
+ },
+ "p09-2314b599.tif": {
+  "repo": "GEMSDOE24",
+  "path": "inputs/calibration/gemsdoe9-PLACEHOLDER-2314b599.tif",
+  "live_score": 0.0107
+ },
+ "p10-h25-ctx-ridge.tif": {
+  "repo": "GEMSDOE24",
+  "path": "inputs/calibration/gems10-h25-ctx-ridge-20260927T232947704150Z-6452ae1d00.tif",
+  "live_score": 0.128
+ },
+ "p10-h28-dotted-ridge.tif": {
+  "repo": "GEMSDOE24",
+  "path": "inputs/calibration/gems10-h28-dotted-ridge-20260928T020256236880Z-6452ae1d00.tif",
+  "live_score": 0.1839
+ },
+ "p22-h23a-6pct.tif": {
+  "repo": "GEMSDOE22",
+  "path": "docs/downloads/gems22-h23-a-dti-optimal-emission-6pct-20261002-e2ec4b49-allfinite.tif",
+  "live_score": 0.1002
+ },
+ "p22-h23b-10pct.tif": {
+  "repo": "GEMSDOE22",
+  "path": "docs/downloads/gems22-h23-b-dti-optimal-emission-10pct-20261002-86176698-allfinite.tif",
+  "live_score": 0.0748
+ },
+ "p19-h19-5-1922.tif": {
+  "repo": "GEMSDOE22",
+  "path": "assets/lb_anchors/lb_anchor_h19-5_0.1922.tif",
+  "live_score": 0.1922
+ },
+ "p19-h19-4-1894.tif": {
+  "repo": "GEMSDOE22",
+  "path": "assets/lb_anchors/lb_anchor_h19-4_0.1894.tif",
+  "live_score": 0.1894
+ },
+ "p16-h16-1-1855.tif": {
+  "repo": "GEMSDOE22",
+  "path": "assets/lb_anchors/lb_anchor_h16-1_0.1855.tif",
+  "live_score": 0.1855
+ },
+ "p24-d15-2477.tif": {
+  "repo": "GEMSDOE24",
+  "path": "docs/downloads/gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-allfinite.tif",
+  "live_score": 0.2477
+ },
+ "p24-d28-2600.tif": {
+  "repo": "GEMSDOE24",
+  "path": "docs/downloads/gems24-h25-1-dotted-h19-5-d2-8-20261002-e56ea318af89-allfinite.tif",
+  "live_score": 0.26
+ },
+ "p19-h19-5-solid.tif": {
+  "repo": "GEMSDOE24",
+  "path": "docs/downloads/gems24-reference-h19-5-20261002-80d47e1ab2ee-allfinite.tif",
+  "live_score": 0.1922
+ },
+ "p27-topogap-d15.tif": {
+  "repo": "GEMSDOE27",
+  "path": "docs/downloads/gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-allfinite.tif",
+  "live_score": 0.2449
+ },
+ "p28-h27-4-d28.tif": {
+  "repo": "GEMSDOE28",
+  "path": "docs/downloads/gems28-h27-4-r1-solo-d2-8-20261003-8acb75e1f2cc-allfinite.tif",
+  "live_score": 0.2708
+ },
+ "p30-d28-poisson300-offcat.tif": {
+  "repo": "GEMSDOE30",
+  "path": "docs/downloads/gemsdoe30-d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca.tif",
+  "live_score": 0.26
+ },
+ "p30-sgmc-hedge-d10-85k.tif": {
+  "repo": "GEMSDOE30",
+  "path": "docs/downloads/gemsdoe30-sgmc-hedge-d10-85k-20261003-ac08b41e-zeros.tif",
+  "live_score": null
+ },
+ "p33-c0-scored-ref.tif": {
+  "repo": "GEMSDOE33",
+  "path": "archive/legacy_candidates/gems33-c0-scored-reference-20261004-89bf5b9a2fea.tif",
+  "live_score": null
+ },
+ "p34-scatter-q50.tif": {
+  "repo": "GEMSDOE34",
+  "path": "docs/downloads/h34-scatter-q50-arr-matched-20261004T223317Z.tif",
+  "live_score": 0.0778
+ },
+ "p37-h6-phys-dotted-80k.tif": {
+  "repo": "GEMSDOE37",
+  "path": "docs/downloads/gemsdoe37-h6-physics-dotted-80k-20261005T055000Z-0bef9211631c.tif",
+  "live_score": null
+ },
+ "p39-h40e-30k.tif": {
+  "repo": "GEMSDOE39",
+  "path": "docs/downloads/gemsdoe39-h40-e-disc-h40e-30k-zeros.tif",
+  "live_score": null
+ }
+}
