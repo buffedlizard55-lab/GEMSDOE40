@@ -1,0 +1,109 @@
+{
+ "as_of_utc": "2026-10-06T00:00:00Z",
+ "evidence_class": "measured",
+ "euler_families": [
+  {
+   "band": "iso_grav_anom",
+   "kind": "gravity",
+   "si": 0.0,
+   "window": 15,
+   "solutions": 6250,
+   "depth_median_m": 1868,
+   "blocked_lift_vs_labels": 0.891
+  },
+  {
+   "band": "iso_grav_anom",
+   "kind": "gravity",
+   "si": 0.0,
+   "window": 25,
+   "solutions": 5922,
+   "depth_median_m": 2066,
+   "blocked_lift_vs_labels": 1.053
+  },
+  {
+   "band": "iso_grav_anom",
+   "kind": "gravity",
+   "si": 0.0,
+   "window": 15,
+   "derivative_order": 1,
+   "solutions": 0,
+   "note": "every window failed the QC gates"
+  },
+  {
+   "band": "iso_grav_anom",
+   "kind": "gravity",
+   "si": -1.0,
+   "window": 15,
+   "solutions": 68,
+   "depth_median_m": 12,
+   "blocked_lift_vs_labels": 0.936,
+   "note": "degenerate: Reid & Thurston 2014 warn the corrected gravity index -1 needs a more generalised formulation; the depths are sub-pixel and the family is excluded"
+  },
+  {
+   "band": "tmi",
+   "kind": "magnetic",
+   "si": 0.0,
+   "window": 9,
+   "solutions": 6574,
+   "depth_median_m": 491,
+   "blocked_lift_vs_labels": 1.002
+  },
+  {
+   "band": "tmi",
+   "kind": "magnetic",
+   "si": 0.0,
+   "window": 15,
+   "solutions": 2939,
+   "depth_median_m": 690,
+   "blocked_lift_vs_labels": 0.832
+  },
+  {
+   "band": "tmi",
+   "kind": "magnetic",
+   "si": 1.0,
+   "window": 15,
+   "solutions": 5848,
+   "depth_median_m": 1024,
+   "blocked_lift_vs_labels": 0.992
+  }
+ ],
+ "combined_variants": [
+  {
+   "variant": "ALL_unweighted",
+   "blocked_lift": 1.015
+  },
+  {
+   "variant": "ALL_shallow900",
+   "blocked_lift": 1.068
+  },
+  {
+   "variant": "ALL_shallow400",
+   "blocked_lift": 1.096
+  },
+  {
+   "variant": "MAG_only",
+   "blocked_lift": 1.069
+  },
+  {
+   "variant": "GRAV_only",
+   "blocked_lift": 0.997
+  }
+ ],
+ "conclusion": "every H45 Euler family has a blocked lift of 0.83-1.10 against the public catalogue, i.e. no measurable catalogue-localisation skill. Given measurement 1 above (catalogue agreement is anti-correlated with the real score) this is a weak statement either way: it rules the Euler cloud IN as a candidate generator but provides no evidence that it beats the incumbent within the catalogue shell",
+ "solver_verification": {
+  "tests": "tests/test_euler_h45.py",
+  "result": "10 passed in 1.44 s",
+  "checks": [
+   "east/north/down sign conventions",
+   "point mass depth and position at SI=2",
+   "line mass at SI=1",
+   "horizontal line of dipoles at SI=2 plus a wrong-index guard",
+   "along-strike pinning vs across-strike freedom",
+   "finite-step edge position",
+   "SI=0 offset-form scale and offset invariance",
+   "scale-free relative residual",
+   "run_family QC gates",
+   "derivative of a constant is zero"
+  ]
+ }
+}

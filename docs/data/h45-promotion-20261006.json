@@ -1,0 +1,129 @@
+{
+ "primary": {
+  "filename": "gemsdoe40-h45-eulerdepthreadcluster-20261006-f28e5cff6826-zeros.tif",
+  "size_bytes": 401488,
+  "sha256": "f28e5cff682662c18d6b15f5d5501e13096b0ab00a76e1640dc93dc5e6e6fc8f",
+  "shape": [
+   3730,
+   3292
+  ],
+  "count": 1,
+  "dtype": "float32",
+  "crs": "EPSG:32611",
+  "transform": [
+   100.0,
+   0.0,
+   243350.0,
+   0.0,
+   -100.0,
+   4508550.0
+  ],
+  "nodata": null,
+  "footprint_pixels": 5167373,
+  "emitted_pixels": 43038,
+  "emitted_mass": 43038.0,
+  "in_footprint_min": 0.0,
+  "in_footprint_max": 1.0,
+  "nan_outside_footprint": 0,
+  "checks": {
+   "single_band": true,
+   "dtype_float32": true,
+   "dimensions_3730x3292": true,
+   "crs_epsg_32611": true,
+   "transform_exact": true,
+   "in_footprint_all_finite": true,
+   "in_footprint_range_0_1": true,
+   "outside_footprint_all_nan": false,
+   "outside_footprint_zero_or_nan": true,
+   "validator_range_0_1_guaranteed": true,
+   "nonzero_support": 43038,
+   "max_value": 1.0
+  },
+  "all_checks_passed": true,
+  "design": {
+   "method": "H45 Euler deconvolution depth-clustering (Reid, Allsop, Granser, Millett & Somerton 1990; Reid & Thurston 2014) over the magnetic and gravity layers, cloud -> depth-weighted KDE -> calibrated dotted emission",
+   "families": [
+    "00_iso_grav_anom_si0.0_w15_d0",
+    "01_iso_grav_anom_si0.0_w25_d0",
+    "04_tmi_si0.0_w9_d0",
+    "05_tmi_si0.0_w15_d0",
+    "06_tmi_si1.0_w15_d0"
+   ],
+   "budget": 45000,
+   "emitted_px": 43038,
+   "min_spacing_px": 3.0,
+   "ring_mass": 0.0,
+   "calibration_reference": {
+    "file": "h33b2.tif",
+    "score": 0.2778,
+    "emitted_px": 37654
+   }
+  }
+ },
+ "secondary": {
+  "filename": "gemsdoe40-h45-eulerdepthreadcluster-20261006-f28e5cff6826-nan.tif",
+  "size_bytes": 479310,
+  "sha256": "bc2dc2ec9b2f584e1e7529cd7a1b4698de5b4e58cc8cb61754795e48b9033bc4",
+  "shape": [
+   3730,
+   3292
+  ],
+  "count": 1,
+  "dtype": "float32",
+  "crs": "EPSG:32611",
+  "transform": [
+   100.0,
+   0.0,
+   243350.0,
+   0.0,
+   -100.0,
+   4508550.0
+  ],
+  "nodata": null,
+  "footprint_pixels": 5167373,
+  "emitted_pixels": 43038,
+  "emitted_mass": 43038.0,
+  "in_footprint_min": 0.0,
+  "in_footprint_max": 1.0,
+  "nan_outside_footprint": 7111787,
+  "checks": {
+   "single_band": true,
+   "dtype_float32": true,
+   "dimensions_3730x3292": true,
+   "crs_epsg_32611": true,
+   "transform_exact": true,
+   "in_footprint_all_finite": true,
+   "in_footprint_range_0_1": true,
+   "outside_footprint_all_nan": true,
+   "outside_footprint_zero_or_nan": true,
+   "validator_range_0_1_guaranteed": true,
+   "nonzero_support": 43038,
+   "max_value": 1.0
+  },
+  "all_checks_passed": true,
+  "design": {
+   "method": "H45 Euler deconvolution depth-clustering (Reid, Allsop, Granser, Millett & Somerton 1990; Reid & Thurston 2014) over the magnetic and gravity layers, cloud -> depth-weighted KDE -> calibrated dotted emission",
+   "families": [
+    "00_iso_grav_anom_si0.0_w15_d0",
+    "01_iso_grav_anom_si0.0_w25_d0",
+    "04_tmi_si0.0_w9_d0",
+    "05_tmi_si0.0_w15_d0",
+    "06_tmi_si1.0_w15_d0"
+   ],
+   "budget": 45000,
+   "emitted_px": 43038,
+   "min_spacing_px": 3.0,
+   "ring_mass": 0.0,
+   "calibration_reference": {
+    "file": "h33b2.tif",
+    "score": 0.2778,
+    "emitted_px": 37654
+   }
+  }
+ },
+ "zip": {
+  "filename": "gemsdoe40-h45-eulerdepthreadcluster-20261006-f28e5cff6826-zeros.zip",
+  "size_bytes": 288535,
+  "sha256": "388a9a25a5ff43ddb890ce090e303ff6be4ae855ed2fdb350d9fc684ef2bc108"
+ }
+}
