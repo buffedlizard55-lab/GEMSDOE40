@@ -1,0 +1,226 @@
+{
+  "owner": "buffedlizard55-lab",
+  "inventory": "docs/data/prior_raster_inventory.json",
+  "inventory_sha256": "9f820fa1edfbf2130e49e6b30fe17407bd602b88a36d4137902a55a14d1f536d",
+  "files": [
+    {
+      "name": "13gems_20261001_r13-lattice-s5_v2_nan-outside.tif",
+      "status": "cached"
+    },
+    {
+      "name": "8GEMSDOE_Hedge-v2_submission.tif",
+      "status": "cached"
+    },
+    {
+      "name": "gemsdoe9-PLACEHOLDER-2314b599.tif",
+      "status": "cached"
+    },
+    {
+      "name": "gems10-h25-ctx-ridge-20260927T232947704150Z-6452ae1d00.tif",
+      "status": "cached"
+    },
+    {
+      "name": "gems10-h28-dotted-ridge-20260928T020256236880Z-6452ae1d00.tif",
+      "status": "cached"
+    },
+    {
+      "name": "gems22-h23-a-dti-optimal-emission-6pct-20261002-e2ec4b49-allfinite.tif",
+      "status": "cached"
+    },
+    {
+      "name": "gems22-h23-b-dti-optimal-emission-10pct-20261002-86176698-allfinite.tif",
+      "status": "cached"
+    },
+    {
+      "name": "gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-allfinite.tif",
+      "status": "cached"
+    },
+    {
+      "name": "gems24-h25-1-dotted-h19-5-d2-8-20261002-e56ea318af89-allfinite.tif",
+      "status": "cached"
+    },
+    {
+      "name": "gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-allfinite.tif",
+      "status": "cached"
+    },
+    {
+      "name": "gems28-h27-4-r1-solo-d2-8-20261003-8acb75e1f2cc-allfinite.tif",
+      "status": "cached"
+    },
+    {
+      "name": "gemsdoe30-sgmc-hedge-d10-85k-20261003-ac08b41e-zeros.tif",
+      "status": "cached"
+    },
+    {
+      "name": "h34-scatter-q50-arr-matched-20261004T223317Z.tif",
+      "status": "cached"
+    },
+    {
+      "name": "gemsdoe37-h6-physics-dotted-80k-20261005T055000Z-0bef9211631c.tif",
+      "status": "cached"
+    },
+    {
+      "name": "gemsdoe39-h40-e-disc-h40e-30k-zeros.tif",
+      "status": "cached"
+    },
+    {
+      "name": "gemsdoe9-PLACEHOLDER-2314b599.tif",
+      "status": "cached"
+    },
+    {
+      "name": "gems19-h19-4-multiline-corroborated-openness-thermal-pop-20260930-691e4dfa-allfinite.tif",
+      "status": "fetched",
+      "repo": "19GEMSDOE",
+      "path": "docs/downloads/gems19-h19-4-multiline-corroborated-openness-thermal-pop-20260930-691e4dfa-allfinite.tif",
+      "ref": "a3aca62fdb2be428f4245e22570cbc54082b2c15",
+      "sha256": "ad52f4c2704f2a8721f74b736dc139b6b9e11cbf6130c3b971b91cfb3661ac84",
+      "bytes": 941772
+    },
+    {
+      "name": "gems19-h19-4-multiline-corroborated-openness-thermal-pop-20260930-691e4dfa-nan.tif",
+      "status": "fetched",
+      "repo": "19GEMSDOE",
+      "path": "docs/downloads/gems19-h19-4-multiline-corroborated-openness-thermal-pop-20260930-691e4dfa-nan.tif",
+      "ref": "a3aca62fdb2be428f4245e22570cbc54082b2c15",
+      "sha256": "89109a3bd2cd3b12e7a0f388113c519843acfc9c4f46825affefc3e63dd99b22",
+      "bytes": 1716768
+    },
+    {
+      "name": "gems21-h19-4-reference-20260930-691e4dfa-masked-zero.tif",
+      "status": "fetched",
+      "repo": "GEMSDOE21",
+      "path": "docs/downloads/gems21-h19-4-reference-20260930-691e4dfa-masked-zero.tif",
+      "ref": "43e8510cfb37b85460a986d4d1b7796625de0d31",
+      "sha256": "356f833c09900fc41f2cc75278c6c91feb398deee09acd45c55303d07cd59e3a",
+      "bytes": 720122
+    },
+    {
+      "name": "gems16-h16-1-topo-geophys-baseline-ridges-20260930-df20f65e-allfinite.tif",
+      "status": "fetched",
+      "repo": "16GEMSDOE",
+      "path": "docs/downloads/gems16-h16-1-topo-geophys-baseline-ridges-20260930-df20f65e-allfinite.tif",
+      "ref": "962587af0d16a50d45e32a80a3c90436435cb9d8",
+      "sha256": "fde9fbd2270a5ae5cb4606f33dbc19eed096a0dc27e382baf6dd5d1dd82c8dda",
+      "bytes": 942922
+    },
+    {
+      "name": "gems16-h16-1-topo-geophys-baseline-ridges-20260930-df20f65e-nan.tif",
+      "status": "fetched",
+      "repo": "16GEMSDOE",
+      "path": "docs/downloads/gems16-h16-1-topo-geophys-baseline-ridges-20260930-df20f65e-nan.tif",
+      "ref": "962587af0d16a50d45e32a80a3c90436435cb9d8",
+      "sha256": "055309694ed499ca3d87e76b3f5e81c292aef6e39c418d33ff5a817aa1309bea",
+      "bytes": 1718028
+    },
+    {
+      "name": "gems16-h16-1-pure-physical-scarp-worm-allfinite-20260929-c16f03.tif",
+      "status": "fetched",
+      "repo": "16GEMSDOE",
+      "path": "docs/archive/gems16-h16-1-pure-physical-scarp-worm-allfinite-20260929-c16f03.tif",
+      "ref": "2565805c0731a870335e54a64dce6fba01377e63",
+      "sha256": "91f3dd7a0bb947e623f2c5660f5741bde099f69cb94a5bcc083c060dd5cd06cc",
+      "bytes": 564499
+    },
+    {
+      "name": "gems16-h16-1-seamfree-multiscale-ridge-allfinite-20260929-a16f01.tif",
+      "status": "fetched",
+      "repo": "16GEMSDOE",
+      "path": "docs/archive/gems16-h16-1-seamfree-multiscale-ridge-allfinite-20260929-a16f01.tif",
+      "ref": "2565805c0731a870335e54a64dce6fba01377e63",
+      "sha256": "7da9fe49482c9a826ff11a51b27a054b4cdbe4b4160513389c2c0bd6b37b5eeb",
+      "bytes": 778668
+    },
+    {
+      "name": "gems16-h16-1-seamfree-multiscale-ridge-nanmask-20260929-b16f02.tif",
+      "status": "fetched",
+      "repo": "16GEMSDOE",
+      "path": "docs/archive/gems16-h16-1-seamfree-multiscale-ridge-nanmask-20260929-b16f02.tif",
+      "ref": "2565805c0731a870335e54a64dce6fba01377e63",
+      "sha256": "78b2aebe410e016d76c1cf15760561d7699346647955039bcc0b8adce87af30a",
+      "bytes": 849871
+    },
+    {
+      "name": "gemsdoe32-d28-ref02600-repro-44090-20261004T183200Z-426073b6-nan.tif",
+      "status": "fetched",
+      "repo": "GEMSDOE32",
+      "path": "docs/downloads/gemsdoe32-d28-ref02600-repro-44090-20261004T183200Z-426073b6-nan.tif",
+      "ref": "b63ebab7dbcf9238422ebbc2dbc4addf84bed11b",
+      "sha256": "fe01ebd3961d6911bfa731111d4d3de75923e642c2276e1d7f6109de9236fd85",
+      "bytes": 379333
+    },
+    {
+      "name": "gemsdoe32-d28-ref02600-repro-44090-20261004T183200Z-426073b6-zeros.tif",
+      "status": "fetched",
+      "repo": "GEMSDOE32",
+      "path": "docs/downloads/gemsdoe32-d28-ref02600-repro-44090-20261004T183200Z-426073b6-zeros.tif",
+      "ref": "b63ebab7dbcf9238422ebbc2dbc4addf84bed11b",
+      "sha256": "e4985b78c4d99e185686de639dffb16084a71cf5b673b1e7474f7c898493c2c3",
+      "bytes": 243828
+    },
+    {
+      "name": "gemsdoe39-h40-e-disc-h40e-30k-nan.tif",
+      "status": "fetched",
+      "repo": "GEMSDOE39",
+      "path": "docs/downloads/gemsdoe39-h40-e-disc-h40e-30k-nan.tif",
+      "ref": "381c6a923ffea8fbcd87eb2d5825449f09f29f0e",
+      "sha256": "8c035eb13edcc64944d7dd46619a7c6e5b22ebdd01e1c1b9750f3e253f4a3d8b",
+      "bytes": 165435
+    },
+    {
+      "name": "gemsdoe39-h40-e-disc-h40e-30k-zeros.tif",
+      "status": "cached"
+    },
+    {
+      "name": "gemsdoe30-sgmc-hedge-d10-85k-20261003-ac08b41e-zeros.tif",
+      "status": "cached"
+    },
+    {
+      "name": "gemsdoe30-sgmc-hedge-d10-85k-20261003-ac08b41e.tif",
+      "status": "fetched",
+      "repo": "GEMSDOE30",
+      "path": "docs/downloads/gemsdoe30-sgmc-hedge-d10-85k-20261003-ac08b41e.tif",
+      "ref": "666cb3697025766d715a3ae4994fad75a287ad02",
+      "sha256": "fed5232e8efeefef00728ce9d5884f08e007c542f317cb11419452d14ff866da",
+      "bytes": 630052
+    },
+    {
+      "name": "h34-scatter-q50-arr-matched-20261004T223317Z.tif",
+      "status": "cached"
+    },
+    {
+      "name": "gemsdoe37-h6-physics-dotted-80k-20261005T055000Z-0bef9211631c.tif",
+      "status": "cached"
+    }
+  ],
+  "live_scores": {
+    "13gems_20261001_r13-lattice-s5_v2_nan-outside.tif": 0.0904,
+    "8GEMSDOE_Hedge-v2_submission.tif": 0.1563,
+    "gemsdoe9-PLACEHOLDER-2314b599.tif": 0.0107,
+    "gems10-h25-ctx-ridge-20260927T232947704150Z-6452ae1d00.tif": 0.128,
+    "gems10-h28-dotted-ridge-20260928T020256236880Z-6452ae1d00.tif": 0.1839,
+    "gems22-h23-a-dti-optimal-emission-6pct-20261002-e2ec4b49-allfinite.tif": 0.1002,
+    "gems22-h23-b-dti-optimal-emission-10pct-20261002-86176698-allfinite.tif": 0.0748,
+    "gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-allfinite.tif": 0.2477,
+    "gems24-h25-1-dotted-h19-5-d2-8-20261002-e56ea318af89-allfinite.tif": 0.26,
+    "gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-allfinite.tif": 0.2449,
+    "gems28-h27-4-r1-solo-d2-8-20261003-8acb75e1f2cc-allfinite.tif": 0.2708,
+    "gemsdoe30-sgmc-hedge-d10-85k-20261003-ac08b41e-zeros.tif": null,
+    "h34-scatter-q50-arr-matched-20261004T223317Z.tif": 0.0778,
+    "gemsdoe37-h6-physics-dotted-80k-20261005T055000Z-0bef9211631c.tif": null,
+    "gemsdoe39-h40-e-disc-h40e-30k-zeros.tif": null
+  },
+  "missing_from_inventory": [
+    "gemsdoe-ens12-adopted-7f00890a.tif",
+    "lb_anchor_h19-5_0.1922.tif",
+    "lb_anchor_h19-4_0.1894.tif",
+    "lb_anchor_h16-1_0.1855.tif",
+    "gems24-reference-h19-5-20261002-80d47e1ab2ee-allfinite.tif",
+    "gemsdoe30-d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca.tif",
+    "gems33-c0-scored-reference-20261004-89bf5b9a2fea.tif",
+    "7f00890a",
+    "c0-scored",
+    "h19-5-solid",
+    "reference-h19-5"
+  ],
+  "scope": "public pinned mirrors, byte-verified against the inventory; this is a reproducible public corpus, not an organizer-authenticated delivery"
+}

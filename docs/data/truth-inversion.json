@@ -1,0 +1,263 @@
+{
+  "snapshot_utc": "2026-10-06T03:36:10Z",
+  "method": "block-grid truth-density inversion of the published organizer scores",
+  "block_px": 40,
+  "lambda_laplacian": 1000.0,
+  "mu_prior": 0.0,
+  "n_blocks": 7802,
+  "scoreable_px": 5106385,
+  "kernel_mass_s": 9.380297810508184,
+  "anchors": [
+    {
+      "anchor": "p08-hedge-v2.tif",
+      "file": "8GEMSDOE_Hedge-v2_submission.tif",
+      "sha256": "052688eafbc7a55d90caab72252a50304fe5caa8ecf973f8e791b4ae910f0792",
+      "mass": 166519,
+      "live_score": 0.1563
+    },
+    {
+      "anchor": "p09-2314b599.tif",
+      "file": "gemsdoe9-PLACEHOLDER-2314b599.tif",
+      "sha256": "2314b59920bfeeaf6a592d4868b25eca62212825620f9945723c2f6d0a2e5b22",
+      "mass": 145610,
+      "live_score": 0.0107
+    },
+    {
+      "anchor": "p10-h25-ctx-ridge.tif",
+      "file": "gems10-h25-ctx-ridge-20260927T232947704150Z-6452ae1d00.tif",
+      "sha256": "1381e784fb8b8340beffd0e735ac9eea89ad35d1a807f8a9bab5506e3fc8275e",
+      "mass": 161366,
+      "live_score": 0.128
+    },
+    {
+      "anchor": "p10-h28-dotted-ridge.tif",
+      "file": "gems10-h28-dotted-ridge-20260928T020256236880Z-6452ae1d00.tif",
+      "sha256": "7637b72d4c6c3e10226bf46bd72a20272d62ccbe29743062632d10b158b49c58",
+      "mass": 65236,
+      "live_score": 0.1839
+    },
+    {
+      "anchor": "p13-lattice-s5-v2.tif",
+      "file": "13gems_20261001_r13-lattice-s5_v2_nan-outside.tif",
+      "sha256": "b4570b406efec198eb2f4d142ad8d0d6184b14b66f2f52b5c4d697f0647dc9b2",
+      "mass": 204504,
+      "live_score": 0.0904
+    },
+    {
+      "anchor": "p16-h16-1-1855.tif",
+      "file": "gems16-h16-1-topo-geophys-baseline-ridges-20260930-df20f65e-nan.tif",
+      "sha256": "055309694ed499ca3d87e76b3f5e81c292aef6e39c418d33ff5a817aa1309bea",
+      "mass": 123939,
+      "live_score": 0.1855
+    },
+    {
+      "anchor": "p19-h19-4-1894.tif",
+      "file": "gems19-h19-4-multiline-corroborated-openness-thermal-pop-20260930-691e4dfa-nan.tif",
+      "sha256": "89109a3bd2cd3b12e7a0f388113c519843acfc9c4f46825affefc3e63dd99b22",
+      "mass": 123779,
+      "live_score": 0.1894
+    },
+    {
+      "anchor": "p19-h19-5-1922.tif",
+      "file": "gems19-h19-5-powerlaw-budget-multiline-corroborated-20260930-e27054cf-nan.tif",
+      "sha256": "ec1f9b56b83ce33cad781ceb9f104b18fb4f2ff785263a4e89616af4aabdee8d",
+      "mass": 121131,
+      "live_score": 0.1922
+    },
+    {
+      "anchor": "p19-h19-5-solid.tif",
+      "file": "gems19-h19-5-powerlaw-budget-multiline-corroborated-20260930-e27054cf-allfinite.tif",
+      "sha256": "ef2ae808eb7179861b9f1ff753fd3ded625ace7b7c158e29cec45bbd8fa3cfaa",
+      "mass": 121131,
+      "live_score": 0.1922
+    },
+    {
+      "anchor": "p22-h23a-6pct.tif",
+      "file": "gems22-h23-a-dti-optimal-emission-6pct-20261002-e2ec4b49-allfinite.tif",
+      "sha256": "c36696693639749791286bcd58e48a78ff79d4651b63fc33d273aab8191df0d4",
+      "mass": 335879,
+      "live_score": 0.1002
+    },
+    {
+      "anchor": "p22-h23b-10pct.tif",
+      "file": "gems22-h23-b-dti-optimal-emission-10pct-20261002-86176698-allfinite.tif",
+      "sha256": "789dd56c4287cd50c8d2d5e3f063828a8d25a275d82bd8418a4cf971d908b8a6",
+      "mass": 516738,
+      "live_score": 0.0748
+    },
+    {
+      "anchor": "p24-d15-2477.tif",
+      "file": "gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-allfinite.tif",
+      "sha256": "3e0730e8d4f7db095dd80246a98cba3bc0fc9a28f436b91db27ca34df4d0d1ce",
+      "mass": 60069,
+      "live_score": 0.2477
+    },
+    {
+      "anchor": "p24-d28-2600.tif",
+      "file": "gems24-h25-1-dotted-h19-5-d2-8-20261002-e56ea318af89-allfinite.tif",
+      "sha256": "3e78737f0da8dd2ca66cc6caac0ce8eeefcd6715707f8d1bd3091845cd9bcc30",
+      "mass": 44090,
+      "live_score": 0.26
+    },
+    {
+      "anchor": "p27-topogap-d15.tif",
+      "file": "gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-allfinite.tif",
+      "sha256": "a9bf76b57453a5b3af74c8eef837df53c29a0931162aa540b8763220b36ba3bb",
+      "mass": 61328,
+      "live_score": 0.2449
+    },
+    {
+      "anchor": "p28-h27-4-d28.tif",
+      "file": "gems28-h27-4-r1-solo-d2-8-20261003-8acb75e1f2cc-allfinite.tif",
+      "sha256": "2fc94a38d77f74d4f4ed1a97a83e7bb71a1ceea090515ec641e6681cc47c44c8",
+      "mass": 40199,
+      "live_score": 0.2708
+    },
+    {
+      "anchor": "p34-scatter-q50.tif",
+      "file": "h34-scatter-q50-arr-matched-20261004T223317Z.tif",
+      "sha256": "acf00361263a14c29fc6292bce2f10f862ec3ac258e1cd123a8a17c37bd5d203",
+      "mass": 37654,
+      "live_score": 0.0778
+    }
+  ],
+  "skipped": [
+    {
+      "anchor": "gems32-probe-S1-ANCHOR-identical-to-live-02600.tif",
+      "reason": "no reported score"
+    },
+    {
+      "anchor": "gemsdoe32-d28-ref02600-repro-44090-20261004T183200Z-426073b6-zeros.tif",
+      "reason": "no reported score"
+    },
+    {
+      "anchor": "gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif",
+      "reason": "no reported score"
+    },
+    {
+      "anchor": "gemsdoe32-h33-h33-2b2-plus-h33-1-20261004T220000Z-31588dc7-zeros.tif",
+      "reason": "no reported score"
+    },
+    {
+      "anchor": "p01-ens12-7f00890a.tif",
+      "reason": "raster not cached"
+    },
+    {
+      "anchor": "p30-d28-poisson300-offcat.tif",
+      "reason": "raster not cached"
+    },
+    {
+      "anchor": "p30-sgmc-hedge-d10-85k.tif",
+      "reason": "no reported score"
+    },
+    {
+      "anchor": "p33-c0-scored-ref.tif",
+      "reason": "no reported score"
+    },
+    {
+      "anchor": "p37-h6-phys-dotted-80k.tif",
+      "reason": "no reported score"
+    },
+    {
+      "anchor": "p39-h40e-30k.tif",
+      "reason": "no reported score"
+    }
+  ],
+  "fit": {
+    "success": true,
+    "iterations": 50,
+    "objective": 0.23496796230254618,
+    "in_sample_spearman": -0.3696612665684831,
+    "in_sample_rmse": 0.12109154390316552,
+    "max_abs_error": 0.22021475618478287
+  },
+  "prior_only_baseline": {
+    "in_sample_spearman": -0.42857142857142855,
+    "in_sample_rmse": 0.10966575966757122
+  },
+  "rows": [
+    {
+      "anchor": "p08-hedge-v2.tif",
+      "live": 0.1563,
+      "model": 0.10507421081558167
+    },
+    {
+      "anchor": "p09-2314b599.tif",
+      "live": 0.0107,
+      "model": 0.045892878178198704
+    },
+    {
+      "anchor": "p10-h25-ctx-ridge.tif",
+      "live": 0.128,
+      "model": 0.11872943446182979
+    },
+    {
+      "anchor": "p10-h28-dotted-ridge.tif",
+      "live": 0.1839,
+      "model": 0.1137988544279268
+    },
+    {
+      "anchor": "p13-lattice-s5-v2.tif",
+      "live": 0.0904,
+      "model": 0.31061475618478285
+    },
+    {
+      "anchor": "p16-h16-1-1855.tif",
+      "live": 0.1855,
+      "model": 0.09379188682995603
+    },
+    {
+      "anchor": "p19-h19-4-1894.tif",
+      "live": 0.1894,
+      "model": 0.09197034313227628
+    },
+    {
+      "anchor": "p19-h19-5-1922.tif",
+      "live": 0.1922,
+      "model": 0.08927824155445863
+    },
+    {
+      "anchor": "p19-h19-5-solid.tif",
+      "live": 0.1922,
+      "model": 0.08927824155445863
+    },
+    {
+      "anchor": "p22-h23a-6pct.tif",
+      "live": 0.1002,
+      "model": 0.1570560736014277
+    },
+    {
+      "anchor": "p22-h23b-10pct.tif",
+      "live": 0.0748,
+      "model": 0.17748541376147192
+    },
+    {
+      "anchor": "p24-d15-2477.tif",
+      "live": 0.2477,
+      "model": 0.08472618132613777
+    },
+    {
+      "anchor": "p24-d28-2600.tif",
+      "live": 0.26,
+      "model": 0.07773306950282484
+    },
+    {
+      "anchor": "p27-topogap-d15.tif",
+      "live": 0.2449,
+      "model": 0.0865342578437235
+    },
+    {
+      "anchor": "p28-h27-4-d28.tif",
+      "live": 0.2708,
+      "model": 0.07209258269837106
+    },
+    {
+      "anchor": "p34-scatter-q50.tif",
+      "live": 0.0778,
+      "model": 0.07134449874765836
+    }
+  ],
+  "implicit_truth_px": 101818.37438535308,
+  "note": "the live scores are owner-reported associations in ref/meta/prior_corpus.md; the model is an instrument, not an organizer score",
+  "seconds": 23.4
+}

@@ -65,7 +65,25 @@ def main():
                     response = page.goto(base + name, wait_until="networkidle")
                     assert response and response.status == 200, (width, name, "HTTP")
                     stage = f"{name} @ {width}x{height}: horizontal overflow"
-                    assert not page.evaluate("document.documentElement.scrollWidth > window.innerWidth"), (width, name, "body overflow")
+                    offenders = page.evaluate(
+                        """() => {
+                             const limit = document.documentElement.clientWidth + 1;
+                             const bad = [];
+                             for (const el of document.querySelectorAll('body *')) {
+                               const r = el.getBoundingClientRect();
+                               if (r.width === 0 && r.height === 0) continue;
+                               if (r.right > limit) {
+                                 const cls = (el.getAttribute('class') || '').split(' ').filter(Boolean).join('.');
+                                 bad.push(`${el.tagName.toLowerCase()}${el.id ? '#' + el.id : ''}${cls ? '.' + cls : ''}`
+                                          + ` right=${Math.round(r.right)} width=${Math.round(r.width)}`
+                                          + ` text=${JSON.stringify((el.textContent || '').trim().slice(0, 40))}`);
+                               }
+                               if (bad.length >= 3) break;
+                             }
+                             return bad;
+                           }"""
+                    )
+                    assert not offenders, f"body overflow; widest offenders: {offenders}"
                     stage = f"{name} @ {width}x{height}: single h1"
                     assert page.locator("h1").count() == 1, (name, "one main title required")
                     stage = f"{name} @ {width}x{height}: skip link"
