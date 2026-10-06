@@ -1,50 +1,27 @@
-<!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Sources · GEMSDOE40</title><link rel="stylesheet" href="assets/site.css"></head>
-<body><header><h1>Sources</h1><div class="muted small">DOE GEMS Prize (DrivenData #306) ·
-Euler deconvolution depth-clustering submission system · repository
-<a href="https://github.com/buffedlizard55-lab/GEMSDOE40">buffedlizard55-lab/GEMSDOE40</a></div>
-<div style="margin-top:10px"><nav class="small">
-<a href="index.html">Home</a><a href="executive-summary.html">How to submit</a>
-<a href="methodology.html">Method</a><a href="hypotheses.html">Hypotheses</a>
-<a href="leaderboard-analysis.html">Leaderboard analysis</a><a href="evidence.html">Evidence</a>
-<a href="sources.html">Sources</a></nav></div></header>
-<aside class="panel note" role="note"><strong>Historical main-branch supporting page (2026-10-05, before the H2-B audit).</strong> This page preserves prior research and should not be read as current upload advice. The prior H40-4 multi-scale TIFF was later scored at 0.124715 on the owner-derived SGMC proxy (0/24 blocks) and fails this repository's strict NaN-nodata format check; H2-B is <strong>HOLD — DO NOT SUBMIT</strong>. See the <a href="index.html">current project status</a> and <a href="executive-summary.html">current Executive Summary</a>. No organizer score is asserted here.</aside>
-<main>
-<h2>Official / primary sources used in this repository</h2>
-<table>
-<tr><th>what it establishes</th><th>source</th><th>status in this environment</th></tr>
-<tr><td>Competition task, prizes, timeline</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">drivendata.org/competitions/306</a></td><td>reachable only through mirrors (site blocked from the sandbox network)</td></tr>
-<tr><td>Problem description, provided features, labels, submission format, performance metric</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">page 967</a></td><td>same</td></tr>
-<tr><td>About / additional resources</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/968/">page 968</a></td><td>same</td></tr>
-<tr><td>Rules (three submissions/week, one final entry, separate prize rounds)</td><td><a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">docs.nlr.gov/docs/fy26osti/96647.pdf</a></td><td>blocked here; quoted text is inherited from sibling repos' extraction</td></tr>
-<tr><td>Catalogue masking clarification</td><td><a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516">community.drivendata.org thread 11516</a></td><td>blocked here; behaviour is nevertheless implemented in the metric used by this repo</td></tr>
-<tr><td>Competition data (features, labels, sample submission, DEM links)</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/data/">data tab</a> (login)</td><td><span class="badge b-ok">ok</span> — byte-identical mirrors, sha256-verified (see <a href="evidence.html">Evidence</a>)</td></tr>
-<tr><td>GeoDAWN airborne magnetic + radiometric survey</td><td><a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">USGS GeoDAWN release</a>, DOI <a href="https://doi.org/10.5066/P93LGLVQ">10.5066/P93LGLVQ</a></td><td>referenced, not fetched</td></tr>
-<tr><td>INGENIOUS / GDR submission 1391 (MT conductance, geodetic strain, earthquake density, gravity)</td><td><a href="https://gdr.openei.org/submissions/1391">gdr.openei.org/submissions/1391</a>, DOI <a href="https://doi.org/10.15121/1881483">10.15121/1881483</a></td><td><span class="badge b-bad">blocked</span> from this sandbox (HTTP 000); mirrored subsets exist in sibling repos</td></tr>
-<tr><td>USGS State Geologic Map Compilation faults (the off-catalogue holdout truth)</td><td>mirrored at <code>GEMSDOE24/data/external/derived_sgmc_faults_100m_u8.tif</code> (sha256 643cbe992ef4…)</td><td><span class="badge b-ok">ok</span> via GitHub API</td></tr>
-<tr><td>USGS Quaternary Fault and Fold Database (the catalogue labels)</td><td><a href="https://www.usgs.gov/programs/earthquake-hazards/faults">usgs.gov faults</a>, DOI <a href="https://doi.org/10.5066/P9BCVRCK">10.5066/P9BCVRCK</a></td><td>labels arrive inside the pinned competition raster</td></tr>
-<tr><td>Euler deconvolution method and the structural-index table</td><td>Reid, Allsop, Granser, Millett &amp; Somerton, <em>Geophysics</em> 55(1):80–91 (1990), <a href="https://doi.org/10.1190/1.1442774">doi:10.1190/1.1442774</a></td><td>method implemented and unit-tested against analytic sources</td></tr>
-<tr><td>Fourier derivative convention for potential fields</td><td>Blakely, <em>Potential Theory in Gravity and Magnetic Applications</em>, CUP 1995, ISBN 9780521415088, §12.5</td><td>convention asserted by test (sign flip ⇒ negative depths)</td></tr>
-<tr><td>Reference solution (U-Net + Tversky loss)</td><td><a href="https://github.com/drivendataorg/gems-prize-reference-solution">github.com/drivendataorg/gems-prize-reference-solution</a></td><td>referenced for the file contract</td></tr>
-</table>
-<h2>Irregularities flagged for review</h2>
-<ul>
-<li><strong>IR-40-01 — network restrictions.</strong> <code>www.drivendata.org</code>,
-<code>www.dropbox.com</code>, <code>gdr.openei.org</code>, <code>docs.nlr.gov</code> and
-<code>*.github.io</code> all return HTTP 000 from this sandbox while <code>github.com</code> and
-<code>api.github.com</code> work. Consequence: the competition data were taken from byte-identical
-GitHub mirrors (sha256 verified against pins recorded by sibling repos). Pages content therefore had
-to be verified through the GitHub API rather than by fetching the live sites.</li>
-<li><strong>IR-40-02 — owner-reported scores.</strong> Every live score quoted here is owner-reported
-from the standing brief, not an organizer receipt; the instrument calibration therefore re-verifies
-orderings rather than absolute values.</li>
-<li><strong>IR-40-03 — the sample submission is not "total fault absence".</strong> It is
-byte-identical to the catalogue inside the footprint (60,988 px at 1.0). It is used here only as the
-geometry template, which is legitimate.</li>
-<li><strong>IR-40-04 — LM instrument validity domain.</strong> The LM instrument is documented (by the
-sibling repository that built it) to over-reward mass beyond ~120 k emitted pixels. The recommended
-artifact emits 97,654 px and the fallback 60,710 px, both inside that domain; the projection still carries the caveat.</li>
-</ul>
-</main></body></html>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sources & limitations · GEMSDOE40</title><link rel="stylesheet" href="assets/research.css"></head>
+<body><a class="skip" href="#main">Skip to content</a><header class="site-header"><div class="nav-wrap"><a class="brand" href="index.html"><span class="brand-mark">G40</span><span>GEMSDOE40</span></a><nav class="nav-links" aria-label="Primary navigation"><a href="index.html">Home</a><a href="executive-summary.html">Executive summary</a><a href="leaderboard-analysis.html">Leaderboard</a><a href="hypotheses.html">Hypotheses</a></nav></div></header>
+<main id="main" class="wrap"><div class="breadcrumb"><a href="index.html">Home</a> / Sources & limitations</div><section class="page-head"><div class="eyebrow">Evidence and provenance · 2026-10-06 UTC</div><h1>Sources, with boundaries.</h1><p>Official references establish the challenge task and methods. Public owner mirrors establish which bytes were inspected—not organizer authentication, truth, or score attribution.</p></section>
+<section class="caution"><strong>Proxy warning.</strong> The current owner-mirror raster (SHA-256 <code>643cbe992ef4ba37588fb469163ed8291e3ceb23d6c1f78a3cfaa462430c2da0</code>) and historical H2-B raster (SHA-256 <code>26d142c4c93282cd94f6950ab96f22aeff59fbbea523d43d662e76fa1b161b5c</code>) are distinct versions. The source-byte reconciliation is documented, but neither version proves authenticated organizer delivery or independently rebuilt SGMC provenance. Do not call either “organizer truth.”</section>
+<section class="section"><div class="section-header"><h2>Official and primary sources</h2><p>Links are provided for manual review. Retrieval/access dates and pin identities are recorded separately in the repository.</p></div><div class="table-wrap"><table><thead><tr><th>What it establishes</th><th>Source</th><th>Use and limitation here</th></tr></thead><tbody>
+<tr><td>Challenge task, metric, input description, submission format</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/" target="_blank" rel="noopener">DrivenData problem page ↗</a></td><td>Official target is geological fault prediction. H7's local score is not an organizer score.</td></tr>
+<tr><td>Public leaderboard</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/" target="_blank" rel="noopener">Official public board ↗</a></td><td>Snapshot saved 2026-10-06. Account-level rows do not identify a TIFF without a file-linked receipt.</td></tr>
+<tr><td>Competition rules and weekly slot limit</td><td><a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf" target="_blank" rel="noopener">DOE/NLR September 2026 rules PDF ↗</a></td><td>Read for weekly feedback limits and one final selection. This session did not consume a slot.</td></tr>
+<tr><td>Known-fault score masking clarification</td><td><a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516/2" target="_blank" rel="noopener">DrivenData staff forum response ↗</a></td><td>Exact catalogue-pixel mask; the local scorer applies no distance buffer.</td></tr>
+<tr><td>Feature layers, labels, sample submission</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/data/" target="_blank" rel="noopener">Official data tab (login) ↗</a></td><td>Data-tab download is login-gated in this environment. Locally inspected bytes came via public owner mirrors and are hash-pinned; pin equality is not organizer authentication.</td></tr>
+<tr><td>USGS State Geologic Map Compilation metadata</td><td><a href="https://mrdata.usgs.gov/geology/state/USGS_SGMC_Metadata.xml" target="_blank" rel="noopener">USGS SGMC metadata ↗</a> · <a href="https://pubs.usgs.gov/ds/1052/" target="_blank" rel="noopener">Data Series 1052 ↗</a></td><td>Establishes source-compilation context only; does not authenticate the owner-derived raster mirror used as a proxy.</td></tr>
+<tr><td>USGS Quaternary Fault and Fold Database</td><td><a href="https://www.usgs.gov/programs/earthquake-hazards/faults" target="_blank" rel="noopener">USGS faults page ↗</a> · <a href="https://doi.org/10.5066/P9BCVRCK" target="_blank" rel="noopener">data release DOI ↗</a></td><td>Catalogue context is supplied within the pinned labels raster; exact known-label pixels are masked during local scoring.</td></tr>
+<tr><td>INGENIOUS regional data compilation</td><td><a href="https://gdr.openei.org/submissions/1391" target="_blank" rel="noopener">GDR submission 1391 ↗</a> · <a href="https://doi.org/10.15121/1881483" target="_blank" rel="noopener">DOI ↗</a></td><td>Provenance context for supplied regional layers; external archive access was not required for H7.</td></tr>
+<tr><td>Magnetic Euler deconvolution</td><td>Reid et al. (1990), <em>Geophysics</em> 55(1), 80–91, <a href="https://doi.org/10.1190/1.1442774" target="_blank" rel="noopener">DOI ↗</a> · <a href="https://www.reid-geophys.co.uk/wp-content/uploads/2017/11/Reid-et-al-1990.pdf" target="_blank" rel="noopener">author-hosted PDF ↗</a></td><td>Potential-field source location/depth method used in H7; Euler assumptions and structural index remain model limitations.</td></tr>
+<tr><td>Gravity/magnetic structural-index caveats</td><td>Reid & Thurston (2014), <a href="https://www.reid-geophys.co.uk/wp-content/uploads/2017/11/Reid-Thurston-2014.pdf" target="_blank" rel="noopener">author-hosted PDF ↗</a></td><td>Supports explicit caution about finite-step gravity models; H4's raw-gravity SI=−1 gate stopped without a candidate.</td></tr>
+<tr><td>USGS ComCat focal-mechanism source for earlier H3</td><td><a href="https://earthquake.usgs.gov/fdsnws/event/1/" target="_blank" rel="noopener">FDSN Event Web Service ↗</a></td><td>Official public source. H3 is not implemented; usable nodal-plane coverage across spatial blocks remains unverified.</td></tr>
+<tr><td>Owner's H33-2-B2 project note</td><td><a href="https://buffedlizard55-lab.github.io/GEMSDOE32/docs/index.html" target="_blank" rel="noopener">GEMSDOE32 project page ↗</a></td><td>Owner page marks 0.2747 as projected and UNSCORED; not an organizer result or TIFF attribution.</td></tr>
+</tbody></table></div></section>
+<section class="section prose"><h2>Locally verified inputs and irregularities</h2><ul>
+<li><strong>SHA-256 input pins:</strong> `training_features.tif` `4371c82e…23bc5`; `labels.tif` `7ba308cc…4093`; `sample_submission.tif` `2176d08e…35cbc`; current proxy `643cbe99…c2da0`; historical proxy `26d142c4…1b5c`. Full values, source refs, and mirror caveats are in <a href="data/input_manifest.json">the refreshed input manifest</a>; the pre-reconciliation H2-B record is preserved <a href="data/input_manifest-20261005-h2b-legacy.json">separately</a>.</li>
+<li><strong>Two proxy bytes:</strong> the current and historical owner mirrors differ in 1,450 cells (Pearson 0.991230; positive-support Jaccard 0.982655). Same-candidate scores remain tied to their respective hashes. See the <a href="reports/proxy-pin-reconciliation-20261006.md">dated reconciliation</a>.</li>
+<li><strong>Sample irregularity:</strong> the sample/template has 60,988 exact known-label positive pixels inside the footprint despite sibling prose describing an all-zero sample. It is used only for shape, transform, CRS, and footprint—not as truth.</li>
+<li><strong>Data-access boundary:</strong> the official competition data/submission pages require login. No private test labels or organizer receipts were available during this local analysis.</li>
+<li><strong>Prior-output boundary:</strong> the refreshed scan contains public TIFF files from 55 sibling-repository heads, not a verified official submission ledger. Paths and hashes do not prove that an artifact was uploaded, scored, selected, or linked to any leaderboard account.</li>
+</ul><p>For H7 performance and geology limitations, see the <a href="reports/validation-h7-20261006.md">validation report</a> and <a href="research/preregistered-hypotheses-20261006.md">preregistration</a>.</p></section>
+</main><footer class="footer"><div class="footer-inner"><div><div class="footer-brand">GEMSDOE40</div><p>Official sources where available; owner mirrors are disclosed as such.</p></div><div><p><a href="index.html">Project home</a> · <a href="executive-summary.html">Executive summary</a> · <a href="leaderboard-analysis.html">Leaderboard attribution</a></p><p>Status dated 2026-10-06 UTC.</p></div></div></footer></body></html>

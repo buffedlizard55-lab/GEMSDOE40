@@ -1,105 +1,115 @@
 # GEMSDOE40 — fault-prediction research for the DOE GEMS Prize
 
-> **Current decision: HOLD — DO NOT SUBMIT.** The H2-B research GeoTIFF is unique and passes the local sample-grid/range audit, but its owner-derived SGMC proxy result fails the frozen promotion gate by a wide margin. No weekly submission slot has been used, no DrivenData upload has been made, and no organizer score is known.
+## Permanent owner brief — read this before every session
 
-**Official target:** geological faults that may indicate geothermal resources—not geothermal vents, hot springs, or reservoir locations. The challenge's private labels and leaderboard are not accessible in this session. This repository is an auditable research and validation system, not a claim of a winning prediction.
+**Mission:** Maximize P(Win) and Own the Outcome while building an auditable, useful system for predicting *geological faults relevant to geothermal resources*. The target is faults—not geothermal vents or reservoir locations.
 
-## One-click research artifact
+### Required scientific and delivery work
 
-- [Download the H2-B research GeoTIFF](docs/downloads/gemsdoe40-h2b-tmi-euler-natural-support-20261005.tif) — **research-only; do not submit**.
-- Grid/format: one-band `float32`, EPSG:32611, 100 m, 3,730 × 3,292, exact sample transform/footprint, finite `[0,1]` in-footprint values and NaN outside.
-- 17,425 positive cells (0.337% of the 5,167,373-cell footprint); SHA-256: `02486eaa491da2d8ebc6b1cd53ed2bdc8e995f316be1110a64eec484779b5a68`.
-- It differs from all 277 same-grid prior raster blobs in the expanded 279-blob inventory under every frozen raw/canonical-hash, correlation, support-Jaccard, and top-budget near-duplicate check. **Uniqueness is not evidence of quality.** The initial 268-comparison audit is preserved for history.
-- Suggested DrivenData name and note are intentionally **not provided as upload instructions** while the result is on hold. The site offers a clearly labeled research-only metadata string for record-keeping, not submission.
+1. Generate an original, non-copied, single-band GeoTIFF. For Euler hypotheses, solve potential-field source locations and depths and project a **weighted source-solution cloud KDE**; do not substitute gradient thresholding and call it Euler. Explain structural-index and geologic confounds.
+2. Before implementing a new strategy, preregister **3–5 distinct, ranked geological hypotheses**. For every one specify exact layers, a physical signature, why it may find faults absent from USGS/INGENIOUS, how it differs from repository methods, expected DTI direction/rank, implementation cost, and external-data/access needs. Do not call an externally dependent idea viable until free official access is checked.
+3. Validate the leader on spatially blocked holdout data before spending any of the official weekly feedback slots. No slot unless it beats the then-current comparable holdout best under frozen gates. A proxy is not organizer truth; never label a proxy result an official score.
+4. Compare raw hashes and canonical pixel values against every inventoried prior output. Keep source refs, Git blobs, hashes, correlation and support-overlap measures. Do not copy prior submissions as a new candidate.
+5. Re-open the output TIFF and verify the actual sample grid: one band, float32, EPSG:32611, 100 m, exact dimensions/transform/footprint, finite `[0,1]` values inside and NaN outside. Prevent portal range/nodata errors, but treat format as a gate—not a quality result.
+6. Use official, trusted sources; link them for manual review; flag source irregularities and access limits; verify claims; do not hallucinate scores, provenance, or file attribution.
+7. Make the TIFF download obvious on the project site. Maintain an executive-summary guide that names the exact upload steps, but give a submission name/comment only after a candidate is cleared. Research-only files must say **DO NOT SUBMIT**.
+8. Run tests and independent file audits. If a PR is requested, open it from this session's working branch; report a merge only after verifying GitHub's actual response. Never request credentials in chat.
 
-The full result is on the [project site](docs/index.html), with the [executive summary and future upload guide](docs/executive-summary.html), the [hypothesis register](docs/research/hypotheses.md), and the [H2-B spatial-proxy report](docs/reports/validation-h2b-20261005.md).
+**Verified starting links:** [DrivenData task, metric and format](https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/); [DOE/NLR 2026 rules](https://docs.nlr.gov/docs/fy26osti/96647.pdf); [official public leaderboard](https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/); [Reid et al. (1990) Euler method](https://doi.org/10.1190/1.1442774); [Reid & Thurston (2014) structural-index caveats](https://www.reid-geophys.co.uk/wp-content/uploads/2017/11/Reid-Thurston-2014.pdf); [structured standing brief](docs/prompt.md); [2026-10-06 preregistration](docs/research/preregistered-hypotheses-20261006.md).
 
-## Current evidence (2026-10-05 UTC)
+## Current decision — 2026-10-06 UTC
 
-| Stage | Result | Interpretation |
-|---|---:|---|
-| H1: joint magnetic–gravity Euler depth-consensus KDE | 2,305 accepted magnetic solutions; **0 gravity** solutions; 0 pairs | Preregistered feasibility stop. No candidate or holdout score. H1 was not relaxed or backfilled. |
-| H2: four-height TMI Euler persistence, fixed 45,962-cell budget | 17,425 positive KDE cells | Preregistered fixed-budget failure; it aborted rather than inventing support. |
-| H2-B: support-limited H2 research raster | 17,425 cells; format pass; uniqueness pass | Append-only support rule registered before proxy scoring. Its proxy result fails promotion. |
-| H2-B proxy DTI | **0.006313** | Owner-derived SGMC mirror only; not hidden truth or an official score. |
-| H3 ComCat source audit | 34,716 events advertise focal mechanisms; 238 at magnitude ≥4; one detail verified | Usable-plane count and spread across 8+ blocks unverified; H3 remains blocked and unimplemented. |
-| Frozen all-prior incumbent | **0.835907** | Same proxy instrument; highest format-eligible same-grid prior raster. The artifact is explicitly SGMC-gap-derived, so this is a circular proxy ceiling—not an independent estimate of challenge generalization. The frozen gate nevertheless retains the all-prior comparator. |
-| Expanded prior-output audit | **279 unique TIFF blobs; 277 exact-grid scores; 167 local format-eligible priors** | Added 11 TIFF path observations (9 unique blobs) from pinned current `main`; H2-B uniqueness and promotion outcomes are unchanged. |
-| Prior main-branch H40-4 | **0.124715 proxy DTI; 0/24 wins; local format gate fails** | Diagnostic against the same owner-derived SGMC proxy, not an organizer score; the raster lacks the local NaN-nodata contract. Prior main's LM-calibrated instrument result (0.34835, 4/4 folds) is a distinct proxy instrument and is not comparable. |
-| Promotion | **0/24 blocks won; HOLD** | No weekly slot used; do not submit. |
-| Live official leaderboard snapshot | #1 0.3262; #2 0.3222; #3 0.3220; #4 0.3195 | Read from the official board on 2026-10-05. These account-level scores do not identify a TIFF unless the organizer links one. |
+> **HOLD — DO NOT SUBMIT H7.** H7 passes the exact sample-grid/format audit and is distinct from all 304 comparable public prior TIFF blobs, but scores only **0.0002650893** on the current owner-derived SGMC proxy and wins **0/24** guarded spatial blocks against the frozen all-prior incumbent. No weekly slot was used. No DrivenData upload or organizer score is known.
 
-The SGMC-derived raster is an owner-derived mirror whose provenance is not independently verified here. It is only a proxy instrument. The best proxy-scoring prior is called `gapfinder-v2-sgmc-gap`; the originating project documents that this candidate used SGMC-gap pixels. Its high proxy DTI is therefore circular. It remains in the frozen all-prior comparison, and the result is disclosed rather than silently removed or relabeled. See [validation report](docs/reports/validation-h2b-20261005.md).
+### Current research TIFF
 
-### Mainline prior-output reconciliation
+- [Download H7 research-only GeoTIFF](docs/downloads/gemsdoe40-h7-rtp-euler-gravity-context-3d-kde-20261006-998f660f.tif) — **not cleared; do not submit**.
+- Method: 3,237 accepted magnetic RTP SI=0 Euler solutions, 430 supported 3-D source voxels, a preregistered `[0.5,1]` soft gravity-horizontal-gradient context factor, and weighted source-cloud KDE. It is not an edge threshold and does not claim raw-gravity Euler solutions.
+- Output: one float32 band, EPSG:32611, 3,292 × 3,730, 100 m, exact sample transform, finite `[0,1]` in-footprint values, NaN outside; 28,080 positive in-footprint pixels.
+- Raw SHA-256: `e229aa9af26018bc80b0cca880d484a5b8362c26ad79ca362423953c32e66597`.
+- Canonical pixel SHA-256: `998f660fcbf3b1a31600bd1e5e56a4d3b4c32d57c8fd8af36b3af793226a7d7c`.
+- Uniqueness: PASS against 304 exact-grid prior outputs (0 near duplicates, fixed 45,962-cell top-support budget). Public-corpus uniqueness is not a performance result or a guarantee against private/unseen artifacts.
+- Holdout: current proxy DTI `0.0002650893`; highest all-prior comparator `0.8257222257` (SGMC-gap-derived and circular on this proxy); pooled delta `−0.8254571364`; 0/24 block wins; worst block delta `−0.9421647993`. The highest non-circular prior scored `0.7618701028`. These are **local diagnostics only**, not organizer scores.
+- Full report: [`docs/reports/validation-h7-20261006.md`](docs/reports/validation-h7-20261006.md). The executive summary provides a future-only upload checklist; there is no current upload name or note because no TIFF is cleared.
 
-While reconciling this branch with the advanced `origin/main`, the audit found 11 TIFF path observations (9 new Git blobs) absent from the original inventory. All nine are now pinned to main commit `0e4a795d467f16555443ee0446875d7c32f51aa5`, added to the 279-blob corpus, and re-audited. H2-B remains distinct from all 277 exact-grid priors, and the same frozen incumbent remains highest among the 167 locally format-eligible rasters. The result remains **HOLD**.
+### Frozen H7 receipts
 
-The preserved main-branch H40-4 file has 97,654 positive cells. Its original LM-calibrated score (0.34835; 4/4 folds versus that project's prior site-best) belongs to a different internal instrument. When scored diagnostically against this run's SGMC proxy it obtains 0.124715 and wins 0/24 blocks; it fails this repository's strict local format gate because its GeoTIFF has no NaN nodata tag. None of these values is an organizer score. The prior main recommendation and full details are preserved in [`docs/archive/README-main-before-h2b.md`](docs/archive/README-main-before-h2b.md), while the candidate itself remains available at [`docs/downloads/gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e.tif`](docs/downloads/gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e.tif).
+- Format: [`docs/data/format-receipt-h7-20261006.json`](docs/data/format-receipt-h7-20261006.json).
+- Construction without proxy read: [`docs/data/h7-build-20261006.json`](docs/data/h7-build-20261006.json).
+- 24-block result and conservative promotion gate: [`docs/data/validation-h7-20261006.json`](docs/data/validation-h7-20261006.json).
+- Scores for all 304 exact-grid priors: [`docs/data/prior-holdout-scores-h7-20261006.json`](docs/data/prior-holdout-scores-h7-20261006.json).
+- Raw/canonical pixel audit: [`docs/data/uniqueness-audit-h7-20261006.json`](docs/data/uniqueness-audit-h7-20261006.json).
+- Complete pinned prior inventory: [`docs/data/prior_raster_inventory-20261006.json`](docs/data/prior_raster_inventory-20261006.json).
 
-## Project charter — the brief retained for future work
+## Candidate and evidence ledger
 
-The project brief is distilled here as a durable working charter; a structured, consolidated transcription of the prompt is preserved at [`docs/prompt.md`](docs/prompt.md) (not a verbatim transcript). The task is to build a unique, scientifically grounded DOE GEMS fault-prediction GeoTIFF together with an auditable research, validation, and project-site system. It calls for:
+| Work | Outcome | Decision and caveat |
+|---|---|---|
+| H1 / earlier joint potential-field Euler | Feasibility stop | No accepted gravity cloud; no candidate. Do not relax the gates. |
+| H2 / fixed-budget TMI persistence | Feasibility stop | Only 17,425 positive cells against the fixed 45,962-cell budget; it aborted rather than fabricate/backfill support. |
+| H2-B / natural-support TMI Euler KDE | Historical research candidate | Format and uniqueness passed, but old-proxy DTI `0.006313285` failed the gate at 0/24. Same candidate on the **current** proxy scored `0.006223113`; these results are tied to separate hashes. Still **DO NOT SUBMIT**. See [`validation-h2b-20261005.md`](docs/reports/validation-h2b-20261005.md). |
+| H3 / ComCat focal-mechanism constraint | Blocked | Need usable nodal-plane coverage and spatial spread across holdout blocks. USGS ComCat is official/free, but the registered coverage gate is unverified; no H3 implementation. |
+| H4 / raw gravity SI=−1 + magnetic Euler depth consensus | Feasibility stop before proxy | 3,237 accepted magnetic sources; 316,339 raw-gravity windows screened, 24 conditioned, **zero** within locked 100–2,500 m depth gate. No candidate; gates were not relaxed. |
+| H5 / conductivity front × basement-depth break | Registered, untried | Existing `cond_surf`, `depth_to_base_surf`, RTP and raw gravity layers; no new external data. Geological and alteration confounds remain. |
+| H6 / geodetic strain-release relay | Registered, untried | Existing strain and seismic-context layers; no new external data. Spatial validation required before any promotion. |
+| H7 / gravity-context magnetic Euler 3-D KDE | Format + uniqueness pass; holdout failure | DTI `0.0002650893`, 0/24 block wins. **HOLD — RESEARCH ONLY — DO NOT SUBMIT.** |
 
-1. Predict **geological faults that may indicate geothermal resources**, not vents or reservoirs; pursue leaderboard performance without treating any proxy as hidden truth.
-2. Preregister three to five ranked hypotheses, implement the scientifically plausible leader, test it on spatially blocked holdouts before using any of the three weekly submission slots, and never invent a score or submit an unvalidated hypothesis.
-3. Follow Euler depth-deconvolution/cloud-KDE methods if their physical inputs and feasibility gates support them. Do not replace Euler with a gradient threshold and describe it as Euler. Preserve negative outcomes; do not loosen a frozen gate after seeing its result.
-4. Generate a genuinely distinct TIFF, compare raw and canonical hashes, correlations, and support overlap against prior outputs, and disclose any similarity. Copy prior outputs only for education, never as a “new” submission.
-5. Match the organizer's sample grid and required GeoTIFF semantics exactly; explicitly prevent the portal's “Predicted values must be in range [0, 1]” error by auditing finite in-footprint values and outside-footprint nodata.
-6. Use verified official sources where possible, link evidence, flag source irregularities and access limits, and do not claim official scores, file attribution, or a PR/merge that has not happened.
-7. Build a user-friendly GitHub Pages project with a prominent executive summary, one-click GeoTIFF download, current dated leaderboard feed, submission guidance/name/comment when a candidate is genuinely eligible, plus this brief in the README.
-8. Keep the operating principles visible: *Maximize P(Win)* and *Own the Outcome*.
+The 2026-10-06 registration contains four ranked, distinct H4/H5/H6/H7 hypotheses; H7 was registered as a fallback before H7 code and output, after H4's locked feasibility stop. Full physical signatures, layer names, novelty boundaries, expected improvement/cost, and locked tests are in [`docs/research/preregistered-hypotheses-20261006.md`](docs/research/preregistered-hypotheses-20261006.md). The earlier H1/H2/H3 records remain append-only at [`docs/research/hypotheses.md`](docs/research/hypotheses.md).
 
-**Access boundary:** official challenge data download/submission requires an authenticated account and enrollment. The available feature/sample/label rasters came through a public sibling-repository bridge; the SGMC proxy is an owner-derived mirror. No private test labels or organizer score are present. No manual input has been supplied in this session.
+## Proxy, leaderboard, and provenance guardrails
 
-## Research plan and validation protocol
+The proxy discrepancy was resolved as two distinct, pinned owner-mirror versions. The current file is SHA-256 `643cbe992ef4ba37588fb469163ed8291e3ceb23d6c1f78a3cfaa462430c2da0`; the historical H2-B file is `26d142c4c93282cd94f6950ab96f22aeff59fbbea523d43d662e76fa1b161b5c`. They differ in 1,450 cells (Pearson `0.991230`; positive-support Jaccard `0.982655`) and must not be merged or presented as organizer ground truth. See the [dated pin reconciliation](docs/reports/proxy-pin-reconciliation-20261006.md), [current input manifest](docs/data/input_manifest.json), and [preserved legacy manifest](docs/data/input_manifest-20261005-h2b-legacy.json).
 
-The append-only register is [`docs/research/hypotheses.md`](docs/research/hypotheses.md). It contains three ranked hypotheses, H1's fixed implementation/gates, an H2 lock appended after H1 stopped, and the separate H2-B natural-support rule. The H2-B amendment was entered before its proxy holdout score was read. It did not rewrite or rescue H1/H2.
+The official public leaderboard snapshot retrieved 2026-10-06 lists #1 at `0.3345`; `0.3195` is rank 4. The account-level `extradr19` row is rank 13 at `0.2778` (ten submissions in the fetched snapshot). GEMSDOE32 labels H33-2-B2's `0.2747` as **projected / UNSCORED**. No file-level receipt establishes that the account row belongs to H33-2-B2; keep the claims separate. Snapshot: [`docs/data/feed-20261006.json`](docs/data/feed-20261006.json); explanation: [`docs/leaderboard-analysis.html`](docs/leaderboard-analysis.html).
 
-The frozen promotion gate is intentionally strict: on the same four-by-six spatial blocks and three-cell guards, strictly beat the best format-eligible, comparable same-grid prior raster; win at least 18 of 24 blocks; and lose no block by more than 0.005. Also pass exact-grid/range/nodata validation and the prior-raster near-duplicate audit. A failed gate means **HOLD; DO NOT SUBMIT**. All-prior proxy scores remain visible even when a prior output has circular SGMC provenance; that comparator limitation is explicitly reported.
+## Prior-raster inventory refresh
 
-### Reproduce (after obtaining the required inputs)
+- 55 public owner GEMSDOE repository heads; 55 recursive trees read without truncation.
+- 501 current-head TIFF paths explicitly classified; zero unclassified paths.
+- 48 submission-looking paths were reviewed row by row and classified as prior submission/prediction outputs based on `submission.tif` / `submission_conformant.tif` names and repository context.
+- 306 unique Git blobs across 541 pinned repo/ref/path locations; 27 new unique output blobs added over the prior inventory.
+- All 306/306 TIFF blobs fetched and Git blob SHA-1/SHA-256 verified in `/tmp/gemsdoe40-prior-cache` (external temporary cache, not committed).
+- H7 holdout comparison: 304 exact sample-grid, single-band priors; 183 also pass the strict local format filter; two cached TIFFs were not exact-grid/single-band comparators.
 
-Python 3.10+; install with `python -m pip install -e '.[test]'`. The large TIFF inputs and prior-raster cache are external artifacts and are not committed. This run used NumPy 2.4.6, SciPy 1.17.1, Rasterio 1.4.4. Set the paths below to local copies of the pinned inputs and to the verified 279-blob prior cache (including the current-main addendum):
+Read the [inventory refresh report](docs/reports/prior-raster-refresh-20261006.md) and full [pinned inventory](docs/data/prior_raster_inventory-20261006.json). Public repository paths do not prove official upload, score, selection, or account attribution; private/unpublished outputs remain outside the census.
+
+## Input facts and irregularities
+
+`python scripts/inspect_data.py` re-verified the locally available input hashes on 2026-10-06. The sample grid is 3,730 × 3,292, EPSG:32611, 100 m, transform `[100, 0, 243350, 0, -100, 4508550]`, with 5,167,373 footprint pixels and 7,111,787 NaNs outside. The sample contains 60,988 exact known-label positive pixels despite sibling prose describing an all-zero sample; it is used only for geometry/footprint, not truth. See [`data/evidence/submission_format.json`](data/evidence/submission_format.json) and [`docs/data/input_manifest.json`](docs/data/input_manifest.json).
+
+The official competition data/submission pages are login-gated in this environment. Inputs were read from public sibling-repository mirrors, byte-pinned, and labelled with their authentication limitations. Neither successful SHA verification nor official USGS metadata authenticates the proxy TIFF as an organizer-provided label raster. There are no private test labels or organizer receipts here.
+
+## Project site and future upload guide
+
+The [project home](docs/index.html) makes the H7 research TIFF download visible and labels it **DO NOT SUBMIT**. The [executive summary](docs/executive-summary.html) records why no file is cleared and gives a checklist only for a future candidate that passes every gate. No submission name/comment is supplied for H7. The [sources and limitations page](docs/sources.html) links primary sources for manual review and records provenance caveats.
+
+A public account leaderboard score, a model projection, a local proxy score, or a format PASS must never be rewritten as an organizer score. No upload has been made.
+
+## Reproducibility
+
+Python 3.10+; install with `python -m pip install -e '.[test]'`. Large TIFF inputs and the prior cache are external artifacts. In this sandbox, use `.venv/bin/python` because system Python may not have Rasterio.
 
 ```bash
-python -m pytest -q
-python scripts/fetch_prior_cache.py --inventory docs/data/prior_raster_inventory.json --cache /path/to/prior-cache
-PYTHONPATH=src python scripts/run_research.py \
-  --hypothesis H2B \
-  --features /path/to/training_features.tif \
-  --sample /path/to/example_submission.tif \
-  --labels /path/to/existing_faults.tif \
-  --proxy /path/to/owner-derived-sgmc-proxy.tif \
-  --prior-cache /path/to/prior-cache \
-  --inventory docs/data/prior_raster_inventory.json
+.venv/bin/python scripts/inspect_data.py
+.venv/bin/pytest -q
+.venv/bin/python scripts/validate_h7_candidate.py \
+  --candidate docs/downloads/gemsdoe40-h7-rtp-euler-gravity-context-3d-kde-20261006-998f660f.tif \
+  --inventory docs/data/prior_raster_inventory-20261006.json \
+  --cache /path/to/verified-306-blob-cache
+.venv/bin/python scripts/build_site.py --check
 ```
 
-The research command is CPU-heavy (the original 270-blob run took about 7.6 minutes in this sandbox); with the expanded 279-blob cache it writes the candidate under `docs/downloads/` and regenerates the H2-B-specific validation, format, and uniqueness JSON without overwriting main's preserved `validation.json`. It **does not submit** anything. Check the static Pages site without rewriting it with `python scripts/build_site.py --check`. H1 and strict H2 have feasibility stops; H2-B is the only completed proxy-scored candidate. The proxy SHA-256 is pinned in the reports and input manifest.
+`validate_h7_candidate.py` enforces explicit current-proxy SHA and verifies feature, label, and sample pins; it checks all prior scores, the strict exact-grid format receipt, the complete-cache requirement, and the fixed 45,962-cell uniqueness budget. It writes audit JSON only and does **not** submit. Do not rerun/tune H7 as a search against the same proxy after observing its failed result.
 
-## Official and scientific references
+Tests at this update: **42 passed**. The full H7 validation scan scored 304 same-grid rasters and compared all 306 unique blobs; see the linked dated receipts.
 
-- [DrivenData challenge, task, metric, and submission instructions](https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/)
-- [Official public leaderboard](https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/) — current dated snapshot in [`docs/data/feed-20261005.json`](docs/data/feed-20261005.json); the main-branch `feed.json` is retained separately.
-- [DOE/NLR September 2026 competition rules PDF](https://docs.nlr.gov/docs/fy26osti/96647.pdf)
-- [DrivenData staff clarification: exact-pixel known-fault mask](https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516/2)
-- [USGS State Geologic Map Compilation metadata](https://mrdata.usgs.gov/geology/state/USGS_SGMC_Metadata.xml) and [Data Series 1052](https://pubs.usgs.gov/ds/1052/): official source context for the vector compilation; this does **not** validate the owner-derived raster mirror used here.
-- Reid & Thurston (2014), [structural-index guidance for gravity and magnetic interpretation](https://www.reid-geophys.co.uk/wp-content/uploads/2017/11/Reid-Thurston-2014.pdf).
-- [USGS ComCat FDSN Event Web Service](https://earthquake.usgs.gov/fdsnws/event/1/) — official H3 source; preliminary product counts and one detail example are in [`h3_source_audit.json`](docs/data/h3_source_audit.json), but the registered usable-plane/spatial-coverage gate is still unmet.
-- [GEMSDOE28 Euler research](https://buffedlizard55-lab.github.io/GEMSDOE28/) — prior art, not an official source; H1/H2 novelty claims are narrow and explicitly bounded.
+## Remaining work and limitations
 
-## Repository map
+1. H7 is not competitive on the only available blocked proxy. Do not spend a weekly slot, and do not alter its gates after seeing the result.
+2. H5/H6 remain registered but untried. Any new implementation must be selected without proxy tuning, preserve the original registration, and go through a fresh spatially blocked holdout and full public-prior comparison.
+3. H3 needs official ComCat nodal-plane coverage/spatial-spread verification before implementation. External-data ideas require official-free-access checks before being called viable.
+4. The local owner-derived proxy is not independently authenticated as organizer truth. Best-prior proxy performance is circular in part, and no result predicts the private test or final expert-expanded round.
+5. The prior-raster corpus covers public repository default-branch heads at pinned commits, not private repositories, local submissions, or future outputs.
+6. No candidate is cleared, no official score exists for these local files, and no weekly slot or upload has been used.
 
-- `docs/index.html` — project status and one-click research artifact.
-- `docs/executive-summary.html` — decision, audit trail, and honest future submission instructions.
-- `docs/research/hypotheses.md` — append-only preregistration and implementation locks.
-- `docs/research/source-register.md` — verified links, provenance limits, and data irregularities.
-- `docs/reports/` — human-readable feasibility and validation reports.
-- `docs/data/` — pinned input manifest, expanded prior inventory/metadata, separate H2-B result and mainline historical validation, exact receipts, and dated feed.
-- `docs/archive/` and `docs/*-before-h2b.html` — preserved pre-merge README/site snapshots, with historical-status warnings.
-- `src/gems40/` — mainline Euler, feature-stack, grid, and LM-instrument tools.
-- `src/gemsdoe40/research_*.py` plus `euler_h2.py` — preregistered research metric, Euler, holdout, and uniqueness tools; non-conflicting module names preserve both packages.
-- `scripts/` — reproducible cache and research runners.
-- `tests/` — numerical, format, and persistence regression tests.
-
-**Status discipline:** no file here has an organizer score. No submission has been made. A public account-level leaderboard row does not prove which TIFF earned it. Any future PR, merge, page deployment, or submission must be verified from its actual service response before being described as completed.
+**Official/source links:** [problem description](https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/); [rules PDF](https://docs.nlr.gov/docs/fy26osti/96647.pdf); [public leaderboard](https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/); [USGS SGMC metadata](https://mrdata.usgs.gov/geology/state/USGS_SGMC_Metadata.xml) (source context only); [INGENIOUS regional data](https://gdr.openei.org/submissions/1391); [USGS ComCat API](https://earthquake.usgs.gov/fdsnws/event/1/); [Reid et al. (1990)](https://doi.org/10.1190/1.1442774); [Reid & Thurston (2014)](https://www.reid-geophys.co.uk/wp-content/uploads/2017/11/Reid-Thurston-2014.pdf).

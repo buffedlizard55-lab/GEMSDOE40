@@ -34,11 +34,15 @@ def test_static_site_has_no_duplicate_ids_or_broken_local_links():
             assert target.exists(), f"{page}: broken local link {href}"
 
 
-def test_site_prominently_marks_candidate_on_hold_and_offers_download():
+def test_site_prominently_marks_h7_on_hold_and_offers_research_download():
     index = (DOCS / "index.html").read_text(encoding="utf-8")
     summary = (DOCS / "executive-summary.html").read_text(encoding="utf-8")
-    candidate = DOCS / "downloads/gemsdoe40-h2b-tmi-euler-natural-support-20261005.tif"
+    candidate_name = "gemsdoe40-h7-rtp-euler-gravity-context-3d-kde-20261006-998f660f.tif"
+    candidate = DOCS / "downloads" / candidate_name
     assert candidate.is_file()
     assert "HOLD — DO NOT SUBMIT" in index
-    assert "HOLD — DO NOT SUBMIT H2-B" in summary
-    assert "downloads/gemsdoe40-h2b-tmi-euler-natural-support-20261005.tif" in index
+    assert "HOLD — DO NOT SUBMIT H7" in summary
+    assert candidate_name in index
+    assert candidate_name in summary
+    assert "No candidate is cleared today" in summary
+    assert "Do not upload H7" in summary
