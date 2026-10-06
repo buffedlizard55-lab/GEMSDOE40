@@ -328,3 +328,27 @@ No indicator beat its own mass-matched random control. Status: **H10 closed at p
 Carry-forward: both registered "new band family" levers (H9 subsurface, H10 geodetic) fail
 the proxy placement test; the dense-mass random level ≈0.1157 reproduces exactly across
 both pre-screens.
+
+### H11 pre-screen result (2026-10-06, session 3) — NEGATIVE-AT-PRESCREEN
+
+Frozen protocol: preregistration addendum 4 (pinned at sha256
+`d6117108c59f18371f25a428b608193d98abc0b03fd13f1c018d16b9c76a2a99` before scoring).
+Six indicators on bands 10/16 plus the frozen H4 Euler cloud (sha-pinned; exact H8-family
+KDE construction): proximity ranks, distance-band gradients, proximity product, and the
+registered intersection prox_deq × Euler-support. Scored on the frozen SGMC proxy with the
+audit's exact `mass_matched_controls`. Decision rule identical to H9/H10.
+
+| indicator | proxy | random ctrl | grad-topK |
+|---|---|---|---|
+| prox_deq_x_euler | **0.0748** | 0.1156 | 0.0800 |
+| HG_deq | 0.0702 | 0.1158 | 0.0800 |
+| HG_ieq | 0.0689 | 0.1158 | 0.0800 |
+| prox_both | 0.0639 | 0.1868 | 0.0832 |
+| prox_deq | 0.0637 | 0.1868 | 0.0832 |
+| prox_ieq | 0.0631 | 0.1868 | 0.0832 |
+
+No indicator beat its own mass-matched random control. Status: **H11 closed at pre-screen.**
+Register state after H9/H10/H11: every locally testable session-2 hypothesis evaluated —
+H8/H13 implemented and held at frozen gates; H9/H10/H11 negative at pre-screen; H12
+egress-blocked. Stable empirical fact: the frozen proxy rewards diffuse mass (random
+≈ 0.116 at this budget); no local signal beats it.

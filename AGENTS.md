@@ -1,7 +1,7 @@
 # Start here for every session
 
 1. Read **README.md in full**, including the retained full user brief, before proposing or generating another artifact.
-2. Read `docs/data/current-candidate.json`, `docs/reports/session2-results-20261006.md`, `docs/reports/h4-results-20261006.md`, and the append-only research register. Do not treat an archived site's upload advice as current. Session 2 status: H13 + H8 both HOLD — DO NOT SUBMIT; CAT-HID was repaired 2026-10-06 (two latent defects), and its historical zeros are void.
+2. Read `docs/data/current-candidate.json`, `docs/reports/session2-results-20261006.md`, `docs/reports/h4-results-20261006.md`, and the append-only research register. Do not treat an archived site's upload advice as current. Session 2 status: H13 + H8 both HOLD — DO NOT SUBMIT; CAT-HID was repaired 2026-10-06 (two latent defects), and its historical zeros are void. Session 3 status: H9, H10 and H11 closed NEGATIVE-AT-PRESCREEN under frozen protocols (addenda 2–4); the session-2 register is fully evaluated except egress-blocked H12; the binding gap is a source-independent validation instrument, not further band re-combinations.
 3. Preserve **Maximize P(Win)** and **Own the Outcome**: reproducible negative results are useful; unsupported score promises and wasted weekly slots are not.
 4. Register 3–5 ranked, physically explicit hypotheses and freeze the selected implementation before proxy scoring. H4's output/gates must not be retuned retroactively.
 5. Use Euler source-depth solutions and continuous depth-aware KDE when working on this brief. Do not label a gradient threshold, copied prediction or re-encoded prior TIFF as a new Euler result.

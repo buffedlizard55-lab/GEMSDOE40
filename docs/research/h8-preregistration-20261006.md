@@ -328,3 +328,46 @@ Identical to addendum 2: percentile-normalized [0,1] emission scored on the froz
 BOTH 0.039354 and 2 × its own best random control. Otherwise H10 is recorded
 NEGATIVE-AT-PRESCREEN and no further H10 compute is spent this session. The result JSON
 records the sha256 of this document at run time.
+
+## 2026-10-06 addendum 4 — H11 pre-screen (frozen before any H11 scoring)
+
+Status: registered pre-screen only. No submission slot is at stake and none will be used.
+
+### Purpose
+
+Same fail-fast discipline as H9/H10 (addenda 2–3): one frozen protocol, one run, one
+decision on whether H11 (seismicity-corridor × shallow-Euler intersection) deserves full
+implementation compute. H12 remains egress-blocked; H11 is the last locally testable
+registered candidate.
+
+### Frozen input contract
+
+1. Feature bands from the pinned `data/training_features.tif`
+   (sha256 `4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5`):
+   `deq_n100a15` (10), `ieq_n100a15` (16). No other feature bands.
+2. Euler support: the frozen H4 solution cloud `docs/downloads/h4-euler-solutions.csv.gz`
+   (sha256 `6bed30b224981ef1064256d696c585b76f438011bbae6c0a16c00e6e6f5922ba`,
+   46,656 records); only `cluster_weight > 0` records; Gaussian KDE σ = 2 px, identical to
+   the H8/H13 family constants. The cloud is read-only input, never re-tuned.
+3. Footprint, proxy, scoring, and controls: identical frozen instruments to addenda 2–3
+   (template-defined 5,167,373-cell footprint; `read_proxy_truth`,
+   `score_array_on_proxy`, `mass_matched_controls`).
+
+### Frozen indicator set (exactly six)
+
+1. `prox_deq` — percentile of −band 10 (high = near recorded seismicity).
+2. `prox_ieq` — percentile of −band 16.
+3. `HG_deq` — horizontal-gradient magnitude of band 10 (distance-field edges), σ = 2
+   pre-smoothing.
+4. `HG_ieq` — horizontal-gradient magnitude of band 16, σ = 2.
+5. `prox_both` — per-cell product of the percentile ranks of `prox_deq` and `prox_ieq`.
+6. `prox_deq_x_euler` — per-cell product of the percentile ranks of `prox_deq` and the
+   Euler-support KDE. This is the registered intersection signature itself.
+
+### Frozen emission, controls and decision rule
+
+Identical to addenda 2–3: percentile-normalized [0,1] emission scored on the frozen proxy;
+`mass_matched_controls` from the audits; advance if and only if the best indicator beats
+BOTH 0.039354 and 2 × its own best random control. Otherwise H11 is recorded
+NEGATIVE-AT-PRESCREEN and no further H11 compute is spent this session. The result JSON
+records the sha256 of this document at run time.
