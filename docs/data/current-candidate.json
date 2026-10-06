@@ -1,36 +1,28 @@
 {
-  "experiment": "H8 lineament-weighted cross-family SI=0 Euler depth-cluster KDE",
-  "filename": "gemsdoe40-h8-euler-lineament-depthcluster-20261006-785c4f5d5ce1.tif",
-  "path": "docs/downloads/gemsdoe40-h8-euler-lineament-depthcluster-20261006-785c4f5d5ce1.tif",
-  "bytes": 493872,
-  "sha256": "49d26d8195e343b531cf5e8f9ebd44e2e0a652daca6ad4f71016faabcab33509",
-  "canonical_pixels_sha256": "785c4f5d5ce1b2a341f27ac26702b77626eaed270b6af48e0127d68378983500",
-  "mass": 32485.908203125,
-  "dots": 40000,
-  "values": [
-    0.3830769658088684,
-    1.0
-  ],
-  "tracking_name": "GEMSDOE40-H8-LINEAMENT-785c4f5d5ce1",
-  "note": "Euler deconvolution SI=0 contact depth-clustering over magnetic (rtp) and isostatic gravity (differentiated once); lineament-weighted kernel-density emission; 40,000 dots; id 785c4f5d5ce1.",
-  "note_characters": 188,
-  "cloud": {
-    "path": "docs/downloads/h8-lineament-solutions.csv.gz",
-    "sha256": "0e82b38ebe521369347055541af556d3e17600f03241998e8291f6a150dd8d35",
-    "bytes": 4623502
-  },
-  "hard_twin": {
-    "filename": "gemsdoe40-h8-euler-lineament-depthcluster-20261006-785c4f5d5ce1-hard.tif",
-    "path": "docs/downloads/gemsdoe40-h8-euler-lineament-depthcluster-20261006-785c4f5d5ce1-hard.tif",
-    "sha256": "0814b454be3bd8f0f898c8822bd9d2bc7eec57271276e3b326ee4e235ed7ff3b",
-    "bytes": 371949
-  },
-  "status": "BUILT, AUDITED, NOT PROMOTED",
+  "experiment": "H41",
+  "name": "GEMSDOE40-H41-MSST-EULER-923c57ab",
+  "filename": "h41-msst-gated27-923c57ab-zeros.tif",
+  "path": "docs/downloads/h41-msst-gated27-923c57ab-zeros.tif",
+  "bytes": 204000,
+  "sha256": "1a64839d5195728df53303db5d6e9132efa2aef863c2416a41e53cc6eadd74d5",
+  "canonical_pixels_sha256": "923c57ab8dd5b44571e8e7fde570e5ab4bef427436c4a959c526a2e1e6fab4ad",
+  "mass": 40000,
+  "nan_twin": "h41-msst-gated27-923c57ab-nan.tif",
+  "zip": "h41-msst-gated27-923c57ab-zeros.zip",
+  "note": "GEMSDOE40 H41 | SI0 contact Euler depth-clusters (3 windows, 356,650 solutions); blocked-OOF ranker; 40,000 dots, 3 px spacing; unique vs 51 priors (max |r| 0.014)",
+  "download_purpose": "Unique, portal-safe submission-format GeoTIFF; not organizer-verified",
+  "status": "RELEASED CANDIDATE - unique, all-finite and format-audited; improves on the owner's best scored file on both locally reproducible instruments, but the pre-registered promotion bar (LOO rank correlation >= 0.80) is NOT met (0.705) and a prior unscored Euler arm (H40-E) still leads the blocked proxy mean, so this repository does not certify a weekly slot",
   "slot_eligible": false,
   "organizer_score": null,
-  "weekly_submission_used": false,
-  "novelty": true,
-  "corpus_size": 278,
-  "construction_reads_labels_or_priors": false,
-  "submission_note_example": "Euler deconvolution SI=0 contact depth-clustering over magnetic (rtp) and isostatic gravity (differentiated once); lineament-weighted kernel-density emission; 40,000 dots; id 785c4f5d5ce1."
+  "instrument_pred": 0.2281629681245161,
+  "proxy_dti": 0.12839316674253856,
+  "blocked_mean_dti": 0.13658807921262497,
+  "instrument_loo_spearman": 0.7054491899852724,
+  "supersedes": [
+    "docs/downloads/gemsdoe40-h4-contact-offset-depthkde-20261006-fab9f6619c02.tif",
+    "docs/downloads/h41-msst-euler-gated-cda19f23-zeros.tif"
+  ],
+  "receipt": "docs/data/h41-generation.json",
+  "audit": "docs/data/h41-audit.json",
+  "note_characters": 163
 }

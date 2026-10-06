@@ -1,105 +1,46 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Hypotheses · GEMSDOE40</title>
-<meta name="description" content="Euler deconvolution depth-clustering research for the DOE GEMS fault-mapping prize: a unique, format-audited GeoTIFF with honest, receipt-backed evidence.">
-<link rel="stylesheet" href="assets/contact.css"><link rel="stylesheet" href="assets/site.css">
-<script src="assets/contact.js" defer></script></head>
+<title>Hypotheses · GEMSDOE40</title><meta name="description" content="Euler depth-clustering fault prediction for the DOE GEMS competition: the download, the measured evidence, and the limits.">
+<link rel="stylesheet" href="assets/contact.css"><script src="assets/contact.js" defer></script></head>
 <body><a href="#main" class="skip">Skip to content</a><header class="header"><div class="wrap"><div class="masthead">
-<a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true">G</span><b>GEMS / 40</b><em>H8 EULER</em></a>
-<nav class="nav" aria-label="Main navigation"><a class="" href="index.html">Overview</a><a class="" href="executive-summary.html">Submission guide</a><a class="" href="evidence.html">Evidence</a><a class="active" href="hypotheses.html">Hypotheses</a><a class="" href="sources.html">Sources</a></nav></div></div></header>
-<main id="main" class="wrap"><div class="subhero"><p class="kicker">RANKED RESEARCH HYPOTHESES</p>
-<h1>What to try next, and why it could work.</h1>
-<p class="lead">Each entry names the exact challenge layers, the physical signature, why it should catch a fault
-the USGS/INGENIOUS catalogue misses rather than one already in it, how it differs from everything already
-implemented in this repository, its cost, and how it will be validated.</p></div>
+<a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true">G</span><b>GEMS / 40</b><em>EULER DEPTH CLUSTERS</em></a><nav class="nav" aria-label="Main navigation"><a class="" href="index.html">Overview</a><a class="" href="executive-summary.html">How to submit</a><a class="" href="evidence.html">Evidence</a><a class="active" href="hypotheses.html">Hypotheses</a><a class="" href="sources.html">Sources</a><a class="" href="executive-summary-h45.html">H45 release</a></nav></div></div></header>
+<main id="main" class="wrap"><div class="subhero"><p class="kicker">HYPOTHESES / RANKED BY EXPECTED GAIN PER UNIT COST</p><h1>Five bets, one implemented.</h1>
+<p class="lead">Each names its layers, the physical signature it targets, why it should catch a fault that is missing from the USGS/INGENIOUS catalogue rather than one already in it, and how it differs from everything already in this repository. Ranking is judgement; the measured column is separated from it.</p></div>
+<section class="section"><div class="callout"><p class="eyebrow">VALIDATION RULE USED</p><h3>Beat the holdout, or do not spend the slot.</h3><p>Every candidate is scored on the frozen 4 × 6 blocked instrument with a 3-pixel guard before a weekly slot is contemplated; H41 is the only hypothesis of the five that has been through it in this session (0.1366 mean against 0.0902 for the owner’s best file). H42 is the highest-upside idea and is blocked here only by an external metadata dependency that is named and linked.</p></div></section>
+<section class="section"><div class="sectionhead"><div><p class="eyebrow">THE LIST</p><h2>In order.</h2></div></div><article class="card"><span class="stepnum">H41 — IMPLEMENTED — this release · cost low (hours)</span>
+<p><strong>Layers:</strong> rtp (2), tmi (14), iso_grav_anom (13) for the Euler cloud; tmi_hg (3), geod_2ndinv (4), iso_grav_anom_slope (5), tc (6), iso_grav_anom_vg (11), det_elev (12), depth_to_base_surf (15) plus two cross-field gradient ratios for the ranker</p>
+<p><strong>Signature:</strong> Depth-labelled contact source positions from SI = 0 Euler deconvolution, clustered by shallow, mutually consistent, multi-scale-stable density.</p>
+<p><strong>Why it catches a fault the catalogue misses:</strong> A fault under cover has no surface scarp but still produces a coherent potential-field contact line; the provided catalogue is surface-mapped, so such a contact can fall entirely outside it.</p>
+<p><strong>How it differs from everything already implemented here:</strong> Every earlier arm in this repository either thresholds a surface derivative or clusters contact solutions without a depth-consistency requirement; H41 requires the density to survive three window scales and ranks it against public faults missing from the catalogue, out of fold.</p>
+<p><strong>Measured result:</strong> blocked proxy mean 0.1366, unique (max |r| 0.0164)</p>
 
-<section class="section"><h2>Rank 1 · H14 — tip, step-over and along-strike extension of mapped systems</h2>
-<div class="prose">
-<p><strong>Layers.</strong> Catalogue geometry (the provided <code>labels.tif</code> traces) plus independent
-strike corroboration from <code>det_elev_slope</code>, <code>rtp</code> and the gravity-gradient bands.</p>
-<p><strong>Signature.</strong> Geometric projection: 1–3 km tip extensions, relay corridors between overlapping
-traces and along-strike continuation, each crossed with a geophysical lineament test so that a projected tip is
-only emitted where the potential field also shows a contact.</p>
-<p><strong>Why it is a missing fault and not a catalogued one.</strong> DrivenData staff, 2026-09-23: a new fault
-"can include newly mapped geometry of an existing fault system"
-(<a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516">forum 11536, post 2</a>), and the known catalogue pixels are masked out of scoring
-(<a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516">forum 11516</a>) — so an extension beyond a mapped tip is scored normally while the
-mapped trace itself costs nothing.</p>
-<p><strong>Difference from prior work here.</strong> H4/H7/H8 all re-derive structures from the physics; nothing
-in the corpus emits extension geometry, and the family's best file deletes everything within 200 m of the
-catalogue instead.</p>
-<p><strong>Validation available today.</strong> Leave-the-tips-out on the provided catalogue: hide a random 20 %
-of trace tips, rebuild, and measure whether the projection recovers the hidden tips at 100 m resolution with a
-capture rate above the same-mass random baseline. Cost: moderate. Expected gain: highest of the five.</p></div></section>
+</article><article class="card"><span class="stepnum">H42 — REGISTERED — blocked here · cost high (new survey metadata)</span>
+<p><strong>Layers:</strong> Euler clouds + survey drape/altitude</p>
+<p><strong>Signature:</strong> Dip azimuth and dip from the horizontal drift of Euler solutions with solved depth, projected to a surface trace.</p>
+<p><strong>Why it catches a fault the catalogue misses:</strong> A dipping blind fault migrates laterally with depth; projecting the contact plane to the surface places dots where no scarp exists yet, which is exactly what an unmapped-fault set contains.</p>
+<p><strong>How it differs from everything already implemented here:</strong> No arm here fits orientation: the rank-aware solver in H4 discards the unidentifiable along-strike coordinate instead of projecting it.</p>
 
-<section class="section"><h2>Rank 2 · H8 — SI = 0 contact Euler depth-clustering (implemented, this release)</h2>
-<div class="prose">
-<p><strong>Layers.</strong> <code>rtp</code> (150 m upward continuation) and <code>iso_grav_anom</code>
-differentiated once (500 m continuation).</p>
-<p><strong>Signature.</strong> Depth-labelled contact solutions (Reid et al., 1990, eq. 2 with the arbitrary
-offset A) weighted by shallowness, cross-window depth consensus, local cloud lineament coherence and
-cross-family corroboration, emitted as an anisotropic kernel-density field.</p>
-<p><strong>Why it can find a missing fault.</strong> A potential-field contact is a subsurface boundary; the
-catalogue is mapped surface geology. Under basin fill, only geophysics sees the boundary — and the masked
-catalogue cannot be scored anyway.</p>
-<p><strong>Difference.</strong> H4/H7 emit a full continuous KDE with uniform solution treatment; no earlier
-artifact weights by cloud geometry, corroborates across physics families, or emits a metric-tuned sparse
-support. <strong>Measured limitation:</strong> the emitted dots are not enriched near the catalogue
-(minimum distance 200 m, catalogue w = 0.0174), and the
-real-data cloud sits at chance against the mapped faults — the honest expectation is low-to-moderate.</p>
-<p><strong>Validation.</strong> Score-anchored leave-one-out instrument (see evidence §5): currently fails to
-rank the recorded scores, so this hypothesis stays unvalidated.</p></div></section>
+<p><strong>Blocked by:</strong> needs the official GeoDAWN survey-geometry metadata (https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and); every USGS host is unreachable from this sandbox (curl returns no response), so obtainability was checked and failed here — the source itself is free and official.</p>
+</article><article class="card"><span class="stepnum">H43 — REGISTERED — cheap next test · cost low (already in the grid)</span>
+<p><strong>Layers:</strong> tmi_vg (9) and iso_grav_anom_vg (11) ratios</p>
+<p><strong>Signature:</strong> Rock-property contrast: the ratio of magnetic to gravity vertical gradients separates hydrothermal alteration from unaltered intrusive contacts.</p>
+<p><strong>Why it catches a fault the catalogue misses:</strong> Removes the dominant false-positive class of shallow contact solutions (intrusive contacts) so the surviving dots concentrate on fault-like boundaries.</p>
+<p><strong>How it differs from everything already implemented here:</strong> H41 uses both bands as independent features; the ratio is a physical discriminant rather than another correlated channel.</p>
 
-<section class="section"><h2>Rank 3 · H15 — finite-step gravity inversion (SI = −1)</h2>
-<div class="prose">
-<p><strong>Layers.</strong> <code>iso_grav_anom</code>, <code>iso_grav_anom_vg</code>,
-<code>iso_grav_anom_hg</code>, <code>depth_to_base_surf</code>.</p>
-<p><strong>Signature.</strong> The finite density step of a fault block — structural index −1 — instead of the
-infinite-contact approximation that every Euler artifact in this repository uses
-(see <a href="https://www.reid-geophys.co.uk/wp-content/uploads/2017/11/Reid-Thurston-2014.pdf">Reid &amp; Thurston, 2014</a>, on the finite-throw step).</p>
-<p><strong>Why it is missing from the catalogue.</strong> Basin-margin faults under sedimentary fill are exactly
-the class that surface compilation under-maps; the depth-to-basement layer gives an independent constraint on
-where a step can exist.</p>
-<p><strong>Difference.</strong> New structural index, new equation, new source geometry; it is not a re-tune of
-any existing runner. Cost: high (new solver plus depth-to-basement coupling).</p></div></section>
 
-<section class="section"><h2>Rank 4 · H16 — 1 m lidar scarp re-mapping</h2>
-<div class="prose">
-<p><strong>Layers.</strong> USGS 3DEP 1 m DEM (the competition data tab ships
-<code>1m_DEM_links.csv</code>), aggregated to 100 m as up-face/down-face asymmetry, cross-scarp curvature and
-differential relief.</p>
-<p><strong>Signature.</strong> The direct surface expression of the labelled fault type. In this repository's own
-measurements, the lidar scarp family scored the highest catalogue skill of any layer
-(up-face asymmetry AUC 0.5914 versus 0.4855 for the coarse detrended elevation band).</p>
-<p><strong>Why it is missing from the catalogue.</strong> Lidar-visible scarps in young deposits are precisely
-what pre-lidar compilations miss.</p>
-<p><strong>Source, verified as obtainable.</strong> <a href="https://www.usgs.gov/3d-elevation-program">USGS 3DEP</a> is free and official, and
-the competition data page links the exact DEM tiles (<a href="https://www.drivendata.org/competitions/306/competition-doe-gems/data/#1m_DEM_links.csv">1m_DEM_links.csv</a>). Flagged
-irregularity: the scarp stack built in an earlier session is <em>absent</em> from this workspace and the USGS S3
-endpoint is TLS-blocked from this sandbox, so H16 cannot be rebuilt or re-measured here; the AUC above is quoted
-from this repository's own earlier receipt and no new lidar number is claimed.</p>
-<p>Cost: high (tile download and processing).</p></div></section>
+</article><article class="card"><span class="stepnum">H44 — REGISTERED · cost low (needs the pinned 1 m DEM list)</span>
+<p><strong>Layers:</strong> labels.tif + det_elev (12) + Euler clouds</p>
+<p><strong>Signature:</strong> Fault-network topology: tips, step-overs and along-strike gaps, with a DEM lineament required to bridge the gap.</p>
+<p><strong>Why it catches a fault the catalogue misses:</strong> Unmapped faults are frequently along-strike extensions of mapped ones; the owner’s own measurement shows dots inside 200 m of the catalogue hurt, so the extension must be geometrically constrained, not assumed.</p>
+<p><strong>How it differs from everything already implemented here:</strong> The repository’s earlier gap-closure arm used topography alone (0.2449 live); H44 requires an Euler depth cluster to bridge the gap before a dot is emitted.</p>
 
-<section class="section"><h2>Rank 5 · H17 — microseismicity-aligned structures</h2>
-<div class="prose">
-<p><strong>Layers.</strong> <code>ieq_n100a15</code>, <code>deq_n100a15</code>, <code>geod_shearrate</code>.</p>
-<p><strong>Signature.</strong> An intensity ridge along an active but unmapped structure; measured catalogue
-skill is weak (w = 0.0531 at 20 k selected cells), so it is ranked last on evidence, not on appeal.</p>
-<p><strong>Why it is missing from the catalogue.</strong> Active structures can lack mapped surface traces; a
-seismicity tie is independent of any compilation. Cost: low.</p></div></section>
+<p><strong>Blocked by:</strong> needs the organizer’s 1 m DEM links CSV from the login-walled data page; a public equivalent can be substituted but was not verified here.</p>
+</article><article class="card"><span class="stepnum">H45 — REGISTERED · cost low (bands already present)</span>
+<p><strong>Layers:</strong> deq_n100a15 (10), ieq_n100a15 (16) earthquake-density bands</p>
+<p><strong>Signature:</strong> Seismicity lineaments tested against a Poisson null on the same footprint.</p>
+<p><strong>Why it catches a fault the catalogue misses:</strong> Active structures can post-date the Quaternary compilation used for the labels; the expert set may include faults with instrumental seismicity and no mapped scarp.</p>
+<p><strong>How it differs from everything already implemented here:</strong> No arm in this repository has ever ranked on the seismic-density layers.</p>
 
-<section class="section"><h2>Promotion rules that govern all five</h2>
-<div class="prose"><ol>
-<li>A hypothesis becomes a submission only after it beats the incumbent on a spatially blocked holdout
-(4 × 6 blocks with three-cell guards) <em>and</em> an instrument with demonstrated ranking power — currently
-none exists, so nothing may be promoted automatically.</li>
-<li>Every candidate must pass the format gate and the raw-output novelty gate against every cached prior raster
-before it is published; a near-duplicate is refused, not renamed.</li>
-<li>No score is ever claimed for an unscored file, and no weekly slot is spent on an unvalidated idea.</li>
-</ol></div></section></main>
-<footer class="footer"><div class="wrap">
-<p><strong>Maximize P(Win). Own the Outcome.</strong><br>Evidence before a weekly submission slot.</p>
-<p>Independent competition research, not affiliated with DOE or DrivenData. No competition login is used or stored.<br>
-<a href="https://github.com/buffedlizard55-lab/GEMSDOE40">Repository</a> ·
-<a href="user-prompt-20261006.md">Full project brief</a> ·
-<a href="data/current-candidate.json">Machine-readable current candidate</a></p></div></footer></body></html>
+
+</article></section></main><footer class="footer"><div class="wrap"><p><strong>Maximize P(Win). Own the Outcome.</strong> Independent competition research · not affiliated with DOE or DrivenData. No organizer score exists for any file on this site, and none is claimed.</p>
+<p><a href="https://github.com/buffedlizard55-lab/GEMSDOE40">Repository</a> · <a href="user-prompt-20261006b.md">Full brief</a> · <a href="reports/h41-results-20261006.md">Result record</a> · <a href="reports/review-20261006b.md">Three-pass review</a> · <a href="preregistered-hypotheses-20261006.md">Preregistered hypotheses (frozen)</a></p></div></footer></body></html>

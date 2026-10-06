@@ -1,0 +1,73 @@
+{
+  "slug": "h41-msst-gated27-923c57ab",
+  "checks": {
+    "primary_exists": true,
+    "primary_sha256_matches_receipt": true,
+    "primary_bytes_match_receipt": true,
+    "primary_all_finite": true,
+    "primary_min": 0.0,
+    "primary_max": 1.0,
+    "primary_values_are_binary": true,
+    "primary_positive_px": 40000,
+    "primary_matches_emitted_mass": true,
+    "primary_zero_outside_footprint": true,
+    "primary_zero_on_catalogue": 0,
+    "nan_sha256_matches_receipt": true,
+    "nan_outside_only": true,
+    "nan_twin_same_dots": true,
+    "zip_members": [
+      "h41-msst-gated27-923c57ab-zeros.tif"
+    ],
+    "zip_member_is_primary": true,
+    "proxy_dti_recomputed": 0.12839316674253856,
+    "proxy_dti_matches_receipt": true,
+    "fraction_within_3px_of_proxy": 0.1869,
+    "novelty": {
+      "n_priors": 51,
+      "max_abs_pearson": 0.016355410022653703,
+      "max_abs_pearson_file": "gems22-h23-a-dti-optimal-emission-6pct-20261002-e2ec4b49-allfinite.tif",
+      "max_support_jaccard": 0.011915370181422684,
+      "max_support_jaccard_file": "gems22-h23-a-dti-optimal-emission-6pct-20261002-e2ec4b49-allfinite.tif",
+      "max_top_budget_jaccard": 0.009680309971855162,
+      "max_top_budget_jaccard_file": "gems27-h28-1-edge-coherence-plus-t-v2-h27-4-20261002-1113fba5f6cb-allfinite.tif",
+      "is_new": true
+    },
+    "blocked": {
+      "summary": {
+        "blocks_scored": 16,
+        "blocks": [
+          "r0c0:5483",
+          "r0c1:5226",
+          "r0c2:5723",
+          "r0c3:9152",
+          "r0c4:9790",
+          "r0c5:7512",
+          "r1c0:4942",
+          "r1c1:3484",
+          "r1c2:5672",
+          "r1c3:994",
+          "r2c1:169",
+          "r2c2:2213",
+          "r2c3:2974",
+          "r3c2:1314",
+          "r3c3:11840",
+          "r3c4:591"
+        ],
+        "strict_wins_of_candidate": 8,
+        "comparators": [
+          "H33-B2",
+          "H27-4",
+          "H40-E"
+        ]
+      },
+      "means": {
+        "H41-candidate": 0.13658807921262497,
+        "H33-B2": 0.09015550919619439,
+        "H27-4": 0.10697239408972566,
+        "H40-E": 0.13954505565760456
+      }
+    }
+  },
+  "problems": [],
+  "verdict": "PASS"
+}

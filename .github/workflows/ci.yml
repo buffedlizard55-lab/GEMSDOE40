@@ -24,11 +24,14 @@ jobs:
         run: python -m pytest -q
       - name: Verify links, actual release bytes, full corpus and no-go evidence
         run: python scripts/build_site.py --check
-      - name: Verify deterministic current HTML generation and retained H4 bytes
+      - name: Verify deterministic current HTML and report generation
+        # Only the current release builder runs here: the retained H4/H8/H13 builders
+        # regenerate these same five pages plus the manifest and would clobber the
+        # current release. Their receipts stay in the repository, unwired.
         run: |
-          python scripts/build_contact_site.py
-          python scripts/build_h8_site.py
-          git diff --exit-code -- docs/*.html index.html
+          python scripts/build_h41_site.py --check
+          python scripts/write_h41_report.py --check
+          git diff --exit-code -- docs/*.html docs/reports/*.md index.html
       - name: Compile Python sources
         run: python -m compileall -q src scripts
       - name: Install browser for real desktop/mobile QA

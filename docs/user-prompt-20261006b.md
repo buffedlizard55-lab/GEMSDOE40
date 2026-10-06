@@ -1,0 +1,14 @@
+Review the repo. I see that the previous work has been done. But I still don't see the unique tif submission file that I need submitted to the competition. THIS IS THE HIGHEST URGENCY AND MUST BE FOLLOWED!
+
+Also I need the answers to the following questions:
+
+1. Why did 0.2778 score the best on the site and can we get a submission to score even higher than 0.2778? Currently the best score on the leaderboard is 0.3195. I need a submission that is unique and can score higher than 0.2778, ideally close to or above 0.3195.
+2. Generate 3-5 candidate geological hypotheses not yet tried, each naming the specific layer(s), the physical signature targeted, why it catches a fault MISSING from the USGS/INGENIOUS catalogue rather than one already in it, and how it differs from anything already in the repo. Rank by expected DTI improvement and implementation cost. Validate the top candidate on our spatially-blocked holdout set before spending a weekly submission slot — do not spend a submission slot on an idea that hasn't beaten the current holdout best. If a candidate needs new external data, name the specific free/official source and confirm it is obtainable before calling the idea viable.
+3. Fix the submission-format bug. The downloaded doc failed the form with "Predicted values must be in range [0, 1]" — outputs must be finite and in [0,1] inside the footprint. Provide a unique submission name + short note (e.g. "clustering with k=25").
+4. Create a clean, user-friendly GitHub Pages site with the downloadable TIF obvious at the very top, plus an executive-summary subpage explaining exactly how to submit; keep an up-to-date sources/feed section so manual checking is not needed.
+5. Store the full prompt/brief in the repo README and re-read it every session; record the Core Values Maximize P(Win) and Own the Outcome as the focal decision framework.
+6. Work autonomously, no manual input, multiple passes (Pass 1 implement; Pass 2 review bugs/edge cases; Pass 3 re-check all requirements), line-by-line verification from official trusted sources with links for manual review, flag irregularities, NO HALLUCINATIONS.
+7. Create a pull request and merge the pull request onto the main. List the remaining work and any blockers for the next session.
+8. Data placement: `bash scripts/download_competition_data.sh` then `python scripts/prepare_data.py`. The repo's Euler pipeline is CPU-runnable; the previously claimed ready-to-train U-Net is not.
+
+Standing constraints: never request passwords/tokens/2FA; do not schedule scraping of DrivenData (its terms of use forbid automated monitoring); fail closed — a candidate that cannot be shown unique, format-valid and better than the current holdout best is not promoted and no weekly slot is spent on it; candidates land in the ignored `work/` directory first and only audited bytes are published; a single submitted file must serve both prize rounds (initial and final).
