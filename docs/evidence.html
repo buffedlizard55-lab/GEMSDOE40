@@ -1,21 +1,98 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Evidence and validation · GEMSDOE40</title><meta name="description" content="Measured Euler depth-clustering research for geological fault mapping. A unique GeoTIFF, open evidence, and an honest no-submission gate.">
-<link rel="stylesheet" href="assets/contact.css"><script src="assets/contact.js" defer></script></head>
+<title>Evidence · GEMSDOE40</title>
+<meta name="description" content="Euler deconvolution depth-clustering research for the DOE GEMS fault-mapping prize: a unique, format-audited GeoTIFF with honest, receipt-backed evidence.">
+<link rel="stylesheet" href="assets/contact.css"><link rel="stylesheet" href="assets/site.css">
+<script src="assets/contact.js" defer></script></head>
 <body><a href="#main" class="skip">Skip to content</a><header class="header"><div class="wrap"><div class="masthead">
-<a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true">G</span><b>GEMS / 40</b><em>FIELD NOTES</em></a><nav class="nav" aria-label="Main navigation"><a class="" href="index.html">Overview</a><a class="" href="executive-summary.html">Submission guide</a><a class="active" href="evidence.html">Evidence</a><a class="" href="hypotheses.html">Hypotheses</a><a class="" href="sources.html">Research library</a></nav></div></div></header>
-<main id="main" class="wrap"><div class="subhero"><p class="kicker">AUDIT / NO SELECTIVE REPORTING</p><h1>Evidence you can inspect.</h1><p class="lead">Hashes prove artifact identity. Analytic tests check the inversion. A proxy test measures a limited outcome. None of these alone establishes a new fault or a leaderboard win.</p></div><section class="section"><div class="tablewrap"><table><thead><tr><th>Same blocked SGMC proxy</th><th>DTI</th><th>Interpretation</th></tr></thead><tbody>
-<tr class="row-h4"><td><strong>H4 · new depth-KDE</strong></td><td class="num">0.006902</td><td>0/16 truth-bearing block wins against either comparator below.</td></tr>
-<tr><td>H33-B2 · owner’s reference</td><td class="num">0.091550</td><td>Diagnostic only; not the owner-reported 0.2778 leaderboard score.</td></tr>
-<tr><td>Frozen all-prior incumbent</td><td class="num">0.835907</td><td>SGMC-derived: circular on this proxy.</td></tr>
-<tr><td>H2-B · previous research</td><td class="num">0.006313</td><td>Also failed promotion; not a meaningful quality target.</td></tr></tbody></table></div><div class="notice"><strong>Two independent reasons not to promote.</strong><p>H4 loses to H33-B2 in every truth-bearing block. Separately, the inherited 18-of-24 rule is impossible because eight blocks have no truth. The SGMC-derived incumbent is circular on the SGMC proxy. We preserve these negative findings and do not relabel them as an independent validation success.</p></div>
-<div class="grid3"><div class="card"><span class="tag pass">Format pass</span><h3>Exact template contract.</h3><p>One float32 band. EPSG:32611, 100 m, 3,730 × 3,292. Exact affine transform and footprint. Finite [0,1] inside; NaN only outside.</p><a href="data/h4-format.json">Re-read receipt ↗</a></div>
-<div class="card"><span class="tag pass">Uniqueness pass</span><h3>Raw values, not previews.</h3><p>343 byte-verified artifacts; 339 exact-grid and 340 full-size array comparisons. A spatial format fixture, a one-pixel demo and a header-only non-raster are explicitly distinguished from prediction maps.</p><a href="data/h4-uniqueness.json">Full comparison table ↗</a></div>
-<div class="card"><span class="tag hold">Promotion fail</span><h3>No weekly slot.</h3><p>0 block wins against both H33-B2 and the frozen incumbent. This is a new scientific implementation, not a proven improvement. No organizer score exists.</p><a href="data/h4-validation.json">Every block and comparator ↗</a></div></div></section>
-<section class="section"><div class="sectionhead"><div><p class="eyebrow">NOVELTY / LOCKED BEFORE SCORING</p><h2>Not a re-packaged previous submission.</h2></div></div><p class="soft">Reject identical file or canonical pixel hashes, |Pearson| ≥0.85, top-37,654 positive-cell Jaccard ≥0.50, or containment ≥0.80. All pixels are compared—not a random sample. Three legacy nodata=0 tags are treated as raw stored zero predictions, not used to hide absence pixels.</p>
-<div class="tablewrap"><table><thead><tr><th>Closest prior outputs by |r|</th><th>Pearson r</th><th>Top-budget Jaccard</th></tr></thead><tbody><tr><td>GEMSDOE40<br><span class="mono">gemsdoe40-h2b-tmi-euler-natural-support-20261005.tif</span></td><td class="num">0.128319</td><td class="num">0.045539</td></tr><tr><td>GEMSDOE40<br><span class="mono">gemsdoe40-h7-rtp-euler-gravity-context-3d-kde-20261006-998f660f.tif</span></td><td class="num">0.079168</td><td class="num">0.049527</td></tr><tr><td>GEMSDOE9<br><span class="mono">GEMSDOE9-basin-v1-UNAPPROVED-ae3ec2c5.tif</span></td><td class="num">0.066046</td><td class="num">0.015329</td></tr><tr><td>GEMSDOE40<br><span class="mono">gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif</span></td><td class="num">-0.055043</td><td class="num">0.000478</td></tr><tr><td>GEMSDOE40<br><span class="mono">GEMSDOE40-submission.tif</span></td><td class="num">0.043984</td><td class="num">0.019287</td></tr></tbody></table></div><p class="micro">Maximum top Jaccard: 0.049527; maximum top containment: 0.137676; near-duplicates: 0. Historical H2-B rules also flag 0 matches. Scope: 55 public repositories, 338 pinned public branch heads, 1,859 reachable commits and 190 inspected ZIP paths/versions. Unreachable/private artifacts and later pushes are not claimed.</p>
-<p class="micro">Two older NaN exports have invalid inside-footprint masks. Their actual finite values are compared as stored; exact whole-array equality to separately published all-finite companions proves the missing cells are only zero-storage variants. The companions supply the complete comparisons. Nothing is silently imputed. <a href="data/prior-nonprediction-forensics-20261006.json">Header/demo forensics</a> · <a href="data/prior-exclusion-review-20261006.json">Every excluded source path</a>.</p><div class="twocol comparison"><figure><a href="assets/h4-raster.png"><img loading="lazy" src="assets/h4-raster.png" alt="New H4 depth-KDE on the template grid"></a><figcaption>H4: continuous weighted depth-solution density.</figcaption></figure><figure><a href="assets/h33-raster.png"><img loading="lazy" src="assets/h33-raster.png" alt="Historical H33-B2 dotted prediction on the same extent and color scale"></a><figcaption>H33-B2: historical binary dotted geometry. Both previews use the same 0–1 color range and 4×4 maximum pooling for visibility; TIFFs are unmodified.</figcaption></figure></div></section>
-<section class="section prose"><h2>Reproducibility and verification passes</h2><p>Pass 1 restored pinned inputs, registered H4–H7, implemented analytic contact tests, and generated the complete Euler clouds. Pass 2 identified and fixed the nodata-zero comparison bug, incomplete old downloads and fail-open novelty behavior; it also audited archived/raw model outputs and ZIPs. Pass 3 reproduces the exact candidate, checks the current site and download, and verifies CI/PR/deployment separately.</p><p><a href="reports/review-20261006.md">Full three-pass ledger</a> · <a href="data/h4-reproduction.json">Measured reproduction receipt</a> · <a href="reports/h4-results-20261006.md">Human-readable result</a> · <a href="research/h4-preregistration-20261006.md">Unchanged registration</a></p>
-<h2>What cannot be claimed</h2><ul><li>No independently verified unknown-fault truth set or competition score for H4.</li><li>No proof that a modeled contact is a fault, geothermal vent, fluid conduit, or viable reservoir.</li><li>No claim that overlapping windows are independent measurements or that conditional least-squares standard errors include terrain/processing bias.</li><li>No authentication of the source mirrors by the organizer. The input hashes prove consistency, not provenance beyond their documented public bridge.</li></ul>
-<p><a href="data/h4-generation.json">Configuration, input and code hashes</a> · <a href="data/prior-inventory-20261006.json">Every prior path and pinned revision</a> · <a href="data/acquisition-20261006.json">Acquisition receipt</a></p></section></main><footer class="footer"><div class="wrap"><p><strong>Maximize P(Win). Own the Outcome.</strong><br>Evidence before a weekly submission slot.</p>
-<p>Independent competition research · not affiliated with DOE or DrivenData.<br><a href="https://github.com/buffedlizard55-lab/GEMSDOE40">Repository</a> · <a href="user-prompt-20261006.md">Full project brief</a> · <a href="reports/review-20261006.md">Three-pass review</a></p></div></footer></body></html>
+<a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true">G</span><b>GEMS / 40</b><em>H8 EULER</em></a>
+<nav class="nav" aria-label="Main navigation"><a class="" href="index.html">Overview</a><a class="" href="executive-summary.html">Submission guide</a><a class="active" href="evidence.html">Evidence</a><a class="" href="hypotheses.html">Hypotheses</a><a class="" href="sources.html">Sources</a></nav></div></div></header>
+<main id="main" class="wrap"><div class="subhero"><p class="kicker">EVIDENCE / EVERY NUMBER WITH ITS TRUTH LABEL</p>
+<h1>What was measured.</h1><p class="lead">Format, novelty, named surrogates and a spatially blocked breakdown,
+followed by every negative result that stops this file from being promoted.</p></div>
+
+<section class="section"><h2>1 · Format gate (re-read from the published bytes)</h2>
+<div class="tablewrap"><table><thead><tr><th>Check</th><th>Value</th></tr></thead><tbody>
+<tr><td>Valid against the official template</td><td class="num">true</td></tr>
+<tr><td>Band / dtype / CRS</td><td class="num">1 / float32 / EPSG:32611</td></tr>
+<tr><td>Shape / geotransform</td><td class="num">3730 × 3292 / (100.0, 0.0, 243350.0, 0.0, -100.0, 4508550.0)</td></tr>
+<tr><td>In-footprint range</td><td class="num">0.383077 … 1.000000</td></tr>
+<tr><td>In-footprint non-zero cells</td><td class="num">40,000</td></tr>
+<tr><td>Outside-footprint NaN cells</td><td class="num">7,111,787</td></tr>
+<tr><td>Distinct values on the support</td><td class="num">19,923</td></tr>
+<tr><td>Raw SHA-256</td><td class="mono">49d26d8195e343b531cf5e8f9ebd44e2e0a652daca6ad4f71016faabcab33509</td></tr>
+<tr><td>Canonical pixel SHA-256</td><td class="mono">785c4f5d5ce1b2a341f27ac26702b77626eaed270b6af48e0127d68378983500</td></tr>
+</tbody></table></div>
+
+<h2>2 · Novelty against every cached prior output</h2>
+<p>278 comparable rasters were read and compared cell by cell. Exact duplicates:
+<strong>0</strong>. Largest |Pearson| correlation:
+<strong>0.0253</strong> (gate 0.95). Largest
+top-mass Jaccard: <strong>0.0154</strong>
+(gate 0.5) over 1 raster that is
+not comparable. Verdict: <strong>novel</strong>.</p>
+<div class="tablewrap"><table><thead><tr><th>Closest prior</th><th>Pearson</th><th>Jaccard (top mass)</th>
+<th>Containment</th></tr></thead><tbody>
+<tr><td class="mono">033c13e3ef317f0db69def3e498bfdb637df28f8.tif</td><td class="num">0.0253</td><td class="num">0.0154</td><td class="num">0.0324</td></tr><tr><td class="mono">76f9bf7ac3add357150ef80953193d331efa3e4c.tif</td><td class="num">0.0253</td><td class="num">0.0154</td><td class="num">0.0324</td></tr><tr><td class="mono">6b14c61522b6c9c04abae93e8b067eacfc59977d.tif</td><td class="num">0.0140</td><td class="num">0.0110</td><td class="num">0.0233</td></tr><tr><td class="mono">d4639f1bf50f1d4870b752fc0bf9df5ad30b9ce6.tif</td><td class="num">-0.0134</td><td class="num">0.0076</td><td class="num">0.6462</td></tr><tr><td class="mono">d3aac36c0d38464793640b30920d2a3bea4c4143.tif</td><td class="num">-0.0127</td><td class="num">0.0053</td><td class="num">0.0614</td></tr><tr><td class="mono">730d3348cc15e084a7f4cba0946405b2a3833c9b.tif</td><td class="num">-0.0111</td><td class="num">0.0064</td><td class="num">0.0979</td></tr>
+</tbody></table></div>
+<p class="micro">A containment of exactly 1.0 appears in the family's earlier audit for dense, all-positive
+fields; here the largest containment is 0.6462.
+Coverage caveat, stated plainly: this gate compares the <strong>279
+prior rasters whose bytes are present and hash-verified in <span class="mono">data/prior/</span></strong>. The wider
+inventory lists 343 rasters; the remaining 64 could not be re-fetched from this sandbox and are <em>not</em> claimed
+as compared.</p>
+
+<h2>3 · Named surrogates — proxies, never scores</h2>
+<div class="tablewrap"><table><thead><tr><th>Surrogate truth</th><th>Mean credit per mass (w)</th>
+<th>Truth covered</th><th>Proxy DTI</th></tr></thead><tbody>
+<tr><td>USGS/INGENIOUS catalogue, with the catalogue and a 1 px ring excluded from the prediction domain</td>
+<td class="num">0.0174</td><td class="num">0.0178</td><td class="num">0.01964</td></tr>
+<tr><td>SGMC-derived faults further than 300 m from the catalogue (owner-derived mirror)</td>
+<td class="num">0.0376</td><td class="num">0.0453</td><td class="num">0.04979</td></tr>
+</tbody></table></div>
+<p class="micro">Distance of the emitted dots to the catalogue: minimum
+200 m, median 2341 m,
+95th percentile 8355 m. A large minimum distance is expected of any
+file that declines to re-draw traces the organizers mask out of scoring.</p>
+
+<h2>4 · Spatially blocked (4 × 6, three-cell guards)</h2>
+<div class="tablewrap"><table><thead><tr><th>Block</th><th>Emitted dots</th><th>Dots vs catalogue</th><th>w vs catalogue</th><th>w vs SGMC off-cat</th></tr></thead><tbody><tr><td class="num">0,0</td><td class="num">1,809</td><td class="num">2,114</td><td class="num">0.0132</td><td class="num">0.0505</td></tr><tr><td class="num">0,1</td><td class="num">4,119</td><td class="num">5,871</td><td class="num">0.0173</td><td class="num">0.0173</td></tr><tr><td class="num">0,2</td><td class="num">4,181</td><td class="num">3,104</td><td class="num">0.0089</td><td class="num">0.0392</td></tr><tr><td class="num">0,3</td><td class="num">4,014</td><td class="num">4,325</td><td class="num">0.0192</td><td class="num">0.0461</td></tr><tr><td class="num">0,4</td><td class="num">3,270</td><td class="num">4,142</td><td class="num">0.0186</td><td class="num">0.0623</td></tr><tr><td class="num">0,5</td><td class="num">3,614</td><td class="num">3,037</td><td class="num">0.0158</td><td class="num">0.0517</td></tr><tr><td class="num">1,0</td><td class="num">1,015</td><td class="num">2,857</td><td class="num">0.0244</td><td class="num">0.0814</td></tr><tr><td class="num">1,1</td><td class="num">2,944</td><td class="num">7,080</td><td class="num">0.0185</td><td class="num">0.0161</td></tr><tr><td class="num">1,2</td><td class="num">4,693</td><td class="num">8,239</td><td class="num">0.0220</td><td class="num">0.0160</td></tr><tr><td class="num">1,3</td><td class="num">426</td><td class="num">1,128</td><td class="num">0.0275</td><td class="num">0.0594</td></tr><tr><td class="num">1,4</td><td class="num">0</td><td class="num">0</td><td class="num">0.0000</td><td class="num">0.0000</td></tr><tr><td class="num">1,5</td><td class="num">0</td><td class="num">0</td><td class="num">0.0000</td><td class="num">0.0000</td></tr><tr><td class="num">2,0</td><td class="num">0</td><td class="num">0</td><td class="num">0.0000</td><td class="num">0.0000</td></tr><tr><td class="num">2,1</td><td class="num">516</td><td class="num">451</td><td class="num">0.0139</td><td class="num">0.0043</td></tr><tr><td class="num">2,2</td><td class="num">2,755</td><td class="num">5,116</td><td class="num">0.0156</td><td class="num">0.0151</td></tr><tr><td class="num">2,3</td><td class="num">2,015</td><td class="num">4,280</td><td class="num">0.0232</td><td class="num">0.0312</td></tr><tr><td class="num">2,4</td><td class="num">0</td><td class="num">0</td><td class="num">0.0000</td><td class="num">0.0000</td></tr><tr><td class="num">2,5</td><td class="num">0</td><td class="num">0</td><td class="num">0.0000</td><td class="num">0.0000</td></tr><tr><td class="num">3,0</td><td class="num">0</td><td class="num">0</td><td class="num">0.0000</td><td class="num">0.0000</td></tr><tr><td class="num">3,1</td><td class="num">0</td><td class="num">0</td><td class="num">0.0000</td><td class="num">0.0000</td></tr><tr><td class="num">3,2</td><td class="num">898</td><td class="num">3,869</td><td class="num">0.0319</td><td class="num">0.0208</td></tr><tr><td class="num">3,3</td><td class="num">3,447</td><td class="num">5,031</td><td class="num">0.0133</td><td class="num">0.0665</td></tr><tr><td class="num">3,4</td><td class="num">284</td><td class="num">344</td><td class="num">0.0142</td><td class="num">0.0627</td></tr><tr><td class="num">3,5</td><td class="num">0</td><td class="num">0</td><td class="num">0.0000</td><td class="num">0.0000</td></tr></tbody></table></div>
+<p class="micro">Block numbers are diagnostics, not scores: the 300 m kernel of an interior cell may be supplied
+by a dot just outside the interior, so nothing is clipped away from the metric.</p>
+
+<h2>5 · Score-anchored instrument test (the central negative result)</h2>
+<p>The family's audit scored sixteen artifacts against the recorded leaderboard rows and measured every candidate
+instrument. None reaches the ρ ≥ 0.8 the promotion rule requires:</p>
+<div class="tablewrap"><table><thead><tr><th>Instrument</th><th>Spearman ρ vs recorded score</th></tr></thead><tbody>
+<tr><td>Emitted mass (a negative predictor: more mass scored worse)</td><td class="num">-0.676</td></tr>
+<tr><td>Catalogue-calibrated LM instrument</td><td class="num">+0.100</td></tr>
+<tr><td>SGMC off-catalogue credit density</td><td class="num">+0.676</td></tr>
+<tr><td>Required by the family's own promotion rule</td><td class="num">≥ 0.800</td></tr>
+</tbody></table></div>
+<p>Consequence, stated once and plainly: <strong>no local number available to this programme can justify spending
+a weekly submission slot</strong>. That is why this release is published as a research artifact.</p>
+
+<h2>6 · Solver control on an exact analytic contact</h2>
+<p>The frozen SI = 0 solver was run on a synthetic field <code>T = A·atan2(x − x₀, z₀)</code>, which is exactly
+homogeneous of degree zero, so a correct solver must return the contact. Measured: at zero noise, windows 9 / 15 /
+25 accept 585 / 912 / 1,417 solutions with median lateral error 0.6 / 0.3 / 1.0 m and depth recovered to 500 m;
+at σ = 1 only 4 solutions survive at window 9 with 72 m median lateral error; at σ = 5 none. The code therefore
+works on model-conforming data, and the real-data no-skill result is a property of the data.</p>
+
+<h2>7 · Reproduction</h2>
+<div class="prose"><p>Every number on this page is regenerated by two commands from the repository root:</p>
+<pre class="codebox">OPENBLAS_NUM_THREADS=2 python scripts/run_h8_lineament.py   # writes work/h8lineament/*
+OPENBLAS_NUM_THREADS=1 python scripts/audit_h8_lineament.py  # writes docs/data/h8-lineament-audit.json</pre>
+<p class="micro">Receipts: <a href="data/h8-lineament-audit.json">audit</a> ·
+<a href="data/h8-lineament-generation.json">generation</a> ·
+<a href="data/instrument-audit-20261006.json">instrument audit</a> ·
+<a href="data/h33-measured-analysis.json">h33 measurement</a> ·
+<a href="research/h8-analysis-20261006.md">analysis</a> ·
+<a href="research/h8-preregistration-20261006.md">pre-registration</a>.</p></div>
+</section></main>
+<footer class="footer"><div class="wrap">
+<p><strong>Maximize P(Win). Own the Outcome.</strong><br>Evidence before a weekly submission slot.</p>
+<p>Independent competition research, not affiliated with DOE or DrivenData. No competition login is used or stored.<br>
+<a href="https://github.com/buffedlizard55-lab/GEMSDOE40">Repository</a> ·
+<a href="user-prompt-20261006.md">Full project brief</a> ·
+<a href="data/current-candidate.json">Machine-readable current candidate</a></p></div></footer></body></html>

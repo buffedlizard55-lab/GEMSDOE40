@@ -1,4 +1,4 @@
-name: Reproduce H4 on CPU (no competition upload)
+name: Reproduce H4 and H8 on CPU (no competition upload)
 
 on:
   workflow_dispatch:
@@ -25,8 +25,23 @@ jobs:
         run: bash scripts/download_competition_data.sh && python scripts/prepare_data.py
       - name: Restore every raw TIFF in the frozen reachable-history inventory
         run: python scripts/fetch_prior_cache.py --inventory docs/data/prior-inventory-20261006.json --cache data/prior
-      - name: Compute independently from the magnetic and gravity source layers
+      - name: Compute independently from the magnetic and gravity source layers (H4, retained)
         run: python scripts/run_contact_euler.py --output work/h4-reproduction
+      - name: Recompute the current H8 candidate from the magnetic and gravity source layers
+        run: python scripts/run_h8_lineament.py
+      - name: Re-audit the recomputed H8 candidate and require byte-identical artifacts
+        run: |
+          python scripts/audit_h8_lineament.py
+          python - <<'EOF'
+          import hashlib, json, pathlib, sys
+          manifest = json.loads(pathlib.Path("docs/data/current-candidate.json").read_text())
+          receipt = json.loads(pathlib.Path("work/h8lineament/h8-lineament-receipt.json").read_text())
+          again = receipt["emission"]["continuous"]
+          published = hashlib.sha256(pathlib.Path(manifest["path"]).read_bytes()).hexdigest()
+          print("recomputed", again["sha256"], "published", published)
+          if again["canonical_pixels_sha256"] != manifest["canonical_pixels_sha256"]:
+              sys.exit("recomputed pixels differ from the published candidate")
+          EOF
       - name: Require byte-identical reproduction of TIFF and point cloud
         run: python scripts/verify_reproduction.py
       - name: Repeat the fixed raw-output audit and blocked scores, without tuning
@@ -44,5 +59,8 @@ jobs:
             work/h4-reproduction/uniqueness.json
             docs/data/h4-*.json
             docs/data/current-candidate.json
+            docs/data/h8-lineament-audit.json
             docs/downloads/gemsdoe40-h4-*.tif
+            docs/downloads/gemsdoe40-h8-*.tif
             docs/downloads/h4-euler-solutions.csv.gz
+            docs/downloads/h8-lineament-solutions.csv.gz

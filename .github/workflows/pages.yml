@@ -3,7 +3,7 @@ name: Publish verified research site
 on:
   push:
     branches: [main]
-    paths: ['docs/**', 'index.html', 'scripts/build_site.py', 'scripts/build_contact_site.py', 'scripts/update_source_feed.py', 'scripts/stage_pages.py', '.github/workflows/pages.yml']
+    paths: ['docs/**', 'index.html', 'README.md', 'scripts/build_h8_site.py', 'scripts/build_site.py', 'scripts/build_contact_site.py', 'scripts/update_source_feed.py', 'scripts/stage_pages.py', 'src/gemsdoe40/**', '.github/workflows/pages.yml']
   schedule:
     - cron: '23 11 * * *'
   workflow_dispatch:

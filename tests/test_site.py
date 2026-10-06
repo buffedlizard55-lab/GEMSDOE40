@@ -34,48 +34,44 @@ def test_static_site_has_no_duplicate_ids_or_broken_local_links():
             assert target.exists(), f"{page}: broken local link {href}"
 
 
-def test_site_prominently_marks_candidate_on_hold_and_offers_download():
+def test_site_prominently_offers_the_current_download_with_its_real_status():
+    """The front page must make the download obvious and must not imply a validated score."""
     index = (DOCS / "index.html").read_text(encoding="utf-8")
     summary = (DOCS / "executive-summary.html").read_text(encoding="utf-8")
     import json
     manifest = json.loads((DOCS / "data/current-candidate.json").read_text())
     candidate = DOCS / "downloads" / manifest["filename"]
     assert candidate.is_file()
-    assert "HOLD — DO NOT SUBMIT" in index
-    assert "HOLD — DO NOT SUBMIT" in summary
-    assert f'downloads/{manifest["filename"]}' in index
-    assert f'downloads/{manifest["filename"]}' in summary
+    for text in (index, summary):
+        assert f'downloads/{manifest["filename"]}' in text
+        assert "not promoted" in text.lower()
+    assert "BUILT, AUDITED, NOT PROMOTED" in summary
     assert manifest["slot_eligible"] is False
     assert manifest["organizer_score"] is None
+    assert manifest["weekly_submission_used"] is False
+    assert "HOLD" in summary  # retained history stays explicitly held
 
 
-
-def test_site_prominently_marks_h7_on_hold_and_offers_research_download():
-    index = (DOCS / "index.html").read_text(encoding="utf-8")
+def test_retained_history_artifacts_are_still_offered_and_held():
+    """Earlier research artifacts remain downloadable, byte-identical, and explicitly not cleared."""
     summary = (DOCS / "executive-summary.html").read_text(encoding="utf-8")
-    candidate_name = "gemsdoe40-h7-rtp-euler-gravity-context-3d-kde-20261006-998f660f.tif"
-    candidate = DOCS / "downloads" / candidate_name
-    assert candidate.is_file()
-    assert "HOLD — DO NOT SUBMIT" in index
-    assert "HOLD — DO NOT SUBMIT H7" in summary
-    assert candidate_name in index
-    assert candidate_name in summary
-    assert "No candidate is cleared today" in summary
-    assert "Do not upload H7" in summary
+    index = (DOCS / "index.html").read_text(encoding="utf-8")
+    h7 = "gemsdoe40-h7-rtp-euler-gravity-context-3d-kde-20261006-998f660f.tif"
+    h40_zeros = "gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-zeros.tif"
+    for name in (h7, h40_zeros):
+        assert (DOCS / "downloads" / name).is_file()
+        assert name in summary
+        assert "HOLD — DO NOT SUBMIT" in summary
+    assert "gemsdoe40-h8-euler-lineament-depthcluster" in index
 
 
-def test_h40_artifact_is_offered_beside_an_explicit_hold():
+def test_h40_artifact_receipt_is_unchanged_beside_an_explicit_hold():
     import hashlib
     import json
-    index = (DOCS / "index.html").read_text(encoding="utf-8")
-    summary = (DOCS / "executive-summary.html").read_text(encoding="utf-8")
     zeros = DOCS / "downloads" / "gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-zeros.tif"
     twin = DOCS / "downloads" / "gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-nan.tif"
     receipt_path = DOCS / "downloads" / "gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-audit.json"
     assert zeros.is_file() and twin.is_file() and receipt_path.is_file()
-    assert f"downloads/{zeros.name}" in index and f"downloads/{zeros.name}" in summary
-    assert "HOLD — DO NOT SUBMIT" in index
-    assert "HOLD — DO NOT SUBMIT H7 or H40" in summary
     receipt = json.loads(receipt_path.read_text())
     assert hashlib.sha256(zeros.read_bytes()).hexdigest() == receipt["zeros_tif"]["sha256"]
     inst = receipt["stage"]["emission"]["instrument"]
@@ -84,19 +80,20 @@ def test_h40_artifact_is_offered_beside_an_explicit_hold():
     assert receipt["stage"]["uniqueness"]["is_new"] is True
 
 
-def test_instrument_audit_retires_the_two_promotion_instruments():
-    """The 2026-10-06 audit measured both instruments against 16 owner-attributed scores; file-level organizer attribution is unverified."""
+def test_site_states_that_no_local_instrument_reaches_the_promotion_bar():
+    """The 2026-10-06 audit measured every instrument against 16 owner-attributed scores."""
     import json
     audit = json.loads((DOCS / "data" / "instrument-audit-20261006.json").read_text())
     stats = audit["statistics"]
     assert stats["spearman_lm_vs_live"] <= 0.3        # LM instrument: no ranking power
     assert stats["spearman_mass_vs_live"] <= -0.5     # mass alone anti-correlates
+    assert stats["spearman_w_offcat_vs_live"] <= 0.8  # off-catalogue proxy below the bar
     cases = {c["case"] for c in audit["decisive_counterexamples"]}
     assert {"mass-matched control pair", "blind lattice"} <= cases
     assert ">= 0.8" in audit["verdict"] or "0.8" in audit["next_session_requirement"]
     assert len(audit["artifacts"]) == 16
     index = (DOCS / "index.html").read_text(encoding="utf-8")
-    summary = (DOCS / "executive-summary.html").read_text(encoding="utf-8")
-    assert "instrument-audit-20261006.json" in index
-    assert "instrument-audit-20261006.json" in summary
-    assert "withdrawn" in index.lower()
+    evidence = (DOCS / "evidence.html").read_text(encoding="utf-8")
+    assert "instrument-audit-20261006.json" in evidence
+    assert "≥ 0.800" in evidence
+    assert "no local" in (index + evidence).lower()

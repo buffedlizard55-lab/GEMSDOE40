@@ -1,0 +1,245 @@
+{
+  "experiment": "H8 lineament-aware cross-family SI=0 Euler depth-cluster KDE",
+  "started_utc": "2026-10-06T04:03:48.412223+00:00",
+  "configuration": {
+    "registered": "docs/research/h8-preregistration-20261006.md",
+    "si": 0,
+    "stride": 4,
+    "fft_pad": 192,
+    "cell_m": 100.0,
+    "families": [
+      {
+        "band": "rtp",
+        "continuation_m": 150.0,
+        "derivative_order": 0,
+        "windows": [
+          9,
+          15,
+          21
+        ],
+        "edge_guard_m": 700.0,
+        "max_depth_m": 3000.0
+      },
+      {
+        "band": "iso_grav_anom",
+        "continuation_m": 500.0,
+        "derivative_order": 1,
+        "windows": [
+          15,
+          21,
+          31
+        ],
+        "edge_guard_m": 1500.0,
+        "max_depth_m": 5000.0
+      }
+    ],
+    "cluster_xy_m": 300.0,
+    "cluster_depth_floor_m": 200.0,
+    "cluster_depth_fraction": 0.35,
+    "min_neighbours": 3,
+    "depth_decay_m": 1200.0,
+    "coherence_xy_m": 500.0,
+    "min_coherence_neighbours": 5,
+    "corroboration_xy_m": 400.0,
+    "corroboration_depth_m": 600.0,
+    "uncorroborated_factor": 0.5,
+    "kernel_sigma_along_px": 1.6,
+    "kernel_sigma_across_px": 0.55,
+    "kernel_radius_px": 4,
+    "direction_bins": 12,
+    "nms_spacing_px": 2.8,
+    "mass_budget": 40000,
+    "catalogue_exclusion_px": 1,
+    "normalisation": "median density of the accepted dots, clipped to [0,1]"
+  },
+  "software": {
+    "python": "3.11.2",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "rasterio": "1.4.4"
+  },
+  "inputs": {
+    "training_features.tif": {
+      "sha256": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5",
+      "bytes": 418912844
+    },
+    "sample_submission.tif": {
+      "sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+      "bytes": 1599597
+    },
+    "labels.tif": {
+      "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+      "bytes": 425830
+    }
+  },
+  "families": {
+    "rtp": {
+      "window_totals": [
+        {
+          "windows_tested": 318695,
+          "accepted": 54827,
+          "rank2_tested": 157404,
+          "rejected_condition_or_rank": 0,
+          "rejected_residual": 231446,
+          "rejected_depth": 126940,
+          "rejected_horizontal": 91261,
+          "rejected_depth_se": 11494,
+          "rank2_accepted": 36516,
+          "window": 9,
+          "family": "rtp",
+          "rejection_counts_overlap": true
+        },
+        {
+          "windows_tested": 315258,
+          "accepted": 24726,
+          "rank2_tested": 90683,
+          "rejected_condition_or_rank": 0,
+          "rejected_residual": 280761,
+          "rejected_depth": 144455,
+          "rejected_horizontal": 45820,
+          "rejected_depth_se": 2777,
+          "rank2_accepted": 14995,
+          "window": 15,
+          "family": "rtp",
+          "rejection_counts_overlap": true
+        },
+        {
+          "windows_tested": 311867,
+          "accepted": 11913,
+          "rank2_tested": 55453,
+          "rejected_condition_or_rank": 0,
+          "rejected_residual": 295617,
+          "rejected_depth": 159965,
+          "rejected_horizontal": 25768,
+          "rejected_depth_se": 889,
+          "rank2_accepted": 6814,
+          "window": 21,
+          "family": "rtp",
+          "rejection_counts_overlap": true
+        }
+      ],
+      "accepted": 91466,
+      "accepted_shallow_lt_2000m": 91034,
+      "retained": 40185,
+      "weight_sum": 5540.256180613917,
+      "corroborated_fraction": 0.2842354112230932,
+      "coherence_p50": 0.7039754467401476,
+      "depth_m_p05_p50_p95": [
+        188.05468273987753,
+        524.3607074407654,
+        1273.2189346279106
+      ]
+    },
+    "iso_grav_anom": {
+      "window_totals": [
+        {
+          "windows_tested": 315258,
+          "accepted": 57311,
+          "rank2_tested": 203344,
+          "rejected_condition_or_rank": 0,
+          "rejected_residual": 208684,
+          "rejected_depth": 102536,
+          "rejected_horizontal": 120601,
+          "rejected_depth_se": 14565,
+          "rank2_accepted": 46457,
+          "window": 15,
+          "family": "iso_grav_anom",
+          "rejection_counts_overlap": true
+        },
+        {
+          "windows_tested": 311867,
+          "accepted": 54459,
+          "rank2_tested": 152212,
+          "rejected_condition_or_rank": 0,
+          "rejected_residual": 234118,
+          "rejected_depth": 84040,
+          "rejected_horizontal": 75772,
+          "rejected_depth_se": 4446,
+          "rank2_accepted": 38462,
+          "window": 21,
+          "family": "iso_grav_anom",
+          "rejection_counts_overlap": true
+        },
+        {
+          "windows_tested": 306089,
+          "accepted": 33165,
+          "rank2_tested": 88942,
+          "rejected_condition_or_rank": 0,
+          "rejected_residual": 264207,
+          "rejected_depth": 89648,
+          "rejected_horizontal": 38290,
+          "rejected_depth_se": 1160,
+          "rank2_accepted": 17335,
+          "window": 31,
+          "family": "iso_grav_anom",
+          "rejection_counts_overlap": true
+        }
+      ],
+      "accepted": 144935,
+      "accepted_shallow_lt_2000m": 136900,
+      "retained": 84197,
+      "weight_sum": 8251.077861997626,
+      "corroborated_fraction": 0.21885577870945522,
+      "coherence_p50": 0.5932571492873138,
+      "depth_m_p05_p50_p95": [
+        193.2166952292058,
+        816.5629951202084,
+        2077.6233725280244
+      ]
+    }
+  },
+  "emission": {
+    "dots": 40000,
+    "spacing_px": 2.8,
+    "budget": 40000,
+    "normaliser": 0.0212223670324066,
+    "value_min": 0.3830769658088684,
+    "value_max": 1.0,
+    "value_p50": 0.999992847442627,
+    "distinct_values": 19923,
+    "value_fraction_at_one": 0.5,
+    "catalogue_pixels_excluded": 60988,
+    "exclusion_ring_pixels": 176003,
+    "continuous": {
+      "path": "/home/user/GEMSDOE40/work/h8lineament/h8-lineament-continuous.tif",
+      "sha256": "49d26d8195e343b531cf5e8f9ebd44e2e0a652daca6ad4f71016faabcab33509",
+      "canonical_pixels_sha256": "785c4f5d5ce1b2a341f27ac26702b77626eaed270b6af48e0127d68378983500"
+    },
+    "binary_twin": {
+      "path": "/home/user/GEMSDOE40/work/h8lineament/h8-lineament-binary.tif",
+      "sha256": "0814b454be3bd8f0f898c8822bd9d2bc7eec57271276e3b326ee4e235ed7ff3b",
+      "canonical_pixels_sha256": "3acb84c351d4c4dafb012f31e30e79602c25fe3416f1905fd125116048d41a35"
+    },
+    "tiff": {
+      "compress": "DEFLATE",
+      "predictor": 1,
+      "note": "predictor 1 (none) matches the official sample_submission.tif; the previous portal rejection was caused by the integer predictor 2"
+    },
+    "format": true
+  },
+  "not_a_score": true,
+  "construction_reads_labels_or_priors": false,
+  "elapsed_s": 176.4,
+  "grid": {
+    "shape": [
+      3730,
+      3292
+    ],
+    "crs": "EPSG:32611",
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "footprint_cells": 5167373
+  },
+  "solution_cloud": {
+    "path": "/home/user/GEMSDOE40/work/h8lineament/h8-lineament-solutions.csv.gz",
+    "bytes": 4623529,
+    "sha256": "104d05e7b36ec5899624beffcd57732e6c3ffebce883c471a340143df66b2269",
+    "retained_solutions": 124382
+  }
+}
