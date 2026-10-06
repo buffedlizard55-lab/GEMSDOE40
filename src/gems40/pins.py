@@ -29,5 +29,5 @@ PINNED_FILES: dict[str, dict] = {
         sha256="643cbe992ef4ba37588fb469163ed8291e3ceb23d6c1f78a3cfaa462430c2da0",
         canonical_name="derived_sgmc_faults_100m_u8.tif",
         mirror="github.com/buffedlizard55-lab/GEMSDOE24 data/external/derived_sgmc_faults_100m_u8.tif",
-        note="off-catalogue holdout truth (USGS State Geologic Map Compilation faults)"),
+        note="current owner-derived SGMC validation proxy only; not organizer truth and distinct from the archived H2-B proxy bytes"),
 }

@@ -1,11 +1,8 @@
 #!/usr/bin/env python3
 """Non-destructive integrity check for the checked-in GitHub Pages site.
 
-The pre-merge main-branch generator hard-coded the H40-4 artifact as "UPLOAD THIS" and wrote
-several root pages and assets unconditionally. That advice predates this branch's expanded prior
-corpus and H2-B no-go result. It is intentionally not allowed to overwrite the current site.
-The site is now versioned as static HTML/JSON; this command validates local links and evidence
-consistency without modifying files.
+The original main-branch generator hard-coded an obsolete upload recommendation. This script
+validates the current H7 decision and local links without rewriting versioned HTML/JSON.
 """
 from __future__ import annotations
 
@@ -18,10 +15,11 @@ from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
-CANDIDATE = DOCS / "downloads" / "gemsdoe40-h2b-tmi-euler-natural-support-20261005.tif"
-VALIDATION = DOCS / "data" / "validation-h2b-20261005.json"
-INVENTORY = DOCS / "data" / "prior_raster_inventory.json"
-UNIQUENESS = DOCS / "data" / "uniqueness_audit.json"
+CANDIDATE = DOCS / "downloads" / "gemsdoe40-h7-rtp-euler-gravity-context-3d-kde-20261006-998f660f.tif"
+VALIDATION = DOCS / "data" / "validation-h7-20261006.json"
+INVENTORY = DOCS / "data" / "prior_raster_inventory-20261006.json"
+UNIQUENESS = DOCS / "data" / "uniqueness-audit-h7-20261006.json"
+PRIOR_SCORES = DOCS / "data" / "prior-holdout-scores-h7-20261006.json"
 
 
 class LocalLinks(HTMLParser):
@@ -56,34 +54,58 @@ def verify_pages() -> list[str]:
 def verify_evidence() -> list[str]:
     problems: list[str] = []
     root_page = (ROOT / "index.html").read_text(encoding="utf-8")
+    site_home = (DOCS / "index.html").read_text(encoding="utf-8")
+    executive = (DOCS / "executive-summary.html").read_text(encoding="utf-8")
     if "HOLD — DO NOT SUBMIT" not in root_page or "docs/index.html" not in root_page:
         problems.append("root landing page must redirect to the current HOLD status page")
     if "UPLOAD THIS" in root_page or "Recommended submission" in root_page:
         problems.append("root landing page contains superseded upload advice")
+    if "H7 research-only GeoTIFF" not in site_home or "HOLD — DO NOT SUBMIT" not in site_home:
+        problems.append("current site home must make the H7 research download and no-go status obvious")
+    if "No candidate is cleared today" not in executive or "Do not upload H7" not in executive:
+        problems.append("executive summary must retain the no-upload guide for the current research-only candidate")
+
     try:
         report = json.loads(VALIDATION.read_text(encoding="utf-8"))
         inventory = json.loads(INVENTORY.read_text(encoding="utf-8"))
         uniqueness = json.loads(UNIQUENESS.read_text(encoding="utf-8"))
+        prior_scores = json.loads(PRIOR_SCORES.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
-        return [f"cannot load current audit evidence: {exc}"]
+        return problems + [f"cannot load current audit evidence: {exc}"]
 
-    expected_sha = "02486eaa491da2d8ebc6b1cd53ed2bdc8e995f316be1110a64eec484779b5a68"
+    expected_sha = "e229aa9af26018bc80b0cca880d484a5b8362c26ad79ca362423953c32e66597"
     actual_sha = hashlib.sha256(CANDIDATE.read_bytes()).hexdigest() if CANDIDATE.exists() else None
-    if actual_sha != expected_sha or report.get("candidate_sha256") != expected_sha:
-        problems.append(f"candidate SHA-256 mismatch: file={actual_sha}, report={report.get('candidate_sha256')}")
-    gate = report.get("promotion_gate", {})
-    if gate.get("final_action") != "HOLD; DO NOT SUBMIT" or gate.get("passed") is not False:
-        problems.append("current candidate decision is not the expected explicit no-go")
-    inv_count = len(inventory.get("unique_rasters", []))
-    audit_count = report.get("prior_baselines", {}).get("inventory_unique_rasters")
-    if inv_count != 279 or audit_count != inv_count:
-        problems.append(f"prior inventory count mismatch: inventory={inv_count}, report={audit_count}")
-    if report.get("prior_baselines", {}).get("same_grid_scored") != 277:
-        problems.append("current proxy validation does not account for all 277 exact-grid priors")
-    if uniqueness.get("same_grid_comparisons") != 277 or uniqueness.get("near_duplicate_count") != 0 or not uniqueness.get("uniqueness_pass"):
-        problems.append("expanded H2-B uniqueness audit is missing, incomplete, or failing")
-    if len(report.get("prior_raster_scores", [])) != inv_count:
-        problems.append("validation report prior-score row count does not match inventory")
+    receipt = report.get("candidate_format_receipt", {})
+    if actual_sha != expected_sha or receipt.get("sha256") != expected_sha:
+        problems.append(f"H7 candidate SHA-256 mismatch: file={actual_sha}, report={receipt.get('sha256')}")
+    if receipt.get("valid") is not True:
+        problems.append("H7 candidate format receipt is not a pass")
+    gate = report.get("promotion_gate_vs_highest_all_prior", {})
+    if gate.get("passed") is not False or report.get("slot_eligible") is not False:
+        problems.append("H7 report does not preserve the expected explicit no-go")
+    if report.get("weekly_slot_used") is not False or report.get("organizer_score") is not None:
+        problems.append("H7 report must state that no slot was used and no organizer score exists")
+
+    inventory_rows = inventory.get("unique_rasters", [])
+    refresh = inventory.get("current_head_refresh", {})
+    if len(inventory_rows) != 306 or inventory.get("unique_pinned_repo_ref_path_locations") != 541:
+        problems.append("refreshed prior inventory count/location mismatch")
+    if refresh.get("owner_public_repositories_matching_gemsdoe") != 55 or refresh.get("current_head_tiff_paths_scanned") != 501:
+        problems.append("refreshed current-head repository/path count mismatch")
+    if refresh.get("recursive_trees_truncated") != 0 or refresh.get("unclassified_tiff_paths_excluded_pending_manual_review"):
+        problems.append("prior inventory is truncated or has pending row-level classification")
+
+    prior_summary = report.get("prior_corpus_holdout", {})
+    if prior_summary.get("same_grid_prior_outputs_scored") != 304 or prior_summary.get("prior_format_eligible_count") != 183:
+        problems.append("current-proxy prior comparison does not account for the 304 same-grid outputs and 183 locally format-eligible subset")
+    if len(prior_scores.get("scores", [])) != 304 or prior_scores.get("proxy_sha256") != report.get("input_sha256", {}).get("current_proxy"):
+        problems.append("complete same-grid prior score receipt is missing or uses a different proxy pin")
+    if uniqueness.get("inventory_unique_blobs") != 306 or uniqueness.get("same_grid_comparisons") != 304:
+        problems.append("H7 uniqueness audit does not cover all 304 exact-grid prior blobs")
+    if uniqueness.get("missing_prior_cache_count") != 0 or uniqueness.get("near_duplicate_count") != 0 or not uniqueness.get("uniqueness_pass"):
+        problems.append("H7 uniqueness audit is incomplete or failing")
+    if uniqueness.get("top_budget_for_comparison") != 45_962:
+        problems.append("H7 uniqueness audit did not use the frozen 45,962-cell top budget")
     return problems
 
 
@@ -97,8 +119,8 @@ def main() -> int:
         for error in errors:
             print(f"  - {error}")
         return 1
-    print(f"[site] OK: {len(list(DOCS.rglob('*.html')))} documentation pages plus root redirect, "
-          "277 uniqueness comparisons, 279 pinned prior blobs, and explicit HOLD status; no files rewritten")
+    print(f"[site] OK: {len(list(DOCS.rglob('*.html')))} documentation pages plus root redirect; "
+          "H7 HOLD decision, complete 306-blob inventory, 304 holdout/uniqueness comparisons, and no upload advice")
     return 0
 
 
