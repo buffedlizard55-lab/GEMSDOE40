@@ -1,0 +1,96 @@
+{
+ "file": "docs/downloads/gemsdoe40-euler-line-ring-pruned-40000px-20261006T030738Z-0fbdca6f-zeros.tif",
+ "bytes": 213518,
+ "sha256": "0fbdca6fff52ece9b439efffbf940cf770fb10f1601de7e4b9a07a9128fd9324",
+ "positive_px": 40000,
+ "all_checks_pass": true,
+ "checks": [
+  {
+   "check": "shape",
+   "ok": true,
+   "detail": "(3730, 3292) vs (3730, 3292)"
+  },
+  {
+   "check": "transform",
+   "ok": true,
+   "detail": "[100.0, 0.0, 243350.0, 0.0, -100.0, 4508550.0]"
+  },
+  {
+   "check": "crs",
+   "ok": true,
+   "detail": "EPSG:32611"
+  },
+  {
+   "check": "single_band_float32",
+   "ok": true,
+   "detail": "count=1 dtype=float32"
+  },
+  {
+   "check": "zeros_twin_all_finite",
+   "ok": true,
+   "detail": "finite 12279160 = full raster (12279160 px), no sentinel"
+  },
+  {
+   "check": "values_in_unit_range",
+   "ok": true,
+   "detail": "min=0.0 max=1.0"
+  },
+  {
+   "check": "portal_safe_nodata",
+   "ok": true,
+   "detail": "nodata=None (a finite sentinel such as 255 or -9999 is what the portal rejects)"
+  },
+  {
+   "check": "all_finite_inside_footprint",
+   "ok": true,
+   "detail": "positive_px=40000"
+  },
+  {
+   "check": "distinct_values",
+   "ok": true,
+   "detail": "unique=[0.0, 1.0]"
+  },
+  {
+   "check": "no_mass_on_published_catalogue",
+   "ok": true,
+   "detail": "positive px on catalogue = 0"
+  },
+  {
+   "check": "sha256_matches_receipt",
+   "ok": true,
+   "detail": "0fbdca6fff52ece9b439efffbf940cf770fb10f1601de7e4b9a07a9128fd9324"
+  },
+  {
+   "check": "unique_vs_prior_corpus",
+   "ok": true,
+   "detail": "max |pearson|=0.0113 max jaccard=0.0071 n=19"
+  }
+ ],
+ "nearest_priors": [
+  {
+   "key": "h25-ctx-ridge",
+   "pearson": 0.01128,
+   "jaccard_positive": 0.007056
+  },
+  {
+   "key": "h18-3a-x-complexity",
+   "pearson": 0.010733,
+   "jaccard_positive": 0.0071
+  },
+  {
+   "key": "h16-1-topo-geophys-ridges",
+   "pearson": 0.010584,
+   "jaccard_positive": 0.007027
+  },
+  {
+   "key": "h19-4",
+   "pearson": 0.010298,
+   "jaccard_positive": 0.006904
+  },
+  {
+   "key": "h19-5",
+   "pearson": 0.010273,
+   "jaccard_positive": 0.006905
+  }
+ ]
+}

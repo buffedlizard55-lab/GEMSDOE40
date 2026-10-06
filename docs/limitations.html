@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Limitations and remaining work · GEMSDOE40</title><link rel="stylesheet" href="assets/site.css"></head>
+<body><header><h1>Limitations and remaining work</h1>
+<div class="muted small">DOE GEMS Prize (DrivenData #306) · repository
+<a href="https://github.com/buffedlizard55-lab/GEMSDOE40">buffedlizard55-lab/GEMSDOE40</a> ·
+last reviewed 2026-10-06 UTC</div>
+<div style="margin-top:10px"><nav class="small">
+<a href="index.html">Home</a><a href="executive-summary.html">How to submit</a>
+<a href="methodology.html">Method</a><a href="hypotheses.html">Hypotheses</a>
+<a href="research/h4-euler-depthcluster.html">H4 record</a>
+<a href="leaderboard-analysis.html">Leaderboard analysis</a><a href="sources.html">Sources</a></nav></div></header>
+<main>
+<p>Every limitation below is either something that would change a decision if it were resolved, or
+something that currently prevents a claim. Nothing here is scored, and no organizer score is
+asserted anywhere in this repository.</p>
+
+<h2>1. Blocking a better submission</h2>
+<table>
+<tr><th>limitation</th><th>why it blocks</th><th>what would resolve it</th></tr>
+<tr><td><b>No independent truth layer.</b> The only off-catalogue comparison raster is an owner-derived
+mirror of an SGMC-derived product (<code>data/external/sgmc/</code>, sha256 <code>d569d553…700f</code>).</td>
+<td>Every candidate decision in this programme is measured against a proxy that (a) shares agency
+digitisation practice with the catalogue it is meant to be independent of, and (b) is
+<b>anti-correlated</b> with the published score ladder at Spearman −0.921 inside the top mass band.
+Surrogate credit that comes from catalogue-hugging geometry is therefore not evidence of real
+credit — see the rejected flank-band family.</td>
+<td>A second, independently produced fault layer from a different agency or method (e.g. a
+state geological survey compilation, or a geodetically/InSAR-derived lineament set), pinned by hash
+and provenance.</td></tr>
+<tr><td><b>No reachable path to fresh surface data.</b> Probes from the build sandbox:
+<code>tnmaccess.nationalmap.gov</code> 000, <code>prd-tnm.s3.amazonaws.com</code> 000,
+<code>portal.opentopography.org</code> 000, <code>www.drivendata.org</code> 000; only
+<code>github.com</code> and PyPI respond.</td>
+<td>The competition ships only a link file (<code>1m_DEM_links.csv</code>) for the 1 m DEM; the
+competition's own high-resolution elevation layer cannot be fetched here. Any hypothesis that needs
+fresh topography (scarp detection, multi-scale curvature, swale/closed-depression analysis) is
+unverifiable in this environment and is therefore not called viable.</td>
+<td>Sandbox egress to the official 3DEP/TNM hosts, or a pre-fetched DEM cached in a
+GitHub-mirrored repository whose hashes can be pinned.</td></tr>
+<tr><td><b>The <code>training_features.tif</code> stack is the only heavy feature source reachable.</b></td>
+<td>Bands already in the file (gravity, magnetics, topography-derived layers, depth-to-base, heat
+proxy) are the only inputs the programme can test directly. This bounds the hypothesis space to
+what those 19 bands can support.</td>
+<td>A reachable external raster mirror with pinned hashes (several GitHub-mirrored candidates are
+listed in the evidence pages, but licensing for sponsor sharing must be confirmed per layer).</td></tr>
+<tr><td><b>SGMC mirror hash conflict, now confirmed as instability.</b>
+<code>derived_sgmc_faults_100m_u8.tif</code> has been observed with <b>three</b> different hashes:
+<code>d569d553…700f</code> (the H4 receipts), <code>26d142c4…b5c</code> (an earlier record), and
+<code>643cbe99…</code> (re-fetched 2026-10-06 from the same pinned repository path). The upstream
+product is evidently regenerated over time.</td>
+<td>Every surrogate number in the H4 record is tied to one hash. If the earlier record refers to a
+different build of the same product, prior comparisons across the programme are not strictly
+like-for-like.</td>
+<td>Re-download from the USGS/SGMC side and pin one immutable build; not possible from the
+build sandbox, so this is disclosed rather than resolved. <b>Measured consequence:</b> the frozen-gate
+<em>outcome</em> is invariant across mirror versions (shipped H4-line still 1 of 4 folds, still below
+the best prior under both <code>d569d553…700f</code> and <code>643cbe99…</code>), but absolute LM
+values and the leaderboard projection are mirror-specific — they are therefore never used to select a
+file. See <code>docs/data/h4_blocked_validation_recheck_20261006.json</code>.</td></tr>
+</table>
+
+<h2>2. Blocking a stronger claim</h2>
+<ul>
+<li><b>All (file, score) pairings are assumptions.</b> The public leaderboard exposes no filenames or
+hashes. The 0.2778 reference and the corpus's 18 other scores are owner-reported. Every use of them
+is labelled. The leaderboard projection (slope ≈ 1.001, intercept ≈ −0.089, R² 0.913, RMSE 0.011) is
+a fit to assumptions, not a measurement.</li>
+<li><b>No candidate has passed the frozen promotion rule</b> ("beat the incumbent in all four
+blocked folds"). H4 wins 1 of 4 folds (LM-calibrated 0.286 vs 0.366 reference); H2-B won 0 of 24
+blocks. No weekly submission slot has been spent by this repository on the current evidence.</li>
+<li><b>The mask convention is a staff clarification, not the rules PDF:</b> the known-fault mask is
+pixel-exact, and a predicted pixel near a known trace but far from new truth is fully penalised.
+The reconstructed scoring model depends on this; the shipped file's own validity does not.</li>
+<li><b>DTI variance across folds is large</b> (shipped per-fold LM-calibrated 0.268–0.297; on the
+SGMC surrogate the user-vs-provider spread was larger still). A single mean hides fold-scale
+behaviour, so fold-wise reporting is mandatory here.</li>
+</ul>
+
+<h2>3. Method limitations of the shipped H4 artifact</h2>
+<ul>
+<li><b>Euler SI = 0 on potential-field data detects contacts, not faults.</b> A contact that
+truncates magnetised basement at depth can be a fault, but it can also be a lithological boundary.
+Nothing here distinguishes the two.</li>
+<li><b>The <code>−zeros</code> twin is non-standard for reviewers who expect <code>nodata</code>.</b>
+It is finite everywhere with values exactly 0/1, which is what the portal accepted in past rounds
+after the <code>[0, 1]</code> rejection; the <code>−nan</code> twin is provided for the sample's
+convention. Both pass the same audit.</li>
+<li><b>The line response is a matched filter with fixed half-length (3 px).</b> Structures shorter or
+more sinuous than that are suppressed; no scale sweep was run.</li>
+<li><b>Depth weighting uses a fixed 700 m scale</b> and cluster weighting a fixed 2 px neighbourhood.
+Neither was tuned against real scores, only against the surrogate — and the surrogate is known to
+reward catalogue-hugging geometry, so these parameters are not trustworthy evidence of quality.</li>
+<li><b>Binary emission at 1.0 is metric-optimal under the linear index rule,</b> but it forgoes any
+hedging a graded field might provide if the real index is not linear in the way the rules PDF
+implies. The rule as published is linear; this is a judgement, not a measurement.</li>
+</ul>
+
+<h2>4. Remaining work, in priority order</h2>
+<ol>
+<li><b>Find or build an independent truth layer</b> (highest value). Without it, no surrogate-based
+ranking can be trusted above the metric-shaped gate, and the gate's reference is itself unverified.</li>
+<li><b>Close the emission-vs-gate conflict.</b> The surrogate model and the frozen gate disagree by
+construction (SGMC credit rewards catalogue proximity; the ladder punishes it). The next measurement
+that matters is a candidate that is <em>both</em> high-credit in the surrogate's off-catalogue
+increment <em>and</em> fold-wise stronger than the reference. Until then, the 60,000 px ring-pruned
+field remains the best available artifact and the emitters keep the band-dwelling guard.</li>
+<li><b>Test the H3 (focal-mechanism) hypothesis only after its source audit threshold is met</b>
+(≥50 usable mechanisms in ≥8 blocks). The count endpoint was reachable; direct sandbox TLS to the
+event-detail host was not.</li>
+<li><b>Rebuild the site's evidence pages from the JSON artifacts</b> rather than edited prose, so no
+page can drift from the receipts (the schema exists in <code>docs/data/*.json</code>; a builder is
+partly in <code>scripts/build_site.py</code>).</li>
+<li><b>Re-run <code>scripts/audit_submission.py</code> and <code>scripts/validate_h4_blocked.py</code>
+in CI</b> on every release so the receipts and the shipped bytes can never diverge silently.</li>
+</ol>
+
+<h2>5. Known irregularities, flagged</h2>
+<ul>
+<li>The competition site and the rules PDF describe the metric as a distance-weighted Tversky index;
+the exact treatment of the catalogue mask came from a community clarification by DrivenData staff,
+not from the rules document.</li>
+<li>An earlier iteration in this repository emitted a continuous (non-binary) field and claimed a
+modelled score above the incumbent; that claim and the file are withdrawn, and the
+<code>[0, 1]</code> form is now binary by default.</li>
+<li>Historical pages (<code>index-main-before-h2b.html</code>, <code>executive-summary-h40-4.html</code>)
+are preserved verbatim as history and are <b>not</b> current advice; the current pages are
+<code>index.html</code> and <code>executive-summary.html</code>.</li>
+</ul>
+</main>
+<footer class="small muted" style="padding:20px">
+<a href="index.html">Home</a> · <a href="research/h4-euler-depthcluster.html">H4 record</a> ·
+<a href="data/feed.json">feed.json</a>
+</footer></body></html>

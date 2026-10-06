@@ -1,0 +1,216 @@
+{
+ "instrument": {
+  "kind": "LM (spatially blocked quadrants, off-catalogue SGMC truth, prevalence calibrated)",
+  "cells": {
+   "foldNW": {
+    "domain_px": 1097924,
+    "truth_px": 8857
+   },
+   "foldNE": {
+    "domain_px": 1361215,
+    "truth_px": 24800
+   },
+   "foldSW": {
+    "domain_px": 1343885,
+    "truth_px": 10081
+   },
+   "foldSE": {
+    "domain_px": 1082917,
+    "truth_px": 16294
+   }
+  },
+  "catalogue_hidden_cells": {
+   "foldNW": {
+    "truth_px": 1504
+   },
+   "foldNE": {
+    "truth_px": 1943
+   },
+   "foldSW": {
+    "truth_px": 3529
+   },
+   "foldSE": {
+    "truth_px": 3373
+   }
+  }
+ },
+ "stage1": {
+  "orderings": [
+   {
+    "ordering": "h33-2-b2 > h27-4-r1-solo-d2-8",
+    "reproduced_raw": false,
+    "reproduced_calibrated": true,
+    "lm_margin": -0.0003721526094652844,
+    "lm_calibrated_margin": 0.004869544019442784
+   },
+   {
+    "ordering": "h27-4-r1-solo-d2-8 > dotted-h19-5-d2-8",
+    "reproduced_raw": true,
+    "reproduced_calibrated": true,
+    "lm_margin": 0.0007358088166996152,
+    "lm_calibrated_margin": 0.011458035134056244
+   },
+   {
+    "ordering": "dotted-h19-5-d2-8 > dotted-h19-5-d1-5",
+    "reproduced_raw": false,
+    "reproduced_calibrated": true,
+    "lm_margin": -0.008654016848922377,
+    "lm_calibrated_margin": 0.0032000529830877866
+   },
+   {
+    "ordering": "dotted-h19-5-d1-5 > h19-5",
+    "reproduced_raw": false,
+    "reproduced_calibrated": true,
+    "lm_margin": -0.016171885569997796,
+    "lm_calibrated_margin": 0.033224470403637324
+   },
+   {
+    "ordering": "h19-5 > h16-1-topo-geophys-ridges",
+    "reproduced_raw": false,
+    "reproduced_calibrated": false,
+    "lm_margin": -0.010301058943601255,
+    "lm_calibrated_margin": -0.022436536410600477
+   },
+   {
+    "ordering": "h16-1-topo-geophys-ridges > h28-dotted-ridge",
+    "reproduced_raw": true,
+    "reproduced_calibrated": true,
+    "lm_margin": 0.0382866905612744,
+    "lm_calibrated_margin": 0.037245370703160446
+   }
+  ],
+  "reproduced_calibrated": "5/6",
+  "reproduced_raw": "2/6",
+  "reference_scores": {
+   "h33-2-b2": {
+    "lm": 0.07403821844119692,
+    "lm_calibrated": 0.2679205315698004,
+    "live": 0.2778
+   },
+   "h27-4-r1-solo-d2-8": {
+    "lm": 0.0744103710506622,
+    "lm_calibrated": 0.2630509875503576,
+    "live": 0.2708
+   },
+   "h32-1-prethin-tip-euler-d2-8": {
+    "lm": 0.07420072504729387,
+    "lm_calibrated": 0.2573566002426184,
+    "live": 0.2649
+   },
+   "dotted-h19-5-d2-8": {
+    "lm": 0.07367456223396258,
+    "lm_calibrated": 0.25159295241630136,
+    "live": 0.26
+   },
+   "dotted-h19-5-d1-5": {
+    "lm": 0.08232857908288496,
+    "lm_calibrated": 0.24839289943321358,
+    "live": 0.2477
+   },
+   "topo-gap-closure-v2-d1-5": {
+    "lm": 0.08334445637866725,
+    "lm_calibrated": 0.25018974730973415,
+    "live": 0.2449
+   },
+   "h19-5": {
+    "lm": 0.09850046465288276,
+    "lm_calibrated": 0.21516842902957625,
+    "live": 0.1922
+   },
+   "h16-1-topo-geophys-ridges": {
+    "lm": 0.10880152359648401,
+    "lm_calibrated": 0.23760496544017673,
+    "live": 0.1855
+   },
+   "h28-dotted-ridge": {
+    "lm": 0.07051483303520961,
+    "lm_calibrated": 0.20035959473701628,
+    "live": 0.1839
+   }
+  },
+  "leaderboard_projection": {
+   "n": 9,
+   "slope": 1.5484163709788967,
+   "intercept": -0.14065179527617303,
+   "r2": 0.8156874878715247,
+   "rmse": 0.015523589427961101,
+   "mean_ratio": 0.9663264179203082,
+   "sd_ratio": 0.08709581948462009,
+   "note": "LM-calibrated score -> owner-reported leaderboard DTI. All owner-reported scores are assumptions (the public leaderboard exposes no filenames/hashes)."
+  }
+ },
+ "candidates": {
+  "gemsdoe40-euler-line-ring-pruned-60000px-20261006T032708Z-8dafb186-zeros.tif": {
+   "lm_mean": 0.07642078769066385,
+   "lm_calibrated_mean": 0.20853807345161682,
+   "lm_per_fold": {
+    "foldNW": 0.09250193905865794,
+    "foldNE": 0.04310980303715272,
+    "foldSW": 0.11741732716421281,
+    "foldSE": 0.052654081502631886
+   },
+   "lm_calibrated_per_fold": {
+    "foldNW": 0.20125203951918744,
+    "foldNE": 0.22605803802538024,
+    "foldSW": 0.21087709990213765,
+    "foldSE": 0.1959651163597619
+   },
+   "emitted_pixels": 60000,
+   "on_catalogue_pixels": 0,
+   "fold_detail": {
+    "foldNW": {
+     "n_p": 12422,
+     "n_g": 8857,
+     "tp_w": 843.6617007746622
+    },
+    "foldNE": {
+     "n_p": 9243,
+     "n_g": 24800,
+     "tp_w": 914.3747074229814
+    },
+    "foldSW": {
+     "n_p": 24604,
+     "n_g": 10081,
+     "tp_w": 1437.0917864835237
+    },
+    "foldSE": {
+     "n_p": 11477,
+     "n_g": 16294,
+     "tp_w": 785.3373363864797
+    }
+   },
+   "cat_hidden": 0.006262400608266704,
+   "projected_leaderboard_dti": 0.18225197162871007,
+   "projected_leaderboard_dti_ci": [
+    0.15120479277278787,
+    0.21329915048463227
+   ],
+   "reference": "h33-2-b2",
+   "folds_better_than_reference": 1,
+   "beats_reference": false
+  }
+ },
+ "mirror_at_recheck": {
+  "path": "data/external/sgmc/derived_sgmc_faults_100m_u8.tif",
+  "sha256": "643cbe992ef4ba37588fb469163ed8291e3ceb23d6c1f78a3cfaa462430c2da0",
+  "fetched_from": "github.com/buffedlizard55-lab/GEMSDOE24 (data/external/derived_sgmc_faults_100m_u8.tif) on 2026-10-06T04:41Z",
+  "note": "Third distinct hash observed for this filename (previously d569d553..700f in the H4 receipts and 26d142c4..b5c in an earlier record). Absolute LM scores are mirror-version specific; the qualitative gate outcome is invariant (see invariance_check)."
+ },
+ "invariance_check": {
+  "shipped_ring_pruned_60000px": {
+   "mirror_d569d553": {
+    "lm_calibrated_mean": 0.285992,
+    "reference": 0.366342,
+    "folds_better_than_reference": 1,
+    "promoted": false
+   },
+   "mirror_643cbe99": {
+    "lm_calibrated_mean": 0.20853807345161682,
+    "reference": 0.2679205315698004,
+    "folds_better_than_reference": 1,
+    "promoted": false
+   }
+  },
+  "conclusion": "NOT PROMOTED under both mirror versions; absolute LM scores and the leaderboard projection are mirror-specific and are not used for any decision."
+ }
+}
