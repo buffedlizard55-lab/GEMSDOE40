@@ -182,3 +182,8 @@ def test_legacy_inventory_audit_fails_closed_on_missing_cache(tmp_path):
 def test_generation_cannot_write_into_published_docs():
     result = subprocess.run([sys.executable, str(ROOT/"scripts/run_contact_euler.py"), "--output", str(ROOT/"docs/downloads")], capture_output=True, text=True)
     assert result.returncode != 0 and "ignored work/" in result.stderr
+
+
+def test_feed_reports_type_even_when_network_exception_message_is_empty():
+    module = script("update_source_feed")
+    assert module.error_text(EOFError()) == "EOFError: no additional error detail"

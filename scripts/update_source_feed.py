@@ -24,6 +24,11 @@ SOURCES = [
 ]
 
 
+def error_text(exc: Exception) -> str:
+    """EOF and some transport exceptions have an empty str(); keep the type."""
+    return (type(exc).__name__ + ": " + (str(exc) or "no additional error detail"))[:500]
+
+
 def earthquake_url(now: datetime) -> str:
     params = {"format": "geojson", "starttime": (now-timedelta(days=30)).date().isoformat(),
               "endtime": now.strftime("%Y-%m-%dT%H:%M:%S"),
@@ -76,7 +81,7 @@ def update(output: Path, restore_live: bool = False) -> dict:
                 old = previous
             restore_status = "own deployed snapshot read"
         except Exception as exc:
-            restore_status = "unavailable: " + str(exc)[:300]
+            restore_status = "unavailable: " + error_text(exc)
     feed = {"attempted_utc": now.isoformat(), "last_success_utc": old.get("last_success_utc"),
             "status": "updating", "scope": "USGS/GDR context only, not a fault label or resource discovery feed",
             "leaderboard_monitoring": "disabled; no permission to automate DrivenData monitoring",
@@ -92,14 +97,14 @@ def update(output: Path, restore_live: bool = False) -> dict:
         feed["status"] = "ok"
     except Exception as exc:
         feed["status"] = "stale" if feed["last_success_utc"] else "unavailable"
-        feed["errors"].append({"source": "USGS ComCat", "error": str(exc)[:500]})
+        feed["errors"].append({"source": "USGS ComCat", "error": error_text(exc)})
     for name, url in SOURCES:
         try:
             payload, status = get(url)
             feed["source_status"].append({"name": name, "url": url, "http_status": status,
                                          "bytes": len(payload), "sha256": hashlib.sha256(payload).hexdigest()})
         except Exception as exc:
-            feed["source_status"].append({"name": name, "url": url, "http_status": None, "error": str(exc)[:500]})
+            feed["source_status"].append({"name": name, "url": url, "http_status": None, "error": error_text(exc)})
     feed["source_probe_failures"] = sum(s["http_status"] is None for s in feed["source_status"])
     output.parent.mkdir(parents=True, exist_ok=True)
     temporary = output.with_suffix(".tmp")

@@ -45,7 +45,11 @@ def main():
             feed_body, status, _ = get("docs/data/source-feed.json")
             feed = json.loads(feed_body)
             assert status == 200 and feed["status"] in ("ok", "stale", "unavailable")
+            feed_sha = hashlib.sha256(feed_body).hexdigest()
+            expected_feed_sha = hashlib.sha256((ROOT / "docs/data/source-feed.json").read_bytes()).hexdigest()
+            assert feed_sha == expected_feed_sha, "another publisher or stale CDN replaced the freshly generated source feed"
             report = {"verified_utc": datetime.now(timezone.utc).isoformat(), "pass": True,
+                      "source_feed_sha256": feed_sha,
                       "attempt": attempt, "checks": rows, "source_feed_status": feed["status"],
                       "source_feed_last_success": feed.get("last_success_utc")}
             out = ROOT / "work/deployment-verification.json"; out.parent.mkdir(exist_ok=True)
