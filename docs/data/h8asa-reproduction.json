@@ -1,0 +1,14 @@
+{
+  "actual_cloud_sha256": "0f0cde332a1412f253192719b728eb6f9c5fe65e2fc80a5fb842b8337038442a",
+  "actual_tiff_sha256": "b00328ce401cf5be5c149e668efbbaa911815fe1f2847719c3ff8576fff2ea31",
+  "actual_zeros_sha256": "8c262620a769e7dbc8f8ee89aa92a633c91507752b398eec463932adea87c01b",
+  "actual_zip_sha256": "98b04fdbdbe531f6c6d940047e3570909e4973bca105990bcafc248ec6457f1c",
+  "expected": {
+    "cloud_csv": "0f0cde332a1412f253192719b728eb6f9c5fe65e2fc80a5fb842b8337038442a",
+    "nan_tif": "b00328ce401cf5be5c149e668efbbaa911815fe1f2847719c3ff8576fff2ea31",
+    "zeros_tif": "8c262620a769e7dbc8f8ee89aa92a633c91507752b398eec463932adea87c01b",
+    "zip": "98b04fdbdbe531f6c6d940047e3570909e4973bca105990bcafc248ec6457f1c"
+  },
+  "method": "scripts/run_h8_asa_spi.py --stamp 20261006T035031Z --out-dir work/h8/repro --work work/h8/repro-meta (fresh process; deterministic gzip/zip mtimes)",
+  "pass": true
+}

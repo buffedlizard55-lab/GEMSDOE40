@@ -1,0 +1,781 @@
+{
+ "generated_utc": "20261006T032128Z",
+ "budgets": [
+  10000,
+  15000,
+  20000,
+  25000,
+  30000,
+  40000,
+  50000,
+  60000
+ ],
+ "spacings": [
+  2.8284,
+  4.0
+ ],
+ "calibration": {
+  "gamma": 0.28161595246211274,
+  "g_hidden": 4095.1054789822488,
+  "rmse": 0.03102924195289713,
+  "r2": 0.8074473045015146,
+  "loo_rmse": 0.03805202816831997,
+  "loo_spearman": 0.6265560165975105,
+  "n": 18,
+  "residuals": [
+   {
+    "id": "h33-2-b2",
+    "official": 0.2778,
+    "modelled": 0.22230402675880379,
+    "n_px": 37654.0,
+    "h_sur": 0.23340108443564772,
+    "kappa_sur": 0.0794890700425015
+   },
+   {
+    "id": "h27-4-r1-solo-d2-8",
+    "official": 0.2708,
+    "modelled": 0.2496648201268366,
+    "n_px": 40199.0,
+    "h_sur": 0.2579922203858478,
+    "kappa_sur": 0.08910268755359016
+   },
+   {
+    "id": "h27-4-solo-d28-mirror",
+    "official": 0.2708,
+    "modelled": 0.2496648201268366,
+    "n_px": 40199.0,
+    "h_sur": 0.2579922203858478,
+    "kappa_sur": 0.08910268755359016
+   },
+   {
+    "id": "h32-1-prethin-tip-euler-d2-8",
+    "official": 0.2649,
+    "modelled": 0.2680845311129032,
+    "n_px": 42294.0,
+    "h_sur": 0.2735937626164556,
+    "kappa_sur": 0.09705069461277134
+   },
+   {
+    "id": "h33d-analog-tip-stepover-r30",
+    "official": 0.2632,
+    "modelled": 0.26058881940572126,
+    "n_px": 41865.0,
+    "h_sur": 0.26649605737504506,
+    "kappa_sur": 0.09345344315455716
+   },
+   {
+    "id": "dotted-h19-5-d1-5",
+    "official": 0.2477,
+    "modelled": 0.25200777651988554,
+    "n_px": 60069.0,
+    "h_sur": 0.23427925891542586,
+    "kappa_sur": 0.10527662819150925
+   },
+   {
+    "id": "topo-gap-closure-v2-d1-5",
+    "official": 0.2449,
+    "modelled": 0.25160833536771277,
+    "n_px": 61328.0,
+    "h_sur": 0.23288264955552856,
+    "kappa_sur": 0.10437578039420417
+   },
+   {
+    "id": "dotted-h19-5-d2-8",
+    "official": 0.26,
+    "modelled": 0.282425827585902,
+    "n_px": 44090.0,
+    "h_sur": 0.28530269046344137,
+    "kappa_sur": 0.10455850981935988
+   },
+   {
+    "id": "historical-d28-mirror",
+    "official": 0.26,
+    "modelled": 0.282425827585902,
+    "n_px": 44090.0,
+    "h_sur": 0.28530269046344137,
+    "kappa_sur": 0.10455850981935988
+   },
+   {
+    "id": "d28-poisson300m-44090",
+    "official": 0.26,
+    "modelled": 0.282425827585902,
+    "n_px": 44090.0,
+    "h_sur": 0.28530269046344137,
+    "kappa_sur": 0.10455850981935988
+   },
+   {
+    "id": "h19-4",
+    "official": 0.1894,
+    "modelled": 0.14582002761534105,
+    "n_px": 123779.0,
+    "h_sur": 0.1407872555054934,
+    "kappa_sur": 0.11010625870899508
+   },
+   {
+    "id": "h19-5",
+    "official": 0.1922,
+    "modelled": 0.148496689132989,
+    "n_px": 121131.0,
+    "h_sur": 0.13712497421673497,
+    "kappa_sur": 0.10908383554483461
+   },
+   {
+    "id": "h16-1-topo-geophys-ridges",
+    "official": 0.1855,
+    "modelled": 0.14569614701561423,
+    "n_px": 123939.0,
+    "h_sur": 0.1454099382190716,
+    "kappa_sur": 0.11112757887751865
+   },
+   {
+    "id": "h18-3a-x-complexity",
+    "official": 0.0976,
+    "modelled": 0.14771679015017605,
+    "n_px": 122120.0,
+    "h_sur": 0.14020772003980725,
+    "kappa_sur": 0.11578984050448353
+   },
+   {
+    "id": "h28-dotted-ridge",
+    "official": 0.1839,
+    "modelled": 0.23192285798063125,
+    "n_px": 69281.0,
+    "h_sur": 0.21677647145048823,
+    "kappa_sur": 0.07537365994081145
+   },
+   {
+    "id": "h25-ctx-ridge",
+    "official": 0.128,
+    "modelled": 0.10757744214208044,
+    "n_px": 174232.0,
+    "h_sur": 0.12298692222702845,
+    "kappa_sur": 0.08915692941021679
+   },
+   {
+    "id": "h20-dem10-scarp-thin",
+    "official": 0.0921,
+    "modelled": 0.12057686431165604,
+    "n_px": 153957.0,
+    "h_sur": 0.11760956112027697,
+    "kappa_sur": 0.10654531447398626
+   },
+   {
+    "id": "h16-continuation",
+    "official": 0.0461,
+    "modelled": 0.06423127064230301,
+    "n_px": 310042.0,
+    "h_sur": 0.08033348073215782,
+    "kappa_sur": 0.1344516896819727
+   }
+  ]
+ },
+ "instruments": {
+  "sgmc_off_catalogue": {
+   "truth_px": 105589
+  },
+  "isolated_components": {
+   "truth_px": 9747
+  }
+ },
+ "candidates": {
+  "euler_line_flank_gated": {
+   "2.8284": {
+    "capacity": 77355,
+    "geometry": {
+     "n_dots": 77355,
+     "mean_neighbours_within_radius": 1.3935,
+     "frac_with_neighbour": 0.89825,
+     "median_nearest_spacing_px": 2.8284271247461903,
+     "min_nearest_spacing_px": 2.8284271247461903
+    },
+    "curve": [
+     {
+      "n_px": 10000,
+      "sgmc_off_catalogue": {
+       "dti": 0.037338,
+       "h_sur": 0.324415,
+       "kappa_sur": 0.117523,
+       "tp": 3244.15
+      },
+      "isolated_components": {
+       "dti": 0.066572,
+       "h_sur": 0.065502,
+       "kappa_sur": 0.044715,
+       "tp": 655.02
+      },
+      "modelled_dti": 0.169418
+     },
+     {
+      "n_px": 15000,
+      "sgmc_off_catalogue": {
+       "dti": 0.059554,
+       "h_sur": 0.349912,
+       "kappa_sur": 0.129237,
+       "tp": 5248.67
+      },
+      "isolated_components": {
+       "dti": 0.086513,
+       "h_sur": 0.062587,
+       "kappa_sur": 0.044593,
+       "tp": 938.81
+      },
+      "modelled_dti": 0.228721
+     },
+     {
+      "n_px": 20000,
+      "sgmc_off_catalogue": {
+       "dti": 0.081604,
+       "h_sur": 0.364733,
+       "kappa_sur": 0.134871,
+       "tp": 7294.66
+      },
+      "isolated_components": {
+       "dti": 0.108365,
+       "h_sur": 0.0643,
+       "kappa_sur": 0.046856,
+       "tp": 1286.01
+      },
+      "modelled_dti": 0.272633
+     },
+     {
+      "n_px": 25000,
+      "sgmc_off_catalogue": {
+       "dti": 0.100955,
+       "h_sur": 0.365944,
+       "kappa_sur": 0.136107,
+       "tp": 9148.59
+      },
+      "isolated_components": {
+       "dti": 0.128335,
+       "h_sur": 0.066147,
+       "kappa_sur": 0.048564,
+       "tp": 1653.66
+      },
+      "modelled_dti": 0.29959
+     },
+     {
+      "n_px": 30000,
+      "sgmc_off_catalogue": {
+       "dti": 0.119246,
+       "h_sur": 0.36506,
+       "kappa_sur": 0.136559,
+       "tp": 10951.8
+      },
+      "isolated_components": {
+       "dti": 0.143264,
+       "h_sur": 0.066369,
+       "kappa_sur": 0.049648,
+       "tp": 1991.08
+      },
+      "modelled_dti": 0.319203
+     },
+     {
+      "n_px": 40000,
+      "sgmc_off_catalogue": {
+       "dti": 0.145506,
+       "h_sur": 0.342557,
+       "kappa_sur": 0.130225,
+       "tp": 13702.27
+      },
+      "isolated_components": {
+       "dti": 0.152493,
+       "h_sur": 0.06064,
+       "kappa_sur": 0.047037,
+       "tp": 2425.62
+      },
+      "modelled_dti": 0.328282
+     },
+     {
+      "n_px": 50000,
+      "sgmc_off_catalogue": {
+       "dti": 0.159783,
+       "h_sur": 0.307876,
+       "kappa_sur": 0.120777,
+       "tp": 15393.81
+      },
+      "isolated_components": {
+       "dti": 0.140734,
+       "h_sur": 0.050398,
+       "kappa_sur": 0.039617,
+       "tp": 2519.9
+      },
+      "modelled_dti": 0.297718
+     },
+     {
+      "n_px": 60000,
+      "sgmc_off_catalogue": {
+       "dti": 0.170718,
+       "h_sur": 0.280184,
+       "kappa_sur": 0.11342,
+       "tp": 16811.03
+      },
+      "isolated_components": {
+       "dti": 0.127454,
+       "h_sur": 0.042283,
+       "kappa_sur": 0.033316,
+       "tp": 2536.99
+      },
+      "modelled_dti": 0.260639
+     }
+    ],
+    "best": {
+     "n_px": 40000,
+     "sgmc_off_catalogue": {
+      "dti": 0.145506,
+      "h_sur": 0.342557,
+      "kappa_sur": 0.130225,
+      "tp": 13702.27
+     },
+     "isolated_components": {
+      "dti": 0.152493,
+      "h_sur": 0.06064,
+      "kappa_sur": 0.047037,
+      "tp": 2425.62
+     },
+     "modelled_dti": 0.328282
+    }
+   },
+   "4.0000": {
+    "capacity": 48065,
+    "geometry": {
+     "n_dots": 48065,
+     "mean_neighbours_within_radius": 0.0,
+     "frac_with_neighbour": 0.0,
+     "median_nearest_spacing_px": 4.123105625617661,
+     "min_nearest_spacing_px": 4.0
+    },
+    "curve": [
+     {
+      "n_px": 10000,
+      "sgmc_off_catalogue": {
+       "dti": 0.04874,
+       "h_sur": 0.424288,
+       "kappa_sur": 0.134455,
+       "tp": 4242.88
+      },
+      "isolated_components": {
+       "dti": 0.081618,
+       "h_sur": 0.080482,
+       "kappa_sur": 0.048881,
+       "tp": 804.82
+      },
+      "modelled_dti": 0.219671
+     },
+     {
+      "n_px": 15000,
+      "sgmc_off_catalogue": {
+       "dti": 0.074317,
+       "h_sur": 0.437804,
+       "kappa_sur": 0.139616,
+       "tp": 6567.05
+      },
+      "isolated_components": {
+       "dti": 0.111913,
+       "h_sur": 0.081249,
+       "kappa_sur": 0.050451,
+       "tp": 1218.74
+      },
+      "modelled_dti": 0.283301
+     },
+     {
+      "n_px": 20000,
+      "sgmc_off_catalogue": {
+       "dti": 0.097117,
+       "h_sur": 0.435349,
+       "kappa_sur": 0.139541,
+       "tp": 8706.98
+      },
+      "isolated_components": {
+       "dti": 0.139509,
+       "h_sur": 0.083159,
+       "kappa_sur": 0.052147,
+       "tp": 1663.18
+      },
+      "modelled_dti": 0.32224
+     },
+     {
+      "n_px": 25000,
+      "sgmc_off_catalogue": {
+       "dti": 0.11531,
+       "h_sur": 0.419228,
+       "kappa_sur": 0.135102,
+       "tp": 10480.71
+      },
+      "isolated_components": {
+       "dti": 0.153961,
+       "h_sur": 0.079713,
+       "kappa_sur": 0.050507,
+       "tp": 1992.82
+      },
+      "modelled_dti": 0.340189
+     },
+     {
+      "n_px": 30000,
+      "sgmc_off_catalogue": {
+       "dti": 0.127886,
+       "h_sur": 0.392447,
+       "kappa_sur": 0.127309,
+       "tp": 11773.4
+      },
+      "isolated_components": {
+       "dti": 0.153702,
+       "h_sur": 0.071476,
+       "kappa_sur": 0.045925,
+       "tp": 2144.27
+      },
+      "modelled_dti": 0.340966
+     },
+     {
+      "n_px": 40000,
+      "sgmc_off_catalogue": {
+       "dti": 0.146031,
+       "h_sur": 0.344359,
+       "kappa_sur": 0.112613,
+       "tp": 13774.37
+      },
+      "isolated_components": {
+       "dti": 0.135983,
+       "h_sur": 0.054229,
+       "kappa_sur": 0.034957,
+       "tp": 2169.16
+      },
+      "modelled_dti": 0.328786
+     },
+     {
+      "n_px": 48065,
+      "sgmc_off_catalogue": {
+       "dti": 0.157227,
+       "h_sur": 0.314399,
+       "kappa_sur": 0.103352,
+       "tp": 15111.6
+      },
+      "isolated_components": {
+       "dti": 0.12528,
+       "h_sur": 0.045787,
+       "kappa_sur": 0.029557,
+       "tp": 2200.74
+      },
+      "modelled_dti": 0.304961
+     },
+     {
+      "n_px": 48065,
+      "sgmc_off_catalogue": {
+       "dti": 0.157227,
+       "h_sur": 0.314399,
+       "kappa_sur": 0.103352,
+       "tp": 15111.6
+      },
+      "isolated_components": {
+       "dti": 0.12528,
+       "h_sur": 0.045787,
+       "kappa_sur": 0.029557,
+       "tp": 2200.74
+      },
+      "modelled_dti": 0.304961
+     }
+    ],
+    "best": {
+     "n_px": 30000,
+     "sgmc_off_catalogue": {
+      "dti": 0.127886,
+      "h_sur": 0.392447,
+      "kappa_sur": 0.127309,
+      "tp": 11773.4
+     },
+     "isolated_components": {
+      "dti": 0.153702,
+      "h_sur": 0.071476,
+      "kappa_sur": 0.045925,
+      "tp": 2144.27
+     },
+     "modelled_dti": 0.340966
+    }
+   }
+  }
+ },
+ "chosen": {
+  "surface": "euler_line_flank_gated",
+  "spacing_px": 4.0,
+  "n_px": 30000,
+  "modelled_dti": 0.340966,
+  "surrogate_row": {
+   "n_px": 30000,
+   "sgmc_off_catalogue": {
+    "dti": 0.127886,
+    "h_sur": 0.392447,
+    "kappa_sur": 0.127309,
+    "tp": 11773.4
+   },
+   "isolated_components": {
+    "dti": 0.153702,
+    "h_sur": 0.071476,
+    "kappa_sur": 0.045925,
+    "tp": 2144.27
+   },
+   "modelled_dti": 0.340966
+  },
+  "geometry": {
+   "n_dots": 48065,
+   "mean_neighbours_within_radius": 0.0,
+   "frac_with_neighbour": 0.0,
+   "median_nearest_spacing_px": 4.123105625617661,
+   "min_nearest_spacing_px": 4.0
+  },
+  "forced_by_cli": true,
+  "global_optimum": {
+   "surface": "euler_line_flank_gated",
+   "spacing_px": 4.0,
+   "n_px": 30000,
+   "modelled_dti": 0.340966
+  },
+  "margin_over_next": 0.012683999999999973,
+  "incumbent": {
+   "key": "dotted-h19-5-d2-8",
+   "n_px": 44090,
+   "official": 0.26,
+   "modelled_dti": 0.282425827585902
+  }
+ },
+ "alternatives": [
+  {
+   "surface": "euler_line_flank_gated",
+   "spacing_px": 4.0,
+   "n_px": 30000,
+   "modelled_dti": 0.340966
+  },
+  {
+   "surface": "euler_line_flank_gated",
+   "spacing_px": 2.8284,
+   "n_px": 40000,
+   "modelled_dti": 0.328282
+  }
+ ],
+ "slug": "gemsdoe40-euler-line-flank-gated-30000px-20261006T032134Z-e68ab565",
+ "content_digest8": "e68ab565",
+ "submission_name": "GEMSDOE40-h4-euler-depthcluster",
+ "submission_note": "Euler SI=0 depth-cluster lineaments, 30,000 dots, 4.0px min separation, all 2-6px off the mapped catalogue, nothing on it | id e68ab565",
+ "method": "3-D Euler deconvolution (Reid et al. 1990, DOI 10.1190/1.1442774) with the structural index of a fault-like contact (SI=0) on reduced-to-pole magnetic and isostatic-residual gravity grids, deconvolved at three upward-continuation heights and three window sizes; solutions kept only where they persist across heights; weighted per solution by shallowness, cluster tightness, mutual depth consistency and analytic-signal strength, splatted into a kernel-density field; the field is converted to a lineament texture by an 8-orientation matched filter and gated to the 2-6 px flank of the published catalogue, where the metric's masked-pixel rule leaves credit available; emitted as a minimum-separation dot lattice at the budget that maximises the calibrated distance-weighted Tversky model. Values are 1.0 on the dots and 0.0 elsewhere (NaN outside the footprint in the -nan twin) so the portal range check passes.",
+ "receipt": {
+  "zeros": {
+   "file": "docs/downloads/gemsdoe40-euler-line-flank-gated-30000px-20261006T032134Z-e68ab565-zeros.tif",
+   "bytes": 182024,
+   "sha256": "e68ab565a2a4071a46c0aef3b0e872accbc65b29ffb17ec8166bf7bb29cb4d71",
+   "outside": "zero",
+   "dtype": "float32",
+   "nodata": null,
+   "crs": "EPSG:32611",
+   "shape": [
+    3730,
+    3292
+   ],
+   "transform": [
+    100.0,
+    0.0,
+    243350.0,
+    0.0,
+    -100.0,
+    4508550.0
+   ],
+   "finite_px": 12279160,
+   "min": 0.0,
+   "max": 1.0,
+   "positive_px": 30000
+  },
+  "nan": {
+   "file": "docs/downloads/gemsdoe40-euler-line-flank-gated-30000px-20261006T032134Z-e68ab565-nan.tif",
+   "bytes": 318340,
+   "sha256": "89e497d5f08183b864be92c74f3e051fe1b87968bbf68bc948c606483cc2bf48",
+   "outside": "nan",
+   "dtype": "float32",
+   "nodata": NaN,
+   "crs": "EPSG:32611",
+   "shape": [
+    3730,
+    3292
+   ],
+   "transform": [
+    100.0,
+    0.0,
+    243350.0,
+    0.0,
+    -100.0,
+    4508550.0
+   ],
+   "finite_px": 5167373,
+   "min": 0.0,
+   "max": 1.0,
+   "positive_px": 30000
+  },
+  "zip": {
+   "file": "docs/downloads/gemsdoe40-euler-line-flank-gated-30000px-20261006T032134Z-e68ab565-zeros.zip",
+   "bytes": 145016,
+   "sha256": "eacded20a36dafa29d6a77544ae8f05de26987efe06f109805e0d7c3d6d764d3"
+  }
+ },
+ "portal_range_guarantee": true,
+ "emitted_px": 30000,
+ "min_separation_px": 4.0,
+ "on_catalogue_positive_px": 0,
+ "emitted_distance_to_catalogue_px": {
+  "min": 2.0,
+  "median": 2.23606797749979,
+  "p90": 5.0,
+  "frac_in_flank_band": 1.0
+ },
+ "grid_conformance": {
+  "dtype": "float32",
+  "nodata": null,
+  "crs": "EPSG:32611",
+  "shape": [
+   3730,
+   3292
+  ],
+  "transform": [
+   100.0,
+   0.0,
+   243350.0,
+   0.0,
+   -100.0,
+   4508550.0
+  ],
+  "count": 1
+ },
+ "geometry": {
+  "n_dots": 30000,
+  "mean_neighbours_within_radius": 0.0,
+  "frac_with_neighbour": 0.0,
+  "median_nearest_spacing_px": 4.123105625617661,
+  "min_nearest_spacing_px": 4.0
+ },
+ "surrogate_metrics": {
+  "sgmc_off_catalogue": {
+   "dti": 0.127886,
+   "h_sur": 0.392447,
+   "kappa_sur": 0.127309,
+   "tp": 11773.4,
+   "fp": 26180.74,
+   "fn": 93815.6,
+   "truth_px": 105589
+  },
+  "isolated_components": {
+   "dti": 0.153702,
+   "h_sur": 0.071476,
+   "kappa_sur": 0.045925,
+   "tp": 2144.27,
+   "fp": 28622.24,
+   "fn": 7602.73,
+   "truth_px": 9747
+  }
+ },
+ "uniqueness": {
+  "is_new": true,
+  "n_compared": 19,
+  "worst": {
+   "pearson": 0.08485179944984783,
+   "jaccard": 0.026650363057228687,
+   "key": "h16-continuation"
+  },
+  "rows": [
+   {
+    "key": "h33-2-b2",
+    "pearson": 0.0054,
+    "jaccard_positive": 0.004052
+   },
+   {
+    "key": "h27-4-r1-solo-d2-8",
+    "pearson": 0.012296,
+    "jaccard_positive": 0.007521
+   },
+   {
+    "key": "h27-4-solo-d28-mirror",
+    "pearson": 0.012296,
+    "jaccard_positive": 0.007521
+   },
+   {
+    "key": "h32-1-prethin-tip-euler-d2-8",
+    "pearson": 0.012689,
+    "jaccard_positive": 0.007722
+   },
+   {
+    "key": "h33d-analog-tip-stepover-r30",
+    "pearson": 0.011736,
+    "jaccard_positive": 0.007246
+   },
+   {
+    "key": "dotted-h19-5-d1-5",
+    "pearson": 0.013222,
+    "jaccard_positive": 0.0079
+   },
+   {
+    "key": "topo-gap-closure-v2-d1-5",
+    "pearson": 0.013529,
+    "jaccard_positive": 0.008035
+   },
+   {
+    "key": "dotted-h19-5-d2-8",
+    "pearson": 0.011481,
+    "jaccard_positive": 0.007123
+   },
+   {
+    "key": "historical-d28-mirror",
+    "pearson": 0.011481,
+    "jaccard_positive": 0.007123
+   },
+   {
+    "key": "d28-poisson300m-44090",
+    "pearson": 0.011481,
+    "jaccard_positive": 0.007123
+   },
+   {
+    "key": "h19-4",
+    "pearson": 0.021643,
+    "jaccard_positive": 0.0106
+   },
+   {
+    "key": "h19-5",
+    "pearson": 0.021683,
+    "jaccard_positive": 0.010666
+   },
+   {
+    "key": "h16-1-topo-geophys-ridges",
+    "pearson": 0.021705,
+    "jaccard_positive": 0.010622
+   },
+   {
+    "key": "h18-3a-x-complexity",
+    "pearson": 0.031713,
+    "jaccard_positive": 0.014715
+   },
+   {
+    "key": "h18-4-usgs-geologic-map-gap",
+    "pearson": -0.001812,
+    "jaccard_positive": 0.000752
+   },
+   {
+    "key": "h28-dotted-ridge",
+    "pearson": 0.018054,
+    "jaccard_positive": 0.010062
+   },
+   {
+    "key": "h25-ctx-ridge",
+    "pearson": 0.034749,
+    "jaccard_positive": 0.01449
+   },
+   {
+    "key": "h20-dem10-scarp-thin",
+    "pearson": 0.043363,
+    "jaccard_positive": 0.018272
+   },
+   {
+    "key": "h16-continuation",
+    "pearson": 0.084852,
+    "jaccard_positive": 0.02665
+   }
+  ]
+ },
+ "caveats": [
+  "Prior-submission scores are owner-reported and pairings are disclosed as assumptions; no organiser receipt exists for any file in this repository.",
+  "The hidden evaluation set is not observable. Every number here is a surrogate measurement; none of them is an organiser score.",
+  "The 2 px inner edge of the flank band is a hedge: the organiser masks the published catalogue pixel-exactly, and the best prior report on record (h33-2-b2, 2 px prune) indicates the immediate 0-2 px ring is unproductive."
+ ]
+}

@@ -1,9 +1,95 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Official-source research library · GEMSDOE40</title><meta name="description" content="Measured Euler depth-clustering research for geological fault mapping. A unique GeoTIFF, open evidence, and an honest no-submission gate.">
-<link rel="stylesheet" href="assets/contact.css"><script src="assets/contact.js" defer></script></head>
+<title>Sources · GEMSDOE40</title>
+<meta name="description" content="Euler deconvolution depth-clustering research for the DOE GEMS fault-mapping prize: a unique, format-audited GeoTIFF with honest, receipt-backed evidence.">
+<link rel="stylesheet" href="assets/contact.css"><link rel="stylesheet" href="assets/site.css">
+<script src="assets/contact.js" defer></script></head>
 <body><a href="#main" class="skip">Skip to content</a><header class="header"><div class="wrap"><div class="masthead">
-<a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true">G</span><b>GEMS / 40</b><em>FIELD NOTES</em></a><nav class="nav" aria-label="Main navigation"><a class="" href="index.html">Overview</a><a class="" href="executive-summary.html">Submission guide</a><a class="" href="evidence.html">Evidence</a><a class="" href="hypotheses.html">Hypotheses</a><a class="active" href="sources.html">Research library</a></nav></div></div></header>
-<main id="main" class="wrap"><div class="subhero"><p class="kicker">RESEARCH LIBRARY / OFFICIAL & PRIMARY SOURCES</p><h1>Sources with boundaries.</h1><p class="lead">Every source has a role and a limit. Official context does not authenticate a mirror; an academic method does not guarantee a resource; a proxy result is not a leaderboard score.</p></div><section class="section twocol"><div><article class="sourcecard"><span class="label">Official competition</span><h3><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">Task, metric and format ↗</a></h3><p>Geological fault confidence, not vent detection. 300 m distance-weighted Tversky; exact raster requirements.</p></article><article class="sourcecard"><span class="label">Official rules</span><h3><a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">DOE / NLR · September 2026 ↗</a></h3><p>Weekly limits, finalist reproducibility, and one selection for both rounds. No competition submission was made.</p></article><article class="sourcecard"><span class="label">Scientific primary source</span><h3><a href="https://www.reid-geophys.co.uk/wp-content/uploads/2017/11/Reid-et-al-1990.pdf">Reid et al. · 1990 ↗</a></h3><p>Contact Euler needs the arbitrary offset A. Source-position/depth inference is not a proof of a fault.</p></article><article class="sourcecard"><span class="label">Scientific correction</span><h3><a href="https://www.reid-geophys.co.uk/wp-content/uploads/2017/11/Reid-Thurston-2014.pdf">Reid &amp; Thurston · 2014 ↗</a></h3><p>Gravity/magnetic SI distinctions and limitations of single-source homogeneity for finite steps.</p></article><article class="sourcecard"><span class="label">Official USGS · CC0 metadata</span><h3><a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">GeoDAWN survey release ↗</a></h3><p>Terrain-draped magnetic/radiometric survey, variable clearance, 200/400 m nominal flight-line spacing. Metadata obtainable; altitude bulk audit still needed.</p></article><article class="sourcecard"><span class="label">Official USGS</span><h3><a href="https://www.sciencebase.gov/catalog/item/628d4fabd34ef70cdba3c4a4">Regional geophysical maps ↗</a></h3><p>Provisional, multi-source regional gravity compilation. Resampling does not create independent 100 m observations.</p></article><article class="sourcecard"><span class="label">Official GDR · CC-BY-4.0</span><h3><a href="https://gdr.openei.org/submissions/1391">INGENIOUS collection 1391 ↗</a></h3><p>Free faults, geodesy, seismicity, shallow temperatures, paleo-geothermal features and well/spring chemistry. Coverage and observational bias need auditing.</p></article><article class="sourcecard"><span class="label">Official USGS</span><h3><a href="https://pubs.usgs.gov/ds/1052/">State Geologic Map Compilation ↗</a></h3><p>Original compilation context only. Does not authenticate the owner-derived SGMC raster used as a proxy here.</p></article><article class="sourcecard"><span class="label">Official USGS publication</span><h3><a href="https://pubs.usgs.gov/publication/70201803">Blind Gabbs Valley geothermal discovery ↗</a></h3><p>The reported discovery combined structural, geophysical, temperature and geochemical evidence and drilling. It does not validate an isolated Euler cluster.</p></article><article class="sourcecard"><span class="label">Official USGS publication</span><h3><a href="https://www.usgs.gov/publications/structural-discontinuities-and-their-control-hydrothermal-systems-great-basin-usa">Structural discontinuities · Siler 2023 ↗</a></h3><p>Process-based stress/strain context for fault terminations and stepovers. Geometric favorability is not measured geothermal permeability.</p></article><article class="sourcecard"><span class="label">Organizer staff</span><h3><a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516/4">Pixel-exact known-fault mask ↗</a></h3><p>No automatic 300 m exclusion buffer. Off-mask predictions near an old trace can still incur penalties.</p></article><article class="sourcecard"><span class="label">Official platform policy</span><h3><a href="https://www.drivendata.org/termsofuse/">DrivenData Terms of Use ↗</a></h3><p>Automated monitoring is restricted. The scheduled feed below only uses USGS/GDR, not DrivenData.</p></article></div><aside><div class="callout"><p class="eyebrow">DATA PLACEMENT / COMPLETED</p><h3>Inputs restored autonomously.</h3><p>The 419 MB feature stack, template, known labels and exact frozen proxy are in data/. Every part and assembled input is hash checked. Caches stay out of Git.</p><p><strong>No GPU is required</strong> for this Euler experiment. No DrivenData login or private labels are available.</p><a href="data/acquisition-20261006.json">Source pins and receipt ↗</a></div><div class="notice"><strong>Mirrors are not official authentication.</strong><p>GitHub-hosted sibling copies are used because direct sandbox HTTPS to official/Dropbox download hosts failed. Feature identity is consistency-checked, not certified by the organizer.</p></div><h3>Irregularities worth reviewing</h3><ul class="micro"><li>Same SGMC basename, three different rasters. Only the GEMSDOE30 pin reproduces the frozen instrument.</li><li>The supplied template has positive values despite an all-zero example description. It is used only for grid/footprint.</li><li>Ambiguous tc/depth band descriptions were not used as physical facts or H4 features.</li><li>H33’s 216-byte ZIP contains no TIFF; its actual TIFF was used for analysis.</li><li>History also contains a 110-byte header-only file and a one-pixel demo. They are byte-accounted, not falsely correlated.</li><li>Two old “NaN-outside” variants actually contain millions of NaNs inside the legal sample footprint. Their all-finite companions establish exact storage equivalence; H4 has no such missing inside pixels.</li><li>The frozen holdout gate is impossible and its incumbent circular.</li></ul><p><a href="research/scientific-library-20261006.md">Full claim-by-claim ledger</a></p></aside></section>
-<section class="section" id="context"><p class="eyebrow">AUTOMATED CONTEXT / NO SCORE MONITORING</p><h2>USGS source freshness.</h2><p id="feed-status" aria-live="polite">Loading the dated official-source feed…</p><ul id="feed-events" class="eventlist"></ul><p class="micro">The Pages workflow refreshes the public ComCat context and USGS/GDR source probes daily. It preserves last-success timestamps, surfaces errors, and never changes the TIFF or promotes a candidate. Earthquakes are context, not confirmed faults or geothermal resources.</p><div class="linkrow"><a href="data/source-feed.json">Inspect source-feed JSON</a><a href="https://earthquake.usgs.gov/fdsnws/event/1/">Official ComCat API</a><a href="https://github.com/buffedlizard55-lab/GEMSDOE40/actions/workflows/pages.yml">Build / refresh history</a></div></section></main><footer class="footer"><div class="wrap"><p><strong>Maximize P(Win). Own the Outcome.</strong><br>Evidence before a weekly submission slot.</p>
-<p>Independent competition research · not affiliated with DOE or DrivenData.<br><a href="https://github.com/buffedlizard55-lab/GEMSDOE40">Repository</a> · <a href="user-prompt-20261006.md">Full project brief</a> · <a href="reports/review-20261006.md">Three-pass review</a></p></div></footer></body></html>
+<a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true">G</span><b>GEMS / 40</b><em>H8 EULER</em></a>
+<nav class="nav" aria-label="Main navigation"><a class="" href="index.html">Overview</a><a class="" href="executive-summary.html">Submission guide</a><a class="" href="evidence.html">Evidence</a><a class="" href="hypotheses.html">Hypotheses</a><a class="active" href="sources.html">Sources</a></nav></div></div></header>
+<main id="main" class="wrap"><div class="subhero"><p class="kicker">SOURCES / OFFICIAL AND VERIFIABLE</p>
+<h1>Where every claim comes from.</h1>
+<p class="lead">Official competition pages, the organisers' own clarifications, the primary geophysical
+literature, and the local receipts that record what was actually measured in this repository.</p></div>
+<section class="section"><h2>How this site and every artifact are verified</h2>
+<div class="prose"><p>Nothing here is published on a claim alone. Continuous integration runs the unit and integrity
+tests, re-reads every published byte against its receipt, regenerates the whole site and fails if a single
+character changes, and then loads all eight public routes in headless Chromium at desktop, tablet and 320 px
+phone widths — checking the download actually serves the published SHA-256 and that the submission name, note
+and hash can be copied. The Pages pipeline verifies the live public URLs and both download routes again after
+each deployment. When a check fails, the failure is annotated with the exact page, viewport and step.</p>
+<p>Current state: <a href="https://github.com/buffedlizard55-lab/GEMSDOE40/actions/workflows/ci.yml">Research and
+site checks</a> green on <span class="mono">main</span>; the H8 lineament release reproduces byte-for-byte from an
+independent re-run of <span class="mono">scripts/run_h8_lineament.py</span>.</p></div></section>
+
+<section class="section"><h2>Competition</h2><div class="grid3">
+<article class="sourcecard"><span class="stepnum">PROBLEM &amp; METRIC</span><h3>Competition problem description</h3>
+<p><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/</a> — task, layers and the distance-weighted Tversky index
+(α = 0.2, β = 0.8, R = 300 m) used everywhere in this analysis.</p></article>
+<article class="sourcecard"><span class="stepnum">DATA</span><h3>Competition data page</h3>
+<p><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/data/">https://www.drivendata.org/competitions/306/competition-doe-gems/data/</a> — <code>training_features.tif</code>, <code>labels.tif</code>,
+<code>sample_submission.tif</code> and the 1 m DEM link CSV. Login-walled; this repository builds from the
+sha256-pinned bridge instead.</p></article>
+<article class="sourcecard"><span class="stepnum">RULES &amp; FORMAT</span><h3>Submission specification</h3>
+<p><a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">https://docs.nlr.gov/docs/fy26osti/96647.pdf</a> — single-band float32 GeoTIFF, EPSG:32611, 100 m, values in [0, 1], NaN outside
+the footprint; one submission serves both rounds.</p></article>
+<article class="sourcecard"><span class="stepnum">LEADERBOARD</span><h3>Public leaderboard</h3>
+<p><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/</a> — observed 2026-10-06: best public score 0.3345, one historical
+leader at 0.3195, and the owner's best recorded row at 0.2778. Leaderboard rows referenced in this repository
+are owner-reported and are not organizer receipts for a specific file.</p></article>
+<article class="sourcecard"><span class="stepnum">REFERENCE</span><h3>Official reference solution</h3>
+<p><a href="https://github.com/drivendataorg/gems-prize-reference-solution">https://github.com/drivendataorg/gems-prize-reference-solution</a> — DrivenData's published baseline, useful for format and pipeline
+conventions.</p></article>
+<article class="sourcecard"><span class="stepnum">DATA PORTAL</span><h3>GDR entry for the competition data</h3>
+<p><a href="https://gdr.openei.org/submissions/1391">https://gdr.openei.org/submissions/1391</a> — Geothermal Data Repository submission describing the GeoDAWN data products;
+blocked from this sandbox at the host level, so it is cited, not re-hosted.</p></article>
+</div></section>
+<section class="section"><h2>Organizer clarifications (verbatim)</h2><div class="grid3">
+<article class="sourcecard"><span class="stepnum">MASKING</span><h3>Known faults are excluded from scoring</h3>
+<p><a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516">https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516</a> — DrivenData staff, 2026-09-16: pixels corresponding to known
+USGS/INGENIOUS faults are masked and excluded from evaluation, so they contribute no true positives and are not
+penalised.</p></article>
+<article class="sourcecard"><span class="stepnum">WHAT IS NEW</span><h3>"Newly mapped geometry" counts</h3>
+<p><a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516">forum 11536, post 2</a> — DrivenData staff, 2026-09-23: "any fault pixel not already
+captured by USGS/INGENIOUS" and it "can include newly mapped geometry of an existing fault system".</p></article>
+<article class="sourcecard"><span class="stepnum">NOT DISCLOSED</span><h3>Test-fault provenance stays private</h3>
+<p><a href="https://community.drivendata.org/t/how-were-the-new-test-faults-identified-data-sources-and-fault-types/11527">https://community.drivendata.org/t/how-were-the-new-test-faults-identified-data-sources-and-fault-types/11527</a> — staff, 2026-09-23: data sources, fault types and coverage behind
+the test faults are not disclosed, and the final round re-scores against a set updated by expert review of the
+Phase 1 submissions.</p></article>
+</div></section>
+<section class="section"><h2>Geophysics</h2><div class="grid3">
+<article class="sourcecard"><span class="stepnum">EULER DECONVOLUTION</span><h3>Reid et al., 1990</h3>
+<p><a href="https://www.reid-geophys.co.uk/wp-content/uploads/2017/11/Reid-et-al-1990.pdf">https://www.reid-geophys.co.uk/wp-content/uploads/2017/11/Reid-et-al-1990.pdf</a> — the moving-window Euler method with the arbitrary contact offset that
+this release implements at structural index 0.</p></article>
+<article class="sourcecard"><span class="stepnum">STRUCTURAL INDEX</span><h3>Reid &amp; Thurston, 2014</h3>
+<p><a href="https://www.reid-geophys.co.uk/wp-content/uploads/2017/11/Reid-Thurston-2014.pdf">https://www.reid-geophys.co.uk/wp-content/uploads/2017/11/Reid-Thurston-2014.pdf</a> — structural-index selection; a finite gravity step is SI = −1, which is
+why the gravity arm here uses the first vertical derivative at SI = 0 as a local top-edge approximation, and why
+H15 is ranked as the deeper fix.</p></article>
+<article class="sourcecard"><span class="stepnum">ELEVATION</span><h3>USGS 3DEP</h3>
+<p><a href="https://www.usgs.gov/3d-elevation-program">https://www.usgs.gov/3d-elevation-program</a> — free official 1 m lidar DEM coverage for the next hypothesis; not
+reachable from this sandbox (TLS to the USGS endpoint is closed here).</p></article>
+</div></section>
+<section class="section"><h2>Local receipts (everything measured in this repository)</h2>
+<div class="prose"><ul>
+<li><a href="data/h8-lineament-audit.json">h8-lineament-audit.json</a> — format, novelty over
+278 priors, named surrogates, blocked breakdown, recorded-artifact comparison.</li>
+<li><a href="data/h8-lineament-generation.json">h8-lineament-generation.json</a> — the exact generation receipt
+including configuration, window totals and input hashes.</li>
+<li><a href="downloads/h8-lineament-solutions.csv.gz">h8-lineament-solutions.csv.gz</a> — the depth-labelled solution
+cloud, 124,382 retained solutions.</li>
+<li><a href="data/instrument-audit-20261006.json">instrument-audit-20261006.json</a> — the sixteen recorded
+scores and the ρ table that retires every local promotion instrument.</li>
+<li><a href="data/h33-measured-analysis.json">h33-measured-analysis.json</a> — the deletion measurement behind
+the 0.2778 row.</li>
+<li><a href="research/h8-analysis-20261006.md">h8-analysis-20261006.md</a> and
+<a href="research/h8-preregistration-20261006.md">h8-preregistration-20261006.md</a> — the metric algebra, the
+required-credit calculation and the pre-registered settings.</li>
+<li><a href="user-prompt-20261006.md">user-prompt-20261006.md</a> — the full project brief, also embedded in the
+repository README.</li>
+</ul></div></section></main>
+<footer class="footer"><div class="wrap">
+<p><strong>Maximize P(Win). Own the Outcome.</strong><br>Evidence before a weekly submission slot.</p>
+<p>Independent competition research, not affiliated with DOE or DrivenData. No competition login is used or stored.<br>
+<a href="https://github.com/buffedlizard55-lab/GEMSDOE40">Repository</a> ·
+<a href="user-prompt-20261006.md">Full project brief</a> ·
+<a href="data/current-candidate.json">Machine-readable current candidate</a></p></div></footer></body></html>

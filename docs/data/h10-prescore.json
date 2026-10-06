@@ -1,0 +1,124 @@
+{
+  "bars": {
+    "absolute": 0.039354,
+    "vs_random_factor": 2.0
+  },
+  "best_indicator": "HG_dilate",
+  "decision": "NEGATIVE-AT-PRESCREEN",
+  "features_sha256": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5",
+  "finished_utc": "2026-10-06T04:26:04.991076+00:00",
+  "indicators": {
+    "HG_2ndinv": {
+      "best_random_control": 0.1157730825267194,
+      "control_scores": {
+        "gradient_topk_tmi_mass_matched": 0.08001591618418258,
+        "random_mass_matched_seed40": 0.11561766303166805,
+        "random_mass_matched_seed41": 0.11558641075225115,
+        "random_mass_matched_seed42": 0.1157730825267194
+      },
+      "mass_budget_px": 2577859,
+      "mass_sum": 2577859.0,
+      "passes_absolute_bar": true,
+      "passes_random_bar": false,
+      "positive_px": 5155717,
+      "proxy_score": 0.06899974264360269
+    },
+    "HG_dilate": {
+      "best_random_control": 0.1157730825267194,
+      "control_scores": {
+        "gradient_topk_tmi_mass_matched": 0.08001591618418258,
+        "random_mass_matched_seed40": 0.11561766303166805,
+        "random_mass_matched_seed41": 0.11558641075225115,
+        "random_mass_matched_seed42": 0.1157730825267194
+      },
+      "mass_budget_px": 2577859,
+      "mass_sum": 2577859.0,
+      "passes_absolute_bar": true,
+      "passes_random_bar": false,
+      "positive_px": 5155717,
+      "proxy_score": 0.0700945580690881
+    },
+    "HG_shear": {
+      "best_random_control": 0.11577312448464554,
+      "control_scores": {
+        "gradient_topk_tmi_mass_matched": 0.08001594546155817,
+        "random_mass_matched_seed40": 0.11561770492844457,
+        "random_mass_matched_seed41": 0.11558645264055518,
+        "random_mass_matched_seed42": 0.11577312448464554
+      },
+      "mass_budget_px": 2577858,
+      "mass_sum": 2577859.0,
+      "passes_absolute_bar": true,
+      "passes_random_bar": false,
+      "positive_px": 5155717,
+      "proxy_score": 0.06469824037685394
+    },
+    "inv_direct": {
+      "best_random_control": 0.11561611396302944,
+      "control_scores": {
+        "gradient_topk_tmi_mass_matched": 0.07999772257926156,
+        "random_mass_matched_seed40": 0.11545086785771483,
+        "random_mass_matched_seed41": 0.11542738484049389,
+        "random_mass_matched_seed42": 0.11561611396302944
+      },
+      "mass_budget_px": 2583686,
+      "mass_sum": 2583686.5,
+      "passes_absolute_bar": true,
+      "passes_random_bar": false,
+      "positive_px": 5167372,
+      "proxy_score": 0.06750410769693836
+    },
+    "lineament_shear": {
+      "best_random_control": 0.11561611396302944,
+      "control_scores": {
+        "gradient_topk_tmi_mass_matched": 0.07999772257926156,
+        "random_mass_matched_seed40": 0.11545086785771483,
+        "random_mass_matched_seed41": 0.11542738484049389,
+        "random_mass_matched_seed42": 0.11561611396302944
+      },
+      "mass_budget_px": 2583686,
+      "mass_sum": 2583686.5,
+      "passes_absolute_bar": true,
+      "passes_random_bar": false,
+      "positive_px": 5167372,
+      "proxy_score": 0.0652938444334083
+    },
+    "shear_x_dilate": {
+      "best_random_control": 0.1157730825267194,
+      "control_scores": {
+        "gradient_topk_tmi_mass_matched": 0.08001591618418258,
+        "random_mass_matched_seed40": 0.11561766303166805,
+        "random_mass_matched_seed41": 0.11558641075225115,
+        "random_mass_matched_seed42": 0.1157730825267194
+      },
+      "mass_budget_px": 2577859,
+      "mass_sum": 2577859.0,
+      "passes_absolute_bar": true,
+      "passes_random_bar": false,
+      "positive_px": 5155717,
+      "proxy_score": 0.06675135496093537
+    }
+  },
+  "preregistration_sha256_at_runtime": "d495fc0f91509ea41120514ab0fd2b10aac4215f2d0c55ac5abb36533569bea3",
+  "protocol": "h10-prescore frozen addendum 3 (2026-10-06)",
+  "proxy_info": {
+    "holdout_blocks": "4 rows x 6 columns, contiguous; 3-cell guard at internal boundaries",
+    "known_label_pixels_exact": 60988,
+    "mask_rule": "exclude only labels == 1 at those exact pixels; no distance buffer",
+    "off_catalogue_truth_pixels_after_exact_mask": 78433,
+    "official_metric": "published 300 m triangular distance-weighted Tversky; alpha=0.2, beta=0.8",
+    "proxy_dtype": "uint8",
+    "proxy_generation": "historical_h2b_26d142",
+    "proxy_nodata": 255.0,
+    "proxy_sha256": "26d142c4c93282cd94f6950ab96f22aeff59fbbea523d43d662e76fa1b161b5c",
+    "proxy_status": "owner-derived SGMC mirror; proxy instrument only, not organizer truth",
+    "sgmc_positive_overlap_exact_known_pixels": 3718,
+    "sgmc_positive_pixels_in_footprint": 82151,
+    "template_outside_pixels": 7111787,
+    "template_valid_pixels": 5167373
+  },
+  "script_sha256": "4f0312d3ce6c9ef0cfd3638eb6a00e1c3f5c4ce669b12374f6207224b39a3292",
+  "sigma_px": 2.0,
+  "slot_used": false,
+  "started_utc": "2026-10-06T04:25:00.462726+00:00"
+}

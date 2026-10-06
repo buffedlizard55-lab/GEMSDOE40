@@ -1,0 +1,291 @@
+{
+ "instrument": {
+  "kind": "LM (spatially blocked quadrants, off-catalogue SGMC truth, prevalence calibrated)",
+  "cells": {
+   "foldNW": {
+    "domain_px": 1097924,
+    "truth_px": 12200
+   },
+   "foldNE": {
+    "domain_px": 1361215,
+    "truth_px": 32124
+   },
+   "foldSW": {
+    "domain_px": 1343885,
+    "truth_px": 14020
+   },
+   "foldSE": {
+    "domain_px": 1082917,
+    "truth_px": 21684
+   }
+  },
+  "catalogue_hidden_cells": {
+   "foldNW": {
+    "truth_px": 0
+   },
+   "foldNE": {
+    "truth_px": 0
+   },
+   "foldSW": {
+    "truth_px": 0
+   },
+   "foldSE": {
+    "truth_px": 0
+   }
+  }
+ },
+ "stage1": {
+  "orderings": [
+   {
+    "ordering": "h33-2-b2 > h27-4-r1-solo-d2-8",
+    "reproduced_raw": false,
+    "reproduced_calibrated": true,
+    "lm_margin": -0.0005737029975861896,
+    "lm_calibrated_margin": 0.007441144027538149
+   },
+   {
+    "ordering": "h27-4-r1-solo-d2-8 > dotted-h19-5-d2-8",
+    "reproduced_raw": true,
+    "reproduced_calibrated": true,
+    "lm_margin": 0.0004909561863621348,
+    "lm_calibrated_margin": 0.017171139485188558
+   },
+   {
+    "ordering": "dotted-h19-5-d2-8 > dotted-h19-5-d1-5",
+    "reproduced_raw": false,
+    "reproduced_calibrated": true,
+    "lm_margin": -0.009038559626308049,
+    "lm_calibrated_margin": 0.009907068046408729
+   },
+   {
+    "ordering": "dotted-h19-5-d1-5 > h19-5",
+    "reproduced_raw": false,
+    "reproduced_calibrated": true,
+    "lm_margin": -0.017458825172992826,
+    "lm_calibrated_margin": 0.06083596296049021
+   },
+   {
+    "ordering": "h19-5 > h16-1-topo-geophys-ridges",
+    "reproduced_raw": false,
+    "reproduced_calibrated": false,
+    "lm_margin": -0.01105999515285204,
+    "lm_calibrated_margin": -0.031688155149789066
+   },
+   {
+    "ordering": "h16-1-topo-geophys-ridges > h28-dotted-ridge",
+    "reproduced_raw": true,
+    "reproduced_calibrated": true,
+    "lm_margin": 0.038553722778283034,
+    "lm_calibrated_margin": 0.03580750241326047
+   }
+  ],
+  "reproduced_calibrated": "5/6",
+  "reproduced_raw": "2/6",
+  "reference_scores": {
+   "h33-2-b2": {
+    "lm": 0.07255002635275784,
+    "lm_calibrated": 0.36634174122594154,
+    "live": 0.2778
+   },
+   "h27-4-r1-solo-d2-8": {
+    "lm": 0.07312372935034403,
+    "lm_calibrated": 0.3589005971984034,
+    "live": 0.2708
+   },
+   "h32-1-prethin-tip-euler-d2-8": {
+    "lm": 0.07303412484613667,
+    "lm_calibrated": 0.35016044147062075,
+    "live": 0.2649
+   },
+   "dotted-h19-5-d2-8": {
+    "lm": 0.0726327731639819,
+    "lm_calibrated": 0.34172945771321483,
+    "live": 0.26
+   },
+   "dotted-h19-5-d1-5": {
+    "lm": 0.08167133279028994,
+    "lm_calibrated": 0.3318223896668061,
+    "live": 0.2477
+   },
+   "topo-gap-closure-v2-d1-5": {
+    "lm": 0.08282860687978713,
+    "lm_calibrated": 0.3349634769290458,
+    "live": 0.2449
+   },
+   "h19-5": {
+    "lm": 0.09913015796328277,
+    "lm_calibrated": 0.2709864267063159,
+    "live": 0.1922
+   },
+   "h16-1-topo-geophys-ridges": {
+    "lm": 0.11019015311613481,
+    "lm_calibrated": 0.30267458185610496,
+    "live": 0.1855
+   },
+   "h28-dotted-ridge": {
+    "lm": 0.07163643033785178,
+    "lm_calibrated": 0.2668670794428445,
+    "live": 0.1839
+   }
+  },
+  "leaderboard_projection": {
+   "n": 9,
+   "slope": 1.0013746570978839,
+   "intercept": -0.08897403365831089,
+   "r2": 0.9128698183622815,
+   "rmse": 0.010673308154512244,
+   "mean_ratio": 0.7243362532441647,
+   "sd_ratio": 0.048557632024156645,
+   "note": "LM-calibrated score -> owner-reported leaderboard DTI. All owner-reported scores are assumptions (the public leaderboard exposes no filenames/hashes)."
+  }
+ },
+ "candidates": {
+  "gemsdoe40-euler-line-flank-gated-30000px-20261006T032134Z-e68ab565-zeros.tif": {
+   "lm_mean": 0.025721317979303736,
+   "lm_calibrated_mean": 0.1167850392373563,
+   "lm_per_fold": {
+    "foldNW": 0.027088046151410434,
+    "foldNE": 0.018291805432333705,
+    "foldSW": 0.032238614163908205,
+    "foldSE": 0.025266806169562606
+   },
+   "lm_calibrated_per_fold": {
+    "foldNW": 0.09539059886481928,
+    "foldNE": 0.13224048143909709,
+    "foldSW": 0.09816190935489555,
+    "foldSE": 0.14134716729061325
+   },
+   "emitted_pixels": 30000,
+   "on_catalogue_pixels": 0,
+   "fold_detail": {
+    "foldNW": {
+     "n_p": 5154,
+     "n_g": 12200,
+     "tp_w": 287.62093026142367
+    },
+    "foldNE": {
+     "n_p": 6470,
+     "n_g": 32124,
+     "tp_w": 488.7712755851464
+    },
+    "foldSW": {
+     "n_p": 9135,
+     "n_g": 14020,
+     "tp_w": 411.6635197775235
+    },
+    "foldSE": {
+     "n_p": 7320,
+     "n_g": 21684,
+     "tp_w": 468.2512884331126
+    }
+   },
+   "cat_hidden": 0.0,
+   "projected_leaderboard_dti": 0.027971544962159686,
+   "projected_leaderboard_dti_ci": [
+    0.006624928653135197,
+    0.04931816127118417
+   ],
+   "reference": "h33-2-b2",
+   "folds_better_than_reference": 0,
+   "beats_reference": false
+  },
+  "gemsdoe40-euler-line-flank-gated-corrob-25000px-20261006T032157Z-b817fe42-zeros.tif": {
+   "lm_mean": 0.020683801266241725,
+   "lm_calibrated_mean": 0.09682317803857328,
+   "lm_per_fold": {
+    "foldNW": 0.02158925313044525,
+    "foldNE": 0.013935713112703994,
+    "foldSW": 0.026659293254037552,
+    "foldSE": 0.0205509455677801
+   },
+   "lm_calibrated_per_fold": {
+    "foldNW": 0.07891286518714193,
+    "foldNE": 0.10359278716412122,
+    "foldSW": 0.08522420261337181,
+    "foldSE": 0.11956285718965816
+   },
+   "emitted_pixels": 25000,
+   "on_catalogue_pixels": 0,
+   "fold_detail": {
+    "foldNW": {
+     "n_p": 4221,
+     "n_g": 12200,
+     "tp_w": 225.95712904015994
+    },
+    "foldNE": {
+     "n_p": 5497,
+     "n_g": 32124,
+     "tp_w": 370.73886590303465
+    },
+    "foldSW": {
+     "n_p": 7401,
+     "n_g": 14020,
+     "tp_w": 332.68715385584284
+    },
+    "foldSE": {
+     "n_p": 6229,
+     "n_g": 21684,
+     "tp_w": 377.69472706934573
+    }
+   },
+   "cat_hidden": 0.0,
+   "projected_leaderboard_dti": 0.007982243049192789,
+   "projected_leaderboard_dti_ci": [
+    0.0,
+    0.029328859358217278
+   ],
+   "reference": "h33-2-b2",
+   "folds_better_than_reference": 0,
+   "beats_reference": false
+  },
+  "gemsdoe40-euler-line-ring-pruned-40000px-20261006T030738Z-0fbdca6f-zeros.tif": {
+   "lm_mean": 0.058339276332876625,
+   "lm_calibrated_mean": 0.23374209674624352,
+   "lm_per_fold": {
+    "foldNW": 0.06892731722883111,
+    "foldNE": 0.028523040996423554,
+    "foldSW": 0.09899808965285022,
+    "foldSE": 0.036908657453401605
+   },
+   "lm_calibrated_per_fold": {
+    "foldNW": 0.2297896004562004,
+    "foldNE": 0.2241883707711679,
+    "foldSW": 0.2668156013672951,
+    "foldSE": 0.21417481439031072
+   },
+   "emitted_pixels": 40000,
+   "on_catalogue_pixels": 0,
+   "fold_detail": {
+    "foldNW": {
+     "n_p": 8161,
+     "n_g": 12200,
+     "tp_w": 748.5859684890323
+    },
+    "foldNE": {
+     "n_p": 6000,
+     "n_g": 32124,
+     "tp_w": 752.4696561936171
+    },
+    "foldSW": {
+     "n_p": 16835,
+     "n_g": 14020,
+     "tp_w": 1349.7790579989082
+    },
+    "foldSE": {
+     "n_p": 7549,
+     "n_g": 21684,
+     "tp_w": 678.6894391376713
+    }
+   },
+   "cat_hidden": 0.0,
+   "projected_leaderboard_dti": 0.1450893783202991,
+   "projected_leaderboard_dti_ci": [
+    0.12374276201127463,
+    0.1664359946293236
+   ],
+   "reference": "h33-2-b2",
+   "folds_better_than_reference": 0,
+   "beats_reference": false
+  }
+ }
+}

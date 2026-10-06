@@ -1,21 +1,36 @@
 {
-  "bytes": 3918532,
-  "canonical_pixels_sha256": "fab9f6619c02595ceec668c87420789035d8103d3c93b91a2e4aa7c2bc905e86",
+  "experiment": "H8 lineament-weighted cross-family SI=0 Euler depth-cluster KDE",
+  "filename": "gemsdoe40-h8-euler-lineament-depthcluster-20261006-785c4f5d5ce1.tif",
+  "path": "docs/downloads/gemsdoe40-h8-euler-lineament-depthcluster-20261006-785c4f5d5ce1.tif",
+  "bytes": 493872,
+  "sha256": "49d26d8195e343b531cf5e8f9ebd44e2e0a652daca6ad4f71016faabcab33509",
+  "canonical_pixels_sha256": "785c4f5d5ce1b2a341f27ac26702b77626eaed270b6af48e0127d68378983500",
+  "mass": 32485.908203125,
+  "dots": 40000,
+  "values": [
+    0.3830769658088684,
+    1.0
+  ],
+  "tracking_name": "GEMSDOE40-H8-LINEAMENT-785c4f5d5ce1",
+  "note": "Euler deconvolution SI=0 contact depth-clustering over magnetic (rtp) and isostatic gravity (differentiated once); lineament-weighted kernel-density emission; 40,000 dots; id 785c4f5d5ce1.",
+  "note_characters": 188,
   "cloud": {
-    "bytes": 2183131,
-    "path": "docs/downloads/h4-euler-solutions.csv.gz",
-    "records": 46656,
-    "sha256": "6bed30b224981ef1064256d696c585b76f438011bbae6c0a16c00e6e6f5922ba"
+    "path": "docs/downloads/h8-lineament-solutions.csv.gz",
+    "sha256": "0e82b38ebe521369347055541af556d3e17600f03241998e8291f6a150dd8d35",
+    "bytes": 4623502
   },
-  "download_purpose": "Distinct submission-format research artifact; NOT approved for upload",
-  "experiment": "H4",
-  "filename": "gemsdoe40-h4-contact-offset-depthkde-20261006-fab9f6619c02.tif",
-  "name": "GEMSDOE40-H4-CONTACT-OFFSET-fab9f6619c02",
-  "note": "H4 SI0+A rank-aware TMI+dGdz Euler; shallow cross-window depth-consensus KDE. New raw field; HOLD, proxy gate failed; no organizer score.",
-  "note_characters": 137,
-  "organizer_score": null,
-  "path": "docs/downloads/gemsdoe40-h4-contact-offset-depthkde-20261006-fab9f6619c02.tif",
-  "sha256": "ee73ffd76fabbaa1a2e77e17f57947a7db858916d713801e0c3502e49f6acabb",
+  "hard_twin": {
+    "filename": "gemsdoe40-h8-euler-lineament-depthcluster-20261006-785c4f5d5ce1-hard.tif",
+    "path": "docs/downloads/gemsdoe40-h8-euler-lineament-depthcluster-20261006-785c4f5d5ce1-hard.tif",
+    "sha256": "0814b454be3bd8f0f898c8822bd9d2bc7eec57271276e3b326ee4e235ed7ff3b",
+    "bytes": 371949
+  },
+  "status": "BUILT, AUDITED, NOT PROMOTED",
   "slot_eligible": false,
-  "status": "HOLD \u2014 DO NOT SUBMIT"
+  "organizer_score": null,
+  "weekly_submission_used": false,
+  "novelty": true,
+  "corpus_size": 278,
+  "construction_reads_labels_or_priors": false,
+  "submission_note_example": "Euler deconvolution SI=0 contact depth-clustering over magnetic (rtp) and isostatic gravity (differentiated once); lineament-weighted kernel-density emission; 40,000 dots; id 785c4f5d5ce1."
 }

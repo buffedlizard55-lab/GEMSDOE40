@@ -26,7 +26,10 @@ def main():
     current = json.loads((ROOT / "docs/data/current-candidate.json").read_text())
     expected_html = hashlib.sha256((ROOT / "docs/index.html").read_bytes()).hexdigest()
     last_error = None
-    for attempt, delay in enumerate((0, 5, 10, 20, 30, 45), 1):
+    # Pages deployments can take several minutes to reach every CDN edge. The first run of this
+    # check after the H8 merge failed at ~2 minutes and succeeded on a later manual look, so the
+    # budget is now roughly eight minutes of bounded retries instead of under two.
+    for attempt, delay in enumerate((0, 10, 20, 30, 45, 60, 90, 120, 150), 1):
         if delay: time.sleep(delay)
         try:
             rows = []
@@ -54,7 +57,7 @@ def main():
             return
         except Exception as exc:
             last_error = exc
-            print(f"Public verification attempt {attempt}/6: {type(exc).__name__}: {exc}", flush=True)
+            print(f"Public verification attempt {attempt}/9: {type(exc).__name__}: {exc}", flush=True)
     raise RuntimeError(f"Cannot claim verified public deployment: {last_error}")
 
 
