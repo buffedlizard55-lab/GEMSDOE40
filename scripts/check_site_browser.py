@@ -19,9 +19,10 @@ import threading
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
-# The five pages the current generator actually builds (methodology / leaderboard pages were
-# retired with the H4-era site; their receipts remain, their routes do not).
-PAGES = ("index.html", "executive-summary.html", "evidence.html", "hypotheses.html", "sources.html")
+# Every public route present in docs/: the five regenerated pages plus the retained
+# methodology / leaderboard pages that remain part of the published site.
+PAGES = ("index.html", "executive-summary.html", "evidence.html", "hypotheses.html",
+         "methodology.html", "leaderboard-analysis.html", "leaderboard.html", "sources.html")
 
 
 class QuietHandler(SimpleHTTPRequestHandler):

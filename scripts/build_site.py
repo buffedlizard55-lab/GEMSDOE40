@@ -217,11 +217,17 @@ def verify_evidence() -> list[str]:
         check(projects["reported_score_count"]
               == sum(s["score"] is not None for p in projects["projects"] for s in p["submissions"]) == 48,
               "48 owner-reported scores were not preserved")
-        cached = len(list((ROOT / "data" / "prior").glob("*.tif")))
         comparable = audit["novelty"]["corpus_size"] + audit["novelty"]["unreadable_or_incomparable"]
-        check(inv["unique_git_blobs"] == len(inv["unique_rasters"]) >= cached,
-              "prior inventory is smaller than the cached corpus")
-        check(cached == comparable, "cached prior corpus disagrees with the novelty audit")
+        check(inv["unique_git_blobs"] == len(inv["unique_rasters"]),
+              "prior inventory blob count disagrees with its raster list")
+        check(inv["unique_git_blobs"] >= comparable,
+              "prior audit compared more rasters than the inventory lists")
+        # data/prior/ is gitignored by design: CI has no cached corpus, so the cache is checked
+        # only when it is actually present (a partial cache must never pass silently).
+        cached = len(list((ROOT / "data" / "prior").glob("*.tif")))
+        if cached:
+            check(cached >= comparable, "cached prior corpus is smaller than the novelty audit corpus")
+            check(inv["unique_git_blobs"] >= cached, "prior inventory is smaller than the cached corpus")
 
         index_text = (DOCS / "index.html").read_text()
         summary_text = (DOCS / "executive-summary.html").read_text()
