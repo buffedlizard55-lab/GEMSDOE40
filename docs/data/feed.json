@@ -1,279 +1,328 @@
 {
-  "generated_from": "data/evidence/*.json",
-  "site_best_owner_reported": 0.2778,
-  "leaderboard_best": 0.3195,
-  "artifacts": [
-    "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif",
-    "gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif",
-    "gems40-euler-augmented-incumbent-20261005-ac1c1927.tif",
-    "gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e.tif"
-  ],
-  "validation": {
-    "GEMSDOE40-submission-nan.tif": {
-      "lm_calibrated": 0.10016910033515054,
-      "lm_raw": 0.03682660938805422,
-      "cat_hidden": 0.0,
-      "n_px": 45784,
-      "on_catalogue_px": 0,
-      "folds": {
-        "foldNW": 0.09416534138895172,
-        "foldNE": 0.11714783725596731,
-        "foldSW": 0.10237025297152125,
-        "foldSE": 0.08699296972416186
-      },
-      "delta_vs_incumbent": -0.16775143123464986,
-      "folds_better_than_incumbent": 0,
-      "beats_incumbent": false,
-      "all_folds_better": false
-    },
-    "GEMSDOE40-submission.tif": {
-      "lm_calibrated": 0.10016910033515054,
-      "lm_raw": 0.03682660938805422,
-      "cat_hidden": 0.0,
-      "n_px": 45784,
-      "on_catalogue_px": 0,
-      "folds": {
-        "foldNW": 0.09416534138895172,
-        "foldNE": 0.11714783725596731,
-        "foldSW": 0.10237025297152125,
-        "foldSE": 0.08699296972416186
-      },
-      "delta_vs_incumbent": -0.16775143123464986,
-      "folds_better_than_incumbent": 0,
-      "beats_incumbent": false,
-      "all_folds_better": false
-    },
-    "gems40-euler-augmented-incumbent-20261005-ac1c1927-zeros.tif": {
-      "lm_calibrated": 0.30845196502413813,
-      "lm_raw": 0.09766107243203892,
-      "cat_hidden": 0.0,
-      "n_px": 60710,
-      "on_catalogue_px": 0,
-      "folds": {
-        "foldNW": 0.2178009801248138,
-        "foldNE": 0.48369343827171746,
-        "foldSW": 0.23733345577588175,
-        "foldSE": 0.29497998592413954
-      },
-      "delta_vs_incumbent": 0.04053143345433774,
-      "folds_better_than_incumbent": 4,
-      "beats_incumbent": true,
-      "all_folds_better": true
-    },
-    "gems40-euler-augmented-incumbent-20261005-ac1c1927.tif": {
-      "lm_calibrated": 0.30845196502413813,
-      "lm_raw": 0.09766107243203892,
-      "cat_hidden": 0.0,
-      "n_px": 60710,
-      "on_catalogue_px": 0,
-      "folds": {
-        "foldNW": 0.2178009801248138,
-        "foldNE": 0.48369343827171746,
-        "foldSW": 0.23733345577588175,
-        "foldSE": 0.29497998592413954
-      },
-      "delta_vs_incumbent": 0.04053143345433774,
-      "folds_better_than_incumbent": 4,
-      "beats_incumbent": true,
-      "all_folds_better": true
-    },
-    "gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e-zeros.tif": {
-      "lm_calibrated": 0.3483456137338363,
-      "lm_raw": 0.12829541219860252,
-      "cat_hidden": 0.0,
-      "n_px": 97654,
-      "on_catalogue_px": 0,
-      "folds": {
-        "foldNW": 0.20556679579821058,
-        "foldNE": 0.48065116561318755,
-        "foldSW": 0.23998995034774567,
-        "foldSE": 0.46717454317620144
-      },
-      "delta_vs_incumbent": 0.08042508216403593,
-      "folds_better_than_incumbent": 4,
-      "beats_incumbent": true,
-      "all_folds_better": true
-    },
-    "gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e.tif": {
-      "lm_calibrated": 0.3483456137338363,
-      "lm_raw": 0.12829541219860252,
-      "cat_hidden": 0.0,
-      "n_px": 97654,
-      "on_catalogue_px": 0,
-      "folds": {
-        "foldNW": 0.20556679579821058,
-        "foldNE": 0.48065116561318755,
-        "foldSW": 0.23998995034774567,
-        "foldSE": 0.46717454317620144
-      },
-      "delta_vs_incumbent": 0.08042508216403593,
-      "folds_better_than_incumbent": 4,
-      "beats_incumbent": true,
-      "all_folds_better": true
-    },
-    "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380-zeros.tif": {
-      "lm_calibrated": 0.11600053817805889,
-      "lm_raw": 0.03316481203936073,
-      "cat_hidden": 0.0,
-      "n_px": 20000,
-      "on_catalogue_px": 272,
-      "folds": {
-        "foldNW": 0.11501822013943888,
-        "foldNE": 0.10752508650709851,
-        "foldSW": 0.12460145693414368,
-        "foldSE": 0.11685738913155454
-      },
-      "delta_vs_incumbent": -0.1519199933917415,
-      "folds_better_than_incumbent": 0,
-      "beats_incumbent": false,
-      "all_folds_better": false
-    },
-    "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif": {
-      "lm_calibrated": 0.11600053817805889,
-      "lm_raw": 0.03316481203936073,
-      "cat_hidden": 0.0,
-      "n_px": 20000,
-      "on_catalogue_px": 272,
-      "folds": {
-        "foldNW": 0.11501822013943888,
-        "foldNE": 0.10752508650709851,
-        "foldSW": 0.12460145693414368,
-        "foldSE": 0.11685738913155454
-      },
-      "delta_vs_incumbent": -0.1519199933917415,
-      "folds_better_than_incumbent": 0,
-      "beats_incumbent": false,
-      "all_folds_better": false
-    },
-    "gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif": {
-      "lm_calibrated": 0.12487441578558948,
-      "lm_raw": 0.11673083128026146,
-      "cat_hidden": 0.0,
-      "n_px": 3380827,
-      "on_catalogue_px": 41542,
-      "folds": {
-        "foldNW": 0.10019156523207608,
-        "foldNE": 0.18203910140822746,
-        "foldSW": 0.0867624080539324,
-        "foldSE": 0.13050458844812202
-      },
-      "delta_vs_incumbent": -0.1430461157842109,
-      "folds_better_than_incumbent": 0,
-      "beats_incumbent": false,
-      "all_folds_better": false
-    },
-    "gemsdoe40-euler-si0-depthkde-20261005T230506Z-5bc279cd-nan.tif": {
-      "lm_calibrated": 0.10016910033515054,
-      "lm_raw": 0.03682660938805422,
-      "cat_hidden": 0.0,
-      "n_px": 45784,
-      "on_catalogue_px": 0,
-      "folds": {
-        "foldNW": 0.09416534138895172,
-        "foldNE": 0.11714783725596731,
-        "foldSW": 0.10237025297152125,
-        "foldSE": 0.08699296972416186
-      },
-      "delta_vs_incumbent": -0.16775143123464986,
-      "folds_better_than_incumbent": 0,
-      "beats_incumbent": false,
-      "all_folds_better": false
-    },
-    "gemsdoe40-euler-si0-depthkde-20261005T230506Z-5bc279cd-zeros.tif": {
-      "lm_calibrated": 0.10016910033515054,
-      "lm_raw": 0.03682660938805422,
-      "cat_hidden": 0.0,
-      "n_px": 45784,
-      "on_catalogue_px": 0,
-      "folds": {
-        "foldNW": 0.09416534138895172,
-        "foldNE": 0.11714783725596731,
-        "foldSW": 0.10237025297152125,
-        "foldSE": 0.08699296972416186
-      },
-      "delta_vs_incumbent": -0.16775143123464986,
-      "folds_better_than_incumbent": 0,
-      "beats_incumbent": false,
-      "all_folds_better": false
-    }
+ "generated_from": "data/evidence/*.json",
+ "site_best_owner_reported": 0.2778,
+ "leaderboard_best": 0.3262,
+ "artifacts": [
+  "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif",
+  "gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif",
+  "gems40-euler-augmented-incumbent-20261005-ac1c1927.tif",
+  "gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e.tif"
+ ],
+ "validation": {
+  "GEMSDOE40-submission-nan.tif": {
+   "lm_calibrated": 0.10016910033515054,
+   "lm_raw": 0.03682660938805422,
+   "cat_hidden": 0.0,
+   "n_px": 45784,
+   "on_catalogue_px": 0,
+   "folds": {
+    "foldNW": 0.09416534138895172,
+    "foldNE": 0.11714783725596731,
+    "foldSW": 0.10237025297152125,
+    "foldSE": 0.08699296972416186
+   },
+   "delta_vs_incumbent": -0.16775143123464986,
+   "folds_better_than_incumbent": 0,
+   "beats_incumbent": false,
+   "all_folds_better": false
   },
-  "novelty": {
-    "GEMSDOE40-submission-nan.tif": {
-      "max_jaccard": 0.01036,
-      "max_abs_pearson": 0.00717,
-      "n_priors_compared": 16,
-      "n_near_duplicates": 0,
-      "verdict": "NEW"
-    },
-    "GEMSDOE40-submission.tif": {
-      "max_jaccard": 0.01036,
-      "max_abs_pearson": 0.00717,
-      "n_priors_compared": 16,
-      "n_near_duplicates": 0,
-      "verdict": "NEW"
-    },
-    "gems40-euler-augmented-incumbent-20261005-ac1c1927-zeros.tif": {
-      "max_jaccard": 0.620227,
-      "max_abs_pearson": 0.978923,
-      "n_priors_compared": 16,
-      "n_near_duplicates": 5,
-      "verdict": "NEAR-DUPLICATE"
-    },
-    "gems40-euler-augmented-incumbent-20261005-ac1c1927.tif": {
-      "max_jaccard": 0.620227,
-      "max_abs_pearson": 0.978923,
-      "n_priors_compared": 16,
-      "n_near_duplicates": 5,
-      "verdict": "NEAR-DUPLICATE"
-    },
-    "gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e-zeros.tif": {
-      "max_jaccard": 0.385586,
-      "max_abs_pearson": 0.810164,
-      "n_priors_compared": 16,
-      "n_near_duplicates": 2,
-      "verdict": "NEAR-DUPLICATE"
-    },
-    "gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e.tif": {
-      "max_jaccard": 0.385586,
-      "max_abs_pearson": 0.810164,
-      "n_priors_compared": 16,
-      "n_near_duplicates": 2,
-      "verdict": "NEAR-DUPLICATE"
-    },
-    "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380-zeros.tif": {
-      "max_jaccard": 0.004879,
-      "max_abs_pearson": 0.004953,
-      "n_priors_compared": 16,
-      "n_near_duplicates": 0,
-      "verdict": "NEW"
-    },
-    "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif": {
-      "max_jaccard": 0.004879,
-      "max_abs_pearson": 0.004953,
-      "n_priors_compared": 16,
-      "n_near_duplicates": 0,
-      "verdict": "NEW"
-    },
-    "gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif": {
-      "max_jaccard": 0.050892,
-      "max_abs_pearson": 0.054955,
-      "n_priors_compared": 16,
-      "n_near_duplicates": 0,
-      "verdict": "NEW"
-    },
-    "gemsdoe40-euler-si0-depthkde-20261005T230506Z-5bc279cd-nan.tif": {
-      "max_jaccard": 0.01036,
-      "max_abs_pearson": 0.00717,
-      "n_priors_compared": 16,
-      "n_near_duplicates": 0,
-      "verdict": "NEW"
-    },
-    "gemsdoe40-euler-si0-depthkde-20261005T230506Z-5bc279cd-zeros.tif": {
-      "max_jaccard": 0.01036,
-      "max_abs_pearson": 0.00717,
-      "n_priors_compared": 16,
-      "n_near_duplicates": 0,
-      "verdict": "NEW"
-    }
+  "GEMSDOE40-submission.tif": {
+   "lm_calibrated": 0.10016910033515054,
+   "lm_raw": 0.03682660938805422,
+   "cat_hidden": 0.0,
+   "n_px": 45784,
+   "on_catalogue_px": 0,
+   "folds": {
+    "foldNW": 0.09416534138895172,
+    "foldNE": 0.11714783725596731,
+    "foldSW": 0.10237025297152125,
+    "foldSE": 0.08699296972416186
+   },
+   "delta_vs_incumbent": -0.16775143123464986,
+   "folds_better_than_incumbent": 0,
+   "beats_incumbent": false,
+   "all_folds_better": false
+  },
+  "gems40-euler-augmented-incumbent-20261005-ac1c1927-zeros.tif": {
+   "lm_calibrated": 0.30845196502413813,
+   "lm_raw": 0.09766107243203892,
+   "cat_hidden": 0.0,
+   "n_px": 60710,
+   "on_catalogue_px": 0,
+   "folds": {
+    "foldNW": 0.2178009801248138,
+    "foldNE": 0.48369343827171746,
+    "foldSW": 0.23733345577588175,
+    "foldSE": 0.29497998592413954
+   },
+   "delta_vs_incumbent": 0.04053143345433774,
+   "folds_better_than_incumbent": 4,
+   "beats_incumbent": true,
+   "all_folds_better": true
+  },
+  "gems40-euler-augmented-incumbent-20261005-ac1c1927.tif": {
+   "lm_calibrated": 0.30845196502413813,
+   "lm_raw": 0.09766107243203892,
+   "cat_hidden": 0.0,
+   "n_px": 60710,
+   "on_catalogue_px": 0,
+   "folds": {
+    "foldNW": 0.2178009801248138,
+    "foldNE": 0.48369343827171746,
+    "foldSW": 0.23733345577588175,
+    "foldSE": 0.29497998592413954
+   },
+   "delta_vs_incumbent": 0.04053143345433774,
+   "folds_better_than_incumbent": 4,
+   "beats_incumbent": true,
+   "all_folds_better": true
+  },
+  "gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e-zeros.tif": {
+   "lm_calibrated": 0.3483456137338363,
+   "lm_raw": 0.12829541219860252,
+   "cat_hidden": 0.0,
+   "n_px": 97654,
+   "on_catalogue_px": 0,
+   "folds": {
+    "foldNW": 0.20556679579821058,
+    "foldNE": 0.48065116561318755,
+    "foldSW": 0.23998995034774567,
+    "foldSE": 0.46717454317620144
+   },
+   "delta_vs_incumbent": 0.08042508216403593,
+   "folds_better_than_incumbent": 4,
+   "beats_incumbent": true,
+   "all_folds_better": true
+  },
+  "gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e.tif": {
+   "lm_calibrated": 0.3483456137338363,
+   "lm_raw": 0.12829541219860252,
+   "cat_hidden": 0.0,
+   "n_px": 97654,
+   "on_catalogue_px": 0,
+   "folds": {
+    "foldNW": 0.20556679579821058,
+    "foldNE": 0.48065116561318755,
+    "foldSW": 0.23998995034774567,
+    "foldSE": 0.46717454317620144
+   },
+   "delta_vs_incumbent": 0.08042508216403593,
+   "folds_better_than_incumbent": 4,
+   "beats_incumbent": true,
+   "all_folds_better": true
+  },
+  "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380-zeros.tif": {
+   "lm_calibrated": 0.11600053817805889,
+   "lm_raw": 0.03316481203936073,
+   "cat_hidden": 0.0,
+   "n_px": 20000,
+   "on_catalogue_px": 272,
+   "folds": {
+    "foldNW": 0.11501822013943888,
+    "foldNE": 0.10752508650709851,
+    "foldSW": 0.12460145693414368,
+    "foldSE": 0.11685738913155454
+   },
+   "delta_vs_incumbent": -0.1519199933917415,
+   "folds_better_than_incumbent": 0,
+   "beats_incumbent": false,
+   "all_folds_better": false
+  },
+  "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif": {
+   "lm_calibrated": 0.11600053817805889,
+   "lm_raw": 0.03316481203936073,
+   "cat_hidden": 0.0,
+   "n_px": 20000,
+   "on_catalogue_px": 272,
+   "folds": {
+    "foldNW": 0.11501822013943888,
+    "foldNE": 0.10752508650709851,
+    "foldSW": 0.12460145693414368,
+    "foldSE": 0.11685738913155454
+   },
+   "delta_vs_incumbent": -0.1519199933917415,
+   "folds_better_than_incumbent": 0,
+   "beats_incumbent": false,
+   "all_folds_better": false
+  },
+  "gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif": {
+   "lm_calibrated": 0.12487441578558948,
+   "lm_raw": 0.11673083128026146,
+   "cat_hidden": 0.0,
+   "n_px": 3380827,
+   "on_catalogue_px": 41542,
+   "folds": {
+    "foldNW": 0.10019156523207608,
+    "foldNE": 0.18203910140822746,
+    "foldSW": 0.0867624080539324,
+    "foldSE": 0.13050458844812202
+   },
+   "delta_vs_incumbent": -0.1430461157842109,
+   "folds_better_than_incumbent": 0,
+   "beats_incumbent": false,
+   "all_folds_better": false
+  },
+  "gemsdoe40-euler-si0-depthkde-20261005T230506Z-5bc279cd-nan.tif": {
+   "lm_calibrated": 0.10016910033515054,
+   "lm_raw": 0.03682660938805422,
+   "cat_hidden": 0.0,
+   "n_px": 45784,
+   "on_catalogue_px": 0,
+   "folds": {
+    "foldNW": 0.09416534138895172,
+    "foldNE": 0.11714783725596731,
+    "foldSW": 0.10237025297152125,
+    "foldSE": 0.08699296972416186
+   },
+   "delta_vs_incumbent": -0.16775143123464986,
+   "folds_better_than_incumbent": 0,
+   "beats_incumbent": false,
+   "all_folds_better": false
+  },
+  "gemsdoe40-euler-si0-depthkde-20261005T230506Z-5bc279cd-zeros.tif": {
+   "lm_calibrated": 0.10016910033515054,
+   "lm_raw": 0.03682660938805422,
+   "cat_hidden": 0.0,
+   "n_px": 45784,
+   "on_catalogue_px": 0,
+   "folds": {
+    "foldNW": 0.09416534138895172,
+    "foldNE": 0.11714783725596731,
+    "foldSW": 0.10237025297152125,
+    "foldSE": 0.08699296972416186
+   },
+   "delta_vs_incumbent": -0.16775143123464986,
+   "folds_better_than_incumbent": 0,
+   "beats_incumbent": false,
+   "all_folds_better": false
   }
+ },
+ "novelty": {
+  "GEMSDOE40-submission-nan.tif": {
+   "max_jaccard": 0.01036,
+   "max_abs_pearson": 0.00717,
+   "n_priors_compared": 16,
+   "n_near_duplicates": 0,
+   "verdict": "NEW"
+  },
+  "GEMSDOE40-submission.tif": {
+   "max_jaccard": 0.01036,
+   "max_abs_pearson": 0.00717,
+   "n_priors_compared": 16,
+   "n_near_duplicates": 0,
+   "verdict": "NEW"
+  },
+  "gems40-euler-augmented-incumbent-20261005-ac1c1927-zeros.tif": {
+   "max_jaccard": 0.620227,
+   "max_abs_pearson": 0.978923,
+   "n_priors_compared": 16,
+   "n_near_duplicates": 5,
+   "verdict": "NEAR-DUPLICATE"
+  },
+  "gems40-euler-augmented-incumbent-20261005-ac1c1927.tif": {
+   "max_jaccard": 0.620227,
+   "max_abs_pearson": 0.978923,
+   "n_priors_compared": 16,
+   "n_near_duplicates": 5,
+   "verdict": "NEAR-DUPLICATE"
+  },
+  "gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e-zeros.tif": {
+   "max_jaccard": 0.385586,
+   "max_abs_pearson": 0.810164,
+   "n_priors_compared": 16,
+   "n_near_duplicates": 2,
+   "verdict": "NEAR-DUPLICATE"
+  },
+  "gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e.tif": {
+   "max_jaccard": 0.385586,
+   "max_abs_pearson": 0.810164,
+   "n_priors_compared": 16,
+   "n_near_duplicates": 2,
+   "verdict": "NEAR-DUPLICATE"
+  },
+  "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380-zeros.tif": {
+   "max_jaccard": 0.004879,
+   "max_abs_pearson": 0.004953,
+   "n_priors_compared": 16,
+   "n_near_duplicates": 0,
+   "verdict": "NEW"
+  },
+  "gems40-euler-si0-depthcluster-crossfamily-20261005-8933d380.tif": {
+   "max_jaccard": 0.004879,
+   "max_abs_pearson": 0.004953,
+   "n_priors_compared": 16,
+   "n_near_duplicates": 0,
+   "verdict": "NEW"
+  },
+  "gems40-euler-si0-depthcluster-crossfamily-continuous-20261005-f3e0ed7a.tif": {
+   "max_jaccard": 0.050892,
+   "max_abs_pearson": 0.054955,
+   "n_priors_compared": 16,
+   "n_near_duplicates": 0,
+   "verdict": "NEW"
+  },
+  "gemsdoe40-euler-si0-depthkde-20261005T230506Z-5bc279cd-nan.tif": {
+   "max_jaccard": 0.01036,
+   "max_abs_pearson": 0.00717,
+   "n_priors_compared": 16,
+   "n_near_duplicates": 0,
+   "verdict": "NEW"
+  },
+  "gemsdoe40-euler-si0-depthkde-20261005T230506Z-5bc279cd-zeros.tif": {
+   "max_jaccard": 0.01036,
+   "max_abs_pearson": 0.00717,
+   "n_priors_compared": 16,
+   "n_near_duplicates": 0,
+   "verdict": "NEW"
+  }
+ },
+ "leaderboard_snapshot": {
+  "date": "2026-10-05",
+  "top": {
+   "1": 0.3262,
+   "2": 0.3222,
+   "3": 0.322,
+   "4": 0.3195,
+   "5": 0.3163
+  },
+  "source": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
+  "note": "No filenames or hashes are exposed; every (file, score) pairing is an assumption."
+ },
+ "supplementary_h4_euler_line": {
+  "what": "independently built Euler SI=0 depth-cluster line emission (H4-line), archived as a research artifact",
+  "file": "docs/downloads/gemsdoe40-euler-line-ring-pruned-60000px-20261006T032708Z-8dafb186-zeros.tif",
+  "sha256": "8dafb1860367e7d5b8530f924b2ff20efbdff32cfffda82647711f0dbb2e646d",
+  "bytes": 274414,
+  "positive_px": 60000,
+  "nodata": null,
+  "receipt": "docs/data/h4_submission_20261006T032708Z.json",
+  "audit": {
+   "zeros": "docs/data/h4_shipped_audit_zeros.json",
+   "nan": "docs/data/h4_shipped_audit_nan.json",
+   "all_checks_pass": true
+  },
+  "uniqueness": {
+   "max_abs_pearson": 0.012797,
+   "max_jaccard_positive": 0.009333,
+   "n_priors_compared": 19,
+   "verdict": "NEW"
+  },
+  "gate": {
+   "instrument": "frozen four-fold blocked LM (off-catalogue SGMC truth, prevalence calibrated)",
+   "instrument_verified": "5/6 published owner-reported orderings",
+   "outcome": "NOT PROMOTED \u2014 1 of 4 folds, below the best prior under both mirror versions",
+   "mirror_d569d553": {
+    "shipped": 0.285992,
+    "reference": 0.366342
+   },
+   "mirror_643cbe99": {
+    "shipped": 0.208538,
+    "reference": 0.267921
+   },
+   "promotion_rule": "beat the incumbent in all four blocked folds"
+  },
+  "recheck": "docs/data/h4_blocked_validation_recheck_20261006.json",
+  "disclosure": "Absolute LM scores are specific to the SGMC mirror version (three distinct hashes observed for the same filename); the NOT-PROMOTED outcome is invariant. No organizer score is claimed.",
+  "research_record": "docs/research/h4-euler-depthcluster.html"
+ }
 }

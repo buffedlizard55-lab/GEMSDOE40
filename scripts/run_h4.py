@@ -41,7 +41,7 @@ from gemsdoe40 import BANDS  # noqa: E402
 from gemsdoe40.calibration import fit_model, predict_score  # noqa: E402
 from gemsdoe40.corpus import PRIORS, load_field, local_path  # noqa: E402
 from gemsdoe40.euler import EulerCloud  # noqa: E402
-from gemsdoe40.euler_h4 import (  # noqa: E402
+from gemsdoe40.euler_h4_line import (  # noqa: E402
     curvature_evidence, depth_cluster_kde, horizontal_gradient_magnitude, line_response,
     robust_norm, tilt_angle,
 )

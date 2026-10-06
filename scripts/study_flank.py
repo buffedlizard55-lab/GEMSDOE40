@@ -26,7 +26,7 @@ sys.path.insert(0, str(ROOT / "src"))
 
 from gemsdoe40 import BANDS  # noqa: E402
 from gemsdoe40.euler import EulerCloud  # noqa: E402
-from gemsdoe40.euler_h4 import (  # noqa: E402
+from gemsdoe40.euler_h4_line import (  # noqa: E402
     coherence, depth_cluster_kde, line_response, robust_norm, tilt_angle,
 )
 from gemsdoe40.grid import footprint_from_sample, read_band, read_labels  # noqa: E402

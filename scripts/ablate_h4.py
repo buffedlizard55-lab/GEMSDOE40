@@ -2,7 +2,7 @@
 """Ablation of the H4 ranking configuration against the two surrogate instruments.
 
 Every configuration is assembled by the *production* code path
-(:func:`gemsdoe40.euler_h4.assemble_ranking`) and scored by the production lattice
+(:func:`gemsdoe40.euler_h4_line.assemble_ranking`) and scored by the production lattice
 and instruments, so the table below is exactly what the pipeline would ship.
 The calibration fitted to the prior corpus maps each prefix curve to a modelled
 distance-weighted Tversky index; the surrogate columns are measured directly.
@@ -26,7 +26,7 @@ sys.path.insert(0, str(ROOT / "src"))
 from gemsdoe40 import BANDS  # noqa: E402
 from gemsdoe40.calibration import fit_model, predict_score  # noqa: E402
 from gemsdoe40.euler import EulerCloud  # noqa: E402
-from gemsdoe40.euler_h4 import (  # noqa: E402
+from gemsdoe40.euler_h4_line import (  # noqa: E402
     H4Config, assemble_ranking, curvature_evidence, horizontal_gradient_magnitude, tilt_angle,
 )
 from gemsdoe40.grid import footprint_from_sample, read_band, read_labels  # noqa: E402

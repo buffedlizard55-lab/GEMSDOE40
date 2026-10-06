@@ -45,14 +45,20 @@ proxy) are the only inputs the programme can test directly. This bounds the hypo
 what those 19 bands can support.</td>
 <td>A reachable external raster mirror with pinned hashes (several GitHub-mirrored candidates are
 listed in the evidence pages, but licensing for sponsor sharing must be confirmed per layer).</td></tr>
-<tr><td><b>SGMC mirror hash conflict unresolved.</b> <code>derived_sgmc_faults_100m_u8.tif</code> is
-recorded here as <code>d569d553…700f</code>; an earlier record in this repository used
-<code>26d142c4…b5c</code> for the same filename.</td>
+<tr><td><b>SGMC mirror hash conflict, now confirmed as instability.</b>
+<code>derived_sgmc_faults_100m_u8.tif</code> has been observed with <b>three</b> different hashes:
+<code>d569d553…700f</code> (the H4 receipts), <code>26d142c4…b5c</code> (an earlier record), and
+<code>643cbe99…</code> (re-fetched 2026-10-06 from the same pinned repository path). The upstream
+product is evidently regenerated over time.</td>
 <td>Every surrogate number in the H4 record is tied to one hash. If the earlier record refers to a
 different build of the same product, prior comparisons across the programme are not strictly
 like-for-like.</td>
-<td>Re-download the product from the USGS/SGMC side and re-pin; not possible from the build
-sandbox, so the conflict is disclosed rather than resolved.</td></tr>
+<td>Re-download from the USGS/SGMC side and pin one immutable build; not possible from the
+build sandbox, so this is disclosed rather than resolved. <b>Measured consequence:</b> the frozen-gate
+<em>outcome</em> is invariant across mirror versions (shipped H4-line still 1 of 4 folds, still below
+the best prior under both <code>d569d553…700f</code> and <code>643cbe99…</code>), but absolute LM
+values and the leaderboard projection are mirror-specific — they are therefore never used to select a
+file. See <code>docs/data/h4_blocked_validation_recheck_20261006.json</code>.</td></tr>
 </table>
 
 <h2>2. Blocking a stronger claim</h2>

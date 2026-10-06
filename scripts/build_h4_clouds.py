@@ -24,7 +24,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from gemsdoe40 import BANDS  # noqa: E402
-from gemsdoe40.euler_h4 import StackSpec, build_cloud  # noqa: E402
+from gemsdoe40.euler_h4_line import StackSpec, build_cloud  # noqa: E402
 from gemsdoe40.grid import footprint_from_sample, read_band  # noqa: E402
 
 LAYERS = {"rtp": 2, "iso_grav_anom": 13}

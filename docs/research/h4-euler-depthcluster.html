@@ -90,7 +90,21 @@ receipt records the distance-band fractions, the shipped geometry and the gate r
 <a href="../data/h4_submission_20261006T032157Z.json">032157Z</a>) and the gate results are retained
 as the audit trail.</p>
 
-<h2>5. Independent byte audit</h2>
+<h2>5. Mirror-version robustness (re-checked 2026-10-06)</h2>
+<p>The SGMC mirror used as the gate's truth layer is <em>not stable</em>: the same pinned repository
+path has now yielded three different hashes — <code>d569d553…700f</code> (the receipts below),
+<code>26d142c4…b5c</code> (an earlier record) and <code>643cbe99…</code> (re-fetched
+2026-10-06). Re-running the frozen gate against the newest mirror changes every absolute number but
+<em>not</em> the outcome:</p>
+<table><tr><th>mirror</th><th>reference <code>h33-2-b2</code></th><th>shipped H4-line</th><th>folds</th><th>outcome</th></tr>
+<tr><td><code>d569d553…700f</code></td><td>0.3663</td><td>0.2860</td><td>1 / 4</td><td><b>not promoted</b></td></tr>
+<tr><td><code>643cbe99…</code></td><td>0.2679</td><td>0.2085</td><td>1 / 4</td><td><b>not promoted</b></td></tr></table>
+<p>Consequence, and the reason the projection is labelled a proxy-of-a-proxy: absolute LM values and
+the affine leaderboard projection are mirror-version specific and are <em>never</em> used to choose a
+file. The binary conclusion is invariant. Raw re-check:
+<a href="../data/h4_blocked_validation_recheck_20261006.json">h4_blocked_validation_recheck_20261006.json</a>.</p>
+
+<h2>6. Independent byte audit</h2>
 <p><code>scripts/audit_submission.py</code> re-reads the shipped bytes and re-checks: identical shape,
 transform, CRS and footprint to <code>sample_submission.tif</code>; single-band float32; every finite
 value in [0, 1]; <b>no <code>nodata</code> sentinel</b> (the cause of the portal error
@@ -100,7 +114,7 @@ non-zero on any failure. The <code>-zeros</code> twin is the portal file (finite
 0/1 only); the <code>-nan</code> twin follows the sample's NaN-outside convention with identical
 positive support.</p>
 
-<h2 id="4-what-is-not-claimed">6. What is <em>not</em> claimed</h2>
+<h2 id="4-what-is-not-claimed">7. What is <em>not</em> claimed</h2>
 <ul>
 <li><b>No organizer score.</b> The leaderboard exposes no filenames or hashes; every (file, score)
 pairing here — including the 0.2778 reference — is an <b>assumption</b>. The projected leaderboard DTI
@@ -115,7 +129,7 @@ original is reachable from the build sandbox.</li>
 PDF. The shipped file does not depend on it, but the scoring model discussed above does.</li>
 </ul>
 
-<h2>7. Reproduce</h2>
+<h2>8. Reproduce</h2>
 <pre><code>PYTHONPATH=src python3 scripts/build_h4_clouds.py
 PYTHONPATH=src python3 scripts/run_h4.py --stage field
 PYTHONPATH=src python3 scripts/run_h4.py --stage emit \
@@ -126,7 +140,7 @@ PYTHONPATH=src python3 scripts/audit_submission.py &lt;shipped-zeros.tif&gt; \
     --receipt docs/data/h4_submission_&lt;stamp&gt;.json --out docs/data/h4_shipped_audit_zeros.json</code></pre>
 <p>The emission is deterministic: the same command reproduces the <code>8dafb186…</code> digest.</p>
 
-<h2>8. Limitations and remaining work</h2>
+<h2>9. Limitations and remaining work</h2>
 <p>See <a href="../limitations.html">limitations and remaining work</a>. The ones that bind this file:
 no network path to a fresh USGS 3DEP DEM from the build sandbox; no independent non-mirrored truth
 layer; the unresolved SGMC hash conflict; and the fact that no candidate in this programme has yet

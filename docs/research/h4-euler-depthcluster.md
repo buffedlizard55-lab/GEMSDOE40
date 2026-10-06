@@ -124,6 +124,22 @@ sample's convention. They carry the same positive support.
   the known-fault mask is pixel-exact (no dilation). The shipped file does not depend on it (0 px
   inside 2 px of the catalogue), but the reconstructed scoring model used in §5 does.
 
+## 4b. Mirror-version robustness (re-checked 2026-10-06)
+
+The gate's truth layer is not stable: the same pinned repository path has yielded three different
+hashes — `d569d553…700f` (receipts below), `26d142c4…b5c` (earlier record), `643cbe99…`
+(re-fetched 2026-10-06). Re-running the gate against the newest mirror moves every absolute number
+but not the outcome:
+
+| mirror | reference `h33-2-b2` | shipped H4-line | folds | outcome |
+|---|---|---|---|---|
+| `d569d553…700f` | 0.3663 | 0.2860 | 1 / 4 | not promoted |
+| `643cbe99…` | 0.2679 | 0.2085 | 1 / 4 | not promoted |
+
+Absolute scores and the affine projection are mirror-specific and are never used to select a file;
+only the invariant binary outcome is. Raw re-check:
+`docs/data/h4_blocked_validation_recheck_20261006.json`.
+
 ## 5. Rejected alternatives, and the instrument disagreement that rejected them
 
 The emitter's own surrogate model **preferred** the flank-band family: `euler_line_flank_gated`
