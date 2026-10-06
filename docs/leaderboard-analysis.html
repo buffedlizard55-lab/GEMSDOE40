@@ -1,81 +1,10 @@
-<!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Leaderboard analysis · GEMSDOE40</title><link rel="stylesheet" href="assets/site.css"></head>
-<body><header><h1>Leaderboard analysis</h1><div class="muted small">DOE GEMS Prize (DrivenData #306) ·
-Euler deconvolution depth-clustering submission system · repository
-<a href="https://github.com/buffedlizard55-lab/GEMSDOE40">buffedlizard55-lab/GEMSDOE40</a></div>
-<div style="margin-top:10px"><nav class="small">
-<a href="index.html">Home</a><a href="executive-summary.html">How to submit</a>
-<a href="methodology.html">Method</a><a href="hypotheses.html">Hypotheses</a>
-<a href="leaderboard-analysis.html">Leaderboard analysis</a><a href="evidence.html">Evidence</a>
-<a href="sources.html">Sources</a></nav></div></header>
-<aside class="panel note" role="note"><strong>Historical main-branch supporting page (2026-10-05, before the H2-B audit).</strong> This page preserves prior research and should not be read as current upload advice. The prior H40-4 multi-scale TIFF was later scored at 0.124715 on the owner-derived SGMC proxy (0/24 blocks) and fails this repository's strict NaN-nodata format check; H2-B is <strong>HOLD — DO NOT SUBMIT</strong>. See the <a href="index.html">current project status</a> and <a href="executive-summary.html">current Executive Summary</a>. No organizer score is asserted here.</aside>
-<main>
-<h2>1. The owner-reported score record (as supplied in the standing brief)</h2>
-<p>Numbers below are the group's own reported scores, not organizer receipts; they are used for
-<em>ordering</em> evidence and all inversions are anchored on the four numbers that the sibling
-repositories independently re-derived (0.0904 / 0.2449–0.2477 / 0.2600 / 0.2708 / 0.2778).</p>
-<table>
-<tr><th>score</th><th>artifact</th></tr>
-<tr><td><strong>0.2778</strong></td><td>GEMSDOE32 <code>h33-h33-2-b2</code> — the current site best</td></tr>
-<tr><td>0.2708</td><td>GEMSDOE28/31 <code>h27-4-r1-solo-d2-8</code></td></tr>
-<tr><td>0.2600</td><td>GEMSDOE25/30 <code>dotted-h19-5-d2-8</code></td></tr>
-<tr><td>0.2477</td><td>GEMSDOE24 <code>dotted-h19-5-d1-5</code></td></tr>
-<tr><td>0.2449</td><td>GEMSDOE27 <code>topo-gap-closure-t-v2-on-d1-5</code></td></tr>
-<tr><td>0.1922 / 0.1894 / 0.1855</td><td>H19-5 solid / h19-4 / h16-1 (the "5.3–5.7× concentration plateau" family)</td></tr>
-<tr><td>0.1280 / 0.1193 / 0.0904 / 0.0445</td><td>H25-ctx-ridge / pindrop-v4-nodes / blind lattice s5 / placeholder</td></tr>
-<tr><td><strong>0.3262</strong></td><td>official leaderboard #1 in the 2026-10-05 snapshot</td></tr>
-<tr><td>0.3195</td><td>official leaderboard #4 in that snapshot; previous benchmark reference</td></tr>
-</table>
-
-<h2>2. Why 0.2778 is the best of the family — the metric, not luck</h2>
-<p>With the organizer's equations, and using the identity
-<code>TP_w + FN_w = |G|</code> (α = 1 − β = 0.2):</p>
-<pre>DTI = TP_w / ( 0.2·N + 0.8·|G| + ε )        N = emitted pixel mass, |G| ≈ 12.2 k px hidden truth</pre>
-<ol>
-<li><strong>It is sparse.</strong> 37,654 px = 0.73 % of the footprint. The sibling repositories
-inverted the live scores of a blind lattice and three independent thinned/solid pairs to
-|G| ≈ 12,226 px; at that |G| the denominator is dominated by 0.8|G| ≈ 9,781, so every 1,000 px of
-emission costs ≈ 200/17,311 = 1.2 % of the score.</li>
-<li><strong>It prunes the masked population.</strong> It is the 0.2708 emission with <em>every</em> dot
-within 200 m of the catalogue deleted (3,891 dots at B = 1 gave a measured +0.0108 live; B = 2 was
-better still). Catalogue pixels are masked out of the scored truth, so dots there earn zero credit
-and are charged α.</li>
-<li><strong>Its detector had already plateaued.</strong> The H19-5/h19-4/h16-1 family sits at
-5.3–5.7× blind concentration and the family's best-ever credit fraction is 0.508 of |G|. Recombining
-the same pixels cannot raise concentration; only the emission rule can gain, and that lever was
-exhausted at ≈ 0.255 for the geometric optimum — the extra 0.02 to 0.2778 came from the catalogue-flank
-rule, not from new detection.</li>
-</ol>
-
-<h2>3. The arithmetic of 0.3195 — why rearrangement is dead</h2>
-<pre>score 0.3195 at 44,090 px requires credit = 0.486·|G|   (the family's best ever is 0.508 — at 121k px)
-score 0.3195 at 60,069 px requires credit = 0.570·|G|   (more than anything in the programme has ever earned)</pre>
-<p>So 0.3195 is reachable by exactly two routes: (i) retention ≈ 1.0 while emitting a third of the
-pixels, or (ii) <strong>concentration &gt; 5.7</strong>, i.e. a detector that finds truth the plateau family
-misses. Route (i) was shown to fail for the obvious thinning and max-coverage packers (the sibling
-repo measured greedy max-coverage <em>losing</em> 13 % to Poisson-disk). Route (ii) requires new
-information.</p>
-
-<h2>4. What this session adds to that picture — measured</h2>
-<ul>
-<li>The Euler SI = 0 depth-cluster field is <strong>new information</strong>: maximum Jaccard against
-17 prior rasters is 0.005, maximum |Pearson| 0.005. It is not another ridge/gradient/curvature
-surface.</li>
-<li>Its <strong>marginal efficiency is above break-even</strong>: 0.066–0.085 credit/px against
-τ(0.2778) = 0.0588, i.e. 1.13–1.44 × τ, positive in 4/4 blocked folds. Every other Euler variant
-tested (raw KDE support, 2-D bands, the continuous field) is <em>below</em> break-even — the crest
-reduction is what makes it pay.</li>
-<li>Projected live score of the augmented artifact, from two independent lines of arithmetic:
-<strong>+0.008 to +0.041</strong>. The conservative figure uses the live-calibrated |G| = 12,226 and
-the measured credit-per-pixel; the optimistic figure uses the LM instrument's own delta (+0.0405).
-Neither reaches 0.3195, and the LM instrument is known to over-reward denser emissions, so the
-conservative figure is the one to plan with.</li>
-<li>Therefore: <strong>the honest expectation for the recommended upload is ≈0.286–0.318, most likely
-≈0.29–0.30</strong> — a real improvement on 0.2778 but not a jump to #1. The remaining gap is a
-detector-quality gap, and the two cheapest next tests are named on the
-<a href="hypotheses.html">Hypotheses</a> page (multi-window Euler conjunction; depth-banded
-emission).</li>
-</ul>
-</main></body></html>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Understanding the 0.2778 reference · GEMSDOE40</title><meta name="description" content="Measured Euler depth-clustering research for geological fault mapping. A unique GeoTIFF, open evidence, and an honest no-submission gate.">
+<link rel="stylesheet" href="assets/contact.css"><script src="assets/contact.js" defer></script></head>
+<body><a href="#main" class="skip">Skip to content</a><header class="header"><div class="wrap"><div class="masthead">
+<a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true">G</span><b>GEMS / 40</b><em>FIELD NOTES</em></a><nav class="nav" aria-label="Main navigation"><a class="" href="index.html">Overview</a><a class="" href="executive-summary.html">Submission guide</a><a class="active" href="evidence.html">Evidence</a><a class="" href="hypotheses.html">Hypotheses</a><a class="" href="sources.html">Research library</a></nav></div></div></header>
+<main id="main" class="wrap"><div class="subhero"><p class="kicker">LEADERBOARD ANALYSIS / MEASURED, NOT INFERRED</p><h1>Why did H33-B2 help?</h1><p class="lead">The owner reports 0.2778 for H33-B2. We verified the raster’s identity and geometry, but the public board does not provide a file-level receipt proving that attribution.</p></div><section class="section twocol"><div class="callout"><p class="eyebrow">WHAT THE FILES PROVE</p><span class="big">2,545</span><h3>pixels removed. Zero added.</h3><p>H33-B2 is exactly the 40,199-pixel H27-4 base pruned at ≤200 m from the known catalogue. It leaves 37,654 pixels: 6.33% fewer. The removed pixels are 141.4–200 m from catalogue pixels.</p><a href="data/h33-measured-analysis.json">Byte identities and exact-set proof ↗</a></div><div class="callout"><p class="eyebrow">WHAT THE BOARD DOES NOT PROVE</p><h3>A better detector?<br>Not established.</h3><p>No new fault positions were added by that change. The plausible score mechanism is less false-positive mass for similar true-positive coverage. Private labels are unavailable, so that causal explanation remains conditional.</p><p>The official board’s leading score was <strong>0.3345</strong> on 6 October, not 0.3195. Account-level rows do not identify their TIFF.</p><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">Official leaderboard ↗</a></div></section>
+<section class="section prose"><h2>The metric explains the tradeoff precisely</h2><p>Let T be distance-weighted true-positive credit, F the weighted false-positive mass, and G the number of truth pixels. The <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">published metric</a> simplifies to:</p><div class="formula">D = T / (0.2T + 0.2F + 0.8G + ε)<br>Removing predictions improves D exactly when:<br>(1 − 0.2D) × lost TP credit &lt; 0.2D × saved FP mass</div><p>At D=0.2778, losing less than <strong>0.05883</strong> units of TP credit per unit of saved FP mass improves the score. Thus pruning redundant/incorrect predictions can help without discovering anything new. It does not justify deleting all catalogue-adjacent structures: the <a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516/4">organizer confirms</a> that new faults may lie within 300 m of known traces.</p>
+<h2>Can we beat 0.2778—or 0.3345?</h2><p>It is a reasonable research goal, not a defensible promise from the available data. Holding F and G fixed, moving from 0.2778 to 0.3345 would require about <strong>21.87% more weighted TP credit</strong>. That is an algebraic scenario, not a predicted score; a real model changes both T and F.</p><p>H4 deliberately tries new source geometry instead of copying and thinning H33. It passes novelty but obtains only 0.006902 on the local proxy versus H33-B2’s 0.091550. We therefore have <strong>no evidence that H4 beats the owner’s best</strong>. It is not submitted.</p><h2>The next high-value work</h2><ol><li>Replace the circular/impossible promotion instrument in a separately preregistered experiment with independent, whole-fault-system validation.</li><li>Test finite-step gravity models and survey-datum-corrected source localization; use synthetic known-depth controls before region-wide inference.</li><li>Separate detection skill from output mass. Compare methods at matched confidence mass and evaluate native continuous outputs, without reusing the test fold to tune emission.</li><li>For geothermal interpretation, require independent geologic/thermal corroboration rather than equating every potential-field contact with a permeable fault.</li></ol><p><a href="research/scientific-library-20261006.md">Research basis and limitations</a> · <a href="leaderboard.html">Every user-reported score</a></p></section></main><footer class="footer"><div class="wrap"><p><strong>Maximize P(Win). Own the Outcome.</strong><br>Evidence before a weekly submission slot.</p>
+<p>Independent competition research · not affiliated with DOE or DrivenData.<br><a href="https://github.com/buffedlizard55-lab/GEMSDOE40">Repository</a> · <a href="user-prompt-20261006.md">Full project brief</a> · <a href="reports/review-20261006.md">Three-pass review</a></p></div></footer></body></html>

@@ -1,0 +1,48 @@
+name: Reproduce H4 on CPU (no competition upload)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      GH_TOKEN: ${{ github.token }}
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: python -m pip install -r requirements-research.txt && python -m pip install -e .
+      - name: Restore hash-pinned inputs, without manual data placement
+        run: bash scripts/download_competition_data.sh && python scripts/prepare_data.py
+      - name: Restore every raw TIFF in the frozen reachable-history inventory
+        run: python scripts/fetch_prior_cache.py --inventory docs/data/prior-inventory-20261006.json --cache data/prior
+      - name: Compute independently from the magnetic and gravity source layers
+        run: python scripts/run_contact_euler.py --output work/h4-reproduction
+      - name: Require byte-identical reproduction of TIFF and point cloud
+        run: python scripts/verify_reproduction.py
+      - name: Repeat the fixed raw-output audit and blocked scores, without tuning
+        run: python scripts/audit_contact_candidate.py --work work/h4-reproduction
+      - name: Verify unchanged HOLD decision and artifact identities
+        run: python scripts/build_site.py --check
+      - name: Retain research evidence, not a competition submission
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: h4-cpu-reproduction
+          retention-days: 14
+          path: |
+            work/h4-reproduction/generation.json
+            work/h4-reproduction/uniqueness.json
+            docs/data/h4-*.json
+            docs/data/current-candidate.json
+            docs/downloads/gemsdoe40-h4-*.tif
+            docs/downloads/h4-euler-solutions.csv.gz

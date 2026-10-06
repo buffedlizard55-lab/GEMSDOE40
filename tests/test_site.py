@@ -37,8 +37,13 @@ def test_static_site_has_no_duplicate_ids_or_broken_local_links():
 def test_site_prominently_marks_candidate_on_hold_and_offers_download():
     index = (DOCS / "index.html").read_text(encoding="utf-8")
     summary = (DOCS / "executive-summary.html").read_text(encoding="utf-8")
-    candidate = DOCS / "downloads/gemsdoe40-h2b-tmi-euler-natural-support-20261005.tif"
+    import json
+    manifest = json.loads((DOCS / "data/current-candidate.json").read_text())
+    candidate = DOCS / "downloads" / manifest["filename"]
     assert candidate.is_file()
     assert "HOLD — DO NOT SUBMIT" in index
-    assert "HOLD — DO NOT SUBMIT H2-B" in summary
-    assert "downloads/gemsdoe40-h2b-tmi-euler-natural-support-20261005.tif" in index
+    assert "HOLD — DO NOT SUBMIT" in summary
+    assert f'downloads/{manifest["filename"]}' in index
+    assert f'downloads/{manifest["filename"]}' in summary
+    assert manifest["slot_eligible"] is False
+    assert manifest["organizer_score"] is None

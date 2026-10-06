@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-"""Run dual-field Euler deconvolution → weighted KDE → legal GeoTIFF.
+"""ARCHIVED ONLY — opt-in historical reproduction, not current submission advice.
+
+Run dual-field Euler deconvolution → weighted KDE → legal GeoTIFF.
 
 This is the GEMSDOE40 submission generator.  It does not copy any previous
 dotted / gradient / curvature candidate.  It reads the official 19-band
@@ -50,6 +52,8 @@ def _now() -> str:
 
 
 def run() -> dict:
+    from gemsdoe40.legacy_guard import require_legacy_opt_in
+    require_legacy_opt_in()
     t0 = time.time()
     sample = DATA / "sample_submission.tif"
     labels = DATA / "labels.tif"
@@ -142,7 +146,7 @@ def run() -> dict:
           f"grad DTI {grad_bin['dti']:.4f}  Δ {hold['delta_binary_vs_gradient']:+.4f}")
 
     # Uniqueness against every prior TIF sitting in ref/
-    uniq = compare_against(field, REF) if REF.exists() else {"is_new": True, "n_priors": 0, "rows": []}
+    uniq = compare_against(field, REF) if REF.exists() else {"is_new": False, "n_priors": 0, "rows": [], "error": "missing prior directory; novelty unproved"}
     print(f"uniqueness is_new={uniq['is_new']}  worst_pearson={uniq.get('worst_pearson')}  "
           f"worst_jaccard={uniq.get('worst_jaccard')}  vs {uniq.get('worst_file')}")
     if not uniq["is_new"]:

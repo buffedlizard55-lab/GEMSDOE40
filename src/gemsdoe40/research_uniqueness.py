@@ -130,8 +130,9 @@ def audit_candidate(
         }
     with rasterio.open(candidate_path) as ds:
         candidate = ds.read(1)
-        if candidate.shape != reference["shape"]:
-            raise ValueError("candidate does not match template shape")
+        if (candidate.shape != reference["shape"] or ds.count != 1
+                or ds.crs != reference["crs"] or ds.transform != reference["transform"]):
+            raise ValueError("candidate does not match exact single-band template grid")
     candidate_hash = file_sha256(candidate_path)
     candidate_pixel_hash = canonical_pixel_sha256(candidate, ~footprint)
     results: list[dict[str, Any]] = []
@@ -187,7 +188,9 @@ def audit_candidate(
         "same_grid_comparisons": len(results),
         "different_grid_or_band_count": len(skipped),
         "near_duplicate_count": sum(bool(row["near_duplicate_by_preregistered_rule"]) for row in results),
-        "uniqueness_pass": not any(row["near_duplicate_by_preregistered_rule"] for row in results),
+        "completeness_pass": bool(results) and not any(row["reason"] == "not present in prior cache" for row in skipped),
+        "uniqueness_pass": bool(results) and not any(row["reason"] == "not present in prior cache" for row in skipped)
+        and not any(row["near_duplicate_by_preregistered_rule"] for row in results),
         "closest_prior_outputs": closest,
         "comparisons": results,
         "skipped": skipped,

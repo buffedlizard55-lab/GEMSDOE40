@@ -90,3 +90,10 @@ The official ComCat count endpoint returned 34,716 event records with a `focal-m
 ## Status changes
 
 This register is append-only. After a result is available, append the result and any deviation in `docs/research/validation.md`; do not silently edit the registered thresholds or call proxy performance an official score.
+
+
+## 2026-10-06 — H4–H7 appended registration and outcome
+
+A separate frozen [H4–H7 registration](h4-preregistration-20261006.md) preceded the new implementation. It ranks offset-aware rank-adaptive contact Euler, finite gravity-step inversion, depth-cloud plane geometry, and TMI/RTP representation stability. Only H4 was implemented. H6's ground-surface projection remains blocked pending verified survey datum.
+
+H4 now exists as a genuinely distinct, format-valid research TIFF, with byte-identical independent regeneration. It **fails** blocked proxy promotion; it is not a candidate for a weekly upload. See the [negative result](../reports/h4-results-20261006.md). No post-score hyperparameter search or H4 re-emission was performed.

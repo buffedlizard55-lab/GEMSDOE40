@@ -1,0 +1,5 @@
+# The retained user brief intentionally preserves original Markdown hard breaks
+# and trailing whitespace. Keep its text intact while linting code normally.
+README.md whitespace=-blank-at-eol
+docs/user-prompt-20261006.md whitespace=-blank-at-eol
+docs/archive/README-h2b-20261005.md whitespace=-blank-at-eol

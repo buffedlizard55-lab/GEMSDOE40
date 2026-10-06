@@ -14,3 +14,7 @@ data/external/
 work/
 *.npz
 *.npy
+
+# Packaging/build metadata
+*.egg-info/
+_site/

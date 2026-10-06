@@ -1,92 +1,12 @@
-<!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Method · GEMSDOE40</title><link rel="stylesheet" href="assets/site.css"></head>
-<body><header><h1>Method</h1><div class="muted small">DOE GEMS Prize (DrivenData #306) ·
-Euler deconvolution depth-clustering submission system · repository
-<a href="https://github.com/buffedlizard55-lab/GEMSDOE40">buffedlizard55-lab/GEMSDOE40</a></div>
-<div style="margin-top:10px"><nav class="small">
-<a href="index.html">Home</a><a href="executive-summary.html">How to submit</a>
-<a href="methodology.html">Method</a><a href="hypotheses.html">Hypotheses</a>
-<a href="leaderboard-analysis.html">Leaderboard analysis</a><a href="evidence.html">Evidence</a>
-<a href="sources.html">Sources</a></nav></div></header>
-<aside class="panel note" role="note"><strong>Historical main-branch supporting page (2026-10-05, before the H2-B audit).</strong> This page preserves prior research and should not be read as current upload advice. The prior H40-4 multi-scale TIFF was later scored at 0.124715 on the owner-derived SGMC proxy (0/24 blocks) and fails this repository's strict NaN-nodata format check; H2-B is <strong>HOLD — DO NOT SUBMIT</strong>. See the <a href="index.html">current project status</a> and <a href="executive-summary.html">current Executive Summary</a>. No organizer score is asserted here.</aside>
-<main>
-<h2>1. What is being estimated</h2>
-<p>Not an edge map. The estimator is the <strong>depth of a fault-like contact</strong>, obtained
-from the homogeneity of the potential field itself, then clustered in three dimensions
-(east, north, depth) and turned into a density field.</p>
-
-<h2>2. Euler deconvolution (Reid et al., 1990)</h2>
-<p>For a potential field <em>T</em> produced by a source that is homogeneous of degree −N
-(the geophysical "structural index" N):</p>
-<pre>(x − x0)·∂T/∂x + (y − y0)·∂T/∂y + (z − z0)·∂T/∂z = N·(B − T)</pre>
-<p>With the survey plane at z = 0 and a source at depth z0 &gt; 0, the equation is linear in the
-unknowns [x0, y0, z0, B]:</p>
-<pre>x0·Tx + y0·Ty + z0·Tz + N·B = x·Tx + y·Ty + N·T</pre>
-<p>and is solved by ordinary least squares inside a moving window. This repository uses
-<strong>N = 0</strong> — the structural index of a <em>contact / fault</em> in Reid et al. (1990),
-Table 1 (dyke/sill = 1, horizontal cylinder = 2, sphere = 3).</p>
-<p>Derivatives are computed in the Fourier domain from a single master grid
-(<code>Tx = F⁻¹[i kx F[T]]</code>, <code>Tz = F⁻¹[|k| F[T]]</code>; z positive down), after a Tukey
-taper and, by default, 200 m of upward continuation plus a 600 m Gaussian low-pass. Window 10 px
-(1 km), stride 2 px (200 m), all four potential-field layers:
-<code>rtp</code> (band 2), <code>tmi</code> (band 14), <code>mag_anom</code> (band 1) and
-<code>iso_grav_anom</code> (band 13).</p>
-<p><strong>Verification, not faith.</strong> <code>tests/test_euler.py</code> inverts synthetic fields
-whose depth is known analytically: a monopole (degree −2, N = 2) and a 2-D contact
-(<code>T = atan(x/z0)</code>, degree 0, N = 0) recover the true depth within 1.5 % (contact: 688 m
-recovered vs 700 m true) and the vertical-derivative sign convention is asserted by flipping the
-sign and requiring negative depths.</p>
-
-<h2>3. Depth-aware clustering: "shallow and mutually consistent beats deep and scattered"</h2>
-<pre>w = exp(−depth / 900 m)                      shallowness
-  × clip(n_neighbours / 6, 0, 1)             density of the local solution cloud
-  × exp(−pooled_depth_std / 180 m)           mutual consistency of depth
-  × exp(−½ (offset_px / 2 px)²)              the solution lies inside its own window
-  × 1 / (1 + (rms / amp_ref)²)               quality of the window's least-squares fit</pre>
-<p>Solutions must satisfy 0 &lt; depth ≤ 4 km and lie within their own window; windows whose gradient
-amplitude is below 25 % of the field's 90th percentile are discarded, because in flat areas Euler
-solutions are meaningless (this was a measured failure mode: the first implementation rewarded
-taper-zone windows that produced spurious 20 m solutions with essentially zero amplitude — see the
-git history of <code>src/gems40/euler.py</code> and the test suite).</p>
-
-<h2>4. From the cloud to a raster</h2>
-<p>Weighted solutions are accumulated on the pixel lattice and smoothed with an isotropic Gaussian of
-σ = 1.5 px (150 m) — at or below the metric's own 300 m triangular kernel, so nothing is blurred
-beyond the scale at which the scorer can still pay for it. The field is normalised so the maximum
-inside the footprint is 1.0 (the metric is strictly monotone in a uniform scaling of a fixed
-support, so this is the optimal scale), values are clipped to [0, 1], and the 7,111,787 pixels outside
-the valid footprint are NaN — exactly the sample submission's convention.</p>
-
-<h2>5. Cross-family conjunction</h2>
-<p>Magnetic (three representations of one airborne survey) and gravity (isostatic anomaly) are
-independent potential fields. The shipped field multiplies the normalised magnetic-family density by
-(0.5 + 0.5 × normalised gravity density): a contact expressed in <em>both</em> families keeps its full
-weight, a single-family cluster keeps half. The stricter element-wise minimum was also measured and
-is reported in <code>data/evidence/crest_composition.json</code>.</p>
-
-<h2>6. Emission rule and what it is not allowed to be</h2>
-<p>The scored truth is <em>off-catalogue by construction</em> and every emitted pixel costs α = 0.2 of
-a false-positive unit, so the shipped artifacts emit only positive-mass 1-px crests of the density
-field and exclude every pixel within 200 m of a mapped catalogue fault (the live-validated
-catalogue-flank rule, +0.0108 measured live at B = 1 and the rule under which the current site best,
-0.2778, was produced).</p>
-<p>The artifact is <em>not</em> a gradient threshold: its support is nearly disjoint from every prior
-submission in the programme — maximum Jaccard 0.005, maximum |Pearson| 0.005 against 17 prior rasters
-(<code>data/evidence/novelty.json</code>). Candidate ranking and the honest verdicts are on the
-<a href="hypotheses.html">Hypotheses</a> page.</p>
-
-<h2>7. Parameters (all explicit, none implicit)</h2>
-<table>
-<tr><th>parameter</th><th>value</th><th>why</th></tr>
-<tr><td>structural index N</td><td>0</td><td>contact/fault, Reid et al. 1990 Table 1</td></tr>
-<tr><td>window / stride</td><td>10 px (1 km) / 2 px</td><td>1 km resolves upper-crustal contacts; 200 m gives a dense cloud</td></tr>
-<tr><td>upward continuation</td><td>200 m</td><td>suppresses the noise-dominated shallowest wavelengths</td></tr>
-<tr><td>low-pass</td><td>600 m Gaussian</td><td>above the 2-stride Nyquist limit for the 200 m solution lattice</td></tr>
-<tr><td>depth cap / shallow decay</td><td>4 km / 900 m</td><td>near-surface faults dominate the target population</td></tr>
-<tr><td>cluster density reference</td><td>6 neighbours within 2.5 px × 300 m</td><td>a cluster, not a single solution</td></tr>
-<tr><td>KDE σ</td><td>1.5 px (150 m)</td><td>≤ the metric kernel radius (300 m)</td></tr>
-<tr><td>emission</td><td>1-px crests, ≥ 200 m from the catalogue</td><td>measured above break-even in 4/4 blocked folds</td></tr>
-</table>
-</main></body></html>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Euler method · GEMSDOE40</title><meta name="description" content="Measured Euler depth-clustering research for geological fault mapping. A unique GeoTIFF, open evidence, and an honest no-submission gate.">
+<link rel="stylesheet" href="assets/contact.css"><script src="assets/contact.js" defer></script></head>
+<body><a href="#main" class="skip">Skip to content</a><header class="header"><div class="wrap"><div class="masthead">
+<a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true">G</span><b>GEMS / 40</b><em>FIELD NOTES</em></a><nav class="nav" aria-label="Main navigation"><a class="" href="index.html">Overview</a><a class="" href="executive-summary.html">Submission guide</a><a class="" href="evidence.html">Evidence</a><a class="active" href="hypotheses.html">Hypotheses</a><a class="" href="sources.html">Research library</a></nav></div></div></header>
+<main id="main" class="wrap"><div class="subhero"><p class="kicker">METHOD / POTENTIAL-FIELD INVERSION</p><h1>A cloud of depths.<br>Not a thresholded edge map.</h1><p class="lead">The prediction values come from fitted source locations and their depth consistency, not magnetic or gravity gradient magnitudes.</p></div><section class="section prose"><h2>The equation the old model omitted</h2><div class="formula">(x − x₀) Fₓ + (y − y₀) Fᵧ + (z − z₀) Fz = A<br>At z = 0: x Fₓ + y Fᵧ = x₀ Fₓ + y₀ Fᵧ + z₀ Fz + A</div><p><a href="https://www.reid-geophys.co.uk/wp-content/uploads/2017/11/Reid-et-al-1990.pdf">Reid et al. (1990), equation 2 and step 3b</a>, solve for A for a general SI=0 magnetic contact. H4 profiles out that offset by centering the gradient columns and right-hand side. Horizontal coordinates are east/north in metres; depth is positive down.</p><p>A straight contact does not identify position along strike. The local horizontal derivative tensor selects a cross-strike/depth solve when its minor/major eigenvalue ratio is at most 0.10; otherwise H4 fits 3-D position. The unresolved coordinate is anchored at the window center and recorded as rank 2, not reported as measured.</p>
+<h2>Gravity requires a different physical interpretation</h2><p>SI=0 on <strong>raw gravity</strong> is not the same magnetic-contact model. <a href="https://www.reid-geophys.co.uk/wp-content/uploads/2017/11/Reid-Thurston-2014.pdf">Reid &amp; Thurston (2014)</a> correct the finite gravity-step index and explain the need for generalized source geometry. H4 inverts the first vertical derivative of gravity at SI=0 as a local top-edge approximation. A finite bottom edge, remanence, regional trends and terrain can still bias these solutions.</p>
+<h2>Locked parameters, not a holdout search</h2><div class="tablewrap"><table><thead><tr><th>Operation</th><th>Magnetics</th><th>Gravity</th></tr></thead><tbody><tr><td>Named source band</td><td>tmi, measured band 14</td><td>iso_grav_anom, measured band 13</td></tr><tr><td>Upward continuation</td><td>200 m</td><td>500 m, then dG/dz</td></tr><tr><td>Full-resolution windows / stride</td><td>15 and 25 cells / 5</td><td>31 and 51 cells / 5</td></tr><tr><td>Invalid-data guard</td><td>1,500 m plus full window</td><td>3,000 m plus full window</td></tr><tr><td>Effective depth interval</td><td>100–5,000 m</td><td>100–8,000 m</td></tr><tr><td>Clustered solutions</td><td>12,167</td><td>8,450</td></tr><tr><td>Median effective depth</td><td>677.4 m</td><td>1426.5 m</td></tr></tbody></table></div>
+<p>The centered relative fit residual must be ≤0.30; scaled design condition ≤1,000; location within a half-window; conditional depth error ≤max(100 m, 25% of depth). Errors exclude correlated survey noise and model mismatch. Continuation height is subtracted exactly once.</p>
+<h2>From point support to continuous confidence</h2><p>Neighbours within 600 m XY and max(250 m, 35% of depth) supply a consistency weight. At least two other neighbours and the other window scale are required. Weights penalize depth, fit error, depth uncertainty and robust depth scatter; neighbour count saturates to avoid unbounded repeated-window voting.</p><p>Bilinear point deposition and a 200 m Gaussian kernel make the density field. Each family is normalized by its positive 99.5th percentile, clipped to [0,1], then combined as (M + G + √(MG))/3. After exact known-pixel suppression, the field is max-normalized. Unsupported cells are zero. Only outside-footprint cells are NaN.</p><p>The result has 865,145 positive cells, 857,785 distinct finite values, and total confidence mass 29,350.41. It is <strong>not a calibrated probability</strong> and not a binary map.</p><p><a href="data/h4-generation.json">Every parameter, rejection count and input hash</a> · <a href="research/h4-preregistration-20261006.md">Preregistration</a></p></section><section class="section twocol"><figure class="map-panel"><a href="assets/h4-depth-cloud.png"><img loading="lazy" src="assets/h4-depth-cloud.png" alt="Actual clustered Euler solutions colored by effective depth below the reference observation plane"></a><figcaption>Depth-labeled magnetic and gravity solutions. These are source hypotheses, not observed fault traces.</figcaption></figure><div class="prose"><h2>Read the actual cloud.</h2><p>The compressed CSV contains all 46,656 QC-passing solutions, including points assigned zero clustering weight. It records family, window, projected XY, effective depth, conditional error, residual, condition, contact offset, rank, neighbours and weight.</p><p><a class="button secondary" href="downloads/h4-euler-solutions.csv.gz" download>Download solution cloud ↓</a></p><p>Unresolved strike position and a terrain-draped survey limit interpretation. These depths are relative to the input reference observation plane—not independently verified ground-depth estimates.</p></div></section></main><footer class="footer"><div class="wrap"><p><strong>Maximize P(Win). Own the Outcome.</strong><br>Evidence before a weekly submission slot.</p>
+<p>Independent competition research · not affiliated with DOE or DrivenData.<br><a href="https://github.com/buffedlizard55-lab/GEMSDOE40">Repository</a> · <a href="user-prompt-20261006.md">Full project brief</a> · <a href="reports/review-20261006.md">Three-pass review</a></p></div></footer></body></html>

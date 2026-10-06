@@ -1,205 +1,27 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="GEMSDOE40: auditable scientific research into geologic fault prediction for the DOE GEMS Prize Challenge. Current result: HOLD, do not submit.">
-  <title>GEMSDOE40 · Fault prediction, with an audit trail</title>
-  <link rel="stylesheet" href="assets/research.css">
-</head>
-<body>
-  <a class="skip" href="#main">Skip to content</a>
-  <header class="site-header">
-    <div class="nav-wrap">
-      <a class="brand" href="index.html" aria-label="GEMSDOE40 home"><span class="brand-mark">G40</span><span>GEMSDOE40</span></a>
-      <nav class="nav-links" aria-label="Primary navigation">
-        <a href="#decision">Decision</a><a href="#research">Research</a><a href="#feed">Leaderboard feed</a><a href="executive-summary.html">Executive summary</a>
-      </nav>
-    </div>
-  </header>
-  <main id="main">
-    <div class="wrap">
-      <section class="hero" aria-labelledby="hero-title">
-        <div>
-          <div class="eyebrow">DOE GEMS Prize Challenge · Research log · 05 Oct 2026</div>
-          <h1 id="hero-title">Map <em>faults.</em><br>Keep the evidence honest.</h1>
-          <p class="lede">A reproducible, geology-led fault-prediction project for geothermal exploration. The target is geological faults that may indicate geothermal resources—not vents or reservoirs. Every candidate is frozen, validated, compared, and either promoted or stopped.</p>
-          <div class="actions">
-            <a class="button primary" href="downloads/gemsdoe40-h2b-tmi-euler-natural-support-20261005.tif" download>↓ Download H2-B research TIFF</a>
-            <a class="button secondary" href="executive-summary.html">Read the decision & guide →</a>
-          </div>
-          <p class="small" style="margin-top:12px"><strong>Research artifact only.</strong> This candidate failed the frozen promotion gate. Do not submit it or spend a weekly slot.</p>
-        </div>
-        <aside class="hero-card" aria-label="Current candidate decision">
-          <span class="status-pill"><span class="status-dot"></span> no-go · do not submit</span>
-          <div class="card-kicker" style="margin-top:24px">H2-B · TMI Euler persistence</div>
-          <h2>Unique file. Failed benchmark.</h2>
-          <p>The raster passes sample-grid, value-range, and uniqueness audits. Its owner-derived proxy holdout score does not come close to the frozen incumbent.</p>
-          <div class="mini-metrics">
-            <div class="mini-metric"><b>0.00631</b><span>local proxy DTI · not official</span></div>
-            <div class="mini-metric"><b>0 / 24</b><span>spatial blocks won</span></div>
-            <div class="mini-metric"><b>PASS</b><span>GeoTIFF format checks</span></div>
-            <div class="mini-metric"><b>PASS</b><span>prior-raster uniqueness</span></div>
-          </div>
-        </aside>
-      </section>
-
-      <section id="decision" class="section" aria-labelledby="decision-title">
-        <div class="section-header">
-          <h2 id="decision-title">The decision is the deliverable.</h2>
-          <p>Maximize P(Win) by spending submission slots only on evidence-backed candidates. Own the Outcome by publishing the failure, not hiding it.</p>
-        </div>
-        <div class="alert" role="note"><strong>HOLD — DO NOT SUBMIT.</strong> H2-B scored 0.006313 on the local SGMC-derived proxy versus the frozen all-prior incumbent at 0.835907; it won 0 of 24 blocks. The incumbent is itself circular on this proxy, so neither number is an organizer score or an independent generalization estimate. The frozen all-prior gate is retained and failed.</div>
-        <div class="grid-4">
-          <div class="stat"><b class="bad">0.00631</b><span>H2-B pooled proxy DTI</span></div>
-          <div class="stat"><b class="bad">−0.82959</b><span>delta vs frozen all-prior incumbent</span></div>
-          <div class="stat"><b>17,425</b><span>positive KDE support cells · 0.337%</span></div>
-          <div class="stat"><b class="good">277 / 277</b><span>same-grid prior rasters checked for uniqueness</span></div>
-        </div>
-        <p class="small" style="margin-top:14px">The proxy is an owner-derived SGMC mirror (SHA-256 <code>26d142c4…b5c</code>), not hidden challenge truth and not an independently rebuilt USGS raster. H2-B did not use it in candidate construction.</p>
-      </section>
-
-      <section id="research" class="section" aria-labelledby="research-title">
-        <div class="section-header">
-          <h2 id="research-title">A hypothesis register with real stop rules.</h2>
-          <p>H1 and strict H2 stopped at their frozen feasibility gates. H2-B is a separately registered support-limited output rule; its holdout failed. No threshold was relaxed to rescue a result.</p>
-        </div>
-        <div class="two-col">
-          <article class="card">
-            <span class="tag stop">H1 · feasibility stop</span>
-            <h3>Joint magnetic–gravity Euler depth consensus</h3>
-            <p>2,305 accepted magnetic solutions, zero gravity solutions, and therefore no paired cloud. The fixed 45,962-cell budget could not be reached. No TIFF and no holdout score.</p>
-            <a class="more" href="reports/feasibility-20261005.html">Read H1/H2 feasibility report →</a>
-          </article>
-          <article class="card">
-            <span class="tag stop">H2 · fixed-budget stop</span>
-            <h3>Four-height TMI Euler persistence</h3>
-            <p>Only 17,425 positive KDE cells existed against the frozen 45,962-cell budget. Strict H2 aborted rather than backfill unsupported pixels.</p>
-            <a class="more" href="https://github.com/buffedlizard55-lab/GEMSDOE40/blob/main/docs/research/hypotheses.md">Read the append-only H2 lock →</a>
-          </article>
-          <article class="card">
-            <span class="tag stop">H2-B · evaluated, not promoted</span>
-            <h3>Emit all positive KDE support</h3>
-            <p>162 persistent height-0 anchors supported 17,425 emitted cells. The GeoTIFF is distinct and format-valid, but DTI was 0.00631 and 0/24 blocks won.</p>
-            <a class="more" href="reports/validation-h2b-20261005.html">Read the full validation report →</a>
-          </article>
-          <article class="card">
-            <span class="tag">H3 · blocked before implementation</span>
-            <h3>Focal-mechanism orientation constraint</h3>
-            <p>USGS ComCat returned 34,716 records advertising a focal-mechanism product (238 at M≥4), but usable nodal-plane coverage across the 24 blocks is unverified. H3 remains blocked.</p>
-            <a class="more" href="https://github.com/buffedlizard55-lab/GEMSDOE40/blob/main/docs/research/hypotheses.md">Review hypothesis →</a><br><a class="more" href="data/h3_source_audit.json">Open ComCat coverage audit →</a>
-          </article>
-        </div>
-      </section>
-
-      <section class="section" aria-labelledby="artifact-title">
-        <div class="section-header">
-          <h2 id="artifact-title">Artifact card · research only</h2>
-          <p>The file meets the template contract. Quality and submission eligibility are separate decisions.</p>
-        </div>
-        <div class="panel">
-          <div class="two-col">
-            <div>
-              <span class="badge">not submission-ready</span>
-              <h3 style="margin:14px 0 8px">H2-B · TMI Euler upward-continuation persistence</h3>
-              <p class="small">All in-footprint positive KDE support, exact known-label pixels suppressed, no proxy-derived threshold. Binary 1.0 at 17,425 locations; zero elsewhere inside the sample footprint; NaN outside.</p>
-              <div class="actions"><a class="button primary" href="downloads/gemsdoe40-h2b-tmi-euler-natural-support-20261005.tif" download>↓ Download GeoTIFF · 287 KB</a></div>
-            </div>
-            <div>
-              <div class="table-wrap"><table aria-label="H2-B artifact properties"><tbody>
-                <tr><th>SHA-256</th><td class="num">02486eaa491da2d8ebc6b1cd53ed2bdc8e995f316be1110a64eec484779b5a68</td></tr>
-                <tr><th>Grid</th><td>3,730 × 3,292 · EPSG:32611 · 100 m</td></tr>
-                <tr><th>Values</th><td>float32 · [0,1] finite in footprint · NaN outside</td></tr>
-                <tr><th>Proxy gate</th><td>FAIL · 0.006313 DTI · 0/24 blocks won</td></tr>
-                <tr><th>Upload status</th><td>Not submitted · no score · no weekly slot used</td></tr>
-                <tr><th>Research metadata</th><td><code>GEMSDOE40-H2B-20261005-ON-HOLD</code> — record-keeping only; do not paste into DrivenData.</td></tr>
-              </tbody></table></div>
-            </div>
-          </div>
-          <p class="small" style="margin:18px 0 0">Receipts: <a href="data/format_receipt.json">format</a> · <a href="data/uniqueness_audit.json">uniqueness</a> · <a href="data/validation-h2b-20261005.json">full block/prior scores</a> · <a href="data/feasibility.json">feasibility data</a> · <a href="data/prior_raster_inventory.json">prior inventory</a> · <a href="data/prior_raster_metadata_audit.json">prior metadata audit</a> · <a href="https://github.com/buffedlizard55-lab/GEMSDOE40/blob/main/docs/research/source-register.md">source register</a></p>
-        </div>
-      </section>
-
-      <section class="section" aria-labelledby="previous-candidate-title">
-        <div class="section-header">
-          <h2 id="previous-candidate-title">Earlier main-branch candidate, preserved</h2>
-          <p>This was the prior repository recommendation before the H2-B experiment. A later addendum scored its raster on the same owner-derived SGMC proxy used for H2-B; its earlier LM-calibrated instrument results remain a distinct, non-comparable measure.</p>
-        </div>
-        <div class="panel two-col">
-          <div>
-            <span class="badge">historical local recommendation · no organizer score</span>
-            <h3 style="margin:14px 0 8px">H40-4 · multi-scale Euler augmentation</h3>
-            <p class="small">The pre-existing main branch reported 97,654 positive cells and LM-calibrated DTI 0.34835 versus 0.26792 for its prior site-best, better in 4/4 folds. That is a separate local instrument, not a DrivenData score. In the later addendum, H40-4 scored 0.124715 on the owner-derived SGMC proxy and won 0/24 blocks versus the frozen incumbent; it is below the incumbent and fails this repository's strict format gate because its TIFF lacks a NaN nodata tag.</p>
-            <div class="actions"><a class="button secondary" href="downloads/gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e.tif" download>↓ Download prior H40-4 TIFF</a></div>
-          </div>
-          <div>
-            <div class="alert"><strong>Provenance boundary.</strong> Its 0.124715 result is a local SGMC-proxy diagnostic, not hidden truth or an organizer score. The earlier LM-calibrated 0.34835 is a separate instrument. The TIFF is retained as historical research, not promoted or submission-ready.</div>
-            <p class="small">Historical pages: <a href="index-main-before-h2b.html">pre-H2-B landing snapshot</a> · <a href="executive-summary-h40-4.html">pre-H2-B submission guide</a> · <a href="data/validation.json">main-branch validation record</a> · <a href="data/shipped_validation.json">shipped artifact checks</a>.</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="feed" class="section" aria-labelledby="feed-title">
-        <div class="section-header">
-          <h2 id="feed-title">Official leaderboard feed</h2>
-          <p>Static dated observation. This page does not scrape continuously, and a leaderboard row does not identify its underlying TIFF.</p>
-        </div>
-        <div class="two-col">
-          <div class="panel">
-            <div class="eyebrow">Snapshot · 2026-10-05 UTC</div>
-            <h3 style="margin:14px 0">Top four public scores</h3>
-            <div class="table-wrap"><table aria-label="Official leaderboard snapshot"><thead><tr><th>Rank</th><th>Public score</th></tr></thead><tbody>
-              <tr><td class="num">01</td><td class="num">0.3262</td></tr>
-              <tr><td class="num">02</td><td class="num">0.3222</td></tr>
-              <tr><td class="num">03</td><td class="num">0.3220</td></tr>
-              <tr><td class="num">04</td><td class="num">0.3195</td></tr>
-            </tbody></table></div>
-            <p class="small" style="margin-bottom:0">The earlier reference to 0.3195 as the leader is corrected: it appeared at rank 4 in this snapshot.</p>
-            <a class="more" href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/" target="_blank" rel="noopener">Open the official leaderboard ↗</a>
-          </div>
-          <div class="panel">
-            <div class="eyebrow">Attribution warning</div>
-            <h3 style="margin:14px 0">0.2778 is account-level only</h3>
-            <p class="small">The official page showed an `extradr19` row at 0.2778 (rank 13, nine submissions). No accessible file-level receipt links that row to a raster. GEMSDOE32's H33-2-B2 record says 37,654 dots, projected 0.2747, <strong>UNSCORED</strong>; we do not attribute 0.2778 to H33.</p>
-            <a class="more" href="data/feed-20261005.json">Open timestamped feed data →</a>
-          </div>
-        </div>
-        <div class="panel" style="margin-top:18px">
-          <div class="eyebrow">Project update · 2026-10-05</div>
-          <p style="margin:10px 0 0"><strong>Prior-output audit expanded during main-branch reconciliation:</strong> 11 TIFF paths (9 unique blobs) were added; H2-B was rechecked against all 277 exact-grid prior blobs and still passes uniqueness, but remains <strong>HOLD — DO NOT SUBMIT</strong> at 0.006313 local proxy DTI and 0/24 block wins. Historical H40-4 scored 0.124715 on that same proxy, won 0/24, and fails the strict local nodata check. No organizer score exists for either raster.</p>
-          <a class="more" href="data/feed-20261005.json">Read the full dated project/leaderboard feed →</a>
-        </div>
-      </section>
-
-      <section class="section" aria-labelledby="sources-title">
-        <div class="section-header">
-          <h2 id="sources-title">Sources, with boundaries.</h2>
-          <p>Official references anchor the task, metric, rules, map data and APIs. Owner-repository artifacts are prior work, not official truth.</p>
-        </div>
-        <div class="two-col">
-          <div class="panel">
-            <ul class="link-list">
-              <li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/" target="_blank" rel="noopener"><span><b>DrivenData · task & metric ↗</b><span>Official fault-prediction target and distance-weighted Tversky metric.</span></span></a></li>
-              <li><a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf" target="_blank" rel="noopener"><span><b>DOE/NLR · September 2026 rules ↗</b><span>Submission requirements and competition rules.</span></span></a></li>
-              <li><a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516/2" target="_blank" rel="noopener"><span><b>DrivenData staff · exact mask clarification ↗</b><span>Known-label masking is pixel-exact; nearby off-mask predictions remain scoreable.</span></span></a></li>
-            </ul>
-          </div>
-          <div class="panel">
-            <ul class="link-list">
-              <li><a href="https://mrdata.usgs.gov/geology/state/USGS_SGMC_Metadata.xml" target="_blank" rel="noopener"><span><b>USGS · SGMC metadata ↗</b><span>Official map-compilation context; it does not validate the local owner-derived raster mirror.</span></span></a></li>
-              <li><a href="https://www.reid-geophys.co.uk/wp-content/uploads/2017/11/Reid-Thurston-2014.pdf" target="_blank" rel="noopener"><span><b>Reid & Thurston (2014) · structural index ↗</b><span>Physical interpretation guidance for Euler depth deconvolution.</span></span></a></li>
-              <li><a href="https://earthquake.usgs.gov/fdsnws/event/1/" target="_blank" rel="noopener"><span><b>USGS ComCat API ↗</b><span>Official H3 source; bulk usable-plane coverage and block spread remain unverified.</span></span></a></li>
-            </ul>
-          </div>
-        </div>
-      </section>
-    </div>
-  </main>
-  <footer class="footer">
-    <div class="footer-inner">
-      <div><div class="footer-brand">GEMSDOE40</div><p>Fault prediction, not geothermal-site prediction.</p><p>Maximize P(Win) · Own the Outcome.</p></div>
-      <div><p><a href="https://github.com/buffedlizard55-lab/GEMSDOE40/blob/main/README.md">Project README ↗</a> · <a href="https://github.com/buffedlizard55-lab/GEMSDOE40/blob/main/docs/research/hypotheses.md">Hypothesis register</a> · <a href="reports/validation-h2b-20261005.html">Validation report</a></p><p>No organizer score. No submission. Status dated 2026-10-05 UTC.</p></div>
-    </div>
-  </footer>
-</body>
-</html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Depth, not just edges · GEMSDOE40</title><meta name="description" content="Measured Euler depth-clustering research for geological fault mapping. A unique GeoTIFF, open evidence, and an honest no-submission gate.">
+<link rel="stylesheet" href="assets/contact.css"><script src="assets/contact.js" defer></script></head>
+<body><a href="#main" class="skip">Skip to content</a><header class="header"><div class="wrap"><div class="masthead">
+<a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true">G</span><b>GEMS / 40</b><em>FIELD NOTES</em></a><nav class="nav" aria-label="Main navigation"><a class="active" href="index.html">Overview</a><a class="" href="executive-summary.html">Submission guide</a><a class="" href="evidence.html">Evidence</a><a class="" href="hypotheses.html">Hypotheses</a><a class="" href="sources.html">Research library</a></nav></div></div></header>
+<main id="main" class="wrap"><section class="hero"><div><p class="kicker">EXPERIMENT H4 / GEODAWN, NEVADA / 06 OCT 2026</p>
+<h1>Depth,<br>not just <em>edges.</em></h1><p class="lead">A new fault-confidence raster built from magnetic and gravity source depths. Real Euler solutions, a continuous density field, and an audit you can inspect.</p>
+<span class="tag hold">HOLD — DO NOT SUBMIT</span><div class="download"><a class="button" href="downloads/gemsdoe40-h4-contact-offset-depthkde-20261006-fab9f6619c02.tif" download>Download new research GeoTIFF <span aria-hidden="true">↓</span></a></div><p class="file-details">3.92 MB · single-band float32 · EPSG:32611<br>100 m · 3,730 rows × 3,292 columns · [0, 1]<br>NaN only outside the sample footprint</p>
+<div class="notice"><strong>New file. Not a proven improvement.</strong><p>The raw-output and format audits pass. The blocked proxy test does not. Download for research; do not spend a weekly slot on this version.</p></div>
+<div class="actions"><a class="textlink" href="executive-summary.html">File, name &amp; submission guide ↗</a><a class="textlink" href="evidence.html">Inspect the evidence ↗</a></div>
+</div><div class="map-panel"><a href="assets/h4-raster.png"><img src="assets/h4-raster.png" alt="Actual H4 continuous Euler solution-density raster on the GeoDAWN footprint, in UTM zone 11N" width="1005" height="1185"></a><div class="map-foot"><span>MODEL OUTPUT / NOT OBSERVED FAULTS</span><b>OPEN MAP ↗</b></div></div></section>
+<div class="checkstrip"><div><span class="stat">20,617</span><span class="label">Clustered depth solutions</span></div><div><span class="stat">336</span><span class="label">Prior artifacts audited</span></div><div><span class="stat">0.1283</span><span class="label">Largest raw |correlation|</span></div><div><span class="stat">0</span><span class="label">Competition slots used</span></div></div>
+<section class="section" id="research"><div class="sectionhead"><div><p class="eyebrow">01 / A DIFFERENT PHYSICAL SIGNAL</p><h2>From source depth to a map.</h2></div><a href="methodology.html">Full method &amp; assumptions ↗</a></div>
+<div class="grid3"><article class="card"><span class="stepnum">01 — INVERT</span><h3>Solve for the contact.</h3><p>Fit Reid’s SI=0 contact equation, including its offset A. A rank-aware solve retains straight contacts without pretending to know their along-strike position.</p></article>
+<article class="card"><span class="stepnum">02 — TEST CONSISTENCY</span><h3>Keep coherent depths.</h3><p>12,167 magnetic and 8,450 gravity solutions survive cross-window depth checks. Deep, uncertain and scattered solutions receive less weight.</p></article>
+<article class="card"><span class="stepnum">03 — ESTIMATE DENSITY</span><h3>Map the point cloud.</h3><p>Weighted Gaussian KDE becomes a continuous [0,1] confidence field. No gradient threshold, inherited prediction map, top-k dot budget, or random perturbation.</p></article></div></section>
+<section class="section" id="decision"><div class="sectionhead"><div><p class="eyebrow">02 / THE RESULT, WITHOUT THE SPIN</p><h2>Format passes. Promotion does not.</h2></div><a href="evidence.html">All checks &amp; limitations ↗</a></div><div class="tablewrap"><table><thead><tr><th>Same blocked SGMC proxy</th><th>DTI</th><th>Interpretation</th></tr></thead><tbody>
+<tr class="row-h4"><td><strong>H4 · new depth-KDE</strong></td><td class="num">0.006902</td><td>0/16 truth-bearing block wins against either comparator below.</td></tr>
+<tr><td>H33-B2 · owner’s reference</td><td class="num">0.091550</td><td>Diagnostic only; not the owner-reported 0.2778 leaderboard score.</td></tr>
+<tr><td>Frozen all-prior incumbent</td><td class="num">0.835907</td><td>SGMC-derived: circular on this proxy.</td></tr>
+<tr><td>H2-B · previous research</td><td class="num">0.006313</td><td>Also failed promotion; not a meaningful quality target.</td></tr></tbody></table></div>
+<p class="micro">These are owner-derived SGMC proxy scores, not organizer scores. The historical gate also requires 18 strict block wins when only 16 blocks contain truth. That defect is disclosed, not silently relaxed.</p></section>
+<section class="section twocol"><div class="callout"><p class="eyebrow">03 / WHY THE PREVIOUS BEST HELPED</p><h3>Fewer predictions.<br>Not more discovered faults.</h3><p>We verified H33-B2 is exactly the 40,199-pixel reference with 2,545 catalogue-adjacent pixels removed. That can reduce the Tversky false-positive cost without adding any new geometry.</p><a class="textlink" href="leaderboard-analysis.html">What 0.2778 does—and doesn’t—tell us ↗</a></div>
+<div class="callout" id="feed"><p class="eyebrow">04 / KEEP THE RECORD CURRENT</p><h3>An official-source feed,<br>not a submission bot.</h3><p id="feed-status" aria-live="polite">Loading the dated USGS context snapshot…</p><ul id="feed-events" class="eventlist"></ul><a class="textlink" href="sources.html#context">Sources, freshness &amp; access limits ↗</a></div></section>
+<section class="section"><div class="reportline"><span>Official leaderboard observed 6 October: <strong>0.3345</strong> at #1. Not a live scrape.</span><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">Open official board ↗</a></div><div class="reportline"><span>All 44 brief-listed projects; 48 owner-reported scores; 55 repositories inventoried.</span><a href="leaderboard.html">Complete project register ↗</a></div></section></main><footer class="footer"><div class="wrap"><p><strong>Maximize P(Win). Own the Outcome.</strong><br>Evidence before a weekly submission slot.</p>
+<p>Independent competition research · not affiliated with DOE or DrivenData.<br><a href="https://github.com/buffedlizard55-lab/GEMSDOE40">Repository</a> · <a href="user-prompt-20261006.md">Full project brief</a> · <a href="reports/review-20261006.md">Three-pass review</a></p></div></footer></body></html>

@@ -1,0 +1,37 @@
+{
+  "attempted_utc": "2026-10-06T02:11:33.284569+00:00",
+  "last_success_utc": null,
+  "status": "unavailable",
+  "scope": "USGS/GDR context only, not a fault label or resource discovery feed",
+  "leaderboard_monitoring": "disabled; no permission to automate DrivenData monitoring",
+  "events": [],
+  "source_status": [
+    {
+      "name": "GeoDAWN USGS metadata",
+      "url": "https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and",
+      "http_status": null,
+      "error": "<urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>"
+    },
+    {
+      "name": "INGENIOUS official collection",
+      "url": "https://gdr.openei.org/submissions/1391",
+      "http_status": null,
+      "error": "<urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>"
+    },
+    {
+      "name": "Regional geophysical metadata",
+      "url": "https://www.sciencebase.gov/catalog/item/628d4fabd34ef70cdba3c4a4?format=json",
+      "http_status": null,
+      "error": "<urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>"
+    }
+  ],
+  "errors": [
+    {
+      "source": "USGS ComCat",
+      "error": "<urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>"
+    }
+  ],
+  "own_previous_snapshot_restore": "not requested",
+  "earthquake_query": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2026-09-06&endtime=2026-10-06T02%3A11%3A33&minlatitude=37.33119&maxlatitude=40.72788&minlongitude=-120.03717&maxlongitude=-116.14092&minmagnitude=1&orderby=time&limit=20",
+  "source_probe_failures": 3
+}

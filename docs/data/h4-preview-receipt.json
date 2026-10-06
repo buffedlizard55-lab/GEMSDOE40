@@ -1,0 +1,20 @@
+{
+  "display": "4x4 maximum pooling for legibility; identical extent and 0\u20131 colors; display-only, not altered TIFF values",
+  "rasters": [
+    {
+      "file": "docs/assets/h4-raster.png",
+      "source_sha256": "ee73ffd76fabbaa1a2e77e17f57947a7db858916d713801e0c3502e49f6acabb",
+      "png_sha256": "d6f10054caa60a50094d8e8cf408bed60414ba479c2b6808eef73d45c51f20dd"
+    },
+    {
+      "file": "docs/assets/h33-raster.png",
+      "source_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+      "png_sha256": "58de9b1d70a87a6319a5b8ef617a37a930377598dceff75119b0fa94fbc6725f"
+    },
+    {
+      "file": "docs/assets/h2b-raster.png",
+      "source_sha256": "02486eaa491da2d8ebc6b1cd53ed2bdc8e995f316be1110a64eec484779b5a68",
+      "png_sha256": "96ab17fb7679d4158d634f59503ea45590e922599b332bfb636a3af7c1f4fbb9"
+    }
+  ]
+}

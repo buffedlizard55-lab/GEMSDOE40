@@ -1,0 +1,156 @@
+{
+  "verified_utc": "2026-10-06T02:28:16.434724+00:00",
+  "pass": true,
+  "pages_and_viewports": [
+    {
+      "page": "index.html",
+      "width": 1440,
+      "http": 200,
+      "no_horizontal_body_overflow": true
+    },
+    {
+      "page": "executive-summary.html",
+      "width": 1440,
+      "http": 200,
+      "no_horizontal_body_overflow": true
+    },
+    {
+      "page": "evidence.html",
+      "width": 1440,
+      "http": 200,
+      "no_horizontal_body_overflow": true
+    },
+    {
+      "page": "hypotheses.html",
+      "width": 1440,
+      "http": 200,
+      "no_horizontal_body_overflow": true
+    },
+    {
+      "page": "methodology.html",
+      "width": 1440,
+      "http": 200,
+      "no_horizontal_body_overflow": true
+    },
+    {
+      "page": "leaderboard-analysis.html",
+      "width": 1440,
+      "http": 200,
+      "no_horizontal_body_overflow": true
+    },
+    {
+      "page": "leaderboard.html",
+      "width": 1440,
+      "http": 200,
+      "no_horizontal_body_overflow": true
+    },
+    {
+      "page": "sources.html",
+      "width": 1440,
+      "http": 200,
+      "no_horizontal_body_overflow": true
+    },
+    {
+      "page": "index.html",
+      "width": 390,
+      "http": 200,
+      "no_horizontal_body_overflow": true
+    },
+    {
+      "page": "executive-summary.html",
+      "width": 390,
+      "http": 200,
+      "no_horizontal_body_overflow": true
+    },
+    {
+      "page": "evidence.html",
+      "width": 390,
+      "http": 200,
+      "no_horizontal_body_overflow": true
+    },
+    {
+      "page": "hypotheses.html",
+      "width": 390,
+      "http": 200,
+      "no_horizontal_body_overflow": true
+    },
+    {
+      "page": "methodology.html",
+      "width": 390,
+      "http": 200,
+      "no_horizontal_body_overflow": true
+    },
+    {
+      "page": "leaderboard-analysis.html",
+      "width": 390,
+      "http": 200,
+      "no_horizontal_body_overflow": true
+    },
+    {
+      "page": "leaderboard.html",
+      "width": 390,
+      "http": 200,
+      "no_horizontal_body_overflow": true
+    },
+    {
+      "page": "sources.html",
+      "width": 390,
+      "http": 200,
+      "no_horizontal_body_overflow": true
+    },
+    {
+      "page": "index.html",
+      "width": 320,
+      "http": 200,
+      "no_horizontal_body_overflow": true
+    },
+    {
+      "page": "executive-summary.html",
+      "width": 320,
+      "http": 200,
+      "no_horizontal_body_overflow": true
+    },
+    {
+      "page": "evidence.html",
+      "width": 320,
+      "http": 200,
+      "no_horizontal_body_overflow": true
+    },
+    {
+      "page": "hypotheses.html",
+      "width": 320,
+      "http": 200,
+      "no_horizontal_body_overflow": true
+    },
+    {
+      "page": "methodology.html",
+      "width": 320,
+      "http": 200,
+      "no_horizontal_body_overflow": true
+    },
+    {
+      "page": "leaderboard-analysis.html",
+      "width": 320,
+      "http": 200,
+      "no_horizontal_body_overflow": true
+    },
+    {
+      "page": "leaderboard.html",
+      "width": 320,
+      "http": 200,
+      "no_horizontal_body_overflow": true
+    },
+    {
+      "page": "sources.html",
+      "width": 320,
+      "http": 200,
+      "no_horizontal_body_overflow": true
+    }
+  ],
+  "download_name": "gemsdoe40-h4-contact-offset-depthkde-20261006-fab9f6619c02.tif",
+  "download_sha256": "ee73ffd76fabbaa1a2e77e17f57947a7db858916d713801e0c3502e49f6acabb",
+  "copy_controls_verified": 4,
+  "project_search_verified": true,
+  "javascript_errors": [],
+  "scope": "Local Chromium browser on staged/static public files; live deployment checked separately"
+}

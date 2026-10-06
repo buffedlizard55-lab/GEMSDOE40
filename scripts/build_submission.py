@@ -1,5 +1,7 @@
 #!/usr/bin/env python
-"""Build the submission artifacts from the Euler depth-clustered solution cloud.
+"""ARCHIVED ONLY — opt-in historical reproduction, not current submission advice.
+
+Build the submission artifacts from the Euler depth-clustered solution cloud.
 
 Three artifacts are written, all from the same physics, all float32 with values in [0, 1] inside
 the 5,167,373-pixel footprint of the sample submission and NaN outside it, EPSG:32611, 100 m,
@@ -61,6 +63,8 @@ AUGMENT_BUDGET = None      # None = every off-catalogue Euler crest pixel not al
 
 
 def main() -> int:
+    from gemsdoe40.legacy_guard import require_legacy_opt_in
+    require_legacy_opt_in()
     ap = argparse.ArgumentParser()
     ap.add_argument("--work", default="work")
     ap.add_argument("--window", type=int, default=10,
