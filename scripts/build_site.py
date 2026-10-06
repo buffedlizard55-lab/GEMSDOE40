@@ -113,6 +113,35 @@ def verify_evidence() -> list[str]:
         check(c["cloud"]["sha256"] == digest(ROOT / c["cloud"]["path"]), "downloadable solution cloud has changed")
         verify_chain("H13", h13g, h13f, h13u, h13v)
         verify_chain("H8", h8g, h8f, h8u, h8v)
+        # Concurrent session's analytic-signal experiment (H8-ASA): separate receipts, same no-go discipline.
+        h8asag, h8asaf, h8asau, h8asav, h8asarepro = (load(n) for n in (
+            "h8asa-generation.json", "h8asa-format.json", "h8asa-uniqueness.json",
+            "h8asa-validation.json", "h8asa-reproduction.json"))
+        hc = c["h8asa_candidate"]
+        h8asa_path = ROOT / hc["path"]
+        check(h8asa_path.is_file() and digest(h8asa_path) == hc["sha256"], "H8-ASA download SHA-256 mismatch")
+        check(hc["sha256"] == h8asaf["sha256"] == h8asag["candidate_format"]["sha256"] == h8asau["candidate_sha256"] == h8asav["candidate_sha256"], "H8-ASA evidence disagrees on candidate identity")
+        check(h8asaf["valid"] is True and h8asag["candidate_format"]["valid"] is True, "H8-ASA file is not format-verified")
+        check(hc["canonical_pixels_sha256"] == h8asaf["canonical_pixels_sha256"] == h8asau["candidate_canonical_sha256"], "H8-ASA canonical pixel identities disagree")
+        check(len(inv["unique_rasters"]) == h8asau["inventory_blobs"] == h8asau["hashed_and_audited_blobs"] == len(h8asau["comparisons"]), "H8-ASA incomplete audit counts")
+        check(h8asau["inventory_sha256"] == digest(DOCS / "data/prior-inventory-20261006.json"), "H8-ASA prior inventory changed since audit")
+        check(h8asau["completeness_pass"] and h8asau["uniqueness_pass"] and h8asau["near_duplicate_count"] == 0 and not h8asau["issues"], "H8-ASA novelty/integrity does not pass")
+        check(h8asav["promotion_gate"]["passed"] is False and h8asav["promotion_gate"]["slot_eligible"] is False and h8asav["promotion_gate"]["organizer_score"] is None and h8asav["promotion_gate"]["weekly_submission_used"] is False, "H8-ASA no-go changed")
+        check(hc["status"] == h8asav["promotion_gate"]["final_action"] == "HOLD — DO NOT SUBMIT", "H8-ASA no-go is not explicit")
+        check(hc["portal_safe_twin"]["sha256"] == digest(DOCS / "downloads" / hc["portal_safe_twin"]["filename"]), "H8-ASA portal twin changed")
+        check(hc["zip"]["sha256"] == digest(DOCS / "downloads" / hc["zip"]["filename"]), "H8-ASA zip changed")
+        check(hc["cloud"]["sha256"] == digest(ROOT / hc["cloud"]["path"]), "H8-ASA cloud changed")
+        check(hc["note_characters"] == len(hc["note"]) <= 200, "H8-ASA note length wrong")
+        check(h8asarepro["pass"] and h8asarepro["actual_tiff_sha256"] == hc["sha256"]
+              and h8asarepro["actual_cloud_sha256"] == hc["cloud"]["sha256"]
+              and h8asarepro["actual_zeros_sha256"] == hc["portal_safe_twin"]["sha256"]
+              and h8asarepro["actual_zip_sha256"] == hc["zip"]["sha256"], "H8-ASA byte reproduction disagrees")
+        check(h8asag["construction_uses_proxy_or_prior_predictions"] is False, "H8-ASA generation depends on old predictions/proxy")
+        check(digest(DOCS / "research/h8asa-preregistration-20261006.md") == h8asag["preregistration_sha256"], "H8-ASA frozen registration changed after generation")
+        for source, expected in h8asag["code_sha256"].items():
+            check(digest(ROOT / source) == expected, f"H8-ASA scientific source changed after run: {source}")
+        for name in ("index.html", "executive-summary.html"):
+            check(hc["filename"] in (DOCS / name).read_text(), f"H8-ASA download missing from {name}")
         sib = c["sibling_candidate"]
         check(digest(ROOT / sib["path"]) == sib["sha256"] and sib["status"].startswith("HOLD"), "H8 sibling record mismatch")
         arch = c["archived_candidate_h4"]
