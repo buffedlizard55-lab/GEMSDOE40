@@ -13,7 +13,7 @@
 the USGS/INGENIOUS catalogue misses rather than one already in it, how it differs from everything already
 implemented in this repository, its cost, and how it will be validated.</p></div>
 
-<section class="section"><h2>Rank 1 · H9 — tip, step-over and along-strike extension of mapped systems</h2>
+<section class="section"><h2>Rank 1 · H14 — tip, step-over and along-strike extension of mapped systems</h2>
 <div class="prose">
 <p><strong>Layers.</strong> Catalogue geometry (the provided <code>labels.tif</code> traces) plus independent
 strike corroboration from <code>det_elev_slope</code>, <code>rtp</code> and the gravity-gradient bands.</p>
@@ -50,7 +50,7 @@ real-data cloud sits at chance against the mapped faults — the honest expectat
 <p><strong>Validation.</strong> Score-anchored leave-one-out instrument (see evidence §5): currently fails to
 rank the recorded scores, so this hypothesis stays unvalidated.</p></div></section>
 
-<section class="section"><h2>Rank 3 · H10 — finite-step gravity inversion (SI = −1)</h2>
+<section class="section"><h2>Rank 3 · H15 — finite-step gravity inversion (SI = −1)</h2>
 <div class="prose">
 <p><strong>Layers.</strong> <code>iso_grav_anom</code>, <code>iso_grav_anom_vg</code>,
 <code>iso_grav_anom_hg</code>, <code>depth_to_base_surf</code>.</p>
@@ -63,7 +63,7 @@ where a step can exist.</p>
 <p><strong>Difference.</strong> New structural index, new equation, new source geometry; it is not a re-tune of
 any existing runner. Cost: high (new solver plus depth-to-basement coupling).</p></div></section>
 
-<section class="section"><h2>Rank 4 · H11 — 1 m lidar scarp re-mapping</h2>
+<section class="section"><h2>Rank 4 · H16 — 1 m lidar scarp re-mapping</h2>
 <div class="prose">
 <p><strong>Layers.</strong> USGS 3DEP 1 m DEM (the competition data tab ships
 <code>1m_DEM_links.csv</code>), aggregated to 100 m as up-face/down-face asymmetry, cross-scarp curvature and
@@ -76,11 +76,11 @@ what pre-lidar compilations miss.</p>
 <p><strong>Source, verified as obtainable.</strong> <a href="https://www.usgs.gov/3d-elevation-program">USGS 3DEP</a> is free and official, and
 the competition data page links the exact DEM tiles (<a href="https://www.drivendata.org/competitions/306/competition-doe-gems/data/#1m_DEM_links.csv">1m_DEM_links.csv</a>). Flagged
 irregularity: the scarp stack built in an earlier session is <em>absent</em> from this workspace and the USGS S3
-endpoint is TLS-blocked from this sandbox, so H11 cannot be rebuilt or re-measured here; the AUC above is quoted
+endpoint is TLS-blocked from this sandbox, so H16 cannot be rebuilt or re-measured here; the AUC above is quoted
 from this repository's own earlier receipt and no new lidar number is claimed.</p>
 <p>Cost: high (tile download and processing).</p></div></section>
 
-<section class="section"><h2>Rank 5 · H12 — microseismicity-aligned structures</h2>
+<section class="section"><h2>Rank 5 · H17 — microseismicity-aligned structures</h2>
 <div class="prose">
 <p><strong>Layers.</strong> <code>ieq_n100a15</code>, <code>deq_n100a15</code>, <code>geod_shearrate</code>.</p>
 <p><strong>Signature.</strong> An intensity ridge along an active but unmapped structure; measured catalogue

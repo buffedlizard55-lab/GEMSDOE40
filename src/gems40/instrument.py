@@ -152,7 +152,10 @@ def load_cat_hidden(data_dir: str | Path, hide_frac: float = 0.20, seed: int = 2
     sizes = np.bincount(comp.ravel(), minlength=n_comp + 1)
     perm = rng.permutation(ids)
     cum = np.cumsum(sizes[perm])
-    k = int(np.searchsorted(cum, hide_frac * sizes.sum())) + 1
+    # Defect repaired 2026-10-06 (session 2): ``sizes.sum()`` included the background class and
+    # dwarfed the catalogue mass, so the 20 % hide fraction selected every component.  The
+    # documented intent is 20 % of catalogue pixels.
+    k = int(np.searchsorted(cum, hide_frac * sizes[ids].sum())) + 1
     hidden_ids = perm[:min(k, perm.size)]
     hidden = np.isin(comp, hidden_ids) & foot
     cells: list[Cell] = []
@@ -160,7 +163,11 @@ def load_cat_hidden(data_dir: str | Path, hide_frac: float = 0.20, seed: int = 2
         q = quad == fold
         sl = _bbox_of(q)
         collar = binary_dilation(q, structure=np.ones((3, 3), bool), iterations=COLLAR_PX) & foot
-        visible = labels & (q | collar)
+        # Defect repaired 2026-10-06 (session 2): the hidden components are themselves catalogue
+        # pixels, so including them in ``visible`` made the 3-px flank exclusion remove the entire
+        # hidden set and every fold truth collapsed to zero pixels.  The documented intent is that
+        # only the *remaining visible* catalogue and its flank are excluded from scoring.
+        visible = (labels & ~hidden) & (q | collar)
         domain = binary_erosion(q, iterations=DOMAIN_ERODE)
         truth = hidden & q & domain & ~binary_dilation(visible, iterations=CAT_FLANK_PX)
         cells.append(Cell(key=f"fold{FOLD_NAMES[fold]}", fold=fold, bbox=sl,

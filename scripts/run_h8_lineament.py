@@ -44,6 +44,7 @@ from __future__ import annotations
 
 import argparse
 import gzip
+import io
 import hashlib
 import json
 import sys
@@ -61,7 +62,38 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from gemsdoe40.contact_euler import FieldConfig, spectral_gradients, solution_cloud  # noqa: E402
-from gemsdoe40.raster import canonical_pixel_sha256, validate_candidate, write_candidate  # noqa: E402
+from gemsdoe40.raster import canonical_pixel_sha256, validate_candidate  # noqa: E402
+
+
+def write_submission(path, prediction, template_path, *, description, predictor=1):
+    """Write one float32 band with the sample grid, NaN outside and predictor 1 (none).
+
+    ``gemsdoe40.raster.write_candidate`` is frozen at predictor 3 so that the H13/H8/H8-ASA
+    generation chains keep their recorded source hashes; this local writer reproduces the
+    official ``sample_submission.tif`` encoding (no predictor) for this release, because the
+    family's one observed portal rejection came from the integer predictor 2 on float data.
+    """
+    output_path, template_path = Path(path), Path(template_path)
+    prediction = np.asarray(prediction, dtype=np.float32)
+    with rasterio.open(template_path) as template:
+        template_band = template.read(1)
+        footprint = np.isfinite(template_band)
+        if prediction.shape != template_band.shape:
+            raise ValueError(f"prediction shape {prediction.shape} does not match template {template_band.shape}")
+        if not np.isfinite(prediction[footprint]).all():
+            raise ValueError("all predictions inside the template footprint must be finite")
+        if prediction[footprint].size and ((prediction[footprint] < 0).any() or (prediction[footprint] > 1).any()):
+            raise ValueError("predictions inside the template footprint must be in [0,1]")
+        out = prediction.copy()
+        out[~footprint] = np.nan
+        profile = template.profile.copy()
+        profile.update(driver="GTiff", count=1, dtype="float32", nodata=np.nan,
+                       compress="DEFLATE", predictor=predictor, BIGTIFF="IF_SAFER")
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        with rasterio.open(output_path, "w", **profile) as dst:
+            dst.write(out.astype(np.float32, copy=False), 1)
+            dst.update_tags(1, description=description,
+                            value_domain="[0,1]; NaN outside sample footprint")
 from acquire_data import PINS, digest  # noqa: E402
 
 SENTINEL = np.float32(-3.4028235e38)
@@ -435,10 +467,10 @@ def main() -> int:
     # predictor=1 (no predictor): the official sample_submission.tif setting.  The
     # family's only observed portal rejection came from the *integer* predictor 2 on
     # float data, and no predictor is the most conservative widely readable option.
-    write_candidate(continuous_path, prediction, args.data / "sample_submission.tif", predictor=1,
-                    description="GEMSDOE40 H8 lineament-aware SI=0 Euler depth-cluster KDE (continuous)")
-    write_candidate(binary_path, binary, args.data / "sample_submission.tif", predictor=1,
-                    description="GEMSDOE40 H8 lineament-aware SI=0 Euler depth-cluster KDE (hard twin)")
+    write_submission(continuous_path, prediction, args.data / "sample_submission.tif",
+                     description="GEMSDOE40 H8 lineament-aware SI=0 Euler depth-cluster KDE (continuous)")
+    write_submission(binary_path, binary, args.data / "sample_submission.tif",
+                     description="GEMSDOE40 H8 lineament-aware SI=0 Euler depth-cluster KDE (hard twin)")
     values = prediction[mask]
     receipt["emission"] = {
         "dots": emitted, "spacing_px": CONFIG["nms_spacing_px"], "budget": CONFIG["mass_budget"],
@@ -460,9 +492,12 @@ def main() -> int:
     receipt["grid"] = {"shape": list(shape), "crs": crs.to_string(),
                        "transform": list(transform)[:6], "footprint_cells": int(footprint.sum())}
 
-    # publishable solution cloud (both families, retained solutions only)
+    # publishable solution cloud (both families, retained solutions only).
+    # gzip.open() stamps the container with the current mtime, which made an otherwise
+    # deterministic emission non-reproducible at the byte level; GzipFile(mtime=0) pins it.
     cloud_path = out / "h8-lineament-solutions.csv.gz"
-    with gzip.open(cloud_path, "wt") as handle:
+    with gzip.GzipFile(filename="", mode="wb", fileobj=open(cloud_path, "wb"), mtime=0) as raw, \
+            io.TextIOWrapper(raw, encoding="utf-8", newline="") as handle:
         handle.write("family,row,col,easting_m,northing_m,depth_m,depth_se_m,residual,condition,"
                      "window,cluster_weight,lineament_coherence,corroborated,lineament_weight\n")
         for key, cloud in (("rtp", magnetic), ("iso_grav_anom", gravity)):

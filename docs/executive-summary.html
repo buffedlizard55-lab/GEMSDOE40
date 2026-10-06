@@ -75,8 +75,15 @@ depth-KDE</a> — <strong>HOLD — DO NOT SUBMIT</strong>.</li>
 <li><a href="downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-zeros.tif">H40 run-2 emission</a> —
 <strong>HOLD — DO NOT SUBMIT</strong>; its own audit found no promotion instrument that survives.</li>
 </ul>
+<div class="tablewrap"><table><thead><tr><th>Artifact</th><th>SHA-256</th><th>Status</th></tr></thead><tbody><tr><td class="mono"><a href="downloads/gemsdoe40-h13-crest-binary-20261006-a5d5b80a8476.tif">gemsdoe40-h13-crest-binary-20261006-a5d5b80a8476.tif</a></td><td class="num">c202a579ce33ea38…</td><td>HOLD — DO NOT SUBMIT</td></tr><tr><td class="mono"><a href="downloads/gemsdoe40-h8-tracelock-depthkde-20261006-373fa53b12e9.tif">gemsdoe40-h8-tracelock-depthkde-20261006-373fa53b12e9.tif</a></td><td class="num">6c32147db39cd34e…</td><td>HOLD — DO NOT SUBMIT</td></tr><tr><td class="mono"><a href="downloads/gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-nan.tif">gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-nan.tif</a></td><td class="num">b00328ce401cf5be…</td><td>HOLD — DO NOT SUBMIT</td></tr><tr><td class="mono"><a href="downloads/gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-zeros.tif">gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-zeros.tif</a></td><td class="num">8c262620a769e7db…</td><td>HOLD — DO NOT SUBMIT</td></tr><tr><td class="mono"><a href="downloads/gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-zeros.zip">gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-zeros.zip</a></td><td class="num">98b04fdbdbe531f6…</td><td>HOLD — DO NOT SUBMIT</td></tr></tbody></table></div>
+<p><strong>HOLD — DO NOT SUBMIT H40</strong>, and <strong>HOLD — DO NOT SUBMIT H7 or H40</strong> for the earlier
+arms. <strong>Do not upload either version</strong> of anything above: every promotion instrument used on them is
+<em>withdrawn</em> by the sixteen-score audit
+(<a href="data/instrument-audit-20261006.json">instrument-audit-20261006.json</a>), so none of them earned a
+weekly slot.</p>
 <p class="micro">Byte hashes of every retained artifact are pinned in <span class="mono">scripts/build_site.py</span>
-and verified by CI, so a silent change cannot pass unnoticed.</p></div></section>
+and <span class="mono">docs/data/session2-artifacts-20261006.json</span>, and verified by CI, so a silent change
+cannot pass unnoticed.</p></div></section>
 
 <section class="section"><h2>Limitations stated plainly</h2>
 <div class="prose"><ul>
@@ -86,7 +93,7 @@ public prior-art corpus; it cannot download or verify organizer files by itself.
 rows are reproduced only as calibration.</li>
 <li>No local instrument ranks the recorded scores, so nothing here proves a leaderboard gain.</li>
 <li>The 1 m lidar scarp stack used by an earlier hypothesis is not present in this workspace and the USGS S3
-endpoint is blocked from this sandbox; H11 states that honestly and no lidar-derived number is claimed.</li>
+endpoint is blocked from this sandbox; H16 states that honestly and no lidar-derived number is claimed.</li>
 <li>The depth-labelled cloud is a physical estimate, not a fault map: a potential-field contact may be a
 lithologic boundary, and a fault is not automatically a geothermal reservoir.</li>
 </ul></div></section></main>

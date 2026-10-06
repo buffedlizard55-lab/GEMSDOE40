@@ -16,8 +16,8 @@
   "note_characters": 188,
   "cloud": {
     "path": "docs/downloads/h8-lineament-solutions.csv.gz",
-    "sha256": "104d05e7b36ec5899624beffcd57732e6c3ffebce883c471a340143df66b2269",
-    "bytes": 4623529
+    "sha256": "0e82b38ebe521369347055541af556d3e17600f03241998e8291f6a150dd8d35",
+    "bytes": 4623502
   },
   "hard_twin": {
     "filename": "gemsdoe40-h8-euler-lineament-depthcluster-20261006-785c4f5d5ce1-hard.tif",

@@ -58,6 +58,21 @@ Defects found by review and fixed, with the evidence that they were real:
    identity while the site served H8; it is now a thin, deterministic wrapper that verifies the
    retained H4 bytes by SHA-256 and then runs the single current generator, so CI cannot pass
    while the served page and the asserted identity disagree.
+10. **Non-reproducible gzip container.** The solution cloud was written with
+    ``gzip.open()``, which stamps the container with the current mtime: the *content* was
+    identical on a re-run but the file hash was not. Fixed with
+    ``gzip.GzipFile(..., mtime=0)``; the published cloud was rebuilt (new container hash,
+    decompressed bytes proved identical to the previous container) and the whole release now
+    reproduces byte-for-byte — continuous TIFF, hard twin and cloud — from an independent
+    re-run of the merged runner.
+11. **Merge with the published session-2/3 line.** This branch predated mainline sessions 2–3.
+    The merge keeps their artifacts (H13 crest-binary, H8 trace-locked depth-KDE, H8-ASA
+    analytic-signal), receipts, registers, reports and hashes byte-identical, freezes
+    ``src/gemsdoe40/raster.py`` at their recorded source hash (this release writes its
+    predictor-1 GeoTIFF with a local writer instead), preserves their manifest as
+    ``docs/data/session2-artifacts-20261006.json``, retires their page generator to
+    ``scripts/retired/build_h13_site_session2.py``, and renumbers this session's new proposals
+    to **H14–H17** because H9–H11 and H12–H13 were already used and closed by them.
 
 ## Pass 3 — re-check against the original request
 
@@ -70,7 +85,7 @@ Defects found by review and fixed, with the evidence that they were real:
 | Easy-to-download TIF at the very top of the site + unique name + short note | hero download on `docs/index.html`, root `index.html` alias, `docs/executive-summary.html` with copy buttons; tracking name `GEMSDOE40-H8-LINEAMENT-785c4f5d5ce1`; note 172 characters |
 | Executive-summary subpage explaining exactly how to make a submission | `docs/executive-summary.html`, five numbered steps with the official URLs, format contract and predictor explanation |
 | GitHub Pages site, clean and organised, official verified sources | `docs/` + `.github/workflows/pages.yml`; `docs/sources.html` with competition, staff-clarification and geophysics sources |
-| 3–5 ranked new hypotheses with layer, physical signature, why-missing, difference, cost, validation | `docs/hypotheses.html` and `docs/research/h8-preregistration-20261006.md`: H9, H8, H10, H11, H12 |
+| 3–5 ranked new hypotheses with layer, physical signature, why-missing, difference, cost, validation | `docs/hypotheses.html` and `docs/research/h8-preregistration-20261006.md`: H14, H8, H15, H16, H17 |
 | Full prompt retained in the README and re-read each session | README retains the complete brief verbatim between its markers; `scripts/build_site.py --check` enforces the match |
 | No scheduled scraping, no passwords, no automatic submission | feed scope is official USGS/GDR context only with freshness/errors published; no credentials anywhere |
 | Three passes; PR and merge; next-session work and blockers | this record; PR body; README "Limitations that remain in the way" |
@@ -82,6 +97,6 @@ Defects found by review and fixed, with the evidence that they were real:
 * The counterfactual "off-catalogue SGMC faults are found at catalogue tip extensions" is
   **not** supported: the extension corridor carries 0.0162 credit per off-catalogue pixel,
   0.22× a uniform-random footprint mask of identical size (`work/h9_extension_probe.json`).
-  H9 therefore requires the geophysical strike test, not geometry alone.
+  H14 therefore requires the geophysical strike test, not geometry alone.
 * The family's best score is pruning, not discovery; adding mass at catalogue-adjacent
   distances is expensive under α = 0.2 / β = 0.8.

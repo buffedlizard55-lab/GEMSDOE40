@@ -1,6 +1,6 @@
 {
   "experiment": "H8 lineament-aware cross-family SI=0 Euler depth-cluster KDE",
-  "started_utc": "2026-10-06T04:03:48.412223+00:00",
+  "started_utc": "2026-10-06T04:49:16.679543+00:00",
   "configuration": {
     "registered": "docs/research/h8-preregistration-20261006.md",
     "si": 0,
@@ -219,7 +219,7 @@
   },
   "not_a_score": true,
   "construction_reads_labels_or_priors": false,
-  "elapsed_s": 176.4,
+  "elapsed_s": 207.4,
   "grid": {
     "shape": [
       3730,
@@ -238,8 +238,8 @@
   },
   "solution_cloud": {
     "path": "/home/user/GEMSDOE40/work/h8lineament/h8-lineament-solutions.csv.gz",
-    "bytes": 4623529,
-    "sha256": "104d05e7b36ec5899624beffcd57732e6c3ffebce883c471a340143df66b2269",
+    "bytes": 4623502,
+    "sha256": "0e82b38ebe521369347055541af556d3e17600f03241998e8291f6a150dd8d35",
     "retained_solutions": 124382
   }
 }

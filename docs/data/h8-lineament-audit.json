@@ -883,8 +883,8 @@
     "download_url": "https://github.com/buffedlizard55-lab/GEMSDOE40/raw/main/docs/downloads/gemsdoe40-h8-euler-lineament-depthcluster-20261006-785c4f5d5ce1.tif",
     "solution_cloud": {
       "path": "docs/downloads/h8-lineament-solutions.csv.gz",
-      "bytes": 4623529,
-      "sha256": "104d05e7b36ec5899624beffcd57732e6c3ffebce883c471a340143df66b2269"
+      "bytes": 4623502,
+      "sha256": "0e82b38ebe521369347055541af556d3e17600f03241998e8291f6a150dd8d35"
     },
     "generation_receipt": "docs/data/h8-lineament-generation.json",
     "hard_twin": {

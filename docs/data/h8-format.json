@@ -1,0 +1,46 @@
+{
+ "bytes": 1482117,
+ "candidate": {
+  "count": 1,
+  "crs": "EPSG:32611",
+  "dtype": "float32",
+  "height": 3730,
+  "in_footprint_max": 1.0,
+  "in_footprint_min": 0.0,
+  "in_footprint_nonzero": 213616,
+  "nodata": "NaN",
+  "outside_nan": 7111787,
+  "transform": [
+   100.0,
+   0.0,
+   243350.0,
+   0.0,
+   -100.0,
+   4508550.0
+  ],
+  "width": 3292
+ },
+ "canonical_pixels_sha256": "373fa53b12e99c8a193ec52102e2e33711dd6830cd28882a045a78f57249c9a9",
+ "issues": [],
+ "path": "work/h8/gemsdoe40-h8-tracelock-depthkde-20261006-373fa53b12e9.tif",
+ "sha256": "6c32147db39cd34e77baf31f6cb585165bca1d042cfa599d5d027cb140e0c195",
+ "template": {
+  "count": 1,
+  "crs": "EPSG:32611",
+  "dtype": "float32",
+  "height": 3730,
+  "nodata": "NaN",
+  "outside_pixels": 7111787,
+  "transform": [
+   100.0,
+   0.0,
+   243350.0,
+   0.0,
+   -100.0,
+   4508550.0
+  ],
+  "valid_pixels": 5167373,
+  "width": 3292
+ },
+ "valid": true
+}

@@ -20,6 +20,9 @@ DOCS = ROOT / "docs"
 AUDIT = DOCS / "data" / "h8-lineament-audit.json"
 GENERATION = DOCS / "data" / "h8-lineament-generation.json"
 MANIFEST = DOCS / "data" / "current-candidate.json"
+SESSION2 = DOCS / "data" / "session2-artifacts-20261006.json"
+PREREG = "research/h8-lineament-preregistration-20261006.md"
+REGISTER = "research/h8-preregistration-20261006.md"
 H33 = DOCS / "data" / "h33-measured-analysis.json"
 INSTRUMENTS = DOCS / "data" / "instrument-audit-20261006.json"
 
@@ -74,6 +77,7 @@ def main() -> int:
     generation = load(GENERATION)
     h33 = load(H33)
     instruments = load(INSTRUMENTS)
+    session2 = load(SESSION2) if SESSION2.is_file() else None
 
     published = audit["published"]
     name = published["name"]
@@ -169,6 +173,45 @@ refreshes it daily and the file is never fabricated.</p>
 <div class="tablewrap"><table><thead><tr><th>Source</th><th>HTTP</th><th>Error (truncated)</th></tr></thead>
 <tbody>{rows}</tbody></table></div></section>'''
 
+    def retained_session2() -> str:
+        """Every session-2/3 artifact, still downloadable, still explicitly held."""
+        if not session2:
+            return ""
+        h13 = session2
+        sib = session2["sibling_candidate"]
+        asa = session2["h8asa_candidate"]
+        rows = []
+        for name_, path_, sha_, status_ in (
+            (h13["filename"], h13["path"], h13["sha256"], h13["status"]),
+            (sib["filename"], sib["path"], sib["sha256"], sib["status"]),
+            (asa["filename"], asa["path"], asa["sha256"], asa["status"]),
+        ):
+            rows.append(f'<tr><td class="mono"><a href="{path_.replace("docs/", "")}">{name_}</a></td>'
+                        f'<td class="num">{sha_[:16]}…</td><td>{esc(status_)}</td></tr>')
+        for label, entry in (("portal-safe zeros twin", asa["portal_safe_twin"]),
+                             ("zeros ZIP", asa["zip"])):
+            rows.append(f'<tr><td class="mono"><a href="downloads/{entry["filename"]}">{entry["filename"]}</a></td>'
+                        f'<td class="num">{entry["sha256"][:16]}…</td><td>HOLD — DO NOT SUBMIT</td></tr>')
+        return ('<div class="tablewrap"><table><thead><tr><th>Artifact</th><th>SHA-256</th><th>Status</th>'
+                '</tr></thead><tbody>' + "".join(rows) + '</tbody></table></div>')
+
+    retained_block = retained_session2()
+    retained_paragraph = ('<p>Session-2 artifacts (H13 crest-binary, H8 trace-locked depth-KDE, H8-ASA '
+                          'analytic-signal depth-KDE) remain downloadable above with their own receipts and '
+                          'their own HOLD statuses, and so do the earlier arms: '
+                          '<a href="downloads/gemsdoe40-h7-rtp-euler-gravity-context-3d-kde-20261006-998f660f.tif">'
+                          'H7 RTP Euler + gravity-context KDE</a>, the retained '
+                          '<a href="downloads/gemsdoe40-h4-contact-offset-depthkde-20261006-fab9f6619c02.tif">'
+                          'H4 contact-offset depth-KDE</a>, and '
+                          '<a href="downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-zeros.tif">'
+                          'H40 run-2</a> with its '
+                          '<a href="downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-nan.tif">NaN twin</a>. '
+                          '<strong>HOLD — DO NOT SUBMIT H40</strong>, and '
+                          '<strong>HOLD — DO NOT SUBMIT H7 or H40</strong> for the earlier arms: '
+                          '<strong>Nothing earlier is cleared either</strong>. Every promotion instrument used '
+                          'on them is <em>withdrawn</em> by the sixteen-score audit '
+                          '(<a href="data/instrument-audit-20261006.json">instrument-audit-20261006.json</a>).</p>')
+
     # ------------------------------------------------------------------ index --
     index_body = f'''<section class="hero"><div>
 <p class="kicker">H8 / EULER DEPTH-CLUSTERING / 06 OCT 2026</p>
@@ -219,7 +262,7 @@ about <strong>15 % better placement</strong>, not exotic new data.</p></article>
 
 <section class="section"><div class="sectionhead"><div><p class="eyebrow">02 / THE METHOD</p>
 <h2>Reid's contact solver, then a density, then dots.</h2></div>
-<a href="research/h8-preregistration-20261006.md">Pre-registration ↗</a></div>
+<a href="{PREREG}">Pre-registration ↗</a></div>
 <div class="grid3">
 <article class="card"><span class="stepnum">01 · SOLVE</span><h3>SI = 0 Euler contact.</h3>
 <p>Reid et al. (1990) eq. 2 with the arbitrary contact offset A — the structural index of a fault-like contact —
@@ -242,6 +285,12 @@ under a {cfg["mass_budget"]:,}-dot budget, with the provided catalogue and a 1 p
 catalogue mask. It never reads <code>labels.tif</code> as truth, any prior prediction, or any proxy raster:
 <code>construction_reads_labels_or_priors = {str(generation["construction_reads_labels_or_priors"]).lower()}</code>
 in the generation receipt.</p></section>
+
+<section class="section" id="retained"><div class="sectionhead"><div><p class="eyebrow">02b / RETAINED ARTIFACTS</p>
+<h2>Everything published earlier, still downloadable, still held.</h2></div>
+<a href="executive-summary.html">Submission guide ↗</a></div>
+{retained_paragraph}
+{retained_block}</section>
 
 <section class="section"><div class="sectionhead"><div><p class="eyebrow">03 / THE HONEST PART</p>
 <h2>What is measured, and what is not.</h2></div><a href="evidence.html">All measurements ↗</a></div>
@@ -268,21 +317,21 @@ organizer attribution is unverified. "w" is mean kernel credit per unit mass aga
 <h2>The ranked route to a higher score.</h2></div><a href="hypotheses.html">Full register ↗</a></div>
 <div class="tablewrap"><table><thead><tr><th>Rank</th><th>Hypothesis</th><th>Why it can find a fault the
 catalogue misses</th><th>Cost</th></tr></thead><tbody>
-<tr><td>1</td><td><strong>H9 · tip / step-over / along-strike extensions</strong></td>
+<tr><td>1</td><td><strong>H14 · tip / step-over / along-strike extensions</strong></td>
 <td>DrivenData staff, 2026-09-23: a new fault "can include newly mapped geometry of an existing fault system"
 (<a href="{STAFF_MASK}">forum 11536, post 2</a>), and masked catalogue pixels cost nothing. Directly testable
 today with a leave-the-tips-out protocol on the provided catalogue.</td><td>moderate</td></tr>
 <tr><td>2</td><td>H8 · Euler depth-clustering (this file)</td><td>Potential-field contacts are subsurface
 boundaries; surface compilation cannot see them under basin fill.</td><td>already paid</td></tr>
-<tr><td>3</td><td>H10 · finite-step gravity inversion</td><td>A finite density step is SI = −1, not 0
+<tr><td>3</td><td>H15 · finite-step gravity inversion</td><td>A finite density step is SI = −1, not 0
 (<a href="{REID2014}">Reid &amp; Thurston, 2014</a>): the basin-margin fault class that surface maps
 under-represent.</td><td>high</td></tr>
-<tr><td>4</td><td>H11 · 1 m lidar scarp re-mapping</td><td>The direct surface expression of the labelled fault
+<tr><td>4</td><td>H16 · 1 m lidar scarp re-mapping</td><td>The direct surface expression of the labelled fault
 type; <a href="{THREEDEP}">USGS 3DEP</a> is free and official, and the competition data tab ships the DEM link
 CSV. <em>Flagged irregularity:</em> the earlier scarp stack used in this repository is absent from the current
 workspace and the USGS S3 endpoint is TLS-blocked from this sandbox, so it cannot be rebuilt or re-verified
 here.</td><td>high</td></tr>
-<tr><td>5</td><td>H12 · microseismicity alignment</td><td>Active but unmapped structures still generate events;
+<tr><td>5</td><td>H17 · microseismicity alignment</td><td>Active but unmapped structures still generate events;
 cheap, but measured catalogue skill is weak.</td><td>low</td></tr>
 </tbody></table></div></section>
 {feed_block}'''
@@ -356,8 +405,15 @@ depth-KDE</a> — <strong>HOLD — DO NOT SUBMIT</strong>.</li>
 <li><a href="downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-zeros.tif">H40 run-2 emission</a> —
 <strong>HOLD — DO NOT SUBMIT</strong>; its own audit found no promotion instrument that survives.</li>
 </ul>
+{retained_block}
+<p><strong>HOLD — DO NOT SUBMIT H40</strong>, and <strong>HOLD — DO NOT SUBMIT H7 or H40</strong> for the earlier
+arms. <strong>Do not upload either version</strong> of anything above: every promotion instrument used on them is
+<em>withdrawn</em> by the sixteen-score audit
+(<a href="data/instrument-audit-20261006.json">instrument-audit-20261006.json</a>), so none of them earned a
+weekly slot.</p>
 <p class="micro">Byte hashes of every retained artifact are pinned in <span class="mono">scripts/build_site.py</span>
-and verified by CI, so a silent change cannot pass unnoticed.</p></div></section>
+and <span class="mono">docs/data/session2-artifacts-20261006.json</span>, and verified by CI, so a silent change
+cannot pass unnoticed.</p></div></section>
 
 <section class="section"><h2>Limitations stated plainly</h2>
 <div class="prose"><ul>
@@ -367,7 +423,7 @@ public prior-art corpus; it cannot download or verify organizer files by itself.
 rows are reproduced only as calibration.</li>
 <li>No local instrument ranks the recorded scores, so nothing here proves a leaderboard gain.</li>
 <li>The 1 m lidar scarp stack used by an earlier hypothesis is not present in this workspace and the USGS S3
-endpoint is blocked from this sandbox; H11 states that honestly and no lidar-derived number is claimed.</li>
+endpoint is blocked from this sandbox; H16 states that honestly and no lidar-derived number is claimed.</li>
 <li>The depth-labelled cloud is a physical estimate, not a fault map: a potential-field contact may be a
 lithologic boundary, and a fault is not automatically a geothermal reservoir.</li>
 </ul></div></section>'''
@@ -464,7 +520,7 @@ OPENBLAS_NUM_THREADS=1 python scripts/audit_h8_lineament.py  # writes docs/data/
 the USGS/INGENIOUS catalogue misses rather than one already in it, how it differs from everything already
 implemented in this repository, its cost, and how it will be validated.</p></div>
 
-<section class="section"><h2>Rank 1 · H9 — tip, step-over and along-strike extension of mapped systems</h2>
+<section class="section"><h2>Rank 1 · H14 — tip, step-over and along-strike extension of mapped systems</h2>
 <div class="prose">
 <p><strong>Layers.</strong> Catalogue geometry (the provided <code>labels.tif</code> traces) plus independent
 strike corroboration from <code>det_elev_slope</code>, <code>rtp</code> and the gravity-gradient bands.</p>
@@ -501,7 +557,7 @@ real-data cloud sits at chance against the mapped faults — the honest expectat
 <p><strong>Validation.</strong> Score-anchored leave-one-out instrument (see evidence §5): currently fails to
 rank the recorded scores, so this hypothesis stays unvalidated.</p></div></section>
 
-<section class="section"><h2>Rank 3 · H10 — finite-step gravity inversion (SI = −1)</h2>
+<section class="section"><h2>Rank 3 · H15 — finite-step gravity inversion (SI = −1)</h2>
 <div class="prose">
 <p><strong>Layers.</strong> <code>iso_grav_anom</code>, <code>iso_grav_anom_vg</code>,
 <code>iso_grav_anom_hg</code>, <code>depth_to_base_surf</code>.</p>
@@ -514,7 +570,7 @@ where a step can exist.</p>
 <p><strong>Difference.</strong> New structural index, new equation, new source geometry; it is not a re-tune of
 any existing runner. Cost: high (new solver plus depth-to-basement coupling).</p></div></section>
 
-<section class="section"><h2>Rank 4 · H11 — 1 m lidar scarp re-mapping</h2>
+<section class="section"><h2>Rank 4 · H16 — 1 m lidar scarp re-mapping</h2>
 <div class="prose">
 <p><strong>Layers.</strong> USGS 3DEP 1 m DEM (the competition data tab ships
 <code>1m_DEM_links.csv</code>), aggregated to 100 m as up-face/down-face asymmetry, cross-scarp curvature and
@@ -527,11 +583,11 @@ what pre-lidar compilations miss.</p>
 <p><strong>Source, verified as obtainable.</strong> <a href="{THREEDEP}">USGS 3DEP</a> is free and official, and
 the competition data page links the exact DEM tiles (<a href="{TNMLINKS}">1m_DEM_links.csv</a>). Flagged
 irregularity: the scarp stack built in an earlier session is <em>absent</em> from this workspace and the USGS S3
-endpoint is TLS-blocked from this sandbox, so H11 cannot be rebuilt or re-measured here; the AUC above is quoted
+endpoint is TLS-blocked from this sandbox, so H16 cannot be rebuilt or re-measured here; the AUC above is quoted
 from this repository's own earlier receipt and no new lidar number is claimed.</p>
 <p>Cost: high (tile download and processing).</p></div></section>
 
-<section class="section"><h2>Rank 5 · H12 — microseismicity-aligned structures</h2>
+<section class="section"><h2>Rank 5 · H17 — microseismicity-aligned structures</h2>
 <div class="prose">
 <p><strong>Layers.</strong> <code>ieq_n100a15</code>, <code>deq_n100a15</code>, <code>geod_shearrate</code>.</p>
 <p><strong>Signature.</strong> An intensity ridge along an active but unmapped structure; measured catalogue
@@ -596,7 +652,7 @@ this release implements at structural index 0.</p></article>
 <article class="sourcecard"><span class="stepnum">STRUCTURAL INDEX</span><h3>Reid &amp; Thurston, 2014</h3>
 <p><a href="{REID2014}">{REID2014}</a> — structural-index selection; a finite gravity step is SI = −1, which is
 why the gravity arm here uses the first vertical derivative at SI = 0 as a local top-edge approximation, and why
-H10 is ranked as the deeper fix.</p></article>
+H15 is ranked as the deeper fix.</p></article>
 <article class="sourcecard"><span class="stepnum">ELEVATION</span><h3>USGS 3DEP</h3>
 <p><a href="{THREEDEP}">{THREEDEP}</a> — free official 1 m lidar DEM coverage for the next hypothesis; not
 reachable from this sandbox (TLS to the USGS endpoint is closed here).</p></article>
@@ -619,6 +675,27 @@ required-credit calculation and the pre-registered settings.</li>
 <li><a href="user-prompt-20261006.md">user-prompt-20261006.md</a> — the full project brief, also embedded in the
 repository README.</li>
 </ul></div></section>'''
+
+    # root alias: the /GEMSDOE40/ route must name the current download and the retained holds
+    twin_link = (f'<p>Metric-optimal twin (same {dots:,} cells, every value 1.0): '
+                 f'<a href="docs/downloads/{esc(twin["name"])}">{esc(twin["name"])}</a></p>'
+                 if twin else "")
+    root_html = f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="refresh" content="0; url=docs/index.html"><title>GEMSDOE40 · H8 research download</title><link rel="canonical" href="docs/index.html"><link rel="stylesheet" href="docs/assets/contact.css"></head><body><main class="wrap subhero"><p class="kicker">GEMS / 40 · H8</p><h1>Unique Euler depth-clustering candidate</h1><p>SI = 0 contact Euler solutions on magnetic and gravity data, lineament-weighted, emitted as a sparse
+density field. Format-valid, novel against {novelty["corpus_size"] + novelty["unreadable_or_incomparable"]} cached prior rasters, and <strong>not promoted</strong>:
+no local instrument ranks the family's recorded scores, so no weekly slot was used.</p>
+<p><a class="button" href="docs/downloads/{esc(name)}" download>Download the H8 GeoTIFF ↓</a></p>{twin_link}
+<p><a href="docs/index.html">Open the project site</a> · <a href="docs/executive-summary.html">Submission guide</a>
+· <a href="docs/evidence.html">Evidence</a> · <a href="docs/hypotheses.html">Hypotheses</a></p>
+<p><strong>HOLD — DO NOT SUBMIT H40</strong>, and <strong>HOLD — DO NOT SUBMIT H7 or H40</strong> for the earlier arms:
+<strong>Nothing earlier is cleared either</strong>. Retained, still downloadable, still held:
+<a href="docs/downloads/{esc(session2["filename"])}">H13 crest-binary</a> ·
+<a href="docs/downloads/{esc(session2["sibling_candidate"]["filename"])}">H8 trace-locked depth-KDE</a> ·
+<a href="docs/downloads/{esc(session2["h8asa_candidate"]["filename"])}">H8-ASA analytic-signal depth-KDE</a> ·
+<a href="docs/downloads/gemsdoe40-h7-rtp-euler-gravity-context-3d-kde-20261006-998f660f.tif">H7</a> ·
+<a href="docs/downloads/gemsdoe40-h4-contact-offset-depthkde-20261006-fab9f6619c02.tif">H4</a> ·
+<a href="docs/downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-zeros.tif">H40 run-2</a>.</p>
+</main></body></html>'''
+    (ROOT / "index.html").write_text(root_html, encoding="utf-8")
 
     page("index.html", "Euler depth-clustering candidate", index_body, "index.html")
     page("executive-summary.html", "Executive summary and submission guide", executive_body, "executive-summary.html")

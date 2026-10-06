@@ -107,15 +107,8 @@ def write_candidate(
     template_path: str | Path,
     *,
     description: str = "GEMSDOE40 preregistered H1 joint magnetic-gravity Euler depth-consensus KDE",
-    predictor: int = 3,
 ) -> None:
-    """Write one float32 band using the sample's grid and NaN nodata semantics.
-
-    ``predictor=3`` is the floating-point predictor this repository has used since
-    H1.  ``predictor=1`` (no predictor) is what the official ``sample_submission.tif``
-    carries and is the conservative choice for the submission portal, which once
-    rejected a float GeoTIFF written with the *integer* predictor 2.
-    """
+    """Write one float32 band using the sample's grid and NaN nodata semantics."""
     output_path, template_path = Path(output_path), Path(template_path)
     prediction = np.asarray(prediction, dtype=np.float32)
     with rasterio.open(template_path) as template:
@@ -136,7 +129,7 @@ def write_candidate(
             dtype="float32",
             nodata=np.nan,
             compress="DEFLATE",
-            predictor=predictor,
+            predictor=3,
             BIGTIFF="IF_SAFER",
         )
         output_path.parent.mkdir(parents=True, exist_ok=True)

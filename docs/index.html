@@ -65,7 +65,7 @@ about <strong>15 % better placement</strong>, not exotic new data.</p></article>
 
 <section class="section"><div class="sectionhead"><div><p class="eyebrow">02 / THE METHOD</p>
 <h2>Reid's contact solver, then a density, then dots.</h2></div>
-<a href="research/h8-preregistration-20261006.md">Pre-registration ↗</a></div>
+<a href="research/h8-lineament-preregistration-20261006.md">Pre-registration ↗</a></div>
 <div class="grid3">
 <article class="card"><span class="stepnum">01 · SOLVE</span><h3>SI = 0 Euler contact.</h3>
 <p>Reid et al. (1990) eq. 2 with the arbitrary contact offset A — the structural index of a fault-like contact —
@@ -88,6 +88,12 @@ under a 40,000-dot budget, with the provided catalogue and a 1 px ring removed.<
 catalogue mask. It never reads <code>labels.tif</code> as truth, any prior prediction, or any proxy raster:
 <code>construction_reads_labels_or_priors = false</code>
 in the generation receipt.</p></section>
+
+<section class="section" id="retained"><div class="sectionhead"><div><p class="eyebrow">02b / RETAINED ARTIFACTS</p>
+<h2>Everything published earlier, still downloadable, still held.</h2></div>
+<a href="executive-summary.html">Submission guide ↗</a></div>
+<p>Session-2 artifacts (H13 crest-binary, H8 trace-locked depth-KDE, H8-ASA analytic-signal depth-KDE) remain downloadable above with their own receipts and their own HOLD statuses, and so do the earlier arms: <a href="downloads/gemsdoe40-h7-rtp-euler-gravity-context-3d-kde-20261006-998f660f.tif">H7 RTP Euler + gravity-context KDE</a>, the retained <a href="downloads/gemsdoe40-h4-contact-offset-depthkde-20261006-fab9f6619c02.tif">H4 contact-offset depth-KDE</a>, and <a href="downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-zeros.tif">H40 run-2</a> with its <a href="downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-nan.tif">NaN twin</a>. <strong>HOLD — DO NOT SUBMIT H40</strong>, and <strong>HOLD — DO NOT SUBMIT H7 or H40</strong> for the earlier arms: <strong>Nothing earlier is cleared either</strong>. Every promotion instrument used on them is <em>withdrawn</em> by the sixteen-score audit (<a href="data/instrument-audit-20261006.json">instrument-audit-20261006.json</a>).</p>
+<div class="tablewrap"><table><thead><tr><th>Artifact</th><th>SHA-256</th><th>Status</th></tr></thead><tbody><tr><td class="mono"><a href="downloads/gemsdoe40-h13-crest-binary-20261006-a5d5b80a8476.tif">gemsdoe40-h13-crest-binary-20261006-a5d5b80a8476.tif</a></td><td class="num">c202a579ce33ea38…</td><td>HOLD — DO NOT SUBMIT</td></tr><tr><td class="mono"><a href="downloads/gemsdoe40-h8-tracelock-depthkde-20261006-373fa53b12e9.tif">gemsdoe40-h8-tracelock-depthkde-20261006-373fa53b12e9.tif</a></td><td class="num">6c32147db39cd34e…</td><td>HOLD — DO NOT SUBMIT</td></tr><tr><td class="mono"><a href="downloads/gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-nan.tif">gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-nan.tif</a></td><td class="num">b00328ce401cf5be…</td><td>HOLD — DO NOT SUBMIT</td></tr><tr><td class="mono"><a href="downloads/gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-zeros.tif">gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-zeros.tif</a></td><td class="num">8c262620a769e7db…</td><td>HOLD — DO NOT SUBMIT</td></tr><tr><td class="mono"><a href="downloads/gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-zeros.zip">gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-zeros.zip</a></td><td class="num">98b04fdbdbe531f6…</td><td>HOLD — DO NOT SUBMIT</td></tr></tbody></table></div></section>
 
 <section class="section"><div class="sectionhead"><div><p class="eyebrow">03 / THE HONEST PART</p>
 <h2>What is measured, and what is not.</h2></div><a href="evidence.html">All measurements ↗</a></div>
@@ -114,21 +120,21 @@ organizer attribution is unverified. "w" is mean kernel credit per unit mass aga
 <h2>The ranked route to a higher score.</h2></div><a href="hypotheses.html">Full register ↗</a></div>
 <div class="tablewrap"><table><thead><tr><th>Rank</th><th>Hypothesis</th><th>Why it can find a fault the
 catalogue misses</th><th>Cost</th></tr></thead><tbody>
-<tr><td>1</td><td><strong>H9 · tip / step-over / along-strike extensions</strong></td>
+<tr><td>1</td><td><strong>H14 · tip / step-over / along-strike extensions</strong></td>
 <td>DrivenData staff, 2026-09-23: a new fault "can include newly mapped geometry of an existing fault system"
 (<a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516">forum 11536, post 2</a>), and masked catalogue pixels cost nothing. Directly testable
 today with a leave-the-tips-out protocol on the provided catalogue.</td><td>moderate</td></tr>
 <tr><td>2</td><td>H8 · Euler depth-clustering (this file)</td><td>Potential-field contacts are subsurface
 boundaries; surface compilation cannot see them under basin fill.</td><td>already paid</td></tr>
-<tr><td>3</td><td>H10 · finite-step gravity inversion</td><td>A finite density step is SI = −1, not 0
+<tr><td>3</td><td>H15 · finite-step gravity inversion</td><td>A finite density step is SI = −1, not 0
 (<a href="https://www.reid-geophys.co.uk/wp-content/uploads/2017/11/Reid-Thurston-2014.pdf">Reid &amp; Thurston, 2014</a>): the basin-margin fault class that surface maps
 under-represent.</td><td>high</td></tr>
-<tr><td>4</td><td>H11 · 1 m lidar scarp re-mapping</td><td>The direct surface expression of the labelled fault
+<tr><td>4</td><td>H16 · 1 m lidar scarp re-mapping</td><td>The direct surface expression of the labelled fault
 type; <a href="https://www.usgs.gov/3d-elevation-program">USGS 3DEP</a> is free and official, and the competition data tab ships the DEM link
 CSV. <em>Flagged irregularity:</em> the earlier scarp stack used in this repository is absent from the current
 workspace and the USGS S3 endpoint is TLS-blocked from this sandbox, so it cannot be rebuilt or re-verified
 here.</td><td>high</td></tr>
-<tr><td>5</td><td>H12 · microseismicity alignment</td><td>Active but unmapped structures still generate events;
+<tr><td>5</td><td>H17 · microseismicity alignment</td><td>Active but unmapped structures still generate events;
 cheap, but measured catalogue skill is weak.</td><td>low</td></tr>
 </tbody></table></div></section>
 <section class="section" id="feed"><div class="sectionhead"><div><p class="eyebrow">05 / CONTEXT FEED</p>

@@ -35,7 +35,7 @@ def test_static_site_has_no_duplicate_ids_or_broken_local_links():
 
 
 def test_site_prominently_offers_the_current_download_with_its_real_status():
-    """The front page must make the download obvious and must not imply a validated score."""
+    """The front page must make the current download obvious and must not imply a validated score."""
     index = (DOCS / "index.html").read_text(encoding="utf-8")
     summary = (DOCS / "executive-summary.html").read_text(encoding="utf-8")
     import json
@@ -45,33 +45,42 @@ def test_site_prominently_offers_the_current_download_with_its_real_status():
     for text in (index, summary):
         assert f'downloads/{manifest["filename"]}' in text
         assert "not promoted" in text.lower()
+        assert "HOLD — DO NOT SUBMIT" in text
     assert "BUILT, AUDITED, NOT PROMOTED" in summary
     assert manifest["slot_eligible"] is False
     assert manifest["organizer_score"] is None
     assert manifest["weekly_submission_used"] is False
-    assert "HOLD" in summary  # retained history stays explicitly held
 
 
-def test_retained_history_artifacts_are_still_offered_and_held():
-    """Earlier research artifacts remain downloadable, byte-identical, and explicitly not cleared."""
-    summary = (DOCS / "executive-summary.html").read_text(encoding="utf-8")
+def test_site_prominently_marks_retained_artifacts_on_hold_and_offers_their_downloads():
     index = (DOCS / "index.html").read_text(encoding="utf-8")
-    h7 = "gemsdoe40-h7-rtp-euler-gravity-context-3d-kde-20261006-998f660f.tif"
-    h40_zeros = "gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-zeros.tif"
-    for name in (h7, h40_zeros):
-        assert (DOCS / "downloads" / name).is_file()
-        assert name in summary
-        assert "HOLD — DO NOT SUBMIT" in summary
-    assert "gemsdoe40-h8-euler-lineament-depthcluster" in index
+    summary = (DOCS / "executive-summary.html").read_text(encoding="utf-8")
+    import json
+    session2 = json.loads((DOCS / "data/session2-artifacts-20261006.json").read_text())
+    for name in (session2["filename"], session2["sibling_candidate"]["filename"],
+                 session2["h8asa_candidate"]["filename"]):
+        assert (DOCS / "downloads" / name).is_file(), name
+        assert name in index, name
+        assert name in summary, name
+    assert "HOLD — DO NOT SUBMIT H40" in index and "HOLD — DO NOT SUBMIT H40" in summary
+    assert "HOLD — DO NOT SUBMIT H7 or H40" in index and "HOLD — DO NOT SUBMIT H7 or H40" in summary
+    assert "Nothing earlier is cleared either" in index
+    assert "Do not upload either version" in summary
 
 
-def test_h40_artifact_receipt_is_unchanged_beside_an_explicit_hold():
+def test_h7_and_h40_artifacts_are_offered_beside_an_explicit_hold():
     import hashlib
     import json
+    index = (DOCS / "index.html").read_text(encoding="utf-8")
+    summary = (DOCS / "executive-summary.html").read_text(encoding="utf-8")
+    h7 = "gemsdoe40-h7-rtp-euler-gravity-context-3d-kde-20261006-998f660f.tif"
+    assert (DOCS / "downloads" / h7).is_file()
+    assert h7 in index and h7 in summary
     zeros = DOCS / "downloads" / "gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-zeros.tif"
-    twin = DOCS / "downloads" / "gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-nan.tif"
+    nan = DOCS / "downloads" / "gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-nan.tif"
     receipt_path = DOCS / "downloads" / "gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-audit.json"
-    assert zeros.is_file() and twin.is_file() and receipt_path.is_file()
+    assert zeros.is_file() and nan.is_file() and receipt_path.is_file()
+    assert zeros.name in index and zeros.name in summary
     receipt = json.loads(receipt_path.read_text())
     assert hashlib.sha256(zeros.read_bytes()).hexdigest() == receipt["zeros_tif"]["sha256"]
     inst = receipt["stage"]["emission"]["instrument"]
@@ -94,6 +103,7 @@ def test_site_states_that_no_local_instrument_reaches_the_promotion_bar():
     assert len(audit["artifacts"]) == 16
     index = (DOCS / "index.html").read_text(encoding="utf-8")
     evidence = (DOCS / "evidence.html").read_text(encoding="utf-8")
-    assert "instrument-audit-20261006.json" in evidence
+    for text in (index, evidence):
+        assert "instrument-audit-20261006.json" in text
+    assert "withdrawn" in index.lower()
     assert "≥ 0.800" in evidence
-    assert "no local" in (index + evidence).lower()
