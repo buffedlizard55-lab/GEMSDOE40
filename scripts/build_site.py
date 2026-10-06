@@ -49,6 +49,21 @@ def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def resolve_artifact(path_field: str) -> Path:
+    """Prefer the recorded path; fall back to the published download copy.
+
+    Generation receipts record the transient ``work/`` artifact (gitignored by
+    design). The byte-identical published download lives in ``docs/downloads/``;
+    the sha chain across generation/format/uniqueness/validation receipts proves
+    identity, so either copy validates the same digest.
+    """
+    primary = ROOT / path_field
+    if primary.is_file():
+        return primary
+    fallback = DOCS / "downloads" / Path(path_field).name
+    return fallback if fallback.is_file() else primary
+
+
 def verify_evidence() -> list[str]:
     problems = []
     def check(condition, message):
@@ -65,7 +80,7 @@ def verify_evidence() -> list[str]:
             "h4-generation.json", "h4-uniqueness.json", "h4-validation.json", "h4-reproduction.json"))
 
         def verify_chain(tag, gen, fmt, uniq, val, path_key="path"):
-            candidate = ROOT / gen["candidate_format"][path_key]
+            candidate = resolve_artifact(gen["candidate_format"][path_key])
             check(candidate.is_file() and digest(candidate) == gen["candidate_format"]["sha256"], f"{tag}: download SHA-256 mismatch")
             check(gen["candidate_format"]["sha256"] == fmt["sha256"] == uniq["candidate_sha256"] == val["candidate"]["sha256"], f"{tag}: evidence disagrees on candidate identity")
             check(fmt["valid"] is True and gen["candidate_format"]["valid"] is True, f"{tag}: file is not format-verified")
