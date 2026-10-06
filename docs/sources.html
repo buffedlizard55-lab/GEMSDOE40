@@ -11,6 +11,17 @@
 <h1>Where every claim comes from.</h1>
 <p class="lead">Official competition pages, the organisers' own clarifications, the primary geophysical
 literature, and the local receipts that record what was actually measured in this repository.</p></div>
+<section class="section"><h2>How this site and every artifact are verified</h2>
+<div class="prose"><p>Nothing here is published on a claim alone. Continuous integration runs the unit and integrity
+tests, re-reads every published byte against its receipt, regenerates the whole site and fails if a single
+character changes, and then loads all eight public routes in headless Chromium at desktop, tablet and 320 px
+phone widths — checking the download actually serves the published SHA-256 and that the submission name, note
+and hash can be copied. The Pages pipeline verifies the live public URLs and both download routes again after
+each deployment. When a check fails, the failure is annotated with the exact page, viewport and step.</p>
+<p>Current state: <a href="https://github.com/buffedlizard55-lab/GEMSDOE40/actions/workflows/ci.yml">Research and
+site checks</a> green on <span class="mono">main</span>; the H8 lineament release reproduces byte-for-byte from an
+independent re-run of <span class="mono">scripts/run_h8_lineament.py</span>.</p></div></section>
+
 <section class="section"><h2>Competition</h2><div class="grid3">
 <article class="sourcecard"><span class="stepnum">PROBLEM &amp; METRIC</span><h3>Competition problem description</h3>
 <p><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/</a> — task, layers and the distance-weighted Tversky index
