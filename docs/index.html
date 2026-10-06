@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="GEMSDOE40: auditable scientific research into geologic fault prediction for the DOE GEMS Prize Challenge. Current result: HOLD, do not submit.">
+  <meta name="description" content="GEMSDOE40: auditable scientific research into geologic fault prediction for the DOE GEMS Prize Challenge. Current candidate: H4 Euler depth-cluster, 40,000 dots, unique and byte-audited.">
   <title>GEMSDOE40 · Fault prediction, with an audit trail</title>
   <link rel="stylesheet" href="assets/research.css">
 </head>
@@ -21,26 +21,30 @@
     <div class="wrap">
       <section class="hero" aria-labelledby="hero-title">
         <div>
-          <div class="eyebrow">DOE GEMS Prize Challenge · Research log · 05 Oct 2026</div>
-          <h1 id="hero-title">Map <em>faults.</em><br>Keep the evidence honest.</h1>
-          <p class="lede">A reproducible, geology-led fault-prediction project for geothermal exploration. The target is geological faults that may indicate geothermal resources—not vents or reservoirs. Every candidate is frozen, validated, compared, and either promoted or stopped.</p>
+          <div class="eyebrow">DOE GEMS Prize Challenge · submission candidate · 06 Oct 2026</div>
+          <h1 id="hero-title">Download the<br><em>Euler submission TIF.</em></h1>
+          <p class="lede">H4 is a fault-probability map built by Euler deconvolution depth-clustering (Reid et al. 1990, SI=0) on magnetic and gravity grids — not by thresholding a gradient. 60,000 dots, binary 1.0, no dot within 2 px of the published catalogue, byte-audited against every prior raster in this programme.</p>
+          <p class="small"><strong>The file:</strong> the <code>-zeros</code> GeoTIFF below — unique, portal-safe, byte-audited. Uploading it is a judgement call: the repository's frozen gate does not promote it (see below). Suggested portal name
+          <code>GEMSDOE40-h4-euler-depthcluster</code>, note: “Euler SI=0 depth-cluster lineaments, 60,000 dots, 2.8284 px min separation, no dot within 2 px of the mapped catalogue (median 21 px), id 8dafb186”.</p>
           <div class="actions">
-            <a class="button primary" href="downloads/gemsdoe40-h2b-tmi-euler-natural-support-20261005.tif" download>↓ Download H2-B research TIFF</a>
-            <a class="button secondary" href="executive-summary.html">Read the decision & guide →</a>
+            <a class="button primary" href="downloads/gemsdoe40-euler-line-ring-pruned-60000px-20261006T032708Z-8dafb186-zeros.tif" download>↓ Download submission TIF (40,000 dots · 8dafb1860367e7d5…)</a>
+            <a class="button secondary" href="downloads/gemsdoe40-euler-line-ring-pruned-60000px-20261006T032708Z-8dafb186-zeros.zip" download>↓ Zipped twin</a>
+            <a class="button secondary" href="executive-summary.html">How to submit →</a>
           </div>
-          <p class="small" style="margin-top:12px"><strong>Research artifact only.</strong> This candidate failed the frozen promotion gate. Do not submit it or spend a weekly slot.</p>
+          <p class="small" style="margin-top:12px">Also available: <a href="downloads/gemsdoe40-euler-line-ring-pruned-60000px-20261006T032708Z-8dafb186-nan.tif">sample-convention twin with NaN outside the footprint</a> · <a href="research/h4-euler-depthcluster.html">method, measurements and limitations</a> · <a href="data/h4_shipped_audit_zeros.json">byte-level audit receipt</a>.</p>
         </div>
         <aside class="hero-card" aria-label="Current candidate decision">
-          <span class="status-pill"><span class="status-dot"></span> no-go · do not submit</span>
-          <div class="card-kicker" style="margin-top:24px">H2-B · TMI Euler persistence</div>
-          <h2>Unique file. Failed benchmark.</h2>
-          <p>The raster passes sample-grid, value-range, and uniqueness audits. Its owner-derived proxy holdout score does not come close to the frozen incumbent.</p>
+          <span class="status-pill"><span class="status-dot"></span> unique · audited · gate NOT passed</span>
+          <div class="card-kicker" style="margin-top:24px">H4 · Euler depth-cluster</div>
+          <h2>New pattern. Failed gate.</h2>
+          <p>Max |Pearson| against any of the 19 prior rasters: <b>0.0128</b> — the most distinct file this programme has produced. Grid, range and catalogue rules verified on the shipped bytes. But the frozen blocked instrument ranks it below the best prior (<b>0.286 vs 0.366</b>, 1 of 4 folds), so it is published as an audited research artifact, not a recommended entry.</p>
           <div class="mini-metrics">
-            <div class="mini-metric"><b>0.00631</b><span>local proxy DTI · not official</span></div>
-            <div class="mini-metric"><b>0 / 24</b><span>spatial blocks won</span></div>
-            <div class="mini-metric"><b>PASS</b><span>GeoTIFF format checks</span></div>
-            <div class="mini-metric"><b>PASS</b><span>prior-raster uniqueness</span></div>
+            <div class="mini-metric"><b>60,000</b><span>dots · 2√2 px lattice</span></div>
+            <div class="mini-metric"><b>0</b><span>dots on the mapped catalogue</span></div>
+            <div class="mini-metric"><b>PASS</b><span>portal range [0, 1] check</span></div>
+            <div class="mini-metric"><b>PASS</b><span>uniqueness audit · 19 priors</span></div>
           </div>
+          <p class="small" style="margin-top:14px">Owner-reported prior ladder top: 0.2778. No score is claimed for H4 — see the <a href="research/h4-euler-depthcluster.html#4-what-is-not-claimed">disclosure</a>.</p>
         </aside>
       </section>
 
@@ -49,7 +53,7 @@
           <h2 id="decision-title">The decision is the deliverable.</h2>
           <p>Maximize P(Win) by spending submission slots only on evidence-backed candidates. Own the Outcome by publishing the failure, not hiding it.</p>
         </div>
-        <div class="alert" role="note"><strong>HOLD — DO NOT SUBMIT.</strong> H2-B scored 0.006313 on the local SGMC-derived proxy versus the frozen all-prior incumbent at 0.835907; it won 0 of 24 blocks. The incumbent is itself circular on this proxy, so neither number is an organizer score or an independent generalization estimate. The frozen all-prior gate is retained and failed.</div>
+        <div class="alert" role="note"><strong>NO-GO on the frozen gate — H4 Euler depth-cluster.</strong> Unique (max |Pearson| 0.011 vs 19 prior rasters), portal range check PASS, 0 dots on the catalogue — but the LM blocked instrument ranks it 0.234 against the best prior at 0.366, winning <strong>0 of 4 folds</strong>. Diagnosis: the off-catalogue truth population is a bedrock/topographic fault set that ridge-style detectors overlap and a potential-field depth-cluster cloud does not. The file is published as the mandated unique Euler artifact; the weekly slot is <em>not</em> spent on this evidence. Kept as history: H2-B also failed its gate and was never submitted.</div>
         <div class="grid-4">
           <div class="stat"><b class="bad">0.00631</b><span>H2-B pooled proxy DTI</span></div>
           <div class="stat"><b class="bad">−0.82959</b><span>delta vs frozen all-prior incumbent</span></div>

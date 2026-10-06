@@ -10,21 +10,52 @@
   <header class="site-header"><div class="nav-wrap"><a class="brand" href="index.html"><span class="brand-mark">G40</span><span>GEMSDOE40</span></a><nav class="nav-links" aria-label="Primary navigation"><a href="index.html#decision">Decision</a><a href="index.html#research">Research</a><a href="index.html#feed">Leaderboard</a><a href="https://github.com/buffedlizard55-lab/GEMSDOE40/blob/main/README.md">README ↗</a></nav></div></header>
   <main id="main" class="wrap">
     <div class="breadcrumb"><a href="index.html">Home</a> / Executive summary</div>
-    <section class="page-head"><div class="eyebrow">Decision record · 2026-10-05 UTC</div><h1>Executive summary</h1><p>What was tested, what passed, what failed, and what is safe to do next.</p></section>
-    <section class="caution" aria-labelledby="decision-heading">
-      <span class="badge">No-go</span>
-      <h2 id="decision-heading" style="margin:12px 0 8px;color:#7c391c">HOLD — DO NOT SUBMIT H2-B.</h2>
-      <p>The candidate is a unique, format-valid GeoTIFF, but its local owner-derived SGMC proxy DTI is <strong>0.006313</strong>, with zero block wins against the frozen incumbent. No weekly submission slot has been used. It has no DrivenData score.</p>
-      <p><a href="reports/validation-h2b-20261005.html">Read the full spatial holdout and artifact report →</a></p>
+    <section class="page-head"><div class="eyebrow">Decision record · 2026-10-06 UTC</div><h1>Executive summary</h1><p>What was tested, what passed, what failed, and what is safe to do next.</p></section>
+    <section class="caution" aria-labelledby="decision-heading" style="border-color:#1f6f43;background:#f2faf4">
+      <span class="badge" style="background:#7c391c;color:#fff">Unique · audited · gate NOT passed</span>
+      <h2 id="decision-heading" style="margin:12px 0 8px;color:#7c391c">H4 — Euler depth-cluster: unique and audited, but the frozen gate says no.</h2>
+      <p><strong>File:</strong> <a href="downloads/gemsdoe40-euler-line-ring-pruned-60000px-20261006T032708Z-8dafb186-zeros.tif" download>gemsdoe40-euler-line-ring-pruned-60000px-20261006T032708Z-8dafb186-zeros.tif</a>
+      (<code>float32</code>, EPSG:32611, 3730 × 3292, 60,000 positive pixels, values exactly 0 or 1,
+      <code>nodata=None</code>, SHA-256 <code>8dafb1860367e7d5…</code>).</p>
+      <p><a class="button" style="display:inline-block;margin:8px 0" href="downloads/gemsdoe40-euler-line-ring-pruned-60000px-20261006T032708Z-8dafb186-zeros.tif" download>↓ Download the submission TIF</a>
+      <a href="downloads/gemsdoe40-euler-line-ring-pruned-60000px-20261006T032708Z-8dafb186-zeros.zip" download>zipped twin</a> ·
+      <a href="downloads/gemsdoe40-euler-line-ring-pruned-60000px-20261006T032708Z-8dafb186-nan.tif">NaN-outside twin</a> ·
+      <a href="data/h4_submission_20261006T032708Z.json">full receipt</a> ·
+      <a href="data/h4_shipped_audit_zeros.json">byte-level audit</a></p>
+      <p><strong>Gate result.</strong> On the repository's frozen blocked LM instrument (instrument verified at 5/6
+      published orderings) the best prior scores <b>0.366</b> LM-calibrated and H4 scores <b>0.286</b>, winning
+      <b>1 of 4 folds</b>. The frozen promotion rule is "win all four folds", so this file is <em>not</em> promoted and
+      the weekly slot is not spent on this evidence. Diagnosis: the off-catalogue truth population is bedrock/topographic,
+      which ridge-style detectors overlap and a potential-field depth-cluster cloud does not (both independent instruments
+      agree). The 60,000-px budget follows the emission law fitted to the published ladder (optimum ≈ 60,069 px); it replaces the earlier 40,000-px emission, which won 0 of 4 folds. Download it as the mandated unique Euler artifact; upload at your own discretion.</p>
+      <h3>If you do submit it, in four steps</h3>
+      <ol>
+        <li>Open the DrivenData submission page for <em>competition #306 (DOE GEMS)</em>.</li>
+        <li>Click <em>Download predictions template</em> only if you need the units; otherwise upload the file above directly.</li>
+        <li>Upload <code>gemsdoe40-euler-line-ring-pruned-60000px-20261006T032708Z-8dafb186-zeros.tif</code>. Keep the <code>-zeros</code> twin: it is finite everywhere and its only values are 0.0 and 1.0.</li>
+        <li>Optional name and note — name: <code>GEMSDOE40-h4-euler-depthcluster</code>; note: <code>Euler SI=0 depth-cluster lineaments, 60,000 dots, 2.8284px min separation, no dot within 2px of the mapped catalogue (median 21px) | id 8dafb186</code>.</li>
+      </ol>
+      <h3>If the portal says “Predicted values must be in range [0, 1]”</h3>
+      <p>That error is about the <em>stored</em> values, not about your science. It appears when a file carries a
+      nodata sentinel (<code>255</code>, <code>-9999</code>, <code>−3.4e38</code>) or a rescaled integer outside
+      <code>[0,1]</code> in the cells outside the valid footprint. The fix used here: write <code>float32</code> with
+      <strong>every</strong> cell finite and in <code>[0,1]</code> (0.0 outside the footprint) and
+      <code>nodata = None</code>; the <code>-nan</code> twin keeps the sample convention (NaN outside,
+      <code>nodata=NaN</code>) for tools that expect it. Both twins pass
+      <code>scripts/audit_submission.py</code>, which re-reads the bytes and asserts min ≥ 0, max ≤ 1, no sentinel,
+      the sample's grid, and 0 mass on the masked catalogue.</p>
+      <p class="small">Kept as history: H2-B (TMI Euler persistence) passed the format and uniqueness gates but failed
+      the frozen promotion gate — proxy DTI 0.006313, 0 of 24 blocks — and was never submitted. No weekly slot has
+      been spent by this repository. <a href="reports/validation-h2b-20261005.html">H2-B report →</a></p>
     </section>
 
     <section class="section" aria-labelledby="what-title">
       <div class="section-header"><h2 id="what-title">Outcome at a glance</h2><p>This is a research result, not a private-leaderboard prediction. The local proxy is a fallible owner-derived SGMC mirror.</p></div>
       <div class="grid-4">
-        <div class="stat"><b class="bad">0.006313</b><span>H2-B local proxy DTI</span></div>
-        <div class="stat"><b class="bad">0 / 24</b><span>spatial blocks won</span></div>
+        <div class="stat"><b class="good">60,000</b><span>dots · 2√2 px lattice</span></div>
+        <div class="stat"><b class="good">0</b><span>dots on the published catalogue</span></div>
         <div class="stat"><b class="good">PASS</b><span>sample grid, range, nodata</span></div>
-        <div class="stat"><b class="good">PASS</b><span>uniqueness against 277 same-grid rasters</span></div>
+        <div class="stat"><b class="good">0.0128</b><span>max |Pearson| vs 19 prior rasters</span></div>
       </div>
       <div class="metric-bar" style="margin-top:16px">
         <div class="metric"><span class="big">0.835907</span><span class="label">frozen all-prior proxy incumbent. It is SGMC-gap-derived and circular on this proxy; not an independent baseline.</span></div>
@@ -41,7 +72,7 @@
     </section>
 
     <section class="section" aria-labelledby="file-title">
-      <div class="section-header"><h2 id="file-title">Research TIFF: available, not approved</h2><p>Format validation and scientific promotion are separate gates. This one passes only the former.</p></div>
+      <div class="section-header"><h2 id="file-title">Previous research TIFF (H2-B): available, not approved</h2><p>Format validation and scientific promotion are separate gates. H2-B passed only the former; it is kept for the audit trail.</p></div>
       <div class="panel two-col">
         <div>
           <h3 style="margin-top:0">H2-B · natural positive KDE support</h3>

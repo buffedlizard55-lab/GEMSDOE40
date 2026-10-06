@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>H4 · Euler depth-cluster submission · GEMSDOE40</title><link rel="stylesheet" href="../assets/site.css"></head>
+<body><header><h1>H4 — Euler deconvolution depth-cluster submission</h1><div class="muted small">
+DOE GEMS Prize (DrivenData #306) · repository
+<a href="https://github.com/buffedlizard55-lab/GEMSDOE40">buffedlizard55-lab/GEMSDOE40</a></div>
+<div style="margin-top:10px"><nav class="small">
+<a href="../index.html">Home</a><a href="../executive-summary.html">How to submit</a>
+<a href="../methodology.html">Method</a><a href="../hypotheses.html">Hypotheses</a>
+<a href="../limitations.html">Limitations</a><a href="../leaderboard-analysis.html">Leaderboard analysis</a>
+<a href="../evidence.html">Evidence</a><a href="../sources.html">Sources</a></nav></div></header>
+<main>
+<p class="small muted">Shipped file: <code>gemsdoe40-euler-line-ring-pruned-60000px-20261006T032708Z-8dafb186-zeros.tif</code>
+· receipt <a href="../data/h4_submission_20261006T032708Z.json"><code>h4_submission_20261006T032708Z.json</code></a>
+· byte audit <a href="../data/h4_shipped_audit_zeros.json">zeros</a> /
+<a href="../data/h4_shipped_audit_nan.json">nan</a> · this page does <strong>not</strong> claim an organizer score.</p>
+
+<aside class="panel note" role="note"><strong>Gate result — this candidate is NOT promoted.</strong>
+Scored on the repository's frozen LM instrument (four spatially blocked quadrants, off-catalogue SGMC
+truth, prevalence calibrated; instrument verified at 5/6 published orderings): reference
+<code>h33-2-b2</code> LM-calibrated <b>0.3663</b>, shipped H4 <b>0.2860</b> — it wins <b>1 of 4</b>
+folds. The frozen rule ("beat the incumbent in all four folds") is not met, so the weekly submission
+slot is <em>not</em> spent on this evidence. The file is published because the brief mandates a unique
+Euler depth-clustering artifact and because its byte-level and uniqueness audits are worth having on
+disk. Full evidence: <a href="../data/h4_blocked_validation_shipped.json">h4_blocked_validation_shipped.json</a>,
+<a href="../data/h4_blocked_validation.json">h4_blocked_validation.json</a>.</aside>
+
+<h2>1. What was built</h2>
+<table>
+<tr><th>stage</th><th>setting</th></tr>
+<tr><td>method</td><td>3-D Euler deconvolution, structural index of a fault-like contact (<b>SI = 0</b>) — Reid et al. 1990, <a href="https://doi.org/10.1190/1.1442774">DOI 10.1190/1.1442774</a>. <em>Not</em> a thresholded gradient.</td></tr>
+<tr><td>fields</td><td><code>training_features.tif</code> band <code>rtp</code> (reduced-to-pole magnetics) and band <code>iso_grav_anom</code> (isostatic residual gravity), sha256-pinned</td></tr>
+<tr><td>continuation heights</td><td>0, 500, 1,500 m upward continuation (Blakely 1995, ch. 12)</td></tr>
+<tr><td>windows</td><td>6, 8, 12 px · stride 4 px · analytic-signal percentile 72 · max relative standard error 0.22</td></tr>
+<tr><td>solutions kept</td><td>RTP 388,173 → <b>308,944</b> after cross-height persistence (median depth 437.6 m); gravity 68,102 → <b>36,783</b> (median depth 1,131.3 m)</td></tr>
+<tr><td>per-solution weight</td><td>shallowness × cluster tightness × mutual depth consistency × analytic-signal strength</td></tr>
+<tr><td>density</td><td>Gaussian KDE of solution density, σ = 1.6 px (2,566,449 positive pixels)</td></tr>
+<tr><td>texture</td><td>line response, half-length 3 px — the depth-cluster field is a lineament field, so the matched filter runs <em>along</em> it</td></tr>
+<tr><td>catalogue ring</td><td>every pixel within <b>2 px</b> of a published-catalogue pixel is zeroed before emission</td></tr>
+<tr><td>emission</td><td>greedy minimum-separation lattice, 2√2 px, <strong>60,000 dots</strong>, binary 1.0, zero elsewhere</td></tr>
+</table>
+
+<h2>2. Why this emission</h2>
+<ol>
+<li><b>The method is the brief's method:</b> the ranking surface is a density of depth-labelled Euler
+solutions weighted so tight, shallow, mutually-consistent clusters outrank scattered or deep ones.</li>
+<li><b>The ring-prune is evidence-anchored.</b> In the 19-field prior-geometry study: the
+highest-scoring file on record kept <b>zero</b> mass within 2 px of the catalogue; every prior with
+mass inside 2 px scores below every prior that avoided it at matched mass;
+Spearman(owner score, fraction inside 2 px) = <b>−0.589</b>;
+Spearman(owner score, emitted pixels) = <b>−0.872</b>. Shipped geometry: 0 % inside 2 px, median
+distance 21.2 px, 14.9 % inside 6 px, 85.1 % beyond 6 px.</li>
+<li><b>Most distinct field in the programme:</b> maximum |Pearson| <b>0.0128</b> against all 19 prior
+rasters (<code>h18-3a-x-complexity</code>), maximum Jaccard <b>0.0093</b>, zero near-duplicates.</li>
+<li><b>Best of the seven H4 surfaces on the frozen gate:</b> ring-pruned 0.2860; raw KDE and every
+flank-gated variant ≤ 0.117 at their best budgets.</li>
+</ol>
+
+<h2>3. Budget sensitivity on the frozen gate</h2>
+<table><tr><th>emission (ring-pruned, 2√2 px)</th><th>25,000</th><th>40,000</th><th>60,000 (shipped)</th><th>90,000</th><th>140,000</th><th>200,000</th></tr>
+<tr><td>LM-calibrated</td><td>0.1762</td><td>0.2337</td><td><b>0.2860</b></td><td>0.3323</td><td>0.3692</td><td>0.4013</td></tr></table>
+<p>At 200,000 px the LM <em>mean</em> passes the reference, but the fold-wise rule still fails (2 of 4
+folds) and LM's denominator adds <code>+0.8·tp_g</code> where the real metric subtracts
+<code>0.2·tp_g</code>, so LM systematically under-penalises mass. Its mass preference is therefore
+<em>not</em> used as evidence. The 60,000 px budget comes from the emission law fitted to the
+published score ladder (ρ(score, emitted px) = −0.907, optimum ≈ 60,069 px) — the only mass rule in
+this project derived from real scores rather than a surrogate.</p>
+
+<h2>4. Rejected alternatives — and the instrument disagreement that rejected them</h2>
+<p>The emitter's own surrogate model <em>preferred</em> the flank-band family:
+<code>euler_line_flank_gated</code> (30,000 px, 4 px lattice) modelled 0.3410 and
+<code>euler_line_flank_gated_corrob</code> (25,000 px) 0.3370 — both above the 0.2824 modelled
+incumbent. The frozen gate rejects both (LM-cal 0.1168 / 0.0968; 0 of 4 folds; projected 0.028 /
+0.008). Diagnosis:</p>
+<ol>
+<li><b>No corpus analogue.</b> All 19 calibration priors spread mass across the footprint; the
+flank-band fields put 93–96 % of their dots inside 2–6 px of the catalogue. The two-parameter model
+is extrapolating; the gate computes a metric-shaped ratio per field and is not.</li>
+<li><b>The SGMC surrogate rewards catalogue-hugging; the real ladder punishes it.</b> 12.8 % of the
+off-catalogue SGMC truth lies in the 2–6 px band, which is 3.9 % of the footprint — 3.3× enrichment
+from two agencies digitising the same structures. Across the corpus the direct SGMC metric is
+<b>anti-correlated</b> with published scores (Spearman <b>−0.921</b>).</li>
+<li><b>Guard added.</b> <code>run_h4.py</code> now refuses to auto-select a surface with &gt; 50 % of
+its mass within 6 px of the catalogue unless a human forces it with <code>--surface</code>, and every
+receipt records the distance-band fractions, the shipped geometry and the gate reference.</li>
+</ol>
+<p>The reserve files were deleted after measurement; their receipts
+(<a href="../data/h4_submission_20261006T032134Z.json">032134Z</a>,
+<a href="../data/h4_submission_20261006T032157Z.json">032157Z</a>) and the gate results are retained
+as the audit trail.</p>
+
+<h2>5. Independent byte audit</h2>
+<p><code>scripts/audit_submission.py</code> re-reads the shipped bytes and re-checks: identical shape,
+transform, CRS and footprint to <code>sample_submission.tif</code>; single-band float32; every finite
+value in [0, 1]; <b>no <code>nodata</code> sentinel</b> (the cause of the portal error
+"Predicted values must be in range [0, 1]"); no positive value on a published-catalogue pixel; SHA-256
+agreement with the receipt; uniqueness against all 19 priors. Both twins PASS; the script exits
+non-zero on any failure. The <code>-zeros</code> twin is the portal file (finite everywhere, values
+0/1 only); the <code>-nan</code> twin follows the sample's NaN-outside convention with identical
+positive support.</p>
+
+<h2 id="4-what-is-not-claimed">6. What is <em>not</em> claimed</h2>
+<ul>
+<li><b>No organizer score.</b> The leaderboard exposes no filenames or hashes; every (file, score)
+pairing here — including the 0.2778 reference — is an <b>assumption</b>. The projected leaderboard DTI
+(0.197 ± 0.021) is an affine projection of a proxy fitted to nine such assumptions (R² 0.913, RMSE
+0.0107).</li>
+<li><b>The modelled 0.1579 is not a score</b> — it is a two-parameter regression output (RMSE 0.031,
+R² 0.807, LOO RMSE 0.0381) and, for this geometry, an extrapolation.</li>
+<li><b>The SGMC mirror is a proxy</b> (sha256 <code>d569d553…700f</code>). An earlier repository record
+used <code>26d142c4…b5c</code> for the same filename; the conflict is unresolved because no USGS-side
+original is reachable from the build sandbox.</li>
+<li><b>The pixel-exact mask convention</b> is read from a DrivenData staff clarification, not the rules
+PDF. The shipped file does not depend on it, but the scoring model discussed above does.</li>
+</ul>
+
+<h2>7. Reproduce</h2>
+<pre><code>PYTHONPATH=src python3 scripts/build_h4_clouds.py
+PYTHONPATH=src python3 scripts/run_h4.py --stage field
+PYTHONPATH=src python3 scripts/run_h4.py --stage emit \
+    --surface euler_line_ring_pruned --spacing 2.8284 --budget 60000
+PYTHONPATH=src python3 scripts/validate_h4_blocked.py --candidates &lt;shipped-zeros.tif&gt; \
+    --out docs/data/h4_blocked_validation_shipped.json
+PYTHONPATH=src python3 scripts/audit_submission.py &lt;shipped-zeros.tif&gt; \
+    --receipt docs/data/h4_submission_&lt;stamp&gt;.json --out docs/data/h4_shipped_audit_zeros.json</code></pre>
+<p>The emission is deterministic: the same command reproduces the <code>8dafb186…</code> digest.</p>
+
+<h2>8. Limitations and remaining work</h2>
+<p>See <a href="../limitations.html">limitations and remaining work</a>. The ones that bind this file:
+no network path to a fresh USGS 3DEP DEM from the build sandbox; no independent non-mirrored truth
+layer; the unresolved SGMC hash conflict; and the fact that no candidate in this programme has yet
+passed the four-fold promotion rule.</p>
+</main>
+<footer class="small muted" style="padding:20px">
+<a href="../index.html">Home</a> · <a href="../limitations.html">Limitations</a> ·
+<a href="https://github.com/buffedlizard55-lab/GEMSDOE40/blob/main/docs/research/h4-euler-depthcluster.md">markdown record</a>
+</footer></body></html>

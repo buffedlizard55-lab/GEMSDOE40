@@ -90,3 +90,37 @@ The official ComCat count endpoint returned 34,716 event records with a `focal-m
 ## Status changes
 
 This register is append-only. After a result is available, append the result and any deviation in `docs/research/validation.md`; do not silently edit the registered thresholds or call proxy performance an official score.
+
+### Append-only H4 outcome — Euler depth-cluster (2026-10-06)
+
+H4 (Rank 1, reframed as an emission over the joint magnetic/gravity Euler depth-consensus field) was
+implemented and measured. Seven ranking surfaces were emitted at two lattice spacings and eight
+budgets each (`docs/data/h4_submission_20261006T032708Z.json`).
+
+**Result: not promoted.** On the frozen four-fold blocked LM instrument — which reproduces 5 of 6
+published owner-reported orderings and was therefore verified before use — the shipped ring-pruned
+field scores 0.2860 LM-calibrated against the reference `h33-2-b2` at 0.3663, winning **1 of 4**
+folds. The flank-band variants that the surrogate model preferred (modelled 0.3410 / 0.3370) scored
+0.1168 / 0.0968 LM-calibrated and won 0 of 4 folds, so they were withdrawn and deleted.
+
+The registered "beat the incumbent in all four spatial blocks" rule was **not** relaxed after seeing
+the result, and no weekly submission slot was spent on H4. The deviations recorded here, in the order
+they were made, are: (a) the emitted budget was raised from 40,000 to 60,000 px after the gate showed
+the 40,000 px field winning 0 of 4 folds — the 60,000 px figure comes from the emission law fitted to
+the published ladder (optimum ≈ 60,069 px), which was fixed before any H4 emission existed;
+(b) `run_h4.py` gained a guard that refuses to auto-select any surface with more than 50 % of its mass
+within 6 px of the catalogue, because the corpus study shows the SGMC surrogate rewards that geometry
+while the published ladder punishes it; (c) the 40,000 px receipt and files remain in the record as
+the superseded emission.
+
+**New evidence produced by H4** (`docs/data/prior_geometry.json`, `docs/data/h4_blocked_validation*.json`):
+
+- The SGMC off-catalogue truth populates the 2–6 px band at 3.3× the footprint's base rate, and the
+  direct SGMC metric is anti-correlated with the published ladder (Spearman −0.921). Any surrogate
+  that credits catalogue-hugging geometry is measuring co-digitisation, not discovery.
+- The LM instrument's denominator is not the competition's: it adds `+0.8·tp_g` where the real metric
+  subtracts `0.2·tp_g`, so LM under-penalises mass and its scores rise monotonically with emission
+  budget where the ladder's optimum sits near 60,069 px. LM is used for fold-wise ranking and for the
+  affine projection only, never for choosing a budget.
+- Conclusion recorded for the register: the highest-value unresolved problem is an **independent**
+  off-catalogue truth layer, not a new transform on the same potential-field bands.

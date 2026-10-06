@@ -86,6 +86,27 @@ evidence, because the instrument's density calibration is only verified below ~1
 <tr><td>verdict</td><td>Cheap, physically motivated, and directly testable on the existing cloud arrays</td></tr>
 </table>
 
+<h2>Append-only H4 outcome (2026-10-06)</h2>
+<p>H4 — Euler SI=0 depth-cluster emission on the joint magnetic/gravity field — was implemented and
+measured. <strong>Result: not promoted.</strong> On the frozen four-fold blocked LM instrument
+(verified against 5 of 6 published owner-reported orderings) the shipped ring-pruned field scores
+0.2860 LM-calibrated against the reference <code>h33-2-b2</code> at 0.3663, winning
+<strong>1 of 4</strong> folds. The flank-band variants the surrogate model preferred (modelled 0.3410 /
+0.3370) scored 0.1168 / 0.0968 and won 0 of 4 folds; those files were withdrawn and deleted after
+measurement.</p>
+<p>The registered "beat the incumbent in all four spatial blocks" rule was <strong>not</strong>
+relaxed after seeing the result, and no weekly submission slot was spent. Recorded deviations:
+(a) the emitted budget rose from 40,000 to 60,000 px after the 40,000 px field won 0 of 4 folds — the
+60,000 px figure comes from the emission law fitted to the published ladder (optimum ≈ 60,069 px),
+which was fixed before any H4 emission existed; (b) <code>run_h4.py</code> now refuses to auto-select
+a surface with more than 50 % of its mass within 6 px of the catalogue, because the SGMC surrogate
+rewards that geometry while the published ladder punishes it; (c) the superseded 40,000 px receipt
+stays in the record.</p>
+<p>New evidence: the SGMC off-catalogue truth is 3.3× enriched in the 2–6 px catalogue band and the
+direct SGMC metric is anti-correlated with the published ladder (Spearman −0.921) — so surrogate
+credit for catalogue-hugging geometry measures co-digitisation, not discovery. See
+<a href="research/h4-euler-depthcluster.html">the H4 record</a> and
+<a href="limitations.html">limitations</a>.</p>
 <h2>Ideas that need new external data (named source, obtainability checked)</h2>
 <table>
 <tr><th>idea</th><th>layer needed</th><th>official free source</th><th>obtainable from this sandbox?</th></tr>

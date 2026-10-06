@@ -1,0 +1,821 @@
+{
+ "generated_utc": "20261006T032656Z",
+ "budgets": [
+  10000,
+  15000,
+  20000,
+  25000,
+  30000,
+  40000,
+  50000,
+  60000
+ ],
+ "spacings": [
+  2.8284,
+  4.0
+ ],
+ "calibration": {
+  "gamma": 0.28161595246211274,
+  "g_hidden": 4095.1054789822488,
+  "rmse": 0.03102924195289713,
+  "r2": 0.8074473045015146,
+  "loo_rmse": 0.03805202816831997,
+  "loo_spearman": 0.6265560165975105,
+  "n": 18,
+  "residuals": [
+   {
+    "id": "h33-2-b2",
+    "official": 0.2778,
+    "modelled": 0.22230402675880379,
+    "n_px": 37654.0,
+    "h_sur": 0.23340108443564772,
+    "kappa_sur": 0.0794890700425015
+   },
+   {
+    "id": "h27-4-r1-solo-d2-8",
+    "official": 0.2708,
+    "modelled": 0.2496648201268366,
+    "n_px": 40199.0,
+    "h_sur": 0.2579922203858478,
+    "kappa_sur": 0.08910268755359016
+   },
+   {
+    "id": "h27-4-solo-d28-mirror",
+    "official": 0.2708,
+    "modelled": 0.2496648201268366,
+    "n_px": 40199.0,
+    "h_sur": 0.2579922203858478,
+    "kappa_sur": 0.08910268755359016
+   },
+   {
+    "id": "h32-1-prethin-tip-euler-d2-8",
+    "official": 0.2649,
+    "modelled": 0.2680845311129032,
+    "n_px": 42294.0,
+    "h_sur": 0.2735937626164556,
+    "kappa_sur": 0.09705069461277134
+   },
+   {
+    "id": "h33d-analog-tip-stepover-r30",
+    "official": 0.2632,
+    "modelled": 0.26058881940572126,
+    "n_px": 41865.0,
+    "h_sur": 0.26649605737504506,
+    "kappa_sur": 0.09345344315455716
+   },
+   {
+    "id": "dotted-h19-5-d1-5",
+    "official": 0.2477,
+    "modelled": 0.25200777651988554,
+    "n_px": 60069.0,
+    "h_sur": 0.23427925891542586,
+    "kappa_sur": 0.10527662819150925
+   },
+   {
+    "id": "topo-gap-closure-v2-d1-5",
+    "official": 0.2449,
+    "modelled": 0.25160833536771277,
+    "n_px": 61328.0,
+    "h_sur": 0.23288264955552856,
+    "kappa_sur": 0.10437578039420417
+   },
+   {
+    "id": "dotted-h19-5-d2-8",
+    "official": 0.26,
+    "modelled": 0.282425827585902,
+    "n_px": 44090.0,
+    "h_sur": 0.28530269046344137,
+    "kappa_sur": 0.10455850981935988
+   },
+   {
+    "id": "historical-d28-mirror",
+    "official": 0.26,
+    "modelled": 0.282425827585902,
+    "n_px": 44090.0,
+    "h_sur": 0.28530269046344137,
+    "kappa_sur": 0.10455850981935988
+   },
+   {
+    "id": "d28-poisson300m-44090",
+    "official": 0.26,
+    "modelled": 0.282425827585902,
+    "n_px": 44090.0,
+    "h_sur": 0.28530269046344137,
+    "kappa_sur": 0.10455850981935988
+   },
+   {
+    "id": "h19-4",
+    "official": 0.1894,
+    "modelled": 0.14582002761534105,
+    "n_px": 123779.0,
+    "h_sur": 0.1407872555054934,
+    "kappa_sur": 0.11010625870899508
+   },
+   {
+    "id": "h19-5",
+    "official": 0.1922,
+    "modelled": 0.148496689132989,
+    "n_px": 121131.0,
+    "h_sur": 0.13712497421673497,
+    "kappa_sur": 0.10908383554483461
+   },
+   {
+    "id": "h16-1-topo-geophys-ridges",
+    "official": 0.1855,
+    "modelled": 0.14569614701561423,
+    "n_px": 123939.0,
+    "h_sur": 0.1454099382190716,
+    "kappa_sur": 0.11112757887751865
+   },
+   {
+    "id": "h18-3a-x-complexity",
+    "official": 0.0976,
+    "modelled": 0.14771679015017605,
+    "n_px": 122120.0,
+    "h_sur": 0.14020772003980725,
+    "kappa_sur": 0.11578984050448353
+   },
+   {
+    "id": "h28-dotted-ridge",
+    "official": 0.1839,
+    "modelled": 0.23192285798063125,
+    "n_px": 69281.0,
+    "h_sur": 0.21677647145048823,
+    "kappa_sur": 0.07537365994081145
+   },
+   {
+    "id": "h25-ctx-ridge",
+    "official": 0.128,
+    "modelled": 0.10757744214208044,
+    "n_px": 174232.0,
+    "h_sur": 0.12298692222702845,
+    "kappa_sur": 0.08915692941021679
+   },
+   {
+    "id": "h20-dem10-scarp-thin",
+    "official": 0.0921,
+    "modelled": 0.12057686431165604,
+    "n_px": 153957.0,
+    "h_sur": 0.11760956112027697,
+    "kappa_sur": 0.10654531447398626
+   },
+   {
+    "id": "h16-continuation",
+    "official": 0.0461,
+    "modelled": 0.06423127064230301,
+    "n_px": 310042.0,
+    "h_sur": 0.08033348073215782,
+    "kappa_sur": 0.1344516896819727
+   }
+  ]
+ },
+ "instruments": {
+  "sgmc_off_catalogue": {
+   "truth_px": 105589
+  },
+  "isolated_components": {
+   "truth_px": 9747
+  }
+ },
+ "candidates": {
+  "euler_line_ring_pruned": {
+   "2.8284": {
+    "capacity": 180000,
+    "geometry": {
+     "n_dots": 180000,
+     "mean_neighbours_within_radius": 1.78,
+     "frac_with_neighbour": 0.92725,
+     "median_nearest_spacing_px": 2.8284271247461903,
+     "min_nearest_spacing_px": 2.8284271247461903,
+     "frac_within_2px_of_catalogue": 0.0,
+     "frac_within_6px_of_catalogue": 0.12817222222222222,
+     "median_distance_to_catalogue_px": 24.0
+    },
+    "curve": [
+     {
+      "n_px": 10000,
+      "sgmc_off_catalogue": {
+       "dti": 0.02139,
+       "h_sur": 0.18548,
+       "kappa_sur": 0.064807,
+       "tp": 1854.8
+      },
+      "isolated_components": {
+       "dti": 0.002047,
+       "h_sur": 0.002006,
+       "kappa_sur": 0.001586,
+       "tp": 20.06
+      },
+      "modelled_dti": 0.097743
+     },
+     {
+      "n_px": 15000,
+      "sgmc_off_catalogue": {
+       "dti": 0.027782,
+       "h_sur": 0.162595,
+       "kappa_sur": 0.056938,
+       "tp": 2438.92
+      },
+      "isolated_components": {
+       "dti": 0.003028,
+       "h_sur": 0.00218,
+       "kappa_sur": 0.001716,
+       "tp": 32.7
+      },
+      "modelled_dti": 0.107903
+     },
+     {
+      "n_px": 20000,
+      "sgmc_off_catalogue": {
+       "dti": 0.037449,
+       "h_sur": 0.166462,
+       "kappa_sur": 0.058934,
+       "tp": 3329.23
+      },
+      "isolated_components": {
+       "dti": 0.004224,
+       "h_sur": 0.002492,
+       "kappa_sur": 0.001944,
+       "tp": 49.84
+      },
+      "modelled_dti": 0.126746
+     },
+     {
+      "n_px": 25000,
+      "sgmc_off_catalogue": {
+       "dti": 0.045225,
+       "h_sur": 0.162794,
+       "kappa_sur": 0.05877,
+       "tp": 4069.84
+      },
+      "isolated_components": {
+       "dti": 0.005113,
+       "h_sur": 0.002618,
+       "kappa_sur": 0.00205,
+       "tp": 65.45
+      },
+      "modelled_dti": 0.136079
+     },
+     {
+      "n_px": 30000,
+      "sgmc_off_catalogue": {
+       "dti": 0.052202,
+       "h_sur": 0.158477,
+       "kappa_sur": 0.057977,
+       "tp": 4754.3
+      },
+      "isolated_components": {
+       "dti": 0.005403,
+       "h_sur": 0.002486,
+       "kappa_sur": 0.001977,
+       "tp": 74.57
+      },
+      "modelled_dti": 0.141743
+     },
+     {
+      "n_px": 40000,
+      "sgmc_off_catalogue": {
+       "dti": 0.066131,
+       "h_sur": 0.154155,
+       "kappa_sur": 0.057777,
+       "tp": 6166.2
+      },
+      "isolated_components": {
+       "dti": 0.006097,
+       "h_sur": 0.002408,
+       "kappa_sur": 0.001919,
+       "tp": 96.33
+      },
+      "modelled_dti": 0.151089
+     },
+     {
+      "n_px": 50000,
+      "sgmc_off_catalogue": {
+       "dti": 0.078865,
+       "h_sur": 0.150481,
+       "kappa_sur": 0.057198,
+       "tp": 7524.03
+      },
+      "isolated_components": {
+       "dti": 0.006745,
+       "h_sur": 0.002401,
+       "kappa_sur": 0.001922,
+       "tp": 120.07
+      },
+      "modelled_dti": 0.156505
+     },
+     {
+      "n_px": 60000,
+      "sgmc_off_catalogue": {
+       "dti": 0.089524,
+       "h_sur": 0.145537,
+       "kappa_sur": 0.056421,
+       "tp": 8732.23
+      },
+      "isolated_components": {
+       "dti": 0.007062,
+       "h_sur": 0.002331,
+       "kappa_sur": 0.001879,
+       "tp": 139.84
+      },
+      "modelled_dti": 0.157867
+     }
+    ],
+    "best": {
+     "n_px": 60000,
+     "sgmc_off_catalogue": {
+      "dti": 0.089524,
+      "h_sur": 0.145537,
+      "kappa_sur": 0.056421,
+      "tp": 8732.23
+     },
+     "isolated_components": {
+      "dti": 0.007062,
+      "h_sur": 0.002331,
+      "kappa_sur": 0.001879,
+      "tp": 139.84
+     },
+     "modelled_dti": 0.157867
+    }
+   },
+   "4.0000": {
+    "capacity": 180000,
+    "geometry": {
+     "n_dots": 180000,
+     "mean_neighbours_within_radius": 0.0,
+     "frac_with_neighbour": 0.0,
+     "median_nearest_spacing_px": 4.123105625617661,
+     "min_nearest_spacing_px": 4.0,
+     "frac_within_2px_of_catalogue": 0.0,
+     "frac_within_6px_of_catalogue": 0.12448888888888889,
+     "median_distance_to_catalogue_px": 25.45584412271571
+    },
+    "curve": [
+     {
+      "n_px": 10000,
+      "sgmc_off_catalogue": {
+       "dti": 0.021444,
+       "h_sur": 0.185991,
+       "kappa_sur": 0.055334,
+       "tp": 1859.91
+      },
+      "isolated_components": {
+       "dti": 0.002823,
+       "h_sur": 0.002766,
+       "kappa_sur": 0.002071,
+       "tp": 27.66
+      },
+      "modelled_dti": 0.097909
+     },
+     {
+      "n_px": 15000,
+      "sgmc_off_catalogue": {
+       "dti": 0.033428,
+       "h_sur": 0.195846,
+       "kappa_sur": 0.059119,
+       "tp": 2937.68
+      },
+      "isolated_components": {
+       "dti": 0.004311,
+       "h_sur": 0.003104,
+       "kappa_sur": 0.002322,
+       "tp": 46.56
+      },
+      "modelled_dti": 0.129436
+     },
+     {
+      "n_px": 20000,
+      "sgmc_off_catalogue": {
+       "dti": 0.043651,
+       "h_sur": 0.194274,
+       "kappa_sur": 0.058866,
+       "tp": 3885.48
+      },
+      "isolated_components": {
+       "dti": 0.005122,
+       "h_sur": 0.003022,
+       "kappa_sur": 0.002288,
+       "tp": 60.44
+      },
+      "modelled_dti": 0.147297
+     },
+     {
+      "n_px": 25000,
+      "sgmc_off_catalogue": {
+       "dti": 0.053615,
+       "h_sur": 0.193323,
+       "kappa_sur": 0.058695,
+       "tp": 4833.08
+      },
+      "isolated_components": {
+       "dti": 0.006342,
+       "h_sur": 0.003248,
+       "kappa_sur": 0.002404,
+       "tp": 81.19
+      },
+      "modelled_dti": 0.160776
+     },
+     {
+      "n_px": 30000,
+      "sgmc_off_catalogue": {
+       "dti": 0.062126,
+       "h_sur": 0.188984,
+       "kappa_sur": 0.057742,
+       "tp": 5669.52
+      },
+      "isolated_components": {
+       "dti": 0.006934,
+       "h_sur": 0.00319,
+       "kappa_sur": 0.002408,
+       "tp": 95.7
+      },
+      "modelled_dti": 0.168104
+     },
+     {
+      "n_px": 40000,
+      "sgmc_off_catalogue": {
+       "dti": 0.07831,
+       "h_sur": 0.183019,
+       "kappa_sur": 0.056386,
+       "tp": 7320.78
+      },
+      "isolated_components": {
+       "dti": 0.007908,
+       "h_sur": 0.003124,
+       "kappa_sur": 0.002424,
+       "tp": 124.96
+      },
+      "modelled_dti": 0.178322
+     },
+     {
+      "n_px": 50000,
+      "sgmc_off_catalogue": {
+       "dti": 0.093796,
+       "h_sur": 0.179541,
+       "kappa_sur": 0.055825,
+       "tp": 8977.04
+      },
+      "isolated_components": {
+       "dti": 0.008336,
+       "h_sur": 0.002968,
+       "kappa_sur": 0.002319,
+       "tp": 148.42
+      },
+      "modelled_dti": 0.185554
+     },
+     {
+      "n_px": 60000,
+      "sgmc_off_catalogue": {
+       "dti": 0.10796,
+       "h_sur": 0.176197,
+       "kappa_sur": 0.055173,
+       "tp": 10571.81
+      },
+      "isolated_components": {
+       "dti": 0.008493,
+       "h_sur": 0.002803,
+       "kappa_sur": 0.002194,
+       "tp": 168.19
+      },
+      "modelled_dti": 0.189811
+     }
+    ],
+    "best": {
+     "n_px": 60000,
+     "sgmc_off_catalogue": {
+      "dti": 0.10796,
+      "h_sur": 0.176197,
+      "kappa_sur": 0.055173,
+      "tp": 10571.81
+     },
+     "isolated_components": {
+      "dti": 0.008493,
+      "h_sur": 0.002803,
+      "kappa_sur": 0.002194,
+      "tp": 168.19
+     },
+     "modelled_dti": 0.189811
+    }
+   }
+  }
+ },
+ "chosen": {
+  "surface": "euler_line_ring_pruned",
+  "spacing_px": 2.8284,
+  "n_px": 60000,
+  "modelled_dti": 0.157867,
+  "surrogate_row": {
+   "n_px": 60000,
+   "sgmc_off_catalogue": {
+    "dti": 0.089524,
+    "h_sur": 0.145537,
+    "kappa_sur": 0.056421,
+    "tp": 8732.23
+   },
+   "isolated_components": {
+    "dti": 0.007062,
+    "h_sur": 0.002331,
+    "kappa_sur": 0.001879,
+    "tp": 139.84
+   },
+   "modelled_dti": 0.157867
+  },
+  "geometry": {
+   "n_dots": 60000,
+   "mean_neighbours_within_radius": 1.4445,
+   "frac_with_neighbour": 0.87875,
+   "median_nearest_spacing_px": 2.8284271247461903,
+   "min_nearest_spacing_px": 2.8284271247461903,
+   "frac_within_2px_of_catalogue": 0.0,
+   "frac_within_6px_of_catalogue": 0.14921666666666666,
+   "median_distance_to_catalogue_px": 21.213203435596427
+  },
+  "forced_by_cli": true,
+  "global_optimum": {
+   "surface": "euler_line_ring_pruned",
+   "spacing_px": 4.0,
+   "n_px": 60000,
+   "modelled_dti": 0.189811
+  },
+  "margin_over_next": 0.031944,
+  "incumbent": {
+   "key": "dotted-h19-5-d2-8",
+   "n_px": 44090,
+   "official": 0.26,
+   "modelled_dti": 0.282425827585902
+  },
+  "geometry_full_lattice": false
+ },
+ "alternatives": [
+  {
+   "surface": "euler_line_ring_pruned",
+   "spacing_px": 4.0,
+   "n_px": 60000,
+   "modelled_dti": 0.189811
+  },
+  {
+   "surface": "euler_line_ring_pruned",
+   "spacing_px": 2.8284,
+   "n_px": 60000,
+   "modelled_dti": 0.157867
+  }
+ ],
+ "slug": "gemsdoe40-euler-line-ring-pruned-60000px-20261006T032708Z-8dafb186",
+ "content_digest8": "8dafb186",
+ "blocked_gate_shipped": {
+  "lm_mean": 0.079021,
+  "lm_calibrated_mean": 0.285992,
+  "lm_calibrated_per_fold": {
+   "foldNW": 0.282415,
+   "foldNE": 0.295591,
+   "foldSW": 0.297471,
+   "foldSE": 0.26849
+  },
+  "emitted_pixels": 60000,
+  "on_catalogue_pixels": 0,
+  "reference": "h33-2-b2",
+  "reference_lm_calibrated": 0.36634174122594154,
+  "promotion_rule": "beat the reference in all four blocked folds",
+  "promoted": false,
+  "folds_better_than_reference_mean": 0
+ },
+ "emitted_distance_band_fractions": {
+  "within_2px": 0.0,
+  "within_6px": 0.14921666666666666,
+  "beyond_6px": 0.8507833333333333
+ },
+ "blocked_gate_reference": {
+  "instrument": "docs/data/h4_blocked_validation.json (frozen blocked LM instrument)",
+  "reference_key": "h33-2-b2",
+  "reference_lm_calibrated": 0.36634174122594154,
+  "orderings_reproduced": "5/6",
+  "projected_leaderboard_dti": 1.0013746570978839,
+  "note": "Promotion rule: beat the reference in all four blocked folds. Recorded post-hoc; no candidate is promoted without it."
+ },
+ "submission_name": "GEMSDOE40-h4-euler-depthcluster",
+ "submission_note": "Euler SI=0 depth-cluster lineaments, 60,000 dots, 2.8284px min separation, no dot within 2px of the mapped catalogue (median 21px) | id 8dafb186",
+ "method": "3-D Euler deconvolution (Reid et al. 1990, DOI 10.1190/1.1442774) with the structural index of a fault-like contact (SI=0) on reduced-to-pole magnetic and isostatic-residual gravity grids, deconvolved at three upward-continuation heights and three window sizes; solutions kept only where they persist across heights; weighted per solution by shallowness, cluster tightness, mutual depth consistency and analytic-signal strength, splatted into a kernel-density field; the field is converted to a lineament texture by an 8-orientation matched filter and gated to the 2-6 px flank of the published catalogue, where the metric's masked-pixel rule leaves credit available; emitted as a minimum-separation dot lattice at the budget that maximises the calibrated distance-weighted Tversky model. Values are 1.0 on the dots and 0.0 elsewhere (NaN outside the footprint in the -nan twin) so the portal range check passes.",
+ "receipt": {
+  "zeros": {
+   "file": "docs/downloads/gemsdoe40-euler-line-ring-pruned-60000px-20261006T032708Z-8dafb186-zeros.tif",
+   "bytes": 274414,
+   "sha256": "8dafb1860367e7d5b8530f924b2ff20efbdff32cfffda82647711f0dbb2e646d",
+   "outside": "zero",
+   "dtype": "float32",
+   "nodata": null,
+   "crs": "EPSG:32611",
+   "shape": [
+    3730,
+    3292
+   ],
+   "transform": [
+    100.0,
+    0.0,
+    243350.0,
+    0.0,
+    -100.0,
+    4508550.0
+   ],
+   "finite_px": 12279160,
+   "min": 0.0,
+   "max": 1.0,
+   "positive_px": 60000
+  },
+  "nan": {
+   "file": "docs/downloads/gemsdoe40-euler-line-ring-pruned-60000px-20261006T032708Z-8dafb186-nan.tif",
+   "bytes": 408090,
+   "sha256": "5fa9890f57d374e54c08142c0d7c905bf252d0303c57e9e92f69b9180ca65dbc",
+   "outside": "nan",
+   "dtype": "float32",
+   "nodata": NaN,
+   "crs": "EPSG:32611",
+   "shape": [
+    3730,
+    3292
+   ],
+   "transform": [
+    100.0,
+    0.0,
+    243350.0,
+    0.0,
+    -100.0,
+    4508550.0
+   ],
+   "finite_px": 5167373,
+   "min": 0.0,
+   "max": 1.0,
+   "positive_px": 60000
+  },
+  "zip": {
+   "file": "docs/downloads/gemsdoe40-euler-line-ring-pruned-60000px-20261006T032708Z-8dafb186-zeros.zip",
+   "bytes": 238048,
+   "sha256": "3e29105905c40c463ff0061ecc90dc768107ec17d2c68c0a824f67790e511385"
+  }
+ },
+ "portal_range_guarantee": true,
+ "emitted_px": 60000,
+ "min_separation_px": 2.8284,
+ "on_catalogue_positive_px": 0,
+ "emitted_distance_to_catalogue_px": {
+  "min": 2.23606797749979,
+  "median": 21.213203435596427,
+  "p90": 64.62197768561404,
+  "frac_in_flank_band": 0.14921666666666666
+ },
+ "grid_conformance": {
+  "dtype": "float32",
+  "nodata": null,
+  "crs": "EPSG:32611",
+  "shape": [
+   3730,
+   3292
+  ],
+  "transform": [
+   100.0,
+   0.0,
+   243350.0,
+   0.0,
+   -100.0,
+   4508550.0
+  ],
+  "count": 1
+ },
+ "geometry": {
+  "n_dots": 60000,
+  "mean_neighbours_within_radius": 1.4445,
+  "frac_with_neighbour": 0.87875,
+  "median_nearest_spacing_px": 2.8284271247461903,
+  "min_nearest_spacing_px": 2.8284271247461903
+ },
+ "surrogate_metrics": {
+  "sgmc_off_catalogue": {
+   "dti": 0.089524,
+   "h_sur": 0.145537,
+   "kappa_sur": 0.056421,
+   "tp": 8732.23,
+   "fp": 56614.76,
+   "fn": 96856.77,
+   "truth_px": 105589
+  },
+  "isolated_components": {
+   "dti": 0.007062,
+   "h_sur": 0.002331,
+   "kappa_sur": 0.001879,
+   "tp": 139.84,
+   "fp": 59887.24,
+   "fn": 9607.16,
+   "truth_px": 9747
+  }
+ },
+ "uniqueness": {
+  "is_new": true,
+  "n_compared": 19,
+  "worst": {
+   "pearson": 0.013055486089252463,
+   "jaccard": 0.009455810686218554,
+   "key": "h16-1-topo-geophys-ridges"
+  },
+  "rows": [
+   {
+    "key": "h33-2-b2",
+    "pearson": 0.008597,
+    "jaccard_positive": 0.006089
+   },
+   {
+    "key": "h27-4-r1-solo-d2-8",
+    "pearson": 0.008067,
+    "jaccard_positive": 0.005933
+   },
+   {
+    "key": "h27-4-solo-d28-mirror",
+    "pearson": 0.008067,
+    "jaccard_positive": 0.005933
+   },
+   {
+    "key": "h32-1-prethin-tip-euler-d2-8",
+    "pearson": 0.007821,
+    "jaccard_positive": 0.00589
+   },
+   {
+    "key": "h33d-analog-tip-stepover-r30",
+    "pearson": 0.007963,
+    "jaccard_positive": 0.005945
+   },
+   {
+    "key": "dotted-h19-5-d1-5",
+    "pearson": 0.008863,
+    "jaccard_positive": 0.006902
+   },
+   {
+    "key": "topo-gap-closure-v2-d1-5",
+    "pearson": 0.008935,
+    "jaccard_positive": 0.006963
+   },
+   {
+    "key": "dotted-h19-5-d2-8",
+    "pearson": 0.007333,
+    "jaccard_positive": 0.00571
+   },
+   {
+    "key": "historical-d28-mirror",
+    "pearson": 0.007333,
+    "jaccard_positive": 0.00571
+   },
+   {
+    "key": "d28-poisson300m-44090",
+    "pearson": 0.007333,
+    "jaccard_positive": 0.00571
+   },
+   {
+    "key": "h19-4",
+    "pearson": 0.012874,
+    "jaccard_positive": 0.00937
+   },
+   {
+    "key": "h19-5",
+    "pearson": 0.012693,
+    "jaccard_positive": 0.009283
+   },
+   {
+    "key": "h16-1-topo-geophys-ridges",
+    "pearson": 0.013055,
+    "jaccard_positive": 0.009456
+   },
+   {
+    "key": "h18-3a-x-complexity",
+    "pearson": 0.012797,
+    "jaccard_positive": 0.009333
+   },
+   {
+    "key": "h18-4-usgs-geologic-map-gap",
+    "pearson": 0.008015,
+    "jaccard_positive": 0.006426
+   },
+   {
+    "key": "h28-dotted-ridge",
+    "pearson": 0.008614,
+    "jaccard_positive": 0.00694
+   },
+   {
+    "key": "h25-ctx-ridge",
+    "pearson": 0.012942,
+    "jaccard_positive": 0.009316
+   },
+   {
+    "key": "h20-dem10-scarp-thin",
+    "pearson": 0.010913,
+    "jaccard_positive": 0.008446
+   },
+   {
+    "key": "h16-continuation",
+    "pearson": 0.011941,
+    "jaccard_positive": 0.0085
+   }
+  ]
+ },
+ "caveats": [
+  "Prior-submission scores are owner-reported and pairings are disclosed as assumptions; no organiser receipt exists for any file in this repository.",
+  "The hidden evaluation set is not observable. Every number here is a surrogate measurement; none of them is an organiser score.",
+  "The 2 px inner edge of the flank band is a hedge: the organiser masks the published catalogue pixel-exactly, and the best prior report on record (h33-2-b2, 2 px prune) indicates the immediate 0-2 px ring is unproductive."
+ ]
+}
