@@ -9,19 +9,30 @@ import numpy as np
 import rasterio
 
 from .research_metric import spatial_block_components
+from gems40.pins import PINNED_FILES
 
+# Historical H2-B evidence and the current proxy are distinct file versions. Keep the default
+# historical pin for old runner compatibility; current experiments must pass the current pin
+# explicitly so the two instruments can never be silently conflated.
 EXPECTED_PROXY_SHA256 = "26d142c4c93282cd94f6950ab96f22aeff59fbbea523d43d662e76fa1b161b5c"
+CURRENT_PROXY_SHA256 = PINNED_FILES["derived_sgmc_faults_100m_u8.tif"]["sha256"]
 
 
 def read_proxy_truth(
     proxy_path: str | Path,
     template_path: str | Path,
     labels_path: str | Path,
+    *,
+    expected_proxy_sha256: str = EXPECTED_PROXY_SHA256,
 ) -> tuple[np.ndarray, np.ndarray, np.ndarray, dict[str, Any]]:
-    """Build an exact-pixel off-catalogue mask; do not buffer known faults."""
+    """Build an exact-pixel off-catalogue mask; do not buffer known faults.
+
+    The default preserves the historical H2-B pin. Current experiments must explicitly pass
+    ``CURRENT_PROXY_SHA256`` rather than inheriting the historical instrument by accident.
+    """
     proxy_sha256 = hashlib.sha256(Path(proxy_path).read_bytes()).hexdigest()
-    if proxy_sha256 != EXPECTED_PROXY_SHA256:
-        raise ValueError(f"SGMC proxy hash mismatch: {proxy_sha256} != pinned {EXPECTED_PROXY_SHA256}")
+    if proxy_sha256 != expected_proxy_sha256:
+        raise ValueError(f"SGMC proxy hash mismatch: {proxy_sha256} != pinned {expected_proxy_sha256}")
     with rasterio.open(template_path) as template, rasterio.open(labels_path) as labels_ds, rasterio.open(proxy_path) as proxy_ds:
         sample = template.read(1)
         valid = np.isfinite(sample)
@@ -39,6 +50,7 @@ def read_proxy_truth(
         info = {
             "proxy_status": "owner-derived SGMC mirror; proxy instrument only, not organizer truth",
             "proxy_sha256": proxy_sha256,
+            "proxy_generation": "historical_h2b_26d142" if proxy_sha256 == EXPECTED_PROXY_SHA256 else ("current_643cbe" if proxy_sha256 == CURRENT_PROXY_SHA256 else "explicitly_pinned_other"),
             "proxy_dtype": proxy_ds.dtypes[0],
             "proxy_nodata": proxy_ds.nodata,
             "template_valid_pixels": int(valid.sum()),
@@ -85,9 +97,16 @@ def score_candidate_on_proxy(
     proxy_path: str | Path,
     template_path: str | Path,
     labels_path: str | Path,
+    *,
+    expected_proxy_sha256: str = EXPECTED_PROXY_SHA256,
 ) -> tuple[dict[str, Any], np.ndarray, np.ndarray, np.ndarray, dict[str, Any]]:
     """Load and score a prediction on the locked 24-block proxy holdout."""
-    truth, valid, labels, info = read_proxy_truth(proxy_path, template_path, labels_path)
+    truth, valid, labels, info = read_proxy_truth(
+        proxy_path,
+        template_path,
+        labels_path,
+        expected_proxy_sha256=expected_proxy_sha256,
+    )
     score = score_array_on_proxy(prediction, truth, valid, labels)
     return score, truth, valid, labels, info
 

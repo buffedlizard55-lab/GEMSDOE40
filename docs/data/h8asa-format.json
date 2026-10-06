@@ -1,0 +1,58 @@
+{
+  "bytes": 3595075,
+  "candidate": {
+    "count": 1,
+    "crs": "EPSG:32611",
+    "dtype": "float32",
+    "height": 3730,
+    "in_footprint_max": 1.0,
+    "in_footprint_min": 0.0,
+    "in_footprint_nonzero": 741536,
+    "nodata": "NaN",
+    "outside_nan": 7111787,
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "width": 3292
+  },
+  "canonical_pixels_sha256": "59812bc4797963dfd87c4737bce95839a789e41b9a3d94055eccae0cd3543a37",
+  "format_zeros_portal": {
+    "all_finite": true,
+    "crs_ok": true,
+    "dtype": "float32",
+    "in_0_1": true,
+    "nodata_unset": true,
+    "path": "/home/user/GEMSDOE40/docs/downloads/gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-zeros.tif",
+    "shape_ok": true,
+    "transform_ok": true,
+    "valid": true,
+    "zeros_outside": true
+  },
+  "issues": [],
+  "path": "/home/user/GEMSDOE40/docs/downloads/gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-nan.tif",
+  "sha256": "b00328ce401cf5be5c149e668efbbaa911815fe1f2847719c3ff8576fff2ea31",
+  "template": {
+    "count": 1,
+    "crs": "EPSG:32611",
+    "dtype": "float32",
+    "height": 3730,
+    "nodata": "NaN",
+    "outside_pixels": 7111787,
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "valid_pixels": 5167373,
+    "width": 3292
+  },
+  "valid": true
+}

@@ -1,0 +1,46 @@
+{
+  "bytes": 453350,
+  "candidate": {
+    "count": 1,
+    "crs": "EPSG:32611",
+    "dtype": "float32",
+    "height": 3730,
+    "in_footprint_max": 1.0,
+    "in_footprint_min": 0.0,
+    "in_footprint_nonzero": 28080,
+    "nodata": "NaN",
+    "outside_nan": 7111787,
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "width": 3292
+  },
+  "canonical_pixels_sha256": "998f660fcbf3b1a31600bd1e5e56a4d3b4c32d57c8fd8af36b3af793226a7d7c",
+  "issues": [],
+  "path": "docs/downloads/gemsdoe40-h7-rtp-euler-gravity-context-3d-kde-20261006-998f660f.tif",
+  "sha256": "e229aa9af26018bc80b0cca880d484a5b8362c26ad79ca362423953c32e66597",
+  "template": {
+    "count": 1,
+    "crs": "EPSG:32611",
+    "dtype": "float32",
+    "height": 3730,
+    "nodata": "NaN",
+    "outside_pixels": 7111787,
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "valid_pixels": 5167373,
+    "width": 3292
+  },
+  "valid": true
+}

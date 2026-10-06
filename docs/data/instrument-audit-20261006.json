@@ -1,0 +1,136 @@
+{
+  "record": "instrument audit 2026-10-06 (GEMSDOE40 session)",
+  "question": "Can any instrument available in this programme rank the 16 organizer-scored artifacts?",
+  "artifacts": [
+    {
+      "file": "p13-lattice-s5-v2.tif",
+      "mass": 206895,
+      "w_offcat_sgmc": 0.142,
+      "lm_calibrated": 0.4366,
+      "live_score": 0.0904
+    },
+    {
+      "file": "p34-scatter-q50.tif",
+      "mass": 37654,
+      "w_offcat_sgmc": 0.1896,
+      "lm_calibrated": 0.321,
+      "live_score": 0.0778
+    },
+    {
+      "file": "p22-h23a-6pct.tif",
+      "mass": 335879,
+      "w_offcat_sgmc": 0.0849,
+      "lm_calibrated": 0.2521,
+      "live_score": 0.1002
+    },
+    {
+      "file": "p22-h23b-10pct.tif",
+      "mass": 516738,
+      "w_offcat_sgmc": 0.0711,
+      "lm_calibrated": 0.2431,
+      "live_score": 0.0748
+    },
+    {
+      "file": "p10-h25-ctx-ridge.tif",
+      "mass": 174232,
+      "w_offcat_sgmc": 0.0941,
+      "lm_calibrated": 0.1615,
+      "live_score": 0.128
+    },
+    {
+      "file": "p01-ens12-7f00890a.tif",
+      "mass": 172974,
+      "w_offcat_sgmc": 0.0853,
+      "lm_calibrated": 0.2102,
+      "live_score": 0.1563
+    },
+    {
+      "file": "p08-hedge-v2.tif",
+      "mass": 227507,
+      "w_offcat_sgmc": 0.0853,
+      "lm_calibrated": 0.1678,
+      "live_score": 0.1563
+    },
+    {
+      "file": "p10-h28-dotted-ridge.tif",
+      "mass": 69281,
+      "w_offcat_sgmc": 0.1661,
+      "lm_calibrated": 0.2004,
+      "live_score": 0.1839
+    },
+    {
+      "file": "p16-h16-1-1855.tif",
+      "mass": 123939,
+      "w_offcat_sgmc": 0.111,
+      "lm_calibrated": 0.2376,
+      "live_score": 0.1855
+    },
+    {
+      "file": "p19-h19-4-1894.tif",
+      "mass": 123779,
+      "w_offcat_sgmc": 0.1076,
+      "lm_calibrated": 0.2255,
+      "live_score": 0.1894
+    },
+    {
+      "file": "p19-h19-5-1922.tif",
+      "mass": 121131,
+      "w_offcat_sgmc": 0.105,
+      "lm_calibrated": 0.2152,
+      "live_score": 0.1922
+    },
+    {
+      "file": "p27-topogap-d15.tif",
+      "mass": 61328,
+      "w_offcat_sgmc": 0.1784,
+      "lm_calibrated": 0.2502,
+      "live_score": 0.2449
+    },
+    {
+      "file": "p24-d15-2477.tif",
+      "mass": 60069,
+      "w_offcat_sgmc": 0.1795,
+      "lm_calibrated": 0.2484,
+      "live_score": 0.2477
+    },
+    {
+      "file": "p24-d28-2600.tif",
+      "mass": 44090,
+      "w_offcat_sgmc": 0.2187,
+      "lm_calibrated": 0.2516,
+      "live_score": 0.26
+    },
+    {
+      "file": "p28-h27-4-d28.tif",
+      "mass": 40199,
+      "w_offcat_sgmc": 0.1972,
+      "lm_calibrated": 0.2631,
+      "live_score": 0.2708
+    },
+    {
+      "file": "gemsdoe32-h33-h33-2-b2-zeros.tif",
+      "mass": 37654,
+      "w_offcat_sgmc": 0.1776,
+      "lm_calibrated": 0.2679,
+      "live_score": 0.2778
+    }
+  ],
+  "statistics": {
+    "spearman_lm_vs_live": 0.1,
+    "spearman_mass_vs_live": -0.676,
+    "spearman_w_offcat_vs_live": 0.676,
+    "spearman_mass_vs_w_offcat": null
+  },
+  "decisive_counterexamples": [
+    {
+      "case": "mass-matched control pair",
+      "detail": "p34-scatter-q50 and gemsdoe32-h33-h33-2-b2 both emit 37,654 dots; the scatter holds w = 0.1896 of SGMC-off-catalogue credit per dot, the field holds w = 0.1776 (7 % less), yet the live scores are 0.0778 and 0.2778 - a 3.6x inversion. SGMC credit density therefore has no power to discriminate placement quality at matched mass."
+    },
+    {
+      "case": "blind lattice",
+      "detail": "p13-lattice-s5-v2 is a blind 5-px lattice with no geological input; the LM instrument ranks it first of all 16 artifacts (0.4366) while its organizer score is third from the bottom (0.0904). The LM instrument has no ranking power (Spearman +0.10)."
+    }
+  ],
+  "verdict": "No instrument reproduced in this repository - the frozen all-prior SGMC gate, the 4-quadrant LM instrument, or the saturating live-score model with the locally defined credit density - can rank the scored artifacts, so none of them can promote a candidate. The H40 artifact stays HOLD, and the next session must validate a truth model by leave-one-out ranking of these 16 artifacts (target Spearman >= 0.8) before any emission decision is made.",
+  "next_session_requirement": "build a truth model whose leave-one-out ranking of the 16 scored artifacts reaches Spearman >= 0.8 with no mass-only explanation, then re-emit; the public score record, not the surrogate credit density, is the only ground truth this programme has."
+}

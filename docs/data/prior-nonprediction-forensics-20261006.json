@@ -1,0 +1,169 @@
+{
+  "review_date": "2026-10-06",
+  "reason": "Exhaustive reachable-history traversal found two additional technical artifacts; every actual full-size raster remains in the raw correlation audit. No candidate or novelty threshold changes.",
+  "rows": [
+    {
+      "git_blob_sha": "0db5091e3128d4d44ea2ecc9fe66315f47237b32",
+      "sha256": "de5e3531caedbaed73735d7de4f426f86f79c42c7f86aae5edacdbe24e5158b6",
+      "bytes": 110,
+      "artifacts": [
+        {
+          "repo": "GEMSDOE",
+          "ref": "6af265ee817191aef2f07dd002dac54853048f82",
+          "path": "data/evidence/runs/35042805806/submission.tif",
+          "bytes": 110,
+          "kind": "prediction-filename",
+          "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE/6af265ee817191aef2f07dd002dac54853048f82/data/evidence/runs/35042805806/submission.tif"
+        }
+      ],
+      "classification": "header-only malformed TIFF; no stored predictions",
+      "classic_tiff_ifd_offset": 8,
+      "tag_count": 8,
+      "ifd_ends_at_byte": 110,
+      "total_bytes": 110,
+      "bytes_after_ifd": 0,
+      "tags": [
+        {
+          "tag": 256,
+          "type": 3,
+          "count": 1,
+          "inline_value": 3292
+        },
+        {
+          "tag": 257,
+          "type": 3,
+          "count": 1,
+          "inline_value": 3730
+        },
+        {
+          "tag": 258,
+          "type": 3,
+          "count": 1,
+          "inline_value": 32
+        },
+        {
+          "tag": 259,
+          "type": 3,
+          "count": 1,
+          "inline_value": 5
+        },
+        {
+          "tag": 262,
+          "type": 3,
+          "count": 1,
+          "inline_value": 1
+        },
+        {
+          "tag": 277,
+          "type": 3,
+          "count": 1,
+          "inline_value": 1
+        },
+        {
+          "tag": 284,
+          "type": 3,
+          "count": 1,
+          "inline_value": 2
+        },
+        {
+          "tag": 339,
+          "type": 3,
+          "count": 1,
+          "inline_value": 3
+        }
+      ],
+      "next_ifd_offset": 0,
+      "pixel_float32": null,
+      "correlation_applicable": false,
+      "handling": "Hash identity is checked. These exact bytes contain no full-map prediction, so they are separately accounted for rather than silently skipped or assigned a fictional correlation."
+    },
+    {
+      "git_blob_sha": "1035095478d8030fc53e6b84e889b664e35d62d3",
+      "sha256": "bdf5dbb6f1f8ef758dfdf4c4fd3e086845d30720af91e2e4c6600d759396039e",
+      "bytes": 138,
+      "artifacts": [
+        {
+          "repo": "GEMSDOE39",
+          "ref": "a9e5b81f34330e6935135b9b38a3b6687c3adbbb",
+          "path": "artifacts/demo_unique_submission.tif",
+          "bytes": 138,
+          "kind": "prediction-filename",
+          "raw_url": "https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE39/a9e5b81f34330e6935135b9b38a3b6687c3adbbb/artifacts/demo_unique_submission.tif"
+        }
+      ],
+      "classification": "one-pixel ungeoreferenced demo, not a GeoDAWN prediction",
+      "classic_tiff_ifd_offset": 8,
+      "tag_count": 10,
+      "ifd_ends_at_byte": 134,
+      "total_bytes": 138,
+      "bytes_after_ifd": 4,
+      "tags": [
+        {
+          "tag": 256,
+          "type": 3,
+          "count": 1,
+          "inline_value": 1
+        },
+        {
+          "tag": 257,
+          "type": 3,
+          "count": 1,
+          "inline_value": 1
+        },
+        {
+          "tag": 258,
+          "type": 3,
+          "count": 1,
+          "inline_value": 32
+        },
+        {
+          "tag": 259,
+          "type": 3,
+          "count": 1,
+          "inline_value": 1
+        },
+        {
+          "tag": 262,
+          "type": 3,
+          "count": 1,
+          "inline_value": 1
+        },
+        {
+          "tag": 273,
+          "type": 4,
+          "count": 1,
+          "inline_value": 134
+        },
+        {
+          "tag": 277,
+          "type": 3,
+          "count": 1,
+          "inline_value": 1
+        },
+        {
+          "tag": 278,
+          "type": 4,
+          "count": 1,
+          "inline_value": 1
+        },
+        {
+          "tag": 279,
+          "type": 4,
+          "count": 1,
+          "inline_value": 4
+        },
+        {
+          "tag": 339,
+          "type": 3,
+          "count": 1,
+          "inline_value": 3
+        }
+      ],
+      "next_ifd_offset": 0,
+      "pixel_float32": 0.7310000061988831,
+      "correlation_applicable": false,
+      "handling": "Hash identity is checked. These exact bytes contain no full-map prediction, so they are separately accounted for rather than silently skipped or assigned a fictional correlation."
+    }
+  ],
+  "unknown_unreadable_outputs": "Still fail closed; this is an exact-byte, evidence-backed classification, not a filename/size blanket exception."
+}

@@ -15,5 +15,9 @@ work/
 *.npz
 *.npy
 
-# Auxiliary rasters fetched for exploration (machine-local)
-data/aux/
+# Packaging/build metadata
+*.egg-info/
+_site/
+data/bridge/
+# Large local inputs and prior-raster cache (external artifacts, not committed)
+ref/prior/

@@ -1,0 +1,32 @@
+{
+  "sampled_run_date_utc": "2026-10-05",
+  "acquisition": "Local copies obtained through a public sibling-repository bridge because the official DrivenData data tab redirected the unauthenticated sandbox to login. This is not represented as an authenticated official download.",
+  "official_download_url": "https://www.drivendata.org/competitions/306/competition-doe-gems/data/",
+  "files": {
+    "training_features.tif": {
+      "sha256": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5",
+      "role": "19-band challenge feature mirror; read-only input"
+    },
+    "example_submission.tif": {
+      "sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+      "role": "grid/footprint template only; pixel values are not treated as truth"
+    },
+    "existing_faults.tif": {
+      "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+      "role": "known-label mask; used only for exact-pixel suppression and exact holdout masking"
+    },
+    "derived_sgmc_faults_100m_u8.tif": {
+      "sha256": "26d142c4c93282cd94f6950ab96f22aeff59fbbea523d43d662e76fa1b161b5c",
+      "role": "owner-derived local validation proxy only; provenance not independently verified; never used in H1/H2/H2-B construction"
+    }
+  },
+  "sample_grid": {
+    "height": 3730,
+    "width": 3292,
+    "crs": "EPSG:32611",
+    "resolution_m": 100,
+    "footprint_pixels": 5167373,
+    "outside_pixels": 7111787
+  },
+  "irregularity": "The mirrored example template contains positive known-label pixels although the official page describes an all-zero example. The raster is used for grid/footprint only; labels are read from the separate known-label raster."
+}

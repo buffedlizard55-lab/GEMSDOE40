@@ -9,10 +9,23 @@ from pathlib import Path
 import shutil
 import subprocess
 import urllib.request
+import io
+import zipfile
 
 
 def git_blob_sha1(data: bytes) -> str:
     return hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
+
+
+def unwrap_artifact(payload: bytes, artifact: dict) -> bytes:
+    """A TIFF existing only in a published ZIP is still a raw prior output."""
+    if artifact.get("member"):
+        with zipfile.ZipFile(io.BytesIO(payload)) as archive:
+            info = archive.getinfo(artifact["member"])
+            if info.file_size > 160_000_000:
+                raise ValueError("unexpected oversized prior TIFF archive member")
+            return archive.read(info)
+    return payload
 
 
 def fetch_bytes(entry: dict, owner: str) -> bytes:
@@ -20,7 +33,7 @@ def fetch_bytes(entry: dict, owner: str) -> bytes:
     endpoint = f"repos/{owner}/{artifact['repo']}/contents/{artifact['path']}?ref={artifact['ref']}"
     if shutil.which("gh"):
         try:
-            return subprocess.check_output(["gh", "api", "-H", "Accept: application/vnd.github.raw", endpoint])
+            return unwrap_artifact(subprocess.check_output(["gh", "api", "-H", "Accept: application/vnd.github.raw", endpoint]), artifact)
         except subprocess.CalledProcessError:
             pass
     url = artifact.get("raw_url")
@@ -29,13 +42,13 @@ def fetch_bytes(entry: dict, owner: str) -> bytes:
         url = f"https://raw.githubusercontent.com/{owner}/{artifact['repo']}/{artifact['ref']}/{quote(artifact['path'], safe='/')}"
     request = urllib.request.Request(url, headers={"User-Agent": "GEMSDOE40-prior-audit/1.0"})
     with urllib.request.urlopen(request, timeout=60) as response:
-        return response.read()
+        return unwrap_artifact(response.read(), artifact)
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--inventory", type=Path, default=Path("docs/data/prior_raster_inventory.json"))
-    parser.add_argument("--cache", type=Path, default=Path("/tmp/gemsdoe40-prior-cache"))
+    parser.add_argument("--cache", type=Path, default=Path("data/prior"))
     parser.add_argument("--owner", default="buffedlizard55-lab")
     args = parser.parse_args()
     inventory = json.loads(args.inventory.read_text(encoding="utf-8"))
@@ -51,7 +64,9 @@ def main() -> None:
         if len(data) != expected_len or actual_blob != blob or actual_sha256 != entry["sha256"]:
             raise RuntimeError(f"integrity failure for {blob}: size={len(data)} blob={actual_blob} sha256={actual_sha256}")
         if not destination.exists():
-            destination.write_bytes(data)
+            temporary = destination.with_suffix(".partial")
+            temporary.write_bytes(data)
+            temporary.replace(destination)
         ok += 1
         if i % 25 == 0 or i == len(inventory["unique_rasters"]):
             print(f"verified {i}/{len(inventory['unique_rasters'])} prior rasters")

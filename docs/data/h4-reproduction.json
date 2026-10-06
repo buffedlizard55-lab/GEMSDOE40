@@ -1,0 +1,30 @@
+{
+  "verified_utc": "2026-10-06T01:49:29.322478+00:00",
+  "scope": "Independent computation, not a copy of the released TIFF/cloud; same CPU software and frozen parameters",
+  "working_directory": "work/h4-reproduction",
+  "expected_tiff_sha256": "ee73ffd76fabbaa1a2e77e17f57947a7db858916d713801e0c3502e49f6acabb",
+  "actual_tiff_sha256": "ee73ffd76fabbaa1a2e77e17f57947a7db858916d713801e0c3502e49f6acabb",
+  "expected_cloud_sha256": "6bed30b224981ef1064256d696c585b76f438011bbae6c0a16c00e6e6f5922ba",
+  "actual_cloud_sha256": "6bed30b224981ef1064256d696c585b76f438011bbae6c0a16c00e6e6f5922ba",
+  "software": {
+    "affine": "3.0.1",
+    "numpy": "2.4.6",
+    "python": "3.11.2",
+    "rasterio": "1.4.4",
+    "scipy": "1.17.1"
+  },
+  "elapsed_s": 110.382,
+  "code_sha256": {
+    "scripts/run_contact_euler.py": "a56d2fee8e801e46f4bdfb62cf46ed32566935b1b503a6dccb28f4af665ea016",
+    "src/gemsdoe40/contact_euler.py": "aa92851d604e2d8d5f1c0c7831da7142491a2587fba18f6f25773374b43d5ee7"
+  },
+  "checks": {
+    "tiff_byte_identical": true,
+    "canonical_pixels_identical": true,
+    "cloud_byte_identical": true,
+    "format_pass": true,
+    "no_prior_predictions_or_proxy_in_generation": true
+  },
+  "pass": true,
+  "caveat": "Bitwise reproduction is measured for this environment, not promised for every BLAS/FFT/GDAL platform. A future mismatch must be investigated, not hidden by renaming."
+}

@@ -31,30 +31,54 @@ def solution_weights(
     neighbor_px: float = 3.0,
     min_neighbors: int = 3,
 ) -> np.ndarray:
-    """Per-solution weight: shallow × precise × locally tight × depth-consistent."""
+    """Per-solution weight: shallow × precise × locally tight × depth-consistent.
+
+    Tightness and mutual depth consistency are computed with a vectorised pair
+    query (``cKDTree.query_pairs``) instead of a Python loop over neighbour
+    lists: the pair list is built in C and reduced with ``np.add.at``, which
+    keeps this step O(pairs) for the ~300 k-solution clouds this repository
+    deconvolves.  A solution with fewer than ``min_neighbors`` neighbours inside
+    ``neighbor_px`` is treated as noise (weight 0 in the consistency factor),
+    which is Reid et al.'s (1990) own criterion that a real contact produces a
+    *cluster* rather than a single isolated solution.
+    """
     n = len(cloud)
     if n == 0:
         return np.empty(0, dtype=np.float64)
     shallow = np.exp(-np.clip(cloud.depth_m, 0, None) / depth_scale_m)
     quality = 1.0 / (1.0 + 8.0 * np.clip(cloud.rel_se, 0, 10))
-    # Local tightness / mutual depth consistency via a 2-D KD tree on (row, col).
     xy = np.column_stack([cloud.row, cloud.col])
     tree = cKDTree(xy)
-    neighbors = tree.query_ball_tree(tree, r=neighbor_px)
-    tight = np.empty(n, dtype=np.float64)
-    consist = np.empty(n, dtype=np.float64)
-    for i, nb in enumerate(neighbors):
-        k = len(nb)
-        tight[i] = float(k)
-        if k >= min_neighbors:
-            depths = cloud.depth_m[np.fromiter(nb, dtype=int, count=k)]
-            mu = float(depths.mean())
-            cv = float(depths.std()) / max(mu, 1.0)
-            consist[i] = np.exp(-4.0 * cv)
-        else:
-            consist[i] = 0.0  # isolated solutions are treated as noise
-    tight = tight / max(float(np.percentile(tight, 90)), 1.0)
-    tight = np.clip(tight, 0.0, 3.0)
+    pairs = tree.query_pairs(r=neighbor_px, output_type="ndarray")
+    counts = np.zeros(n, dtype=np.float64)
+    dsum = np.zeros(n, dtype=np.float64)
+    dsq = np.zeros(n, dtype=np.float64)
+    if pairs.size:
+        i = pairs[:, 0]
+        j = pairs[:, 1]
+        di = cloud.depth_m[i]
+        dj = cloud.depth_m[j]
+        np.add.at(counts, i, 1.0)
+        np.add.at(counts, j, 1.0)
+        np.add.at(dsum, i, dj)
+        np.add.at(dsum, j, di)
+        np.add.at(dsq, i, dj * dj)
+        np.add.at(dsq, j, di * di)
+    # Smooth tightness: (n + 1) / (n + 4) is 0.25 for an isolated solution and
+    # approaches 1 in a dense cluster.  A hard ">= min_neighbors else zero" gate
+    # was tried first and zeroed almost the whole map at realistic solution
+    # densities (~1-2 neighbours within 3 px), which threw away usable
+    # information; the smooth form keeps the same monotone physics -- clusters
+    # dominate, isolated solutions contribute a quarter of the weight -- and the
+    # emission stage then decides how much of the weak tail is worth mass.
+    n_pairs = counts
+    with np.errstate(invalid="ignore", divide="ignore"):
+        mu = dsum / np.maximum(n_pairs, 1.0)
+        var = np.maximum(dsq / np.maximum(n_pairs, 1.0) - mu * mu, 0.0)
+        cv = np.sqrt(var) / np.maximum(mu, 1.0)
+        consist = np.where(n_pairs >= max(min_neighbors - 1, 1), np.exp(-4.0 * cv), 0.5)
+    consist = np.where(np.isfinite(consist), consist, 0.0)
+    tight = (n_pairs + 1.0) / (n_pairs + 4.0)
     w = shallow * quality * tight * consist
     # Analytic-signal amplitude at the source (stronger contact → higher weight)
     if cloud.analytic.size == n:

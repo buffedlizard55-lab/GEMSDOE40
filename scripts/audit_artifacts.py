@@ -62,7 +62,7 @@ def spear(a: np.ndarray, b: np.ndarray, foot: np.ndarray, stride: int = 7) -> fl
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--downloads", default="docs/downloads")
-    ap.add_argument("--prior", default="/tmp/data/prior")
+    ap.add_argument("--prior", default="ref/prior")
     ap.add_argument("--data", default="data")
     ap.add_argument("--outdir", default="data/evidence")
     args = ap.parse_args()

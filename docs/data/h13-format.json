@@ -1,0 +1,46 @@
+{
+ "bytes": 363453,
+ "candidate": {
+  "count": 1,
+  "crs": "EPSG:32611",
+  "dtype": "float32",
+  "height": 3730,
+  "in_footprint_max": 1.0,
+  "in_footprint_min": 0.0,
+  "in_footprint_nonzero": 21041,
+  "nodata": "NaN",
+  "outside_nan": 7111787,
+  "transform": [
+   100.0,
+   0.0,
+   243350.0,
+   0.0,
+   -100.0,
+   4508550.0
+  ],
+  "width": 3292
+ },
+ "canonical_pixels_sha256": "a5d5b80a8476f13bf1ea19dd8a7675a1d2bd2705281399c17baafff8b91675fc",
+ "issues": [],
+ "path": "work/h13/gemsdoe40-h13-crest-binary-20261006-a5d5b80a8476.tif",
+ "sha256": "c202a579ce33ea385a117f233857714150f8d68a5d6e8e46ef820b428e08ff33",
+ "template": {
+  "count": 1,
+  "crs": "EPSG:32611",
+  "dtype": "float32",
+  "height": 3730,
+  "nodata": "NaN",
+  "outside_pixels": 7111787,
+  "transform": [
+   100.0,
+   0.0,
+   243350.0,
+   0.0,
+   -100.0,
+   4508550.0
+  ],
+  "valid_pixels": 5167373,
+  "width": 3292
+ },
+ "valid": true
+}

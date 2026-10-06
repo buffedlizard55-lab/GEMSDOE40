@@ -1,127 +1,27 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Executive summary, validation decision, and future submission guidance for GEMSDOE40.">
-  <title>Executive summary · GEMSDOE40</title><link rel="stylesheet" href="assets/research.css">
-</head>
-<body>
-  <a class="skip" href="#main">Skip to content</a>
-  <header class="site-header"><div class="nav-wrap"><a class="brand" href="index.html"><span class="brand-mark">G40</span><span>GEMSDOE40</span></a><nav class="nav-links" aria-label="Primary navigation"><a href="index.html#decision">Decision</a><a href="index.html#research">Research</a><a href="index.html#feed">Leaderboard</a><a href="https://github.com/buffedlizard55-lab/GEMSDOE40/blob/main/README.md">README ↗</a></nav></div></header>
-  <main id="main" class="wrap">
-    <div class="breadcrumb"><a href="index.html">Home</a> / Executive summary</div>
-    <section class="page-head"><div class="eyebrow">Decision record · 2026-10-06 UTC</div><h1>Executive summary</h1><p>What was tested, what passed, what failed, and what is safe to do next.</p></section>
-    <section class="caution" aria-labelledby="decision-heading" style="border-color:#1f6f43;background:#f2faf4">
-      <span class="badge" style="background:#7c391c;color:#fff">Unique · audited · gate NOT passed</span>
-      <h2 id="decision-heading" style="margin:12px 0 8px;color:#7c391c">H4 — Euler depth-cluster: unique and audited, but the frozen gate says no.</h2>
-      <p><strong>File:</strong> <a href="downloads/gemsdoe40-euler-line-ring-pruned-60000px-20261006T032708Z-8dafb186-zeros.tif" download>gemsdoe40-euler-line-ring-pruned-60000px-20261006T032708Z-8dafb186-zeros.tif</a>
-      (<code>float32</code>, EPSG:32611, 3730 × 3292, 60,000 positive pixels, values exactly 0 or 1,
-      <code>nodata=None</code>, SHA-256 <code>8dafb1860367e7d5…</code>).</p>
-      <p><a class="button" style="display:inline-block;margin:8px 0" href="downloads/gemsdoe40-euler-line-ring-pruned-60000px-20261006T032708Z-8dafb186-zeros.tif" download>↓ Download the submission TIF</a>
-      <a href="downloads/gemsdoe40-euler-line-ring-pruned-60000px-20261006T032708Z-8dafb186-zeros.zip" download>zipped twin</a> ·
-      <a href="downloads/gemsdoe40-euler-line-ring-pruned-60000px-20261006T032708Z-8dafb186-nan.tif">NaN-outside twin</a> ·
-      <a href="data/h4_submission_20261006T032708Z.json">full receipt</a> ·
-      <a href="data/h4_shipped_audit_zeros.json">byte-level audit</a></p>
-      <p><strong>Gate result.</strong> On the repository's frozen blocked LM instrument (instrument verified at 5/6
-      published orderings) the best prior scores <b>0.366</b> LM-calibrated and H4 scores <b>0.286</b>, winning
-      <b>1 of 4 folds</b>. The frozen promotion rule is "win all four folds", so this file is <em>not</em> promoted and
-      the weekly slot is not spent on this evidence. Diagnosis: the off-catalogue truth population is bedrock/topographic,
-      which ridge-style detectors overlap and a potential-field depth-cluster cloud does not (both independent instruments
-      agree). The 60,000-px budget follows the emission law fitted to the published ladder (optimum ≈ 60,069 px); it replaces the earlier 40,000-px emission, which won 0 of 4 folds. Download it as the mandated unique Euler artifact; upload at your own discretion.</p>
-      <h3>If you do submit it, in four steps</h3>
-      <ol>
-        <li>Open the DrivenData submission page for <em>competition #306 (DOE GEMS)</em>.</li>
-        <li>Click <em>Download predictions template</em> only if you need the units; otherwise upload the file above directly.</li>
-        <li>Upload <code>gemsdoe40-euler-line-ring-pruned-60000px-20261006T032708Z-8dafb186-zeros.tif</code>. Keep the <code>-zeros</code> twin: it is finite everywhere and its only values are 0.0 and 1.0.</li>
-        <li>Optional name and note — name: <code>GEMSDOE40-h4-euler-depthcluster</code>; note: <code>Euler SI=0 depth-cluster lineaments, 60,000 dots, 2.8284px min separation, no dot within 2px of the mapped catalogue (median 21px) | id 8dafb186</code>.</li>
-      </ol>
-      <h3>If the portal says “Predicted values must be in range [0, 1]”</h3>
-      <p>That error is about the <em>stored</em> values, not about your science. It appears when a file carries a
-      nodata sentinel (<code>255</code>, <code>-9999</code>, <code>−3.4e38</code>) or a rescaled integer outside
-      <code>[0,1]</code> in the cells outside the valid footprint. The fix used here: write <code>float32</code> with
-      <strong>every</strong> cell finite and in <code>[0,1]</code> (0.0 outside the footprint) and
-      <code>nodata = None</code>; the <code>-nan</code> twin keeps the sample convention (NaN outside,
-      <code>nodata=NaN</code>) for tools that expect it. Both twins pass
-      <code>scripts/audit_submission.py</code>, which re-reads the bytes and asserts min ≥ 0, max ≤ 1, no sentinel,
-      the sample's grid, and 0 mass on the masked catalogue.</p>
-      <p class="small">Kept as history: H2-B (TMI Euler persistence) passed the format and uniqueness gates but failed
-      the frozen promotion gate — proxy DTI 0.006313, 0 of 24 blocks — and was never submitted. No weekly slot has
-      been spent by this repository. <a href="reports/validation-h2b-20261005.html">H2-B report →</a></p>
-    </section>
-
-    <section class="section" aria-labelledby="what-title">
-      <div class="section-header"><h2 id="what-title">Outcome at a glance</h2><p>This is a research result, not a private-leaderboard prediction. The local proxy is a fallible owner-derived SGMC mirror.</p></div>
-      <div class="grid-4">
-        <div class="stat"><b class="good">60,000</b><span>dots · 2√2 px lattice</span></div>
-        <div class="stat"><b class="good">0</b><span>dots on the published catalogue</span></div>
-        <div class="stat"><b class="good">PASS</b><span>sample grid, range, nodata</span></div>
-        <div class="stat"><b class="good">0.0128</b><span>max |Pearson| vs 19 prior rasters</span></div>
-      </div>
-      <div class="metric-bar" style="margin-top:16px">
-        <div class="metric"><span class="big">0.835907</span><span class="label">frozen all-prior proxy incumbent. It is SGMC-gap-derived and circular on this proxy; not an independent baseline.</span></div>
-        <div class="metric"><span class="big">−0.829593</span><span class="label">H2-B pooled delta. The registered gate fails even without treating the incumbent as independent evidence.</span></div>
-      </div>
-    </section>
-
-    <section class="section prose" aria-labelledby="task-title">
-      <div class="eyebrow">Scientific target</div>
-      <h2 id="task-title">Faults—not vents, springs, or reservoirs.</h2>
-      <p>The DOE GEMS Prize Challenge asks for geological faults that may indicate geothermal resources. A potential-field contact is not automatically a fault; a mapped fault is not automatically permeable; and neither establishes a viable reservoir. GEMSDOE40 uses Euler depth-deconvolution and multi-height persistence as source-location hypotheses, not as direct geothermal-site predictions.</p>
-      <p>The registered scientific ideas were: (1) magnetic–gravity depth consensus; (2) upward-continuation persistence in TMI Euler solutions; and (3) focal-mechanism-constrained orientation. H1 and strict H2 stopped at feasibility. H2-B, a separately registered rule emitting only natural positive KDE support, was evaluated and failed. H3 remains blocked pending measurement of official ComCat mechanism coverage.</p>
-      <p><a href="https://github.com/buffedlizard55-lab/GEMSDOE40/blob/main/docs/research/hypotheses.md">Open the append-only hypothesis register →</a> · <a href="reports/feasibility-20261005.html">Open feasibility results →</a></p>
-    </section>
-
-    <section class="section" aria-labelledby="file-title">
-      <div class="section-header"><h2 id="file-title">Previous research TIFF (H2-B): available, not approved</h2><p>Format validation and scientific promotion are separate gates. H2-B passed only the former; it is kept for the audit trail.</p></div>
-      <div class="panel two-col">
-        <div>
-          <h3 style="margin-top:0">H2-B · natural positive KDE support</h3>
-          <p class="small">17,425 positive cells (0.337% of the footprint). One band, float32, EPSG:32611, 100 m, shape 3,730 × 3,292. Finite values are in `[0,1]` inside the sample mask; outside values are NaN. SHA-256: <code>02486eaa491da2d8ebc6b1cd53ed2bdc8e995f316be1110a64eec484779b5a68</code>.</p>
-          <div class="actions"><a class="button primary" href="downloads/gemsdoe40-h2b-tmi-euler-natural-support-20261005.tif" download>↓ Download research TIFF</a></div>
-        </div>
-        <div class="caution" style="margin:0">
-          <strong>Do not paste these into DrivenData.</strong>
-          <p class="small">For internal records only:</p>
-          <p><b>Provisional name</b><br><code>GEMSDOE40-H2B-20261005-ON-HOLD</code></p>
-          <p><b>Provisional note</b><br><code>Research-only H2-B TMI Euler persistence; failed local proxy promotion gate; no organizer score. DO NOT SUBMIT.</code></p>
-          <p class="small">The metadata is deliberately marked on-hold and is not an upload recommendation.</p>
-        </div>
-      </div>
-      <p class="small" style="margin-top:12px">Receipts: <a href="data/format_receipt.json">format</a> · <a href="data/uniqueness_audit.json">uniqueness</a> · <a href="data/validation-h2b-20261005.json">all block and prior scores</a> · <a href="data/feasibility.json">candidate-generation feasibility</a></p>
-    </section>
-
-    <section class="section prose" aria-labelledby="h40-title">
-      <div class="eyebrow">Previous main-branch record · kept for audit</div>
-      <h2 id="h40-title">H40-4 multi-scale Euler candidate</h2>
-      <p>The prior main branch reported a 97,654-cell multi-scale Euler augmentation with an LM-calibrated proxy DTI of 0.34835 versus 0.26792 for that branch's previous site-best, better in 4/4 folds. This is the originating repository's own instrument, not an official score. A later addendum evaluated H40-4 against the same owner-derived SGMC proxy used for H2-B: pooled diagnostic DTI 0.124715 and 0/24 wins versus the frozen all-prior incumbent. H40-4 also fails the strict local format gate because its TIFF does not declare NaN nodata. These results are separate measures and neither is an organizer score; the file remains a historical research artifact, not current upload advice.</p>
-      <p><a class="button secondary" href="downloads/gems40-euler-multiscale-augmented-incumbent-20261005-84488e0e.tif" download>↓ Download the prior H40-4 TIFF</a></p>
-      <p>Read the <a href="index-main-before-h2b.html">historical landing snapshot</a>, <a href="executive-summary-h40-4.html">prior submission guide</a>, and <a href="data/validation.json">main-branch validation record</a>. No organizer score or upload receipt is asserted for that file here.</p>
-    </section>
-
-    <section class="section prose" id="steps" aria-labelledby="steps-title">
-      <div class="eyebrow">Future upload guide</div>
-      <h2 id="steps-title">Only upload after the gate says eligible.</h2>
-      <div class="alert"><strong>Current status: not eligible.</strong> The following steps are for a future candidate that has passed the frozen holdout, exact format, and uniqueness gates. They are not instructions to upload the H2-B file.</div>
-      <ol>
-        <li>Confirm the candidate page and validation report say <strong>ELIGIBLE FOR USER REVIEW</strong>, not HOLD.</li>
-        <li>Read the dated report and confirm the candidate hash is the one linked beside the download.</li>
-        <li>Download the single-band TIFF. Do not alter its pixels, nodata, or metadata after validation.</li>
-        <li>Open the official <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/" target="_blank" rel="noopener">DrivenData submissions page ↗</a>, select the file, and enter only the name/note displayed for that promoted artifact.</li>
-        <li>Before confirming, check that the portal accepts `[0,1]` values, then save the actual submission receipt. Do not infer that an upload succeeded from a local test.</li>
-        <li>Record the resulting account-level score, date, and file identity separately. A leaderboard row does not attribute a score to a TIFF unless the organizer exposes a file-level link.</li>
-      </ol>
-      <h3>Why the range check matters</h3>
-      <p>The portal error “Predicted values must be in range [0, 1]” is addressed by read-back validation: all in-footprint values must be finite and between 0 and 1, with the sample's outside-footprint nodata semantics preserved. This candidate passed that technical check; that alone does not make it scientifically suitable.</p>
-    </section>
-
-    <section class="section" aria-labelledby="principles-title">
-      <div class="section-header"><h2 id="principles-title">Principles</h2><p>Good research includes an explicit stop decision.</p></div>
-      <div class="two-col">
-        <article class="card"><span class="tag">Maximize P(Win)</span><h3>Spend no slot on a failing candidate.</h3><p>Scientific plausibility, spatial validation, rule compliance, and a measured advantage matter more than a compelling name or a valid file.</p></article>
-        <article class="card"><span class="tag">Own the Outcome</span><h3>Keep failures visible.</h3><p>H1 and strict H2 stopped at feasibility. H2-B failed the proxy gate. These facts are preserved so the next experiment starts from evidence rather than optimism.</p></article>
-      </div>
-    </section>
-  </main>
-  <footer class="footer"><div class="footer-inner"><div><div class="footer-brand">GEMSDOE40</div><p>Fault prediction for geothermal exploration.</p><p>No hidden truth. No organizer score. No upload.</p></div><div><p><a href="index.html">Project home</a> · <a href="https://github.com/buffedlizard55-lab/GEMSDOE40/blob/main/README.md">README ↗</a> · <a href="data/feed-20261005.json">Leaderboard feed snapshot</a></p><p>Sources and caveats are linked in the project home and report.</p></div></div></footer>
-</body>
-</html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Executive summary and submission guide · GEMSDOE40</title><meta name="description" content="Measured Euler depth-clustering research for geological fault mapping. Unique GeoTIFFs, open evidence, honest no-submission gates.">
+<link rel="stylesheet" href="assets/contact.css"><script src="assets/contact.js" defer></script></head>
+<body><a href="#main" class="skip">Skip to content</a><header class="header"><div class="wrap"><div class="masthead">
+<a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true">G</span><b>GEMS / 40</b><em>FIELD NOTES</em></a><nav class="nav" aria-label="Main navigation"><a class="" href="index.html">Overview</a><a class="active" href="executive-summary.html">Submission guide</a><a class="" href="evidence.html">Evidence</a><a class="" href="hypotheses.html">Hypotheses</a><a class="" href="sources.html">Research library</a></nav></div></div></header>
+<main id="main" class="wrap"><div class="subhero"><p class="kicker">EXECUTIVE SUMMARY / DOWNLOAD & DECISION</p><h1>Two files. One clear decision.</h1><p class="lead">Both session-2 TIFFs are submission-format valid and genuinely distinct from all 343 inventoried prior outputs. Neither has earned a competition slot.</p></div><section class="section"><div class="twocol"><div><span class="tag hold">HOLD — DO NOT SUBMIT</span><div class="download"><a class="button" href="downloads/gemsdoe40-h13-crest-binary-20261006-a5d5b80a8476.tif" download>Download H13 research GeoTIFF <span aria-hidden="true">↓</span></a></div><p class="micro">Download the .tif itself — not this web page, a report, or a preview image.</p><h3>Exact filename</h3><div class="codebox" id="filename">gemsdoe40-h13-crest-binary-20261006-a5d5b80a8476.tif</div><button class="copy" data-copy="filename">Copy filename</button><h3>Tracking name</h3><div class="codebox" id="submission-name">GEMSDOE40-H13-CREST-BINARY-a5d5b80a8476</div><button class="copy" data-copy="submission-name">Copy name</button></div>
+<div class="callout"><p class="eyebrow">CURRENT DECISION</p><h3>Do not upload either version.</h3><p>H13’s proxy DTI 0.019677 (H8: 0.003371) is below H33-B2’s 0.091550 on the same frozen instrument, and below the frozen gate bar. No organizer score exists. No submission has been made.</p><p>The brief’s own rule is retained: never spend a weekly slot on an idea that hasn’t beaten the current holdout best. A valid file is not a recommended one.</p><a href="evidence.html">Read the measured result ↗</a></div></div>
+<h3>Short note · 148 characters · research record only</h3><div class="codebox" id="submission-note">H13 binary Euler SI0 depth-consensus crest emission (trace-locked, cross-family). Unique vs 343 priors. Proxy gate failed: HOLD, no organizer score.</div><button class="copy" data-copy="submission-note">Copy note</button>
+<h3>SHA-256 of the actual downloads</h3><div class="codebox" id="file-sha">c202a579ce33ea385a117f233857714150f8d68a5d6e8e46ef820b428e08ff33</div><button class="copy" data-copy="file-sha">Copy H13 SHA-256</button><p class="micro">H8 sibling: <span class="mono">gemsdoe40-h8-tracelock-depthkde-20261006-373fa53b12e9.tif</span> · SHA-256 <span class="mono">6c32147db39cd34e77baf31f6cb585165bca1d042cfa599d5d027cb140e0c195</span> · <a href="downloads/gemsdoe40-h8-tracelock-depthkde-20261006-373fa53b12e9.tif" download>Download H8</a></p><p class="micro"><a href="data/h13-format.json">H13 format receipt</a> · <a href="data/h13-uniqueness.json">H13 raw-output comparisons</a> · <a href="downloads/h13-submission-note.txt">Name and note as text</a></p></section>
+<section class="section prose"><h2>How a future approved submission is entered</h2><p><strong>These are future instructions, not permission to submit H8/H13.</strong> First require a reproducible gate win on a registered, source-independent protocol, plus complete novelty and format passes.</p>
+<ol><li>Open the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">official competition</a> in your own account. Confirm eligibility, enrollment and current rules. Never put passwords or tokens in this repository.</li><li>Download the exact approved <strong>.tif</strong> from the prominent button. Compare its SHA-256 with its receipt. Do not upload an HTML file saved by the browser.</li><li>Open <strong>New submission</strong>. In <strong>File to submit</strong>, choose the downloaded GeoTIFF. A ZIP containing exactly one GeoTIFF is also accepted; this project supplies the TIFF directly.</li><li>Paste the approved short note into <strong>Note (optional)</strong>. Keep the unique tracking name and full SHA-256 in the local experiment record.</li><li>Submit, then save the server’s validation response and any file-level score receipt. An account’s best leaderboard row is not a receipt for a particular file.</li><li>Respect the <a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">three-per-week limit</a>. Choose one final submission for both prize rounds. This repository never performs a DrivenData upload.</li></ol>
+<h2>Preventing “Predicted values must be in range [0, 1]”</h2><p>Both written files were reopened from disk and re-checked across <strong>all 5,167,373 inside-footprint pixels</strong>: every value is finite and in [0, 1] (H13 stores exactly 0.0/1.0; H8 is continuous). All 7,111,787 outside pixels are NaN, matching the sample mask, and the feature stack’s −3.4028235e38 sentinel is never copied into predictions.</p><p>NaN outside the footprint is the documented sample contract. We do not claim NaN itself causes rejection and do not silently swap zeros for it; a local pass is not a guarantee about the server-side validator. If an authorized upload ever fails, retain the exact bytes and error text for diagnosis.</p>
+<h2>Rebuild, don’t rename an old TIFF</h2><div class="codebox code">python3 -m venv .venv
+. .venv/bin/activate
+python -m pip install -r requirements-research.txt
+python -m pip install -e .
+bash scripts/download_competition_data.sh
+python scripts/fetch_prior_cache.py --inventory docs/data/prior-inventory-20261006.json --cache data/prior
+python scripts/run_trace_locked_euler.py        # H8 continuous field
+python scripts/run_crest_emission.py            # H13 crest-binary
+python scripts/audit_trace_candidate.py --work work/h13
+python scripts/build_site.py --check</div><p>CPU-only. The 419 MB feature stack, template, labels, frozen proxy and 343-artifact prior corpus are restored automatically from pinned public mirrors; no GPU or trained network is required. Source links and mirror-provenance limits are in the <a href="sources.html">research library</a>.</p>
+<p><a href="https://github.com/buffedlizard55-lab/GEMSDOE40/actions/workflows/reproduce.yml">Reproduction workflow ↗</a> · <a href="downloads/h4-euler-solutions.csv.gz">Download all 46,656 QC-passing depth solutions (CSV.gz)</a></p><p class="micro">Historical status: HOLD — DO NOT SUBMIT H2-B, H4, H7, H40. Archived files remain for learning and are not the current downloads.</p></section><section class="section" id="h8asa"><p class="eyebrow">CONCURRENT SESSION / H8-ASA ANALYTIC SIGNAL</p><h2>A second held artifact, kept distinct.</h2><div class="twocol"><div><span class="tag hold">HOLD — DO NOT SUBMIT</span><div class="download"><a class="button" href="downloads/gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-zeros.zip" download>H8-ASA portal-safe .zip <span aria-hidden="true">↓</span></a><a class="button" href="downloads/gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-nan.tif" download>NaN-outside research .tif <span aria-hidden="true">↓</span></a></div><h3>Unique submission name</h3><div class="codebox" id="h8asa-name">GEMSDOE40-H8-ASA-SPI-b845d3ad449e</div><button class="copy" data-copy="h8asa-name">Copy name</button><h3>Short note · 152 characters</h3><div class="codebox" id="h8asa-note">GEMSDOE40 H8 | analytic-signal local-wavenumber depth cells x H4-Euler corroboration; soft catalogue ramp; continuous [0,1]; HOLD: gate failed; unscored</div><button class="copy" data-copy="h8asa-note">Copy note</button></div>
+<div class="callout"><p class="eyebrow">WHY IT IS HELD</p><h3>Novel and valid; the gate failed.</h3><p>H8-ASA (tapered-FFT analytic signal, contact depth z=√(A/|λ_min|), H4-Euler corroboration, σ=2 KDE, flank ramp) passed synthetic S1–S5, format, and the 343-artifact novelty audit (max |Pearson| 0.2528). Its registered gate failed: pooled proxy DTI 0.024128 &lt; 0.091550; block wins 1/16 &lt; 10. Independent re-run reproduced all four artifacts byte-for-byte.</p><a href="reports/h8-results-20261006.md">H8-ASA result ↗</a> · <a href="research/h8asa-preregistration-20261006.md">preregistration ↗</a></div></div></section>
+<section class="section" id="parallel-research"><p class="eyebrow">EARLIER ARMS / PRESERVED, NOT REBRANDED</p><h2>Nothing earlier is cleared either.</h2><div class="tablewrap"><table><thead><tr><th>Arm</th><th>Research files / record</th><th>Decision</th></tr></thead><tbody><tr><td>H4 · contact-offset depth-KDE (session 1)</td><td><a href="downloads/gemsdoe40-h4-contact-offset-depthkde-20261006-fab9f6619c02.tif" download>H4 GeoTIFF</a><br><a href="reports/h4-results-20261006.md">H4 result</a></td><td>HOLD. Proxy DTI 0.006902; 0/16 truth-bearing block wins. Its frozen solver output is the cloud H8/H13 re-use.</td></tr><tr><td>H7 · RTP Euler + gravity-gradient context</td><td><a href="downloads/gemsdoe40-h7-rtp-euler-gravity-context-3d-kde-20261006-998f660f.tif" download>H7 GeoTIFF</a><br><a href="reports/validation-h7-20261006.md">Record</a></td><td>HOLD. Uses the different 643cbe proxy version; do not mix its 0.000265 with 26d142 scores.</td></tr><tr><td>H40 · depth-cluster / dotted twins</td><td><a href="downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-nan.tif" download>NaN twin</a> · <a href="downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-zeros.tif" download>zero-outside twin</a> · <a href="downloads/gemsdoe40-eulerdepth-si0-20261006-run2-57896abe-audit.json">receipt</a></td><td>HOLD — DO NOT SUBMIT H40. Promotion estimates withdrawn by that session; zero-outside is not the footprint contract.</td></tr><tr><td>H4-A · contact network + terrain</td><td><a href="reports/h4a-negative-result-20261006.md">Negative result</a></td><td>Closed: 7.4× worse than chance on its own comparator.</td></tr></tbody></table></div><p class="micro">Unauthenticated file↔score attributions remain prohibited evidence, and its earlier calibration was withdrawn. The <a href="data/instrument-audit-20261006.json">parallel instrument audit</a> and <a href="data/unauthenticated_attribution_audit.json">attribution retraction</a> are retained but not adopted as a promotion gate. <a href="reports/integration-20261006.md">Integration notes</a>.</p></section></main><footer class="footer"><div class="wrap"><p><strong>Maximize P(Win). Own the Outcome.</strong><br>Evidence before a weekly submission slot.</p>
+<p>Independent competition research · not affiliated with DOE or DrivenData.<br><a href="https://github.com/buffedlizard55-lab/GEMSDOE40">Repository</a> · <a href="user-prompt-20261006.md">Full project brief</a> · <a href="reports/session2-results-20261006.md">Session-2 results</a></p></div></footer></body></html>

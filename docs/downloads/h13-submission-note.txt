@@ -1,0 +1,5 @@
+Name: GEMSDOE40-H13-CREST-BINARY-a5d5b80a8476
+Note: H13 binary Euler SI0 depth-consensus crest emission (trace-locked, cross-family). Unique vs 343 priors. Proxy gate failed: HOLD, no organizer score.
+File: gemsdoe40-h13-crest-binary-20261006-a5d5b80a8476.tif
+SHA-256: c202a579ce33ea385a117f233857714150f8d68a5d6e8e46ef820b428e08ff33
+Status: HOLD — DO NOT SUBMIT

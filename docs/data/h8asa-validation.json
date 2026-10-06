@@ -1,0 +1,160 @@
+{
+  "candidate_canonical_sha256": "59812bc4797963dfd87c4737bce95839a789e41b9a3d94055eccae0cd3543a37",
+  "candidate_format": {
+    "bytes": 3595075,
+    "sha256": "b00328ce401cf5be5c149e668efbbaa911815fe1f2847719c3ff8576fff2ea31",
+    "valid": true
+  },
+  "candidate_sha256": "b00328ce401cf5be5c149e668efbbaa911815fe1f2847719c3ff8576fff2ea31",
+  "catalogue_skill_diagnostic": {
+    "candidate_mean_dti": 0.002300414260660163,
+    "note": "catalogue is the KNOWN mask, not the hidden truth; this measures fault-finding style only",
+    "random_same_mass_mean_dti": 0.1855958835277498
+  },
+  "checks": {
+    "format_nan": {
+      "bytes": 3595075,
+      "candidate": {
+        "count": 1,
+        "crs": "EPSG:32611",
+        "dtype": "float32",
+        "height": 3730,
+        "in_footprint_max": 1.0,
+        "in_footprint_min": 0.0,
+        "in_footprint_nonzero": 741536,
+        "nodata": "NaN",
+        "outside_nan": 7111787,
+        "transform": [
+          100.0,
+          0.0,
+          243350.0,
+          0.0,
+          -100.0,
+          4508550.0
+        ],
+        "width": 3292
+      },
+      "canonical_pixels_sha256": "59812bc4797963dfd87c4737bce95839a789e41b9a3d94055eccae0cd3543a37",
+      "issues": [],
+      "path": "/home/user/GEMSDOE40/docs/downloads/gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-nan.tif",
+      "sha256": "b00328ce401cf5be5c149e668efbbaa911815fe1f2847719c3ff8576fff2ea31",
+      "template": {
+        "count": 1,
+        "crs": "EPSG:32611",
+        "dtype": "float32",
+        "height": 3730,
+        "nodata": "NaN",
+        "outside_pixels": 7111787,
+        "transform": [
+          100.0,
+          0.0,
+          243350.0,
+          0.0,
+          -100.0,
+          4508550.0
+        ],
+        "valid_pixels": 5167373,
+        "width": 3292
+      },
+      "valid": true
+    },
+    "format_zeros_portal": {
+      "all_finite": true,
+      "crs_ok": true,
+      "dtype": "float32",
+      "in_0_1": true,
+      "nodata_unset": true,
+      "path": "/home/user/GEMSDOE40/docs/downloads/gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-zeros.tif",
+      "shape_ok": true,
+      "transform_ok": true,
+      "valid": true,
+      "zeros_outside": true
+    },
+    "synthetic_suite": "tests/test_asa_spi.py (S1-S5), run in CI; see pytest receipt",
+    "uniqueness": {
+      "detail_path": "work/h8/uniqueness.json",
+      "full_size_raw_comparisons": 340,
+      "hashed_and_audited_blobs": 343,
+      "inventory_blobs": 343,
+      "max_abs_pearson": 0.2528210586187005,
+      "max_top_containment": 0.20159876772720028,
+      "max_top_jaccard": 0.11209888211232039,
+      "pass": true
+    }
+  },
+  "gate": {
+    "block_pass": false,
+    "block_win_requirement": 10,
+    "block_wins_vs_h33_b2": 1,
+    "candidate_pooled_proxy_dti": 0.024128377540119133,
+    "gate_pass": false,
+    "h33_b2_pooled_proxy_dti": 0.09155026618057825,
+    "incumbent_pooled_proxy_dti_circular": 0.8359066540883113,
+    "pooled_pass": false,
+    "pooled_threshold": 0.091550266181,
+    "rule": "registered replacement gate (h8-preregistration-20261006.md)",
+    "truth_bearing_blocks": 16
+  },
+  "generation_basename": "gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e",
+  "promotion_gate": {
+    "block_win_requirement": 10,
+    "block_wins_vs_h33_b2": 1,
+    "candidate_pooled_proxy_dti": 0.024128377540119133,
+    "final_action": "HOLD \u2014 DO NOT SUBMIT",
+    "organizer_score": null,
+    "passed": false,
+    "pooled_threshold": 0.091550266181,
+    "rule": "registered replacement gate (h8-preregistration-20261006.md)",
+    "slot_eligible": false,
+    "weekly_submission_used": false
+  },
+  "proxy_diagnostics": {
+    "candidate_pooled": {
+      "fn": 75042.96237125155,
+      "fp": 145741.60755824298,
+      "n_truth": 77248,
+      "score": 0.024128377540119133,
+      "tp": 2205.037628748454
+    },
+    "comparators": {
+      "frozen_sgmc_incumbent_circular": {
+        "fn": 15175.292600251734,
+        "fp": 224.99998658895493,
+        "n_truth": 77248,
+        "score": 0.8359066540883113,
+        "tp": 62072.707399748266
+      },
+      "h33_b2": {
+        "fn": 70844.28276287764,
+        "fp": 34342.05547952652,
+        "n_truth": 77248,
+        "score": 0.09155026618057825,
+        "tp": 6403.717237122357
+      },
+      "h4_previous_session": {
+        "fn": 76782.80119589421,
+        "fp": 27568.379994480503,
+        "n_truth": 77248,
+        "score": 0.00690153557133729,
+        "tp": 465.1988041057965
+      }
+    },
+    "proxy_info": {
+      "holdout_blocks": "4 rows x 6 columns, contiguous; 3-cell guard at internal boundaries",
+      "known_label_pixels_exact": 60988,
+      "mask_rule": "exclude only labels == 1 at those exact pixels; no distance buffer",
+      "off_catalogue_truth_pixels_after_exact_mask": 78433,
+      "official_metric": "published 300 m triangular distance-weighted Tversky; alpha=0.2, beta=0.8",
+      "proxy_dtype": "uint8",
+      "proxy_generation": "historical_h2b_26d142",
+      "proxy_nodata": 255.0,
+      "proxy_sha256": "26d142c4c93282cd94f6950ab96f22aeff59fbbea523d43d662e76fa1b161b5c",
+      "proxy_status": "owner-derived SGMC mirror; proxy instrument only, not organizer truth",
+      "sgmc_positive_overlap_exact_known_pixels": 3718,
+      "sgmc_positive_pixels_in_footprint": 82151,
+      "template_outside_pixels": 7111787,
+      "template_valid_pixels": 5167373
+    }
+  },
+  "verdict": "HOLD \u2014 DO NOT SUBMIT (registered gate failed)"
+}

@@ -1,5 +1,7 @@
 #!/usr/bin/env python
-"""Run Euler deconvolution (SI = 0, fault-like contact) on the competition potential-field layers.
+"""ARCHIVED ONLY — opt-in historical reproduction, not current submission advice.
+
+Run Euler deconvolution (SI = 0, fault-like contact) on the competition potential-field layers.
 
 Usage
 -----
@@ -32,6 +34,8 @@ from gems40.layers import BANDS
 
 
 def main() -> int:
+    from gemsdoe40.legacy_guard import require_legacy_opt_in
+    require_legacy_opt_in()
     ap = argparse.ArgumentParser()
     ap.add_argument("--data", default="data", help="directory holding training_features.tif")
     ap.add_argument("--layer", default="rtp", choices=sorted(BANDS))

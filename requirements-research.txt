@@ -1,0 +1,8 @@
+# Versions measured in the H4 run (Python 3.11; CPU). Pin numerical dependencies
+# to make the scientific reproduction more stable across installations.
+numpy==2.4.6
+scipy==1.17.1
+rasterio==1.4.4
+affine==3.0.1
+pytest==9.1.1
+matplotlib==3.11.2

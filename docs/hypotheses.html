@@ -1,117 +1,17 @@
-<!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Hypotheses · GEMSDOE40</title><link rel="stylesheet" href="assets/site.css"></head>
-<body><header><h1>Hypotheses</h1><div class="muted small">DOE GEMS Prize (DrivenData #306) ·
-Euler deconvolution depth-clustering submission system · repository
-<a href="https://github.com/buffedlizard55-lab/GEMSDOE40">buffedlizard55-lab/GEMSDOE40</a></div>
-<div style="margin-top:10px"><nav class="small">
-<a href="index.html">Home</a><a href="executive-summary.html">How to submit</a>
-<a href="methodology.html">Method</a><a href="hypotheses.html">Hypotheses</a>
-<a href="leaderboard-analysis.html">Leaderboard analysis</a><a href="evidence.html">Evidence</a>
-<a href="sources.html">Sources</a></nav></div></header>
-<aside class="panel note" role="note"><strong>Historical main-branch supporting page (2026-10-05, before the H2-B audit).</strong> This page preserves prior research and should not be read as current upload advice. The prior H40-4 multi-scale TIFF was later scored at 0.124715 on the owner-derived SGMC proxy (0/24 blocks) and fails this repository's strict NaN-nodata format check; H2-B is <strong>HOLD — DO NOT SUBMIT</strong>. See the <a href="index.html">current project status</a> and <a href="executive-summary.html">current Executive Summary</a>. No organizer score is asserted here.</aside>
-<main>
-<p class="small muted">Ranking rule: expected DTI improvement first, implementation cost second, and
-nothing is promoted unless it beats the incumbent <em>in all four spatially blocked folds</em> of the
-LM instrument. "Data obtainable?" is answered for every idea that needs an external layer.</p>
-
-<h2>H40-1 — Euler SI = 0 depth-cluster crests from the magnetic and gravity layers
-<span class="badge b-warn">MEASURED: best addition arm, below break-even as a standalone emission</span></h2>
-<table>
-<tr><th>item</th><th>value</th></tr>
-<tr><td>layers</td><td><code>rtp</code> (band 2), <code>tmi</code> (14), <code>mag_anom</code> (1), <code>iso_grav_anom</code> (13) of <code>training_features.tif</code> — no external data</td></tr>
-<tr><td>physical signature</td><td>depth of a fault-like <em>contact</em> from the Euler homogeneity equation (N = 0), i.e. a source-geometry estimate, not an edge magnitude</td></tr>
-<tr><td>why it can catch an uncatalogued fault</td><td>a contact that truncates magnetised basement <em>at depth</em> produces Euler solutions even when the surface scarp is eroded or buried, so it can mark faults the scarp-based catalogue misses</td></tr>
-<tr><td>how it differs from prior work</td><td>the sibling repo (GEMSDOE28, H37-3/H38-1) emitted dots at raw Euler <em>centroids</em> and as a corroboration for a ridge detector; this repository (a) emits the <em>depth-clustered density crest</em>, (b) uses the gravity layer as an equal partner, (c) validates the marginal efficiency against the metric's break-even rather than only against a holdout mean</td></tr>
-<tr><td>measured</td><td>raw KDE support: marginal efficiency 0.040–0.053 credit/px (below τ = 0.0588). Crest-thinned: <strong>0.066–0.085 credit/px = 1.13–1.44 × τ</strong>, all four blocked folds positive. Standalone LM-cal 0.116 (incumbent 0.268).</td></tr>
-<tr><td>cost</td><td>~10 s per layer in this sandbox, CPU only</td></tr>
-<tr><td>verdict</td><td><strong>Promote as an augmentation, reject as a replacement.</strong> Shipped as the augmented artifact.</td></tr>
-</table>
-
-<h2>H40-2 — Euler depth field as a <em>gate</em> on the incumbent's false positives
-<span class="badge b-bad">MEASURED: refuted (support too sparse to gate)</span></h2>
-<table>
-<tr><tr><td>layers</td><td>the incumbent's ridge support + the Euler depth-cluster crest field</td></tr>
-<tr><td>physical signature</td><td>a lineament with no shallow contact beneath it is likelier to be a road, strandline or unit boundary than a fault</td></tr>
-<tr><td>why it could help</td><td>removal is charged at α per pixel; the group's false positives are dominated by non-tectonic lineaments</td></tr>
-<tr><td>measured</td><td>the Euler crest support and the incumbent's support have Jaccard ≈ 0.005 — the crests cannot gate a field they do not touch. No prune variant kept ≥ 5,000 dots.</td></tr>
-<tr><td>verdict</td><td>Refuted in this form. A <em>dilated</em> or <em>smoothed</em> Euler density (not crests) is the open variant to test next.</td></tr>
-</table>
-
-<h2>H40-3 — Gravity-only Euler contacts as a separate detector family
-<span class="badge b-warn">MEASURED: highest per-pixel efficiency, smallest budget</span></h2>
-<table>
-<tr><td>layers</td><td><code>iso_grav_anom</code> (band 13); optionally <code>iso_grav_anom_hg</code> (18) and <code>iso_grav_anom_vg</code> (11) for an independent derivative set</td></tr>
-<tr><td>physical signature</td><td>density contrast across a fault (basin fill vs basement), insensitive to remanent magnetisation and to the magnetic-blind units that dominate parts of the study area</td></tr>
-<tr><td>why it can catch an uncatalogued fault</td><td>the programme has been magnetic- and topography-dominated; a gravity-only contact is a genuinely independent constraint, and the gravity layer's inertia makes it sensitive to deep, buried contacts</td></tr>
-<tr><td>measured</td><td>crest support 6,131 px (only 7 % within 200 m of the catalogue); added to the incumbent: 0.1226 credit/px = 2.08 × τ on the top 183 px, 0.0822 at a 2,000 px budget — the highest efficiency measured in this session</td></tr>
-<tr><td>verdict</td><td>Keep: it is the natural next sweep (gravity-only crest budget vs gain) and the cheapest remaining win</td></tr>
-</table>
-
-<h2>H40-4 — Multi-window (multi-scale) Euler conjunction
-<span class="badge b-ok">MEASURED — SHIPPED as the recommended upload</span></h2>
-<table>
-<tr><td>layers</td><td>the same four layers (rtp, tmi, mag_anom, iso_grav_anom), Euler windows 10, 15, 20
-and 30 px (1 / 1.5 / 2 / 3 km) with N = 0, rank-normalised per scale and combined by rank-minimum</td></tr>
-<tr><td>physical signature</td><td>a real fault returns mutually consistent depths <em>across</em> window
-sizes; model error (interference from neighbouring sources) is the dominant bias of single-window Euler
-deconvolution, and it is the reason the sibling repositories' raw-centroid emission sat 1–3 px off the
-surface trace</td></tr>
-<tr><td>measured</td><td>129,662 crest px survive the four-scale conjunction (98,000 fewer than the
-single-scale w10 crest set before the catalogue buffer). Budget sweep on the blocked instrument
-(<code>data/evidence/multiscale.json</code>): added px → efficiency in units of τ = 0.0588 —
-10 k → 1.18×, 20 k → 1.13×, 30 k → 1.13×, 40 k → 1.18×, <strong>60 k → 1.18×</strong>, 80 k → 1.11×,
-all of it → 1.06× with only 3/4 folds. The 60 k budget is the argmax of projected live gain that stays
-inside the instrument's validity domain (&lt; 120 k emitted px) and is positive in 4/4 blocked folds:
-97,654 px emitted, +60,000 new, LM-cal 0.34835 vs the incumbent's 0.26792
-(<strong>+0.08043</strong>), 4/4 folds, projected live gain +0.029 conservative / +0.080 instrument-based</td></tr>
-<tr><td>differs from</td><td>every prior arm uses a single window scale, and the sibling repository's
-Euler work emitted raw cluster centroids; this changes the <em>estimator</em> and the emission rule
-together, and it is the first multi-scale conjunction in the programme</td></tr>
-<tr><td>cost / data</td><td>12 Euler runs × ~12 s; all data already local</td></tr>
-<tr><td>verdict</td><td><strong>Promoted to the recommended upload.</strong> The single-scale artifact
-remains as the conservative fallback; the budget must not be pushed past 60 k added px without new
-evidence, because the instrument's density calibration is only verified below ~120 k emitted px</td></tr>
-</table>
-
-<h2>H40-5 — Depth-structured emission (depth-binned detection, not a single depth field)
-<span class="badge b-warn">NOT YET MEASURED — no new data needed</span></h2>
-<table>
-<tr><td>layers</td><td>the same Euler clouds, split into depth deciles (0–200 m, 200–400 m, …)</td></tr>
-<tr><td>physical signature</td><td>geothermal feeder faults in the Great Basin are steeply dipping and near-surface; a depth-<em>banded</em> emission lets the metric pay for the shallow band while the deep band is retained only where it is corroborated by a shallow cluster</td></tr>
-<tr><td>why it can catch an uncatalogued fault</td><td>shallow magnetic contacts with no deep continuation are often cultural/geological noise, while a shallow contact rooted in a deeper structure is a strong fault indicator</td></tr>
-<tr><td>differs from</td><td>the current weighting collapses depth into a single exponential; a banded test makes the depth axis an explicit hypothesis instead of a nuisance</td></tr>
-<tr><td>cost / data</td><td>~1 min; all data local</td></tr>
-<tr><td>verdict</td><td>Cheap, physically motivated, and directly testable on the existing cloud arrays</td></tr>
-</table>
-
-<h2>Append-only H4 outcome (2026-10-06)</h2>
-<p>H4 — Euler SI=0 depth-cluster emission on the joint magnetic/gravity field — was implemented and
-measured. <strong>Result: not promoted.</strong> On the frozen four-fold blocked LM instrument
-(verified against 5 of 6 published owner-reported orderings) the shipped ring-pruned field scores
-0.2860 LM-calibrated against the reference <code>h33-2-b2</code> at 0.3663, winning
-<strong>1 of 4</strong> folds. The flank-band variants the surrogate model preferred (modelled 0.3410 /
-0.3370) scored 0.1168 / 0.0968 and won 0 of 4 folds; those files were withdrawn and deleted after
-measurement.</p>
-<p>The registered "beat the incumbent in all four spatial blocks" rule was <strong>not</strong>
-relaxed after seeing the result, and no weekly submission slot was spent. Recorded deviations:
-(a) the emitted budget rose from 40,000 to 60,000 px after the 40,000 px field won 0 of 4 folds — the
-60,000 px figure comes from the emission law fitted to the published ladder (optimum ≈ 60,069 px),
-which was fixed before any H4 emission existed; (b) <code>run_h4.py</code> now refuses to auto-select
-a surface with more than 50 % of its mass within 6 px of the catalogue, because the SGMC surrogate
-rewards that geometry while the published ladder punishes it; (c) the superseded 40,000 px receipt
-stays in the record.</p>
-<p>New evidence: the SGMC off-catalogue truth is 3.3× enriched in the 2–6 px catalogue band and the
-direct SGMC metric is anti-correlated with the published ladder (Spearman −0.921) — so surrogate
-credit for catalogue-hugging geometry measures co-digitisation, not discovery. See
-<a href="research/h4-euler-depthcluster.html">the H4 record</a> and
-<a href="limitations.html">limitations</a>.</p>
-<h2>Ideas that need new external data (named source, obtainability checked)</h2>
-<table>
-<tr><th>idea</th><th>layer needed</th><th>official free source</th><th>obtainable from this sandbox?</th></tr>
-<tr><td>2 m temperature-probe thermal lineaments</td><td>GDR 1391 <code>2m_temperature_probe_INGENIOUS_regional_data.zip</code></td><td><a href="https://gdr.openei.org/submissions/1391">gdr.openei.org/submissions/1391</a> (CC BY 4.0, DOI 10.15121/1881483)</td><td><span class="badge b-bad">no</span> — <code>gdr.openei.org</code> unreachable from this sandbox (HTTP 000). Available via a GitHub-Actions runner, as the sibling repos do.</td></tr>
-<tr><td>paleo geothermal sinter/tufa conduits</td><td>GDR 1391 <code>paleo_geothermal_regional.zip</code></td><td>same</td><td><span class="badge b-warn">partly</span> — a copy is already mirrored at <code>GEMSDOE24/data/external/paleo_geothermal_regional.zip</code> (84,008 B)</td></tr>
-<tr><td>1 m LiDAR piercing-line offsets</td><td>USGS 3DEP 1 m DEM tiles (716 tiles)</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/data/">competition <code>1m_DEM_links.csv</code></a> / <a href="https://registry.opendata.aws/usgs-lidar/">AWS open data</a></td><td><span class="badge b-bad">no</span> directly; the runner bridge is required and the volume is large</td></tr>
-</table>
-</main></body></html>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ranked hypotheses · GEMSDOE40</title><meta name="description" content="Measured Euler depth-clustering research for geological fault mapping. Unique GeoTIFFs, open evidence, honest no-submission gates.">
+<link rel="stylesheet" href="assets/contact.css"><script src="assets/contact.js" defer></script></head>
+<body><a href="#main" class="skip">Skip to content</a><header class="header"><div class="wrap"><div class="masthead">
+<a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true">G</span><b>GEMS / 40</b><em>FIELD NOTES</em></a><nav class="nav" aria-label="Main navigation"><a class="" href="index.html">Overview</a><a class="" href="executive-summary.html">Submission guide</a><a class="" href="evidence.html">Evidence</a><a class="active" href="hypotheses.html">Hypotheses</a><a class="" href="sources.html">Research library</a></nav></div></div></header>
+<main id="main" class="wrap"><div class="subhero"><p class="kicker">RESEARCH / REGISTER BEFORE IMPLEMENTATION</p><h1>Five new hypotheses.<br>Two frozen experiments. One frozen pre-screen.</h1><p class="lead">Ranked by expected DTI improvement per unit cost before implementation. H8 and H13 were implemented; H9 and H10 were frozen-pre-screened and rejected; H11–H12 remain registered. The earlier H4–H7 slate is preserved in the session-1 registration.</p></div><section class="section"><div class="tablewrap"><table><thead><tr><th>Rank / hypothesis</th><th>Layers and physical signature</th><th>Off-catalogue rationale &amp; difference</th><th>Status / cost</th></tr></thead><tbody>
+<tr><td><strong>1 · H8</strong><br>Trace-locked Euler depth consensus</td><td>H4 cloud (TMI + gravity dG/dz, SI=0+A); orientation-NMS crests with along-strike depth-consensus corridors.</td><td>Continuation strands and concealed extensions keep coherent 3-D source geometry that edge maps discard. No repo arm or corpus artifact applied orientation-NMS trace locking to an Euler cloud.</td><td><strong>Implemented; HOLD</strong> (G3 fail, G4 win). Medium cost.</td></tr>
+<tr><td><strong>1.5 · H13</strong><br>Value-concentrated crest emission</td><td>Identical H8 physics; binary 1.0 emission on consensus crests (metric linearity argument, registered before scoring).</td><td>Tests the diagnosed mass-dilution failure at zero new degrees of freedom. Distinct emission from every corpus artifact.</td><td><strong>Implemented; HOLD</strong> (G3 fail, G4 win). Minutes.</td></tr>
+<tr><td><strong>2 · H9</strong><br>Blind basement-flexure faults</td><td><span class="mono">depth_to_base_surf</span> (15), <span class="mono">cond_surf</span> (17), <span class="mono">iso_grav_anom_hg</span> (18), <span class="mono">det_elev</span> (12).</td><td>A basement flexure ridge with a conductivity break and gravity-gradient ridge marks buried normal faults — the class surface compilations least contain. Bands 15/17 never used by any arm.</td><td><strong>Pre-screened 2026-10-06: NEGATIVE.</strong> Best indicator (HG of det_elev) 0.1048 vs its own mass-matched random control 0.1158 — no placement skill beyond random mass. <a href="data/h9-prescore.json">Receipt</a>.</td></tr>
+<tr><td><strong>3 · H10</strong><br>Geodetic strain-rate lineaments</td><td><span class="mono">geod_shearrate</span> (7), <span class="mono">geod_dilaterate</span> (8), <span class="mono">geod_2ndinv</span> (4).</td><td>Localized interseismic strain marks actively slipping strands missing from static compilations; relay segments between catalogue traces.</td><td><strong>Pre-screened 2026-10-06: NEGATIVE.</strong> Best indicator (HG of geod_dilaterate) 0.0701 vs its own mass-matched random control 0.1158; the registered structure-tensor lineament detector scored 0.0653. <a href="data/h10-prescore.json">Receipt</a>.</td></tr>
+<tr><td><strong>4 · H11</strong><br>Seismic corridor × Euler intersection</td><td><span class="mono">deq_n100a15</span> (10), <span class="mono">ieq_n100a15</span> (16), Euler support.</td><td>Simultaneous proximity to recorded seismicity and shallow depth-consistent Euler support marks active unmapped strands.</td><td>Registered. Low–medium cost.</td></tr>
+<tr><td><strong>5 · H12</strong><br>ComCat focal-mechanism fields</td><td>USGS ComCat FDSN event service + event layers.</td><td>Nodal-plane orientations sharpen active-fault geometry beyond smooth density bands.</td><td><strong>Blocked</strong>: sandbox egress; needs unrestricted runner. Free official source named.</td></tr></tbody></table></div>
+<p class="micro">Session-1 slate (H4 offset-aware Euler, H5 finite-step, H6 plane geometry, H7 representation stability) is preserved in <a href="research/preregistered-hypotheses-20261006.md">its registration</a>; H4 was implemented and held. The numbered H4-A…H4-F arms are documented in <a href="research/hypotheses.md">the append-only register</a>.</p></section><section class="section prose"><h2>H9 frozen pre-screen result (2026-10-06)</h2><p>The H9 pre-screen protocol was appended to the preregistration <em>before</em> any H9 scoring (<a href="research/h8-preregistration-20261006.md">addendum 2</a>; protocol pinned at sha256 <span class="mono">95ef16f1…</span>). Six frozen indicators on bands 12/15/17/18 were percentile-emitted and scored on the frozen SGMC proxy alongside the audit's exact mass-matched controls. The frozen decision rule required the best indicator to beat BOTH 0.039354 (2 × H13's G3 score) AND 2 × its own random control.</p><div class="tablewrap"><table><thead><tr><th>Indicator</th><th>Proxy score</th><th>Random control</th><th>Gradient-topK</th></tr></thead><tbody><tr><td>HG_det_elev (best)</td><td><strong>0.1048</strong></td><td>0.1158</td><td>0.0800</td></tr><tr><td>HG_cond</td><td>0.0710</td><td>0.1158</td><td>0.0800</td></tr><tr><td>HG_grav_hg</td><td>0.0680</td><td>0.1158</td><td>0.0800</td></tr><tr><td>step_depth_base</td><td>0.0650</td><td>0.1156</td><td>0.0800</td></tr><tr><td>flexure_product</td><td>0.0619</td><td>0.1158</td><td>0.0800</td></tr><tr><td>HG_depth_base</td><td>0.0579</td><td>0.1158</td><td>0.0800</td></tr></tbody></table></div><p class="micro">Decision: <strong>NEGATIVE-AT-PRESCREEN</strong>; no H9 implementation compute will be spent. The three subsurface bands central to H9 (15/17/18) rank at the bottom; only the detrended-elevation gradient (band 12) comes near the random level, and still below it. At dense emission mass (~2.6 M value-budget), random dots reach 0.1158 on this proxy — consistent with the session-2 finding that the proxy rewards diffuse mass rather than placement. Full numbers: <a href="data/h9-prescore.json">docs/data/h9-prescore.json</a>; report: <a href="reports/session3-h9-prescore-20261006.md">session-3 pre-screen report</a>.</p></section><section class="section prose"><h2>H10 frozen pre-screen result (2026-10-06)</h2><p>H10 (geodetic strain-rate lineaments on bands 4/7/8) followed the same registered fail-fast pattern (<a href="research/h8-preregistration-20261006.md">addendum 3</a>, pinned at sha256 <span class="mono">d495fc0f…</span> before scoring). Six frozen indicators — gradient magnitudes of each band, band 4 used directly, the registered oriented structure-tensor linearity of band 7, and the HG(7) × HG(8) rank product — were percentile-emitted and scored against the audit's exact mass-matched controls.</p><div class="tablewrap"><table><thead><tr><th>Indicator</th><th>Proxy score</th><th>Random control</th><th>Gradient-topK</th></tr></thead><tbody><tr><td>HG_dilate (best)</td><td><strong>0.0701</strong></td><td>0.1158</td><td>0.0800</td></tr><tr><td>HG_2ndinv</td><td>0.0690</td><td>0.1158</td><td>0.0800</td></tr><tr><td>inv_direct</td><td>0.0675</td><td>0.1156</td><td>0.0800</td></tr><tr><td>shear_x_dilate</td><td>0.0668</td><td>0.1158</td><td>0.0800</td></tr><tr><td>lineament_shear</td><td>0.0653</td><td>0.1156</td><td>0.0800</td></tr><tr><td>HG_shear</td><td>0.0647</td><td>0.1158</td><td>0.0800</td></tr></tbody></table></div><p class="micro">Decision: <strong>NEGATIVE-AT-PRESCREEN</strong>; no H10 implementation compute will be spent. With H9 also closed, every registered new-band-family lever has failed the proxy placement test; the dense-mass random level ≈ 0.1157 reproduced exactly across both pre-screens. Full numbers: <a href="data/h10-prescore.json">docs/data/h10-prescore.json</a>; report: <a href="reports/session3-h10-prescore-20261006.md">session-3 H10 pre-screen report</a>.</p></section><section class="section prose"><h2>Validation instruments in force</h2><p>G3 uses the frozen SGMC-derived proxy (26d142…) — a diagnostic whose ceiling belongs to SGMC-matching fields. G4 (CAT-HID, repaired 2026-10-06) is the non-circular skill check: 20 % of catalogue components hidden and scored in eroded quadrants. The LM live-mirror is reported as diagnostic only (circular incumbent). A future promotion protocol must be source-independent — registered before scoring — before any slot is spent.</p></section><section class="section prose"><h2>Concurrent dual registration — same day, two slates, one naming collision</h2>
+<p>On 2026-10-06 two independent sessions each registered an "H8–H12" slate before implementation. Session 2’s slate (above: trace-locked Euler H8, crest emission H13, seismic corridor H11, ComCat H12) is preserved in <a href="research/h8-preregistration-20261006.md">h8-preregistration-20261006.md</a>. The concurrent session’s slate — <strong>H8 analytic-signal local-wavenumber depth cells (implemented, HOLD at its gate)</strong>, H9 gravity basin-margin ridges, H10 multi-scale ridge persistence, H11 Werner deconvolution, H12 DTI marginal-bar reallocation (rejected as primary) — is preserved in <a href="research/h8asa-preregistration-20261006.md">h8asa-preregistration-20261006.md</a>, and its artifact/receipts carry the <code>h8asa</code> prefix to stay distinct. Neither slate is a duplicate of the other; the collision is disclosed, not silently merged.</p>
+<p>H8-ASA measured: synthetic S1–S5 PASS; novelty PASS (max |Pearson| 0.2528 vs 343 priors); gate FAIL (pooled proxy 0.024128 &lt; 0.091550; block wins 1/16); byte-identical independent reproduction. <a href="reports/h8-results-20261006.md">Result</a> · <a href="reports/h8-review-20261006.md">three-pass review</a>.</p></section></main><footer class="footer"><div class="wrap"><p><strong>Maximize P(Win). Own the Outcome.</strong><br>Evidence before a weekly submission slot.</p>
+<p>Independent competition research · not affiliated with DOE or DrivenData.<br><a href="https://github.com/buffedlizard55-lab/GEMSDOE40">Repository</a> · <a href="user-prompt-20261006.md">Full project brief</a> · <a href="reports/session2-results-20261006.md">Session-2 results</a></p></div></footer></body></html>
