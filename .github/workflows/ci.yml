@@ -24,9 +24,10 @@ jobs:
         run: python -m pytest -q
       - name: Verify links, actual release bytes, full corpus and no-go evidence
         run: python scripts/build_site.py --check
-      - name: Verify deterministic current HTML generation
+      - name: Verify deterministic current HTML generation and retained H4 bytes
         run: |
           python scripts/build_contact_site.py
+          python scripts/build_h8_site.py
           git diff --exit-code -- docs/*.html index.html
       - name: Compile Python sources
         run: python -m compileall -q src scripts

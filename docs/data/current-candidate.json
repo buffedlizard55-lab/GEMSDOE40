@@ -1,81 +1,36 @@
 {
-  "archived_candidate_h4": {
-    "filename": "gemsdoe40-h4-contact-offset-depthkde-20261006-fab9f6619c02.tif",
-    "sha256": "ee73ffd76fabbaa1a2e77e17f57947a7db858916d713801e0c3502e49f6acabb",
-    "status": "HOLD \u2014 DO NOT SUBMIT"
-  },
-  "bytes": 363453,
-  "canonical_pixels_sha256": "a5d5b80a8476f13bf1ea19dd8a7675a1d2bd2705281399c17baafff8b91675fc",
+  "experiment": "H8 lineament-weighted cross-family SI=0 Euler depth-cluster KDE",
+  "filename": "gemsdoe40-h8-euler-lineament-depthcluster-20261006-785c4f5d5ce1.tif",
+  "path": "docs/downloads/gemsdoe40-h8-euler-lineament-depthcluster-20261006-785c4f5d5ce1.tif",
+  "bytes": 493872,
+  "sha256": "49d26d8195e343b531cf5e8f9ebd44e2e0a652daca6ad4f71016faabcab33509",
+  "canonical_pixels_sha256": "785c4f5d5ce1b2a341f27ac26702b77626eaed270b6af48e0127d68378983500",
+  "mass": 32485.908203125,
+  "dots": 40000,
+  "values": [
+    0.3830769658088684,
+    1.0
+  ],
+  "tracking_name": "GEMSDOE40-H8-LINEAMENT-785c4f5d5ce1",
+  "note": "Euler deconvolution SI=0 contact depth-clustering over magnetic (rtp) and isostatic gravity (differentiated once); lineament-weighted kernel-density emission; 40,000 dots; id 785c4f5d5ce1.",
+  "note_characters": 188,
   "cloud": {
-    "bytes": 2183131,
-    "path": "docs/downloads/h4-euler-solutions.csv.gz",
-    "records": 46656,
-    "sha256": "6bed30b224981ef1064256d696c585b76f438011bbae6c0a16c00e6e6f5922ba"
+    "path": "docs/downloads/h8-lineament-solutions.csv.gz",
+    "sha256": "0e82b38ebe521369347055541af556d3e17600f03241998e8291f6a150dd8d35",
+    "bytes": 4623502
   },
-  "download_purpose": "Distinct submission-format research artifact; NOT approved for upload",
-  "experiment": "H13",
-  "filename": "gemsdoe40-h13-crest-binary-20261006-a5d5b80a8476.tif",
-  "h8asa_candidate": {
-    "bytes": 3595075,
-    "canonical_pixels_sha256": "59812bc4797963dfd87c4737bce95839a789e41b9a3d94055eccae0cd3543a37",
-    "cloud": {
-      "bytes": 5478496,
-      "path": "docs/downloads/gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-cloud.csv.gz",
-      "records": 349445,
-      "sha256": "0f0cde332a1412f253192719b728eb6f9c5fe65e2fc80a5fb842b8337038442a",
-      "weighted": {
-        "gravity": 160567,
-        "magnetic": 188878
-      }
-    },
-    "construction": "Analytic-signal local-wavenumber depth cells (ASA/SPI family), tapered FFT, H4-Euler corroboration, sigma=2 KDE, soft catalogue-flank ramp",
-    "experiment": "H8-ASA",
-    "filename": "gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-nan.tif",
-    "gate": {
-      "block_wins": "1/16",
-      "passed": false,
-      "pooled_proxy_dti": 0.024128,
-      "threshold": 0.091550266181
-    },
-    "name": "GEMSDOE40-H8-ASA-SPI-b845d3ad449e",
-    "note": "GEMSDOE40 H8 | analytic-signal local-wavenumber depth cells x H4-Euler corroboration; soft catalogue ramp; continuous [0,1]; HOLD: gate failed; unscored",
-    "note_characters": 152,
-    "organizer_score": null,
-    "path": "docs/downloads/gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-nan.tif",
-    "portal_safe_twin": {
-      "bytes": 3521378,
-      "filename": "gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-zeros.tif",
-      "sha256": "8c262620a769e7dbc8f8ee89aa92a633c91507752b398eec463932adea87c01b"
-    },
-    "receipts": [
-      "docs/data/h8asa-generation.json",
-      "docs/data/h8asa-format.json",
-      "docs/data/h8asa-uniqueness.json",
-      "docs/data/h8asa-validation.json",
-      "docs/data/h8asa-reproduction.json"
-    ],
-    "sha256": "b00328ce401cf5be5c149e668efbbaa911815fe1f2847719c3ff8576fff2ea31",
-    "slot_eligible": false,
-    "status": "HOLD \u2014 DO NOT SUBMIT",
-    "zip": {
-      "bytes": 3421188,
-      "filename": "gemsdoe40-h8-asa-spi-depthkde-20261006T035031Z-b845d3ad449e-zeros.zip",
-      "sha256": "98b04fdbdbe531f6c6d940047e3570909e4973bca105990bcafc248ec6457f1c"
-    }
+  "hard_twin": {
+    "filename": "gemsdoe40-h8-euler-lineament-depthcluster-20261006-785c4f5d5ce1-hard.tif",
+    "path": "docs/downloads/gemsdoe40-h8-euler-lineament-depthcluster-20261006-785c4f5d5ce1-hard.tif",
+    "sha256": "0814b454be3bd8f0f898c8822bd9d2bc7eec57271276e3b326ee4e235ed7ff3b",
+    "bytes": 371949
   },
-  "name": "GEMSDOE40-H13-CREST-BINARY-a5d5b80a8476",
-  "note": "H13 binary Euler SI0 depth-consensus crest emission (trace-locked, cross-family). Unique vs 343 priors. Proxy gate failed: HOLD, no organizer score.",
-  "note_characters": 148,
-  "organizer_score": null,
-  "path": "docs/downloads/gemsdoe40-h13-crest-binary-20261006-a5d5b80a8476.tif",
-  "sha256": "c202a579ce33ea385a117f233857714150f8d68a5d6e8e46ef820b428e08ff33",
-  "sibling_candidate": {
-    "experiment": "H8",
-    "filename": "gemsdoe40-h8-tracelock-depthkde-20261006-373fa53b12e9.tif",
-    "path": "docs/downloads/gemsdoe40-h8-tracelock-depthkde-20261006-373fa53b12e9.tif",
-    "sha256": "6c32147db39cd34e77baf31f6cb585165bca1d042cfa599d5d027cb140e0c195",
-    "status": "HOLD \u2014 DO NOT SUBMIT"
-  },
+  "status": "BUILT, AUDITED, NOT PROMOTED",
   "slot_eligible": false,
-  "status": "HOLD \u2014 DO NOT SUBMIT"
+  "organizer_score": null,
+  "weekly_submission_used": false,
+  "novelty": true,
+  "corpus_size": 278,
+  "construction_reads_labels_or_priors": false,
+  "submission_note_example": "Euler deconvolution SI=0 contact depth-clustering over magnetic (rtp) and isostatic gravity (differentiated once); lineament-weighted kernel-density emission; 40,000 dots; id 785c4f5d5ce1."
 }

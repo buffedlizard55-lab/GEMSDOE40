@@ -1,0 +1,739 @@
+{
+  "candidate": {
+    "path": "/home/user/GEMSDOE40/work/h8/h8-euler-depthcluster-candidate.tif",
+    "bytes": 999011,
+    "sha256": "2bf29f83fea536c201829bbb1b13253668c3aa4ef191ab74b97da44e39f02c22",
+    "canonical_pixels_sha256": "5145c7aacd36361b298e3fdfc24f81e469bdfb2362d7cd88cf3fa399c454dd80",
+    "template": {
+      "width": 3292,
+      "height": 3730,
+      "count": 1,
+      "crs": "EPSG:32611",
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "dtype": "float32",
+      "nodata": "NaN",
+      "valid_pixels": 5167373,
+      "outside_pixels": 7111787
+    },
+    "candidate": {
+      "width": 3292,
+      "height": 3730,
+      "count": 1,
+      "crs": "EPSG:32611",
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "dtype": "float32",
+      "nodata": "NaN",
+      "in_footprint_min": 0.0,
+      "in_footprint_max": 1.0,
+      "in_footprint_nonzero": 45000,
+      "outside_nan": 7111787
+    },
+    "valid": true,
+    "issues": []
+  },
+  "emitted_pixels": 45000,
+  "distinct_values": 40301,
+  "value_min": 0.15394151210784912,
+  "value_max": 1.0,
+  "catalogue_surrogate": {
+    "truth": "data/labels.tif USGS+INGENIOUS catalogue (organizer-provided)",
+    "mask": "catalogue pixels excluded from the emitted domain (staff ruling, forum 11516/2)",
+    "mass": NaN,
+    "tp": 0.0,
+    "pred_credit": 0.0,
+    "fp": NaN,
+    "fn": 0.0,
+    "n_truth": 0.0,
+    "w": NaN,
+    "cover": 0.0,
+    "dti_surrogate": 0.0
+  },
+  "offcat_sgmc_surrogate": {
+    "truth": "SGMC faults >300 m from the catalogue (owner-derived mirror, NOT organizer truth)",
+    "mask": null,
+    "mass": NaN,
+    "tp": NaN,
+    "pred_credit": NaN,
+    "fp": NaN,
+    "fn": NaN,
+    "n_truth": 61664.0,
+    "w": NaN,
+    "cover": NaN,
+    "dti_surrogate": 0.0
+  },
+  "blocks": [
+    {
+      "block": [
+        0,
+        0
+      ],
+      "cells": 257735,
+      "catalogue_cells": 2072,
+      "sgmc_offcat_cells": 4329,
+      "emitted_cells": 1961,
+      "catalogue": {
+        "mass": NaN,
+        "tp": 0.0,
+        "pred_credit": 0.0,
+        "fp": NaN,
+        "fn": 0.0,
+        "n_truth": 0.0,
+        "w": NaN,
+        "cover": 0.0,
+        "dti_surrogate": 0.0
+      },
+      "sgmc_offcat": {
+        "mass": NaN,
+        "tp": NaN,
+        "pred_credit": NaN,
+        "fp": NaN,
+        "fn": NaN,
+        "n_truth": 4341.0,
+        "w": NaN,
+        "cover": NaN,
+        "dti_surrogate": 0.0
+      }
+    },
+    {
+      "block": [
+        0,
+        1
+      ],
+      "cells": 497979,
+      "catalogue_cells": 5744,
+      "sgmc_offcat_cells": 3063,
+      "emitted_cells": 4717,
+      "catalogue": {
+        "mass": NaN,
+        "tp": 0.0,
+        "pred_credit": 0.0,
+        "fp": NaN,
+        "fn": 0.0,
+        "n_truth": 0.0,
+        "w": NaN,
+        "cover": 0.0,
+        "dti_surrogate": 0.0
+      },
+      "sgmc_offcat": {
+        "mass": NaN,
+        "tp": 87.93834478621574,
+        "pred_credit": NaN,
+        "fp": NaN,
+        "fn": 2997.0616552137844,
+        "n_truth": 3085.0,
+        "w": NaN,
+        "cover": 0.02850513607332763,
+        "dti_surrogate": 0.0
+      }
+    },
+    {
+      "block": [
+        0,
+        2
+      ],
+      "cells": 501884,
+      "catalogue_cells": 3009,
+      "sgmc_offcat_cells": 4460,
+      "emitted_cells": 4399,
+      "catalogue": {
+        "mass": NaN,
+        "tp": 0.0,
+        "pred_credit": 0.0,
+        "fp": NaN,
+        "fn": 0.0,
+        "n_truth": 0.0,
+        "w": NaN,
+        "cover": 0.0,
+        "dti_surrogate": 0.0
+      },
+      "sgmc_offcat": {
+        "mass": NaN,
+        "tp": 165.98631159701,
+        "pred_credit": NaN,
+        "fp": NaN,
+        "fn": 4353.01368840299,
+        "n_truth": 4519.0,
+        "w": NaN,
+        "cover": 0.03673076158375968,
+        "dti_surrogate": 0.0
+      }
+    },
+    {
+      "block": [
+        0,
+        3
+      ],
+      "cells": 440195,
+      "catalogue_cells": 4284,
+      "sgmc_offcat_cells": 6818,
+      "emitted_cells": 4190,
+      "catalogue": {
+        "mass": NaN,
+        "tp": 0.0,
+        "pred_credit": 0.0,
+        "fp": NaN,
+        "fn": 0.0,
+        "n_truth": 0.0,
+        "w": NaN,
+        "cover": 0.0,
+        "dti_surrogate": 0.0
+      },
+      "sgmc_offcat": {
+        "mass": NaN,
+        "tp": NaN,
+        "pred_credit": NaN,
+        "fp": NaN,
+        "fn": NaN,
+        "n_truth": 7018.0,
+        "w": NaN,
+        "cover": NaN,
+        "dti_surrogate": 0.0
+      }
+    },
+    {
+      "block": [
+        0,
+        4
+      ],
+      "cells": 416346,
+      "catalogue_cells": 4016,
+      "sgmc_offcat_cells": 8609,
+      "emitted_cells": 3782,
+      "catalogue": {
+        "mass": NaN,
+        "tp": 0.0,
+        "pred_credit": 0.0,
+        "fp": NaN,
+        "fn": 0.0,
+        "n_truth": 0.0,
+        "w": NaN,
+        "cover": 0.0,
+        "dti_surrogate": 0.0
+      },
+      "sgmc_offcat": {
+        "mass": NaN,
+        "tp": NaN,
+        "pred_credit": NaN,
+        "fp": NaN,
+        "fn": NaN,
+        "n_truth": 8754.0,
+        "w": NaN,
+        "cover": NaN,
+        "dti_surrogate": 0.0
+      }
+    },
+    {
+      "block": [
+        0,
+        5
+      ],
+      "cells": 421161,
+      "catalogue_cells": 2998,
+      "sgmc_offcat_cells": 6205,
+      "emitted_cells": 3942,
+      "catalogue": {
+        "mass": NaN,
+        "tp": 0.0,
+        "pred_credit": 0.0,
+        "fp": NaN,
+        "fn": 0.0,
+        "n_truth": 0.0,
+        "w": NaN,
+        "cover": 0.0,
+        "dti_surrogate": 0.0
+      },
+      "sgmc_offcat": {
+        "mass": NaN,
+        "tp": NaN,
+        "pred_credit": NaN,
+        "fp": NaN,
+        "fn": NaN,
+        "n_truth": 6321.0,
+        "w": NaN,
+        "cover": NaN,
+        "dti_surrogate": 0.0
+      }
+    },
+    {
+      "block": [
+        1,
+        0
+      ],
+      "cells": 182292,
+      "catalogue_cells": 2763,
+      "sgmc_offcat_cells": 4062,
+      "emitted_cells": 1108,
+      "catalogue": {
+        "mass": NaN,
+        "tp": 0.0,
+        "pred_credit": 0.0,
+        "fp": NaN,
+        "fn": 0.0,
+        "n_truth": 0.0,
+        "w": NaN,
+        "cover": 0.0,
+        "dti_surrogate": 0.0
+      },
+      "sgmc_offcat": {
+        "mass": NaN,
+        "tp": NaN,
+        "pred_credit": NaN,
+        "fp": NaN,
+        "fn": NaN,
+        "n_truth": 4109.0,
+        "w": NaN,
+        "cover": NaN,
+        "dti_surrogate": 0.0
+      }
+    },
+    {
+      "block": [
+        1,
+        1
+      ],
+      "cells": 475147,
+      "catalogue_cells": 6967,
+      "sgmc_offcat_cells": 2679,
+      "emitted_cells": 3345,
+      "catalogue": {
+        "mass": NaN,
+        "tp": 0.0,
+        "pred_credit": 0.0,
+        "fp": NaN,
+        "fn": 0.0,
+        "n_truth": 0.0,
+        "w": NaN,
+        "cover": 0.0,
+        "dti_surrogate": 0.0
+      },
+      "sgmc_offcat": {
+        "mass": NaN,
+        "tp": NaN,
+        "pred_credit": NaN,
+        "fp": NaN,
+        "fn": NaN,
+        "n_truth": 2742.0,
+        "w": NaN,
+        "cover": NaN,
+        "dti_surrogate": 0.0
+      }
+    },
+    {
+      "block": [
+        1,
+        2
+      ],
+      "cells": 487886,
+      "catalogue_cells": 8136,
+      "sgmc_offcat_cells": 4198,
+      "emitted_cells": 5298,
+      "catalogue": {
+        "mass": NaN,
+        "tp": 0.0,
+        "pred_credit": 0.0,
+        "fp": NaN,
+        "fn": 0.0,
+        "n_truth": 0.0,
+        "w": NaN,
+        "cover": 0.0,
+        "dti_surrogate": 0.0
+      },
+      "sgmc_offcat": {
+        "mass": NaN,
+        "tp": 74.40581935158681,
+        "pred_credit": NaN,
+        "fp": NaN,
+        "fn": 4193.594180648413,
+        "n_truth": 4268.0,
+        "w": NaN,
+        "cover": 0.017433415968038147,
+        "dti_surrogate": 0.0
+      }
+    },
+    {
+      "block": [
+        1,
+        3
+      ],
+      "cells": 70461,
+      "catalogue_cells": 1058,
+      "sgmc_offcat_cells": 679,
+      "emitted_cells": 512,
+      "catalogue": {
+        "mass": NaN,
+        "tp": 0.0,
+        "pred_credit": 0.0,
+        "fp": NaN,
+        "fn": 0.0,
+        "n_truth": 0.0,
+        "w": NaN,
+        "cover": 0.0,
+        "dti_surrogate": 0.0
+      },
+      "sgmc_offcat": {
+        "mass": NaN,
+        "tp": NaN,
+        "pred_credit": NaN,
+        "fp": NaN,
+        "fn": NaN,
+        "n_truth": 707.0,
+        "w": NaN,
+        "cover": NaN,
+        "dti_surrogate": 0.0
+      }
+    },
+    {
+      "block": [
+        1,
+        4
+      ],
+      "cells": 0,
+      "catalogue_cells": 0,
+      "sgmc_offcat_cells": 0,
+      "emitted_cells": 0
+    },
+    {
+      "block": [
+        1,
+        5
+      ],
+      "cells": 0,
+      "catalogue_cells": 0,
+      "sgmc_offcat_cells": 0,
+      "emitted_cells": 0
+    },
+    {
+      "block": [
+        2,
+        0
+      ],
+      "cells": 0,
+      "catalogue_cells": 0,
+      "sgmc_offcat_cells": 0,
+      "emitted_cells": 0
+    },
+    {
+      "block": [
+        2,
+        1
+      ],
+      "cells": 51291,
+      "catalogue_cells": 436,
+      "sgmc_offcat_cells": 94,
+      "emitted_cells": 604,
+      "catalogue": {
+        "mass": NaN,
+        "tp": 0.0,
+        "pred_credit": 0.0,
+        "fp": NaN,
+        "fn": 0.0,
+        "n_truth": 0.0,
+        "w": NaN,
+        "cover": 0.0,
+        "dti_surrogate": 0.0
+      },
+      "sgmc_offcat": {
+        "mass": NaN,
+        "tp": NaN,
+        "pred_credit": NaN,
+        "fp": NaN,
+        "fn": NaN,
+        "n_truth": 100.0,
+        "w": NaN,
+        "cover": NaN,
+        "dti_surrogate": 0.0
+      }
+    },
+    {
+      "block": [
+        2,
+        2
+      ],
+      "cells": 376069,
+      "catalogue_cells": 5023,
+      "sgmc_offcat_cells": 1407,
+      "emitted_cells": 3080,
+      "catalogue": {
+        "mass": NaN,
+        "tp": 0.0,
+        "pred_credit": 0.0,
+        "fp": NaN,
+        "fn": 0.0,
+        "n_truth": 0.0,
+        "w": NaN,
+        "cover": 0.0,
+        "dti_surrogate": 0.0
+      },
+      "sgmc_offcat": {
+        "mass": NaN,
+        "tp": NaN,
+        "pred_credit": NaN,
+        "fp": NaN,
+        "fn": NaN,
+        "n_truth": 1425.0,
+        "w": NaN,
+        "cover": NaN,
+        "dti_surrogate": 0.0
+      }
+    },
+    {
+      "block": [
+        2,
+        3
+      ],
+      "cells": 296296,
+      "catalogue_cells": 4211,
+      "sgmc_offcat_cells": 2361,
+      "emitted_cells": 2206,
+      "catalogue": {
+        "mass": NaN,
+        "tp": 0.0,
+        "pred_credit": 0.0,
+        "fp": NaN,
+        "fn": 0.0,
+        "n_truth": 0.0,
+        "w": NaN,
+        "cover": 0.0,
+        "dti_surrogate": 0.0
+      },
+      "sgmc_offcat": {
+        "mass": NaN,
+        "tp": NaN,
+        "pred_credit": NaN,
+        "fp": NaN,
+        "fn": NaN,
+        "n_truth": 2381.0,
+        "w": NaN,
+        "cover": NaN,
+        "dti_surrogate": 0.0
+      }
+    },
+    {
+      "block": [
+        2,
+        4
+      ],
+      "cells": 0,
+      "catalogue_cells": 0,
+      "sgmc_offcat_cells": 0,
+      "emitted_cells": 0
+    },
+    {
+      "block": [
+        2,
+        5
+      ],
+      "cells": 0,
+      "catalogue_cells": 0,
+      "sgmc_offcat_cells": 0,
+      "emitted_cells": 0
+    },
+    {
+      "block": [
+        3,
+        0
+      ],
+      "cells": 0,
+      "catalogue_cells": 0,
+      "sgmc_offcat_cells": 0,
+      "emitted_cells": 0
+    },
+    {
+      "block": [
+        3,
+        1
+      ],
+      "cells": 0,
+      "catalogue_cells": 0,
+      "sgmc_offcat_cells": 0,
+      "emitted_cells": 0
+    },
+    {
+      "block": [
+        3,
+        2
+      ],
+      "cells": 124707,
+      "catalogue_cells": 3853,
+      "sgmc_offcat_cells": 753,
+      "emitted_cells": 1046,
+      "catalogue": {
+        "mass": NaN,
+        "tp": 0.0,
+        "pred_credit": 0.0,
+        "fp": NaN,
+        "fn": 0.0,
+        "n_truth": 0.0,
+        "w": NaN,
+        "cover": 0.0,
+        "dti_surrogate": 0.0
+      },
+      "sgmc_offcat": {
+        "mass": NaN,
+        "tp": NaN,
+        "pred_credit": NaN,
+        "fp": NaN,
+        "fn": NaN,
+        "n_truth": 784.0,
+        "w": NaN,
+        "cover": NaN,
+        "dti_surrogate": 0.0
+      }
+    },
+    {
+      "block": [
+        3,
+        3
+      ],
+      "cells": 447577,
+      "catalogue_cells": 4955,
+      "sgmc_offcat_cells": 10492,
+      "emitted_cells": 3830,
+      "catalogue": {
+        "mass": NaN,
+        "tp": 0.0,
+        "pred_credit": 0.0,
+        "fp": NaN,
+        "fn": 0.0,
+        "n_truth": 0.0,
+        "w": NaN,
+        "cover": 0.0,
+        "dti_surrogate": 0.0
+      },
+      "sgmc_offcat": {
+        "mass": NaN,
+        "tp": NaN,
+        "pred_credit": NaN,
+        "fp": NaN,
+        "fn": NaN,
+        "n_truth": 10556.0,
+        "w": NaN,
+        "cover": NaN,
+        "dti_surrogate": 0.0
+      }
+    },
+    {
+      "block": [
+        3,
+        4
+      ],
+      "cells": 35460,
+      "catalogue_cells": 287,
+      "sgmc_offcat_cells": 545,
+      "emitted_cells": 336,
+      "catalogue": {
+        "mass": NaN,
+        "tp": 0.0,
+        "pred_credit": 0.0,
+        "fp": NaN,
+        "fn": 0.0,
+        "n_truth": 0.0,
+        "w": NaN,
+        "cover": 0.0,
+        "dti_surrogate": 0.0
+      },
+      "sgmc_offcat": {
+        "mass": NaN,
+        "tp": NaN,
+        "pred_credit": NaN,
+        "fp": NaN,
+        "fn": NaN,
+        "n_truth": 554.0,
+        "w": NaN,
+        "cover": NaN,
+        "dti_surrogate": 0.0
+      }
+    },
+    {
+      "block": [
+        3,
+        5
+      ],
+      "cells": 0,
+      "catalogue_cells": 0,
+      "sgmc_offcat_cells": 0,
+      "emitted_cells": 0
+    }
+  ],
+  "truth_bearing_blocks": 16,
+  "offcat_truth_blocks": 16,
+  "novelty": {
+    "corpus_size": 278,
+    "unreadable_or_incomparable": 1,
+    "max_abs_pearson": 0.03858968120715985,
+    "max_jaccard_topk": 0.019540901127532456,
+    "max_containment_topk": 1.0,
+    "thresholds": {
+      "max_abs_pearson": 0.95,
+      "max_jaccard_topk": 0.5
+    },
+    "top_matches": [
+      {
+        "file": "033c13e3ef317f0db69def3e498bfdb637df28f8.tif",
+        "comparable": true,
+        "pearson": 0.03858968120715985,
+        "jaccard_topk": 0.019540901127532456,
+        "containment_topk": 0.03866666666666667,
+        "other_positive": 45784,
+        "exact_equal": false
+      },
+      {
+        "file": "76f9bf7ac3add357150ef80953193d331efa3e4c.tif",
+        "comparable": true,
+        "pearson": 0.03858968120715985,
+        "jaccard_topk": 0.019540901127532456,
+        "containment_topk": 0.03866666666666667,
+        "other_positive": 45784,
+        "exact_equal": false
+      },
+      {
+        "file": "6b14c61522b6c9c04abae93e8b067eacfc59977d.tif",
+        "comparable": true,
+        "pearson": 0.014979237338164114,
+        "jaccard_topk": 0.01183662561521502,
+        "containment_topk": 0.02362222222222222,
+        "other_positive": 45869,
+        "exact_equal": false
+      },
+      {
+        "file": "b22d27a627dd6769eaf561e3e9f34a4caef5ed17.tif",
+        "comparable": true,
+        "pearson": 0.011198953742807646,
+        "jaccard_topk": 0.008972277493621748,
+        "containment_topk": 0.01633333333333333,
+        "other_positive": 37654,
+        "exact_equal": false
+      },
+      {
+        "file": "d4639f1bf50f1d4870b752fc0bf9df5ad30b9ce6.tif",
+        "comparable": true,
+        "pearson": -0.011165372067641897,
+        "jaccard_topk": 0.008730404805167694,
+        "containment_topk": 0.6588888888888889,
+        "other_positive": 3380827,
+        "exact_equal": false
+      }
+    ],
+    "novel": true
+  },
+  "is_a_score": false,
+  "caveats": [
+    "The catalogue surrogate cannot rank a candidate that deliberately avoids the catalogue: the family's best-scoring published file (37,654 dots, owner-reported 0.2778) has catalogue w = 0.0074.",
+    "The SGMC-off-catalogue surrogate is owner-derived, not organizer truth, and the 2026-10-06 instrument audit measured no ranking power for it (Spearman +0.68 overall, sign inversion at matched mass).",
+    "No hidden label, no organizer score and no authenticated DrivenData session is used here."
+  ]
+}
